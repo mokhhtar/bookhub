@@ -960,3 +960,69 @@ img { display: block; max-width: 100%; }
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ── THEME SWITCHER & DARK MODE OVERRIDES ────────────────── */
+html[data-theme="dark"] {
+  --bg:           #0b0f19;
+  --bg-subtle:    #111827;
+  --fg:           #f9fafb;
+  --fg-muted:     #9ca3af;
+  --fg-faint:     #6b7280;
+  --accent:       #ff5b4f;
+  --accent-bg:    #2d1918;
+  --accent-hover: #ff7368;
+  --blue:         #3b82f6;
+  --blue-bg:      #1e293b;
+  --surface:      #1f2937;
+  --border:       #1f2937;
+  --border-med:   #374151;
+}
+
+/* Adjust header backdrop in dark mode */
+html[data-theme="dark"] .site-header {
+  background: rgba(11, 15, 25, 0.85);
+}
+
+/* Flip logo colors in dark mode */
+html[data-theme="dark"] .logo-mark rect {
+  fill: #0b0f19;
+}
+html[data-theme="dark"] .logo-mark rect:first-child {
+  fill: #f9fafb;
+}
+
+/* Theme Toggle Button Styles */
+.theme-toggle-btn {
+  background: transparent;
+  border: 1px solid var(--border-med);
+  color: var(--fg-muted);
+  width: 32px;
+  height: 32px;
+  border-radius: var(--r-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s var(--ease);
+  padding: 0;
+}
+
+.theme-toggle-btn:hover {
+  color: var(--fg);
+  border-color: var(--fg);
+  background: var(--bg-subtle);
+}
+
+.theme-icon {
+  display: block;
+}
+
+/* Fallback/Default Light theme overrides if attribute is missing */
+.theme-icon.sun-icon { display: none; }
+.theme-icon.moon-icon { display: block; }
+
+html[data-theme="dark"] .sun-icon { display: block; }
+html[data-theme="dark"] .moon-icon { display: none; }
+
+html[data-theme="light"] .sun-icon { display: none; }
+html[data-theme="light"] .moon-icon { display: block; }
