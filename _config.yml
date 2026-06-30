@@ -1,7 +1,7 @@
 title: "BookHub"
 tagline: "Read less. Understand more."
 description: "Seven AI-powered tools for readers — summaries, recommendations, discussion questions, comparisons, and more."
-url: "https://yourusername.github.io"
+url: "https://mokhhtar.github.io"
 baseurl: "/bookhub"
 lang: "en"
 
@@ -44,7 +44,7 @@ defaults:
       layout: "default"
 
 # Backend API (Render — update after deploy)
-api_url: "https://bookhub-api.onrender.com"
+api_url: "https://bookhub-api-hnv7.onrender.com"
 
 # Amazon Associates tag
 amazon_tag: "yourtag-20"
