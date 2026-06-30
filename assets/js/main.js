@@ -60,7 +60,7 @@ window.fillSearch = function(title) {
 };
 
 // ── Theme Switcher ───────────────────────────────────────
-document.addEventListener('DOMContentLoaded', () => {
+function initThemeToggle() {
   const toggleBtn = document.getElementById('theme-toggle');
   if (toggleBtn) {
     toggleBtn.addEventListener('click', () => {
@@ -70,4 +70,10 @@ document.addEventListener('DOMContentLoaded', () => {
       localStorage.setItem('theme', newTheme);
     });
   }
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initThemeToggle);
+} else {
+  initThemeToggle();
+}
