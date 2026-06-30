@@ -616,10 +616,4 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
       .replace(/\n\n/g, '<br><br>')
       .replace(/\n/g, '<br>');
   }
-    } catch (e) {
-      result.innerHTML = `<p class="result-error">Couldn't generate the summary. Please try again.</p>`;
-    } finally {
-      document.getElementById("submit-btn").disabled = false;
-    }
-  }
 </script>
