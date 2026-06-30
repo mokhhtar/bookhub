@@ -1,0 +1,126 @@
+---
+layout: default
+title: "Reading Tracker"
+description: "Track your reading list, rate books, and manage your progress — no account needed."
+---
+<div class="tool-page">
+  <div class="container">
+    <div class="tool-page-header">
+      <p class="breadcrumb"><a href="{{ '/' | relative_url }}">Home</a> <span class="breadcrumb-sep">/</span> Tools <span class="breadcrumb-sep">/</span> Reading Tracker</p>
+      <h1 class="tool-page-title">Reading Tracker</h1>
+      <p class="tool-page-desc">Your personal library. Saved locally on this device — no account required.</p>
+    </div>
+
+    <div class="tool-form" style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-end;">
+      <div class="form-group" style="flex:1;min-width:200px;margin-bottom:0;">
+        <label class="form-label" for="add-title">Book title</label>
+        <input type="text" id="add-title" class="form-input" placeholder="e.g. The Little Prince">
+      </div>
+      <div class="form-group" style="flex:1;min-width:160px;margin-bottom:0;">
+        <label class="form-label" for="add-author">Author</label>
+        <input type="text" id="add-author" class="form-input" placeholder="Author name">
+      </div>
+      <div class="form-group" style="width:150px;margin-bottom:0;">
+        <label class="form-label" for="add-status">Status</label>
+        <select id="add-status" class="form-select">
+          <option value="want">Want to read</option>
+          <option value="reading">Reading now</option>
+          <option value="done">Finished</option>
+        </select>
+      </div>
+      <button class="btn-primary" onclick="addBook()">Add book</button>
+    </div>
+
+    <div class="book-tabs" style="margin-bottom:20px;">
+      <button class="book-tab active" data-filter="all">All</button>
+      <button class="book-tab" data-filter="want">Want to read</button>
+      <button class="book-tab" data-filter="reading">Reading now</button>
+      <button class="book-tab" data-filter="done">Finished</button>
+    </div>
+
+    <div id="list-container"></div>
+  </div>
+</div>
+
+<script>
+const RL_KEY = 'bookhub_rl_v1';
+let currentFilter = 'all';
+
+function getList() { try { return JSON.parse(localStorage.getItem(RL_KEY)) || []; } catch { return []; } }
+function saveList(list) { localStorage.setItem(RL_KEY, JSON.stringify(list)); }
+
+function addBook() {
+  const title  = document.getElementById('add-title').value.trim();
+  const author = document.getElementById('add-author').value.trim();
+  const status = document.getElementById('add-status').value;
+  if (!title) { document.getElementById('add-title').focus(); return; }
+
+  const list = getList();
+  if (list.find(b => b.title.toLowerCase() === title.toLowerCase())) {
+    alert('This book is already in your list.');
+    return;
+  }
+  list.unshift({ id: Date.now(), title, author, status, rating: 0, addedAt: Date.now() });
+  saveList(list);
+  document.getElementById('add-title').value = '';
+  document.getElementById('add-author').value = '';
+  render();
+}
+
+function removeBook(id) { saveList(getList().filter(b => b.id !== id)); render(); }
+function setStatus(id, status) { saveList(getList().map(b => b.id === id ? { ...b, status } : b)); render(); }
+function setRating(id, rating) { saveList(getList().map(b => b.id === id ? { ...b, rating } : b)); render(); }
+
+const statusLabel = { want: 'Want to read', reading: 'Reading now', done: 'Finished' };
+
+function render() {
+  const list = getList().filter(b => currentFilter === 'all' || b.status === currentFilter);
+  const container = document.getElementById('list-container');
+
+  if (list.length === 0) {
+    container.innerHTML = `
+      <div class="result-placeholder" style="padding:48px 0;">
+        <div class="result-placeholder-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        </div>
+        <p>${currentFilter === 'all' ? 'Your list is empty — add your first book above.' : 'No books in this category yet.'}</p>
+      </div>`;
+    return;
+  }
+
+  container.innerHTML = list.map(b => `
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px 18px;margin-bottom:8px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+      <div style="flex:1;min-width:180px;">
+        <div style="font-weight:600;font-size:14px;">${b.title}</div>
+        ${b.author ? `<div style="font-size:12px;color:var(--fg-faint);">${b.author}</div>` : ''}
+      </div>
+      <div style="display:flex;align-items:center;gap:2px;">
+        ${[1,2,3,4,5].map(s => `
+          <button onclick="setRating(${b.id},${s})" aria-label="Rate ${s}"
+            style="background:none;border:none;cursor:pointer;font-size:15px;color:${s <= b.rating ? '#f5a623' : 'var(--border-med)'};padding:2px;">★</button>
+        `).join('')}
+      </div>
+      <select onchange="setStatus(${b.id}, this.value)" class="form-select"
+        style="width:auto;padding:6px 10px;font-size:12px;">
+        <option value="want"    ${b.status==='want'    ? 'selected':''}>Want to read</option>
+        <option value="reading" ${b.status==='reading' ? 'selected':''}>Reading now</option>
+        <option value="done"    ${b.status==='done'    ? 'selected':''}>Finished</option>
+      </select>
+      <button onclick="removeBook(${b.id})" class="btn-secondary" style="padding:6px 12px;font-size:12px;">Remove</button>
+    </div>
+  `).join('');
+}
+
+document.querySelectorAll('.book-tab').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.book-tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentFilter = btn.dataset.filter;
+    render();
+  });
+});
+
+document.getElementById('add-title').addEventListener('keydown', e => { if (e.key === 'Enter') addBook(); });
+
+render();
+</script>

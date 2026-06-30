@@ -1,0 +1,50 @@
+title: "BookHub"
+tagline: "Read less. Understand more."
+description: "Seven AI-powered tools for readers — summaries, recommendations, discussion questions, comparisons, and more."
+url: "https://yourusername.github.io"
+baseurl: "/bookhub"
+lang: "en"
+
+author:
+  name: "BookHub"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+
+# Collections
+collections:
+  books:
+    output: true
+    permalink: /books/:title/
+
+# Plugins
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Exclude from build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - README.md
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "books"
+    values:
+      layout: "book"
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+
+# Backend API (Render — update after deploy)
+api_url: "https://bookhub-api.onrender.com"
+
+# Amazon Associates tag
+amazon_tag: "yourtag-20"

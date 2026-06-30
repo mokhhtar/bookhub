@@ -1,0 +1,83 @@
+---
+layout: default
+title: "Comparison Matrix"
+description: "Compare two books side by side — style, difficulty, audience, and more."
+---
+<div class="tool-page">
+  <div class="container">
+    <div class="tool-page-header">
+      <p class="breadcrumb"><a href="{{ '/' | relative_url }}">Home</a> <span class="breadcrumb-sep">/</span> Tools <span class="breadcrumb-sep">/</span> Comparison Matrix</p>
+      <h1 class="tool-page-title">Comparison Matrix</h1>
+      <p class="tool-page-desc">Compare two books across style, difficulty, audience, and pacing.</p>
+    </div>
+
+    <div class="tool-form">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+        <div class="form-group" style="margin-bottom:0;">
+          <label class="form-label" for="book-a">Book A</label>
+          <input type="text" id="book-a" class="form-input" placeholder="e.g. Sapiens">
+        </div>
+        <div class="form-group" style="margin-bottom:0;">
+          <label class="form-label" for="book-b">Book B</label>
+          <input type="text" id="book-b" class="form-input" placeholder="e.g. Guns, Germs, and Steel">
+        </div>
+      </div>
+      <button class="btn-primary" id="submit-btn" onclick="doCompare()" style="margin-top:20px;">Compare books</button>
+    </div>
+
+    <div class="result-area" id="result">
+      <div class="result-placeholder">
+        <div class="result-placeholder-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </div>
+        <p>Enter two book titles and the comparison will appear here.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const API = "{{ site.api_url }}";
+
+async function doCompare() {
+  const a = document.getElementById('book-a').value.trim();
+  const b = document.getElementById('book-b').value.trim();
+  if (!a || !b) { (a ? document.getElementById('book-b') : document.getElementById('book-a')).focus(); return; }
+
+  const result = document.getElementById('result');
+  result.innerHTML = '<div class="result-loading"><span class="spinner"></span> Comparing books...</div>';
+  document.getElementById('submit-btn').disabled = true;
+
+  try {
+    const res = await fetch(`${API}/compare`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ book_a: a, book_b: b })
+    });
+    if (!res.ok) throw new Error('server error');
+    const data = await res.json();
+    const rows = (data.rows || []).map(r => `
+      <tr>
+        <td style="padding:12px 16px;font-size:13px;font-weight:500;color:var(--fg-muted);border-bottom:1px solid var(--border);white-space:nowrap;">${r.label}</td>
+        <td style="padding:12px 16px;font-size:13px;border-bottom:1px solid var(--border);">${r.a}</td>
+        <td style="padding:12px 16px;font-size:13px;border-bottom:1px solid var(--border);">${r.b}</td>
+      </tr>`).join('');
+    result.innerHTML = `
+      <table style="width:100%;border-collapse:collapse;">
+        <thead>
+          <tr>
+            <th style="padding:10px 16px;text-align:left;font-size:11px;color:var(--fg-faint);text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid var(--border);"></th>
+            <th style="padding:10px 16px;text-align:left;font-size:13px;font-weight:600;border-bottom:1px solid var(--border);">${a}</th>
+            <th style="padding:10px 16px;text-align:left;font-size:13px;font-weight:600;border-bottom:1px solid var(--border);">${b}</th>
+          </tr>
+        </thead>
+        <tbody>${rows}</tbody>
+      </table>
+      ${data.verdict ? `<div class="ai-output" style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border);">${data.verdict}</div>` : ''}`;
+  } catch(e) {
+    result.innerHTML = `<p class="result-error">Couldn't compare these books. Please try again.</p>`;
+  } finally {
+    document.getElementById('submit-btn').disabled = false;
+  }
+}
+</script>

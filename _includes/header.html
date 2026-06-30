@@ -1,0 +1,35 @@
+<header class="site-header" role="banner">
+  <div class="container header-inner">
+
+    <!-- LOGO — replace SVG with your final mark -->
+    <a href="{{ '/' | relative_url }}" class="site-logo" aria-label="{{ site.title }} home">
+      <svg class="logo-mark" width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <rect width="28" height="28" rx="6" fill="#171717"/>
+        <rect x="7" y="8" width="4" height="12" rx="1" fill="white"/>
+        <rect x="13" y="8" width="4" height="12" rx="1" fill="white" opacity="0.5"/>
+        <rect x="19" y="8" width="2" height="12" rx="1" fill="white" opacity="0.25"/>
+      </svg>
+      <span class="logo-text">BookHub</span>
+      <!-- TODO: replace logo-text with your final name once decided -->
+    </a>
+
+    <!-- Primary nav -->
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="{{ '/' | relative_url }}"                   class="nav-link">Overview</a>
+      <a href="{{ '/tools/summary' | relative_url }}"       class="nav-link">Summarizer</a>
+      <a href="{{ '/tools/recommender' | relative_url }}"   class="nav-link">Recommender</a>
+      <a href="{{ '/tools/reading-list' | relative_url }}"  class="nav-link">My Library</a>
+    </nav>
+
+    <div class="header-right">
+      <a href="{{ '/tools/summary' | relative_url }}" class="btn-primary btn-sm">Get started</a>
+    </div>
+
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+
+  </div>
+</header>

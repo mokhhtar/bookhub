@@ -1,0 +1,72 @@
+---
+layout: default
+title: "Discussion Generator"
+description: "Generate deep discussion questions for any book — perfect for book clubs and classrooms."
+---
+<div class="tool-page">
+  <div class="container">
+    <div class="tool-page-header">
+      <p class="breadcrumb"><a href="{{ '/' | relative_url }}">Home</a> <span class="breadcrumb-sep">/</span> Tools <span class="breadcrumb-sep">/</span> Discussion Generator</p>
+      <h1 class="tool-page-title">Discussion Generator</h1>
+      <p class="tool-page-desc">Get 10 thought-provoking discussion questions for any book.</p>
+    </div>
+
+    <div class="tool-form">
+      <div class="form-group">
+        <label class="form-label" for="q-title">Book title</label>
+        <input type="text" id="q-title" class="form-input" placeholder="e.g. The Alchemist" autocomplete="off">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="q-author">Author (optional)</label>
+        <input type="text" id="q-author" class="form-input" placeholder="e.g. Paulo Coelho">
+      </div>
+      <button class="btn-primary" id="submit-btn" onclick="doQuestions()" style="margin-top:8px;">Generate questions</button>
+    </div>
+
+    <div class="result-area" id="result">
+      <div class="result-placeholder">
+        <div class="result-placeholder-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <p>Enter a book title and discussion questions will appear here.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const API = "{{ site.api_url }}";
+
+async function doQuestions() {
+  const title  = document.getElementById('q-title').value.trim();
+  const author = document.getElementById('q-author').value.trim();
+  if (!title) { document.getElementById('q-title').focus(); return; }
+
+  const result = document.getElementById('result');
+  result.innerHTML = '<div class="result-loading"><span class="spinner"></span> Generating questions...</div>';
+  document.getElementById('submit-btn').disabled = true;
+
+  try {
+    const res = await fetch(`${API}/questions`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ title, author })
+    });
+    if (!res.ok) throw new Error('server error');
+    const data = await res.json();
+    const items = data.questions.map((q,i) => `
+      <li style="padding:14px 16px 14px 44px;background:var(--bg-subtle);border:1px solid var(--border);border-radius:8px;position:relative;font-size:14px;line-height:1.6;">
+        <span style="position:absolute;left:12px;top:50%;transform:translateY(-50%);width:22px;height:22px;background:var(--accent-bg);color:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;">${i+1}</span>
+        ${q}
+      </li>`).join('');
+    result.innerHTML = `<ul style="list-style:none;display:flex;flex-direction:column;gap:10px;">${items}</ul>
+      <div style="margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--border);">
+        <button class="btn-secondary" onclick="window.print()">Print for book club</button>
+      </div>`;
+  } catch(e) {
+    result.innerHTML = `<p class="result-error">Couldn't generate questions. Please try again.</p>`;
+  } finally {
+    document.getElementById('submit-btn').disabled = false;
+  }
+}
+</script>
