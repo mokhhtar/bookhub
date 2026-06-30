@@ -902,9 +902,14 @@ img { display: block; max-width: 100%; }
 }
 
 @media (max-width: 768px) {
-  /* Nav */
-  .site-nav,
-  .header-right { display: none; }
+  .site-nav { display: none; }
+  .header-right {
+    display: flex !important;
+    margin-left: auto;
+  }
+  .header-right .btn-primary {
+    display: none;
+  }
   .site-nav.open {
     display: flex;
     flex-direction: column;
@@ -916,7 +921,10 @@ img { display: block; max-width: 100%; }
     gap: 2px;
     z-index: 99;
   }
-  .nav-toggle { display: flex; }
+  .nav-toggle {
+    display: flex;
+    margin-left: 12px;
+  }
 
   /* Hero */
   .hero-stat { padding: 14px 20px; }
