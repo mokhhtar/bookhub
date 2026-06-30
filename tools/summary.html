@@ -4,6 +4,22 @@ title: "Book Summarizer"
 description: "Get an instant AI-generated summary of any book — choose quick, medium, or deep depth."
 ---
 
+<style>
+  .similar-book-card {
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+  }
+  .similar-book-card:hover {
+    transform: translateY(-4px);
+  }
+  .similar-book-card img {
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  .similar-book-card:hover img {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    border-color: var(--fg-faint) !important;
+  }
+</style>
+
 <div class="tool-page">
   <div class="container">
     <div class="tool-page-header">
@@ -98,6 +114,13 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
     doSummary();
   }
 
+  function summarizeBook(title, author) {
+    document.getElementById("book-title").value = title;
+    document.getElementById("book-author").value = author || "";
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    doSummary();
+  }
+
   async function doSummary() {
     const title = document.getElementById("book-title").value.trim();
     const author = document.getElementById("book-author").value.trim();
@@ -151,11 +174,11 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
              ${data.similar_books
                .map(
                  (b) => `
-               <div style="text-align:center;">
-                 ${b.cover_url ? `<img src="${b.cover_url}" alt="Cover of ${b.title}" style="width:100%;border-radius:4px;border:1px solid var(--border);margin-bottom:6px;">` : `<div style="width:100%;aspect-ratio:2/3;background:var(--bg-subtle);border:1px solid var(--border);border-radius:4px;margin-bottom:6px;"></div>`}
-                 <p style="font-size:12px;font-weight:500;line-height:1.3;margin-bottom:2px;">${b.title}</p>
-                 <p style="font-size:11px;color:var(--fg-faint);">${b.author}</p>
-               </div>`,
+                <div class="similar-book-card" onclick="summarizeBook('${b.title.replace(/'/g, "\\'").replace(/"/g, '&quot;')}', '${(b.author || '').replace(/'/g, "\\'").replace(/"/g, '&quot;')}')" style="text-align:center;cursor:pointer;">
+                  ${b.cover_url ? `<img src="${b.cover_url}" alt="Cover of ${b.title}" style="width:100%;border-radius:4px;border:1px solid var(--border);margin-bottom:6px;">` : `<div style="width:100%;aspect-ratio:2/3;background:var(--bg-subtle);border:1px solid var(--border);border-radius:4px;margin-bottom:6px;"></div>`}
+                  <p style="font-size:12px;font-weight:500;line-height:1.3;margin-bottom:2px;">${b.title}</p>
+                  <p style="font-size:11px;color:var(--fg-faint);">${b.author}</p>
+                </div>`,
                )
                .join("")}
            </div>
