@@ -186,7 +186,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
       ${similarHtml}
       <div style="margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--border);display:flex;gap:.75rem;flex-wrap:wrap;">
         <button class="btn-secondary" onclick="window.print()">Print</button>
-        ${data.isbn_13 ? `<a href="https://www.amazon.com/dp/${data.isbn_13}?tag={{ site.amazon_tag }}" class="btn-primary" target="_blank" rel="noopener sponsored">Buy on Amazon</a>` : ""}
+        ${data.amazon_url ? `<a href="${data.amazon_url}" class="btn-primary" target="_blank" rel="noopener sponsored">Buy on Amazon</a>` : ""}
       </div>`;
     } catch (e) {
       result.innerHTML = `<p class="result-error">Couldn't generate the summary. Please try again.</p>`;
