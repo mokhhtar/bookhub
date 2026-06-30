@@ -1,1 +1,1 @@
-Sitemap: http://localhost:4000/bookhub/sitemap.xml
+Sitemap: https://mokhhtar.github.io/bookhub/sitemap.xml

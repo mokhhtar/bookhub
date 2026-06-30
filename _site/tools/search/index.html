@@ -9,12 +9,12 @@
 
   <!-- Open Graph -->
   <meta property="og:type"        content="website">
-  <meta property="og:url"         content="http://localhost:4000/bookhub/tools/search/">
+  <meta property="og:url"         content="https://mokhhtar.github.io/bookhub/tools/search/">
   <meta property="og:title"       content="Advanced Book Search">
   <meta property="og:description" content="Search 50,000+ books by genre, author, year, and language using Open Library.">
   <meta name="twitter:card"       content="summary_large_image">
 
-  <link rel="canonical" href="http://localhost:4000/bookhub/tools/search/">
+  <link rel="canonical" href="https://mokhhtar.github.io/bookhub/tools/search/">
 
   <!-- Inter from Google Fonts — closest free match to system-ui clarity -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,17 +29,28 @@
 <meta property="og:locale" content="en" />
 <meta name="description" content="Search 50,000+ books by genre, author, year, and language using Open Library." />
 <meta property="og:description" content="Search 50,000+ books by genre, author, year, and language using Open Library." />
-<link rel="canonical" href="http://localhost:4000/bookhub/tools/search/" />
-<meta property="og:url" content="http://localhost:4000/bookhub/tools/search/" />
+<link rel="canonical" href="https://mokhhtar.github.io/bookhub/tools/search/" />
+<meta property="og:url" content="https://mokhhtar.github.io/bookhub/tools/search/" />
 <meta property="og:site_name" content="BookHub" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Advanced Book Search" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"BookHub"},"description":"Search 50,000+ books by genre, author, year, and language using Open Library.","headline":"Advanced Book Search","url":"http://localhost:4000/bookhub/tools/search/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"BookHub"},"description":"Search 50,000+ books by genre, author, year, and language using Open Library.","headline":"Advanced Book Search","url":"https://mokhhtar.github.io/bookhub/tools/search/"}</script>
 <!-- End Jekyll SEO tag -->
 
   <link rel="stylesheet" href="/bookhub/assets/css/style.css">
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    })();
+  </script>
 </head>
 <body>
 
@@ -66,7 +77,25 @@
       <a href="/bookhub/tools/reading-list"  class="nav-link">My Library</a>
     </nav>
 
-    <div class="header-right">
+    <div class="header-right" style="display: flex; align-items: center; gap: 12px;">
+      <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme" title="Toggle theme">
+        <!-- Sun icon -->
+        <svg class="theme-icon sun-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <!-- Moon icon -->
+        <svg class="theme-icon moon-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
       <a href="/bookhub/tools/summary" class="btn-primary btn-sm">Get started</a>
     </div>
 
