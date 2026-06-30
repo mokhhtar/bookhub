@@ -18,6 +18,40 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
     border-color: var(--fg-faint) !important;
   }
+  .suggestions-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    z-index: 100;
+    max-height: 250px;
+    overflow-y: auto;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    margin-top: 4px;
+  }
+  .suggestion-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-bottom: 1px solid var(--border-subtle);
+    font-size: 13px;
+    transition: background 0.15s ease;
+  }
+  .suggestion-item:hover {
+    background: var(--bg-subtle);
+  }
+  .suggestion-item img {
+    width: 28px;
+    height: 38px;
+    object-fit: cover;
+    border-radius: 2px;
+    border: 1px solid var(--border);
+  }
 </style>
 
 <div class="tool-page">
@@ -36,7 +70,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
     </div>
 
     <div class="tool-form">
-      <div class="form-group">
+      <div class="form-group" style="position: relative;">
         <label class="form-label" for="book-title">Book title</label>
         <input
           type="text"
@@ -44,7 +78,9 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
           class="form-input"
           placeholder="e.g. Atomic Habits"
           autocomplete="off"
+          oninput="onTitleInput(event)"
         />
+        <div id="suggestions-box" class="suggestions-dropdown" style="display: none;"></div>
       </div>
       <div class="form-group">
         <label class="form-label" for="book-author">Author (optional)</label>
@@ -114,14 +150,87 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
     doSummary();
   }
 
-  function summarizeBook(title, author) {
+  let debounceTimeout;
+
+  function onTitleInput(event) {
+    const query = event.target.value.trim();
+    const suggestionsBox = document.getElementById("suggestions-box");
+    
+    if (query.length < 3) {
+      suggestionsBox.style.display = "none";
+      return;
+    }
+
+    clearTimeout(debounceTimeout);
+
+    debounceTimeout = setTimeout(async () => {
+      try {
+        const res = await fetch(`${API}/search?q=${encodeURIComponent(query)}`);
+        if (!res.ok) return;
+        const data = await res.json();
+        
+        if (!data || data.length === 0) {
+          suggestionsBox.style.display = "none";
+          return;
+        }
+
+        suggestionsBox.innerHTML = data.slice(0, 5).map(b => {
+          const titleEscaped = b.title.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+          const authorEscaped = (b.author || '').replace(/'/g, "\\'").replace(/"/g, '&quot;');
+          
+          return `
+            <div class="suggestion-item" onclick="selectSuggestion('${titleEscaped}', '${authorEscaped}')">
+              ${b.cover_url ? `<img src="${b.cover_url}" alt="cover">` : `<div style="width:28px;height:38px;background:var(--bg-subtle);border:1px solid var(--border);border-radius:2px;"></div>`}
+              <div>
+                <div style="font-weight: 600; font-size:12px; line-height:1.2; margin-bottom:2px; color:var(--fg);">${b.title}</div>
+                <div style="font-size: 11px; color: var(--fg-faint);">${b.author || 'Unknown'}</div>
+              </div>
+            </div>
+          `;
+        }).join("");
+        
+        suggestionsBox.style.display = "block";
+      } catch (err) {
+        console.error("Autocomplete search failed:", err);
+      }
+    }, 250);
+  }
+
+  function selectSuggestion(title, author) {
+    document.getElementById("book-title").value = title;
+    document.getElementById("book-author").value = author || "";
+    document.getElementById("suggestions-box").style.display = "none";
+    doSummary(true); // Summarize directly
+  }
+
+  // Close suggestions dropdown when clicking outside
+  document.addEventListener("click", (e) => {
+    if (e.target.id !== "book-title") {
+      const box = document.getElementById("suggestions-box");
+      if (box) box.style.display = "none";
+    }
+  });
+
+  // Support pressing Enter to search
+  document.getElementById("book-title").addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+      doSummary();
+    }
+  });
+  document.getElementById("book-author").addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+      doSummary();
+    }
+  });
+
+  function summarizeBook(title, author, forceDirect = false) {
     document.getElementById("book-title").value = title;
     document.getElementById("book-author").value = author || "";
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    doSummary();
+    doSummary(forceDirect);
   }
 
-  async function doSummary() {
+  async function doSummary(forceDirect = false) {
     const title = document.getElementById("book-title").value.trim();
     const author = document.getElementById("book-author").value.trim();
     const depth = document.querySelector(".depth-btn.active").dataset.depth;
@@ -131,11 +240,60 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
     }
 
     const result = document.getElementById("result");
-    result.innerHTML =
-      '<div class="result-loading"><span class="spinner"></span> Generating summary...</div>';
     document.getElementById("submit-btn").disabled = true;
+    
+    // Hide autocomplete dropdown immediately
+    const box = document.getElementById("suggestions-box");
+    if (box) box.style.display = "none";
 
     try {
+      // Step 1: Disambiguation flow (if forceDirect is false)
+      if (!forceDirect) {
+        result.innerHTML = '<div class="result-loading"><span class="spinner"></span> Searching for matching books...</div>';
+        const q = `${title} ${author}`.trim();
+        const searchRes = await fetch(`${API}/search?q=${encodeURIComponent(q)}`);
+        if (!searchRes.ok) throw new Error("search error");
+        const searchData = await searchRes.json();
+
+        if (!searchData || searchData.length === 0) {
+          result.innerHTML = `<p class="result-error">We couldn't find any books matching "${title}". Please check the spelling or try adding the author's name.</p>`;
+          return;
+        }
+
+        // If there's exactly 1 search result, just summarize it directly!
+        if (searchData.length === 1) {
+          const b = searchData[0];
+          document.getElementById("book-title").value = b.title;
+          document.getElementById("book-author").value = b.author;
+          doSummary(true);
+          return;
+        }
+
+        // Display multiple results as cards
+        result.innerHTML = `
+          <div style="margin-bottom:1.5rem;">
+            <h3 style="font-size:15px;font-weight:600;margin-bottom:14px;color:var(--fg);">Select the exact book you want summarized:</h3>
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:16px;">
+              ${searchData.map(b => {
+                const titleEscaped = b.title.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+                const authorEscaped = (b.author || '').replace(/'/g, "\\'").replace(/"/g, '&quot;');
+                return `
+                  <div class="similar-book-card" onclick="summarizeBook('${titleEscaped}', '${authorEscaped}', true)" style="text-align:center;cursor:pointer;border:1px solid var(--border);border-radius:6px;padding:12px;background:var(--bg-subtle);display:flex;flex-direction:column;align-items:center;height:100%;box-sizing:border-box;">
+                    ${b.cover_url ? `<img src="${b.cover_url}" alt="Cover" style="width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:4px;margin-bottom:8px;border:1px solid var(--border);">` : `<div style="width:100%;aspect-ratio:2/3;background:var(--bg);border:1px solid var(--border);border-radius:4px;margin-bottom:8px;display:flex;align-items:center;justify-content:center;color:var(--fg-faint);font-size:12px;">No cover</div>`}
+                    <p style="font-size:12px;font-weight:600;line-height:1.3;margin-bottom:4px;color:var(--fg);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis;width:100%;height:32px;">${b.title}</p>
+                    <p style="font-size:11px;color:var(--fg-faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:100%;margin-top:auto;">${b.author || 'Unknown'}</p>
+                    ${b.published_year ? `<span style="font-size:10px;color:var(--fg-faint);background:var(--bg);padding:1px 6px;border-radius:999px;border:1px solid var(--border);margin-top:6px;display:inline-block;">${b.published_year}</span>` : ''}
+                  </div>
+                `;
+              }).join("")}
+            </div>
+          </div>
+        `;
+        return;
+      }
+
+      // Step 2: Direct summary flow (forceDirect is true)
+      result.innerHTML = '<div class="result-loading"><span class="spinner"></span> Generating summary...</div>';
       const res = await fetch(`${API}/summary`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
