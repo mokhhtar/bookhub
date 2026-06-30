@@ -592,10 +592,13 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
     });
   });
 
-  const urlQ = new URLSearchParams(window.location.search).get("q");
+  const urlParams = new URLSearchParams(window.location.search);
+  const urlQ = urlParams.get("q");
+  const urlAuthor = urlParams.get("author");
   if (urlQ) {
     document.getElementById("book-title").value = urlQ;
-    doSummary();
+    document.getElementById("book-author").value = urlAuthor || "";
+    doSummary(urlAuthor ? true : false);
   }
 
   let debounceTimeout;
@@ -678,14 +681,22 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
     }
   });
 
-  function summarizeBook(title, author, forceDirect = false) {
+  function updateBrowserURL(q, author = null) {
+    const params = new URLSearchParams();
+    if (q) params.set("q", q);
+    if (author) params.set("author", author);
+    const newUrl = window.location.pathname + (params.toString() ? "?" + params.toString() : "");
+    window.history.pushState(null, "", newUrl);
+  }
+
+  function summarizeBook(title, author, forceDirect = false, showSearch = false) {
     document.getElementById("book-title").value = title;
     document.getElementById("book-author").value = author || "";
     window.scrollTo({ top: 0, behavior: "smooth" });
-    doSummary(forceDirect);
+    doSummary(forceDirect, showSearch);
   }
 
-  async function doSummary(forceDirect = false) {
+  async function doSummary(forceDirect = false, showSearch = false) {
     const title = document.getElementById("book-title").value.trim();
     const author = document.getElementById("book-author").value.trim();
     const depth = document.querySelector(".depth-btn.active").dataset.depth;
@@ -712,6 +723,9 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
         allSearchResults = [];
         currentPage = 0;
 
+        // Update URL in address bar for the search query
+        updateBrowserURL(q);
+
         const searchRes = await fetch(
           `${API}/search?q=${encodeURIComponent(q)}&offset=0`,
         );
@@ -724,8 +738,8 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
           return;
         }
 
-        // If there's exactly 1 search result, just summarize it directly!
-        if (searchData.length === 1) {
+        // If there's exactly 1 search result, just summarize it directly (unless showSearch is true)
+        if (searchData.length === 1 && !showSearch) {
           const b = searchData[0];
           document.getElementById("book-title").value = b.title;
           document.getElementById("book-author").value = b.author;
@@ -757,10 +771,14 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
       // Initialize TTS and Chat parameters
       currentBookTitle = data.title || title;
       currentBookAuthor = data.author || "";
+      // Update URL in address bar for the active summary
+      updateBrowserURL(currentBookTitle, currentBookAuthor);
       currentBookSummary = data.summary;
       chatHistory = []; // Reset history
       audioText = data.summary.replace(/<[^>]*>/g, '');
-      resetAudioState();      const coverHtml = data.cover_url
+      resetAudioState();
+      
+      const coverHtml = data.cover_url
         ? `<div class="book-cover-container"><img class="book-cover-img" src="${data.cover_url}" alt="Cover of ${data.title}"></div>`
         : `<div class="book-cover-container" style="aspect-ratio:2/3;background:var(--bg-subtle);display:flex;align-items:center;justify-content:center;color:var(--fg-faint);font-size:12px;">No cover</div>`;
 
@@ -784,12 +802,17 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:16px;">
              ${data.similar_books
                .map(
-                 (b) => `
-                <div class="similar-book-card" onclick="summarizeBook('${b.title.replace(/'/g, "\\'").replace(/"/g, "&quot;")}', '${(b.author || "").replace(/'/g, "\\'").replace(/"/g, "&quot;")}')" style="text-align:center;cursor:pointer;">
-                  ${b.cover_url ? `<img src="${b.cover_url}" alt="Cover of ${b.title}" style="width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:6px;border:1px solid var(--border);margin-bottom:8px;">` : `<div style="width:100%;aspect-ratio:2/3;background:var(--bg-subtle);border:1px solid var(--border);border-radius:6px;margin-bottom:8px;"></div>`}
-                  <p style="font-size:12px;font-weight:600;line-height:1.3;margin-bottom:2px;color:var(--fg);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis;height:32px;">${b.title}</p>
-                  <p style="font-size:11px;color:var(--fg-faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${b.author}</p>
-                </div>`,
+                 (b) => {
+                   const titleEscaped = b.title.replace(/'/g, "\\'").replace(/"/g, "&quot;");
+                   const authorEscaped = (b.author || "").replace(/'/g, "\\'").replace(/"/g, "&quot;");
+                   const url = `{{ '/tools/summary/' | relative_url }}?q=${encodeURIComponent(b.title)}&author=${encodeURIComponent(b.author || '')}`;
+                   return `
+                   <a href="${url}" class="similar-book-card" onclick="event.preventDefault(); summarizeBook('${titleEscaped}', '${authorEscaped}', false, true)" style="text-align:center;cursor:pointer;text-decoration:none;display:block;color:inherit;">
+                     ${b.cover_url ? `<img src="${b.cover_url}" alt="Cover of ${b.title}" style="width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:6px;border:1px solid var(--border);margin-bottom:8px;">` : `<div style="width:100%;aspect-ratio:2/3;background:var(--bg-subtle);border:1px solid var(--border);border-radius:6px;margin-bottom:8px;"></div>`}
+                     <p style="font-size:12px;font-weight:600;line-height:1.3;margin-bottom:2px;color:var(--fg);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis;height:32px;">${b.title}</p>
+                     <p style="font-size:11px;color:var(--fg-faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${b.author}</p>
+                   </a>`;
+                 }
                )
                .join("")}
            </div>
@@ -919,13 +942,14 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
               const authorEscaped = (b.author || "")
                 .replace(/'/g, "\\'")
                 .replace(/"/g, "&quot;");
+              const url = `{{ '/tools/summary/' | relative_url }}?q=${encodeURIComponent(b.title)}&author=${encodeURIComponent(b.author || '')}`;
               return `
-              <div class="similar-book-card" onclick="summarizeBook('${titleEscaped}', '${authorEscaped}', true)" style="text-align:center;cursor:pointer;border:1px solid var(--border);border-radius:6px;padding:12px;background:var(--bg-subtle);display:flex;flex-direction:column;align-items:center;height:100%;box-sizing:border-box;">
+              <a href="${url}" class="similar-book-card" onclick="event.preventDefault(); summarizeBook('${titleEscaped}', '${authorEscaped}', true)" style="text-align:center;cursor:pointer;border:1px solid var(--border);border-radius:6px;padding:12px;background:var(--bg-subtle);display:flex;flex-direction:column;align-items:center;height:100%;box-sizing:border-box;text-decoration:none;color:inherit;">
                 ${b.cover_url ? `<img src="${b.cover_url}" alt="Cover" style="width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:4px;margin-bottom:8px;border:1px solid var(--border);">` : `<div style="width:100%;aspect-ratio:2/3;background:var(--bg);border:1px solid var(--border);border-radius:4px;margin-bottom:8px;display:flex;align-items:center;justify-content:center;color:var(--fg-faint);font-size:12px;">No cover</div>`}
                 <p style="font-size:12px;font-weight:600;line-height:1.3;margin-bottom:4px;color:var(--fg);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis;width:100%;height:32px;">${b.title}</p>
                 <p style="font-size:11px;color:var(--fg-faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:100%;margin-top:auto;">${b.author || "Unknown"}</p>
                 ${b.published_year ? `<span style="font-size:10px;color:var(--fg-faint);background:var(--bg);padding:1px 6px;border-radius:999px;border:1px solid var(--border);margin-top:6px;display:inline-block;">${b.published_year}</span>` : ""}
-              </div>
+              </a>
             `;
             })
             .join("")}
