@@ -598,7 +598,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
   if (urlQ) {
     document.getElementById("book-title").value = urlQ;
     document.getElementById("book-author").value = urlAuthor || "";
-    doSummary(urlAuthor ? true : false);
+    doSummary(false);
   }
 
   let debounceTimeout;
