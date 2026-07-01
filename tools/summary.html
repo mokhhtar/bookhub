@@ -532,6 +532,38 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
     cursor: not-allowed;
     pointer-events: none;
   }
+  .user-review {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+  }
+  .user-review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  .user-review-author {
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--fg);
+  }
+  .user-review-stars {
+    color: #f59e0b;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  .user-review-text {
+    font-style: italic;
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: var(--fg);
+    margin: 0;
+  }
 </style>
 
 <div class="tool-page">
@@ -1019,6 +1051,18 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
           AI Grounded Summary (Comprehensive Study Guide)
         </div>
         <div class="ai-output">${parseSummaryMarkdown(data.summary)}</div>
+        
+        <!-- Live review links -->
+        <div style="display: flex; gap: 12px; margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--border); flex-wrap: wrap;">
+          <a href="https://www.goodreads.com/search?q=${encodeURIComponent((data.title || title) + ' ' + (data.author || ''))}" target="_blank" class="btn-secondary" style="font-size: 12px; padding: 6px 12px; border-radius: 6px; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; background: var(--bg); border: 1px solid var(--border); color: var(--fg); font-weight: 500;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            Read Live Reviews on Goodreads
+          </a>
+          <a href="https://bookwyrm.social/search?q=${encodeURIComponent(data.title || title)}" target="_blank" class="btn-secondary" style="font-size: 12px; padding: 6px 12px; border-radius: 6px; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; background: var(--bg); border: 1px solid var(--border); color: var(--fg); font-weight: 500;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 3.5A2.5 2.5 0 0 1 6.5 6H20v20H6.5A2.5 2.5 0 0 1 4 23.5z"/></svg>
+            Search on BookWyrm
+          </a>
+        </div>
       </div>
       
       ${chaptersHtml}
