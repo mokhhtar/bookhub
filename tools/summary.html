@@ -455,7 +455,29 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
 
   .ai-output {
     font-size: 15px;
-    line-height: 1.7;
+    line-height: 1.75;
+    color: var(--fg);
+  }
+
+  .ai-output h2 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    color: var(--fg);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 6px;
+  }
+
+  .ai-output h2:first-of-type {
+    margin-top: 0;
+  }
+
+  .ai-output h3 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 1.25rem;
+    margin-bottom: 0.5rem;
     color: var(--fg);
   }
 
@@ -465,6 +487,16 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
 
   .ai-output p:last-child {
     margin-bottom: 0;
+  }
+
+  .ai-output ul {
+    margin-bottom: 1.25rem;
+    padding-left: 1.25rem;
+  }
+
+  .ai-output li {
+    margin-bottom: 0.5rem;
+    line-height: 1.65;
   }
 
   /* Search pagination styles */
