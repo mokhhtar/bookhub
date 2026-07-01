@@ -177,6 +177,33 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
     background: var(--bg-subtle);
   }
 
+  .audio-speed-selector {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: var(--bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23ff5b4f' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 10px center;
+    background-size: 10px;
+    padding: 6px 28px 6px 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--fg);
+    cursor: pointer;
+    outline: none;
+    transition: all 0.2s ease;
+  }
+
+  .audio-speed-selector:hover {
+    border-color: var(--accent);
+    background-color: var(--bg-subtle);
+  }
+
+  .audio-speed-selector:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(255, 91, 79, 0.12);
+  }
+
   /* Animated Wave Visualizer */
   .sound-wave {
     display: flex;
@@ -888,7 +915,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
         </div>
         
         <div style="display:flex;align-items:center;gap:12px;">
-          <select id="audio-speed" onchange="changeAudioSpeed()" style="font-size:11px;padding:3px 6px;border-radius:4px;border:1px solid var(--border);background:var(--bg);color:var(--fg);cursor:pointer;outline:none;">
+          <select id="audio-speed" class="audio-speed-selector" onchange="changeAudioSpeed()">
             <option value="1" selected>1.0x</option>
             <option value="1.2">1.2x</option>
             <option value="1.4">1.4x</option>
@@ -933,7 +960,6 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
             ${yearBadge}
           </div>
           <div class="header-actions">
-            <button class="btn-secondary" onclick="window.print()">Print Summary</button>
             ${data.amazon_url ? `<a href="${data.amazon_url}" class="btn-primary" target="_blank" rel="noopener sponsored">Buy on Amazon</a>` : ""}
           </div>
         </div>
