@@ -595,10 +595,11 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
   const urlParams = new URLSearchParams(window.location.search);
   const urlQ = urlParams.get("q");
   const urlAuthor = urlParams.get("author");
+  const urlDirect = urlParams.get("direct") === "true";
   if (urlQ) {
     document.getElementById("book-title").value = urlQ;
     document.getElementById("book-author").value = urlAuthor || "";
-    doSummary(false);
+    doSummary(urlDirect);
   }
 
   let debounceTimeout;
@@ -681,10 +682,11 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
     }
   });
 
-  function updateBrowserURL(q, author = null) {
+  function updateBrowserURL(q, author = null, direct = false) {
     const params = new URLSearchParams();
     if (q) params.set("q", q);
     if (author) params.set("author", author);
+    if (direct) params.set("direct", "true");
     const newUrl = window.location.pathname + (params.toString() ? "?" + params.toString() : "");
     window.history.pushState(null, "", newUrl);
   }
@@ -772,7 +774,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
       currentBookTitle = data.title || title;
       currentBookAuthor = data.author || "";
       // Update URL in address bar for the active summary
-      updateBrowserURL(currentBookTitle, currentBookAuthor);
+      updateBrowserURL(currentBookTitle, currentBookAuthor, true);
       currentBookSummary = data.summary;
       chatHistory = []; // Reset history
       audioText = data.summary.replace(/<[^>]*>/g, '');
@@ -942,7 +944,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
               const authorEscaped = (b.author || "")
                 .replace(/'/g, "\\'")
                 .replace(/"/g, "&quot;");
-              const url = `{{ '/tools/summary/' | relative_url }}?q=${encodeURIComponent(b.title)}&author=${encodeURIComponent(b.author || '')}`;
+              const url = `{{ '/tools/summary/' | relative_url }}?q=${encodeURIComponent(b.title)}&author=${encodeURIComponent(b.author || '')}&direct=true`;
               return `
               <a href="${url}" class="similar-book-card" onclick="event.preventDefault(); summarizeBook('${titleEscaped}', '${authorEscaped}', true)" style="text-align:center;cursor:pointer;border:1px solid var(--border);border-radius:6px;padding:12px;background:var(--bg-subtle);display:flex;flex-direction:column;align-items:center;height:100%;box-sizing:border-box;text-decoration:none;color:inherit;">
                 ${b.cover_url ? `<img src="${b.cover_url}" alt="Cover" style="width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:4px;margin-bottom:8px;border:1px solid var(--border);">` : `<div style="width:100%;aspect-ratio:2/3;background:var(--bg);border:1px solid var(--border);border-radius:4px;margin-bottom:8px;display:flex;align-items:center;justify-content:center;color:var(--fg-faint);font-size:12px;">No cover</div>`}
