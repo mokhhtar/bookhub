@@ -5,23 +5,9 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
 ---
 
 <style>
-  /* Premium Rebuild & Results Layout Styles */
-  :root {
-    --primary-glow: linear-gradient(135deg, #2563eb, #7c3aed);
-    --hover-glow: linear-gradient(135deg, #3b82f6, #8b5cf6);
-    --glass-bg: rgba(255, 255, 255, 0.03);
-    --glass-border: rgba(255, 255, 255, 0.08);
-    --text-glow: 0 0 20px rgba(124, 58, 237, 0.3);
-  }
+  /* Summarizer Tool Styles — uses design tokens from style.css */
 
-  .tool-page {
-    background: radial-gradient(circle at top right, rgba(124, 58, 237, 0.05), transparent 40%),
-                radial-gradient(circle at bottom left, rgba(37, 99, 211, 0.05), transparent 40%);
-    border-radius: 16px;
-    padding: 2rem;
-    border: 1px solid var(--border);
-    margin-bottom: 3rem;
-  }
+
 
   .tool-page-title {
     font-size: 32px;
@@ -51,8 +37,8 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
   }
 
   .form-input:focus {
-    border-color: #7c3aed;
-    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.15);
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(255, 91, 79, 0.12);
   }
 
   .depth-control {
@@ -75,29 +61,25 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
     color: var(--fg-faint);
   }
 
-  .depth-btn.active {
-    background: var(--primary-glow);
-    color: #fff !important;
-    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.25);
-  }
 
-  .btn-primary {
-    background: var(--primary-glow);
+
+  .tool-form .btn-primary {
+    background: var(--accent);
     color: #fff !important;
     border: none;
     padding: 0.8rem 1.8rem;
     font-size: 14px;
     font-weight: 600;
-    border-radius: 8px;
+    border-radius: var(--r);
     cursor: pointer;
     transition: all 0.2s ease;
-    box-shadow: 0 4px 14px rgba(37, 99, 211, 0.2);
+    box-shadow: 0 4px 14px rgba(255, 91, 79, 0.18);
   }
 
-  .btn-primary:hover {
-    background: var(--hover-glow);
+  .tool-form .btn-primary:hover {
+    background: var(--accent-hover);
     transform: translateY(-1px);
-    box-shadow: 0 6px 20px rgba(37, 99, 211, 0.3);
+    box-shadow: 0 6px 20px rgba(255, 91, 79, 0.25);
   }
 
   .similar-book-card {
@@ -106,7 +88,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
 
   .similar-book-card:hover {
     transform: translateY(-4px);
-    border-color: #7c3aed !important;
+    border-color: var(--accent) !important;
   }
 
   .similar-book-card img {
@@ -190,8 +172,8 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
   }
 
   .audio-btn:hover {
-    border-color: #7c3aed;
-    color: #7c3aed;
+    border-color: var(--accent);
+    color: var(--accent);
     background: var(--bg-subtle);
   }
 
@@ -206,7 +188,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
   .wave-bar {
     width: 3px;
     height: 4px;
-    background: #7c3aed;
+    background: var(--accent);
     border-radius: 2px;
     transition: height 0.15s ease;
   }
@@ -264,7 +246,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
 
   .chat-msg.user {
     align-self: flex-end;
-    background: var(--primary-glow);
+    background: var(--accent);
     color: #fff;
     border-bottom-right-radius: 2px;
   }
@@ -306,23 +288,23 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
   }
 
   .chat-input:focus {
-    border-color: #7c3aed;
+    border-color: var(--accent);
   }
 
   .chat-send-btn {
-    background: var(--primary-glow);
+    background: var(--accent);
     color: #fff;
     border: none;
-    border-radius: 8px;
+    border-radius: var(--r);
     padding: 0 1.25rem;
     cursor: pointer;
     font-weight: 600;
     font-size: 13px;
-    transition: opacity 0.2s ease;
+    transition: background 0.2s ease;
   }
 
   .chat-send-btn:hover {
-    opacity: 0.9;
+    background: var(--accent-hover);
   }
 
   @keyframes fadeInUp {
@@ -434,9 +416,9 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
   }
 
   .meta-badge.category {
-    background: rgba(124, 58, 237, 0.08);
-    border-color: rgba(124, 58, 237, 0.2);
-    color: #8b5cf6;
+    background: var(--accent-bg);
+    border-color: rgba(255, 91, 79, 0.2);
+    color: var(--accent);
   }
 
   .meta-badge.rating {
@@ -495,76 +477,73 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
 
 <div class="tool-page">
   <div class="container">
-    <div class="tool-page-header">
-      <p class="breadcrumb">
-        <a href="{{ '/' | relative_url }}">Home</a>
-        <span class="breadcrumb-sep">/</span> Tools
-        <span class="breadcrumb-sep">/</span> Summarizer
-      </p>
-      <h1 class="tool-page-title">Book Summarizer</h1>
-      <p class="tool-page-desc">
-        Enter any book title and get an instant AI summary at the depth you
-        need.
-      </p>
-    </div>
-
-    <div class="tool-form">
-      <div class="form-group" style="position: relative">
-        <label class="form-label" for="book-title">Book title</label>
-        <input
-          type="text"
-          id="book-title"
-          class="form-input"
-          placeholder="e.g. Atomic Habits"
-          autocomplete="off"
-          oninput="onTitleInput(event)"
-        />
-        <div
-          id="suggestions-box"
-          class="suggestions-dropdown"
-          style="display: none"
-        ></div>
-      </div>
-      <div class="form-group">
-        <label class="form-label" for="book-author">Author (optional)</label>
-        <input
-          type="text"
-          id="book-author"
-          class="form-input"
-          placeholder="e.g. James Clear"
-        />
+    <!-- State: idle — full form centered -->
+    <div id="state-idle">
+      <div class="tool-page-header">
+        <p class="breadcrumb">
+          <a href="{{ '/' | relative_url }}">Home</a>
+          <span class="breadcrumb-sep">/</span> Tools
+          <span class="breadcrumb-sep">/</span> Summarizer
+        </p>
+        <h1 class="tool-page-title">Book Summarizer</h1>
+        <p class="tool-page-desc">
+          Enter any book title and get a comprehensive AI-powered study guide instantly.
+        </p>
       </div>
 
-      <button
-        class="btn-primary"
-        id="submit-btn"
-        onclick="doSummary()"
-        style="margin-top: 8px"
-      >
-        Search book
-      </button>
-    </div>
-
-    <div class="result-area" id="result">
-      <div class="result-placeholder">
-        <div class="result-placeholder-icon">
-          <svg
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-          >
-            <path
-              d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
-            />
-            <polyline points="14,2 14,8 20,8" />
-          </svg>
+      <div class="tool-form">
+        <div class="form-group" style="position: relative">
+          <label class="form-label" for="book-title">Book title</label>
+          <input
+            type="text"
+            id="book-title"
+            class="form-input"
+            placeholder="e.g. Atomic Habits"
+            autocomplete="off"
+            oninput="onTitleInput(event)"
+          />
+          <div
+            id="suggestions-box"
+            class="suggestions-dropdown"
+            style="display: none"
+          ></div>
         </div>
-        <p>Enter a book title above and the summary will appear here.</p>
+        <div class="form-group">
+          <label class="form-label" for="book-author">Author (optional)</label>
+          <input
+            type="text"
+            id="book-author"
+            class="form-input"
+            placeholder="e.g. James Clear"
+          />
+        </div>
+
+        <button
+          class="btn-primary"
+          id="submit-btn"
+          onclick="doSummary()"
+          style="margin-top: 8px"
+        >
+          Search book
+        </button>
       </div>
     </div>
+
+    <!-- Compact search bar for results/summary states -->
+    <div id="compact-search" style="display:none;">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px;flex-wrap:wrap;">
+        <button class="btn-secondary" onclick="goBackToSearch()" style="padding:6px 14px;font-size:13px;border-radius:var(--r);flex-shrink:0;" title="New search">
+          ← New search
+        </button>
+        <div style="flex:1;min-width:200px;position:relative;">
+          <input type="text" id="book-title-compact" class="form-input" placeholder="Search another book…" autocomplete="off" style="width:100%;padding:8px 14px;font-size:13px;" />
+        </div>
+        <button class="btn-primary" onclick="doSummaryFromCompact()" style="padding:8px 18px;font-size:13px;flex-shrink:0;">Search</button>
+      </div>
+    </div>
+
+    <!-- State: results — disambiguation / summary / loading -->
+    <div class="result-area" id="result" style="display:none;"></div>
   </div>
 </div>
 
@@ -575,9 +554,48 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
   let currentPage = 0;
   let currentSearchOffset = 0;
   let currentSearchQuery = "";
+  let chatMessageCount = 0;
+  const CHAT_LIMIT = 10;
 
+  // ── State machine ──────────────────────────────────────
+  function switchToState(state) {
+    const idle = document.getElementById("state-idle");
+    const compact = document.getElementById("compact-search");
+    const result = document.getElementById("result");
 
+    if (state === "idle") {
+      idle.style.display = "";
+      compact.style.display = "none";
+      result.style.display = "none";
+    } else {
+      // states: searching, results, summary
+      idle.style.display = "none";
+      compact.style.display = "";
+      result.style.display = "";
+    }
+  }
 
+  function goBackToSearch() {
+    switchToState("idle");
+    document.getElementById("result").innerHTML = "";
+    window.history.pushState(null, "", window.location.pathname);
+    document.getElementById("book-title").focus();
+  }
+
+  function doSummaryFromCompact() {
+    const q = document.getElementById("book-title-compact").value.trim();
+    if (!q) return;
+    document.getElementById("book-title").value = q;
+    document.getElementById("book-author").value = "";
+    doSummary(false);
+  }
+
+  // compact search enter key
+  document.getElementById("book-title-compact").addEventListener("keypress", (e) => {
+    if (e.key === "Enter") doSummaryFromCompact();
+  });
+
+  // ── URL-driven page load ───────────────────────────────
   const urlParams = new URLSearchParams(window.location.search);
   const urlQ = urlParams.get("q");
   const urlAuthor = urlParams.get("author");
@@ -703,6 +721,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
     try {
       // Step 1: Disambiguation flow (if forceDirect is false)
       if (!forceDirect) {
+        switchToState("searching");
         result.innerHTML =
           '<div class="result-loading"><span class="spinner"></span> Searching for matching books...</div>';
         const q = `${title} ${author}`.trim();
@@ -741,8 +760,9 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
       }
 
       // Step 2: Direct summary flow (forceDirect is true)
+      switchToState("summary");
       result.innerHTML =
-        '<div class="result-loading"><span class="spinner"></span> Generating summary...</div>';
+        '<div class="result-loading"><span class="spinner"></span> Generating comprehensive study guide...</div>';
       const res = await fetch(`${API}/summary`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -763,6 +783,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
       updateBrowserURL(currentBookTitle, currentBookAuthor, true);
       currentBookSummary = data.summary;
       chatHistory = []; // Reset history
+      chatMessageCount = 0; // Reset chat rate limit
       audioText = data.summary.replace(/<[^>]*>/g, '');
       resetAudioState();
       
@@ -1106,6 +1127,17 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
     const input = document.getElementById("chat-input-field");
     const question = input.value.trim();
     if (!question) return;
+
+    // Rate limit: max CHAT_LIMIT messages per session per book
+    if (chatMessageCount >= CHAT_LIMIT) {
+      const msgsBox = document.getElementById("chat-msgs");
+      msgsBox.innerHTML += `<div class="chat-msg system">You've reached the limit of ${CHAT_LIMIT} questions per session. Start a new summary to ask more questions.</div>`;
+      msgsBox.scrollTop = msgsBox.scrollHeight;
+      input.disabled = true;
+      input.placeholder = "Message limit reached";
+      return;
+    }
+    chatMessageCount++;
 
     input.value = "";
     
