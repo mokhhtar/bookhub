@@ -946,7 +946,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display:inline-block;vertical-align:middle;margin-right:6px;"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
           AI Grounded Summary (Comprehensive Study Guide)
         </div>
-        <div class="ai-output">${data.summary}</div>
+        <div class="ai-output">${parseSummaryMarkdown(data.summary)}</div>
       </div>
       
       ${chaptersHtml}
@@ -1228,5 +1228,75 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
       .replace(/\*(.*?)\*/g, '<em>$1</em>')
       .replace(/\n\n/g, '<br><br>')
       .replace(/\n/g, '<br>');
+  }
+
+  function parseSummaryMarkdown(text) {
+    if (!text) return "";
+    
+    // If it already looks like HTML (contains <h2> or <h3> tags), return it directly!
+    if (text.includes("<h2>") || text.includes("<h2") || text.includes("<h3>")) {
+      return text;
+    }
+
+    // Split text into paragraphs/blocks by double newline
+    const blocks = text.split(/\n\s*\n/);
+    let html = "";
+
+    // We can define the 5 standard sections to map them to <h2>
+    const mainSections = [
+      "Core Premise & Overview",
+      "Key Concepts & Core Ideas",
+      "Key Takeaways & Lessons",
+      "Who Should Read This",
+      "Critical Evaluation & Conclusion"
+    ];
+
+    blocks.forEach((block) => {
+      block = block.trim();
+      if (!block) return;
+
+      // Check if it's a main section header, e.g. "**Core Premise & Overview**" or "1. **Core Premise & Overview**"
+      const cleanBlock = block.replace(/\*\*/g, "").trim();
+      const isHeader = mainSections.some(sec => cleanBlock.toLowerCase().includes(sec.toLowerCase()));
+      
+      if (isHeader && block.startsWith("**") && block.endsWith("**")) {
+        html += `<h2>${cleanBlock}</h2>`;
+        return;
+      }
+      
+      // Check if it's a list (starts with * or -)
+      if (block.startsWith("*") || block.startsWith("-")) {
+        html += "<ul>";
+        const lines = block.split(/\n/);
+        lines.forEach(line => {
+          line = line.trim();
+          if (line.startsWith("*") || line.startsWith("-")) {
+            let content = line.substring(1).trim();
+            content = content.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+            content = content.replace(/\*(.*?)\*/g, "<em>$1</em>");
+            html += `<li>${content}</li>`;
+          }
+        });
+        html += "</ul>";
+        return;
+      }
+
+      // Check if the block is a bold concept title (single line bold text)
+      if (block.startsWith("**") && block.endsWith("**") && !block.includes("\n")) {
+        const title = block.replace(/\*\*/g, "").trim();
+        html += `<h3>${title}</h3>`;
+        return;
+      }
+
+      // Default: parse inline bold/italic and render as a paragraph
+      let parsed = block
+        .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
+        .replace(/\*(.*?)\*/g, "<em>$1</em>");
+      
+      parsed = parsed.replace(/\n/g, "<br>");
+      html += `<p>${parsed}</p>`;
+    });
+
+    return html;
   }
 </script>
