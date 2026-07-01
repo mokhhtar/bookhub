@@ -534,14 +534,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
           placeholder="e.g. James Clear"
         />
       </div>
-      <div class="form-group">
-        <label class="form-label">Summary depth</label>
-        <div class="depth-control">
-          <button class="depth-btn active" data-depth="quick">Quick</button>
-          <button class="depth-btn" data-depth="medium">Medium</button>
-          <button class="depth-btn" data-depth="deep">Deep</button>
-        </div>
-      </div>
+
       <button
         class="btn-primary"
         id="submit-btn"
@@ -583,14 +576,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
   let currentSearchOffset = 0;
   let currentSearchQuery = "";
 
-  document.querySelectorAll(".depth-btn").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      document
-        .querySelectorAll(".depth-btn")
-        .forEach((b) => b.classList.remove("active"));
-      btn.classList.add("active");
-    });
-  });
+
 
   const urlParams = new URLSearchParams(window.location.search);
   const urlQ = urlParams.get("q");
@@ -701,7 +687,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
   async function doSummary(forceDirect = false, showSearch = false) {
     const title = document.getElementById("book-title").value.trim();
     const author = document.getElementById("book-author").value.trim();
-    const depth = document.querySelector(".depth-btn.active").dataset.depth;
+    const depth = "deep";
     if (!title) {
       document.getElementById("book-title").focus();
       return;
@@ -905,7 +891,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
       <div class="summary-card">
         <div class="summary-card-title">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display:inline-block;vertical-align:middle;margin-right:6px;"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-          AI Grounded Summary (${depth.charAt(0).toUpperCase() + depth.slice(1)} Summary)
+          AI Grounded Summary (Comprehensive Study Guide)
         </div>
         <div class="ai-output">${data.summary}</div>
       </div>
