@@ -1264,14 +1264,14 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
         return;
       }
       
-      // Check if it's a list (starts with * or -)
-      if (block.startsWith("*") || block.startsWith("-")) {
+      // Check if it's a list (starts with * or - followed by spaces/tabs)
+      if (/^[\*\-]\s+/.test(block)) {
         html += "<ul>";
         const lines = block.split(/\n/);
         lines.forEach(line => {
           line = line.trim();
-          if (line.startsWith("*") || line.startsWith("-")) {
-            let content = line.substring(1).trim();
+          if (/^[\*\-]\s+/.test(line)) {
+            let content = line.replace(/^[\*\-]\s+/, "");
             content = content.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
             content = content.replace(/\*(.*?)\*/g, "<em>$1</em>");
             html += `<li>${content}</li>`;
@@ -1281,7 +1281,23 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
         return;
       }
 
-      // Check if the block is a bold concept title (single line bold text)
+      // Check if the block is a bold concept title followed by its body text in the same block
+      // e.g. "**Autonomy**\nAutonomy is..."
+      if (block.startsWith("**") && block.includes("**\n")) {
+        const parts = block.split(/\*\*\n/);
+        const title = parts[0].replace(/\*\*/g, "").trim();
+        const body = parts.slice(1).join("\n").trim();
+        
+        let parsedBody = body
+          .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
+          .replace(/\*(.*?)\*/g, "<em>$1</em>")
+          .replace(/\n/g, "<br>");
+          
+        html += `<h3>${title}</h3><p>${parsedBody}</p>`;
+        return;
+      }
+
+      // Check if the block is a bold concept title on its own line
       if (block.startsWith("**") && block.endsWith("**") && !block.includes("\n")) {
         const title = block.replace(/\*\*/g, "").trim();
         html += `<h3>${title}</h3>`;
