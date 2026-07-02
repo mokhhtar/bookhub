@@ -283,45 +283,78 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
 
   .sidebar-award-item {
     display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 8px;
-    padding: 6px 0;
-    border-bottom: 1px solid var(--border-subtle, rgba(0,0,0,0.06));
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-subtle, rgba(255,255,255,0.06));
     font-size: 12px;
+    transition: all 0.2s ease;
   }
 
   .sidebar-award-item:last-child { border-bottom: none; }
+
+  .sidebar-award-logo-wrap {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--bg-subtle);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+
+  .sidebar-award-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .sidebar-award-logo-fallback {
+    font-size: 11px;
+    color: #f59e0b;
+    line-height: 1;
+  }
+
+  .sidebar-award-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
 
   .sidebar-award-name {
     color: var(--fg);
     font-weight: 500;
     line-height: 1.3;
-    flex: 1;
   }
 
   .sidebar-award-year {
     color: var(--fg-faint);
-    font-size: 11px;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-
-  .sidebar-award-icon {
-    color: #f59e0b;
-    flex-shrink: 0;
-    margin-top: 1px;
+    font-size: 10px;
   }
 
   .sidebar-show-all {
     font-size: 11px;
     color: var(--accent);
     cursor: pointer;
-    margin-top: 6px;
-    display: inline-block;
+    margin-top: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
     background: none;
     border: none;
     padding: 0;
+    font-weight: 600;
+    transition: color 0.2s ease;
+    text-decoration: none;
+  }
+
+  .sidebar-show-all:hover {
+    color: var(--accent-hover);
     text-decoration: underline;
   }
 
@@ -1095,23 +1128,30 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
         const MAX_SHOWN = 4;
         const visible = awards.slice(0, MAX_SHOWN);
         const hidden = awards.slice(MAX_SHOWN);
+
+        const renderAward = (a, isHidden = false) => {
+          const logoHtml = a.logo_url 
+            ? `<div class="sidebar-award-logo-wrap"><img class="sidebar-award-logo" src="${a.logo_url}" alt="${a.name}"></div>`
+            : `<div class="sidebar-award-logo-wrap"><span class="sidebar-award-logo-fallback">🏆</span></div>`;
+            
+          return `
+            <li class="sidebar-award-item" ${isHidden ? 'style="display:none;" data-hidden-award' : ''}>
+              ${logoHtml}
+              <div class="sidebar-award-content">
+                <span class="sidebar-award-name">${a.name}</span>
+                ${a.year ? `<span class="sidebar-award-year">${a.year}</span>` : ''}
+              </div>
+            </li>
+          `;
+        };
+
         awardsHtml = `
           <p class="sidebar-section-title">Awards</p>
           <ul class="sidebar-awards-list" id="awards-list">
-            ${visible.map(a => `
-              <li class="sidebar-award-item">
-                <span class="sidebar-award-icon">🏆</span>
-                <span class="sidebar-award-name">${a.name}</span>
-                ${a.year ? `<span class="sidebar-award-year">${a.year}</span>` : ''}
-              </li>`).join('')}
-            ${hidden.length > 0 ? hidden.map(a => `
-              <li class="sidebar-award-item" style="display:none;" data-hidden-award>
-                <span class="sidebar-award-icon">🏆</span>
-                <span class="sidebar-award-name">${a.name}</span>
-                ${a.year ? `<span class="sidebar-award-year">${a.year}</span>` : ''}
-              </li>`).join('') : ''}
+            ${visible.map(a => renderAward(a)).join('')}
+            ${hidden.length > 0 ? hidden.map(a => renderAward(a, true)).join('') : ''}
           </ul>
-          ${hidden.length > 0 ? `<button class="sidebar-show-all" onclick="document.querySelectorAll('[data-hidden-award]').forEach(el=>el.style.display='flex');this.style.display='none'">Show all ${awards.length} awards</button>` : ''}`;
+          ${hidden.length > 0 ? `<button class="sidebar-show-all" onclick="document.querySelectorAll('[data-hidden-award]').forEach(el=>el.style.display='flex');this.style.display='none'">Show more (${hidden.length})</button>` : ''}`;
       } else if (data.average_rating) {
         awardsHtml = `
           <p class="sidebar-section-title">Reception</p>
