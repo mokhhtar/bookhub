@@ -197,9 +197,10 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
 
   .sidebar-cover {
     width: 100%;
-    max-height: 300px;
-    object-fit: cover;
-    object-position: top;
+    width: 100%;
+    height: auto;
+    max-height: 340px;
+    object-fit: contain;
     border-radius: 10px;
     border: 1px solid var(--border);
     display: block;
@@ -1036,6 +1037,10 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
           const b = searchData[0];
           document.getElementById("book-title").value = b.title;
           document.getElementById("book-author").value = b.author;
+          // Pass the exact IDs so the backend resolves the same edition
+          if (b.isbn_13 || b.isbn_10) window.selectedBookIsbn = b.isbn_13 || b.isbn_10;
+          if (b.google_id) window.selectedBookGoogleId = b.google_id;
+          if (b.openlibrary_id) window.selectedBookOpenLibraryId = b.openlibrary_id;
           doSummary(true);
           return;
         }
