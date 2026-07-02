@@ -869,9 +869,9 @@
       // Initialize TTS and Chat parameters
       currentBookTitle = data.title || title;
       currentBookAuthor = data.author || "";
-      currentBookSummary = data.summary;
+      currentBookSummary = data.summary || "";
       chatHistory = []; // Reset history
-      audioText = data.summary.replace(/<[^>]*>/g, '');
+      audioText = (data.summary || "").replace(/<[^>]*>/g, '');
       resetAudioState();      const coverHtml = data.cover_url
         ? `<div class="book-cover-container"><img class="book-cover-img" src="${data.cover_url}" alt="Cover of ${data.title}"></div>`
         : `<div class="book-cover-container" style="aspect-ratio:2/3;background:var(--bg-subtle);display:flex;align-items:center;justify-content:center;color:var(--fg-faint);font-size:12px;">No cover</div>`;
@@ -911,10 +911,16 @@
       const chaptersHtml =
         data.chapters && data.chapters.length
           ? `<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border);">
-           <h4 style="font-size:14px;font-weight:700;margin-bottom:12px;color:var(--fg);">Chapters</h4>
-           <ol style="font-size:13px;color:var(--fg);line-height:2;padding-left:1.2rem;">
-             ${data.chapters.map((c) => `<li>${c}</li>`).join("")}
-           </ol>
+           <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+             <h4 style="font-size:14px;font-weight:700;margin:0;color:var(--fg);">Chapters</h4>
+             <span style="font-size:11px;font-weight:600;color:#8b5cf6;background:var(--bg-subtle);border:1px solid var(--border);border-radius:20px;padding:2px 10px;">${data.chapters.length} chapters</span>
+           </div>
+           <div style="position:relative;">
+             <ol style="font-size:13px;color:var(--fg);line-height:1.9;padding-left:1.2rem;margin:0;max-height:320px;overflow-y:auto;padding-right:8px;scrollbar-width:thin;scrollbar-color:#8b5cf6 transparent;">
+               ${data.chapters.map((c, i) => `<li style="padding:3px 0;border-bottom:1px solid var(--border);"><span style="color:var(--fg-faint,#888);font-size:11px;margin-right:6px;">${String(i+1).padStart(2,'0')}</span>${c}</li>`).join("")}
+             </ol>
+             <div style="position:absolute;bottom:0;left:0;right:0;height:40px;background:linear-gradient(transparent,var(--bg-subtle));pointer-events:none;border-radius:0 0 8px 8px;"></div>
+           </div>
          </div>`
           : "";
 
