@@ -16,9 +16,10 @@
     <!-- Primary nav -->
     <nav class="site-nav" aria-label="Primary navigation">
       <a href="{{ '/' | relative_url }}"                   class="nav-link">Overview</a>
-      <a href="{{ '/tools/summary' | relative_url }}"       class="nav-link">Summarizer</a>
-      <a href="{{ '/tools/recommender' | relative_url }}"   class="nav-link">Recommender</a>
-      <a href="{{ '/tools/reading-list' | relative_url }}"  class="nav-link">My Library</a>
+      <a href="{{ '/summary' | relative_url }}"            class="nav-link">Summarizer</a>
+      <a href="{{ '/categories/' | relative_url }}"        class="nav-link">Categories</a>
+      <a href="{{ '/authors/' | relative_url }}"           class="nav-link">Authors</a>
+      <a href="{{ '/tools/reading-list' | relative_url }}" class="nav-link">My Library</a>
     </nav>
 
     <div class="header-right" style="display: flex; align-items: center; gap: 12px;">
@@ -40,7 +41,7 @@
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
         </svg>
       </button>
-      <a href="{{ '/tools/summary' | relative_url }}" class="btn-primary btn-sm">Get started</a>
+      <a href="{{ '/summary' | relative_url }}" class="btn-primary btn-sm">Get started</a>
     </div>
 
     <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">

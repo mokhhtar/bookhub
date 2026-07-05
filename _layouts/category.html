@@ -1,0 +1,46 @@
+---
+layout: default
+---
+{% assign cat_books = site.books | where_exp: "b", "b.categories contains page.category_slug" | sort: "date" | reverse %}
+{% assign cat_data = site.data.categories | where: "slug", page.category_slug | first %}
+<section class="category-page">
+  <div class="container">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb" style="font-size:13px;color:var(--fg-faint);margin-bottom:20px;">
+      <a href="{{ '/categories/' | relative_url }}" style="color:inherit;">Categories</a>
+      <span aria-hidden="true"> / </span>
+      <span>{{ page.title }}</span>
+    </nav>
+
+    <header class="section-header" style="margin-bottom:28px;">
+      <h1 class="section-title" style="font-size:30px;">{{ page.title }}</h1>
+      <p style="font-size:15px;color:var(--fg-muted);line-height:1.7;max-width:640px;margin-top:10px;">{{ page.description | default: cat_data.description }}</p>
+      <p style="font-size:13px;color:var(--fg-faint);margin-top:8px;">{{ cat_books | size }} {% if cat_books.size == 1 %}book{% else %}books{% endif %} summarized</p>
+    </header>
+
+    {% if cat_books.size > 0 %}
+      <div class="book-card-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:18px;">
+        {% for book in cat_books %}
+          <a href="{{ book.url | relative_url }}" class="book-grid-card" style="text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:8px;">
+            {% if book.cover_url and book.cover_url != "" %}
+              <img src="{{ book.cover_url }}" alt="Cover of {{ book.title }}" loading="lazy"
+                   style="width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:8px;border:1px solid var(--border);">
+            {% else %}
+              <div style="width:100%;aspect-ratio:2/3;background:var(--bg-subtle);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--fg-faint);padding:10px;text-align:center;">{{ book.title | truncate: 40 }}</div>
+            {% endif %}
+            <div>
+              <p style="font-size:13px;font-weight:600;line-height:1.35;">{{ book.title }}</p>
+              <p style="font-size:12px;color:var(--fg-faint);margin-top:2px;">{{ book.author }}</p>
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div style="padding:40px;border:1px dashed var(--border);border-radius:10px;text-align:center;">
+        <p style="font-size:14px;color:var(--fg-muted);">No books summarized in this category yet.</p>
+        <a href="{{ '/summary/' | relative_url }}" class="btn-primary" style="margin-top:14px;display:inline-block;">Summarize a book →</a>
+      </div>
+    {% endif %}
+
+  </div>
+</section>

@@ -1,0 +1,30 @@
+---
+layout: default
+title: "Book Categories"
+description: "Browse all book summaries by category — fantasy, science fiction, self-help, web novels, and more."
+permalink: /categories/
+---
+<section class="categories-index">
+  <div class="container">
+
+    <header class="section-header" style="margin-bottom:32px;">
+      <h1 class="section-title" style="font-size:30px;">Categories</h1>
+      <p style="font-size:15px;color:var(--fg-muted);margin-top:10px;">Every summarized book, organized by genre and theme.</p>
+    </header>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;">
+      {% for cat in site.data.categories %}
+        {% assign cat_books = site.books | where_exp: "b", "b.categories contains cat.slug" %}
+        <a href="{{ '/categories/' | relative_url }}{{ cat.slug }}/"
+           style="text-decoration:none;color:inherit;border:1px solid var(--border);border-radius:10px;padding:20px;display:flex;flex-direction:column;gap:8px;transition:border-color .15s;background:var(--bg);">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;">
+            <h2 style="font-size:15px;font-weight:700;">{{ cat.name }}</h2>
+            <span style="font-size:12px;color:var(--fg-faint);background:var(--bg-subtle);border:1px solid var(--border);border-radius:99px;padding:2px 10px;flex-shrink:0;">{{ cat_books | size }}</span>
+          </div>
+          <p style="font-size:13px;color:var(--fg-muted);line-height:1.55;">{{ cat.description | truncate: 110 }}</p>
+        </a>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>

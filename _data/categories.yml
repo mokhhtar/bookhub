@@ -1,0 +1,68 @@
+# Mirror of bookhub-api/taxonomy.py — CHANGE BOTH FILES TOGETHER.
+# slug must match what the backend assigns in _books front matter.
+- slug: fantasy
+  name: Fantasy
+  description: "Worlds of magic, myth, and wonder — epic quests, hidden realms, and heroes shaped by forces beyond the ordinary."
+- slug: progression-fantasy
+  name: Progression Fantasy & Cultivation
+  description: "Stories built around visible growth in power — cultivation, leveling, ranks, and systems — where every arc leaves the hero measurably stronger."
+- slug: science-fiction
+  name: Science Fiction
+  description: "Futures near and far — space, technology, AI, and the question of what humanity becomes when the rules change."
+- slug: mystery-thriller
+  name: Mystery & Thriller
+  description: "Puzzles, crimes, and races against the clock — books engineered to keep you turning pages until the truth comes out."
+- slug: horror
+  name: Horror
+  description: "Fear as an art form — from creeping dread and haunted places to cosmic terrors the mind was never meant to hold."
+- slug: romance
+  name: Romance
+  description: "Stories where the relationship is the plot — longing, obstacles, and the many roads two people take toward each other."
+- slug: historical-fiction
+  name: Historical Fiction
+  description: "The past brought to life — real eras and events seen through the eyes of characters who lived them."
+- slug: classics
+  name: Classics & Literary Fiction
+  description: "The books that endure — landmark novels and literary works whose ideas and characters still shape how we read today."
+- slug: light-novels
+  name: Light Novels
+  description: "Japanese serialized fiction — fast-reading volumes with illustrated covers, spanning isekai, fantasy, romance, and slice of life."
+- slug: web-novels
+  name: Web Novels
+  description: "Serialized fiction born online — sprawling epics from China, Korea, and beyond, often hundreds of chapters deep."
+- slug: manga-graphic-novels
+  name: Manga & Graphic Novels
+  description: "Stories told in art — manga volumes, webtoons in print, and graphic novels across every genre."
+- slug: young-adult
+  name: Young Adult
+  description: "Coming-of-age stakes — identity, first love, rebellion, and worlds where young protagonists carry the story."
+- slug: adventure
+  name: Adventure
+  description: "Journeys, expeditions, and survival — books powered by movement through dangerous and unknown territory."
+- slug: magic-supernatural
+  name: Magic & Supernatural
+  description: "The unexplained made real — ghosts, occult mysteries, supernatural powers, and the thin places between worlds."
+- slug: self-help
+  name: Self-Help & Productivity
+  description: "Practical books for building better habits, sharper focus, and a more intentional life."
+- slug: business-finance
+  name: Business & Finance
+  description: "How money, markets, and companies actually work — from startup stories to investing and economic thinking."
+- slug: psychology
+  name: Psychology
+  description: "The science of the mind — why we think, feel, decide, and deceive ourselves the way we do."
+- slug: philosophy
+  name: Philosophy
+  description: "The big questions asked carefully — meaning, ethics, knowledge, and how to live, from the ancients to today."
+- slug: history
+  name: History
+  description: "What actually happened — wars, empires, movements, and the people who turned the world's hinges."
+- slug: biography-memoir
+  name: Biography & Memoir
+  description: "Real lives on the page — the struggles, choices, and turning points of remarkable people, told by them or about them."
+- slug: science-nature
+  name: Science & Nature
+  description: "How the universe works — physics, biology, the natural world, and the discoveries that rewrote our understanding."
+- slug: religion-spirituality
+  name: Religion & Spirituality
+  description: "Faith, practice, and the search for the sacred — traditions, texts, and questions of ultimate meaning."

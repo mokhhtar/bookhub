@@ -48,7 +48,7 @@ async function doSearch() {
       return;
     }
     const html = data.docs.map(b => `
-      <a href="{{ '/tools/summary' | relative_url }}?q=${encodeURIComponent(b.title)}" style="text-decoration:none;color:inherit;border:1px solid var(--border);border-radius:8px;padding:14px;display:flex;flex-direction:column;gap:4px;transition:border-color .15s;">
+      <a href="{{ '/summary' | relative_url }}?q=${encodeURIComponent(b.title)}" style="text-decoration:none;color:inherit;border:1px solid var(--border);border-radius:8px;padding:14px;display:flex;flex-direction:column;gap:4px;transition:border-color .15s;">
         <strong style="font-size:13px;line-height:1.4;">${b.title}</strong>
         <span style="font-size:12px;color:var(--fg-faint);">${(b.author_name||[]).slice(0,2).join(', ') || 'Unknown author'}</span>
         ${b.first_publish_year ? `<span style="font-size:11px;color:var(--fg-faint);">${b.first_publish_year}</span>` : ''}

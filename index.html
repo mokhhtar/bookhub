@@ -44,7 +44,7 @@ description: "Seven free AI-powered tools for readers — instant book summaries
       </p>
 
       <!-- Search -->
-      <form class="hero-search" action="{{ '/tools/summary' | relative_url }}" method="get" role="search" aria-label="Book search">
+      <form class="hero-search" action="{{ '/summary' | relative_url }}" method="get" role="search" aria-label="Book search">
         <label for="hero-q" class="sr-only">Enter a book title</label>
         <input
           type="text"
@@ -72,6 +72,127 @@ description: "Seven free AI-powered tools for readers — instant book summaries
 </section>
 
 <!-- ═══════════════════════════════════════
+     DAILY PICKS — book / author / quote of the day
+     (filled client-side from GET /daily; hidden if the API is unreachable)
+═══════════════════════════════════════ -->
+<style>
+  .daily-section { padding: 40px 0 8px; }
+  .daily-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 20px; }
+  .daily-card {
+    border: 1px solid var(--border); border-radius: 12px; background: var(--bg);
+    padding: 20px; display: flex; flex-direction: column; gap: 12px; min-height: 180px;
+  }
+  .daily-card-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--fg-faint);
+  }
+  .daily-card-body { display: flex; gap: 14px; align-items: flex-start; }
+  .daily-cover { width: 64px; aspect-ratio: 2/3; object-fit: cover; border-radius: 6px; border: 1px solid var(--border); flex-shrink: 0; }
+  .daily-photo { width: 64px; height: 64px; object-fit: cover; border-radius: 50%; border: 1px solid var(--border); flex-shrink: 0; }
+  .daily-card h3 { font-size: 15px; font-weight: 700; line-height: 1.35; }
+  .daily-card h3 a { color: inherit; text-decoration: none; }
+  .daily-card h3 a:hover { text-decoration: underline; }
+  .daily-card p { font-size: 13px; color: var(--fg-muted); line-height: 1.6; }
+  .daily-meta { font-size: 12px; color: var(--fg-faint); }
+  .daily-quote-text { font-size: 15px; line-height: 1.65; font-style: italic; }
+  .skeleton {
+    background: linear-gradient(90deg, var(--bg-subtle) 25%, var(--border) 50%, var(--bg-subtle) 75%);
+    background-size: 200% 100%; animation: shimmer 1.4s infinite; border-radius: 6px;
+  }
+  @keyframes shimmer { to { background-position: -200% 0; } }
+</style>
+<section class="daily-section" id="daily-section" aria-labelledby="daily-heading">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <h2 id="daily-heading" class="section-title">Today on BookHub</h2>
+        <p class="section-sub" id="daily-date"></p>
+      </div>
+    </div>
+    <div class="daily-grid" id="daily-grid">
+      <div class="daily-card" aria-hidden="true">
+        <div class="skeleton" style="width:110px;height:12px;"></div>
+        <div class="daily-card-body"><div class="skeleton daily-cover"></div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:8px;">
+            <div class="skeleton" style="height:16px;width:80%;"></div>
+            <div class="skeleton" style="height:12px;width:100%;"></div>
+            <div class="skeleton" style="height:12px;width:60%;"></div>
+          </div></div>
+      </div>
+      <div class="daily-card" aria-hidden="true">
+        <div class="skeleton" style="width:110px;height:12px;"></div>
+        <div class="daily-card-body"><div class="skeleton daily-photo"></div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:8px;">
+            <div class="skeleton" style="height:16px;width:70%;"></div>
+            <div class="skeleton" style="height:12px;width:100%;"></div>
+            <div class="skeleton" style="height:12px;width:50%;"></div>
+          </div></div>
+      </div>
+      <div class="daily-card" aria-hidden="true">
+        <div class="skeleton" style="width:110px;height:12px;"></div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div class="skeleton" style="height:14px;width:100%;"></div>
+          <div class="skeleton" style="height:14px;width:90%;"></div>
+          <div class="skeleton" style="height:12px;width:40%;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     CATEGORIES STRIP
+═══════════════════════════════════════ -->
+<section class="categories-strip" aria-labelledby="categories-heading" style="padding:32px 0 8px;">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <h2 id="categories-heading" class="section-title">Browse by category</h2>
+      </div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;">
+      {% for cat in site.data.categories limit: 8 %}
+        <a href="{{ '/categories/' | relative_url }}{{ cat.slug }}/" class="pick-tag" style="text-decoration:none;">{{ cat.name }}</a>
+      {% endfor %}
+      <a href="{{ '/categories/' | relative_url }}" class="pick-tag" style="text-decoration:none;font-weight:600;">All categories →</a>
+    </div>
+  </div>
+</section>
+
+{% assign recent_books = site.books | sort: "date" | reverse %}
+{% if recent_books.size > 0 %}
+<!-- ═══════════════════════════════════════
+     RECENTLY SUMMARIZED (static, build-time)
+═══════════════════════════════════════ -->
+<section class="recent-section" aria-labelledby="recent-heading" style="padding:32px 0 8px;">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <h2 id="recent-heading" class="section-title">Recently summarized</h2>
+        <p class="section-sub">Real pages, ready to read — no waiting.</p>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:18px;margin-top:20px;">
+      {% for book in recent_books limit: 8 %}
+        <a href="{{ book.url | relative_url }}" style="text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:8px;">
+          {% if book.cover_url and book.cover_url != "" %}
+            <img src="{{ book.cover_url }}" alt="Cover of {{ book.title }}" loading="lazy"
+                 style="width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:8px;border:1px solid var(--border);">
+          {% else %}
+            <div style="width:100%;aspect-ratio:2/3;background:var(--bg-subtle);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--fg-faint);padding:10px;text-align:center;">{{ book.title | truncate: 40 }}</div>
+          {% endif %}
+          <div>
+            <p style="font-size:13px;font-weight:600;line-height:1.35;">{{ book.title }}</p>
+            <p style="font-size:12px;color:var(--fg-faint);margin-top:2px;">{{ book.author }}</p>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- ═══════════════════════════════════════
      TOOLS GRID
 ═══════════════════════════════════════ -->
 <section class="tools-section" aria-labelledby="tools-heading">
@@ -86,7 +207,7 @@ description: "Seven free AI-powered tools for readers — instant book summaries
 
     <div class="tools-grid" role="list">
 
-      <a href="{{ '/tools/summary' | relative_url }}" class="tool-card tool-card--featured" role="listitem">
+      <a href="{{ '/summary' | relative_url }}" class="tool-card tool-card--featured" role="listitem">
         <div class="tool-card-top">
           <div class="tool-card-icon" aria-hidden="true">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10,9 9,9 8,9"/></svg>
@@ -206,4 +327,91 @@ function fillSearch(title) {
     input.focus();
   }
 }
+
+// ── Daily picks ─────────────────────────────────────────────
+(function () {
+  const API = "{{ site.api_url }}";
+  const SUMMARY_PATH = "{{ '/summary/' | relative_url }}";
+  const grid = document.getElementById("daily-grid");
+  const section = document.getElementById("daily-section");
+  if (!grid || !section) return;
+
+  const esc = (s) => String(s == null ? "" : s)
+    .replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;").replaceAll("'", "&#39;");
+
+  const bookLink = (b) => {
+    if (!b) return "#";
+    const p = new URLSearchParams({ q: b.title || "", direct: "true" });
+    if (b.author) p.set("author", b.author);
+    if (b.google_id) p.set("google_id", b.google_id);
+    if (b.isbn_13) p.set("isbn", b.isbn_13);
+    return SUMMARY_PATH + "?" + p.toString();
+  };
+
+  function render(d) {
+    const dateEl = document.getElementById("daily-date");
+    if (dateEl && d.date) dateEl.textContent = new Date(d.date + "T00:00:00Z")
+      .toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric", timeZone: "UTC" });
+
+    const cards = [];
+    if (d.book) {
+      cards.push(`<article class="daily-card">
+        <span class="daily-card-label">📖 Book of the day</span>
+        <div class="daily-card-body">
+          ${d.book.cover_url ? `<img class="daily-cover" src="${esc(d.book.cover_url)}" alt="Cover of ${esc(d.book.title)}" loading="lazy">` : ""}
+          <div>
+            <h3><a href="${bookLink(d.book)}">${esc(d.book.title)}</a></h3>
+            <p class="daily-meta">${esc(d.book.author)}</p>
+            ${d.book.event ? `<p style="margin-top:8px;"><strong>On this day${d.book.event.year ? " in " + esc(d.book.event.year) : ""}:</strong> ${esc(d.book.event.text)}</p>` : ""}
+            ${d.book.connection ? `<p style="margin-top:6px;">${esc(d.book.connection)}</p>` : ""}
+          </div>
+        </div>
+      </article>`);
+    }
+    if (d.author) {
+      const a = d.author;
+      cards.push(`<article class="daily-card">
+        <span class="daily-card-label">✍️ Author of the day</span>
+        <div class="daily-card-body">
+          ${a.photo_url ? `<img class="daily-photo" src="${esc(a.photo_url)}" alt="Photo of ${esc(a.name)}" loading="lazy">` : ""}
+          <div>
+            <h3>${a.wikipedia_url ? `<a href="${esc(a.wikipedia_url)}" target="_blank" rel="noopener">${esc(a.name)}</a>` : esc(a.name)}</h3>
+            ${a.born_year ? `<p class="daily-meta">Born on this day, ${esc(a.born_year)}</p>` : ""}
+            ${a.blurb ? `<p style="margin-top:8px;">${esc(a.blurb)}</p>` : ""}
+            ${a.notable_book ? `<p style="margin-top:6px;">Best known for <a href="${bookLink(a.notable_book)}" style="color:var(--accent);font-weight:500;">${esc(a.notable_book.title)}</a></p>` : ""}
+          </div>
+        </div>
+      </article>`);
+    }
+    if (d.quote) {
+      cards.push(`<article class="daily-card">
+        <span class="daily-card-label">❝ Quote of the day</span>
+        <blockquote class="daily-quote-text">"${esc(d.quote.text)}"</blockquote>
+        ${d.quote.book ? `<p class="daily-meta">— <a href="${bookLink(d.quote.book)}" style="color:var(--accent);font-weight:500;">${esc(d.quote.book.title)}</a>${d.quote.book.author ? ", " + esc(d.quote.book.author) : ""}</p>` : ""}
+      </article>`);
+    }
+
+    if (cards.length === 0) { section.style.display = "none"; return; }
+    grid.innerHTML = cards.join("");
+  }
+
+  const todayKey = "bookhub_daily_" + new Date().toISOString().slice(0, 10);
+  try {
+    const memo = sessionStorage.getItem(todayKey);
+    if (memo) { render(JSON.parse(memo)); return; }
+  } catch (e) { /* sessionStorage unavailable — fetch fresh */ }
+
+  // 60s timeout: generous enough to cover a Render free-tier cold start.
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), 60000);
+  fetch(API + "/daily", { signal: ctrl.signal })
+    .then((r) => { if (!r.ok) throw new Error("daily " + r.status); return r.json(); })
+    .then((d) => {
+      clearTimeout(timer);
+      try { sessionStorage.setItem(todayKey, JSON.stringify(d)); } catch (e) {}
+      render(d);
+    })
+    .catch(() => { clearTimeout(timer); section.style.display = "none"; });
+})();
 </script>

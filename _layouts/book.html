@@ -6,130 +6,60 @@ layout: default
 
     <div class="book-hero">
       <div class="book-cover-wrap">
-        {% if page.cover %}
-          <img src="{{ page.cover }}" alt="Cover of {{ page.title }}" class="book-cover" itemprop="image">
+        {% if page.cover_url and page.cover_url != "" %}
+          <img src="{{ page.cover_url }}" alt="Cover of {{ page.title }}" class="book-cover" itemprop="image">
         {% else %}
           <div class="book-cover-placeholder">{{ page.title | truncate: 2, "" }}</div>
         {% endif %}
       </div>
 
       <div class="book-meta">
-        <p class="book-genre">{{ page.genre }}</p>
+        {% if page.categories and page.categories.size > 0 %}
+          <div class="book-meta-row" style="margin-bottom:8px;">
+            {% for cat_slug in page.categories %}
+              {% assign cat = site.data.categories | where: "slug", cat_slug | first %}
+              {% if cat %}
+                <a href="{{ '/categories/' | relative_url }}{{ cat.slug }}/" class="book-meta-tag" style="text-decoration:none;">{{ cat.name }}</a>
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% endif %}
+
         <h1 class="book-title" itemprop="name">{{ page.title }}</h1>
-        <p class="book-author" itemprop="author">{{ page.author }}</p>
+        {% if page.author_slug and page.author_slug != "" %}
+          <p class="book-author"><a href="{{ '/authors/' | relative_url }}{{ page.author_slug }}/" itemprop="author" style="color:inherit;">{{ page.author }}</a></p>
+        {% else %}
+          <p class="book-author" itemprop="author">{{ page.author }}</p>
+        {% endif %}
 
         <div class="book-meta-row">
-          {% if page.pages %}<span class="book-meta-tag">{{ page.pages }} pages</span>{% endif %}
-          {% if page.year %}<span class="book-meta-tag">{{ page.year }}</span>{% endif %}
-          {% if page.language %}<span class="book-meta-tag">{{ page.language }}</span>{% endif %}
+          {% if page.page_count %}<span class="book-meta-tag">{{ page.page_count }} pages</span>{% endif %}
+          {% if page.published_year and page.published_year != "" %}<span class="book-meta-tag"><span itemprop="datePublished">{{ page.published_year }}</span></span>{% endif %}
+          {% if page.average_rating %}<span class="book-meta-tag">★ {{ page.average_rating }}</span>{% endif %}
+          {% if page.isbn_13 and page.isbn_13 != "" %}<meta itemprop="isbn" content="{{ page.isbn_13 }}">{% endif %}
         </div>
 
-        {% if page.amazon_isbn %}
-          <a href="https://www.amazon.com/dp/{{ page.amazon_isbn }}?tag={{ site.amazon_tag }}"
+        {% if page.amazon_url and page.amazon_url != "" %}
+          <a href="{{ page.amazon_url }}" class="btn-primary" target="_blank" rel="noopener sponsored">Buy on Amazon</a>
+        {% elsif page.isbn_10 and page.isbn_10 != "" %}
+          <a href="https://www.amazon.com/dp/{{ page.isbn_10 }}?tag={{ site.amazon_tag }}"
              class="btn-primary" target="_blank" rel="noopener sponsored">Buy on Amazon</a>
         {% endif %}
       </div>
     </div>
 
-    <div class="book-tabs">
-      <button class="book-tab active" data-tool="summary">Summary</button>
-      <button class="book-tab" data-tool="questions">Discussion Questions</button>
-      <button class="book-tab" data-tool="similar">Similar Books</button>
-    </div>
-
-    <div class="book-panel active" id="panel-summary">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
-        <h2 style="font-size:18px;font-weight:600;">AI Summary</h2>
-        <div class="depth-control">
-          <button class="depth-btn active" data-depth="quick">Quick</button>
-          <button class="depth-btn" data-depth="medium">Medium</button>
-          <button class="depth-btn" data-depth="deep">Deep</button>
-        </div>
+    <div class="book-static-summary" style="margin-top:40px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:16px;">
+        <h2 style="font-size:18px;font-weight:600;">AI Grounded Summary</h2>
+        <a class="btn-secondary" style="padding:8px 16px;font-size:13px;"
+           href="{{ '/summary/' | relative_url }}?q={{ page.title | url_encode }}&author={{ page.author | url_encode }}{% if page.google_id and page.google_id != '' %}&google_id={{ page.google_id }}{% endif %}{% if page.isbn_13 and page.isbn_13 != '' %}&isbn={{ page.isbn_13 }}{% endif %}&direct=true">
+          Open interactive summary &amp; chat →
+        </a>
       </div>
-      <div class="result-area" id="summary-result">
-        <button class="btn-primary" onclick="generateSummary('{{ page.title }}', '{{ page.author }}')">Generate summary</button>
+      <div class="ai-output" itemprop="description">
+        {{ content }}
       </div>
     </div>
-
-    <div class="book-panel" id="panel-questions">
-      <h2 style="font-size:18px;font-weight:600;margin-bottom:16px;">Discussion Questions</h2>
-      <div class="result-area" id="questions-result">
-        <button class="btn-primary" onclick="generateQuestions('{{ page.title }}', '{{ page.author }}')">Generate questions</button>
-      </div>
-    </div>
-
-    <div class="book-panel" id="panel-similar">
-      <h2 style="font-size:18px;font-weight:600;margin-bottom:16px;">Similar Books</h2>
-      <div class="result-area" id="similar-result">
-        <button class="btn-primary" onclick="getSimilar('{{ page.title }}', '{{ page.genre }}')">Find similar books</button>
-      </div>
-    </div>
-
-    {% if page.description %}
-      <div style="margin-top:48px;padding-top:32px;border-top:1px solid var(--border);">
-        <h2 style="font-size:18px;font-weight:600;margin-bottom:12px;">About this book</h2>
-        <p style="font-size:15px;color:var(--fg-muted);line-height:1.75;" itemprop="description">{{ page.description }}</p>
-      </div>
-    {% endif %}
 
   </div>
 </article>
-
-<script>
-const API = "{{ site.api_url }}";
-const AMAZON_TAG = "{{ site.amazon_tag }}";
-
-document.querySelectorAll('.book-tab').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.book-tab').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.book-panel').forEach(p => p.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById('panel-' + btn.dataset.tool).classList.add('active');
-  });
-});
-
-document.querySelectorAll('#panel-summary .depth-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('#panel-summary .depth-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-  });
-});
-
-async function generateSummary(title, author) {
-  const depth = document.querySelector('#panel-summary .depth-btn.active').dataset.depth;
-  const el = document.getElementById('summary-result');
-  el.innerHTML = '<div class="result-loading"><span class="spinner"></span> Generating...</div>';
-  try {
-    const res = await fetch(`${API}/summary`, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ title, author, depth }) });
-    const data = await res.json();
-    el.innerHTML = `<div class="ai-output">${data.summary}</div>`;
-  } catch(e) { el.innerHTML = '<p class="result-error">Something went wrong. Please try again.</p>'; }
-}
-
-async function generateQuestions(title, author) {
-  const el = document.getElementById('questions-result');
-  el.innerHTML = '<div class="result-loading"><span class="spinner"></span> Generating...</div>';
-  try {
-    const res = await fetch(`${API}/questions`, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ title, author }) });
-    const data = await res.json();
-    const html = data.questions.map((q,i) => `<li style="padding:14px 16px 14px 44px;background:var(--bg-subtle);border:1px solid var(--border);border-radius:8px;position:relative;font-size:14px;line-height:1.6;"><span style="position:absolute;left:12px;top:50%;transform:translateY(-50%);width:22px;height:22px;background:var(--accent-bg);color:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;">${i+1}</span>${q}</li>`).join('');
-    el.innerHTML = `<ul style="list-style:none;display:flex;flex-direction:column;gap:10px;">${html}</ul>`;
-  } catch(e) { el.innerHTML = '<p class="result-error">Something went wrong. Please try again.</p>'; }
-}
-
-async function getSimilar(title, genre) {
-  const el = document.getElementById('similar-result');
-  el.innerHTML = '<div class="result-loading"><span class="spinner"></span> Searching...</div>';
-  try {
-    const res = await fetch(`${API}/similar`, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ title, genre }) });
-    const data = await res.json();
-    const html = data.books.map(b => `
-      <div style="border:1px solid var(--border);border-radius:8px;padding:14px;display:flex;flex-direction:column;gap:6px;">
-        <strong style="font-size:13px;">${b.title}</strong>
-        <span style="font-size:12px;color:var(--fg-faint);">${b.author}</span>
-        <a href="https://www.amazon.com/s?k=${encodeURIComponent(b.title)}&tag=${AMAZON_TAG}" target="_blank" rel="noopener sponsored" style="font-size:12px;font-weight:500;color:var(--accent);">Find on Amazon →</a>
-      </div>`).join('');
-    el.innerHTML = `<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;">${html}</div>`;
-  } catch(e) { el.innerHTML = '<p class="result-error">Something went wrong. Please try again.</p>'; }
-}
-</script>

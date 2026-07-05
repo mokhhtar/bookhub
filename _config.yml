@@ -14,10 +14,16 @@ highlighter: rouge
 permalink: pretty
 
 # Collections
+# _books files are auto-committed by the backend after each new summary
+# (see bookhub-api/github_publisher.py); their front-matter `slug` drives
+# the /summary/<slug>/ permalink. Same for _authors at /authors/<slug>/.
 collections:
   books:
     output: true
-    permalink: /books/:title/
+    permalink: /summary/:slug/
+  authors:
+    output: true
+    permalink: /authors/:slug/
 
 # Plugins
 plugins:
@@ -38,6 +44,11 @@ defaults:
       type: "books"
     values:
       layout: "book"
+  - scope:
+      path: ""
+      type: "authors"
+    values:
+      layout: "author"
   - scope:
       path: ""
     values:

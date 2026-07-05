@@ -1,0 +1,43 @@
+---
+layout: default
+title: "Authors"
+description: "Browse every author whose works have been summarized on BookHub — bios, photos, and their complete summarized works."
+permalink: /authors/
+---
+<section class="authors-index">
+  <div class="container">
+
+    <header class="section-header" style="margin-bottom:32px;">
+      <h1 class="section-title" style="font-size:30px;">Authors</h1>
+      <p style="font-size:15px;color:var(--fg-muted);margin-top:10px;">Every author with summarized works on BookHub.</p>
+    </header>
+
+    {% assign all_authors = site.authors | sort: "name" %}
+    {% if all_authors.size > 0 %}
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;">
+        {% for author in all_authors %}
+          {% assign author_books = site.books | where: "author_slug", author.slug %}
+          <a href="{{ author.url | relative_url }}"
+             style="text-decoration:none;color:inherit;border:1px solid var(--border);border-radius:10px;padding:20px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;background:var(--bg);transition:border-color .15s;">
+            {% if author.photo_url and author.photo_url != "" %}
+              <img src="{{ author.photo_url }}" alt="Photo of {{ author.name }}" loading="lazy"
+                   style="width:76px;height:76px;object-fit:cover;border-radius:50%;border:1px solid var(--border);">
+            {% else %}
+              <div style="width:76px;height:76px;border-radius:50%;background:var(--bg-subtle);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800;color:var(--fg-faint);">{{ author.name | truncate: 2, "" }}</div>
+            {% endif %}
+            <div>
+              <p style="font-size:14px;font-weight:700;">{{ author.name }}</p>
+              <p style="font-size:12px;color:var(--fg-faint);margin-top:2px;">{{ author_books | size }} {% if author_books.size == 1 %}book{% else %}books{% endif %}</p>
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div style="padding:40px;border:1px dashed var(--border);border-radius:10px;text-align:center;">
+        <p style="font-size:14px;color:var(--fg-muted);">Author pages appear automatically as books are summarized.</p>
+        <a href="{{ '/summary/' | relative_url }}" class="btn-primary" style="margin-top:14px;display:inline-block;">Summarize a book →</a>
+      </div>
+    {% endif %}
+
+  </div>
+</section>

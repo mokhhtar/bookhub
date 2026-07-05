@@ -1,0 +1,53 @@
+---
+layout: default
+---
+{% assign author_books = site.books | where: "author_slug", page.slug | sort: "date" | reverse %}
+<article class="author-page" itemscope itemtype="https://schema.org/Person">
+  <div class="container">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb" style="font-size:13px;color:var(--fg-faint);margin-bottom:20px;">
+      <a href="{{ '/authors/' | relative_url }}" style="color:inherit;">Authors</a>
+      <span aria-hidden="true"> / </span>
+      <span>{{ page.name }}</span>
+    </nav>
+
+    <div style="display:flex;gap:28px;align-items:flex-start;flex-wrap:wrap;margin-bottom:36px;">
+      {% if page.photo_url and page.photo_url != "" %}
+        <img src="{{ page.photo_url }}" alt="Photo of {{ page.name }}" itemprop="image"
+             style="width:140px;height:140px;object-fit:cover;border-radius:14px;border:1px solid var(--border);flex-shrink:0;">
+      {% else %}
+        <div style="width:140px;height:140px;border-radius:14px;background:var(--bg-subtle);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:42px;font-weight:800;color:var(--fg-faint);flex-shrink:0;">{{ page.name | truncate: 2, "" }}</div>
+      {% endif %}
+
+      <div style="flex:1;min-width:260px;">
+        <h1 itemprop="name" style="font-size:28px;font-weight:800;letter-spacing:-0.5px;">{{ page.name }}</h1>
+        <div itemprop="description" style="font-size:15px;color:var(--fg-muted);line-height:1.75;margin-top:12px;max-width:640px;">
+          {{ content }}
+        </div>
+        {% if page.wikipedia_url and page.wikipedia_url != "" %}
+          <a href="{{ page.wikipedia_url }}" target="_blank" rel="noopener" style="font-size:13px;font-weight:500;color:var(--accent);display:inline-block;margin-top:10px;">Wikipedia →</a>
+        {% endif %}
+      </div>
+    </div>
+
+    <h2 style="font-size:18px;font-weight:600;margin-bottom:16px;">Summarized works ({{ author_books | size }})</h2>
+    {% if author_books.size > 0 %}
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:18px;">
+        {% for book in author_books %}
+          <a href="{{ book.url | relative_url }}" style="text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:8px;">
+            {% if book.cover_url and book.cover_url != "" %}
+              <img src="{{ book.cover_url }}" alt="Cover of {{ book.title }}" loading="lazy"
+                   style="width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:8px;border:1px solid var(--border);">
+            {% else %}
+              <div style="width:100%;aspect-ratio:2/3;background:var(--bg-subtle);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--fg-faint);padding:10px;text-align:center;">{{ book.title | truncate: 40 }}</div>
+            {% endif %}
+            <p style="font-size:13px;font-weight:600;line-height:1.35;">{{ book.title }}</p>
+          </a>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p style="font-size:14px;color:var(--fg-muted);">No summarized works yet.</p>
+    {% endif %}
+
+  </div>
+</article>
