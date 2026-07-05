@@ -1171,8 +1171,14 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
               ${data.similar_books.map(b => {
                 const te = b.title.replace(/'/g, "\\'").replace(/"/g, "&quot;");
                 const ae = (b.author || '').replace(/'/g, "\\'").replace(/"/g, "&quot;");
+                // Pass the exact identifiers the backend now returns so a click
+                // opens THIS book's summary directly (forceDirect=true), instead
+                // of running a title search and showing the results list.
+                const isbnV = (b.isbn_13 || b.isbn_10) ? `'${b.isbn_13 || b.isbn_10}'` : 'null';
+                const gidV = b.google_id ? `'${String(b.google_id).replace(/'/g, "\\'")}'` : 'null';
+                const olidV = b.openlibrary_id ? `'${String(b.openlibrary_id).replace(/'/g, "\\'")}'` : 'null';
                 const url = `{{ '/tools/summary/' | relative_url }}?q=${encodeURIComponent(b.title)}&author=${encodeURIComponent(b.author || '')}`;
-                return `<a href="${url}" class="similar-book-card" onclick="event.preventDefault();summarizeBook('${te}','${ae}',false,true)" style="text-align:center;cursor:pointer;text-decoration:none;display:block;color:inherit;">
+                return `<a href="${url}" class="similar-book-card" onclick="event.preventDefault();summarizeBook('${te}','${ae}',true,false,${isbnV},${gidV},${olidV})" style="text-align:center;cursor:pointer;text-decoration:none;display:block;color:inherit;">
                   ${b.cover_url ? `<img src="${b.cover_url}" alt="Cover of ${b.title}" style="width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:6px;border:1px solid var(--border);margin-bottom:6px;">` : `<div style="width:100%;aspect-ratio:2/3;background:var(--bg-subtle);border:1px solid var(--border);border-radius:6px;margin-bottom:6px;"></div>`}
                   <p style="font-size:11px;font-weight:600;line-height:1.3;margin-bottom:2px;color:var(--fg);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;height:28px;">${b.title}</p>
                   <p style="font-size:10px;color:var(--fg-faint);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${b.author}</p>
