@@ -784,6 +784,35 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
 <script>
   const API = "{{ site.api_url }}";
 
+  // Resilient fetch for the free-tier backend. Render sleeps after ~15 min
+  // idle; the first request then hits a cold instance and the browser can drop
+  // it with net::ERR_FAILED before it finishes waking (~50s). So: use a long
+  // timeout, and on a NETWORK failure (not an HTTP error) warm the server via
+  // /health and retry once — the second attempt lands on a now-awake instance.
+  let _serverWarmed = false;
+  async function apiFetch(url, options = {}, { timeout = 90000, onWaking } = {}) {
+    async function attempt() {
+      const ctrl = new AbortController();
+      const timer = setTimeout(() => ctrl.abort(), timeout);
+      try {
+        return await fetch(url, { ...options, signal: ctrl.signal });
+      } finally { clearTimeout(timer); }
+    }
+    try {
+      const res = await attempt();
+      _serverWarmed = true;
+      return res;
+    } catch (e) {
+      // TypeError (network/CORS-drop) or AbortError (timeout) → likely cold start.
+      if (onWaking) onWaking();
+      try { await fetch(`${API}/health`, { cache: "no-store" }); } catch (_) {}
+      await new Promise(r => setTimeout(r, 1500));
+      const res = await attempt();  // let a second failure propagate to the caller
+      _serverWarmed = true;
+      return res;
+    }
+  }
+
   let allSearchResults = [];
   let currentPage = 0;
   let currentSearchOffset = 0;
@@ -1059,8 +1088,10 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
         // Update URL in address bar for the search query
         updateBrowserURL(q);
 
-        const searchRes = await fetch(
+        const searchRes = await apiFetch(
           `${API}/search?q=${encodeURIComponent(q)}&offset=0`,
+          {},
+          { onWaking: () => { result.innerHTML = '<div class="result-loading"><span class="spinner"></span> Waking up our free server — one moment…</div>'; } }
         );
         if (!searchRes.ok) throw new Error("search error");
         const searchData = await searchRes.json();
@@ -1099,11 +1130,11 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
       if (googleId) payload.google_id = googleId;
       if (openLibraryId) payload.openlibrary_id = openLibraryId;
 
-      const res = await fetch(`${API}/summary`, {
+      const res = await apiFetch(`${API}/summary`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
-      });
+      }, { onWaking: () => { result.innerHTML = '<div class="result-loading"><span class="spinner"></span> Waking up our free server — one moment…</div>'; } });
       if (!res.ok) throw new Error("server error");
       const data = await res.json();
 
@@ -1317,7 +1348,12 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
       `;
 
     } catch (e) {
-      result.innerHTML = `<p class="result-error">Couldn't generate the summary. Please try again.</p>`;
+      // A network drop (cold start / connectivity) throws TypeError/AbortError;
+      // an HTTP error throws our own "server error". Give honest, actionable copy.
+      const networky = (e instanceof TypeError) || e.name === "AbortError";
+      result.innerHTML = networky
+        ? `<p class="result-error">Our free server may be waking up or briefly unavailable. Please try again in a moment.</p>`
+        : `<p class="result-error">Couldn't generate the summary. Please try again.</p>`;
     } finally {
       document.getElementById("submit-btn").disabled = false;
     }
