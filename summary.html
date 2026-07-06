@@ -144,6 +144,54 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
 
   .audio-speed-selector:hover { border-color: var(--accent); }
 
+  /* ── Reading-time planner (styled like the audio bar) ─────── */
+  .reading-bar {
+    background: var(--bg-subtle);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 0.8rem 1.25rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+  }
+  .reading-bar-left { display: flex; align-items: center; gap: 12px; min-width: 0; }
+  .reading-bar-icon {
+    width: 36px; height: 36px; border-radius: 50%;
+    border: 1px solid var(--border); background: var(--bg); color: var(--accent);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .reading-bar-total { font-size: 12px; font-weight: 600; color: var(--fg); display: block; }
+  .reading-bar-sub { font-size: 10px; color: var(--fg-faint); }
+  .reading-bar-control { display: flex; align-items: center; gap: 12px; flex: 1; min-width: 220px; justify-content: flex-end; }
+  .reading-pace-label { font-size: 11px; color: var(--fg-faint); white-space: nowrap; }
+  .reading-pace-value { font-size: 12px; font-weight: 700; color: var(--fg); white-space: nowrap; min-width: 70px; text-align: right; }
+  .reading-result {
+    font-size: 12px; font-weight: 700; color: var(--accent);
+    background: var(--bg); border: 1px solid var(--border); border-radius: 20px;
+    padding: 5px 12px; white-space: nowrap; flex-shrink: 0;
+  }
+  .reading-slider {
+    -webkit-appearance: none; appearance: none;
+    flex: 1; min-width: 90px; max-width: 200px; height: 6px; border-radius: 99px;
+    background: var(--border); outline: none; cursor: pointer;
+  }
+  .reading-slider::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none;
+    width: 18px; height: 18px; border-radius: 50%;
+    background: var(--accent); border: 2px solid var(--bg); cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+  }
+  .reading-slider::-moz-range-thumb {
+    width: 18px; height: 18px; border-radius: 50%;
+    background: var(--accent); border: 2px solid var(--bg); cursor: pointer;
+  }
+  @media (max-width: 560px) {
+    .reading-bar-control { justify-content: flex-start; width: 100%; }
+  }
+
   .sound-wave { display: flex; align-items: flex-end; gap: 3px; height: 20px; }
   .wave-bar { width: 3px; height: 4px; background: var(--accent); border-radius: 2px; transition: height 0.15s ease; }
 
@@ -1021,6 +1069,24 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
 
   const TOOL_BASE_PATH = `{{ '/summary/' | relative_url }}`;
   const AUTHORS_BASE = `{{ '/authors/' | relative_url }}`;
+  const READ_PACE_KEY = "bookhub_read_pace_min";  // remembered daily reading pace
+
+  function fmtDuration(min) {
+    min = Math.max(1, Math.round(min));
+    const h = Math.floor(min / 60), m = min % 60;
+    if (h && m) return `${h} hr ${m} min`;
+    if (h) return `${h} hr`;
+    return `${m} min`;
+  }
+
+  function fmtFinish(totalMin, paceMin) {
+    if (!paceMin) return "";
+    const days = Math.max(1, Math.ceil(totalMin / paceMin));
+    if (days === 1) return "Finish in 1 day";
+    if (days < 7) return `Finish in ${days} days`;
+    const weeks = Math.round(days / 7);
+    return `Finish in ${days} days (~${weeks} wk${weeks > 1 ? "s" : ""})`;
+  }
   const CATEGORIES_BASE = `{{ '/categories/' | relative_url }}`;
   // slug → display name, from the site's category taxonomy (single source of truth)
   const CATEGORY_NAMES = {
@@ -1350,6 +1416,36 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
         </div>
       </div>`;
 
+      // ── Reading-time planner ──────────────────────────────
+      // total minutes = pages × 275 words/page ÷ 250 wpm (same basis as the
+      // calcReadingTime helper). Interactive: the reader sets a daily pace and
+      // sees days-to-finish update live. Pace is remembered across books.
+      let readingBarHtml = '';
+      if (data.page_count) {
+        const totalMin = Math.round(data.page_count * 275 / 250);
+        const savedPace = parseInt(localStorage.getItem(READ_PACE_KEY), 10);
+        const pace = (savedPace >= 5 && savedPace <= 240) ? savedPace : 30;
+        window.__readingTotalMin = totalMin;
+        readingBarHtml = `
+        <div class="reading-bar" id="reading-bar">
+          <div class="reading-bar-left">
+            <div class="reading-bar-icon">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            </div>
+            <div>
+              <span class="reading-bar-total">Reading time · ${fmtDuration(totalMin)}</span>
+              <span class="reading-bar-sub">~${Math.round(data.page_count * 275 / 1000)}k words · ${data.page_count} pages</span>
+            </div>
+          </div>
+          <div class="reading-bar-control">
+            <span class="reading-pace-label">You read</span>
+            <input type="range" class="reading-slider" id="reading-slider" min="5" max="240" step="5" value="${pace}" aria-label="Minutes you read per day">
+            <span class="reading-pace-value" id="reading-pace-value">${fmtDuration(pace)}/day</span>
+            <span class="reading-result" id="reading-result">${fmtFinish(totalMin, pace)}</span>
+          </div>
+        </div>`;
+      }
+
       // Show the floating chat bubble
       const floatBtn = document.getElementById('chat-float-btn');
       const floatPanel = document.getElementById('chat-float-panel');
@@ -1365,6 +1461,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
         <!-- MAIN CONTENT (first in DOM for SEO) -->
         <main class="summary-main">
           ${audioWidgetHtml}
+          ${readingBarHtml}
 
           <div class="summary-card">
             <div class="summary-card-title">
@@ -1392,7 +1489,6 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
             ${ratingBadgeHtml(data)}
             ${data.published_year ? `<span class="sidebar-badge">${data.published_year}</span>` : ''}
             ${data.page_count ? `<span class="sidebar-badge">${data.page_count} pages</span>` : ''}
-            ${data.page_count && window.calcReadingTime ? `<span class="sidebar-badge" title="Estimated reading time">⏱ ${calcReadingTime(data.page_count)}</span>` : ''}
           </div>
 
           ${awardsHtml}
@@ -1419,6 +1515,17 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
 
       </div>
       `;
+
+      // Wire the reading-time slider (element exists only after innerHTML above).
+      const slider = document.getElementById("reading-slider");
+      if (slider) {
+        slider.addEventListener("input", () => {
+          const pace = parseInt(slider.value, 10);
+          document.getElementById("reading-pace-value").textContent = fmtDuration(pace) + "/day";
+          document.getElementById("reading-result").textContent = fmtFinish(window.__readingTotalMin, pace);
+          try { localStorage.setItem(READ_PACE_KEY, String(pace)); } catch (e) {}
+        });
+      }
 
     } catch (e) {
       // A network drop (cold start / connectivity) throws TypeError/AbortError;
