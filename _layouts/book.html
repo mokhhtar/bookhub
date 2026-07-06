@@ -34,6 +34,12 @@ layout: default
 
         <div class="book-meta-row">
           {% if page.page_count %}<span class="book-meta-tag">{{ page.page_count }} pages</span>{% endif %}
+          {% if page.page_count %}
+            {% assign rt_minutes = page.page_count | times: 275 | divided_by: 250 %}
+            {% assign rt_hours = rt_minutes | divided_by: 60 %}
+            {% assign rt_rem = rt_minutes | modulo: 60 %}
+            <span class="book-meta-tag" title="Estimated reading time">⏱ {% if rt_hours > 0 %}{{ rt_hours }} hr{% if rt_rem > 0 %} {{ rt_rem }} min{% endif %}{% else %}{{ rt_minutes }} min{% endif %}</span>
+          {% endif %}
           {% if page.published_year and page.published_year != "" %}<span class="book-meta-tag"><span itemprop="datePublished">{{ page.published_year }}</span></span>{% endif %}
           {% if page.average_rating %}<span class="book-meta-tag">★ {{ page.average_rating }}</span>{% endif %}
           {% if page.isbn_13 and page.isbn_13 != "" %}<meta itemprop="isbn" content="{{ page.isbn_13 }}">{% endif %}

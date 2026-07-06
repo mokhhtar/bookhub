@@ -438,7 +438,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
     font-weight: 700;
     margin-top: 2rem;
     margin-bottom: 0.75rem;
-    color: var(--fg);
+    color: var(--accent);
     border-bottom: 1px solid var(--border);
     padding-bottom: 6px;
   }
@@ -450,7 +450,8 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
     font-weight: 600;
     margin-top: 1.25rem;
     margin-bottom: 0.5rem;
-    color: var(--fg);
+    color: var(--accent);
+    opacity: 0.85;
   }
 
   .ai-output p { margin-bottom: 1.25rem; }
@@ -1019,6 +1020,41 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
   });
 
   const TOOL_BASE_PATH = `{{ '/summary/' | relative_url }}`;
+  const AUTHORS_BASE = `{{ '/authors/' | relative_url }}`;
+  const CATEGORIES_BASE = `{{ '/categories/' | relative_url }}`;
+  // slug → display name, from the site's category taxonomy (single source of truth)
+  const CATEGORY_NAMES = {
+    {% for cat in site.data.categories %}"{{ cat.slug }}": {{ cat.name | jsonify }},
+    {% endfor %}
+  };
+
+  function categoryChipsHtml(data) {
+    // Taxonomy categories are clickable chips into /categories/<slug>/;
+    // fall back to the raw publisher category as plain text.
+    if (data.categories && data.categories.length) {
+      return data.categories.map(slug =>
+        `<a href="${CATEGORIES_BASE}${slug}/" class="sidebar-badge category" style="text-decoration:none;">${CATEGORY_NAMES[slug] || slug}</a>`
+      ).join('');
+    }
+    return data.category ? `<span class="sidebar-badge category">${data.category}</span>` : '';
+  }
+
+  function formatRatingCount(n) {
+    if (n >= 1e6) return (n / 1e6).toFixed(1).replace(/\.0$/, "") + "M";
+    if (n >= 1e3) return (n / 1e3).toFixed(1).replace(/\.0$/, "") + "K";
+    return String(n);
+  }
+
+  function ratingBadgeHtml(data) {
+    // Prefer real community ratings (Goodreads/Open Library, with count)
+    // over Google Books' bare average.
+    const r = data.ratings;
+    if (r && r.average && r.count) {
+      const src = r.source === "goodreads" ? "Goodreads" : "Open Library";
+      return `<span class="sidebar-badge rating" title="${src}, ${r.count.toLocaleString()} ratings">★ ${r.average} · ${formatRatingCount(r.count)}</span>`;
+    }
+    return data.average_rating ? `<span class="sidebar-badge rating">★ ${data.average_rating}</span>` : '';
+  }
 
   function updateBrowserURL(q, author = null, direct = false, isbn = null, googleId = null, openLibraryId = null) {
     const params = new URLSearchParams();
@@ -1198,12 +1234,37 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
             ${hidden.length > 0 ? hidden.map(a => renderAward(a, true)).join('') : ''}
           </ul>
           ${hidden.length > 0 ? `<button class="sidebar-show-all" onclick="document.querySelectorAll('[data-hidden-award]').forEach(el=>el.style.display='flex');this.style.display='none'">Show more (${hidden.length})</button>` : ''}`;
-      } else if (data.average_rating) {
+      } else if ((data.ratings && data.ratings.average) || data.average_rating) {
+        const avg = (data.ratings && data.ratings.average) || data.average_rating;
+        const cnt = data.ratings && data.ratings.count
+          ? ` <span style="color:var(--fg-faint);font-size:12px;">(${data.ratings.count.toLocaleString()} ratings)</span>` : '';
         awardsHtml = `
           <p class="sidebar-section-title">Reception</p>
           <p style="font-size:13px;color:var(--fg);margin:0;">
-            <span style="color:#f59e0b;font-size:15px;">★</span> ${data.average_rating} / 5 avg. rating
+            <span style="color:#f59e0b;font-size:15px;">★</span> ${avg} / 5 avg. rating${cnt}
           </p>`;
+      }
+
+      // Star-rating distribution (Open Library per-star counts) — real
+      // community data rendered as proportional bars, 5★ down to 1★.
+      let ratingDistHtml = '';
+      const dist = data.ratings && data.ratings.distribution;
+      if (dist) {
+        const total = Object.values(dist).reduce((a, b) => a + b, 0);
+        if (total > 0) {
+          const rows = [5, 4, 3, 2, 1].map(star => {
+            const n = dist[String(star)] || 0;
+            const pct = Math.round((n / total) * 100);
+            return `<div style="display:flex;align-items:center;gap:8px;font-size:11px;color:var(--fg-muted);">
+              <span style="width:22px;flex-shrink:0;">${star}★</span>
+              <span style="flex:1;height:8px;background:var(--bg-subtle);border:1px solid var(--border);border-radius:99px;overflow:hidden;"><span style="display:block;height:100%;width:${pct}%;background:var(--accent);"></span></span>
+              <span style="width:42px;text-align:right;flex-shrink:0;color:var(--fg-faint);">${formatRatingCount(n)}</span>
+            </div>`;
+          }).join('');
+          ratingDistHtml = `
+            <p class="sidebar-section-title">Rating breakdown</p>
+            <div style="display:flex;flex-direction:column;gap:5px;">${rows}</div>`;
+        }
       }
 
       // Build similar books html (now in main area)
@@ -1243,9 +1304,16 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
               <span style="font-size:11px;font-weight:600;color:var(--accent);background:var(--bg-subtle);border:1px solid var(--border);border-radius:20px;padding:2px 10px;">${data.chapters.length} chapters</span>
             </div>
             <div style="position:relative;">
-              <ol id="chapters-scroll-list" style="font-size:13px;color:var(--fg);line-height:1.9;padding-left:1.2rem;margin:0;max-height:320px;overflow-y:auto;padding-right:8px;scrollbar-width:thin;scrollbar-color:var(--accent) transparent;">
-                ${data.chapters.map((c, i) => `<li style="padding:3px 0;border-bottom:1px solid var(--border);"><span style="color:var(--fg-faint);font-size:11px;margin-right:6px;">${String(i+1).padStart(2,'0')}</span>${c}</li>`).join('')}
-              </ol>
+              <ul id="chapters-scroll-list" style="font-size:13px;color:var(--fg);line-height:1.9;list-style:none;padding-left:0;margin:0;max-height:320px;overflow-y:auto;padding-right:8px;scrollbar-width:thin;scrollbar-color:var(--accent) transparent;">
+                ${data.chapters.map((c, i) => {
+                  // Sources (Fandom/Open Library) often already number their
+                  // chapters ("01 Experiment 626", "Chapter 3: ...") — strip
+                  // that leading numbering so our padded index isn't doubled.
+                  const stripped = c.replace(/^\s*(?:ch(?:apter)?\.?\s*)?\d{1,4}\s*[-–—.:)\]]?\s*/i, "");
+                  const label = stripped.trim() ? stripped : c;
+                  return `<li style="padding:3px 0;border-bottom:1px solid var(--border);"><span style="color:var(--fg-faint);font-size:11px;margin-right:6px;">${String(i+1).padStart(2,'0')}</span>${label}</li>`;
+                }).join('')}
+              </ul>
               <div style="position:absolute;bottom:0;left:0;right:0;height:40px;background:linear-gradient(transparent,var(--bg-card,var(--bg)));pointer-events:none;border-radius:0 0 8px 8px;"></div>
             </div>
            </div>` : '';
@@ -1316,15 +1384,20 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
             ${coverHtml}
           </div>
           <h2 class="sidebar-title">${data.title || title}</h2>
-          ${data.author ? `<p class="sidebar-author">by ${data.author}</p>` : ''}
+          ${data.author ? (data.author_slug
+            ? `<p class="sidebar-author">by <a href="${AUTHORS_BASE}${data.author_slug}/" style="color:inherit;text-decoration:underline;text-decoration-color:var(--border);text-underline-offset:3px;">${data.author}</a></p>`
+            : `<p class="sidebar-author">by ${data.author}</p>`) : ''}
           <div class="sidebar-badges">
-            ${data.category ? `<span class="sidebar-badge category">${data.category}</span>` : ''}
-            ${data.average_rating ? `<span class="sidebar-badge rating">★ ${data.average_rating}</span>` : ''}
+            ${categoryChipsHtml(data)}
+            ${ratingBadgeHtml(data)}
             ${data.published_year ? `<span class="sidebar-badge">${data.published_year}</span>` : ''}
             ${data.page_count ? `<span class="sidebar-badge">${data.page_count} pages</span>` : ''}
+            ${data.page_count && window.calcReadingTime ? `<span class="sidebar-badge" title="Estimated reading time">⏱ ${calcReadingTime(data.page_count)}</span>` : ''}
           </div>
 
           ${awardsHtml}
+
+          ${ratingDistHtml}
 
           ${data.amazon_url ? `
           <a href="${data.amazon_url}" class="sidebar-amazon-btn" target="_blank" rel="noopener sponsored">
@@ -1333,7 +1406,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
           </a>` : ''}
 
           <div class="sidebar-review-links">
-            <a href="https://www.goodreads.com/search?q=${encodeURIComponent((data.title || title) + ' ' + (data.author || ''))}" target="_blank" class="sidebar-ext-link">
+            <a href="${data.ratings && data.ratings.url ? data.ratings.url : `https://www.goodreads.com/search?q=${encodeURIComponent((data.title || title) + ' ' + (data.author || ''))}`}" target="_blank" class="sidebar-ext-link">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
               Live Reviews on Goodreads
             </a>

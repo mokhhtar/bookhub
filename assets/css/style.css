@@ -728,6 +728,29 @@ img { display: block; max-width: 100%; }
   white-space: pre-wrap;
 }
 
+/* Accent-tinted section headings inside AI summaries — applies to both the
+   dynamic summarizer page and static /summary/<slug>/ book pages. */
+.ai-output h2 {
+  font-size: 17px;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  color: var(--accent);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 6px;
+  white-space: normal;
+}
+.ai-output h2:first-of-type { margin-top: 0; }
+.ai-output h3 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: var(--accent);
+  opacity: 0.85;
+  white-space: normal;
+}
+
 .result-error {
   font-size: 13px;
   color: #c0392b;
