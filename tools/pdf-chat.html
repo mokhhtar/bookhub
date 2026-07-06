@@ -1,0 +1,499 @@
+---
+layout: default
+title: "PDF Chat & Quiz"
+description: "Upload any PDF book — chat with an AI grounded in the actual text, and quiz yourself with verified questions."
+---
+
+<style>
+  /* Chat bubbles — copied from summary.html's page-local chat styles */
+  .chat-messages {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .chat-msg {
+    max-width: 85%;
+    padding: 0.65rem 0.9rem;
+    border-radius: 10px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .chat-msg.user { align-self: flex-end; background: var(--accent); color: #fff; border-bottom-right-radius: 2px; }
+  .chat-msg.assistant { align-self: flex-start; background: var(--bg-subtle); border: 1px solid var(--border); color: var(--fg); border-bottom-left-radius: 2px; }
+  .chat-msg.system { align-self: center; background: transparent; color: var(--fg-faint); font-size: 11px; text-align: center; }
+  .chat-input-area { display: flex; border-top: 1px solid var(--border); background: var(--bg); padding: 8px; gap: 8px; }
+  .chat-input {
+    flex-grow: 1; border: 1px solid var(--border); border-radius: 8px;
+    padding: 0.55rem 0.8rem; font-size: 13px; background: var(--bg-subtle);
+    color: var(--fg); outline: none;
+  }
+  .chat-input:focus { border-color: var(--accent); }
+  .chat-send-btn {
+    background: var(--accent); color: #fff; border: none; border-radius: 8px;
+    padding: 0 1rem; cursor: pointer; font-weight: 600; font-size: 13px;
+  }
+  .chat-send-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  /* Upload zone */
+  .pdf-drop {
+    border: 2px dashed var(--border); border-radius: 12px; padding: 44px 20px;
+    text-align: center; cursor: pointer; transition: border-color .15s, background .15s;
+  }
+  .pdf-drop.dragover { border-color: var(--accent); background: var(--bg-subtle); }
+  .pdf-progress-track { height: 8px; background: var(--bg-subtle); border: 1px solid var(--border); border-radius: 99px; overflow: hidden; margin-top: 14px; }
+  .pdf-progress-bar { height: 100%; width: 0%; background: var(--accent); transition: width .2s; }
+
+  /* Workspace */
+  .pdf-tabs { display: flex; gap: 8px; margin: 20px 0 14px; }
+  .pdf-tab {
+    padding: 8px 18px; border: 1px solid var(--border); border-radius: 99px;
+    background: var(--bg); color: var(--fg-muted); font-size: 13px; font-weight: 600; cursor: pointer;
+  }
+  .pdf-tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .pdf-panel { display: none; }
+  .pdf-panel.active { display: block; }
+  .pdf-chat-box { display: flex; flex-direction: column; height: 460px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg); overflow: hidden; }
+
+  /* Quiz */
+  .quiz-card { border: 1px solid var(--border); border-radius: 12px; padding: 18px; margin-bottom: 14px; background: var(--bg); }
+  .quiz-q { font-size: 14px; font-weight: 700; margin-bottom: 12px; line-height: 1.5; }
+  .quiz-option {
+    display: block; width: 100%; text-align: left; padding: 10px 14px; margin-bottom: 8px;
+    border: 1px solid var(--border); border-radius: 8px; background: var(--bg-subtle);
+    color: var(--fg); font-size: 13px; cursor: pointer; transition: border-color .12s;
+  }
+  .quiz-option:hover:not(:disabled) { border-color: var(--accent); }
+  .quiz-option:disabled { cursor: default; }
+  .quiz-option.correct { border-color: #22a06b; background: rgba(34,160,107,0.12); }
+  .quiz-option.incorrect { border-color: #d33; background: rgba(221,51,51,0.10); }
+  .quiz-quote {
+    margin-top: 10px; padding: 10px 14px; border-left: 3px solid var(--accent);
+    background: var(--bg-subtle); border-radius: 0 8px 8px 0; font-size: 12px;
+    color: var(--fg-muted); font-style: italic; line-height: 1.6;
+  }
+  .quiz-score { position: sticky; top: 0; z-index: 5; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 10px 16px; font-size: 13px; font-weight: 600; margin-bottom: 14px; }
+  .recent-doc-btn {
+    display: flex; justify-content: space-between; align-items: center; gap: 10px; width: 100%;
+    padding: 10px 14px; margin-bottom: 8px; border: 1px solid var(--border); border-radius: 8px;
+    background: var(--bg); color: var(--fg); font-size: 13px; cursor: pointer; text-align: left;
+  }
+  .recent-doc-btn:hover { border-color: var(--accent); }
+  .spinner-sm { display:inline-block; width:12px; height:12px; border:2px solid var(--border); border-top-color: var(--accent); border-radius:50%; animation: spin .7s linear infinite; vertical-align: -2px; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+</style>
+
+<section class="tool-page">
+  <div class="container">
+
+    <div class="tool-page-header">
+      <nav class="breadcrumb" aria-label="Breadcrumb" style="font-size:13px;color:var(--fg-faint);margin-bottom:14px;">
+        <a href="{{ '/' | relative_url }}" style="color:inherit;">Home</a>
+        <span aria-hidden="true"> / </span>
+        <span>PDF Chat &amp; Quiz</span>
+      </nav>
+      <h1 class="tool-page-title">PDF Chat &amp; Quiz</h1>
+      <p class="tool-page-desc">Upload any PDF book. Ask questions answered from the book's actual text — or quiz yourself with questions backed by verified quotes. Your file never leaves your browser; only its text is processed, temporarily (~48h).</p>
+    </div>
+
+    <!-- ── Upload state ── -->
+    <div id="upload-section">
+      <div class="pdf-drop" id="drop-zone" role="button" tabindex="0" aria-label="Upload a PDF">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" style="color:var(--fg-faint);margin-bottom:10px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        <p style="font-size:15px;font-weight:600;">Drop a PDF here, or click to choose</p>
+        <p style="font-size:12px;color:var(--fg-faint);margin-top:6px;">Text-based PDFs up to 50MB / 2000 pages. Scanned images won't work.</p>
+        <input type="file" id="pdf-input" accept="application/pdf" style="display:none;">
+      </div>
+
+      <div id="status-area" style="display:none;margin-top:18px;">
+        <p id="status-text" style="font-size:13px;color:var(--fg-muted);"><span class="spinner-sm"></span> <span id="status-msg">Working…</span></p>
+        <div class="pdf-progress-track"><div class="pdf-progress-bar" id="progress-bar"></div></div>
+      </div>
+
+      <p id="error-area" class="result-error" style="display:none;margin-top:18px;"></p>
+
+      <div id="recent-docs" style="margin-top:28px;display:none;">
+        <h2 style="font-size:14px;font-weight:700;margin-bottom:10px;">Recent books</h2>
+        <div id="recent-list"></div>
+      </div>
+    </div>
+
+    <!-- ── Workspace state ── -->
+    <div id="workspace" style="display:none;">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">
+        <div>
+          <h2 id="doc-title" style="font-size:18px;font-weight:800;"></h2>
+          <p id="doc-meta" style="font-size:12px;color:var(--fg-faint);margin-top:4px;"></p>
+        </div>
+        <button class="btn-secondary" id="new-doc-btn" style="padding:8px 16px;font-size:13px;">↺ Another book</button>
+      </div>
+
+      <div class="pdf-tabs" role="tablist">
+        <button class="pdf-tab active" id="tab-chat" role="tab">💬 Chat</button>
+        <button class="pdf-tab" id="tab-quiz" role="tab">🎯 Quiz</button>
+      </div>
+
+      <!-- Chat panel -->
+      <div class="pdf-panel active" id="panel-chat">
+        <div class="pdf-chat-box">
+          <div class="chat-messages" id="chat-msgs">
+            <div class="chat-msg system">Ask anything about this book — answers come only from its text.</div>
+          </div>
+          <div class="chat-input-area">
+            <input type="text" class="chat-input" id="chat-input" placeholder="e.g. Who is the main character?" maxlength="500">
+            <button class="chat-send-btn" id="chat-send">Ask</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quiz panel -->
+      <div class="pdf-panel" id="panel-quiz">
+        <div id="quiz-setup" style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+          <span style="font-size:13px;color:var(--fg-muted);">Questions:</span>
+          <div style="display:flex;gap:8px;">
+            <button class="pdf-tab quiz-count" data-count="3">3</button>
+            <button class="pdf-tab quiz-count active" data-count="5">5</button>
+            <button class="pdf-tab quiz-count" data-count="10">10</button>
+          </div>
+          <button class="btn-primary" id="quiz-start" style="padding:8px 20px;font-size:13px;">Generate quiz</button>
+          <span id="quiz-status" style="font-size:12px;color:var(--fg-faint);"></span>
+        </div>
+        <div id="quiz-area" style="margin-top:18px;"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script type="module">
+  import * as pdfjsLib from "https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.min.mjs";
+  pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.worker.min.mjs";
+
+  const API = "{{ site.api_url }}";
+  const MAX_CHARS = 1200000;
+
+  // ── localStorage (ReadingList-style) ──
+  const LS_KEY = "bookhub_pdf_v1";
+  const Store = {
+    get() { try { return JSON.parse(localStorage.getItem(LS_KEY)) || {}; } catch (e) { return {}; } },
+    save(s) { try { localStorage.setItem(LS_KEY, JSON.stringify(s)); } catch (e) {} },
+    clientId() {
+      const s = this.get();
+      if (!s.client_id) { s.client_id = crypto.randomUUID(); this.save(s); }
+      return s.client_id;
+    },
+    docs() { return this.get().docs || []; },
+    addDoc(doc) {
+      const s = this.get();
+      s.docs = (s.docs || []).filter(d => d.doc_id !== doc.doc_id);
+      s.docs.unshift({ ...doc, added_at: Date.now() });
+      s.docs = s.docs.slice(0, 5);
+      this.save(s);
+    },
+  };
+  const CLIENT_ID = Store.clientId();
+
+  // ── DOM ──
+  const $ = (id) => document.getElementById(id);
+  const dropZone = $("drop-zone"), fileInput = $("pdf-input");
+  const statusArea = $("status-area"), statusMsg = $("status-msg"), progressBar = $("progress-bar");
+  const errorArea = $("error-area"), uploadSection = $("upload-section"), workspace = $("workspace");
+
+  let DOC = null;             // {doc_id, meta}
+  let chatHistory = [];
+
+  const ERROR_COPY = {
+    too_large: "This book is too large for the free tier (about 1.2M characters of text max).",
+    no_text: "This PDF looks like scanned images without selectable text — try a text-based PDF.",
+    hash_mismatch: "Something went wrong reading this file — please try again.",
+    doc_expired: "This book's session expired (~48h). Please re-upload the PDF.",
+    rate_limited: null, // uses server message
+    storage_failed: "Temporary problem on our side — please try again.",
+    quiz_failed: "Couldn't build a verified quiz right now — try again in a minute.",
+  };
+
+  function showError(msg) {
+    statusArea.style.display = "none";
+    errorArea.textContent = msg;
+    errorArea.style.display = "";
+  }
+  function setStatus(msg, pct) {
+    errorArea.style.display = "none";
+    statusArea.style.display = "";
+    statusMsg.textContent = msg;
+    if (pct != null) progressBar.style.width = pct + "%";
+  }
+  async function apiPost(path, body, timeoutMs = 30000) {
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), timeoutMs);
+    try {
+      const r = await fetch(API + path, {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body), signal: ctrl.signal,
+      });
+      const data = await r.json().catch(() => ({}));
+      if (!r.ok) {
+        const code = data?.detail?.code || "unknown";
+        const msg = ERROR_COPY[code] ?? data?.detail?.message ?? "Something went wrong — please try again.";
+        const err = new Error(msg); err.code = code; err.status = r.status;
+        throw err;
+      }
+      return data;
+    } finally { clearTimeout(timer); }
+  }
+
+  // ── Extraction flow ──
+  async function handleFile(file) {
+    if (!file || file.type !== "application/pdf") { showError("Please choose a PDF file."); return; }
+    if (file.size > 50 * 1024 * 1024) { showError("File is too large (max 50MB)."); return; }
+    try {
+      setStatus("Opening PDF…", 2);
+      const buf = await file.arrayBuffer();
+      const pdf = await pdfjsLib.getDocument({ data: buf, isEvalSupported: false }).promise;
+      if (pdf.numPages > 2000) { showError("Too many pages (max 2000)."); return; }
+
+      let text = "";
+      for (let p = 1; p <= pdf.numPages; p++) {
+        const page = await pdf.getPage(p);
+        const tc = await page.getTextContent();
+        text += tc.items.map(i => i.str).join(" ") + "\n\n";
+        if (text.length > MAX_CHARS) { showError(ERROR_COPY.too_large); return; }
+        setStatus(`Extracting page ${p}/${pdf.numPages}…`, 2 + (p / pdf.numPages) * 55);
+      }
+
+      // Scanned detection — before any network traffic.
+      if (text.trim().length < 500 || text.trim().length / pdf.numPages < 5) {
+        showError(ERROR_COPY.no_text); return;
+      }
+
+      setStatus("Fingerprinting…", 60);
+      const hashBuf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(text));
+      const docId = [...new Uint8Array(hashBuf)].map(b => b.toString(16).padStart(2, "0")).join("");
+
+      const title = (file.name || "").replace(/\.pdf$/i, "").slice(0, 200);
+
+      setStatus("Checking if this book is already prepared…", 65);
+      const chk = await apiPost("/pdfchat/check", { doc_id: docId, client_id: CLIENT_ID });
+      if (chk.exists) { enterWorkspace(docId, chk.meta); return; }
+
+      // Warm the free server (may be asleep) then ingest.
+      fetch(API + "/health").catch(() => {});
+      setStatus("Preparing your book — first time can take a minute (our free server may be waking up)…", 75);
+      let res;
+      try {
+        res = await apiPost("/pdfchat/ingest", {
+          doc_id: docId, client_id: CLIENT_ID, text,
+          title, filename: file.name || "", pages: pdf.numPages,
+        }, 120000);
+      } catch (e) {
+        if (e.code === "ingest_in_progress") { res = await pollUntilReady(docId); }
+        else throw e;
+      }
+      if (res?.meta) enterWorkspace(docId, res.meta);
+      else showError("Something went wrong — please try again.");
+    } catch (e) {
+      showError(e.name === "AbortError"
+        ? "The free server may be waking up — please try once more."
+        : (e.message || "Something went wrong — please try again."));
+    }
+  }
+
+  async function pollUntilReady(docId) {
+    setStatus("Another request is preparing this book — waiting…", 80);
+    for (let i = 0; i < 30; i++) {
+      await new Promise(r => setTimeout(r, 3000));
+      const chk = await apiPost("/pdfchat/check", { doc_id: docId, client_id: CLIENT_ID });
+      if (chk.exists) return { meta: chk.meta };
+    }
+    throw new Error("Timed out waiting — please try again.");
+  }
+
+  // ── Workspace ──
+  function enterWorkspace(docId, meta) {
+    DOC = { doc_id: docId, meta };
+    chatHistory = [];
+    Store.addDoc({ doc_id: docId, title: meta.title, filename: meta.filename, pages: meta.pages, chars: meta.chars });
+    uploadSection.style.display = "none";
+    workspace.style.display = "";
+    $("doc-title").textContent = meta.title || "Untitled document";
+    $("doc-meta").textContent =
+      `${meta.pages ? meta.pages + " pages · " : ""}${(meta.chars / 1000).toFixed(0)}K characters · available ~48h`;
+  }
+  function exitWorkspace() {
+    DOC = null;
+    workspace.style.display = "none";
+    uploadSection.style.display = "";
+    statusArea.style.display = "none";
+    errorArea.style.display = "none";
+    progressBar.style.width = "0%";
+    fileInput.value = "";
+    renderRecents();
+  }
+  function handleExpired() {
+    addMsg("system", ERROR_COPY.doc_expired);
+    $("chat-input").disabled = true;
+    $("chat-send").disabled = true;
+  }
+
+  // ── Chat ──
+  const esc = (t) => t.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+  const md = (t) => esc(t).replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>").replace(/\*(.*?)\*/g, "<em>$1</em>").replace(/\n\n/g, "<br><br>").replace(/\n/g, "<br>");
+
+  function addMsg(cls, html) {
+    const div = document.createElement("div");
+    div.className = "chat-msg " + cls;
+    div.innerHTML = html;
+    $("chat-msgs").appendChild(div);
+    $("chat-msgs").scrollTop = $("chat-msgs").scrollHeight;
+    return div;
+  }
+
+  async function sendChat() {
+    const input = $("chat-input");
+    const q = input.value.trim();
+    if (!q || !DOC) return;
+    input.value = "";
+    addMsg("user", esc(q));
+    const spinner = addMsg("assistant", '<span class="spinner-sm"></span> Thinking…');
+    try {
+      const data = await apiPost("/pdfchat/chat", {
+        doc_id: DOC.doc_id, client_id: CLIENT_ID, question: q,
+        history: chatHistory.slice(-16),
+      }, 60000);
+      spinner.innerHTML = md(data.answer || "");
+      if (data.sources?.length) {
+        spinner.innerHTML += `<details style="margin-top:8px;"><summary style="cursor:pointer;font-size:11px;color:var(--fg-faint);">Sources from the book (${data.sources.length})</summary>` +
+          data.sources.map(s => `<p style="font-size:11px;color:var(--fg-faint);margin-top:6px;border-left:2px solid var(--border);padding-left:8px;">…${esc(s.snippet)}…</p>`).join("") +
+          `</details>`;
+      }
+      chatHistory.push({ role: "user", content: q }, { role: "assistant", content: data.answer || "" });
+    } catch (e) {
+      spinner.remove();
+      if (e.status === 410) handleExpired();
+      else addMsg("system", esc(e.message));
+    }
+  }
+
+  // ── Quiz ──
+  let quizCount = 5;
+  async function startQuiz() {
+    if (!DOC) return;
+    const btn = $("quiz-start"), statusEl = $("quiz-status"), area = $("quiz-area");
+    btn.disabled = true;
+    statusEl.innerHTML = '<span class="spinner-sm"></span> Building a verified quiz…';
+    area.innerHTML = "";
+    try {
+      const data = await apiPost("/pdfchat/quiz", { doc_id: DOC.doc_id, client_id: CLIENT_ID, count: quizCount }, 90000);
+      statusEl.textContent = data.verified < data.requested ? `Showing ${data.verified} verified questions.` : "";
+      renderQuiz(data.questions);
+    } catch (e) {
+      if (e.status === 410) { statusEl.textContent = ""; area.innerHTML = `<p class="result-error">${esc(ERROR_COPY.doc_expired)}</p>`; }
+      else statusEl.textContent = e.message;
+    } finally { btn.disabled = false; }
+  }
+
+  function renderQuiz(questions) {
+    const area = $("quiz-area");
+    let answered = 0, correct = 0;
+    const score = document.createElement("div");
+    score.className = "quiz-score";
+    score.textContent = `0 / ${questions.length} answered`;
+    area.appendChild(score);
+
+    questions.forEach((q, qi) => {
+      const card = document.createElement("div");
+      card.className = "quiz-card";
+      card.innerHTML = `<p class="quiz-q">${qi + 1}. ${esc(q.question)}</p>`;
+      q.options.forEach((opt, oi) => {
+        const b = document.createElement("button");
+        b.className = "quiz-option";
+        b.textContent = opt;
+        b.addEventListener("click", () => {
+          if (card.dataset.done) return;
+          card.dataset.done = "1";
+          answered++;
+          if (oi === q.answer_index) correct++;
+          card.querySelectorAll(".quiz-option").forEach((btn, bi) => {
+            btn.disabled = true;
+            if (bi === q.answer_index) btn.classList.add("correct");
+            else if (bi === oi) btn.classList.add("incorrect");
+          });
+          const quote = document.createElement("blockquote");
+          quote.className = "quiz-quote";
+          quote.textContent = `From the book: "${q.supporting_quote}"`;
+          card.appendChild(quote);
+          score.textContent = `${answered} / ${questions.length} answered — ${correct} correct`;
+          if (answered === questions.length) {
+            const final = document.createElement("div");
+            final.className = "quiz-card";
+            final.innerHTML = `<p class="quiz-q">Final score: ${correct} / ${questions.length} ${correct === questions.length ? "🏆" : correct >= questions.length / 2 ? "👍" : "📖 Keep reading!"}</p>`;
+            const again = document.createElement("button");
+            again.className = "btn-primary";
+            again.style.cssText = "padding:8px 20px;font-size:13px;";
+            again.textContent = "New quiz";
+            again.addEventListener("click", startQuiz);
+            final.appendChild(again);
+            area.appendChild(final);
+            final.scrollIntoView({ behavior: "smooth", block: "nearest" });
+          }
+        });
+        card.appendChild(b);
+      });
+      area.appendChild(card);
+    });
+  }
+
+  // ── Recent docs ──
+  async function openRecent(doc) {
+    setStatus("Checking this book…", 50);
+    try {
+      const chk = await apiPost("/pdfchat/check", { doc_id: doc.doc_id, client_id: CLIENT_ID });
+      if (chk.exists) enterWorkspace(doc.doc_id, chk.meta);
+      else showError(`"${doc.title}" — ${ERROR_COPY.doc_expired}`);
+    } catch (e) { showError(e.message); }
+  }
+  function renderRecents() {
+    const docs = Store.docs();
+    $("recent-docs").style.display = docs.length ? "" : "none";
+    const list = $("recent-list");
+    list.innerHTML = "";
+    docs.forEach(d => {
+      const b = document.createElement("button");
+      b.className = "recent-doc-btn";
+      b.innerHTML = `<span>📕 ${esc(d.title || d.filename || "Untitled")}</span><span style="color:var(--fg-faint);font-size:11px;">${d.pages ? d.pages + " pages" : ""}</span>`;
+      b.addEventListener("click", () => openRecent(d));
+      list.appendChild(b);
+    });
+  }
+
+  // ── Wiring ──
+  dropZone.addEventListener("click", () => fileInput.click());
+  dropZone.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") fileInput.click(); });
+  fileInput.addEventListener("change", () => handleFile(fileInput.files[0]));
+  ["dragover", "dragenter"].forEach(ev => dropZone.addEventListener(ev, (e) => { e.preventDefault(); dropZone.classList.add("dragover"); }));
+  ["dragleave", "drop"].forEach(ev => dropZone.addEventListener(ev, (e) => { e.preventDefault(); dropZone.classList.remove("dragover"); }));
+  dropZone.addEventListener("drop", (e) => handleFile(e.dataTransfer.files[0]));
+
+  $("chat-send").addEventListener("click", sendChat);
+  $("chat-input").addEventListener("keypress", (e) => { if (e.key === "Enter") sendChat(); });
+  $("new-doc-btn").addEventListener("click", exitWorkspace);
+
+  $("tab-chat").addEventListener("click", () => switchTab("chat"));
+  $("tab-quiz").addEventListener("click", () => switchTab("quiz"));
+  function switchTab(name) {
+    ["chat", "quiz"].forEach(t => {
+      $("tab-" + t).classList.toggle("active", t === name);
+      $("panel-" + t).classList.toggle("active", t === name);
+    });
+  }
+  document.querySelectorAll(".quiz-count").forEach(b => b.addEventListener("click", () => {
+    document.querySelectorAll(".quiz-count").forEach(x => x.classList.remove("active"));
+    b.classList.add("active");
+    quizCount = parseInt(b.dataset.count, 10);
+  }));
+  $("quiz-start").addEventListener("click", startQuiz);
+
+  renderRecents();
+</script>
