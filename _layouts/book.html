@@ -1,6 +1,8 @@
 ---
 layout: default
 ---
+{% assign has_ratings = false %}
+{% if page.ratings and page.ratings.average %}{% assign has_ratings = true %}{% endif %}
 <article class="book-page" itemscope itemtype="https://schema.org/Book">
   <div class="container">
 
@@ -41,7 +43,12 @@ layout: default
             <span class="book-meta-tag" title="Estimated reading time">⏱ {% if rt_hours > 0 %}{{ rt_hours }} hr{% if rt_rem > 0 %} {{ rt_rem }} min{% endif %}{% else %}{{ rt_minutes }} min{% endif %}</span>
           {% endif %}
           {% if page.published_year and page.published_year != "" %}<span class="book-meta-tag"><span itemprop="datePublished">{{ page.published_year }}</span></span>{% endif %}
-          {% if page.average_rating %}<span class="book-meta-tag">★ {{ page.average_rating }}</span>{% endif %}
+          {% if has_ratings %}
+            {% assign rc = page.ratings.count %}
+            <span class="book-meta-tag" title="{{ page.ratings.source }}, {{ rc }} ratings">★ {{ page.ratings.average }}{% if rc %} · {% if rc >= 1000000 %}{{ rc | divided_by: 100000 | times: 0.1 | round: 1 }}M{% elsif rc >= 1000 %}{{ rc | divided_by: 100 | times: 0.1 | round: 1 }}K{% else %}{{ rc }}{% endif %}{% endif %}</span>
+          {% elsif page.average_rating %}
+            <span class="book-meta-tag">★ {{ page.average_rating }}</span>
+          {% endif %}
           {% if page.isbn_13 and page.isbn_13 != "" %}<meta itemprop="isbn" content="{{ page.isbn_13 }}">{% endif %}
         </div>
 
@@ -54,7 +61,15 @@ layout: default
       </div>
     </div>
 
-    <div class="book-static-summary" style="margin-top:40px;">
+    {% comment %} Transparency: what generated this page and what it's grounded in. {% endcomment %}
+    <div class="ai-disclosure-notice">
+      <strong>How this page was made:</strong> the summary below was written with AI assistance, grounded in the book's official description{% if page.isbn_13 and page.isbn_13 != "" or page.isbn_10 and page.isbn_10 != "" %} (Google Books / Open Library){% endif %}.
+      {%- if has_ratings %} Ratings are sourced live from {% if page.ratings.source == "goodreads" %}Goodreads{% else %}Open Library{% endif %}{% if page.ratings.url and page.ratings.url != "" %} (<a href="{{ page.ratings.url }}" target="_blank" rel="noopener nofollow">view on {% if page.ratings.source == "goodreads" %}Goodreads{% else %}Open Library{% endif %}</a>){% endif %}.{% endif %}
+      {%- if page.awards.size > 0 %} Award data is sourced from <a href="https://www.wikidata.org" target="_blank" rel="noopener nofollow">Wikidata</a>.{% endif %}
+      Last updated {{ page.date | date: "%B %-d, %Y" }}.
+    </div>
+
+    <div class="book-static-summary">
       <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:16px;">
         <h2 style="font-size:18px;font-weight:600;">AI Grounded Summary</h2>
         <a class="btn-secondary" style="padding:8px 16px;font-size:13px;"
@@ -67,5 +82,100 @@ layout: default
       </div>
     </div>
 
+    {% if page.chapters and page.chapters.size > 0 %}
+      <div class="summary-card" style="margin-top:24px;">
+        <div class="summary-card-title">Chapters ({{ page.chapters.size }})</div>
+        <ol style="font-size:13px;color:var(--fg);line-height:1.9;padding-left:1.2rem;margin:0;columns:2;column-gap:24px;">
+          {% for c in page.chapters %}
+            <li style="break-inside:avoid;">{{ c }}</li>
+          {% endfor %}
+        </ol>
+      </div>
+    {% endif %}
+
+    {% if page.awards and page.awards.size > 0 %}
+      <div class="summary-card" style="margin-top:24px;">
+        <div class="summary-card-title">Awards</div>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
+          {% for a in page.awards %}
+            <li style="display:flex;align-items:center;gap:10px;">
+              {% if a.logo_url and a.logo_url != "" %}
+                <img src="{{ a.logo_url }}" alt="" loading="lazy" style="width:26px;height:26px;object-fit:contain;border-radius:4px;flex-shrink:0;">
+              {% else %}
+                <span style="font-size:16px;flex-shrink:0;">🏆</span>
+              {% endif %}
+              <span style="font-size:13px;font-weight:600;">{{ a.name }}</span>
+              {% if a.year %}<span style="font-size:12px;color:var(--fg-faint);">{{ a.year }}</span>{% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+
+    {% if page.ratings.distribution %}
+      {% assign star_labels = "5,4,3,2,1" | split: "," %}
+      {% assign dist_total = 0 %}
+      {% for s in star_labels %}{% assign n = page.ratings.distribution[s] | default: 0 %}{% assign dist_total = dist_total | plus: n %}{% endfor %}
+      {% if dist_total > 0 %}
+        <div class="summary-card" style="margin-top:24px;">
+          <div class="summary-card-title">Rating breakdown</div>
+          <p style="font-size:12px;color:var(--fg-faint);margin:-4px 0 10px;">{{ page.ratings.count }} ratings on {% if page.ratings.source == "goodreads" %}Goodreads{% else %}Open Library{% endif %}</p>
+          <div style="display:flex;flex-direction:column;gap:5px;">
+            {% for s in star_labels %}
+              {% assign n = page.ratings.distribution[s] | default: 0 %}
+              {% assign pct = n | times: 100.0 | divided_by: dist_total | round %}
+              <div style="display:flex;align-items:center;gap:8px;font-size:11px;color:var(--fg-muted);">
+                <span style="width:22px;flex-shrink:0;">{{ s }}★</span>
+                <span style="flex:1;height:8px;background:var(--bg-subtle);border:1px solid var(--border);border-radius:99px;overflow:hidden;"><span style="display:block;height:100%;width:{{ pct }}%;background:var(--accent);"></span></span>
+                <span style="width:42px;text-align:right;flex-shrink:0;color:var(--fg-faint);">{{ n }}</span>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+    {% endif %}
+
+    {% if page.similar_books and page.similar_books.size > 0 %}
+      <div class="summary-card" style="margin-top:24px;">
+        <div class="summary-card-title">Similar Books</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:16px;margin-top:6px;">
+          {% for b in page.similar_books %}
+            <a href="{{ '/summary/' | relative_url }}?q={{ b.title | url_encode }}&author={{ b.author | url_encode }}{% if b.google_id and b.google_id != '' %}&google_id={{ b.google_id }}{% endif %}{% if b.isbn_13 and b.isbn_13 != '' %}&isbn={{ b.isbn_13 }}{% endif %}&direct=true"
+               style="text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:8px;">
+              {% if b.cover_url and b.cover_url != "" %}
+                <img src="{{ b.cover_url }}" alt="Cover of {{ b.title }}" loading="lazy" style="width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:8px;border:1px solid var(--border);">
+              {% else %}
+                <div style="width:100%;aspect-ratio:2/3;background:var(--bg-subtle);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--fg-faint);padding:8px;text-align:center;">{{ b.title | truncate: 30 }}</div>
+              {% endif %}
+              <div>
+                <p style="font-size:12px;font-weight:600;line-height:1.3;">{{ b.title | truncate: 45 }}</p>
+                <p style="font-size:11px;color:var(--fg-faint);margin-top:2px;">{{ b.author }}</p>
+              </div>
+            </a>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
   </div>
 </article>
+
+{% comment %} Additive Book schema — coexists with jekyll-seo-tag's own JSON-LD block (Google supports multiple structured-data blocks per page). {% endcomment %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Book",
+  "name": {{ page.title | jsonify }},
+  "author": {"@type": "Person", "name": {{ page.author | jsonify }}},
+  {% if page.isbn_13 and page.isbn_13 != "" %}"isbn": {{ page.isbn_13 | jsonify }},{% endif %}
+  {% if page.page_count %}"numberOfPages": {{ page.page_count }},{% endif %}
+  {% if page.published_year and page.published_year != "" %}"datePublished": {{ page.published_year | jsonify }},{% endif %}
+  {% if page.cover_url and page.cover_url != "" %}"image": {{ page.cover_url | jsonify }},{% endif %}
+  {% assign genre_list = site.data.categories | where_exp: "c", "page.categories contains c.slug" %}
+  {% if genre_list.size > 0 %}
+  "genre": [{% for cat in genre_list %}{{ cat.name | jsonify }}{% unless forloop.last %},{% endunless %}{% endfor %}],
+  {% endif %}
+  {% if has_ratings %}"aggregateRating": {"@type": "AggregateRating", "ratingValue": {{ page.ratings.average }}, "ratingCount": {{ page.ratings.count }}},{% endif %}
+  "url": {{ page.url | absolute_url | jsonify }}
+}
+</script>
