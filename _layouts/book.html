@@ -119,7 +119,9 @@ layout: default
       {% if dist_total > 0 %}
         <div class="summary-card" style="margin-top:24px;">
           <div class="summary-card-title">Rating breakdown</div>
-          <p style="font-size:12px;color:var(--fg-faint);margin:-4px 0 10px;">{{ page.ratings.count }} ratings on {% if page.ratings.source == "goodreads" %}Goodreads{% else %}Open Library{% endif %}</p>
+          {% assign dist_src = page.ratings.distribution_source | default: page.ratings.source %}
+          {% assign dist_n = page.ratings.distribution_count | default: dist_total %}
+          <p style="font-size:12px;color:var(--fg-faint);margin:-4px 0 10px;">Based on {{ dist_n }} {% if dist_src == "open_library" %}Open Library{% elsif dist_src == "goodreads" %}Goodreads{% else %}reader{% endif %} ratings</p>
           <div style="display:flex;flex-direction:column;gap:5px;">
             {% for s in star_labels %}
               {% assign n = page.ratings.distribution[s] | default: 0 %}

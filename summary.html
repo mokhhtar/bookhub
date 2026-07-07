@@ -1299,8 +1299,11 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
               <span style="width:42px;text-align:right;flex-shrink:0;color:var(--fg-faint);">${formatRatingCount(n)}</span>
             </div>`;
           }).join('');
+          const distSrc = data.ratings.distribution_source === "open_library" ? "Open Library" : "readers";
+          const distN = data.ratings.distribution_count || total;
           ratingDistHtml = `
             <p class="sidebar-section-title">Rating breakdown</p>
+            <p style="font-size:10px;color:var(--fg-faint);margin:-2px 0 8px;">Based on ${distN.toLocaleString()} ${distSrc} ratings</p>
             <div style="display:flex;flex-direction:column;gap:5px;">${rows}</div>`;
         }
       }
