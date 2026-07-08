@@ -1464,7 +1464,14 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
             ${ratingBadgeHtml(data)}
             ${data.published_year ? `<span class="sidebar-badge">${data.published_year}</span>` : ''}
             ${data.page_count ? `<span class="sidebar-badge">${data.page_count} pages</span>` : ''}
+            ${data.reading_level ? `<span class="sidebar-badge" title="Estimated reading level">🎓 ${data.reading_level}</span>` : ''}
           </div>
+
+          ${data.themes && data.themes.length ? `
+          <p class="sidebar-section-title">Themes</p>
+          <div class="sidebar-badges" style="margin-bottom:16px;">
+            ${data.themes.map(t => `<span class="sidebar-badge">${t}</span>`).join('')}
+          </div>` : ''}
 
           ${awardsHtml}
 

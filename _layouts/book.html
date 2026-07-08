@@ -43,6 +43,7 @@ layout: default
             <span class="book-meta-tag" title="Estimated reading time">⏱ {% if rt_hours > 0 %}{{ rt_hours }} hr{% if rt_rem > 0 %} {{ rt_rem }} min{% endif %}{% else %}{{ rt_minutes }} min{% endif %}</span>
           {% endif %}
           {% if page.published_year and page.published_year != "" %}<span class="book-meta-tag"><span itemprop="datePublished">{{ page.published_year }}</span></span>{% endif %}
+          {% if page.reading_level and page.reading_level != "" %}<span class="book-meta-tag" title="Estimated reading level">🎓 {{ page.reading_level }}</span>{% endif %}
           {% if has_ratings %}
             {% assign rc = page.ratings.count %}
             <span class="book-meta-tag" title="{{ page.ratings.source }}, {{ rc }} ratings">★ {{ page.ratings.average }}{% if rc %} · {% if rc >= 1000000 %}{{ rc | divided_by: 100000 | times: 0.1 | round: 1 }}M{% elsif rc >= 1000 %}{{ rc | divided_by: 100 | times: 0.1 | round: 1 }}K{% else %}{{ rc }}{% endif %}{% endif %}</span>
@@ -90,6 +91,17 @@ layout: default
             <li style="break-inside:avoid;">{{ c }}</li>
           {% endfor %}
         </ol>
+      </div>
+    {% endif %}
+
+    {% if page.themes and page.themes.size > 0 %}
+      <div class="summary-card" style="margin-top:24px;">
+        <div class="summary-card-title">Themes</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          {% for t in page.themes %}
+            <span class="book-meta-tag">{{ t }}</span>
+          {% endfor %}
+        </div>
       </div>
     {% endif %}
 
