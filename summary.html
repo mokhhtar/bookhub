@@ -235,13 +235,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
     position: sticky;
     top: 80px;
     order: 1;
-    max-height: calc(100vh - 100px);
-    overflow-y: auto;
-    scrollbar-width: thin;
   }
-
-  .summary-sidebar::-webkit-scrollbar { width: 4px; }
-  .summary-sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
 
   .sidebar-cover {
     width: 100%;
@@ -1464,7 +1458,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
             ${ratingBadgeHtml(data)}
             ${data.published_year ? `<span class="sidebar-badge">${data.published_year}</span>` : ''}
             ${data.page_count ? `<span class="sidebar-badge">${data.page_count} pages</span>` : ''}
-            ${data.reading_level ? `<span class="sidebar-badge" title="Estimated reading level">🎓 ${data.reading_level}</span>` : ''}
+            ${data.reading_level ? `<span class="sidebar-badge" title="Estimated reading level">🎓 Reading level: ${data.reading_level}</span>` : ''}
           </div>
 
           ${data.themes && data.themes.length ? `
