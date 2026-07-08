@@ -696,6 +696,63 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
     .summary-card { padding: 1.25rem; }
   }
 
+  /* ── Similar books: infinite horizontal marquee ──────────── */
+  .similar-marquee { overflow: hidden; position: relative; padding: 14px 0; }
+  .similar-track {
+    display: flex;
+    width: max-content;
+    animation: similar-scroll 60s linear infinite;
+  }
+  /* Pause while the reader inspects/clicks a cover */
+  .similar-marquee:hover .similar-track { animation-play-state: paused; }
+  @keyframes similar-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  .similar-item {
+    width: 118px;
+    flex-shrink: 0;
+    margin-right: 16px; /* margin, not flex gap — keeps -50% loop seamless */
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: transform .25s ease, opacity .25s ease;
+  }
+  /* Hovered cover grows; its siblings recede */
+  .similar-track:hover .similar-item { transform: scale(.92); opacity: .55; }
+  .similar-track .similar-item:hover { transform: scale(1.12); opacity: 1; position: relative; z-index: 2; }
+  .similar-item img,
+  .similar-item .similar-cover-empty {
+    width: 100%;
+    aspect-ratio: 2/3;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    margin-bottom: 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.08);
+    transition: box-shadow .25s ease;
+  }
+  .similar-item:hover img { box-shadow: 0 10px 24px rgba(0,0,0,.25); }
+  .similar-item .similar-cover-empty {
+    display: flex; align-items: center; justify-content: center;
+    background: var(--bg-subtle); color: var(--fg-faint);
+    font-size: 11px; padding: 8px; box-sizing: border-box; text-align: center;
+  }
+  .similar-item .similar-t {
+    font-size: 11px; font-weight: 600; line-height: 1.3; color: var(--fg);
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+    overflow: hidden; height: 29px; margin-bottom: 2px;
+  }
+  .similar-item .similar-a {
+    font-size: 10px; color: var(--fg-faint);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .similar-track { animation: none; }
+    .similar-marquee { overflow-x: auto; }
+  }
+
   .search-sort-bar { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
   .search-sort-bar label { font-size: 12px; color: var(--fg-faint); }
   .search-sort-bar select {
@@ -1332,32 +1389,41 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
         }
       }
 
-      // Build similar books html (now in main area)
-      const similarHtml = data.similar_books && data.similar_books.length
-        ? `<div class="summary-card">
+      // Build similar books html — infinite horizontal marquee. The item
+      // list is repeated until wide enough, then duplicated once more so the
+      // -50% keyframe loops seamlessly. Hover pauses the track and zooms
+      // the pointed cover (CSS .similar-track:hover rules).
+      let similarHtml = '';
+      if (data.similar_books && data.similar_books.length) {
+        let items = data.similar_books;
+        while (items.length < 8) items = items.concat(data.similar_books);
+        const loop = items.concat(items);
+        const card = (b) => {
+          const te = b.title.replace(/'/g, "\\'").replace(/"/g, "&quot;");
+          const ae = (b.author || '').replace(/'/g, "\\'").replace(/"/g, "&quot;");
+          // Pass the exact identifiers the backend returns so a click opens
+          // THIS book's summary directly (forceDirect=true), instead of
+          // running a title search and showing the results list.
+          const isbnV = (b.isbn_13 || b.isbn_10) ? `'${b.isbn_13 || b.isbn_10}'` : 'null';
+          const gidV = b.google_id ? `'${String(b.google_id).replace(/'/g, "\\'")}'` : 'null';
+          const olidV = b.openlibrary_id ? `'${String(b.openlibrary_id).replace(/'/g, "\\'")}'` : 'null';
+          const url = `{{ '/summary/' | relative_url }}?q=${encodeURIComponent(b.title)}&author=${encodeURIComponent(b.author || '')}`;
+          return `<a href="${url}" class="similar-item" onclick="event.preventDefault();summarizeBook('${te}','${ae}',true,false,${isbnV},${gidV},${olidV})">
+            ${b.cover_url ? `<img src="${b.cover_url}" alt="Cover of ${b.title}" loading="lazy">` : `<div class="similar-cover-empty">${b.title}</div>`}
+            <p class="similar-t">${b.title}</p>
+            <p class="similar-a">${b.author || ''}</p>
+          </a>`;
+        };
+        similarHtml = `<div class="summary-card">
             <div class="summary-card-title">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 3.5A2.5 2.5 0 0 1 6.5 6H20v12"/></svg>
               Similar Books
             </div>
-            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:14px;">
-              ${data.similar_books.map(b => {
-                const te = b.title.replace(/'/g, "\\'").replace(/"/g, "&quot;");
-                const ae = (b.author || '').replace(/'/g, "\\'").replace(/"/g, "&quot;");
-                // Pass the exact identifiers the backend now returns so a click
-                // opens THIS book's summary directly (forceDirect=true), instead
-                // of running a title search and showing the results list.
-                const isbnV = (b.isbn_13 || b.isbn_10) ? `'${b.isbn_13 || b.isbn_10}'` : 'null';
-                const gidV = b.google_id ? `'${String(b.google_id).replace(/'/g, "\\'")}'` : 'null';
-                const olidV = b.openlibrary_id ? `'${String(b.openlibrary_id).replace(/'/g, "\\'")}'` : 'null';
-                const url = `{{ '/summary/' | relative_url }}?q=${encodeURIComponent(b.title)}&author=${encodeURIComponent(b.author || '')}`;
-                return `<a href="${url}" class="similar-book-card" onclick="event.preventDefault();summarizeBook('${te}','${ae}',true,false,${isbnV},${gidV},${olidV})" style="text-align:center;cursor:pointer;text-decoration:none;display:block;color:inherit;">
-                  ${b.cover_url ? `<img src="${b.cover_url}" alt="Cover of ${b.title}" style="width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:6px;border:1px solid var(--border);margin-bottom:6px;">` : `<div style="width:100%;aspect-ratio:2/3;background:var(--bg-subtle);border:1px solid var(--border);border-radius:6px;margin-bottom:6px;"></div>`}
-                  <p style="font-size:11px;font-weight:600;line-height:1.3;margin-bottom:2px;color:var(--fg);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;height:28px;">${b.title}</p>
-                  <p style="font-size:10px;color:var(--fg-faint);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${b.author}</p>
-                </a>`;
-              }).join('')}
+            <div class="similar-marquee">
+              <div class="similar-track" style="animation-duration:${loop.length * 3}s;">${loop.map(card).join('')}</div>
             </div>
-           </div>` : '';
+           </div>`;
+      }
 
       // Real, attributed quotes from the book's own Wikiquote page — never
       // AI-generated (same sourcing policy as ratings/awards).
@@ -1504,6 +1570,13 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
             ${data.page_count ? `<span class="sidebar-badge">${data.page_count} pages</span>` : ''}
             ${data.reading_level ? `<span class="sidebar-badge" title="Estimated reading level">🎓 Reading level: ${data.reading_level}</span>` : ''}
           </div>
+
+          ${data.nyt && data.nyt.weeks_on_list ? `
+          <div style="border:1px solid var(--accent);border-radius:12px;padding:10px 14px;margin:12px 0;background:var(--bg-subtle);">
+            <p style="font-size:12px;font-weight:700;color:var(--fg);margin:0;">🏆 New York Times Bestseller</p>
+            <p style="font-size:12px;color:var(--fg-muted);margin:4px 0 0;">${data.nyt.weeks_on_list} week${data.nyt.weeks_on_list > 1 ? 's' : ''} on the "${data.nyt.list_name}" list${data.nyt.peak_rank ? ` · peaked at #${data.nyt.peak_rank}` : ''}</p>
+            ${data.nyt.review_url ? `<a href="${data.nyt.review_url}" target="_blank" rel="noopener nofollow" style="font-size:11px;color:var(--accent);display:inline-block;margin-top:4px;">Read the NYT review →</a>` : ''}
+          </div>` : ''}
 
           ${data.themes && data.themes.length ? `
           <p class="sidebar-section-title">Themes</p>

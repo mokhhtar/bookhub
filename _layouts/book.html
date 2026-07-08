@@ -1,6 +1,44 @@
 ---
 layout: default
 ---
+<style>
+  /* Similar-books marquee — mirrors the dynamic summary page's effect */
+  .similar-marquee { overflow: hidden; position: relative; padding: 14px 0; }
+  .similar-track { display: flex; width: max-content; animation: similar-scroll 60s linear infinite; }
+  .similar-marquee:hover .similar-track { animation-play-state: paused; }
+  @keyframes similar-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .similar-item {
+    width: 118px; flex-shrink: 0; margin-right: 16px; text-align: center;
+    text-decoration: none; color: inherit; display: block;
+    transition: transform .25s ease, opacity .25s ease;
+  }
+  .similar-track:hover .similar-item { transform: scale(.92); opacity: .55; }
+  .similar-track .similar-item:hover { transform: scale(1.12); opacity: 1; position: relative; z-index: 2; }
+  .similar-item img, .similar-item .similar-cover-empty {
+    width: 100%; aspect-ratio: 2/3; object-fit: cover; border-radius: 8px;
+    border: 1px solid var(--border); margin-bottom: 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.08); transition: box-shadow .25s ease;
+  }
+  .similar-item:hover img { box-shadow: 0 10px 24px rgba(0,0,0,.25); }
+  .similar-item .similar-cover-empty {
+    display: flex; align-items: center; justify-content: center;
+    background: var(--bg-subtle); color: var(--fg-faint);
+    font-size: 11px; padding: 8px; box-sizing: border-box; text-align: center;
+  }
+  .similar-item .similar-t {
+    font-size: 11px; font-weight: 600; line-height: 1.3; color: var(--fg);
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+    overflow: hidden; height: 29px; margin-bottom: 2px;
+  }
+  .similar-item .similar-a {
+    font-size: 10px; color: var(--fg-faint);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .similar-track { animation: none; }
+    .similar-marquee { overflow-x: auto; }
+  }
+</style>
 {% assign has_ratings = false %}
 {% if page.ratings and page.ratings.average %}{% assign has_ratings = true %}{% endif %}
 <article class="book-page" itemscope itemtype="https://schema.org/Book">
@@ -63,6 +101,12 @@ layout: default
           <a href="{% if page.free_ebook.read_url %}{{ page.free_ebook.read_url }}{% else %}{{ page.free_ebook.page_url }}{% endif %}"
              class="btn-secondary" target="_blank" rel="noopener" style="margin-left:8px;">📖 Read free — public domain</a>
         {% endif %}
+        {% if page.nyt and page.nyt.weeks_on_list %}
+          <div style="margin-top:12px;">
+            <span class="book-meta-tag" style="border-color:var(--accent);">🏆 NYT Bestseller — {{ page.nyt.weeks_on_list }} week{% if page.nyt.weeks_on_list > 1 %}s{% endif %} on the "{{ page.nyt.list_name }}" list{% if page.nyt.peak_rank %} · peaked at #{{ page.nyt.peak_rank }}{% endif %}</span>
+            {% if page.nyt.review_url %}<a href="{{ page.nyt.review_url }}" target="_blank" rel="noopener nofollow" style="font-size:12px;margin-left:6px;">NYT review →</a>{% endif %}
+          </div>
+        {% endif %}
       </div>
     </div>
 
@@ -72,6 +116,7 @@ layout: default
       {%- if has_ratings %} Ratings are sourced live from {% if page.ratings.source == "goodreads" %}Goodreads{% else %}Open Library{% endif %}{% if page.ratings.url and page.ratings.url != "" %} (<a href="{{ page.ratings.url }}" target="_blank" rel="noopener nofollow">view on {% if page.ratings.source == "goodreads" %}Goodreads{% else %}Open Library{% endif %}</a>){% endif %}.{% endif %}
       {%- if page.awards.size > 0 %} Award data is sourced from <a href="https://www.wikidata.org" target="_blank" rel="noopener nofollow">Wikidata</a>.{% endif %}
       {%- if page.quotes and page.quotes.texts %} Quotes are sourced verbatim from <a href="{{ page.quotes.source_url }}" target="_blank" rel="noopener nofollow">Wikiquote</a> (CC BY-SA) — not AI-generated.{% endif %}
+      {%- if page.nyt and page.nyt.weeks_on_list %} Bestseller data is from <a href="https://developer.nytimes.com" target="_blank" rel="noopener nofollow">The New York Times Books API</a>.{% endif %}
       Last updated {{ page.date | date: "%B %-d, %Y" }}.
     </div>
 
@@ -165,23 +210,31 @@ layout: default
     {% endif %}
 
     {% if page.similar_books and page.similar_books.size > 0 %}
+      {% comment %} Repeat the list until wide enough for a seamless -50% loop,
+          mirroring the dynamic page's marquee (≥8 items, then doubled). {% endcomment %}
+      {% assign sim_items = page.similar_books %}
+      {% for i in (1..4) %}
+        {% if sim_items.size < 8 %}{% assign sim_items = sim_items | concat: page.similar_books %}{% endif %}
+      {% endfor %}
+      {% assign sim_loop = sim_items | concat: sim_items %}
+      {% assign sim_duration = sim_loop.size | times: 3 %}
       <div class="summary-card" style="margin-top:24px;">
         <div class="summary-card-title">Similar Books</div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:16px;margin-top:6px;">
-          {% for b in page.similar_books %}
-            <a href="{{ '/summary/' | relative_url }}?q={{ b.title | url_encode }}&author={{ b.author | url_encode }}{% if b.google_id and b.google_id != '' %}&google_id={{ b.google_id }}{% endif %}{% if b.isbn_13 and b.isbn_13 != '' %}&isbn={{ b.isbn_13 }}{% endif %}&direct=true"
-               style="text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:8px;">
-              {% if b.cover_url and b.cover_url != "" %}
-                <img src="{{ b.cover_url }}" alt="Cover of {{ b.title }}" loading="lazy" style="width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:8px;border:1px solid var(--border);">
-              {% else %}
-                <div style="width:100%;aspect-ratio:2/3;background:var(--bg-subtle);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--fg-faint);padding:8px;text-align:center;">{{ b.title | truncate: 30 }}</div>
-              {% endif %}
-              <div>
-                <p style="font-size:12px;font-weight:600;line-height:1.3;">{{ b.title | truncate: 45 }}</p>
-                <p style="font-size:11px;color:var(--fg-faint);margin-top:2px;">{{ b.author }}</p>
-              </div>
-            </a>
-          {% endfor %}
+        <div class="similar-marquee">
+          <div class="similar-track" style="animation-duration:{{ sim_duration }}s;">
+            {% for b in sim_loop %}
+              <a href="{{ '/summary/' | relative_url }}?q={{ b.title | url_encode }}&author={{ b.author | url_encode }}{% if b.google_id and b.google_id != '' %}&google_id={{ b.google_id }}{% endif %}{% if b.isbn_13 and b.isbn_13 != '' %}&isbn={{ b.isbn_13 }}{% endif %}&direct=true"
+                 class="similar-item">
+                {% if b.cover_url and b.cover_url != "" %}
+                  <img src="{{ b.cover_url }}" alt="Cover of {{ b.title }}" loading="lazy">
+                {% else %}
+                  <div class="similar-cover-empty">{{ b.title | truncate: 30 }}</div>
+                {% endif %}
+                <p class="similar-t">{{ b.title }}</p>
+                <p class="similar-a">{{ b.author }}</p>
+              </a>
+            {% endfor %}
+          </div>
         </div>
       </div>
     {% endif %}
