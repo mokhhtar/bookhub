@@ -1523,7 +1523,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
               ${data.free_ebook.epub_url ? `<a href="${data.free_ebook.epub_url}" class="btn-secondary" style="padding:6px 12px;font-size:12px;">EPUB</a>` : ''}
               ${data.free_ebook.txt_url ? `<a href="${data.free_ebook.txt_url}" class="btn-secondary" style="padding:6px 12px;font-size:12px;">TXT</a>` : ''}
             </div>
-            <p style="font-size:10px;color:var(--fg-faint);margin:8px 0 0;">From <a href="${data.free_ebook.page_url}" target="_blank" rel="noopener nofollow" style="color:inherit;">Project Gutenberg</a></p>
+            <p style="font-size:10px;color:var(--fg-faint);margin:8px 0 0;">From <a href="${data.free_ebook.page_url}" target="_blank" rel="noopener nofollow" style="color:inherit;">${data.free_ebook.source === 'internet_archive' ? 'Internet Archive' : 'Project Gutenberg'}</a></p>
           </div>` : ''}
 
           ${data.amazon_url ? `
