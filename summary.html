@@ -696,74 +696,6 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
     .summary-card { padding: 1.25rem; }
   }
 
-  /* ── Search results: Bento grid ─────────────────────────── */
-  .search-bento {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 14px;
-    grid-auto-flow: dense; /* backfill holes left by the larger tiles */
-  }
-  .bento-card {
-    border: 1px solid var(--border);
-    border-radius: 18px;
-    padding: 14px;
-    background: var(--bg-subtle);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    text-decoration: none;
-    color: inherit;
-    cursor: pointer;
-    box-sizing: border-box;
-    transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
-  }
-  .bento-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 28px rgba(0,0,0,.16);
-    border-color: var(--accent);
-  }
-  .bento-cover {
-    width: 100%;
-    aspect-ratio: 2/3;
-    object-fit: cover;
-    border-radius: 10px;
-    border: 1px solid var(--border);
-    margin-bottom: 10px;
-  }
-  div.bento-cover-empty {
-    display: flex; align-items: center; justify-content: center;
-    background: var(--bg); color: var(--fg-faint); font-size: 12px;
-  }
-  .bento-title {
-    font-size: 12px; font-weight: 600; line-height: 1.3; color: var(--fg);
-    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
-    overflow: hidden; width: 100%;
-  }
-  .bento-author {
-    font-size: 11px; color: var(--fg-faint); width: 100%; margin-top: 4px;
-    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-  }
-  .bento-year {
-    font-size: 10px; color: var(--fg-faint); background: var(--bg);
-    padding: 1px 8px; border-radius: 999px; border: 1px solid var(--border);
-    margin-top: 8px; display: inline-block;
-  }
-  /* Featured tile: 2×2, opens the rhythm of each 10-card block */
-  .bento-lg { grid-column: span 2; grid-row: span 2; padding: 18px; border-radius: 22px; }
-  .bento-lg .bento-title { font-size: 15px; -webkit-line-clamp: 3; }
-  .bento-lg .bento-author { font-size: 12px; }
-  /* Wide tile: horizontal, breaks the vertical monotony mid-block */
-  .bento-wide { grid-column: span 2; flex-direction: row; align-items: center; text-align: left; gap: 12px; }
-  .bento-wide .bento-cover { width: 56px; margin-bottom: 0; flex-shrink: 0; }
-  .bento-wide .bento-body { min-width: 0; display: flex; flex-direction: column; align-items: flex-start; }
-  @media (max-width: 400px) {
-    /* A ~1-column grid can't host span-2 tiles without overflowing */
-    .bento-lg, .bento-wide { grid-column: span 1; grid-row: span 1; flex-direction: column; text-align: center; padding: 14px; }
-    .bento-wide .bento-cover { width: 100%; margin-bottom: 10px; }
-    .bento-wide .bento-body { align-items: center; }
-  }
-
   .search-sort-bar { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
   .search-sort-bar label { font-size: 12px; color: var(--fg-faint); }
   .search-sort-bar select {
@@ -1159,6 +1091,13 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
     return data.category ? `<span class="sidebar-badge category">${data.category}</span>` : '';
   }
 
+  // Escape externally-sourced text (Wikiquote) before HTML interpolation.
+  function escExt(s) {
+    return String(s == null ? "" : s)
+      .replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;").replaceAll("'", "&#39;");
+  }
+
   function formatRatingCount(n) {
     if (n >= 1e6) return (n / 1e6).toFixed(1).replace(/\.0$/, "") + "M";
     if (n >= 1e3) return (n / 1e3).toFixed(1).replace(/\.0$/, "") + "K";
@@ -1420,6 +1359,19 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
             </div>
            </div>` : '';
 
+      // Real, attributed quotes from the book's own Wikiquote page — never
+      // AI-generated (same sourcing policy as ratings/awards).
+      const wq = data.quotes;
+      const quotesHtml = wq && wq.texts && wq.texts.length
+        ? `<div class="summary-card">
+            <div class="summary-card-title">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9.583 17.321C8.553 16.227 8 15 8 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 0 1-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z"/></svg>
+              Notable Quotes
+            </div>
+            ${wq.texts.map(t => `<blockquote style="font-size:14px;font-style:italic;line-height:1.65;color:var(--fg);border-left:3px solid var(--accent);padding:4px 0 4px 14px;margin:0 0 12px;">"${escExt(t)}"</blockquote>`).join('')}
+            <p style="font-size:11px;color:var(--fg-faint);margin:0;">Sourced verbatim from <a href="${wq.source_url}" target="_blank" rel="noopener nofollow" style="color:var(--accent);">Wikiquote</a> (CC BY-SA) — not AI-generated.</p>
+           </div>` : '';
+
       const chaptersHtml = data.chapters && data.chapters.length
         ? `<div class="summary-card">
             <div class="summary-card-title" style="display:flex;align-items:center;justify-content:space-between;">
@@ -1531,6 +1483,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
             <div class="ai-output">${parseSummaryMarkdown(data.summary)}</div>
           </div>
 
+          ${quotesHtml}
           ${chaptersHtml}
           ${similarHtml}
         </main>
@@ -1561,6 +1514,17 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
           ${awardsHtml}
 
           ${ratingDistHtml}
+
+          ${data.free_ebook ? `
+          <div style="border:1px solid var(--accent);border-radius:12px;padding:12px 14px;margin-bottom:12px;background:var(--bg-subtle);">
+            <p style="font-size:12px;font-weight:700;color:var(--fg);margin:0 0 8px;">📖 Public domain — read it free</p>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;">
+              <a href="${data.free_ebook.read_url || data.free_ebook.page_url}" target="_blank" rel="noopener" class="btn-secondary" style="padding:6px 12px;font-size:12px;">Read online</a>
+              ${data.free_ebook.epub_url ? `<a href="${data.free_ebook.epub_url}" class="btn-secondary" style="padding:6px 12px;font-size:12px;">EPUB</a>` : ''}
+              ${data.free_ebook.txt_url ? `<a href="${data.free_ebook.txt_url}" class="btn-secondary" style="padding:6px 12px;font-size:12px;">TXT</a>` : ''}
+            </div>
+            <p style="font-size:10px;color:var(--fg-faint);margin:8px 0 0;">From <a href="${data.free_ebook.page_url}" target="_blank" rel="noopener nofollow" style="color:inherit;">Project Gutenberg</a></p>
+          </div>` : ''}
 
           ${data.amazon_url ? `
           <a href="${data.amazon_url}" class="sidebar-amazon-btn" target="_blank" rel="noopener sponsored">
@@ -1640,15 +1604,6 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
     applySearchSort();
     renderSearchResultsPage(0);
   };
-
-  // Bento rhythm: within each block of 10 cards, the 1st is a 2×2 feature
-  // tile and the 5th a wide horizontal tile; the rest are standard.
-  function bentoClass(i) {
-    const pos = i % 10;
-    if (pos === 0) return "bento-lg";
-    if (pos === 4) return "bento-wide";
-    return "";
-  }
 
   function renderSearchResultsPage(pageIndex) {
     currentPage = pageIndex;

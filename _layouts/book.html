@@ -59,6 +59,10 @@ layout: default
           <a href="https://www.amazon.com/dp/{{ page.isbn_10 }}?tag={{ site.amazon_tag }}"
              class="btn-primary" target="_blank" rel="noopener sponsored">Buy on Amazon</a>
         {% endif %}
+        {% if page.free_ebook and page.free_ebook.page_url %}
+          <a href="{% if page.free_ebook.read_url %}{{ page.free_ebook.read_url }}{% else %}{{ page.free_ebook.page_url }}{% endif %}"
+             class="btn-secondary" target="_blank" rel="noopener" style="margin-left:8px;">📖 Read free — public domain</a>
+        {% endif %}
       </div>
     </div>
 
@@ -67,6 +71,7 @@ layout: default
       <strong>How this page was made:</strong> the summary below was written with AI assistance, grounded in the book's official description{% if page.isbn_13 and page.isbn_13 != "" or page.isbn_10 and page.isbn_10 != "" %} (Google Books / Open Library){% endif %}.
       {%- if has_ratings %} Ratings are sourced live from {% if page.ratings.source == "goodreads" %}Goodreads{% else %}Open Library{% endif %}{% if page.ratings.url and page.ratings.url != "" %} (<a href="{{ page.ratings.url }}" target="_blank" rel="noopener nofollow">view on {% if page.ratings.source == "goodreads" %}Goodreads{% else %}Open Library{% endif %}</a>){% endif %}.{% endif %}
       {%- if page.awards.size > 0 %} Award data is sourced from <a href="https://www.wikidata.org" target="_blank" rel="noopener nofollow">Wikidata</a>.{% endif %}
+      {%- if page.quotes and page.quotes.texts %} Quotes are sourced verbatim from <a href="{{ page.quotes.source_url }}" target="_blank" rel="noopener nofollow">Wikiquote</a> (CC BY-SA) — not AI-generated.{% endif %}
       Last updated {{ page.date | date: "%B %-d, %Y" }}.
     </div>
 
@@ -91,6 +96,16 @@ layout: default
             <li style="break-inside:avoid;">{{ c }}</li>
           {% endfor %}
         </ol>
+      </div>
+    {% endif %}
+
+    {% if page.quotes and page.quotes.texts %}
+      <div class="summary-card" style="margin-top:24px;">
+        <div class="summary-card-title">Notable Quotes</div>
+        {% for q in page.quotes.texts %}
+          <blockquote style="font-size:14px;font-style:italic;line-height:1.65;color:var(--fg);border-left:3px solid var(--accent);padding:4px 0 4px 14px;margin:0 0 12px;">"{{ q }}"</blockquote>
+        {% endfor %}
+        <p style="font-size:11px;color:var(--fg-faint);margin:0;">Sourced verbatim from <a href="{{ page.quotes.source_url }}" target="_blank" rel="noopener nofollow">Wikiquote</a> (CC BY-SA) — not AI-generated.</p>
       </div>
     {% endif %}
 
