@@ -1633,9 +1633,9 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
             </button>
           </div>
         </div>
-        <div class="search-bento">
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:16px;">
           ${pageResults
-            .map((b, i) => {
+            .map((b) => {
               const titleEscaped = b.title
                 .replace(/'/g, "\\'")
                 .replace(/"/g, "&quot;");
@@ -1643,18 +1643,12 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
                 .replace(/'/g, "\\'")
                 .replace(/"/g, "&quot;");
               const url = `{{ '/summary/' | relative_url }}?q=${encodeURIComponent(b.title)}&author=${encodeURIComponent(b.author || '')}&isbn=${b.isbn_13 || b.isbn_10 || ''}&google_id=${b.google_id || ''}&openlibrary_id=${b.openlibrary_id || ''}&direct=true`;
-              const cls = bentoClass(i);
-              const cover = b.cover_url
-                ? `<img src="${b.cover_url}" alt="Cover" class="bento-cover" loading="lazy">`
-                : `<div class="bento-cover bento-cover-empty">No cover</div>`;
-              const body = `
-                <p class="bento-title">${b.title}</p>
-                <p class="bento-author">${b.author || "Unknown"}</p>
-                ${b.published_year ? `<span class="bento-year">${b.published_year}</span>` : ""}`;
               return `
-              <a href="${url}" class="bento-card ${cls}" onclick="event.preventDefault(); summarizeBook('${titleEscaped}', '${authorEscaped}', true, false, '${b.isbn_13 || b.isbn_10 || ''}', '${b.google_id || ''}', '${b.openlibrary_id || ''}')">
-                ${cover}
-                ${cls === "bento-wide" ? `<div class="bento-body">${body}</div>` : body}
+              <a href="${url}" class="similar-book-card" onclick="event.preventDefault(); summarizeBook('${titleEscaped}', '${authorEscaped}', true, false, '${b.isbn_13 || b.isbn_10 || ''}', '${b.google_id || ''}', '${b.openlibrary_id || ''}')" style="text-align:center;cursor:pointer;border:1px solid var(--border);border-radius:6px;padding:12px;background:var(--bg-subtle);display:flex;flex-direction:column;align-items:center;height:100%;box-sizing:border-box;text-decoration:none;color:inherit;">
+                ${b.cover_url ? `<img src="${b.cover_url}" alt="Cover" style="width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:4px;margin-bottom:8px;border:1px solid var(--border);">` : `<div style="width:100%;aspect-ratio:2/3;background:var(--bg);border:1px solid var(--border);border-radius:4px;margin-bottom:8px;display:flex;align-items:center;justify-content:center;color:var(--fg-faint);font-size:12px;">No cover</div>`}
+                <p style="font-size:12px;font-weight:600;line-height:1.3;margin-bottom:4px;color:var(--fg);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis;width:100%;height:32px;">${b.title}</p>
+                <p style="font-size:11px;color:var(--fg-faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:100%;margin-top:auto;">${b.author || "Unknown"}</p>
+                ${b.published_year ? `<span style="font-size:10px;color:var(--fg-faint);background:var(--bg);padding:1px 6px;border-radius:999px;border:1px solid var(--border);margin-top:6px;display:inline-block;">${b.published_year}</span>` : ""}
               </a>
             `;
             })
