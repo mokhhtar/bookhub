@@ -882,8 +882,11 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
   // Resilient fetch for the free-tier backend. Render sleeps after ~15 min
   // idle; the first request then hits a cold instance and the browser can drop
   // it with net::ERR_FAILED before it finishes waking (~50s). So: use a long
-  // timeout, and on a NETWORK failure (not an HTTP error) warm the server via
-  // /health and retry once — the second attempt lands on a now-awake instance.
+  // timeout, and on a NETWORK failure OR a gateway error (502/503/504 — the
+  // tiny instance is overloaded or mid-wake, e.g. still building the day's
+  // /daily payload when the visitor arrives from the homepage) warm the
+  // server via /health and retry once — the second attempt lands on a
+  // now-awake, now-idle instance.
   let _serverWarmed = false;
   async function apiFetch(url, options = {}, { timeout = 90000, onWaking } = {}) {
     async function attempt() {
@@ -893,15 +896,17 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
         return await fetch(url, { ...options, signal: ctrl.signal });
       } finally { clearTimeout(timer); }
     }
+    const gatewayError = (res) => [502, 503, 504].includes(res.status);
     try {
       const res = await attempt();
+      if (gatewayError(res)) throw new Error("gateway " + res.status);
       _serverWarmed = true;
       return res;
     } catch (e) {
-      // TypeError (network/CORS-drop) or AbortError (timeout) → likely cold start.
+      // TypeError (network/CORS-drop), AbortError (timeout), or gateway 5xx.
       if (onWaking) onWaking();
       try { await fetch(`${API}/health`, { cache: "no-store" }); } catch (_) {}
-      await new Promise(r => setTimeout(r, 1500));
+      await new Promise(r => setTimeout(r, 3000));
       const res = await attempt();  // let a second failure propagate to the caller
       _serverWarmed = true;
       return res;
@@ -909,6 +914,9 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
   }
 
   let allSearchResults = [];
+  let originalSearchResults = [];  // server relevance order — restored when sort = relevance
+  let searchSortField = "relevance";
+  let searchSortDir = 1;           // 1 = ascending, -1 = descending
   let currentPage = 0;
   let currentSearchOffset = 0;
   let currentSearchQuery = "";
@@ -1264,6 +1272,9 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
         }
 
         allSearchResults = searchData;
+        originalSearchResults = [...searchData];
+        searchSortField = "relevance";
+        searchSortDir = 1;
         renderSearchResultsPage(0);
         return;
       }
@@ -1595,22 +1606,81 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
     }
   }
 
+  // Re-sorts allSearchResults from the preserved relevance order. Missing
+  // years always sink to the end regardless of direction — an undated
+  // reprint shouldn't lead a "newest first" list.
+  function applySearchSort() {
+    if (searchSortField === "relevance") {
+      allSearchResults = [...originalSearchResults];
+      return;
+    }
+    allSearchResults = [...originalSearchResults].sort((a, b) => {
+      if (searchSortField === "year") {
+        const ya = parseInt(a.published_year, 10);
+        const yb = parseInt(b.published_year, 10);
+        if (isNaN(ya) && isNaN(yb)) return 0;
+        if (isNaN(ya)) return 1;
+        if (isNaN(yb)) return -1;
+        return (ya - yb) * searchSortDir;
+      }
+      const ka = ((searchSortField === "author" ? a.author : a.title) || "").toLowerCase();
+      const kb = ((searchSortField === "author" ? b.author : b.title) || "").toLowerCase();
+      return ka.localeCompare(kb) * searchSortDir;
+    });
+  }
+
+  window.setSearchSort = function (field) {
+    searchSortField = field;
+    applySearchSort();
+    renderSearchResultsPage(0);
+  };
+
+  window.toggleSearchSortDir = function () {
+    searchSortDir = -searchSortDir;
+    applySearchSort();
+    renderSearchResultsPage(0);
+  };
+
+  // Bento rhythm: within each block of 10 cards, the 1st is a 2×2 feature
+  // tile and the 5th a wide horizontal tile; the rest are standard.
+  function bentoClass(i) {
+    const pos = i % 10;
+    if (pos === 0) return "bento-lg";
+    if (pos === 4) return "bento-wide";
+    return "";
+  }
+
   function renderSearchResultsPage(pageIndex) {
     currentPage = pageIndex;
     const result = document.getElementById("result");
     const pageSize = 18;
     const totalResults = allSearchResults.length;
     const totalPages = Math.ceil(totalResults / pageSize);
-    
+
     const pageResults = allSearchResults.slice(pageIndex * pageSize, (pageIndex + 1) * pageSize);
     const hasMoreFromServer = (totalResults > 0 && totalResults % 54 === 0 && pageIndex === totalPages - 1);
 
+    const sortOptions = [
+      ["relevance", "Relevance"], ["year", "Year"], ["title", "Title"], ["author", "Author"],
+    ].map(([v, label]) => `<option value="${v}" ${searchSortField === v ? "selected" : ""}>${label}</option>`).join("");
+
     result.innerHTML = `
       <div style="margin-bottom:1.5rem;">
-        <h3 style="font-size:15px;font-weight:600;margin-bottom:14px;color:var(--fg);">Select the exact book you want summarized:</h3>
-        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:16px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px;">
+          <h3 style="font-size:15px;font-weight:600;color:var(--fg);margin:0;">Select the exact book you want summarized:</h3>
+          <div class="search-sort-bar">
+            <label for="search-sort-field">Sort by</label>
+            <select id="search-sort-field" onchange="setSearchSort(this.value)">${sortOptions}</select>
+            <button class="search-sort-dir-btn" onclick="toggleSearchSortDir()"
+                    ${searchSortField === "relevance" ? "disabled" : ""}
+                    title="${searchSortDir === 1 ? "Ascending — click for descending" : "Descending — click for ascending"}">
+              ${searchSortDir === 1 ? "↑ A–Z" : "↓ Z–A"}
+            </button>
+          </div>
+        </div>
+        <div class="search-bento">
           ${pageResults
-            .map((b) => {
+            .map((b, i) => {
               const titleEscaped = b.title
                 .replace(/'/g, "\\'")
                 .replace(/"/g, "&quot;");
@@ -1618,12 +1688,18 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
                 .replace(/'/g, "\\'")
                 .replace(/"/g, "&quot;");
               const url = `{{ '/summary/' | relative_url }}?q=${encodeURIComponent(b.title)}&author=${encodeURIComponent(b.author || '')}&isbn=${b.isbn_13 || b.isbn_10 || ''}&google_id=${b.google_id || ''}&openlibrary_id=${b.openlibrary_id || ''}&direct=true`;
+              const cls = bentoClass(i);
+              const cover = b.cover_url
+                ? `<img src="${b.cover_url}" alt="Cover" class="bento-cover" loading="lazy">`
+                : `<div class="bento-cover bento-cover-empty">No cover</div>`;
+              const body = `
+                <p class="bento-title">${b.title}</p>
+                <p class="bento-author">${b.author || "Unknown"}</p>
+                ${b.published_year ? `<span class="bento-year">${b.published_year}</span>` : ""}`;
               return `
-              <a href="${url}" class="similar-book-card" onclick="event.preventDefault(); summarizeBook('${titleEscaped}', '${authorEscaped}', true, false, '${b.isbn_13 || b.isbn_10 || ''}', '${b.google_id || ''}', '${b.openlibrary_id || ''}')" style="text-align:center;cursor:pointer;border:1px solid var(--border);border-radius:6px;padding:12px;background:var(--bg-subtle);display:flex;flex-direction:column;align-items:center;height:100%;box-sizing:border-box;text-decoration:none;color:inherit;">
-                ${b.cover_url ? `<img src="${b.cover_url}" alt="Cover" style="width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:4px;margin-bottom:8px;border:1px solid var(--border);">` : `<div style="width:100%;aspect-ratio:2/3;background:var(--bg);border:1px solid var(--border);border-radius:4px;margin-bottom:8px;display:flex;align-items:center;justify-content:center;color:var(--fg-faint);font-size:12px;">No cover</div>`}
-                <p style="font-size:12px;font-weight:600;line-height:1.3;margin-bottom:4px;color:var(--fg);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis;width:100%;height:32px;">${b.title}</p>
-                <p style="font-size:11px;color:var(--fg-faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:100%;margin-top:auto;">${b.author || "Unknown"}</p>
-                ${b.published_year ? `<span style="font-size:10px;color:var(--fg-faint);background:var(--bg);padding:1px 6px;border-radius:999px;border:1px solid var(--border);margin-top:6px;display:inline-block;">${b.published_year}</span>` : ""}
+              <a href="${url}" class="bento-card ${cls}" onclick="event.preventDefault(); summarizeBook('${titleEscaped}', '${authorEscaped}', true, false, '${b.isbn_13 || b.isbn_10 || ''}', '${b.google_id || ''}', '${b.openlibrary_id || ''}')">
+                ${cover}
+                ${cls === "bento-wide" ? `<div class="bento-body">${body}</div>` : body}
               </a>
             `;
             })
@@ -1685,8 +1761,9 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
       }
       
       const prevTotal = allSearchResults.length;
-      allSearchResults = allSearchResults.concat(newResults);
-      
+      originalSearchResults = originalSearchResults.concat(newResults);
+      applySearchSort();  // merge the new batch into the active sort order
+
       const newPageIndex = Math.floor(prevTotal / 18);
       renderSearchResultsPage(newPageIndex);
     } catch (err) {
