@@ -1285,13 +1285,19 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
       if (googleId) payload.google_id = googleId;
       if (openLibraryId) payload.openlibrary_id = openLibraryId;
 
-      const res = await apiFetch(`${API}/summary`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      }, { onWaking: () => { result.innerHTML = '<div class="result-loading"><span class="spinner"></span> Waking up our free server — one moment…</div>'; } });
-      if (!res.ok) throw new Error("server error");
-      const data = await res.json();
+      // Try the streaming route first — text appears within seconds. Any
+      // failure (old server, proxy buffering, mid-stream error) falls back
+      // to the classic request; both share one server-side cache entry.
+      let data = await tryStreamSummary(payload, result);
+      if (!data) {
+        const res = await apiFetch(`${API}/summary`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        }, { onWaking: () => { result.innerHTML = '<div class="result-loading"><span class="spinner"></span> Waking up our free server — one moment…</div>'; } });
+        if (!res.ok) throw new Error("server error");
+        data = await res.json();
+      }
 
       if (data.found === false) {
         result.innerHTML = `<p class="result-error">${data.message || "Book not found."}</p>`;
@@ -1688,6 +1694,64 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
     applySearchSort();
     renderSearchResultsPage(0);
   };
+
+  // ── Streaming summary (SSE from /summary/stream) ────────
+  // Returns the full payload when the stream completes, or null on ANY
+  // failure so the caller falls back to the classic POST /summary.
+  async function tryStreamSummary(payload, resultEl) {
+    try {
+      const ctrl = new AbortController();
+      const timer = setTimeout(() => ctrl.abort(), 120000);
+      const res = await fetch(`${API}/summary/stream`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+        signal: ctrl.signal,
+      });
+      if (!res.ok || !res.body) { clearTimeout(timer); return null; }
+
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let buf = "", acc = "", shellShown = false, streamOut = null;
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        buf += decoder.decode(value, { stream: true });
+        const events = buf.split("\n\n");
+        buf = events.pop(); // keep the incomplete tail
+        for (const ev of events) {
+          const line = ev.split("\n").find(l => l.startsWith("data: "));
+          if (!line) continue;
+          let msg;
+          try { msg = JSON.parse(line.slice(6)); } catch (e) { continue; }
+          if (msg.error) { clearTimeout(timer); return null; }
+          if (msg.done) { clearTimeout(timer); return msg.done; }
+          if (msg.t) {
+            acc += msg.t;
+            if (!shellShown) {
+              shellShown = true;
+              resultEl.innerHTML = `
+                <div class="summary-card">
+                  <div class="summary-card-title">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    AI Grounded Summary — Comprehensive Study Guide
+                    <span class="spinner" style="width:12px;height:12px;margin-left:8px;"></span>
+                  </div>
+                  <div class="ai-output" id="stream-progress"></div>
+                </div>`;
+              streamOut = document.getElementById("stream-progress");
+            }
+            if (streamOut) streamOut.innerHTML = parseSummaryMarkdown(acc);
+          }
+        }
+      }
+      clearTimeout(timer);
+      return null; // stream ended without a done event → fall back
+    } catch (e) {
+      return null;
+    }
+  }
 
   // ── My Library integration ─────────────────────────────
   // Same key + item shape as tools/reading-list.html (bookhub_rl_v1) —
