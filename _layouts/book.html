@@ -103,7 +103,7 @@ layout: default
         {% endif %}
         {% if page.nyt and page.nyt.weeks_on_list %}
           <div style="margin-top:12px;">
-            <span class="book-meta-tag" style="border-color:var(--accent);">🏆 NYT Bestseller — {{ page.nyt.weeks_on_list }} week{% if page.nyt.weeks_on_list > 1 %}s{% endif %} on the "{{ page.nyt.list_name }}" list{% if page.nyt.peak_rank %} · peaked at #{{ page.nyt.peak_rank }}{% endif %}</span>
+            <span class="book-meta-tag" style="border-color:var(--accent);">🏆 NYT Bestseller — {{ page.nyt.weeks_on_list }} week{% if page.nyt.weeks_on_list > 1 %}s{% endif %} on the "{{ page.nyt.list_name }}" list{% if page.nyt.rank %} · currently #{{ page.nyt.rank }}{% endif %}</span>
             {% if page.nyt.review_url %}<a href="{{ page.nyt.review_url }}" target="_blank" rel="noopener nofollow" style="font-size:12px;margin-left:6px;">NYT review →</a>{% endif %}
           </div>
         {% endif %}

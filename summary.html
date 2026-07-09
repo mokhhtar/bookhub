@@ -1574,7 +1574,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
           ${data.nyt && data.nyt.weeks_on_list ? `
           <div style="border:1px solid var(--accent);border-radius:12px;padding:10px 14px;margin:12px 0;background:var(--bg-subtle);">
             <p style="font-size:12px;font-weight:700;color:var(--fg);margin:0;">🏆 New York Times Bestseller</p>
-            <p style="font-size:12px;color:var(--fg-muted);margin:4px 0 0;">${data.nyt.weeks_on_list} week${data.nyt.weeks_on_list > 1 ? 's' : ''} on the "${data.nyt.list_name}" list${data.nyt.peak_rank ? ` · peaked at #${data.nyt.peak_rank}` : ''}</p>
+            <p style="font-size:12px;color:var(--fg-muted);margin:4px 0 0;">${data.nyt.weeks_on_list} week${data.nyt.weeks_on_list > 1 ? 's' : ''} on the "${data.nyt.list_name}" list${data.nyt.rank ? ` · currently #${data.nyt.rank}` : ''}</p>
             ${data.nyt.review_url ? `<a href="${data.nyt.review_url}" target="_blank" rel="noopener nofollow" style="font-size:11px;color:var(--accent);display:inline-block;margin-top:4px;">Read the NYT review →</a>` : ''}
           </div>` : ''}
 

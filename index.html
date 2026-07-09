@@ -141,6 +141,68 @@ description: "Seven free AI-powered tools for readers — instant book summaries
 </section>
 
 <!-- ═══════════════════════════════════════
+     NYT BESTSELLERS THIS WEEK — horizontal marquee rail
+     (filled client-side from GET /nyt/weekly; hidden until data arrives)
+═══════════════════════════════════════ -->
+<style>
+  .nyt-section { padding: 32px 0 8px; display: none; }
+  .nyt-marquee { overflow: hidden; position: relative; padding: 14px 0; margin-top: 8px; }
+  .nyt-track { display: flex; width: max-content; animation: nyt-scroll 60s linear infinite; }
+  .nyt-marquee:hover .nyt-track { animation-play-state: paused; }
+  @keyframes nyt-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .nyt-item {
+    width: 128px; flex-shrink: 0; margin-right: 18px; text-align: center;
+    text-decoration: none; color: inherit; display: block;
+    transition: transform .25s ease, opacity .25s ease;
+  }
+  .nyt-track:hover .nyt-item { transform: scale(.92); opacity: .55; }
+  .nyt-track .nyt-item:hover { transform: scale(1.12); opacity: 1; position: relative; z-index: 2; }
+  .nyt-item img, .nyt-item .nyt-cover-empty {
+    width: 100%; aspect-ratio: 2/3; object-fit: cover; border-radius: 8px;
+    border: 1px solid var(--border); margin-bottom: 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.08); transition: box-shadow .25s ease;
+  }
+  .nyt-item:hover img { box-shadow: 0 10px 24px rgba(0,0,0,.25); }
+  .nyt-item .nyt-cover-empty {
+    display: flex; align-items: center; justify-content: center;
+    background: var(--bg-subtle); color: var(--fg-faint);
+    font-size: 11px; padding: 8px; box-sizing: border-box; text-align: center;
+  }
+  .nyt-item .nyt-t {
+    font-size: 11px; font-weight: 600; line-height: 1.3; color: var(--fg);
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+    overflow: hidden; height: 29px; margin-bottom: 2px;
+  }
+  .nyt-item .nyt-a {
+    font-size: 10px; color: var(--fg-faint);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .nyt-rank-badge {
+    font-size: 10px; font-weight: 700; color: var(--accent);
+    background: var(--bg-subtle); border: 1px solid var(--border);
+    border-radius: 999px; padding: 1px 8px; margin-top: 5px; display: inline-block;
+    max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .nyt-track { animation: none; }
+    .nyt-marquee { overflow-x: auto; }
+  }
+</style>
+<section class="nyt-section" id="nyt-section" aria-labelledby="nyt-heading">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <h2 id="nyt-heading" class="section-title">🏆 NYT Bestsellers this week</h2>
+        <p class="section-sub">From the current New York Times lists — tap any book for its summary</p>
+      </div>
+    </div>
+    <div class="nyt-marquee">
+      <div class="nyt-track" id="nyt-track"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
      CATEGORIES STRIP
 ═══════════════════════════════════════ -->
 <section class="categories-strip" aria-labelledby="categories-heading" style="padding:32px 0 8px;">
@@ -425,5 +487,64 @@ function fillSearch(title) {
       render(d);
     })
     .catch(() => { clearTimeout(timer); section.style.display = "none"; });
+})();
+
+// ── NYT Bestsellers this week ───────────────────────────────
+(function () {
+  const API = "{{ site.api_url }}";
+  const SUMMARY_PATH = "{{ '/summary/' | relative_url }}";
+  const section = document.getElementById("nyt-section");
+  const track = document.getElementById("nyt-track");
+  if (!section || !track) return;
+
+  const esc = (s) => String(s == null ? "" : s)
+    .replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;").replaceAll("'", "&#39;");
+
+  function render(books) {
+    if (!books || !books.length) return;
+    // Repeat until wide enough, then double for the seamless -50% loop
+    // (same pattern as the summary page's similar-books marquee).
+    let items = books;
+    while (items.length < 8) items = items.concat(books);
+    const loop = items.concat(items);
+
+    const card = (b) => {
+      const p = new URLSearchParams({ q: b.title || "", direct: "true" });
+      if (b.author) p.set("author", b.author);
+      if (b.isbn_13) p.set("isbn", b.isbn_13);
+      const cover = b.book_image
+        ? `<img src="${esc(b.book_image)}" alt="Cover of ${esc(b.title)}" loading="lazy">`
+        : `<div class="nyt-cover-empty">${esc(b.title)}</div>`;
+      return `<a href="${SUMMARY_PATH}?${p.toString()}" class="nyt-item">
+        ${cover}
+        <p class="nyt-t">${esc(b.title)}</p>
+        <p class="nyt-a">${esc(b.author)}</p>
+        <span class="nyt-rank-badge" title="${esc(b.list_name)} — ${b.weeks_on_list} weeks on list">#${b.rank} · ${esc(b.list_name)}</span>
+      </a>`;
+    };
+
+    track.style.animationDuration = (loop.length * 3) + "s";
+    track.innerHTML = loop.map(card).join("");
+    section.style.display = "block";
+  }
+
+  const weekKey = "bookhub_nyt_" + new Date().toISOString().slice(0, 10);
+  try {
+    const memo = sessionStorage.getItem(weekKey);
+    if (memo) { render(JSON.parse(memo)); return; }
+  } catch (e) { /* sessionStorage unavailable — fetch fresh */ }
+
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), 60000);
+  fetch(API + "/nyt/weekly", { signal: ctrl.signal })
+    .then((r) => { if (!r.ok) throw new Error("nyt " + r.status); return r.json(); })
+    .then((d) => {
+      clearTimeout(timer);
+      const books = (d && d.books) || [];
+      try { sessionStorage.setItem(weekKey, JSON.stringify(books)); } catch (e) {}
+      render(books);
+    })
+    .catch(() => { clearTimeout(timer); /* section stays hidden */ });
 })();
 </script>
