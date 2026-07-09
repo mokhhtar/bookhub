@@ -902,7 +902,6 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
     }
   }
 
-  let currentLanguage = 'en';  // summary language toggle (en/ar)
   let allSearchResults = [];
   let originalSearchResults = [];  // server relevance order — restored when sort = relevance
   let searchSortField = "relevance";
@@ -1281,12 +1280,10 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
       result.innerHTML =
         '<div class="result-loading"><span class="spinner"></span> Generating comprehensive study guide...</div>';
       
-      const payload = { title, author, depth, language: currentLanguage };
+      const payload = { title, author, depth };
       if (isbn) payload.isbn = isbn;
       if (googleId) payload.google_id = googleId;
       if (openLibraryId) payload.openlibrary_id = openLibraryId;
-      // Remembered so the language toggle can re-request the same edition.
-      window.__lastSummaryIds = { isbn, googleId, openLibraryId };
 
       // Try the streaming route first — text appears within seconds. Any
       // failure (old server, proxy buffering, mid-stream error) falls back
@@ -1554,12 +1551,8 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
             <div class="summary-card-title" style="display:flex;align-items:center;gap:8px;">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
               AI Grounded Summary — Comprehensive Study Guide
-              <button class="btn-secondary" onclick="toggleSummaryLanguage()" title="Switch summary language"
-                      style="margin-left:auto;padding:4px 12px;font-size:12px;">
-                ${currentLanguage === 'en' ? 'عربي' : 'English'}
-              </button>
             </div>
-            <div class="ai-output" ${currentLanguage === 'ar' ? 'dir="rtl" lang="ar"' : ''}>${parseSummaryMarkdown(data.summary)}</div>
+            <div class="ai-output">${parseSummaryMarkdown(data.summary)}</div>
           </div>
 
           ${quotesHtml}
@@ -1585,8 +1578,33 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
             ${data.editions && data.editions.editions >= 2 ? `<span class="sidebar-badge" title="Open Library edition data">🌍 ${data.editions.editions} editions${data.editions.languages >= 2 ? ` · ${data.editions.languages} languages` : ''}</span>` : ''}
           </div>
 
+          <!-- CTAs first: every decision button visible without scrolling -->
+          ${data.free_ebook ? `
+          <div style="border:1px solid var(--accent);border-radius:12px;padding:12px 14px;margin-bottom:12px;background:var(--bg-subtle);">
+            <p style="font-size:12px;font-weight:700;color:var(--fg);margin:0 0 8px;">📖 Public domain — read it free</p>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;">
+              ${data.free_ebook.source === 'project_gutenberg' && data.free_ebook.gutenberg_id ? `<a href="{{ '/reader/' | relative_url }}?id=${data.free_ebook.gutenberg_id}&title=${encodeURIComponent(data.title || '')}&author=${encodeURIComponent(data.author || '')}" class="btn-primary" style="padding:6px 12px;font-size:12px;">📖 Read here</a>` : ''}
+              <a href="${data.free_ebook.read_url || data.free_ebook.page_url}" target="_blank" rel="noopener" class="btn-secondary" style="padding:6px 12px;font-size:12px;">Read online</a>
+              ${data.free_ebook.epub_url ? `<a href="${data.free_ebook.epub_url}" class="btn-secondary" style="padding:6px 12px;font-size:12px;">EPUB</a>` : ''}
+              ${data.free_ebook.txt_url ? `<a href="${data.free_ebook.txt_url}" class="btn-secondary" style="padding:6px 12px;font-size:12px;">TXT</a>` : ''}
+            </div>
+            <p style="font-size:10px;color:var(--fg-faint);margin:8px 0 0;">From <a href="${data.free_ebook.page_url}" target="_blank" rel="noopener nofollow" style="color:inherit;">${data.free_ebook.source === 'internet_archive' ? 'Internet Archive' : 'Project Gutenberg'}</a></p>
+          </div>` : ''}
+
+          ${data.amazon_url ? `
+          <a href="${data.amazon_url}" class="sidebar-amazon-btn" target="_blank" rel="noopener sponsored">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+            Buy on Amazon
+          </a>` : ''}
+
+          <button class="btn-secondary" id="add-library-btn" onclick="addCurrentToLibrary()"
+                  style="width:100%;justify-content:center;margin:8px 0 12px;padding:9px 12px;font-size:13px;">
+            ➕ Add to My Library
+          </button>
+
+          <!-- Informational content below the fold is fine -->
           ${data.nyt && data.nyt.weeks_on_list ? `
-          <div style="border:1px solid var(--accent);border-radius:12px;padding:10px 14px;margin:12px 0;background:var(--bg-subtle);">
+          <div style="border:1px solid var(--accent);border-radius:12px;padding:10px 14px;margin:0 0 12px;background:var(--bg-subtle);">
             <p style="font-size:12px;font-weight:700;color:var(--fg);margin:0;">🏆 New York Times Bestseller</p>
             <p style="font-size:12px;color:var(--fg-muted);margin:4px 0 0;">${data.nyt.weeks_on_list} week${data.nyt.weeks_on_list > 1 ? 's' : ''} on the "${data.nyt.list_name}" list${data.nyt.rank ? ` · currently #${data.nyt.rank}` : ''}</p>
             ${data.nyt.review_url ? `<a href="${data.nyt.review_url}" target="_blank" rel="noopener nofollow" style="font-size:11px;color:var(--accent);display:inline-block;margin-top:4px;">Read the NYT review →</a>` : ''}
@@ -1601,29 +1619,6 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
           ${awardsHtml}
 
           ${ratingDistHtml}
-
-          ${data.free_ebook ? `
-          <div style="border:1px solid var(--accent);border-radius:12px;padding:12px 14px;margin-bottom:12px;background:var(--bg-subtle);">
-            <p style="font-size:12px;font-weight:700;color:var(--fg);margin:0 0 8px;">📖 Public domain — read it free</p>
-            <div style="display:flex;flex-wrap:wrap;gap:6px;">
-              ${data.free_ebook.source === 'project_gutenberg' && data.free_ebook.gutenberg_id ? `<a href="{{ '/reader/' | relative_url }}?id=${data.free_ebook.gutenberg_id}&title=${encodeURIComponent(data.title || '')}&author=${encodeURIComponent(data.author || '')}" class="btn-primary" style="padding:6px 12px;font-size:12px;">📖 Read here</a>` : ''}
-              <a href="${data.free_ebook.read_url || data.free_ebook.page_url}" target="_blank" rel="noopener" class="btn-secondary" style="padding:6px 12px;font-size:12px;">Read online</a>
-              ${data.free_ebook.epub_url ? `<a href="${data.free_ebook.epub_url}" class="btn-secondary" style="padding:6px 12px;font-size:12px;">EPUB</a>` : ''}
-              ${data.free_ebook.txt_url ? `<a href="${data.free_ebook.txt_url}" class="btn-secondary" style="padding:6px 12px;font-size:12px;">TXT</a>` : ''}
-            </div>
-            <p style="font-size:10px;color:var(--fg-faint);margin:8px 0 0;">From <a href="${data.free_ebook.page_url}" target="_blank" rel="noopener nofollow" style="color:inherit;">${data.free_ebook.source === 'internet_archive' ? 'Internet Archive' : 'Project Gutenberg'}</a></p>
-          </div>` : ''}
-
-          <button class="btn-secondary" id="add-library-btn" onclick="addCurrentToLibrary()"
-                  style="width:100%;justify-content:center;margin-bottom:8px;padding:9px 12px;font-size:13px;">
-            ➕ Add to My Library
-          </button>
-
-          ${data.amazon_url ? `
-          <a href="${data.amazon_url}" class="sidebar-amazon-btn" target="_blank" rel="noopener sponsored">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
-            Buy on Amazon
-          </a>` : ''}
 
           <div class="sidebar-review-links">
             <a href="${data.ratings && data.ratings.url ? data.ratings.url : `https://www.goodreads.com/search?q=${encodeURIComponent((data.title || title) + ' ' + (data.author || ''))}`}" target="_blank" class="sidebar-ext-link">
@@ -1703,16 +1698,6 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
     renderSearchResultsPage(0);
   };
 
-  // ── Summary language toggle (en ⇄ ar) ───────────────────
-  window.toggleSummaryLanguage = function () {
-    currentLanguage = currentLanguage === 'en' ? 'ar' : 'en';
-    const ids = window.__lastSummaryIds || {};
-    if (ids.isbn) window.selectedBookIsbn = ids.isbn;
-    if (ids.googleId) window.selectedBookGoogleId = ids.googleId;
-    if (ids.openLibraryId) window.selectedBookOpenLibraryId = ids.openLibraryId;
-    doSummary(true);  // same book, other language — server caches both
-  };
-
   // ── Streaming summary (SSE from /summary/stream) ────────
   // Returns the full payload when the stream completes, or null on ANY
   // failure so the caller falls back to the classic POST /summary.
@@ -1756,7 +1741,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
                     AI Grounded Summary — Comprehensive Study Guide
                     <span class="spinner" style="width:12px;height:12px;margin-left:8px;"></span>
                   </div>
-                  <div class="ai-output" id="stream-progress" ${currentLanguage === 'ar' ? 'dir="rtl" lang="ar"' : ''}></div>
+                  <div class="ai-output" id="stream-progress"></div>
                 </div>`;
               streamOut = document.getElementById("stream-progress");
             }
@@ -1993,12 +1978,8 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
     currentUtterance = new SpeechSynthesisUtterance(audioText);
     
     const voices = window.speechSynthesis.getVoices();
-    // Match the TTS voice to the summary language (Arabic voice for the
-    // Arabic toggle when the browser has one; en fallback otherwise).
-    const wantPrefix = currentLanguage === 'ar' ? 'ar' : 'en-';
-    const voice = voices.find(v => v.lang.startsWith(wantPrefix)) || voices.find(v => v.lang.startsWith("en-"));
+    const voice = voices.find(v => v.lang.startsWith("en-"));
     if (voice) currentUtterance.voice = voice;
-    if (currentLanguage === 'ar') currentUtterance.lang = 'ar';
     
     const speed = parseFloat(document.getElementById("audio-speed").value || "1");
     currentUtterance.rate = speed;
