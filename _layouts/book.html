@@ -99,8 +99,13 @@ layout: default
              class="btn-primary" target="_blank" rel="noopener sponsored">Buy on Amazon</a>
         {% endif %}
         {% if page.free_ebook and page.free_ebook.page_url %}
-          <a href="{% if page.free_ebook.read_url %}{{ page.free_ebook.read_url }}{% else %}{{ page.free_ebook.page_url }}{% endif %}"
-             class="btn-secondary" target="_blank" rel="noopener" style="margin-left:8px;">📖 Read free — public domain</a>
+          {% if page.free_ebook.gutenberg_id %}
+            <a href="{{ '/reader/' | relative_url }}?id={{ page.free_ebook.gutenberg_id }}&title={{ page.title | url_encode }}&author={{ page.author | url_encode }}"
+               class="btn-secondary" style="margin-left:8px;">📖 Read free — public domain</a>
+          {% else %}
+            <a href="{% if page.free_ebook.read_url %}{{ page.free_ebook.read_url }}{% else %}{{ page.free_ebook.page_url }}{% endif %}"
+               class="btn-secondary" target="_blank" rel="noopener" style="margin-left:8px;">📖 Read free — public domain</a>
+          {% endif %}
         {% endif %}
         <button class="btn-secondary" id="add-library-btn" onclick="bhAddToLibrary()" style="margin-left:8px;">➕ Add to My Library</button>
         {% if page.nyt and page.nyt.weeks_on_list %}

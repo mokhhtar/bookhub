@@ -1,0 +1,131 @@
+---
+layout: default
+title: "Book Reader"
+description: "Read public-domain books right here on BookHub."
+permalink: /reader/
+sitemap: false
+---
+<!-- Reader pages mirror Project Gutenberg text — keep them out of the index
+     (duplicate content); readers arrive from book pages, not search. -->
+<meta name="robots" content="noindex">
+
+<style>
+  .reader-wrap { max-width: 68ch; margin: 0 auto; padding: 24px 16px 80px; }
+  .reader-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 18px; }
+  .reader-title { font-size: 18px; font-weight: 700; }
+  .reader-meta { font-size: 12px; color: var(--fg-faint); }
+  .reader-text {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 17px; line-height: 1.85; color: var(--fg);
+    white-space: pre-wrap; word-wrap: break-word;
+  }
+  .reader-nav {
+    position: sticky; bottom: 0; display: flex; align-items: center;
+    justify-content: space-between; gap: 12px; padding: 12px 0;
+    background: var(--bg); border-top: 1px solid var(--border); margin-top: 32px;
+  }
+  .reader-nav button {
+    padding: 8px 18px; font-size: 13px; border-radius: 8px; cursor: pointer;
+    background: var(--bg-subtle); color: var(--fg); border: 1px solid var(--border);
+  }
+  .reader-nav button:disabled { opacity: .4; cursor: default; }
+  .reader-progress { font-size: 12px; color: var(--fg-faint); }
+  .reader-error { padding: 48px 0; text-align: center; color: var(--fg-muted); font-size: 14px; }
+</style>
+
+<div class="reader-wrap">
+  <div class="reader-head">
+    <div>
+      <div class="reader-title" id="reader-title">Loading…</div>
+      <div class="reader-meta">Public domain · <a id="gutenberg-link" href="https://www.gutenberg.org" target="_blank" rel="noopener nofollow" style="color:inherit;">Project Gutenberg</a></div>
+    </div>
+    <a id="back-link" href="#" class="btn-secondary" style="padding:6px 14px;font-size:12px;">← Back to summary</a>
+  </div>
+
+  <div id="reader-body">
+    <div class="reader-error">Loading the text…</div>
+  </div>
+
+  <div class="reader-nav" id="reader-nav" style="display:none;">
+    <button id="prev-btn" onclick="go(-1)">← Previous</button>
+    <span class="reader-progress" id="reader-progress"></span>
+    <button id="next-btn" onclick="go(1)">Next →</button>
+  </div>
+</div>
+
+<script>
+(function () {
+  const API = "{{ site.api_url }}";
+  const params = new URLSearchParams(window.location.search);
+  const gid = parseInt(params.get("id"), 10);
+  const title = params.get("title") || "Book";
+  const author = params.get("author") || "";
+
+  const bodyEl = document.getElementById("reader-body");
+  const navEl = document.getElementById("reader-nav");
+  const titleEl = document.getElementById("reader-title");
+  const progEl = document.getElementById("reader-progress");
+  const prevBtn = document.getElementById("prev-btn");
+  const nextBtn = document.getElementById("next-btn");
+
+  titleEl.textContent = title + (author ? " — " + author : "");
+  document.title = title + " | BookHub Reader";
+  document.getElementById("gutenberg-link").href = "https://www.gutenberg.org/ebooks/" + gid;
+  const backParams = new URLSearchParams({ q: title, direct: "true" });
+  if (author) backParams.set("author", author);
+  document.getElementById("back-link").href = "{{ '/summary/' | relative_url }}?" + backParams.toString();
+
+  if (!gid || gid <= 0) {
+    bodyEl.innerHTML = '<div class="reader-error">Missing book id.</div>';
+    return;
+  }
+
+  const POS_KEY = "bookhub_reader_" + gid;
+  let page = 0, pages = 0, loading = false;
+  try { page = parseInt(localStorage.getItem(POS_KEY), 10) || 0; } catch (e) {}
+
+  async function load(p) {
+    if (loading) return;
+    loading = true;
+    prevBtn.disabled = nextBtn.disabled = true;
+    try {
+      const res = await fetch(`${API}/read/${gid}/${p}`);
+      if (!res.ok) throw new Error("read " + res.status);
+      const d = await res.json();
+      page = d.page; pages = d.pages;
+      const textDiv = document.createElement("div");
+      textDiv.className = "reader-text";
+      textDiv.textContent = d.text;      // textContent — never trust remote text as HTML
+      bodyEl.innerHTML = "";
+      bodyEl.appendChild(textDiv);
+      navEl.style.display = "flex";
+      progEl.textContent = `Page ${page + 1} of ${pages}`;
+      prevBtn.disabled = page <= 0;
+      nextBtn.disabled = page >= pages - 1;
+      try { localStorage.setItem(POS_KEY, String(page)); } catch (e) {}
+      window.scrollTo({ top: 0 });
+    } catch (e) {
+      bodyEl.innerHTML = `<div class="reader-error">
+        Couldn't load the text right now.<br><br>
+        <a href="https://www.gutenberg.org/ebooks/${gid}" target="_blank" rel="noopener nofollow" class="btn-primary" style="display:inline-block;">Read on Project Gutenberg instead →</a>
+      </div>`;
+      navEl.style.display = "none";
+    } finally {
+      loading = false;
+    }
+  }
+
+  window.go = function (delta) {
+    const next = page + delta;
+    if (next < 0 || (pages && next >= pages)) return;
+    load(next);
+  };
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight") window.go(1);
+    if (e.key === "ArrowLeft") window.go(-1);
+  });
+
+  load(page);
+})();
+</script>

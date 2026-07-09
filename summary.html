@@ -1606,6 +1606,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
           <div style="border:1px solid var(--accent);border-radius:12px;padding:12px 14px;margin-bottom:12px;background:var(--bg-subtle);">
             <p style="font-size:12px;font-weight:700;color:var(--fg);margin:0 0 8px;">📖 Public domain — read it free</p>
             <div style="display:flex;flex-wrap:wrap;gap:6px;">
+              ${data.free_ebook.source === 'project_gutenberg' && data.free_ebook.gutenberg_id ? `<a href="{{ '/reader/' | relative_url }}?id=${data.free_ebook.gutenberg_id}&title=${encodeURIComponent(data.title || '')}&author=${encodeURIComponent(data.author || '')}" class="btn-primary" style="padding:6px 12px;font-size:12px;">📖 Read here</a>` : ''}
               <a href="${data.free_ebook.read_url || data.free_ebook.page_url}" target="_blank" rel="noopener" class="btn-secondary" style="padding:6px 12px;font-size:12px;">Read online</a>
               ${data.free_ebook.epub_url ? `<a href="${data.free_ebook.epub_url}" class="btn-secondary" style="padding:6px 12px;font-size:12px;">EPUB</a>` : ''}
               ${data.free_ebook.txt_url ? `<a href="${data.free_ebook.txt_url}" class="btn-secondary" style="padding:6px 12px;font-size:12px;">TXT</a>` : ''}
