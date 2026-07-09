@@ -1600,6 +1600,11 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
             <p style="font-size:10px;color:var(--fg-faint);margin:8px 0 0;">From <a href="${data.free_ebook.page_url}" target="_blank" rel="noopener nofollow" style="color:inherit;">${data.free_ebook.source === 'internet_archive' ? 'Internet Archive' : 'Project Gutenberg'}</a></p>
           </div>` : ''}
 
+          <button class="btn-secondary" id="add-library-btn" onclick="addCurrentToLibrary()"
+                  style="width:100%;justify-content:center;margin-bottom:8px;padding:9px 12px;font-size:13px;">
+            ➕ Add to My Library
+          </button>
+
           ${data.amazon_url ? `
           <a href="${data.amazon_url}" class="sidebar-amazon-btn" target="_blank" rel="noopener sponsored">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
@@ -1635,6 +1640,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
       // Lazy "More by this author" — fetched AFTER the summary renders so
       // it never delays the main response (see ROADMAP 1.2).
       loadAuthorWorks(data);
+      refreshLibraryBtn();
 
     } catch (e) {
       // A network drop (cold start / connectivity) throws TypeError/AbortError;
@@ -1681,6 +1687,41 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
     searchSortDir = -searchSortDir;
     applySearchSort();
     renderSearchResultsPage(0);
+  };
+
+  // ── My Library integration ─────────────────────────────
+  // Same key + item shape as tools/reading-list.html (bookhub_rl_v1) —
+  // books added here appear there immediately.
+  const RL_KEY = 'bookhub_rl_v1';
+
+  function libraryHas(title) {
+    try {
+      const list = JSON.parse(localStorage.getItem(RL_KEY)) || [];
+      return list.some(b => (b.title || '').toLowerCase() === (title || '').toLowerCase());
+    } catch (e) { return false; }
+  }
+
+  function refreshLibraryBtn() {
+    const btn = document.getElementById('add-library-btn');
+    if (!btn) return;
+    if (libraryHas(currentBookTitle)) {
+      btn.innerHTML = '✓ In My Library — open';
+      btn.onclick = () => { window.location.href = '{{ "/tools/reading-list" | relative_url }}'; };
+    }
+  }
+
+  window.addCurrentToLibrary = function () {
+    try {
+      const list = JSON.parse(localStorage.getItem(RL_KEY)) || [];
+      if (!list.some(b => (b.title || '').toLowerCase() === (currentBookTitle || '').toLowerCase())) {
+        list.unshift({
+          id: Date.now(), title: currentBookTitle, author: currentBookAuthor || '',
+          status: 'want', rating: 0, addedAt: Date.now(),
+        });
+        localStorage.setItem(RL_KEY, JSON.stringify(list));
+      }
+      refreshLibraryBtn();
+    } catch (e) { /* storage unavailable — leave the button as-is */ }
   };
 
   // "More by this author" — lazy: called after the summary is on screen.

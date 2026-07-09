@@ -102,6 +102,7 @@ layout: default
           <a href="{% if page.free_ebook.read_url %}{{ page.free_ebook.read_url }}{% else %}{{ page.free_ebook.page_url }}{% endif %}"
              class="btn-secondary" target="_blank" rel="noopener" style="margin-left:8px;">📖 Read free — public domain</a>
         {% endif %}
+        <button class="btn-secondary" id="add-library-btn" onclick="bhAddToLibrary()" style="margin-left:8px;">➕ Add to My Library</button>
         {% if page.nyt and page.nyt.weeks_on_list %}
           <div style="margin-top:12px;">
             <span class="book-meta-tag" style="border-color:var(--accent);">🏆 NYT Bestseller — {{ page.nyt.weeks_on_list }} week{% if page.nyt.weeks_on_list > 1 %}s{% endif %} on the "{{ page.nyt.list_name }}" list{% if page.nyt.rank %} · currently #{{ page.nyt.rank }}{% endif %}</span>
@@ -242,6 +243,40 @@ layout: default
 
   </div>
 </article>
+
+<script>
+  // My Library — same key + item shape as tools/reading-list.html.
+  (function () {
+    const RL_KEY = 'bookhub_rl_v1';
+    const TITLE = {{ page.title | jsonify }};
+    const AUTHOR = {{ page.author | jsonify }};
+    const btn = document.getElementById('add-library-btn');
+    if (!btn) return;
+    const has = () => {
+      try {
+        return (JSON.parse(localStorage.getItem(RL_KEY)) || [])
+          .some(b => (b.title || '').toLowerCase() === (TITLE || '').toLowerCase());
+      } catch (e) { return false; }
+    };
+    const refresh = () => {
+      if (has()) {
+        btn.innerHTML = '✓ In My Library — open';
+        btn.onclick = () => { window.location.href = '{{ "/tools/reading-list" | relative_url }}'; };
+      }
+    };
+    window.bhAddToLibrary = function () {
+      try {
+        const list = JSON.parse(localStorage.getItem(RL_KEY)) || [];
+        if (!has()) {
+          list.unshift({ id: Date.now(), title: TITLE, author: AUTHOR || '', status: 'want', rating: 0, addedAt: Date.now() });
+          localStorage.setItem(RL_KEY, JSON.stringify(list));
+        }
+        refresh();
+      } catch (e) {}
+    };
+    refresh();
+  })();
+</script>
 
 {% comment %} Additive Book schema — coexists with jekyll-seo-tag's own JSON-LD block (Google supports multiple structured-data blocks per page). {% endcomment %}
 <script type="application/ld+json">
