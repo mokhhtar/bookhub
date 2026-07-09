@@ -10,44 +10,80 @@ sitemap: false
 <meta name="robots" content="noindex">
 
 <style>
-  .reader-wrap { max-width: 68ch; margin: 0 auto; padding: 24px 16px 80px; }
-  .reader-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 10px; }
-  .reader-title { font-size: 18px; font-weight: 700; }
-  .reader-meta { font-size: 12px; color: var(--fg-faint); }
+  .reader-wrap { max-width: 68ch; margin: 0 auto; padding: 24px 16px 8px; }
+  .reader-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+  .reader-title { font-size: 18px; font-weight: 700; line-height: 1.3; }
+  .reader-meta { font-size: 12px; color: var(--fg-faint); margin-top: 2px; }
 
-  /* ── Toolbar: font size, theme, search ─────────────────── */
+  /* ── Toolbar: segmented controls, one visual language ────── */
   .reader-toolbar {
-    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
-    padding: 10px 12px; margin-bottom: 18px;
-    border: 1px solid var(--border); border-radius: 12px; background: var(--bg-subtle);
+    display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+    padding: 8px; margin-bottom: 16px;
+    border: 1px solid var(--border); border-radius: 14px; background: var(--bg-subtle);
   }
-  .reader-tool-group { display: flex; align-items: center; gap: 4px; }
-  .reader-tool-label { font-size: 11px; color: var(--fg-faint); margin-right: 2px; }
-  .reader-tool-btn {
-    padding: 5px 10px; font-size: 13px; line-height: 1; border-radius: 8px; cursor: pointer;
-    background: var(--bg); color: var(--fg); border: 1px solid var(--border);
+  .rt-seg {
+    display: flex; align-items: stretch; background: var(--bg);
+    border: 1px solid var(--border); border-radius: 10px; overflow: hidden; flex-shrink: 0;
   }
-  .reader-tool-btn.active { border-color: var(--accent); color: var(--accent); font-weight: 700; }
-  .reader-tool-btn:disabled { opacity: .4; cursor: default; }
-  .reader-search-box { display: flex; align-items: center; gap: 6px; flex: 1; min-width: 180px; }
-  .reader-search-box input {
-    flex: 1; padding: 6px 10px; font-size: 13px; border-radius: 8px;
-    background: var(--bg); color: var(--fg); border: 1px solid var(--border);
+  .rt-seg button {
+    border: 0; background: transparent; color: var(--fg); cursor: pointer;
+    min-height: 38px; min-width: 42px; padding: 0 12px;
+    font-size: 14px; font-weight: 600; line-height: 1;
+    display: flex; align-items: center; justify-content: center;
+    border-right: 1px solid var(--border);
   }
+  .rt-seg button:last-child { border-right: 0; }
+  .rt-seg button:disabled { opacity: .35; cursor: default; }
+  .rt-seg .rt-font-small { font-size: 12px; }
+  .rt-seg .rt-font-big { font-size: 17px; }
+
+  .rt-swatches { display: flex; align-items: center; gap: 8px; padding: 0 4px; flex-shrink: 0; }
+  .rt-swatch {
+    width: 28px; height: 28px; border-radius: 50%; cursor: pointer;
+    border: 2px solid var(--border); padding: 0; flex-shrink: 0;
+    transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease;
+  }
+  .rt-swatch:hover { transform: scale(1.1); }
+  .rt-swatch.active { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 25%, transparent); }
+  .rt-swatch-auto  { background: linear-gradient(135deg, #ffffff 50%, #1a1a1a 50%); }
+  .rt-swatch-sepia { background: #f4ecd8; }
+  .rt-swatch-dark  { background: #1a1a1a; }
+
+  .rt-search { position: relative; flex: 1; min-width: 150px; }
+  .rt-search svg {
+    position: absolute; left: 11px; top: 50%; transform: translateY(-50%);
+    width: 14px; height: 14px; color: var(--fg-faint); pointer-events: none;
+  }
+  .rt-search input {
+    width: 100%; box-sizing: border-box; min-height: 38px;
+    padding: 0 12px 0 32px; font-size: 16px; /* 16px prevents iOS auto-zoom */
+    border-radius: 10px; border: 1px solid var(--border);
+    background: var(--bg); color: var(--fg);
+  }
+  .rt-search input:focus { outline: none; border-color: var(--accent); }
 
   /* ── Search results panel ───────────────────────────────── */
   .reader-results {
     border: 1px solid var(--border); border-radius: 12px; background: var(--bg);
-    margin-bottom: 18px; max-height: 300px; overflow-y: auto; display: none;
+    margin-bottom: 16px; max-height: 280px; overflow-y: auto; display: none;
   }
   .reader-result-item {
     display: block; width: 100%; text-align: left; cursor: pointer;
-    padding: 10px 14px; border: 0; border-bottom: 1px solid var(--border);
+    padding: 12px 14px; border: 0; border-bottom: 1px solid var(--border);
     background: transparent; color: var(--fg); font-size: 13px; line-height: 1.5;
   }
   .reader-result-item:hover { background: var(--bg-subtle); }
   .reader-result-item .rr-page { font-size: 11px; font-weight: 700; color: var(--accent); margin-right: 8px; }
-  .reader-results-head { padding: 8px 14px; font-size: 11px; color: var(--fg-faint); border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+  .reader-results-head {
+    position: sticky; top: 0; background: var(--bg);
+    padding: 10px 14px; font-size: 12px; color: var(--fg-faint);
+    border-bottom: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center; gap: 8px;
+  }
+  .rr-close {
+    border: 1px solid var(--border); background: var(--bg-subtle); color: var(--fg);
+    border-radius: 8px; padding: 4px 10px; font-size: 12px; cursor: pointer;
+  }
 
   /* ── Reading surface (theme + font size via CSS vars) ───── */
   .reader-surface {
@@ -66,18 +102,65 @@ sitemap: false
   .reader-text.turning { opacity: 0; }
   .reader-text mark { background: var(--accent); color: #fff; border-radius: 3px; padding: 0 2px; }
 
+  /* ── Bottom navigation: scrubber + jump + prev/next ─────── */
   .reader-nav {
-    position: sticky; bottom: 0; display: flex; align-items: center;
-    justify-content: space-between; gap: 12px; padding: 12px 0;
-    background: var(--bg); border-top: 1px solid var(--border); margin-top: 32px;
+    position: sticky; bottom: 0; margin-top: 28px;
+    background: var(--bg); border-top: 1px solid var(--border);
+    padding: 10px 0 calc(12px + env(safe-area-inset-bottom, 0px));
+    display: none; flex-direction: column; gap: 10px;
   }
-  .reader-nav button {
-    padding: 8px 18px; font-size: 13px; border-radius: 8px; cursor: pointer;
+  .reader-scrub {
+    -webkit-appearance: none; appearance: none;
+    width: 100%; height: 6px; border-radius: 99px;
+    background: var(--border); outline: none; cursor: pointer; margin: 4px 0 0;
+  }
+  .reader-scrub::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none;
+    width: 22px; height: 22px; border-radius: 50%;
+    background: var(--accent); border: 3px solid var(--bg);
+    box-shadow: 0 1px 5px rgba(0,0,0,.35); cursor: grab;
+  }
+  .reader-scrub::-moz-range-thumb {
+    width: 18px; height: 18px; border-radius: 50%;
+    background: var(--accent); border: 3px solid var(--bg);
+    box-shadow: 0 1px 5px rgba(0,0,0,.35); cursor: grab;
+  }
+  .reader-nav-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .reader-nav-btn {
+    min-height: 42px; padding: 0 18px; font-size: 13px; font-weight: 600;
+    border-radius: 10px; cursor: pointer;
     background: var(--bg-subtle); color: var(--fg); border: 1px solid var(--border);
   }
-  .reader-nav button:disabled { opacity: .4; cursor: default; }
-  .reader-progress { font-size: 12px; color: var(--fg-faint); }
+  .reader-nav-btn:disabled { opacity: .35; cursor: default; }
+  .page-jump { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--fg-faint); }
+  .page-jump input {
+    width: 62px; min-height: 38px; box-sizing: border-box; text-align: center;
+    font-size: 16px; border-radius: 10px; border: 1px solid var(--border);
+    background: var(--bg-subtle); color: var(--fg);
+    -moz-appearance: textfield; appearance: textfield;
+  }
+  .page-jump input::-webkit-outer-spin-button,
+  .page-jump input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  .page-jump input:focus { outline: none; border-color: var(--accent); }
+
   .reader-error { padding: 48px 0; text-align: center; color: var(--fg-muted); font-size: 14px; }
+
+  /* ── Mobile ─────────────────────────────────────────────── */
+  @media (max-width: 640px) {
+    .reader-wrap { padding: 14px 12px 8px; }
+    .reader-head { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .reader-title { font-size: 16px; }
+    /* Toolbar: controls row + full-width search row */
+    .reader-toolbar { gap: 8px; }
+    .rt-search { flex-basis: 100%; order: 3; }
+    .rt-seg button { min-width: 46px; min-height: 42px; }  /* comfortable thumbs */
+    .rt-swatch { width: 32px; height: 32px; }
+    .reader-surface.theme-sepia, .reader-surface.theme-dark { padding: 14px; }
+    .reader-text { font-size: calc(var(--rs-size) - 1px); line-height: 1.8; }
+    .reader-nav-btn { min-height: 44px; flex: 1; }
+    .page-jump { order: -1; flex-basis: 100%; justify-content: center; margin-bottom: 2px; }
+    .reader-results { max-height: 220px; }
+  }
 </style>
 
 <div class="reader-wrap">
@@ -90,19 +173,18 @@ sitemap: false
   </div>
 
   <div class="reader-toolbar" id="reader-toolbar" style="display:none;">
-    <div class="reader-tool-group" aria-label="Font size">
-      <span class="reader-tool-label">Aa</span>
-      <button class="reader-tool-btn" id="font-minus" onclick="changeFont(-1)" title="Smaller text">−</button>
-      <button class="reader-tool-btn" id="font-plus" onclick="changeFont(1)" title="Larger text">+</button>
+    <div class="rt-seg" role="group" aria-label="Font size">
+      <button class="rt-font-small" id="font-minus" onclick="changeFont(-1)" title="Smaller text" aria-label="Smaller text">A</button>
+      <button class="rt-font-big" id="font-plus" onclick="changeFont(1)" title="Larger text" aria-label="Larger text">A</button>
     </div>
-    <div class="reader-tool-group" aria-label="Color theme">
-      <button class="reader-tool-btn" data-theme="default" onclick="setReaderTheme('default')" title="Match site theme">Auto</button>
-      <button class="reader-tool-btn" data-theme="sepia" onclick="setReaderTheme('sepia')" title="Sepia">📜</button>
-      <button class="reader-tool-btn" data-theme="dark" onclick="setReaderTheme('dark')" title="Dark">🌙</button>
+    <div class="rt-swatches" role="group" aria-label="Reading theme">
+      <button class="rt-swatch rt-swatch-auto"  data-theme="default" onclick="setReaderTheme('default')" title="Match site theme" aria-label="Auto theme"></button>
+      <button class="rt-swatch rt-swatch-sepia" data-theme="sepia"   onclick="setReaderTheme('sepia')"   title="Sepia" aria-label="Sepia theme"></button>
+      <button class="rt-swatch rt-swatch-dark"  data-theme="dark"    onclick="setReaderTheme('dark')"    title="Dark" aria-label="Dark theme"></button>
     </div>
-    <div class="reader-search-box">
-      <input type="search" id="reader-search-input" placeholder="Search in this book…" aria-label="Search in this book">
-      <button class="reader-tool-btn" id="reader-search-btn" onclick="runSearch()">🔍</button>
+    <div class="rt-search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="search" id="reader-search-input" placeholder="Search in this book…" aria-label="Search in this book" enterkeyhint="search">
     </div>
   </div>
 
@@ -114,10 +196,17 @@ sitemap: false
     </div>
   </div>
 
-  <div class="reader-nav" id="reader-nav" style="display:none;">
-    <button id="prev-btn" onclick="go(-1)">← Previous</button>
-    <span class="reader-progress" id="reader-progress"></span>
-    <button id="next-btn" onclick="go(1)">Next →</button>
+  <div class="reader-nav" id="reader-nav">
+    <input type="range" class="reader-scrub" id="page-scrub" min="0" max="1" value="0" step="1" aria-label="Scrub through pages">
+    <div class="reader-nav-row">
+      <button class="reader-nav-btn" id="prev-btn" onclick="go(-1)">← Previous</button>
+      <div class="page-jump">
+        <span>Page</span>
+        <input type="number" id="page-input" min="1" inputmode="numeric" enterkeyhint="go" aria-label="Go to page number">
+        <span id="page-total">of —</span>
+      </div>
+      <button class="reader-nav-btn" id="next-btn" onclick="go(1)">Next →</button>
+    </div>
   </div>
 </div>
 
@@ -135,10 +224,12 @@ sitemap: false
   const resultsEl = document.getElementById("reader-results");
   const navEl = document.getElementById("reader-nav");
   const titleEl = document.getElementById("reader-title");
-  const progEl = document.getElementById("reader-progress");
   const prevBtn = document.getElementById("prev-btn");
   const nextBtn = document.getElementById("next-btn");
   const searchInput = document.getElementById("reader-search-input");
+  const scrub = document.getElementById("page-scrub");
+  const pageInput = document.getElementById("page-input");
+  const pageTotal = document.getElementById("page-total");
 
   titleEl.textContent = title + (author ? " — " + author : "");
   document.title = title + " | BookHub Reader";
@@ -169,7 +260,7 @@ sitemap: false
     if (prefs.theme === "dark") surfaceEl.classList.add("theme-dark");
     document.getElementById("font-minus").disabled = prefs.font <= 0;
     document.getElementById("font-plus").disabled = prefs.font >= FONT_SIZES.length - 1;
-    document.querySelectorAll(".reader-tool-btn[data-theme]").forEach(b =>
+    document.querySelectorAll(".rt-swatch").forEach(b =>
       b.classList.toggle("active", b.dataset.theme === prefs.theme));
   }
 
@@ -205,6 +296,23 @@ sitemap: false
     return div;
   }
 
+  function scrubFill(el) {
+    const max = parseInt(el.max, 10) || 1;
+    const pct = max ? (parseInt(el.value, 10) / max) * 100 : 0;
+    el.style.background = `linear-gradient(to right, var(--accent) ${pct}%, var(--border) ${pct}%)`;
+  }
+
+  function syncNav() {
+    scrub.max = Math.max(0, pages - 1);
+    scrub.value = page;
+    scrubFill(scrub);
+    pageInput.value = page + 1;
+    pageInput.max = pages;
+    pageTotal.textContent = "of " + pages;
+    prevBtn.disabled = page <= 0;
+    nextBtn.disabled = page >= pages - 1;
+  }
+
   async function load(p, { fromSearch = false } = {}) {
     if (loading) return;
     loading = true;
@@ -224,9 +332,7 @@ sitemap: false
       requestAnimationFrame(() => requestAnimationFrame(() => textDiv.classList.remove("turning")));  // fade in
       toolbarEl.style.display = "flex";
       navEl.style.display = "flex";
-      progEl.textContent = `Page ${page + 1} of ${pages}`;
-      prevBtn.disabled = page <= 0;
-      nextBtn.disabled = page >= pages - 1;
+      syncNav();
       try { localStorage.setItem(POS_KEY, String(page)); } catch (e) {}
       const mark = bodyEl.querySelector("mark");
       if (mark) mark.scrollIntoView({ block: "center" });
@@ -248,24 +354,46 @@ sitemap: false
     load(next);
   };
 
+  // Scrubber: live label while dragging, load on release.
+  scrub.addEventListener("input", () => {
+    scrubFill(scrub);
+    pageInput.value = parseInt(scrub.value, 10) + 1;
+  });
+  scrub.addEventListener("change", () => {
+    const p = parseInt(scrub.value, 10);
+    if (p !== page) load(p);
+  });
+
+  // Direct page jump: Enter (or blur) loads the clamped page.
+  function jumpToInput() {
+    let v = parseInt(pageInput.value, 10);
+    if (isNaN(v)) { pageInput.value = page + 1; return; }
+    v = Math.min(pages, Math.max(1, v));
+    pageInput.value = v;
+    if (v - 1 !== page) load(v - 1);
+  }
+  pageInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") { e.preventDefault(); jumpToInput(); pageInput.blur(); }
+  });
+  pageInput.addEventListener("blur", jumpToInput);
+
   // ── In-book search ──────────────────────────────────────────
   window.runSearch = async function () {
     const q = (searchInput.value || "").trim();
     if (q.length < 2) { resultsEl.style.display = "none"; return; }
-    const btn = document.getElementById("reader-search-btn");
-    btn.disabled = true;
     try {
       const res = await fetch(`${API}/read/${gid}/search?q=${encodeURIComponent(q)}`);
       if (!res.ok) throw new Error("search " + res.status);
       const d = await res.json();
       const hits = d.results || [];
       if (!hits.length) {
-        resultsEl.innerHTML = `<div class="reader-results-head">No matches for "${escHtml(q)}"</div>`;
+        resultsEl.innerHTML = `<div class="reader-results-head"><span>No matches for "${escHtml(q)}"</span>
+          <button class="rr-close" onclick="closeSearch()">✕</button></div>`;
       } else {
         resultsEl.innerHTML = `
           <div class="reader-results-head">
             <span>${hits.length}${d.truncated ? "+" : ""} page${hits.length > 1 ? "s" : ""} mention "${escHtml(q)}"</span>
-            <button class="reader-tool-btn" style="padding:2px 8px;font-size:11px;" onclick="closeSearch()">✕</button>
+            <button class="rr-close" onclick="closeSearch()">✕</button>
           </div>
           ${hits.map(h => `
             <button class="reader-result-item" onclick="goToResult(${h.page})">
@@ -275,10 +403,9 @@ sitemap: false
       resultsEl.style.display = "block";
       highlightTerm = q;
     } catch (e) {
-      resultsEl.innerHTML = `<div class="reader-results-head">Search failed — try again.</div>`;
+      resultsEl.innerHTML = `<div class="reader-results-head"><span>Search failed — try again.</span>
+        <button class="rr-close" onclick="closeSearch()">✕</button></div>`;
       resultsEl.style.display = "block";
-    } finally {
-      btn.disabled = false;
     }
   };
 
@@ -289,18 +416,25 @@ sitemap: false
   window.closeSearch = function () {
     resultsEl.style.display = "none";
     highlightTerm = "";
+    searchInput.value = "";
     const current = bodyEl.querySelector(".reader-text");
     if (current) {  // strip highlights from the visible page
       current.querySelectorAll("mark").forEach(m => m.replaceWith(m.textContent));
     }
   };
 
+  let searchDebounce;
   searchInput.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") window.runSearch();
+    if (e.key === "Enter") { e.preventDefault(); window.runSearch(); }
+  });
+  searchInput.addEventListener("input", () => {
+    clearTimeout(searchDebounce);
+    if (!searchInput.value.trim()) { window.closeSearch(); return; }
+    searchDebounce = setTimeout(window.runSearch, 600);
   });
 
   document.addEventListener("keydown", (e) => {
-    if (e.target === searchInput) return;
+    if (e.target === searchInput || e.target === pageInput) return;
     if (e.key === "ArrowRight") window.go(1);
     if (e.key === "ArrowLeft") window.go(-1);
   });
