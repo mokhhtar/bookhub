@@ -189,7 +189,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
     background: var(--accent); border: 2px solid var(--bg); cursor: pointer;
   }
   @media (max-width: 560px) {
-    .reading-bar-control { justify-content: flex-start; width: 100%; }
+    .reading-bar-control { justify-content: flex-start; width: 100%; flex-wrap: wrap; min-width: 0; }
   }
 
   .sound-wave { display: flex; align-items: flex-end; gap: 3px; height: 20px; }
@@ -661,39 +661,54 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
 
   .chat-send-btn:hover { background: var(--accent-hover); }
 
+  /* Wrapper for cover + title/author/badges: plain blocks on desktop,
+     a compact side-by-side header on mobile. */
+  .sidebar-top-info { min-width: 0; }
+
   /* ── Mobile Responsive ────────────────────────────────────── */
   @media (max-width: 900px) {
     .summary-layout { flex-direction: column; gap: 1.5rem; }
 
+    /* Everything must fit the viewport — no element may widen the column
+       (the old 140px+1fr sidebar grid did exactly that and dragged the
+       whole page into horizontal overflow). */
+    .summary-layout > * { max-width: 100%; }
+    .summary-main, .summary-sidebar { width: 100%; box-sizing: border-box; }
+
     .summary-sidebar {
-      width: 100%;
       position: static;
       max-height: none;
       order: 1;
-      display: grid;
-      grid-template-columns: 140px 1fr;
-      gap: 1rem;
       background: var(--bg-subtle);
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 1rem;
     }
 
-    .sidebar-cover-wrap { grid-column: 1; grid-row: 1 / 5; }
-    .sidebar-cover { max-height: 200px; }
+    /* Compact header: cover beside title/author/badges; every block
+       after it (CTAs, NYT, themes, awards…) stacks full-width below. */
+    .sidebar-top { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 14px; }
+    .sidebar-cover-wrap { width: 108px; flex-shrink: 0; }
+    .sidebar-cover { max-height: 170px; }
     .sidebar-no-cover { height: 140px; }
-
     .sidebar-title { font-size: 15px; margin-top: 0; }
-    .sidebar-amazon-btn { margin-top: 0.75rem; }
+    .sidebar-badges { flex-wrap: wrap; }
+    .sidebar-badge { white-space: normal; }  /* long badges wrap, never widen */
+
+    .sidebar-amazon-btn { margin-top: 0.5rem; width: 100%; justify-content: center; box-sizing: border-box; }
     .sidebar-review-links { flex-direction: row; flex-wrap: wrap; margin-top: 0.5rem; }
+
+    /* Bars above the summary stack instead of squeezing */
+    .audio-player-container { flex-wrap: wrap; }
 
     .chat-float-panel { width: calc(100vw - 48px); right: 12px; bottom: 80px; }
     .chat-float-btn { bottom: 16px; right: 16px; width: 48px; height: 48px; }
   }
 
   @media (max-width: 480px) {
-    .summary-sidebar { grid-template-columns: 110px 1fr; }
-    .summary-card { padding: 1.25rem; }
+    .summary-card { padding: 1rem; }
+    .sidebar-cover-wrap { width: 92px; }
+    .sidebar-cover { max-height: 140px; }
   }
 
   /* ── Similar books: infinite horizontal marquee ──────────── */
@@ -1562,20 +1577,24 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
 
         <!-- SIDEBAR (visually left via CSS order:-1) -->
         <aside class="summary-sidebar">
-          <div class="sidebar-cover-wrap">
-            ${coverHtml}
-          </div>
-          <h2 class="sidebar-title">${data.title || title}</h2>
-          ${data.author ? (data.author_slug
-            ? `<p class="sidebar-author">by <a href="${AUTHORS_BASE}${data.author_slug}/" style="color:inherit;text-decoration:underline;text-decoration-color:var(--border);text-underline-offset:3px;">${data.author}</a></p>`
-            : `<p class="sidebar-author">by ${data.author}</p>`) : ''}
-          <div class="sidebar-badges">
-            ${categoryChipsHtml(data)}
-            ${ratingBadgeHtml(data)}
-            ${data.published_year ? `<span class="sidebar-badge">${data.published_year}</span>` : ''}
-            ${data.page_count ? `<span class="sidebar-badge">${data.page_count} pages</span>` : ''}
-            ${data.reading_level ? `<span class="sidebar-badge" title="Estimated reading level">🎓 Reading level: ${data.reading_level}</span>` : ''}
-            ${data.editions && data.editions.editions >= 2 ? `<span class="sidebar-badge" title="Open Library edition data">🌍 ${data.editions.editions} editions${data.editions.languages >= 2 ? ` · ${data.editions.languages} languages` : ''}</span>` : ''}
+          <div class="sidebar-top">
+            <div class="sidebar-cover-wrap">
+              ${coverHtml}
+            </div>
+            <div class="sidebar-top-info">
+              <h2 class="sidebar-title">${data.title || title}</h2>
+              ${data.author ? (data.author_slug
+                ? `<p class="sidebar-author">by <a href="${AUTHORS_BASE}${data.author_slug}/" style="color:inherit;text-decoration:underline;text-decoration-color:var(--border);text-underline-offset:3px;">${data.author}</a></p>`
+                : `<p class="sidebar-author">by ${data.author}</p>`) : ''}
+              <div class="sidebar-badges">
+                ${categoryChipsHtml(data)}
+                ${ratingBadgeHtml(data)}
+                ${data.published_year ? `<span class="sidebar-badge">${data.published_year}</span>` : ''}
+                ${data.page_count ? `<span class="sidebar-badge">${data.page_count} pages</span>` : ''}
+                ${data.reading_level ? `<span class="sidebar-badge" title="Estimated reading level">🎓 Reading level: ${data.reading_level}</span>` : ''}
+                ${data.editions && data.editions.editions >= 2 ? `<span class="sidebar-badge" title="Open Library edition data">🌍 ${data.editions.editions} editions${data.editions.languages >= 2 ? ` · ${data.editions.languages} languages` : ''}</span>` : ''}
+              </div>
+            </div>
           </div>
 
           <!-- CTAs first: every decision button visible without scrolling -->
