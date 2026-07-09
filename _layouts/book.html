@@ -82,6 +82,7 @@ layout: default
           {% endif %}
           {% if page.published_year and page.published_year != "" %}<span class="book-meta-tag"><span itemprop="datePublished">{{ page.published_year }}</span></span>{% endif %}
           {% if page.reading_level and page.reading_level != "" %}<span class="book-meta-tag" title="Estimated reading level">🎓 Reading level: {{ page.reading_level }}</span>{% endif %}
+          {% if page.editions and page.editions.editions >= 2 %}<span class="book-meta-tag" title="Open Library edition data">🌍 {{ page.editions.editions }} editions{% if page.editions.languages >= 2 %} · {{ page.editions.languages }} languages{% endif %}</span>{% endif %}
           {% if has_ratings %}
             {% assign rc = page.ratings.count %}
             <span class="book-meta-tag" title="{{ page.ratings.source }}, {{ rc }} ratings">★ {{ page.ratings.average }}{% if rc %} · {% if rc >= 1000000 %}{{ rc | divided_by: 100000 | times: 0.1 | round: 1 }}M{% elsif rc >= 1000 %}{{ rc | divided_by: 100 | times: 0.1 | round: 1 }}K{% else %}{{ rc }}{% endif %}{% endif %}</span>

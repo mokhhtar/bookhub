@@ -1569,6 +1569,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
             ${data.published_year ? `<span class="sidebar-badge">${data.published_year}</span>` : ''}
             ${data.page_count ? `<span class="sidebar-badge">${data.page_count} pages</span>` : ''}
             ${data.reading_level ? `<span class="sidebar-badge" title="Estimated reading level">🎓 Reading level: ${data.reading_level}</span>` : ''}
+            ${data.editions && data.editions.editions >= 2 ? `<span class="sidebar-badge" title="Open Library edition data">🌍 ${data.editions.editions} editions${data.editions.languages >= 2 ? ` · ${data.editions.languages} languages` : ''}</span>` : ''}
           </div>
 
           ${data.nyt && data.nyt.weeks_on_list ? `
