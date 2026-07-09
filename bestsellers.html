@@ -1,0 +1,112 @@
+---
+layout: default
+title: "Current NYT #1 Bestsellers"
+description: "The current number-one book on every New York Times bestseller list — updated weekly, with instant AI summaries for each."
+permalink: /bestsellers/
+---
+<style>
+  .bs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 20px; margin-top: 24px; }
+  .bs-card {
+    text-decoration: none; color: inherit; display: flex; flex-direction: column;
+    border: 1px solid var(--border); border-radius: 12px; background: var(--bg-subtle);
+    padding: 14px; transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  }
+  .bs-card:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(0,0,0,.15); border-color: var(--accent); }
+  .bs-card img, .bs-cover-empty {
+    width: 100%; aspect-ratio: 2/3; object-fit: cover; border-radius: 8px;
+    border: 1px solid var(--border); margin-bottom: 10px;
+  }
+  .bs-cover-empty {
+    display: flex; align-items: center; justify-content: center;
+    background: var(--bg); color: var(--fg-faint); font-size: 12px; padding: 8px;
+    box-sizing: border-box; text-align: center;
+  }
+  .bs-list-name {
+    font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 4px;
+  }
+  .bs-title { font-size: 13px; font-weight: 700; line-height: 1.3; margin-bottom: 2px; }
+  .bs-author { font-size: 11px; color: var(--fg-faint); }
+  .bs-weeks { font-size: 10px; color: var(--fg-faint); margin-top: 6px; }
+  .bs-skeleton { height: 300px; border-radius: 12px; }
+  .skeleton {
+    background: linear-gradient(90deg, var(--bg-subtle) 25%, var(--border) 50%, var(--bg-subtle) 75%);
+    background-size: 200% 100%; animation: bs-shimmer 1.4s infinite;
+  }
+  @keyframes bs-shimmer { to { background-position: -200% 0; } }
+</style>
+
+<div class="tool-page">
+  <div class="container">
+    <div class="tool-page-header">
+      <p class="breadcrumb">
+        <a href="{{ '/' | relative_url }}">Home</a>
+        <span class="breadcrumb-sep">/</span> Bestsellers
+      </p>
+      <h1 class="tool-page-title">🏆 Current NYT #1 Bestsellers</h1>
+      <p class="tool-page-sub">The number-one book on every New York Times list right now — tap any book for an instant AI summary. Updated weekly from the official NYT Books API.</p>
+    </div>
+
+    <div class="bs-grid" id="bs-grid">
+      <div class="skeleton bs-skeleton" aria-hidden="true"></div>
+      <div class="skeleton bs-skeleton" aria-hidden="true"></div>
+      <div class="skeleton bs-skeleton" aria-hidden="true"></div>
+      <div class="skeleton bs-skeleton" aria-hidden="true"></div>
+    </div>
+    <p id="bs-error" style="display:none;color:var(--fg-faint);font-size:14px;padding:32px 0;">
+      Couldn't load this week's lists right now — please try again in a moment.
+    </p>
+  </div>
+</div>
+
+<script>
+(function () {
+  const API = "{{ site.api_url }}";
+  const SUMMARY_PATH = "{{ '/summary/' | relative_url }}";
+  const grid = document.getElementById("bs-grid");
+  const errEl = document.getElementById("bs-error");
+
+  const esc = (s) => String(s == null ? "" : s)
+    .replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;").replaceAll("'", "&#39;");
+
+  function render(books) {
+    if (!books.length) { fail(); return; }
+    grid.innerHTML = books.map((b) => {
+      const p = new URLSearchParams({ q: b.title || "", direct: "true" });
+      if (b.author) p.set("author", b.author);
+      if (b.isbn_13) p.set("isbn", b.isbn_13);
+      const cover = b.book_image
+        ? `<img src="${esc(b.book_image)}" alt="Cover of ${esc(b.title)}" loading="lazy">`
+        : `<div class="bs-cover-empty">${esc(b.title)}</div>`;
+      return `<a href="${SUMMARY_PATH}?${p.toString()}" class="bs-card">
+        ${cover}
+        <span class="bs-list-name">${esc(b.list_name)}</span>
+        <span class="bs-title">${esc(b.title)}</span>
+        <span class="bs-author">${esc(b.author)}</span>
+        ${b.weeks_on_list ? `<span class="bs-weeks">${b.weeks_on_list} week${b.weeks_on_list > 1 ? "s" : ""} on this list</span>` : ""}
+      </a>`;
+    }).join("");
+  }
+
+  function fail() { grid.style.display = "none"; errEl.style.display = "block"; }
+
+  const weekKey = "bookhub_nyt_leaders_" + new Date().toISOString().slice(0, 10);
+  try {
+    const memo = sessionStorage.getItem(weekKey);
+    if (memo) { render(JSON.parse(memo)); return; }
+  } catch (e) { /* fetch fresh */ }
+
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), 60000);
+  fetch(API + "/nyt/leaders", { signal: ctrl.signal })
+    .then((r) => { if (!r.ok) throw new Error("leaders " + r.status); return r.json(); })
+    .then((d) => {
+      clearTimeout(timer);
+      const books = (d && d.books) || [];
+      try { sessionStorage.setItem(weekKey, JSON.stringify(books)); } catch (e) {}
+      render(books);
+    })
+    .catch(() => { clearTimeout(timer); fail(); });
+})();
+</script>
