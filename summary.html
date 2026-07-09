@@ -902,6 +902,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
     }
   }
 
+  let currentLanguage = 'en';  // summary language toggle (en/ar)
   let allSearchResults = [];
   let originalSearchResults = [];  // server relevance order — restored when sort = relevance
   let searchSortField = "relevance";
@@ -1280,10 +1281,12 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
       result.innerHTML =
         '<div class="result-loading"><span class="spinner"></span> Generating comprehensive study guide...</div>';
       
-      const payload = { title, author, depth };
+      const payload = { title, author, depth, language: currentLanguage };
       if (isbn) payload.isbn = isbn;
       if (googleId) payload.google_id = googleId;
       if (openLibraryId) payload.openlibrary_id = openLibraryId;
+      // Remembered so the language toggle can re-request the same edition.
+      window.__lastSummaryIds = { isbn, googleId, openLibraryId };
 
       // Try the streaming route first — text appears within seconds. Any
       // failure (old server, proxy buffering, mid-stream error) falls back
@@ -1548,11 +1551,15 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
           ${readingBarHtml}
 
           <div class="summary-card">
-            <div class="summary-card-title">
+            <div class="summary-card-title" style="display:flex;align-items:center;gap:8px;">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
               AI Grounded Summary — Comprehensive Study Guide
+              <button class="btn-secondary" onclick="toggleSummaryLanguage()" title="Switch summary language"
+                      style="margin-left:auto;padding:4px 12px;font-size:12px;">
+                ${currentLanguage === 'en' ? 'عربي' : 'English'}
+              </button>
             </div>
-            <div class="ai-output">${parseSummaryMarkdown(data.summary)}</div>
+            <div class="ai-output" ${currentLanguage === 'ar' ? 'dir="rtl" lang="ar"' : ''}>${parseSummaryMarkdown(data.summary)}</div>
           </div>
 
           ${quotesHtml}
@@ -1695,6 +1702,16 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
     renderSearchResultsPage(0);
   };
 
+  // ── Summary language toggle (en ⇄ ar) ───────────────────
+  window.toggleSummaryLanguage = function () {
+    currentLanguage = currentLanguage === 'en' ? 'ar' : 'en';
+    const ids = window.__lastSummaryIds || {};
+    if (ids.isbn) window.selectedBookIsbn = ids.isbn;
+    if (ids.googleId) window.selectedBookGoogleId = ids.googleId;
+    if (ids.openLibraryId) window.selectedBookOpenLibraryId = ids.openLibraryId;
+    doSummary(true);  // same book, other language — server caches both
+  };
+
   // ── Streaming summary (SSE from /summary/stream) ────────
   // Returns the full payload when the stream completes, or null on ANY
   // failure so the caller falls back to the classic POST /summary.
@@ -1738,7 +1755,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
                     AI Grounded Summary — Comprehensive Study Guide
                     <span class="spinner" style="width:12px;height:12px;margin-left:8px;"></span>
                   </div>
-                  <div class="ai-output" id="stream-progress"></div>
+                  <div class="ai-output" id="stream-progress" ${currentLanguage === 'ar' ? 'dir="rtl" lang="ar"' : ''}></div>
                 </div>`;
               streamOut = document.getElementById("stream-progress");
             }
@@ -1975,8 +1992,12 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
     currentUtterance = new SpeechSynthesisUtterance(audioText);
     
     const voices = window.speechSynthesis.getVoices();
-    const enVoice = voices.find(v => v.lang.startsWith("en-"));
-    if (enVoice) currentUtterance.voice = enVoice;
+    // Match the TTS voice to the summary language (Arabic voice for the
+    // Arabic toggle when the browser has one; en fallback otherwise).
+    const wantPrefix = currentLanguage === 'ar' ? 'ar' : 'en-';
+    const voice = voices.find(v => v.lang.startsWith(wantPrefix)) || voices.find(v => v.lang.startsWith("en-"));
+    if (voice) currentUtterance.voice = voice;
+    if (currentLanguage === 'ar') currentUtterance.lang = 'ar';
     
     const speed = parseFloat(document.getElementById("audio-speed").value || "1");
     currentUtterance.rate = speed;
