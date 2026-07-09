@@ -21,13 +21,15 @@ layout: default
     {% if cat_books.size > 0 %}
       <div class="book-card-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:18px;">
         {% for book in cat_books %}
-          <a href="{{ book.url | relative_url }}" class="book-grid-card" style="text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:8px;">
-            {% if book.cover_url and book.cover_url != "" %}
-              <img src="{{ book.cover_url }}" alt="Cover of {{ book.title }}" loading="lazy"
-                   style="width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:8px;border:1px solid var(--border);">
-            {% else %}
-              <div style="width:100%;aspect-ratio:2/3;background:var(--bg-subtle);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--fg-faint);padding:10px;text-align:center;">{{ book.title | truncate: 40 }}</div>
-            {% endif %}
+          <a href="{{ book.url | relative_url }}" class="book-grid-card" data-title="{{ book.title | escape }}" data-author="{{ book.author | escape }}" style="text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:8px;">
+            <div style="position:relative;">
+              {% if book.cover_url and book.cover_url != "" %}
+                <img src="{{ book.cover_url }}" alt="Cover of {{ book.title }}" loading="lazy"
+                     style="width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:8px;border:1px solid var(--border);display:block;">
+              {% else %}
+                <div style="width:100%;aspect-ratio:2/3;background:var(--bg-subtle);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--fg-faint);padding:10px;text-align:center;">{{ book.title | truncate: 40 }}</div>
+              {% endif %}
+            </div>
             <div>
               <p style="font-size:13px;font-weight:600;line-height:1.35;">{{ book.title }}</p>
               <p style="font-size:12px;color:var(--fg-faint);margin-top:2px;">{{ book.author }}</p>
@@ -44,3 +46,54 @@ layout: default
 
   </div>
 </section>
+
+<script>
+// Stamp "on the NYT list now" badges onto matching book cards. Pure
+// enrichment: fetch failures leave the page exactly as rendered.
+(function () {
+  const API = "{{ site.api_url }}";
+  const cards = document.querySelectorAll(".book-grid-card[data-title]");
+  if (!cards.length) return;
+
+  const norm = (s) => String(s || "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+  const lastName = (s) => { const w = norm(s).split(" "); return w[w.length - 1] || ""; };
+
+  const dayKey = "bookhub_nyt_current_" + new Date().toISOString().slice(0, 10);
+  const stamp = (books) => {
+    if (!books || !books.length) return;
+    cards.forEach((card) => {
+      const t = norm(card.dataset.title);
+      const a = lastName(card.dataset.author);
+      const hit = books.find((b) => {
+        const bt = norm(b.title);
+        if (!(t === bt || t.includes(bt) || bt.includes(t))) return false;
+        return !a || norm(b.author).includes(a);
+      });
+      if (!hit) return;
+      const wrap = card.querySelector("div[style*='position:relative']");
+      if (!wrap) return;
+      const badge = document.createElement("span");
+      badge.textContent = "🏆 NYT";
+      badge.title = `#${hit.rank} on "${hit.list_name}" — ${hit.weeks_on_list} weeks on list`;
+      badge.style.cssText = "position:absolute;top:8px;left:8px;font-size:10px;font-weight:700;" +
+        "background:var(--bg);color:var(--fg);border:1px solid var(--accent);border-radius:999px;" +
+        "padding:2px 8px;box-shadow:0 2px 8px rgba(0,0,0,.2);";
+      wrap.appendChild(badge);
+    });
+  };
+
+  try {
+    const memo = sessionStorage.getItem(dayKey);
+    if (memo) { stamp(JSON.parse(memo)); return; }
+  } catch (e) { /* fetch fresh */ }
+
+  fetch(API + "/nyt/current")
+    .then((r) => { if (!r.ok) throw new Error("nyt " + r.status); return r.json(); })
+    .then((d) => {
+      const books = (d && d.books) || [];
+      try { sessionStorage.setItem(dayKey, JSON.stringify(books)); } catch (e) {}
+      stamp(books);
+    })
+    .catch(() => { /* no badges — fine */ });
+})();
+</script>
