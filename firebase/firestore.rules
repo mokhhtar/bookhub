@@ -92,6 +92,13 @@ service cloud.firestore {
       allow update: if false;
     }
 
+    // Collection-group read for the admin moderation page: a
+    // collectionGroup("comments") query (pending comments across ALL
+    // books) is only authorized by a group-scoped match like this one.
+    match /{path=**}/comments/{commentId} {
+      allow read: if isAdmin();
+    }
+
     // Everything else: denied.
     match /{document=**} {
       allow read, write: if false;

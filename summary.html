@@ -1535,6 +1535,18 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
         </div>`;
       }
 
+      // Comments — pre-moderated (approved-only reads; see firestore.rules).
+      // Lazy: nothing is fetched until the reader opens the section.
+      const commentsHtml = data.slug ? `
+        <div class="summary-card" id="comments-card" data-book-slug="${escExt(data.slug)}">
+          <div class="summary-card-title">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            Reader Comments
+          </div>
+          <button class="btn-secondary" id="comments-load-btn" onclick="loadComments()" style="padding:8px 18px;font-size:13px;">Show comments</button>
+          <div id="comments-area" style="display:none;"></div>
+        </div>` : '';
+
       // Quiz offer — only when real grounding text exists (original
       // Gutenberg text, or a Fandom wiki's chapter recaps). Books with
       // neither never see the button.
@@ -1668,6 +1680,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
           ${chaptersHtml}
           ${quizHtml}
           ${similarHtml}
+          ${commentsHtml}
         </main>
 
         <!-- SIDEBAR (visually left via CSS order:-1) -->
@@ -2005,6 +2018,87 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
       render(detail);
     } catch (e) {
       render({ description: c.description || "Details unavailable right now.", facts: {} });
+    }
+  };
+
+  // ── Reader comments (Firestore, pre-moderated) ───────────
+  window.loadComments = async function () {
+    const card = document.getElementById("comments-card");
+    const area = document.getElementById("comments-area");
+    const loadBtn = document.getElementById("comments-load-btn");
+    if (!card || !area || !window.bhFs) return;
+    const slug = card.dataset.bookSlug;
+    if (loadBtn) loadBtn.style.display = "none";
+    area.style.display = "block";
+    area.innerHTML = `<p style="font-size:12px;color:var(--fg-faint);">Loading comments…</p>`;
+
+    const fs = window.bhFs, db = window.bhFirebase.db;
+    let items = [];
+    try {
+      // approved==true only (anything else is denied by the rules); no
+      // orderBy → no composite index needed; sort client-side.
+      const snap = await fs.getDocs(fs.query(
+        fs.collection(db, "books", slug, "comments"),
+        fs.where("approved", "==", true), fs.limit(50)));
+      snap.forEach(d => items.push({ id: d.id, ...d.data() }));
+      items.sort((a, b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0));
+    } catch (e) {
+      area.innerHTML = `<p style="font-size:12px;color:var(--fg-faint);">Couldn't load comments right now.</p>`;
+      return;
+    }
+
+    const listHtml = items.length
+      ? items.map(c => `
+          <div style="border-bottom:1px solid var(--border);padding:10px 0;">
+            <p style="font-size:12px;font-weight:700;">${escExt(c.name || "Reader")}
+              <span style="font-weight:400;color:var(--fg-faint);font-size:11px;margin-left:6px;">${c.createdAt ? new Date(c.createdAt.seconds * 1000).toLocaleDateString() : ""}</span></p>
+            <p style="font-size:13px;color:var(--fg-muted);line-height:1.6;margin-top:3px;white-space:pre-wrap;">${escExt(c.text || "")}</p>
+          </div>`).join("")
+      : `<p style="font-size:13px;color:var(--fg-muted);">No comments yet — be the first.</p>`;
+
+    const formHtml = window.bhUser ? `
+      <div style="margin-top:14px;">
+        <textarea id="comment-text" maxlength="1000" rows="3" placeholder="Share your thoughts on this book…"
+          style="width:100%;box-sizing:border-box;padding:10px 12px;font-size:16px;background:var(--bg-subtle);color:var(--fg);border:1px solid var(--border);border-radius:8px;resize:vertical;"></textarea>
+        <div style="display:flex;align-items:center;gap:10px;margin-top:8px;">
+          <button class="btn-primary" onclick="postComment()" id="comment-post-btn" style="padding:8px 18px;font-size:13px;">Post comment</button>
+          <span id="comment-status" style="font-size:12px;color:var(--fg-faint);"></span>
+        </div>
+        <p style="font-size:11px;color:var(--fg-faint);margin-top:6px;">Comments appear after review by the site owner.</p>
+      </div>` : `
+      <div style="margin-top:14px;">
+        <button class="btn-secondary" onclick="bhAuthUI.open('signin')" style="padding:8px 18px;font-size:13px;">Sign in to comment</button>
+      </div>`;
+
+    area.innerHTML = `<div style="margin-top:10px;">${listHtml}</div>${formHtml}`;
+  };
+
+  window.postComment = async function () {
+    const card = document.getElementById("comments-card");
+    const ta = document.getElementById("comment-text");
+    const btn = document.getElementById("comment-post-btn");
+    const status = document.getElementById("comment-status");
+    if (!card || !ta || !window.bhUser || !window.bhFs) return;
+    const text = ta.value.trim();
+    if (text.length < 2) { status.textContent = "Write a little more first."; return; }
+    btn.disabled = true;
+    status.textContent = "Posting…";
+    const fs = window.bhFs, db = window.bhFirebase.db;
+    try {
+      // Shape must match firestore.rules exactly (approved:false enforced).
+      await fs.addDoc(fs.collection(db, "books", card.dataset.bookSlug, "comments"), {
+        uid: window.bhUser.uid,
+        name: (window.bhUser.displayName || "Reader").slice(0, 40),
+        text: text,
+        createdAt: fs.serverTimestamp(),
+        approved: false,
+      });
+      ta.value = "";
+      status.textContent = "✓ Submitted — it will appear once approved.";
+    } catch (e) {
+      status.textContent = "Couldn't post — try again in a moment.";
+    } finally {
+      btn.disabled = false;
     }
   };
 

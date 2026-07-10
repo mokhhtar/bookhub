@@ -102,7 +102,9 @@
     signInWithEmailAndPassword, sendPasswordResetEmail, signOut, updateProfile,
   } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
   import {
-    getFirestore, doc, getDoc, setDoc, serverTimestamp,
+    getFirestore, doc, getDoc, setDoc, addDoc, updateDoc, deleteDoc,
+    collection, collectionGroup, query, where, limit, getDocs,
+    getCountFromServer, serverTimestamp,
   } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
 
   const app = initializeApp({
@@ -118,6 +120,12 @@
 
   // Small global surface for other pages (library sync, comments, recs).
   window.bhFirebase = { app, auth, db };
+  // Firestore functions for the site's classic (non-module) scripts.
+  window.bhFs = {
+    doc, getDoc, setDoc, addDoc, updateDoc, deleteDoc,
+    collection, collectionGroup, query, where, limit, getDocs,
+    getCountFromServer, serverTimestamp,
+  };
   window.bhUser = null;
 
   const $ = (id) => document.getElementById(id);

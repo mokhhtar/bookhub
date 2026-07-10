@@ -1,0 +1,101 @@
+---
+layout: default
+title: "Comment Moderation"
+permalink: /admin/comments/
+sitemap: false
+---
+<meta name="robots" content="noindex">
+
+<section class="admin-comments">
+  <div class="container" style="max-width:760px;">
+    <header class="section-header" style="margin-bottom:24px;">
+      <h1 class="section-title" style="font-size:26px;">Comment moderation</h1>
+      <p style="font-size:13px;color:var(--fg-muted);margin-top:8px;">
+        Pending comments across every book. Only the admin account (the UID
+        set in firestore.rules) can load this list — anyone else gets a
+        permission error.
+      </p>
+    </header>
+
+    <div id="mod-status" style="font-size:13px;color:var(--fg-muted);padding:20px 0;">
+      Sign in with the admin account to load pending comments…
+    </div>
+    <div id="mod-list"></div>
+  </div>
+</section>
+
+<script>
+(function () {
+  const statusEl = document.getElementById("mod-status");
+  const listEl = document.getElementById("mod-list");
+  const esc = (s) => String(s == null ? "" : s)
+    .replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;").replaceAll("'", "&#39;");
+
+  async function loadPending() {
+    if (!window.bhUser) {
+      statusEl.textContent = "Sign in with the admin account to load pending comments…";
+      listEl.innerHTML = "";
+      return;
+    }
+    const fs = window.bhFs, db = window.bhFirebase.db;
+    statusEl.textContent = "Loading pending comments…";
+    let docs = [];
+    try {
+      const snap = await fs.getDocs(fs.query(
+        fs.collectionGroup(db, "comments"),
+        fs.where("approved", "==", false), fs.limit(100)));
+      snap.forEach(d => docs.push(d));
+    } catch (e) {
+      // Two expected cases: not the admin (permission-denied), or the
+      // collection-group index doesn't exist yet (failed-precondition —
+      // the browser console then contains a one-click index-creation link).
+      statusEl.textContent = e.code === "permission-denied"
+        ? "This account is not authorized for moderation."
+        : "Couldn't load — check the browser console (a missing Firestore index shows a creation link there).";
+      console.error(e);
+      return;
+    }
+
+    if (!docs.length) {
+      statusEl.textContent = "No pending comments — all clear ✓";
+      listEl.innerHTML = "";
+      return;
+    }
+    statusEl.textContent = `${docs.length} pending comment${docs.length > 1 ? "s" : ""}:`;
+    listEl.innerHTML = docs.map((d, i) => {
+      const c = d.data();
+      const book = d.ref.parent.parent ? d.ref.parent.parent.id : "?";
+      return `
+        <div style="border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:10px;" id="mod-item-${i}">
+          <p style="font-size:11px;color:var(--fg-faint);">on <b>${esc(book)}</b> · by <b>${esc(c.name || "Reader")}</b>${c.createdAt ? " · " + new Date(c.createdAt.seconds * 1000).toLocaleString() : ""}</p>
+          <p style="font-size:13px;color:var(--fg);line-height:1.6;margin:8px 0;white-space:pre-wrap;">${esc(c.text || "")}</p>
+          <div style="display:flex;gap:8px;">
+            <button class="btn-primary" style="padding:6px 16px;font-size:12px;" onclick="modAct(${i}, 'approve')">Approve</button>
+            <button class="btn-secondary" style="padding:6px 16px;font-size:12px;" onclick="modAct(${i}, 'delete')">Delete</button>
+          </div>
+        </div>`;
+    }).join("");
+    window.__modDocs = docs;
+  }
+
+  window.modAct = async function (i, action) {
+    const d = (window.__modDocs || [])[i];
+    if (!d) return;
+    const fs = window.bhFs;
+    const el = document.getElementById(`mod-item-${i}`);
+    try {
+      if (action === "approve") await fs.updateDoc(d.ref, { approved: true });
+      else await fs.deleteDoc(d.ref);
+      if (el) el.style.opacity = "0.35";
+      if (el) el.querySelectorAll("button").forEach(b => b.disabled = true);
+    } catch (e) {
+      alert("Action failed: " + (e.code || e.message));
+    }
+  };
+
+  document.addEventListener("bh-auth", loadPending);
+  // firebase.html may have fired auth state before this listener attached.
+  if (window.bhUser !== undefined) loadPending();
+})();
+</script>
