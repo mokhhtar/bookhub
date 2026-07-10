@@ -1725,9 +1725,15 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
           </a>` : ''}
 
           <button class="btn-secondary" id="add-library-btn" onclick="addCurrentToLibrary()"
-                  style="width:100%;justify-content:center;margin:8px 0 12px;padding:9px 12px;font-size:13px;">
+                  style="width:100%;justify-content:center;margin:8px 0 8px;padding:9px 12px;font-size:13px;">
             ➕ Add to My Library
           </button>
+
+          ${data.slug ? `
+          <button class="btn-secondary" id="recommend-btn" onclick="toggleRecommend()" data-book-slug="${escExt(data.slug)}"
+                  style="width:100%;justify-content:center;margin:0 0 12px;padding:9px 12px;font-size:13px;">
+            👍 Recommend this book
+          </button>` : ''}
 
           <!-- Informational content below the fold is fine -->
           ${data.nyt && data.nyt.weeks_on_list ? `
@@ -1777,6 +1783,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
       // it never delays the main response (see ROADMAP 1.2).
       loadAuthorWorks(data);
       refreshLibraryBtn();
+      refreshRecommendBtn();
       __charDetailsCache = {};   // fresh book → fresh character state
       __charOpenIndex = -1;
 
@@ -2020,6 +2027,45 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
       render({ description: c.description || "Details unavailable right now.", facts: {} });
     }
   };
+
+  // ── Recommend button (Firestore recs, one vote per user) ──
+  async function refreshRecommendBtn() {
+    const btn = document.getElementById("recommend-btn");
+    if (!btn || !window.bhFs) return;
+    const fs = window.bhFs, db = window.bhFirebase.db;
+    const slug = btn.dataset.bookSlug;
+    try {
+      const cnt = await fs.getCountFromServer(fs.collection(db, "books", slug, "recs"));
+      const n = cnt.data().count;
+      let mine = false;
+      if (window.bhUser) {
+        const me = await fs.getDoc(fs.doc(db, "books", slug, "recs", window.bhUser.uid));
+        mine = me.exists();
+      }
+      btn.innerHTML = mine
+        ? `✓ Recommended${n ? ` · ${n}` : ""}`
+        : `👍 Recommend this book${n ? ` · ${n}` : ""}`;
+      btn.dataset.mine = mine ? "1" : "";
+    } catch (e) { /* counts are enrichment — never break the page */ }
+  }
+
+  window.toggleRecommend = async function () {
+    const btn = document.getElementById("recommend-btn");
+    if (!btn) return;
+    if (!window.bhUser) { bhAuthUI.open("signin"); return; }
+    const fs = window.bhFs, db = window.bhFirebase.db;
+    const ref = fs.doc(db, "books", btn.dataset.bookSlug, "recs", window.bhUser.uid);
+    btn.disabled = true;
+    try {
+      if (btn.dataset.mine) await fs.deleteDoc(ref);                       // un-recommend
+      else await fs.setDoc(ref, { createdAt: fs.serverTimestamp() });      // one vote — doc id = uid
+      await refreshRecommendBtn();
+    } catch (e) { /* rules reject anything malformed */ }
+    btn.disabled = false;
+  };
+
+  // Refresh the button whenever auth state changes (sign-in mid-page).
+  document.addEventListener("bh-auth", () => refreshRecommendBtn());
 
   // ── Reader comments (Firestore, pre-moderated) ───────────
   window.loadComments = async function () {
