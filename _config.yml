@@ -24,6 +24,9 @@ collections:
   authors:
     output: true
     permalink: /authors/:slug/
+  characters:
+    output: true
+    permalink: /characters/:slug/
 
 # Plugins
 plugins:
@@ -49,6 +52,11 @@ defaults:
       type: "authors"
     values:
       layout: "author"
+  - scope:
+      path: ""
+      type: "characters"
+    values:
+      layout: "character"
   - scope:
       path: ""
     values:

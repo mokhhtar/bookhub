@@ -1,0 +1,44 @@
+---
+layout: default
+title: "Characters"
+description: "Browse every literary character analyzed on BookHub — grounded bios and the books they appear in."
+permalink: /characters/
+---
+<section class="characters-index">
+  <div class="container">
+
+    <header class="section-header" style="margin-bottom:32px;">
+      <h1 class="section-title" style="font-size:30px;">Characters</h1>
+      <p style="font-size:15px;color:var(--fg-muted);margin-top:10px;">Every character analyzed on BookHub, with grounded bios and the books they appear in.</p>
+    </header>
+
+    {% assign all_characters = site.characters | sort: "name" %}
+    {% if all_characters.size > 0 %}
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;">
+        {% for character in all_characters %}
+          <a href="{{ character.url | relative_url }}"
+             style="text-decoration:none;color:inherit;border:1px solid var(--border);border-radius:10px;padding:20px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;background:var(--bg);transition:border-color .15s;">
+            {% if character.photo_url and character.photo_url != "" %}
+              <img src="{{ character.photo_url }}" alt="Depiction of {{ character.name }}" loading="lazy"
+                   style="width:76px;height:76px;object-fit:cover;border-radius:50%;border:1px solid var(--border);">
+            {% else %}
+              <div style="width:76px;height:76px;border-radius:50%;background:var(--bg-subtle);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800;color:var(--fg-faint);">{{ character.name | truncate: 2, "" }}</div>
+            {% endif %}
+            <div>
+              <p style="font-size:14px;font-weight:700;">{{ character.name }}</p>
+              {% if character.books and character.books.size > 0 %}
+                <p style="font-size:12px;color:var(--fg-faint);margin-top:2px;">{{ character.books[0].title | truncate: 32 }}</p>
+              {% endif %}
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div style="padding:40px;border:1px dashed var(--border);border-radius:10px;text-align:center;">
+        <p style="font-size:14px;color:var(--fg-muted);">Character pages appear automatically as books are summarized.</p>
+        <a href="{{ '/summary/' | relative_url }}" class="btn-primary" style="margin-top:14px;display:inline-block;">Summarize a book →</a>
+      </div>
+    {% endif %}
+
+  </div>
+</section>
