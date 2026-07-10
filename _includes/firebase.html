@@ -102,7 +102,7 @@
     signInWithEmailAndPassword, sendPasswordResetEmail, signOut, updateProfile,
   } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
   import {
-    getFirestore, doc, setDoc, serverTimestamp,
+    getFirestore, doc, getDoc, setDoc, serverTimestamp,
   } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
 
   const app = initializeApp({
@@ -204,7 +204,46 @@
     },
   };
 
+  // ── My Library sync (Phase 2) ─────────────────────────────
+  // localStorage (bookhub_rl_v1) stays the working store on every page —
+  // logged-out users lose nothing. This layer mirrors it to ONE Firestore
+  // doc (users/{uid}/library/list) so the library follows the account:
+  // on login, cloud+local are merged (local wins per title) into both
+  // stores; after any local mutation, pages call window.bhLibraryChanged()
+  // and the full list is pushed, debounced.
+  const RL_KEY = "bookhub_rl_v1";
+  const localList = () => { try { return JSON.parse(localStorage.getItem(RL_KEY)) || []; } catch (e) { return []; } };
+  let pushTimer = null;
+
+  async function pushLibrary() {
+    if (!window.bhUser) return;
+    try {
+      await setDoc(doc(db, "users", window.bhUser.uid, "library", "list"),
+                   { items: localList().slice(0, 500), updatedAt: serverTimestamp() });
+    } catch (e) { console.warn("Library push failed:", e); }
+  }
+
+  window.bhLibraryChanged = function () {
+    clearTimeout(pushTimer);
+    pushTimer = setTimeout(pushLibrary, 2000);
+  };
+
+  async function mergeLibraryOnLogin(user) {
+    try {
+      const snap = await getDoc(doc(db, "users", user.uid, "library", "list"));
+      const cloud = (snap.exists() && Array.isArray(snap.data().items)) ? snap.data().items : [];
+      const byTitle = new Map();
+      for (const b of cloud) if (b && b.title) byTitle.set(b.title.toLowerCase(), b);
+      for (const b of localList()) if (b && b.title) byTitle.set(b.title.toLowerCase(), b);  // local wins
+      const merged = [...byTitle.values()].sort((a, b) => (b.addedAt || 0) - (a.addedAt || 0));
+      localStorage.setItem(RL_KEY, JSON.stringify(merged));
+      await pushLibrary();
+      document.dispatchEvent(new CustomEvent("bh-library-synced"));
+    } catch (e) { console.warn("Library merge failed:", e); }
+  }
+
   onAuthStateChanged(auth, (user) => {
+    if (user) mergeLibraryOnLogin(user);
     window.bhUser = user || null;
     const signinBtn = $("auth-signin-btn");
     const chip = $("auth-user-chip");

@@ -47,7 +47,13 @@ const RL_KEY = 'bookhub_rl_v1';
 let currentFilter = 'all';
 
 function getList() { try { return JSON.parse(localStorage.getItem(RL_KEY)) || []; } catch { return []; } }
-function saveList(list) { localStorage.setItem(RL_KEY, JSON.stringify(list)); }
+function saveList(list) {
+  localStorage.setItem(RL_KEY, JSON.stringify(list));
+  if (window.bhLibraryChanged) window.bhLibraryChanged();  // cloud sync when signed in
+}
+
+// Re-render after the signed-in merge pulls cloud items into localStorage.
+document.addEventListener('bh-library-synced', () => render());
 
 function addBook() {
   const title  = document.getElementById('add-title').value.trim();

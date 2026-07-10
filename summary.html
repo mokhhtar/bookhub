@@ -1902,6 +1902,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
           status: 'want', rating: 0, addedAt: Date.now(),
         });
         localStorage.setItem(RL_KEY, JSON.stringify(list));
+        if (window.bhLibraryChanged) window.bhLibraryChanged();  // cloud sync when signed in
       }
       refreshLibraryBtn();
     } catch (e) { /* storage unavailable — leave the button as-is */ }
