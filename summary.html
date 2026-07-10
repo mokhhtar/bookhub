@@ -768,6 +768,25 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
     .similar-marquee { overflow-x: auto; }
   }
 
+  /* ── Book quiz (same visual language as PDF-chat's quiz) ──── */
+  .quiz-card { border: 1px solid var(--border); border-radius: 12px; padding: 18px; margin-bottom: 14px; background: var(--bg); }
+  .quiz-q { font-size: 14px; font-weight: 700; margin-bottom: 12px; line-height: 1.5; }
+  .quiz-option {
+    display: block; width: 100%; text-align: left; padding: 10px 14px; margin-bottom: 8px;
+    border: 1px solid var(--border); border-radius: 8px; background: var(--bg-subtle);
+    color: var(--fg); font-size: 13px; cursor: pointer; transition: border-color .12s;
+  }
+  .quiz-option:hover:not(:disabled) { border-color: var(--accent); }
+  .quiz-option:disabled { cursor: default; }
+  .quiz-option.correct { border-color: #22a06b; background: rgba(34,160,107,0.12); }
+  .quiz-option.incorrect { border-color: #d33; background: rgba(221,51,51,0.10); }
+  .quiz-quote {
+    margin-top: 10px; padding: 10px 14px; border-left: 3px solid var(--accent);
+    background: var(--bg-subtle); border-radius: 0 8px 8px 0; font-size: 12px;
+    color: var(--fg-muted); font-style: italic; line-height: 1.6;
+  }
+  .quiz-score { position: sticky; top: 0; z-index: 5; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 10px 16px; font-size: 13px; font-weight: 600; margin-bottom: 14px; }
+
   .search-sort-bar { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
   .search-sort-bar label { font-size: 12px; color: var(--fg-faint); }
   .search-sort-bar select {
@@ -1459,6 +1478,23 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
             <p style="font-size:11px;color:var(--fg-faint);margin:0;">Sourced verbatim from <a href="${wq.source_url}" target="_blank" rel="noopener nofollow" style="color:var(--accent);">Wikiquote</a> (CC BY-SA) — not AI-generated.</p>
            </div>` : '';
 
+      // Quiz offer — only when real grounding text exists (original
+      // Gutenberg text, or a Fandom wiki's chapter recaps). Books with
+      // neither never see the button.
+      const quizFromOriginal = data.free_ebook && data.free_ebook.source === 'project_gutenberg';
+      const quizEligible = quizFromOriginal || (data.chapters && data.chapters.length);
+      const quizHtml = quizEligible ? `
+        <div class="summary-card" id="quiz-card">
+          <div class="summary-card-title">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            Test Your Knowledge
+          </div>
+          <p style="font-size:13px;color:var(--fg-muted);margin-bottom:12px;">Multiple-choice questions with verified supporting quotes, grounded in ${quizFromOriginal ? "the book's original text" : "the story wiki's chapter summaries"}.</p>
+          <button class="btn-primary" id="quiz-start-btn" onclick="startBookQuiz()" style="padding:8px 20px;font-size:13px;">Take a quiz</button>
+          <div id="quiz-status" style="font-size:12px;color:var(--fg-faint);margin-top:8px;display:none;"></div>
+          <div id="quiz-area" style="margin-top:14px;"></div>
+        </div>` : '';
+
       const chaptersHtml = data.chapters && data.chapters.length
         ? `<div class="summary-card">
             <div class="summary-card-title" style="display:flex;align-items:center;justify-content:space-between;">
@@ -1572,6 +1608,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
 
           ${quotesHtml}
           ${chaptersHtml}
+          ${quizHtml}
           ${similarHtml}
         </main>
 
@@ -1851,6 +1888,112 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
         </div>`;
       main.appendChild(card);
     } catch (e) { /* enrichment only — never break the page */ }
+  }
+
+  // ── Book quiz (POST /quiz/book) ──────────────────────────
+  function bhClientId() {
+    try {
+      let id = localStorage.getItem("bookhub_client_id");
+      if (!id) { id = crypto.randomUUID(); localStorage.setItem("bookhub_client_id", id); }
+      return id;
+    } catch (e) { return null; }
+  }
+
+  window.startBookQuiz = async function () {
+    const btn = document.getElementById("quiz-start-btn");
+    const status = document.getElementById("quiz-status");
+    const area = document.getElementById("quiz-area");
+    if (!btn || !area) return;
+    btn.disabled = true;
+    status.style.display = "block";
+    status.textContent = "Generating verified questions from the source text — this can take up to a minute the first time…";
+    area.innerHTML = "";
+    try {
+      const res = await fetch(`${API}/quiz/book`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          title: currentBookTitle, author: currentBookAuthor,
+          count: 5, client_id: bhClientId(),
+        }),
+      });
+      if (res.status === 429) { status.textContent = "Daily quiz limit reached — come back tomorrow."; return; }
+      if (!res.ok) throw new Error("quiz " + res.status);
+      const d = await res.json();
+      if (!d.available || !d.questions || !d.questions.length) {
+        status.textContent = "A quiz isn't available for this book yet.";
+        return;
+      }
+      status.style.display = "none";
+      btn.style.display = "none";
+      if (d.source === "fandom_summary") {
+        // Honesty disclosure — recap-grounded, not the original prose.
+        const note = document.createElement("p");
+        note.style.cssText = "font-size:11px;color:var(--fg-faint);margin-bottom:10px;";
+        note.textContent = "Quiz based on the story wiki's chapter summaries, not the original text.";
+        area.appendChild(note);
+      }
+      renderBookQuiz(d.questions, area);
+    } catch (e) {
+      status.textContent = "Couldn't generate the quiz right now — try again in a moment.";
+    } finally {
+      btn.disabled = false;
+    }
+  };
+
+  // Ported from pdf-chat.html's renderQuiz — same shape, page-local wiring.
+  function renderBookQuiz(questions, area) {
+    let answered = 0, correct = 0;
+    const score = document.createElement("div");
+    score.className = "quiz-score";
+    score.textContent = `0 / ${questions.length} answered`;
+    area.appendChild(score);
+
+    questions.forEach((q, qi) => {
+      const card = document.createElement("div");
+      card.className = "quiz-card";
+      card.innerHTML = `<p class="quiz-q">${qi + 1}. ${escExt(q.question)}</p>`;
+      q.options.forEach((opt, oi) => {
+        const b = document.createElement("button");
+        b.className = "quiz-option";
+        b.textContent = opt;
+        b.addEventListener("click", () => {
+          if (card.dataset.done) return;
+          card.dataset.done = "1";
+          answered++;
+          if (oi === q.answer_index) correct++;
+          card.querySelectorAll(".quiz-option").forEach((btn2, bi) => {
+            btn2.disabled = true;
+            if (bi === q.answer_index) btn2.classList.add("correct");
+            else if (bi === oi) btn2.classList.add("incorrect");
+          });
+          const quote = document.createElement("blockquote");
+          quote.className = "quiz-quote";
+          quote.textContent = `From the source: "${q.supporting_quote}"`;
+          card.appendChild(quote);
+          score.textContent = `${answered} / ${questions.length} answered — ${correct} correct`;
+          if (answered === questions.length) {
+            const final = document.createElement("div");
+            final.className = "quiz-card";
+            final.innerHTML = `<p class="quiz-q">Final score: ${correct} / ${questions.length} ${correct === questions.length ? "🏆" : correct >= questions.length / 2 ? "👍" : "📖 Keep reading!"}</p>`;
+            const again = document.createElement("button");
+            again.className = "btn-primary";
+            again.style.cssText = "padding:8px 20px;font-size:13px;";
+            again.textContent = "New quiz";
+            again.addEventListener("click", () => {
+              const startBtn = document.getElementById("quiz-start-btn");
+              if (startBtn) startBtn.style.display = "";
+              window.startBookQuiz();
+            });
+            final.appendChild(again);
+            area.appendChild(final);
+            final.scrollIntoView({ behavior: "smooth", block: "nearest" });
+          }
+        });
+        card.appendChild(b);
+      });
+      area.appendChild(card);
+    });
   }
 
   function renderSearchResultsPage(pageIndex) {
