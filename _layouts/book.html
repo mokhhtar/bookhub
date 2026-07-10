@@ -155,7 +155,8 @@ layout: default
       <div class="summary-card" style="margin-top:24px;">
         <div class="summary-card-title">Notable Quotes</div>
         {% for q in page.quotes.texts %}
-          <blockquote style="font-size:14px;font-style:italic;line-height:1.65;color:var(--fg);border-left:3px solid var(--accent);padding:4px 0 4px 14px;margin:0 0 12px;">"{{ q }}"</blockquote>
+          {% assign sp = page.quotes.speakers[forloop.index0] %}
+          <blockquote style="font-size:14px;font-style:italic;line-height:1.65;color:var(--fg);border-left:3px solid var(--accent);padding:4px 0 4px 14px;margin:0 0 12px;">"{{ q }}"{% if sp and sp != "" %}<footer style="font-size:12px;font-style:normal;font-weight:600;color:var(--fg-faint);margin-top:4px;">— {{ sp }}</footer>{% endif %}</blockquote>
         {% endfor %}
         <p style="font-size:11px;color:var(--fg-faint);margin:0;">Sourced verbatim from <a href="{{ page.quotes.source_url }}" target="_blank" rel="noopener nofollow">Wikiquote</a> (CC BY-SA) — not AI-generated.</p>
       </div>
