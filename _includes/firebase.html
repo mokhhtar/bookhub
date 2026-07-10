@@ -1,0 +1,233 @@
+<!-- ═══════════════════════════════════════
+     Firebase Auth layer (Phase 1 — see /firebase/DATA_MODEL.md)
+     Email/password only, per owner decision. Analytics deliberately NOT
+     loaded (not needed; avoids consent complexity). The config values
+     below are public by design — all authorization lives in Firestore
+     security rules (firebase/firestore.rules).
+═══════════════════════════════════════ -->
+<div class="auth-modal-backdrop" id="auth-modal" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="auth-title">
+  <div class="auth-modal">
+    <button class="auth-close" onclick="bhAuthUI.close()" aria-label="Close">✕</button>
+    <h2 id="auth-title" class="auth-heading">Sign in to BookHub</h2>
+
+    <div class="auth-tabs">
+      <button class="auth-tab active" data-mode="signin" onclick="bhAuthUI.mode('signin')">Sign in</button>
+      <button class="auth-tab" data-mode="signup" onclick="bhAuthUI.mode('signup')">Create account</button>
+    </div>
+
+    <form id="auth-form" onsubmit="return bhAuthUI.submit(event)">
+      <div id="auth-name-row" style="display:none;">
+        <label class="auth-label" for="auth-name">Display name</label>
+        <input class="auth-input" id="auth-name" type="text" minlength="2" maxlength="40" autocomplete="nickname" placeholder="Shown next to your comments">
+      </div>
+      <label class="auth-label" for="auth-email">Email</label>
+      <input class="auth-input" id="auth-email" type="email" required autocomplete="email">
+      <label class="auth-label" for="auth-password">Password</label>
+      <input class="auth-input" id="auth-password" type="password" minlength="6" required autocomplete="current-password">
+      <p class="auth-error" id="auth-error" style="display:none;"></p>
+      <button class="btn-primary auth-submit" id="auth-submit" type="submit">Sign in</button>
+    </form>
+
+    <button class="auth-forgot" id="auth-forgot" onclick="bhAuthUI.reset()">Forgot password?</button>
+  </div>
+</div>
+
+<style>
+  .auth-modal-backdrop {
+    position: fixed; inset: 0; z-index: 1000;
+    background: rgba(0,0,0,.55);
+    display: flex; align-items: center; justify-content: center; padding: 16px;
+  }
+  .auth-modal {
+    position: relative; width: 100%; max-width: 380px;
+    background: var(--bg); border: 1px solid var(--border); border-radius: 16px;
+    padding: 26px 24px;
+  }
+  .auth-close {
+    position: absolute; top: 12px; right: 12px;
+    background: var(--bg-subtle); border: 1px solid var(--border); color: var(--fg);
+    border-radius: 8px; padding: 4px 9px; font-size: 12px; cursor: pointer;
+  }
+  .auth-heading { font-size: 18px; font-weight: 700; margin-bottom: 16px; }
+  .auth-tabs { display: flex; gap: 6px; margin-bottom: 16px; }
+  .auth-tab {
+    flex: 1; padding: 8px 0; font-size: 13px; font-weight: 600; cursor: pointer;
+    background: var(--bg-subtle); color: var(--fg-muted);
+    border: 1px solid var(--border); border-radius: 8px;
+  }
+  .auth-tab.active { color: var(--accent); border-color: var(--accent); }
+  .auth-label { display: block; font-size: 12px; font-weight: 600; color: var(--fg-muted); margin: 10px 0 4px; }
+  .auth-input {
+    width: 100%; box-sizing: border-box; padding: 10px 12px; font-size: 16px;
+    background: var(--bg-subtle); color: var(--fg);
+    border: 1px solid var(--border); border-radius: 8px;
+  }
+  .auth-input:focus { outline: none; border-color: var(--accent); }
+  .auth-error { font-size: 12px; color: #d33; margin-top: 10px; line-height: 1.5; }
+  .auth-submit { width: 100%; justify-content: center; margin-top: 14px; padding: 10px 0; }
+  .auth-forgot {
+    display: block; margin: 12px auto 0; background: none; border: 0;
+    color: var(--fg-faint); font-size: 12px; cursor: pointer; text-decoration: underline;
+  }
+  /* Header account chip */
+  .auth-header-btn { white-space: nowrap; }
+  .auth-user-chip {
+    display: none; align-items: center; gap: 8px; cursor: pointer;
+    background: var(--bg-subtle); border: 1px solid var(--border);
+    border-radius: 999px; padding: 4px 12px 4px 4px; color: var(--fg);
+    font-size: 12px; font-weight: 600;
+  }
+  .auth-avatar {
+    width: 26px; height: 26px; border-radius: 50%; flex-shrink: 0;
+    background: var(--accent); color: #fff; display: flex;
+    align-items: center; justify-content: center; font-size: 12px; font-weight: 800;
+  }
+  .auth-user-menu {
+    position: absolute; top: calc(100% + 8px); right: 0; z-index: 999; min-width: 180px;
+    background: var(--bg); border: 1px solid var(--border); border-radius: 12px;
+    padding: 6px; display: none; box-shadow: 0 10px 30px rgba(0,0,0,.18);
+  }
+  .auth-user-menu a, .auth-user-menu button {
+    display: block; width: 100%; text-align: left; padding: 8px 12px;
+    font-size: 13px; color: var(--fg); background: none; border: 0;
+    border-radius: 8px; cursor: pointer; text-decoration: none;
+  }
+  .auth-user-menu a:hover, .auth-user-menu button:hover { background: var(--bg-subtle); }
+</style>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+  import {
+    getAuth, onAuthStateChanged, createUserWithEmailAndPassword,
+    signInWithEmailAndPassword, sendPasswordResetEmail, signOut, updateProfile,
+  } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+  import {
+    getFirestore, doc, setDoc, serverTimestamp,
+  } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+
+  const app = initializeApp({
+    apiKey: "AIzaSyB9nLUuq4e4bxFVlpSX3OwEqeKVzOWhhSs",
+    authDomain: "bookhub-42d9a.firebaseapp.com",
+    projectId: "bookhub-42d9a",
+    storageBucket: "bookhub-42d9a.firebasestorage.app",
+    messagingSenderId: "482256955410",
+    appId: "1:482256955410:web:e323d058751081021e50cb",
+  });
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+
+  // Small global surface for other pages (library sync, comments, recs).
+  window.bhFirebase = { app, auth, db };
+  window.bhUser = null;
+
+  const $ = (id) => document.getElementById(id);
+  let mode = "signin";
+
+  const ERRORS = {
+    "auth/email-already-in-use": "An account with this email already exists.",
+    "auth/invalid-email": "That email address doesn't look valid.",
+    "auth/weak-password": "Password must be at least 6 characters.",
+    "auth/invalid-credential": "Wrong email or password.",
+    "auth/user-not-found": "No account with this email.",
+    "auth/wrong-password": "Wrong email or password.",
+    "auth/too-many-requests": "Too many attempts — try again in a few minutes.",
+  };
+  const explain = (e) => ERRORS[e && e.code] || "Something went wrong — please try again.";
+
+  window.bhAuthUI = {
+    open(startMode) {
+      this.mode(startMode || "signin");
+      $("auth-modal").style.display = "flex";
+      $("auth-email").focus();
+    },
+    close() { $("auth-modal").style.display = "none"; this.error(""); },
+    mode(m) {
+      mode = m;
+      document.querySelectorAll(".auth-tab").forEach(t =>
+        t.classList.toggle("active", t.dataset.mode === m));
+      $("auth-name-row").style.display = m === "signup" ? "block" : "none";
+      $("auth-name").required = m === "signup";
+      $("auth-submit").textContent = m === "signup" ? "Create account" : "Sign in";
+      $("auth-title").textContent = m === "signup" ? "Create your BookHub account" : "Sign in to BookHub";
+      this.error("");
+    },
+    error(msg) {
+      const el = $("auth-error");
+      el.textContent = msg;
+      el.style.display = msg ? "block" : "none";
+    },
+    async submit(ev) {
+      ev.preventDefault();
+      const email = $("auth-email").value.trim();
+      const password = $("auth-password").value;
+      const btn = $("auth-submit");
+      btn.disabled = true;
+      this.error("");
+      try {
+        if (mode === "signup") {
+          const name = $("auth-name").value.trim();
+          if (name.length < 2) { this.error("Please pick a display name (2-40 characters)."); return false; }
+          const cred = await createUserWithEmailAndPassword(auth, email, password);
+          await updateProfile(cred.user, { displayName: name });
+          // Profile doc — rules require displayName 2-40 on users/{uid}.
+          await setDoc(doc(db, "users", cred.user.uid),
+                       { displayName: name, createdAt: serverTimestamp() });
+        } else {
+          await signInWithEmailAndPassword(auth, email, password);
+        }
+        this.close();
+      } catch (e) {
+        this.error(explain(e));
+      } finally {
+        btn.disabled = false;
+      }
+      return false;
+    },
+    async reset() {
+      const email = $("auth-email").value.trim();
+      if (!email) { this.error("Enter your email above first, then tap 'Forgot password?'."); return; }
+      try {
+        await sendPasswordResetEmail(auth, email);
+        this.error("Reset link sent — check your inbox.");
+      } catch (e) {
+        this.error(explain(e));
+      }
+    },
+    async signOut() {
+      try { await signOut(auth); } catch (e) {}
+      const menu = $("auth-user-menu");
+      if (menu) menu.style.display = "none";
+    },
+    toggleMenu() {
+      const menu = $("auth-user-menu");
+      if (menu) menu.style.display = menu.style.display === "block" ? "none" : "block";
+    },
+  };
+
+  onAuthStateChanged(auth, (user) => {
+    window.bhUser = user || null;
+    const signinBtn = $("auth-signin-btn");
+    const chip = $("auth-user-chip");
+    if (signinBtn) signinBtn.style.display = user ? "none" : "";
+    if (chip) {
+      chip.style.display = user ? "flex" : "none";
+      if (user) {
+        const name = user.displayName || user.email || "Account";
+        $("auth-avatar").textContent = name.slice(0, 1).toUpperCase();
+        $("auth-chip-name").textContent = name.split(" ")[0].slice(0, 14);
+      }
+    }
+    // Let feature scripts (library sync, comments…) react to auth state.
+    document.dispatchEvent(new CustomEvent("bh-auth", { detail: { user: user || null } }));
+  });
+
+  // Close the account menu on outside click.
+  document.addEventListener("click", (e) => {
+    const menu = $("auth-user-menu");
+    const chip = $("auth-user-chip");
+    if (menu && menu.style.display === "block"
+        && !menu.contains(e.target) && !(chip && chip.contains(e.target))) {
+      menu.style.display = "none";
+    }
+  });
+</script>

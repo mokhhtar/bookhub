@@ -24,7 +24,16 @@
       <a href="{{ '/tools/reading-list' | relative_url }}" class="nav-link">My Library</a>
     </nav>
 
-    <div class="header-right" style="display: flex; align-items: center; gap: 12px;">
+    <div class="header-right" style="display: flex; align-items: center; gap: 12px; position: relative;">
+      <button id="auth-signin-btn" class="btn-secondary btn-sm auth-header-btn" onclick="bhAuthUI.open('signin')">Sign in</button>
+      <button id="auth-user-chip" class="auth-user-chip" onclick="bhAuthUI.toggleMenu()" aria-haspopup="true">
+        <span class="auth-avatar" id="auth-avatar">?</span>
+        <span id="auth-chip-name">Account</span>
+      </button>
+      <div class="auth-user-menu" id="auth-user-menu">
+        <a href="{{ '/tools/reading-list' | relative_url }}">My Library</a>
+        <button onclick="bhAuthUI.signOut()">Sign out</button>
+      </div>
       <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme" title="Toggle theme">
         <!-- Sun icon -->
         <svg class="theme-icon sun-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
