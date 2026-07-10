@@ -1,0 +1,100 @@
+rules_version = '2';
+
+// BookHub Firestore security rules — the ONLY authorization layer
+// (client-side Firebase, no backend intermediary). Paste into:
+// Firebase Console → Firestore Database → Rules. Keep this file the
+// source of truth; the console copy must always match it.
+//
+// Owner decisions baked in (2026-07-10):
+//  - Email/password auth.
+//  - Comments are PRE-MODERATED: created as approved=false, publicly
+//    readable only once an admin flips approved=true.
+//  - Recommendations v1: one vote per user per book (doc id == uid).
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ── Admin ────────────────────────────────────────────────
+    // Replace with your own account's UID (Console → Authentication →
+    // Users → copy UID) BEFORE publishing the rules.
+    function isAdmin() {
+      return request.auth != null
+        && request.auth.uid == "REPLACE_WITH_ADMIN_UID";
+    }
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    // ── User profiles ────────────────────────────────────────
+    // users/{uid}: {displayName, createdAt}
+    match /users/{uid} {
+      allow read, write: if signedIn() && request.auth.uid == uid
+        // displayName is shown next to comments — cap it and require a string.
+        && (!(request.method in ["create", "update"])
+            || (request.resource.data.displayName is string
+                && request.resource.data.displayName.size() >= 2
+                && request.resource.data.displayName.size() <= 40));
+
+      // ── Synced favorites (My Library) ──────────────────────
+      // users/{uid}/library/{bookSlug}: {title, author, cover_url, isbn,
+      //                                  google_id, added_at, page_count}
+      match /library/{bookSlug} {
+        allow read, write: if signedIn() && request.auth.uid == uid;
+      }
+    }
+
+    // ── Comments (pre-moderated) ─────────────────────────────
+    // books/{bookSlug}/comments/{commentId}:
+    //   {uid, name, text, createdAt, approved}
+    match /books/{bookSlug}/comments/{commentId} {
+      // Public may read ONLY approved comments. Queries MUST include
+      // where("approved", "==", true) or they will be denied wholesale.
+      // Authors can read their own pending comments; admin reads all.
+      allow read: if resource.data.approved == true
+        || (signedIn() && resource.data.uid == request.auth.uid)
+        || isAdmin();
+
+      // Anyone signed in may create — but ALWAYS unapproved, always as
+      // themselves, with hard caps the client cannot bypass.
+      allow create: if signedIn()
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.approved == false
+        && request.resource.data.text is string
+        && request.resource.data.text.size() >= 2
+        && request.resource.data.text.size() <= 1000
+        && request.resource.data.name is string
+        && request.resource.data.name.size() <= 40
+        && request.resource.data.createdAt == request.time
+        && request.resource.data.keys().hasOnly(
+             ["uid", "name", "text", "createdAt", "approved"]);
+
+      // Approval (or any edit) is admin-only.
+      allow update: if isAdmin();
+
+      // Authors may retract their own comment; admin may delete any.
+      allow delete: if isAdmin()
+        || (signedIn() && resource.data.uid == request.auth.uid);
+    }
+
+    // ── Recommendation votes (v1) ────────────────────────────
+    // books/{bookSlug}/recs/{uid}: {createdAt}
+    // Doc id == voter uid → structurally one vote per user per book.
+    // Public read so COUNT aggregation queries work for every visitor;
+    // the doc carries nothing but a timestamp.
+    match /books/{bookSlug}/recs/{uid} {
+      allow read: if true;
+      allow create: if signedIn()
+        && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly(["createdAt"])
+        && request.resource.data.createdAt == request.time;
+      allow delete: if signedIn() && request.auth.uid == uid;  // un-recommend
+      allow update: if false;
+    }
+
+    // Everything else: denied.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
