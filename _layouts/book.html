@@ -161,6 +161,17 @@ layout: default
       </div>
     {% endif %}
 
+    {% if page.characters and page.characters.size > 0 %}
+      <div class="summary-card" style="margin-top:24px;">
+        <div class="summary-card-title">Characters</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          {% for c in page.characters %}
+            <a href="{{ '/characters/' | relative_url }}{{ c.slug }}/" class="book-meta-tag" style="text-decoration:none;">{{ c.name }}{% if c.role and c.role != "" %} · {{ c.role }}{% endif %}</a>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
     {% if page.themes and page.themes.size > 0 %}
       <div class="summary-card" style="margin-top:24px;">
         <div class="summary-card-title">Themes</div>

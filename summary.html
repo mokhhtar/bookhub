@@ -1629,6 +1629,12 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
             ${data.nyt.review_url ? `<a href="${data.nyt.review_url}" target="_blank" rel="noopener nofollow" style="font-size:11px;color:var(--accent);display:inline-block;margin-top:4px;">Read the NYT review →</a>` : ''}
           </div>` : ''}
 
+          ${data.characters && data.characters.length ? `
+          <p class="sidebar-section-title">Characters</p>
+          <div class="sidebar-badges" style="margin-bottom:16px;">
+            ${data.characters.map(c => `<a href="{{ '/characters/' | relative_url }}${c.slug}/" class="sidebar-badge" style="text-decoration:none;" title="${escExt(c.description || c.name)}">${escExt(c.name)}</a>`).join('')}
+          </div>` : ''}
+
           ${data.themes && data.themes.length ? `
           <p class="sidebar-section-title">Themes</p>
           <div class="sidebar-badges" style="margin-bottom:16px;">
