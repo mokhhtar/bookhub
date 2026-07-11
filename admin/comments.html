@@ -50,9 +50,14 @@ sitemap: false
       // Two expected cases: not the admin (permission-denied), or the
       // collection-group index doesn't exist yet (failed-precondition —
       // the browser console then contains a one-click index-creation link).
-      statusEl.textContent = e.code === "permission-denied"
-        ? "This account is not authorized for moderation."
-        : "Couldn't load — check the browser console (a missing Firestore index shows a creation link there).";
+      if (e.code === "permission-denied") {
+        statusEl.textContent = "This account is not authorized for moderation.";
+      } else if (/not ready|building/i.test(e.message || "")) {
+        statusEl.innerHTML = "The Firestore index is still building (takes a few minutes after enabling it). " +
+          "<button class='btn-secondary' style='padding:4px 12px;font-size:12px;margin-left:6px;' onclick='location.reload()'>Retry</button>";
+      } else {
+        statusEl.textContent = "Couldn't load — check the browser console (a missing Firestore index shows a creation link there).";
+      }
       console.error(e);
       return;
     }
