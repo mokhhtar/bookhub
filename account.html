@@ -277,9 +277,10 @@ permalink: /account/
     "auth/wrong-password": "Wrong current password.",
     "auth/too-many-requests": "Too many attempts — try again in a few minutes.",
     "auth/unauthorized-domain": "This site isn't authorized for Google sign-in yet. Use email sign-in for now.",
+    "auth/email-not-verified": "Confirm your email first — we've re-sent the link. Check your inbox and spam folder.",
   };
   const explain = (e) => ERRORS[e && e.code] || "Something went wrong — please try again.";
-  const err = (m) => { const el = $("acct-error"); el.textContent = m; el.style.display = m ? "block" : "none"; };
+  const err = (m) => { const el = $("acct-error"); el.style.color = ""; el.textContent = m; el.style.display = m ? "block" : "none"; };
   const esc = (s) => String(s == null ? "" : s)
     .replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;").replaceAll("'", "&#39;");
@@ -315,11 +316,21 @@ permalink: /account/
       if (mode === "signup") {
         const name = $("acct-name").value.trim();
         if (name.length < 2) { err("Please pick a display name (2-40 characters)."); return false; }
-        await bhAuthOps.signUp(name, $("acct-email").value.trim(), $("acct-password").value);
+        const email = $("acct-email").value.trim();
+        const res = await bhAuthOps.signUp(name, email, $("acct-password").value);
+        // Account created + signed back out; it can't be used until verified.
+        acctMode("signin");
+        const note = $("acct-error");
+        note.style.color = res.verificationSent ? "#22a06b" : "#d33";
+        note.style.display = "block";
+        note.textContent = res.verificationSent
+          ? `Almost there — we sent a confirmation link to ${email}. Click it (check spam too), then sign in.`
+          : `Account created, but the confirmation email couldn't be sent: ${explain(res.verifyError)} Try "Forgot password?" to receive a link, or contact support.`;
+        return false;
       } else {
         await bhAuthOps.signIn($("acct-email").value.trim(), $("acct-password").value);
+        afterAuthRedirect();
       }
-      afterAuthRedirect();
     } catch (e) {
       err(explain(e));
     } finally {

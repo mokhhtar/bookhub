@@ -5,130 +5,335 @@
      below are public by design — all authorization lives in Firestore
      security rules (firebase/firestore.rules).
 ═══════════════════════════════════════ -->
-<div class="auth-modal-backdrop" id="auth-modal" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="auth-title">
+<div
+  class="auth-modal-backdrop"
+  id="auth-modal"
+  style="display: none"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="auth-title"
+>
   <div class="auth-modal">
-    <button class="auth-close" onclick="bhAuthUI.close()" aria-label="Close">✕</button>
+    <button class="auth-close" onclick="bhAuthUI.close()" aria-label="Close">
+      ✕
+    </button>
     <h2 id="auth-title" class="auth-heading">Sign in to BookHub</h2>
 
     <button class="auth-google-btn" onclick="bhAuthUI.google()">
-      <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.84 14.1A6.6 6.6 0 0 1 5.5 12c0-.73.13-1.44.34-2.1V7.06H2.18A11 11 0 0 0 1 12c0 1.77.43 3.45 1.18 4.94l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.16-3.16A10.96 10.96 0 0 0 12 1 11 11 0 0 0 2.18 7.06l3.66 2.84C6.71 7.31 9.14 5.38 12 5.38z"/></svg>
+      <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          fill="#4285F4"
+          d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"
+        />
+        <path
+          fill="#34A853"
+          d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"
+        />
+        <path
+          fill="#FBBC05"
+          d="M5.84 14.1A6.6 6.6 0 0 1 5.5 12c0-.73.13-1.44.34-2.1V7.06H2.18A11 11 0 0 0 1 12c0 1.77.43 3.45 1.18 4.94l3.66-2.84z"
+        />
+        <path
+          fill="#EA4335"
+          d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.16-3.16A10.96 10.96 0 0 0 12 1 11 11 0 0 0 2.18 7.06l3.66 2.84C6.71 7.31 9.14 5.38 12 5.38z"
+        />
+      </svg>
       Continue with Google
     </button>
     <div class="auth-divider"><span>or use email</span></div>
 
     <div class="auth-tabs">
-      <button class="auth-tab active" data-mode="signin" onclick="bhAuthUI.mode('signin')">Sign in</button>
-      <button class="auth-tab" data-mode="signup" onclick="bhAuthUI.mode('signup')">Create account</button>
+      <button
+        class="auth-tab active"
+        data-mode="signin"
+        onclick="bhAuthUI.mode('signin')"
+      >
+        Sign in
+      </button>
+      <button
+        class="auth-tab"
+        data-mode="signup"
+        onclick="bhAuthUI.mode('signup')"
+      >
+        Create account
+      </button>
     </div>
 
-    <form id="auth-form" onsubmit="return bhAuthUI.submit(event)">
-      <div id="auth-name-row" style="display:none;">
+    <form id="auth-form" onsubmit="return bhAuthUI.submit(event);">
+      <div id="auth-name-row" style="display: none">
         <label class="auth-label" for="auth-name">Display name</label>
-        <input class="auth-input" id="auth-name" type="text" minlength="2" maxlength="40" autocomplete="nickname" placeholder="Shown next to your comments">
+        <input
+          class="auth-input"
+          id="auth-name"
+          type="text"
+          minlength="2"
+          maxlength="40"
+          autocomplete="nickname"
+          placeholder="Shown next to your comments"
+        />
       </div>
       <label class="auth-label" for="auth-email">Email</label>
-      <input class="auth-input" id="auth-email" type="email" required autocomplete="email">
+      <input
+        class="auth-input"
+        id="auth-email"
+        type="email"
+        required
+        autocomplete="email"
+      />
       <label class="auth-label" for="auth-password">Password</label>
-      <input class="auth-input" id="auth-password" type="password" minlength="6" required autocomplete="current-password">
-      <p class="auth-error" id="auth-error" style="display:none;"></p>
-      <button class="btn-primary auth-submit" id="auth-submit" type="submit">Sign in</button>
+      <input
+        class="auth-input"
+        id="auth-password"
+        type="password"
+        minlength="6"
+        required
+        autocomplete="current-password"
+      />
+      <p class="auth-error" id="auth-error" style="display: none"></p>
+      <button class="btn-primary auth-submit" id="auth-submit" type="submit">
+        Sign in
+      </button>
     </form>
 
-    <button class="auth-forgot" id="auth-forgot" onclick="bhAuthUI.reset()">Forgot password?</button>
+    <button class="auth-forgot" id="auth-forgot" onclick="bhAuthUI.reset()">
+      Forgot password?
+    </button>
   </div>
 </div>
 
 <style>
   .auth-modal-backdrop {
-    position: fixed; inset: 0; z-index: 1000;
-    background: rgba(0,0,0,.55);
-    display: flex; align-items: center; justify-content: center; padding: 16px;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
   }
   .auth-modal {
-    position: relative; width: 100%; max-width: 380px;
-    background: var(--bg); border: 1px solid var(--border); border-radius: 16px;
+    position: relative;
+    width: 100%;
+    max-width: 380px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
     padding: 26px 24px;
   }
   .auth-close {
-    position: absolute; top: 12px; right: 12px;
-    background: var(--bg-subtle); border: 1px solid var(--border); color: var(--fg);
-    border-radius: 8px; padding: 4px 9px; font-size: 12px; cursor: pointer;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: var(--bg-subtle);
+    border: 1px solid var(--border);
+    color: var(--fg);
+    border-radius: 8px;
+    padding: 4px 9px;
+    font-size: 12px;
+    cursor: pointer;
   }
-  .auth-heading { font-size: 18px; font-weight: 700; margin-bottom: 16px; }
+  .auth-heading {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
   .auth-google-btn {
-    display: flex; align-items: center; justify-content: center; gap: 10px;
-    width: 100%; padding: 10px 0; font-size: 13px; font-weight: 600; cursor: pointer;
-    background: var(--bg); color: var(--fg);
-    border: 1px solid var(--border); border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 10px 0;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    background: var(--bg);
+    color: var(--fg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
   }
-  .auth-google-btn:hover { border-color: var(--accent); }
+  .auth-google-btn:hover {
+    border-color: var(--accent);
+  }
   .auth-divider {
-    display: flex; align-items: center; gap: 10px; margin: 14px 0;
-    color: var(--fg-faint); font-size: 11px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 14px 0;
+    color: var(--fg-faint);
+    font-size: 11px;
   }
-  .auth-divider::before, .auth-divider::after {
-    content: ""; flex: 1; height: 1px; background: var(--border);
+  .auth-divider::before,
+  .auth-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--border);
   }
-  .auth-tabs { display: flex; gap: 6px; margin-bottom: 16px; }
+  .auth-tabs {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
   .auth-tab {
-    flex: 1; padding: 8px 0; font-size: 13px; font-weight: 600; cursor: pointer;
-    background: var(--bg-subtle); color: var(--fg-muted);
-    border: 1px solid var(--border); border-radius: 8px;
+    flex: 1;
+    padding: 8px 0;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    background: var(--bg-subtle);
+    color: var(--fg-muted);
+    border: 1px solid var(--border);
+    border-radius: 8px;
   }
-  .auth-tab.active { color: var(--accent); border-color: var(--accent); }
-  .auth-label { display: block; font-size: 12px; font-weight: 600; color: var(--fg-muted); margin: 10px 0 4px; }
+  .auth-tab.active {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+  .auth-label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--fg-muted);
+    margin: 10px 0 4px;
+  }
   .auth-input {
-    width: 100%; box-sizing: border-box; padding: 10px 12px; font-size: 16px;
-    background: var(--bg-subtle); color: var(--fg);
-    border: 1px solid var(--border); border-radius: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 12px;
+    font-size: 16px;
+    background: var(--bg-subtle);
+    color: var(--fg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
   }
-  .auth-input:focus { outline: none; border-color: var(--accent); }
-  .auth-error { font-size: 12px; color: #d33; margin-top: 10px; line-height: 1.5; }
-  .auth-submit { width: 100%; justify-content: center; margin-top: 14px; padding: 10px 0; }
+  .auth-input:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+  .auth-error {
+    font-size: 12px;
+    color: #d33;
+    margin-top: 10px;
+    line-height: 1.5;
+  }
+  .auth-submit {
+    width: 100%;
+    justify-content: center;
+    margin-top: 14px;
+    padding: 10px 0;
+  }
   .auth-forgot {
-    display: block; margin: 12px auto 0; background: none; border: 0;
-    color: var(--fg-faint); font-size: 12px; cursor: pointer; text-decoration: underline;
+    display: block;
+    margin: 12px auto 0;
+    background: none;
+    border: 0;
+    color: var(--fg-faint);
+    font-size: 12px;
+    cursor: pointer;
+    text-decoration: underline;
   }
   /* Header account chip */
-  .auth-header-btn { white-space: nowrap; }
+  .auth-header-btn {
+    white-space: nowrap;
+  }
   .auth-user-chip {
-    display: none; align-items: center; gap: 8px; cursor: pointer;
-    background: var(--bg-subtle); border: 1px solid var(--border);
-    border-radius: 999px; padding: 4px 12px 4px 4px; color: var(--fg);
-    font-size: 12px; font-weight: 600;
+    display: none;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    background: var(--bg-subtle);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 4px 12px 4px 4px;
+    color: var(--fg);
+    font-size: 12px;
+    font-weight: 600;
   }
   .auth-avatar {
-    width: 26px; height: 26px; border-radius: 50%; flex-shrink: 0;
-    background: var(--accent); color: #fff; display: flex;
-    align-items: center; justify-content: center; font-size: 12px; font-weight: 800;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    background: var(--accent);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 800;
   }
   .auth-user-menu {
-    position: absolute; top: calc(100% + 8px); right: 0; z-index: 999; min-width: 180px;
-    background: var(--bg); border: 1px solid var(--border); border-radius: 12px;
-    padding: 6px; display: none; box-shadow: 0 10px 30px rgba(0,0,0,.18);
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    z-index: 999;
+    min-width: 180px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 6px;
+    display: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
   }
-  .auth-user-menu a, .auth-user-menu button {
-    display: block; width: 100%; text-align: left; padding: 8px 12px;
-    font-size: 13px; color: var(--fg); background: none; border: 0;
-    border-radius: 8px; cursor: pointer; text-decoration: none;
+  .auth-user-menu a,
+  .auth-user-menu button {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 8px 12px;
+    font-size: 13px;
+    color: var(--fg);
+    background: none;
+    border: 0;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
   }
-  .auth-user-menu a:hover, .auth-user-menu button:hover { background: var(--bg-subtle); }
+  .auth-user-menu a:hover,
+  .auth-user-menu button:hover {
+    background: var(--bg-subtle);
+  }
 </style>
 
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
   import {
-    getAuth, onAuthStateChanged, createUserWithEmailAndPassword,
-    signInWithEmailAndPassword, sendPasswordResetEmail, signOut, updateProfile,
-    setPersistence, browserLocalPersistence,
-    GoogleAuthProvider, signInWithPopup, signInWithRedirect, getRedirectResult,
-    EmailAuthProvider, reauthenticateWithCredential, updatePassword,
+    getAuth,
+    onAuthStateChanged,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    sendPasswordResetEmail,
+    signOut,
+    updateProfile,
+    setPersistence,
+    browserLocalPersistence,
+    GoogleAuthProvider,
+    signInWithPopup,
+    signInWithRedirect,
+    getRedirectResult,
+    EmailAuthProvider,
+    reauthenticateWithCredential,
+    updatePassword,
     sendEmailVerification,
   } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
   import {
-    getFirestore, doc, getDoc, setDoc, addDoc, updateDoc, deleteDoc,
-    collection, collectionGroup, query, where, limit, getDocs,
-    getCountFromServer, serverTimestamp,
+    getFirestore,
+    doc,
+    getDoc,
+    setDoc,
+    addDoc,
+    updateDoc,
+    deleteDoc,
+    collection,
+    collectionGroup,
+    query,
+    where,
+    limit,
+    getDocs,
+    getCountFromServer,
+    serverTimestamp,
   } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
 
   const app = initializeApp({
@@ -157,8 +362,12 @@
     if (hint && chip0 && signinBtn0) {
       signinBtn0.style.display = "none";
       chip0.style.display = "flex";
-      document.getElementById("auth-avatar").textContent = hint.slice(0, 1).toUpperCase();
-      document.getElementById("auth-chip-name").textContent = hint.split(" ")[0].slice(0, 14);
+      document.getElementById("auth-avatar").textContent = hint
+        .slice(0, 1)
+        .toUpperCase();
+      document.getElementById("auth-chip-name").textContent = hint
+        .split(" ")[0]
+        .slice(0, 14);
     }
   } catch (e) {}
 
@@ -166,9 +375,20 @@
   window.bhFirebase = { app, auth, db };
   // Firestore functions for the site's classic (non-module) scripts.
   window.bhFs = {
-    doc, getDoc, setDoc, addDoc, updateDoc, deleteDoc,
-    collection, collectionGroup, query, where, limit, getDocs,
-    getCountFromServer, serverTimestamp,
+    doc,
+    getDoc,
+    setDoc,
+    addDoc,
+    updateDoc,
+    deleteDoc,
+    collection,
+    collectionGroup,
+    query,
+    where,
+    limit,
+    getDocs,
+    getCountFromServer,
+    serverTimestamp,
   };
   window.bhUser = null;
 
@@ -176,17 +396,23 @@
   // bhAuthUI and the account page share these instead of duplicating flows.
   // Rules require a 2-40 char displayName on the profile doc.
   const safeName = (u) =>
-    ((u.displayName || (u.email || "Reader").split("@")[0]) + "  ").slice(0, 40).trim() || "Reader";
+    ((u.displayName || (u.email || "Reader").split("@")[0]) + "  ")
+      .slice(0, 40)
+      .trim() || "Reader";
 
   // First Google sign-in has no profile doc yet — create/refresh it with
   // the Google display name (merge keeps createdAt on repeats). Shared by
   // both the popup and redirect completion paths below.
   async function finishGoogleUser(cred) {
     try {
-      await setDoc(doc(db, "users", cred.user.uid),
-                   { displayName: safeName(cred.user), createdAt: serverTimestamp() },
-                   { merge: true });
-    } catch (e) { console.warn("Profile doc write failed:", e); }
+      await setDoc(
+        doc(db, "users", cred.user.uid),
+        { displayName: safeName(cred.user), createdAt: serverTimestamp() },
+        { merge: true },
+      );
+    } catch (e) {
+      console.warn("Profile doc write failed:", e);
+    }
     return cred;
   }
 
@@ -201,19 +427,49 @@
     "auth/operation-not-supported-in-this-environment",
   ]);
 
+  // One-shot flag: set right before an INTENTIONAL sign-out (post-sign-up, or
+  // a blocked unverified sign-in) so onAuthStateChanged doesn't treat it as a
+  // user sign-out (no data-clear, no personal-page redirect).
+  let suppressSignoutFx = false;
+
   window.bhAuthOps = {
-    signIn: (email, pw) => signInWithEmailAndPassword(auth, email, pw),
+    // Email accounts must confirm their address before they can sign in.
+    // We create the account, but every entry point checks emailVerified;
+    // an unverified sign-in is bounced (and the link re-sent). Google
+    // accounts are always email_verified, so they pass straight through.
+    async signIn(email, pw) {
+      const cred = await signInWithEmailAndPassword(auth, email, pw);
+      if (!cred.user.emailVerified) {
+        try { await sendEmailVerification(cred.user); } catch (e) {}
+        suppressSignoutFx = true;
+        await signOut(auth);
+        throw { code: "auth/email-not-verified" };
+      }
+      return cred;
+    },
     async signUp(name, email, pw) {
       const cred = await createUserWithEmailAndPassword(auth, email, pw);
       await updateProfile(cred.user, { displayName: name });
-      await setDoc(doc(db, "users", cred.user.uid),
-                   { displayName: name, createdAt: serverTimestamp() });
-      // Fire the confirmation email. Best-effort: a failed send must not
-      // abort a successful sign-up — the account page offers a Resend button.
-      try { await sendEmailVerification(cred.user); } catch (e) { console.warn("Verification email failed:", e); }
-      return cred;
+      await setDoc(doc(db, "users", cred.user.uid), {
+        displayName: name,
+        createdAt: serverTimestamp(),
+      });
+      // Send the confirmation link, then sign the new account OUT — it can't
+      // be used until the email is verified. Surface a send failure to the
+      // caller (instead of swallowing it) so the UI can say why.
+      let verifyError = null;
+      try {
+        await sendEmailVerification(cred.user);
+      } catch (e) {
+        verifyError = e;
+        console.warn("Verification email failed:", e && e.code, e);
+      }
+      suppressSignoutFx = true;
+      await signOut(auth);
+      return { email, verificationSent: !verifyError, verifyError };
     },
-    // Re-send the confirmation email to the current user (account page button).
+    // Re-send the confirmation email. Works from a signed-in unverified
+    // session (account page) OR right after a blocked sign-in attempt.
     resendVerification: () => sendEmailVerification(auth.currentUser),
     async signInGoogle() {
       try {
@@ -229,7 +485,12 @@
       }
     },
     reset: (email) => sendPasswordResetEmail(auth, email),
-    signOut: () => signOut(auth),
+    // Flush any pending library push before signing out so a last-second
+    // change survives the sign-out localStorage clear (see flushLibrary).
+    async signOut() {
+      await flushLibrary();
+      return signOut(auth);
+    },
     // Password change for email/password accounts: reauth with the current
     // password (Firebase requires a recent login), then update.
     async changePassword(currentPw, newPw) {
@@ -240,7 +501,10 @@
       await updatePassword(user, newPw);
     },
     // Which providers this account uses ("password", "google.com", …).
-    providers: () => (auth.currentUser ? auth.currentUser.providerData.map(p => p.providerId) : []),
+    providers: () =>
+      auth.currentUser
+        ? auth.currentUser.providerData.map((p) => p.providerId)
+        : [],
   };
 
   const $ = (id) => document.getElementById(id);
@@ -254,8 +518,11 @@
     "auth/user-not-found": "No account with this email.",
     "auth/wrong-password": "Wrong email or password.",
     "auth/too-many-requests": "Too many attempts — try again in a few minutes.",
+    "auth/email-not-verified":
+      "Confirm your email first — we've re-sent the link. Check your inbox and spam folder.",
   };
-  const explain = (e) => ERRORS[e && e.code] || "Something went wrong — please try again.";
+  const explain = (e) =>
+    ERRORS[e && e.code] || "Something went wrong — please try again.";
 
   window.bhAuthUI = {
     open(startMode) {
@@ -263,15 +530,21 @@
       $("auth-modal").style.display = "flex";
       $("auth-email").focus();
     },
-    close() { $("auth-modal").style.display = "none"; this.error(""); },
+    close() {
+      $("auth-modal").style.display = "none";
+      this.error("");
+    },
     mode(m) {
       mode = m;
-      document.querySelectorAll(".auth-tab").forEach(t =>
-        t.classList.toggle("active", t.dataset.mode === m));
+      document
+        .querySelectorAll(".auth-tab")
+        .forEach((t) => t.classList.toggle("active", t.dataset.mode === m));
       $("auth-name-row").style.display = m === "signup" ? "block" : "none";
       $("auth-name").required = m === "signup";
-      $("auth-submit").textContent = m === "signup" ? "Create account" : "Sign in";
-      $("auth-title").textContent = m === "signup" ? "Create your BookHub account" : "Sign in to BookHub";
+      $("auth-submit").textContent =
+        m === "signup" ? "Create account" : "Sign in";
+      $("auth-title").textContent =
+        m === "signup" ? "Create your BookHub account" : "Sign in to BookHub";
       this.error("");
     },
     error(msg) {
@@ -289,14 +562,26 @@
       try {
         if (mode === "signup") {
           const name = $("auth-name").value.trim();
-          if (name.length < 2) { this.error("Please pick a display name (2-40 characters)."); return false; }
-          // Delegate to the shared signUp so the profile doc + verification
-          // email happen exactly once, in one place (no duplicated flow).
-          await window.bhAuthOps.signUp(name, email, password);
+          if (name.length < 2) {
+            this.error("Please pick a display name (2-40 characters).");
+            return false;
+          }
+          // Delegate to the shared signUp (creates the account, emails the
+          // link, signs back out). Don't close — switch to sign-in and tell
+          // them to confirm first.
+          const res = await window.bhAuthOps.signUp(name, email, password);
+          this.mode("signin");
+          this.error(
+            res.verificationSent
+              ? `Almost there — we sent a confirmation link to ${email}. Click it (check spam too), then sign in.`
+              : `Account created, but the confirmation email couldn't be sent: ${explain(res.verifyError)} You can retry from "Forgot password?" or contact support.`,
+          );
+          return false;
         } else {
-          await signInWithEmailAndPassword(auth, email, password);
+          // Routes through bhAuthOps.signIn, which blocks unverified accounts.
+          await window.bhAuthOps.signIn(email, password);
+          this.close();
         }
-        this.close();
       } catch (e) {
         this.error(explain(e));
       } finally {
@@ -306,7 +591,12 @@
     },
     async reset() {
       const email = $("auth-email").value.trim();
-      if (!email) { this.error("Enter your email above first, then tap 'Forgot password?'."); return; }
+      if (!email) {
+        this.error(
+          "Enter your email above first, then tap 'Forgot password?'.",
+        );
+        return;
+      }
       try {
         await sendPasswordResetEmail(auth, email);
         this.error("Reset link sent — check your inbox.");
@@ -324,13 +614,19 @@
       }
     },
     async signOut() {
-      try { await signOut(auth); } catch (e) {}
+      try {
+        await flushLibrary();
+      } catch (e) {}
+      try {
+        await signOut(auth);
+      } catch (e) {}
       const menu = $("auth-user-menu");
       if (menu) menu.style.display = "none";
     },
     toggleMenu() {
       const menu = $("auth-user-menu");
-      if (menu) menu.style.display = menu.style.display === "block" ? "none" : "block";
+      if (menu)
+        menu.style.display = menu.style.display === "block" ? "none" : "block";
     },
   };
 
@@ -342,21 +638,44 @@
   // stores; after any local mutation, pages call window.bhLibraryChanged()
   // and the full list is pushed, debounced.
   const RL_KEY = "bookhub_rl_v1";
-  const localList = () => { try { return JSON.parse(localStorage.getItem(RL_KEY)) || []; } catch (e) { return []; } };
+  const localList = () => {
+    try {
+      return JSON.parse(localStorage.getItem(RL_KEY)) || [];
+    } catch (e) {
+      return [];
+    }
+  };
   let pushTimer = null;
+  let pushPending = false; // a debounced push is scheduled but not yet written
 
   async function pushLibrary() {
+    pushPending = false;
     if (!window.bhUser) return;
     try {
-      await setDoc(doc(db, "users", window.bhUser.uid, "library", "list"),
-                   { items: localList().slice(0, 500), updatedAt: serverTimestamp() });
-    } catch (e) { console.warn("Library push failed:", e); }
+      await setDoc(doc(db, "users", window.bhUser.uid, "library", "list"), {
+        items: localList().slice(0, 500),
+        updatedAt: serverTimestamp(),
+      });
+    } catch (e) {
+      console.warn("Library push failed:", e);
+    }
   }
 
   window.bhLibraryChanged = function () {
+    pushPending = true;
     clearTimeout(pushTimer);
     pushTimer = setTimeout(pushLibrary, 2000);
   };
+
+  // Flush a pending debounced push immediately. Called before sign-out so a
+  // change made within the 2s debounce window isn't lost when the sign-out
+  // handler clears bookhub_rl_v1 from localStorage — the write still runs
+  // while the user is authenticated (before signOut(auth)).
+  async function flushLibrary() {
+    if (!pushPending) return;
+    clearTimeout(pushTimer);
+    await pushLibrary();
+  }
 
   // ── Shared cover backfill (self-heal) ─────────────────────
   // Entries saved before the cover picker existed, added via a flow that
@@ -368,23 +687,34 @@
   const BH_API = "{{ site.api_url }}";
   window.bhBackfillCovers = async function (items, coverKey = "cover_url") {
     if (!Array.isArray(items)) return false;
-    const missing = items.filter(b => b && b.title && !b[coverKey]);
+    const missing = items.filter((b) => b && b.title && !b[coverKey]);
     let changed = false;
-    for (const b of missing.slice(0, 25)) {   // cap the burst of requests
+    for (const b of missing.slice(0, 25)) {
+      // cap the burst of requests
       try {
-        const res = await fetch(`${BH_API}/search?q=${encodeURIComponent(b.title)}`);
+        const res = await fetch(
+          `${BH_API}/search?q=${encodeURIComponent(b.title)}`,
+        );
         if (!res.ok) continue;
         const data = await res.json();
         if (!Array.isArray(data) || !data.length) continue;
         let hit = data[0];
         if (b.author) {
           const a = b.author.toLowerCase();
-          const m = data.find(x => (x.author || "").toLowerCase().includes(a)
-            || a.includes((x.author || "").toLowerCase()));
+          const m = data.find(
+            (x) =>
+              (x.author || "").toLowerCase().includes(a) ||
+              a.includes((x.author || "").toLowerCase()),
+          );
           if (m) hit = m;
         }
-        if (hit && hit.cover_url) { b[coverKey] = hit.cover_url; changed = true; }
-      } catch (e) { /* skip this one — best-effort enrichment */ }
+        if (hit && hit.cover_url) {
+          b[coverKey] = hit.cover_url;
+          changed = true;
+        }
+      } catch (e) {
+        /* skip this one — best-effort enrichment */
+      }
     }
     return changed;
   };
@@ -392,22 +722,35 @@
   async function mergeLibraryOnLogin(user) {
     try {
       const snap = await getDoc(doc(db, "users", user.uid, "library", "list"));
-      const cloud = (snap.exists() && Array.isArray(snap.data().items)) ? snap.data().items : [];
+      const cloud =
+        snap.exists() && Array.isArray(snap.data().items)
+          ? snap.data().items
+          : [];
       const byTitle = new Map();
-      for (const b of cloud) if (b && b.title) byTitle.set(b.title.toLowerCase(), b);
-      for (const b of localList()) if (b && b.title) byTitle.set(b.title.toLowerCase(), b);  // local wins
-      const merged = [...byTitle.values()].sort((a, b) => (b.addedAt || 0) - (a.addedAt || 0));
+      for (const b of cloud)
+        if (b && b.title) byTitle.set(b.title.toLowerCase(), b);
+      for (const b of localList())
+        if (b && b.title) byTitle.set(b.title.toLowerCase(), b); // local wins
+      const merged = [...byTitle.values()].sort(
+        (a, b) => (b.addedAt || 0) - (a.addedAt || 0),
+      );
       localStorage.setItem(RL_KEY, JSON.stringify(merged));
       await pushLibrary();
       document.dispatchEvent(new CustomEvent("bh-library-synced"));
-    } catch (e) { console.warn("Library merge failed:", e); }
+    } catch (e) {
+      console.warn("Library merge failed:", e);
+    }
   }
 
   // Completes a signInWithRedirect() round trip, if one is in progress —
   // a no-op (resolves to null) on every normal page load.
-  getRedirectResult(auth).then((cred) => {
-    if (cred && cred.user) finishGoogleUser(cred);
-  }).catch((e) => console.error("Google redirect sign-in failed:", e && e.code, e));
+  getRedirectResult(auth)
+    .then((cred) => {
+      if (cred && cred.user) finishGoogleUser(cred);
+    })
+    .catch((e) =>
+      console.error("Google redirect sign-in failed:", e && e.code, e),
+    );
 
   // Track the previous auth identity so we can tell a genuine SIGN-OUT
   // (a real user was here, now gone) apart from a first-load "no session".
@@ -415,10 +758,18 @@
   let __prevUid = undefined;
 
   onAuthStateChanged(auth, (user) => {
-    const signedOut = !!__prevUid && !user;  // had a user, now null → real sign-out
+    // A genuine user sign-out (had a user, now null) — EXCEPT the intentional
+    // post-sign-up / blocked-sign-in sign-out, which must not clear data or
+    // redirect personal pages.
+    const signedOut = !!__prevUid && !user && !suppressSignoutFx;
+    if (!user) suppressSignoutFx = false; // consume the one-shot suppressor
     __prevUid = user ? user.uid : null;
 
-    if (user) mergeLibraryOnLogin(user);
+    // Only merge/push the cloud library for a VERIFIED session. This skips
+    // the brief unverified sign-in that a sign-up or a blocked sign-in causes,
+    // so those transient sessions never pull an account's data into
+    // localStorage (no leak on a shared browser, no race with the sign-out).
+    if (user && user.emailVerified) mergeLibraryOnLogin(user);
     window.bhUser = user || null;
 
     // On sign-out, wipe the per-account local stores so the next person on
@@ -434,7 +785,11 @@
     }
 
     try {
-      if (user) localStorage.setItem(HINT_KEY, user.displayName || user.email || "Account");
+      if (user)
+        localStorage.setItem(
+          HINT_KEY,
+          user.displayName || user.email || "Account",
+        );
       else localStorage.removeItem(HINT_KEY);
     } catch (e) {}
     const signinBtn = $("auth-signin-btn");
@@ -450,15 +805,21 @@
     }
     // Let feature scripts (library sync, comments…) react to auth state.
     // `signedOut` lets personal pages redirect away on a real sign-out.
-    document.dispatchEvent(new CustomEvent("bh-auth", { detail: { user: user || null, signedOut } }));
+    document.dispatchEvent(
+      new CustomEvent("bh-auth", { detail: { user: user || null, signedOut } }),
+    );
   });
 
   // Close the account menu on outside click.
   document.addEventListener("click", (e) => {
     const menu = $("auth-user-menu");
     const chip = $("auth-user-chip");
-    if (menu && menu.style.display === "block"
-        && !menu.contains(e.target) && !(chip && chip.contains(e.target))) {
+    if (
+      menu &&
+      menu.style.display === "block" &&
+      !menu.contains(e.target) &&
+      !(chip && chip.contains(e.target))
+    ) {
       menu.style.display = "none";
     }
   });
