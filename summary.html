@@ -1901,10 +1901,12 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
     } catch (e) {
       // A network drop (cold start / connectivity) throws TypeError/AbortError;
       // an HTTP error throws our own "server error". Give honest, actionable copy.
-      const networky = (e instanceof TypeError) || e.name === "AbortError";
+      console.error("Summary flow failed:", e);  // keep the real cause findable
+      const networky = (e instanceof TypeError && /fetch|network/i.test(e.message || "")) || e.name === "AbortError";
+      const hint = (e && e.message ? String(e.message).slice(0, 140) : "");
       result.innerHTML = networky
         ? `<p class="result-error">Our free server may be waking up or briefly unavailable. Please try again in a moment.</p>`
-        : `<p class="result-error">Couldn't generate the summary. Please try again.</p>`;
+        : `<p class="result-error">Couldn't generate the summary. Please try again.${hint ? `<br><span style="font-size:11px;color:var(--fg-faint);">(${hint})</span>` : ""}</p>`;
     } finally {
       document.getElementById("submit-btn").disabled = false;
     }
@@ -2478,7 +2480,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
         <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:16px;">
           ${pageResults
             .map((b) => {
-              const titleEscaped = b.title
+              const titleEscaped = (b.title || "")
                 .replace(/'/g, "\\'")
                 .replace(/"/g, "&quot;");
               const authorEscaped = (b.author || "")
