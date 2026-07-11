@@ -83,6 +83,7 @@ sitemap: false
   .rr-close {
     border: 1px solid var(--border); background: var(--bg-subtle); color: var(--fg);
     border-radius: 8px; padding: 4px 10px; font-size: 12px; cursor: pointer;
+    display: inline-flex; align-items: center;
   }
 
   /* ── Reading surface (theme + font size via CSS vars) ───── */
@@ -388,12 +389,12 @@ sitemap: false
       const hits = d.results || [];
       if (!hits.length) {
         resultsEl.innerHTML = `<div class="reader-results-head"><span>No matches for "${escHtml(q)}"</span>
-          <button class="rr-close" onclick="closeSearch()">✕</button></div>`;
+          <button class="rr-close" onclick="closeSearch()"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>`;
       } else {
         resultsEl.innerHTML = `
           <div class="reader-results-head">
             <span>${hits.length}${d.truncated ? "+" : ""} page${hits.length > 1 ? "s" : ""} mention "${escHtml(q)}"</span>
-            <button class="rr-close" onclick="closeSearch()">✕</button>
+            <button class="rr-close" onclick="closeSearch()"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
           </div>
           ${hits.map(h => `
             <button class="reader-result-item" onclick="goToResult(${h.page})">
@@ -404,7 +405,7 @@ sitemap: false
       highlightTerm = q;
     } catch (e) {
       resultsEl.innerHTML = `<div class="reader-results-head"><span>Search failed — try again.</span>
-        <button class="rr-close" onclick="closeSearch()">✕</button></div>`;
+        <button class="rr-close" onclick="closeSearch()"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>`;
       resultsEl.style.display = "block";
     }
   };

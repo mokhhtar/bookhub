@@ -70,10 +70,13 @@ sitemap: false
     statusEl.textContent = `${docs.length} pending comment${docs.length > 1 ? "s" : ""}:`;
     listEl.innerHTML = docs.map((d, i) => {
       const c = d.data();
-      const book = d.ref.parent.parent ? d.ref.parent.parent.id : "?";
+      const slug = d.ref.parent.parent ? d.ref.parent.parent.id : "?";
+      const kind = d.ref.parent.parent && d.ref.parent.parent.parent
+        ? d.ref.parent.parent.parent.id : "";
+      const tag = kind === "authors" ? " (author)" : kind === "books" ? "" : "";
       return `
         <div style="border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:10px;" id="mod-item-${i}">
-          <p style="font-size:11px;color:var(--fg-faint);">on <b>${esc(book)}</b> · by <b>${esc(c.name || "Reader")}</b>${c.createdAt ? " · " + new Date(c.createdAt.seconds * 1000).toLocaleString() : ""}</p>
+          <p style="font-size:11px;color:var(--fg-faint);">on <b>${esc(slug)}</b>${tag} · by <b>${esc(c.name || "Reader")}</b>${c.createdAt ? " · " + new Date(c.createdAt.seconds * 1000).toLocaleString() : ""}</p>
           <p style="font-size:13px;color:var(--fg);line-height:1.6;margin:8px 0;white-space:pre-wrap;">${esc(c.text || "")}</p>
           <div style="display:flex;gap:8px;">
             <button class="btn-primary" style="padding:6px 16px;font-size:12px;" onclick="modAct(${i}, 'approve')">Approve</button>

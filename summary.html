@@ -959,7 +959,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
       Ask the Book AI
     </div>
     <div class="chat-panel-actions">
-      <button class="chat-panel-btn" onclick="toggleChatPanel()" title="Close">✕</button>
+      <button class="chat-panel-btn" onclick="toggleChatPanel()" title="Close"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
     </div>
   </div>
   <div class="chat-messages" id="chat-msgs">
@@ -1477,7 +1477,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
         const renderAward = (a, isHidden = false) => {
           const logoHtml = a.logo_url 
             ? `<div class="sidebar-award-logo-wrap"><img class="sidebar-award-logo" src="${a.logo_url}" alt="${a.name}"></div>`
-            : `<div class="sidebar-award-logo-wrap"><span class="sidebar-award-logo-fallback">🏆</span></div>`;
+            : `<div class="sidebar-award-logo-wrap"><span class="sidebar-award-logo-fallback"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4z"/><path d="M17 5h3a2 2 0 0 1-2 4M7 5H4a2 2 0 0 0 2 4"/></svg></span></div>`;
             
           return `
             <li class="sidebar-award-item" ${isHidden ? 'style="display:none;" data-hidden-award' : ''}>
