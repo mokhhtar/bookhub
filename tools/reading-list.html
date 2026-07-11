@@ -397,4 +397,11 @@ render();
 backfillCovers();
 loadRecommendations();
 document.addEventListener('bh-library-synced', () => { render(); backfillCovers(); loadRecommendations(); });
+
+// On a real sign-out, leave My Library immediately — the signed-out account's
+// library/ratings have just been cleared from localStorage (see firebase.html),
+// so redirect home rather than showing an emptied page to the next person.
+document.addEventListener('bh-auth', (e) => {
+  if (e.detail && e.detail.signedOut) location.href = "{{ '/' | relative_url }}";
+});
 </script>

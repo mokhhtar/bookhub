@@ -405,9 +405,30 @@
     if (cred && cred.user) finishGoogleUser(cred);
   }).catch((e) => console.error("Google redirect sign-in failed:", e && e.code, e));
 
+  // Track the previous auth identity so we can tell a genuine SIGN-OUT
+  // (a real user was here, now gone) apart from a first-load "no session".
+  // undefined = baseline not yet established; null = confirmed signed out.
+  let __prevUid = undefined;
+
   onAuthStateChanged(auth, (user) => {
+    const signedOut = !!__prevUid && !user;  // had a user, now null → real sign-out
+    __prevUid = user ? user.uid : null;
+
     if (user) mergeLibraryOnLogin(user);
     window.bhUser = user || null;
+
+    // On sign-out, wipe the per-account local stores so the next person on
+    // this browser can't see the previous account's library / history.
+    // Safe: a signed-in user's library is mirrored to Firestore (pushLibrary)
+    // and restored by mergeLibraryOnLogin on next sign-in. Anonymous visitors
+    // never hit this branch, so their local list is untouched.
+    if (signedOut) {
+      try {
+        localStorage.removeItem(RL_KEY);
+        localStorage.removeItem("bookhub_recent_v1");
+      } catch (e) {}
+    }
+
     try {
       if (user) localStorage.setItem(HINT_KEY, user.displayName || user.email || "Account");
       else localStorage.removeItem(HINT_KEY);
@@ -424,7 +445,8 @@
       }
     }
     // Let feature scripts (library sync, comments…) react to auth state.
-    document.dispatchEvent(new CustomEvent("bh-auth", { detail: { user: user || null } }));
+    // `signedOut` lets personal pages redirect away on a real sign-out.
+    document.dispatchEvent(new CustomEvent("bh-auth", { detail: { user: user || null, signedOut } }));
   });
 
   // Close the account menu on outside click.

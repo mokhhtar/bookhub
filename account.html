@@ -534,7 +534,12 @@ permalink: /account/
       loadMyComments(user);
     }
   }
-  document.addEventListener("bh-auth", (e) => render(e.detail.user));
+  document.addEventListener("bh-auth", (e) => {
+    // On a real sign-out, leave the account page entirely — don't linger on
+    // stale personal data — and give a clear "you're signed out" signal.
+    if (e.detail.signedOut) { location.href = "{{ '/' | relative_url }}"; return; }
+    render(e.detail.user);
+  });
   render(window.bhUser || null);
 })();
 </script>
