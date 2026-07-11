@@ -143,10 +143,11 @@ permalink: /account/
         </span>`).join("");
       window.__favRefs = items.map(it => it.ref);
     } catch (e) {
-      console.error(e);
-      box.textContent = /index/i.test(e.message || "")
-        ? "One-time setup needed: open the browser console and click the index-creation link, then reload."
-        : "Couldn't load favorites right now.";
+      // Technical cause (e.g. a missing Firestore index) goes to the
+      // console for us to diagnose — regular users just see a retry option.
+      console.error("loadFavChars failed:", e);
+      box.innerHTML = `Couldn't load your favorites right now. ` +
+        `<button class="btn-secondary" style="padding:4px 12px;font-size:12px;" onclick="loadFavChars(window.bhUser)">Retry</button>`;
     }
   }
   window.acctUnlike = async function (i) {
@@ -179,10 +180,9 @@ permalink: /account/
         </div>`).join("");
       window.__myCommentRefs = items.map(it => it.ref);
     } catch (e) {
-      console.error(e);
-      box.textContent = /index/i.test(e.message || "")
-        ? "One-time setup needed: open the browser console and click the index-creation link, then reload."
-        : "Couldn't load comments right now.";
+      console.error("loadMyComments failed:", e);
+      box.innerHTML = `Couldn't load your comments right now. ` +
+        `<button class="btn-secondary" style="padding:4px 12px;font-size:12px;" onclick="loadMyComments(window.bhUser)">Retry</button>`;
     }
   }
   window.acctDelComment = async function (i) {
