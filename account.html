@@ -145,6 +145,17 @@ permalink: /account/
         </div>
       </div>
 
+      <!-- Email-verification notice (email/password accounts that haven't confirmed) -->
+      <div id="acct-verify-notice" style="display:none;border:1px solid #f5a623;background:rgba(245,166,35,.10);border-radius:12px;padding:14px 16px;margin-bottom:20px;">
+        <p style="font-size:13px;color:var(--fg);line-height:1.6;">
+          <b>Confirm your email.</b> We sent a verification link to your inbox — confirm it to post comments and reviews.
+        </p>
+        <div style="display:flex;align-items:center;gap:10px;margin-top:8px;">
+          <button class="btn-secondary" id="acct-verify-btn" onclick="acctResendVerify()" style="padding:6px 16px;font-size:12px;">Resend email</button>
+          <span id="acct-verify-note" style="font-size:12px;color:var(--fg-faint);"></span>
+        </div>
+      </div>
+
       <!-- Tab nav -->
       <div class="acct-tabs" role="tablist">
         <button class="acct-tab active" data-tab="reading" onclick="acctTab('reading')">
@@ -328,6 +339,19 @@ permalink: /account/
     if (!email) { err("Enter your email above first, then tap 'Forgot password?'."); return; }
     try { await bhAuthOps.reset(email); err("Reset link sent — check your inbox."); }
     catch (e) { err(explain(e)); }
+  };
+
+  window.acctResendVerify = async function () {
+    const note = $("acct-verify-note"), btn = $("acct-verify-btn");
+    btn.disabled = true; note.textContent = "Sending…";
+    try {
+      await bhAuthOps.resendVerification();
+      note.style.color = "#22a06b";
+      note.textContent = "Sent — check your inbox (and spam).";
+    } catch (e) {
+      note.style.color = "#d33";
+      note.textContent = explain(e);
+    } finally { btn.disabled = false; }
   };
 
   window.acctChangePw = async function (ev) {
@@ -526,6 +550,9 @@ permalink: /account/
       // Password section only makes sense for email/password accounts.
       const hasPw = window.bhAuthOps && bhAuthOps.providers().includes("password");
       $("acct-pw-section").style.display = hasPw ? "block" : "none";
+      // Verification notice: only for unverified email/password accounts
+      // (Google sign-ins are verified by Google, so this stays hidden).
+      $("acct-verify-notice").style.display = (hasPw && !user.emailVerified) ? "block" : "none";
       loadRecent();
       loadRatings();
       refreshReadingEmpty();

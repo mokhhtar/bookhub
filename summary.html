@@ -2347,6 +2347,12 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
     const btn = document.getElementById("comment-post-btn");
     const status = document.getElementById("comment-status");
     if (!card || !ta || !window.bhUser || !window.bhFs) return;
+    // Firestore rules require a verified email to post — surface a friendly
+    // message instead of a raw permission error for unconfirmed accounts.
+    if (window.bhUser.emailVerified === false) {
+      status.textContent = "Confirm your email first — check your inbox, or resend from your account page.";
+      return;
+    }
     const text = ta.value.trim();
     if (text.length < 2) { status.textContent = "Write a little more first."; return; }
     btn.disabled = true;

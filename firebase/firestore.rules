@@ -10,6 +10,10 @@ rules_version = '2';
 //  - Comments are PRE-MODERATED: created as approved=false, publicly
 //    readable only once an admin flips approved=true.
 //  - Recommendations v1: one vote per user per book (doc id == uid).
+//  - Comment/review creation requires a VERIFIED email
+//    (request.auth.token.email_verified). Google sign-ins are verified by
+//    Google; email/password users must confirm via the link BookHub sends
+//    on sign-up. Likes/recs/library are intentionally NOT gated on this.
 
 service cloud.firestore {
   match /databases/{database}/documents {
@@ -55,9 +59,13 @@ service cloud.firestore {
         || (signedIn() && resource.data.uid == request.auth.uid)
         || isAdmin();
 
-      // Anyone signed in may create — but ALWAYS unapproved, always as
-      // themselves, with hard caps the client cannot bypass.
+      // Anyone signed in WITH A VERIFIED EMAIL may create — but ALWAYS
+      // unapproved, always as themselves, with hard caps the client cannot
+      // bypass. Google sign-ins are email_verified by Google; email/password
+      // accounts must click the confirmation link first (see the account
+      // page's verification notice + resend button).
       allow create: if signedIn()
+        && request.auth.token.email_verified == true
         && request.resource.data.uid == request.auth.uid
         && request.resource.data.approved == false
         && request.resource.data.text is string
@@ -149,6 +157,7 @@ service cloud.firestore {
         || (signedIn() && resource.data.uid == request.auth.uid)
         || isAdmin();
       allow create: if signedIn()
+        && request.auth.token.email_verified == true
         && request.resource.data.uid == request.auth.uid
         && request.resource.data.approved == false
         && request.resource.data.text is string

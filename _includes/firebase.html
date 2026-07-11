@@ -123,6 +123,7 @@
     setPersistence, browserLocalPersistence,
     GoogleAuthProvider, signInWithPopup, signInWithRedirect, getRedirectResult,
     EmailAuthProvider, reauthenticateWithCredential, updatePassword,
+    sendEmailVerification,
   } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
   import {
     getFirestore, doc, getDoc, setDoc, addDoc, updateDoc, deleteDoc,
@@ -207,8 +208,13 @@
       await updateProfile(cred.user, { displayName: name });
       await setDoc(doc(db, "users", cred.user.uid),
                    { displayName: name, createdAt: serverTimestamp() });
+      // Fire the confirmation email. Best-effort: a failed send must not
+      // abort a successful sign-up — the account page offers a Resend button.
+      try { await sendEmailVerification(cred.user); } catch (e) { console.warn("Verification email failed:", e); }
       return cred;
     },
+    // Re-send the confirmation email to the current user (account page button).
+    resendVerification: () => sendEmailVerification(auth.currentUser),
     async signInGoogle() {
       try {
         const cred = await signInWithPopup(auth, new GoogleAuthProvider());
@@ -284,11 +290,9 @@
         if (mode === "signup") {
           const name = $("auth-name").value.trim();
           if (name.length < 2) { this.error("Please pick a display name (2-40 characters)."); return false; }
-          const cred = await createUserWithEmailAndPassword(auth, email, password);
-          await updateProfile(cred.user, { displayName: name });
-          // Profile doc — rules require displayName 2-40 on users/{uid}.
-          await setDoc(doc(db, "users", cred.user.uid),
-                       { displayName: name, createdAt: serverTimestamp() });
+          // Delegate to the shared signUp so the profile doc + verification
+          // email happen exactly once, in one place (no duplicated flow).
+          await window.bhAuthOps.signUp(name, email, password);
         } else {
           await signInWithEmailAndPassword(auth, email, password);
         }
