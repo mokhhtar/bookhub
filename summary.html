@@ -2042,7 +2042,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
     box.style.display = "block";
     box.innerHTML = `<div class="char-detail-box"><p style="font-size:12px;color:var(--fg-faint);">Loading ${escExt(c.name)}…</p></div>`;
     try {
-      const res = await fetch(`${API}/character/details`, {
+      const res = await fetch(`${API}/fandom/character/details`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
