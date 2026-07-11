@@ -4,8 +4,58 @@ title: "Your Account"
 description: "Sign in or create a BookHub account — sync your library, comment on books, and recommend your favorites."
 permalink: /account/
 ---
+<style>
+  .acct-section { margin-top: 28px; }
+  .acct-h2 { font-size: 15px; font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+  .acct-h2 svg { color: var(--accent); flex-shrink: 0; }
+  .acct-empty { font-size: 13px; color: var(--fg-muted); }
+
+  /* Favorite-character cards (mirrors the summary page's char cards) */
+  .acct-char-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; }
+  .acct-char-card {
+    position: relative; display: flex; flex-direction: column; align-items: center; gap: 6px;
+    padding: 14px 8px 12px; text-align: center; text-decoration: none; color: var(--fg);
+    border: 1px solid var(--border); border-radius: 12px; background: var(--bg);
+  }
+  .acct-char-avatar {
+    width: 52px; height: 52px; border-radius: 50%; overflow: hidden;
+    background: var(--bg-subtle); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; font-weight: 800; color: var(--fg-faint);
+  }
+  .acct-char-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+  .acct-char-name { font-size: 12px; font-weight: 700; line-height: 1.25; }
+  .acct-char-book { font-size: 10px; color: var(--fg-faint); }
+  .acct-char-x {
+    position: absolute; top: 6px; right: 6px; width: 20px; height: 20px;
+    border: 0; border-radius: 50%; background: var(--bg-subtle); color: var(--fg-faint);
+    font-size: 11px; line-height: 1; cursor: pointer;
+  }
+  .acct-char-x:hover { color: #d33; }
+
+  /* Recently viewed / rated rows */
+  .acct-book-row {
+    display: flex; align-items: center; gap: 12px; padding: 8px 10px;
+    border: 1px solid var(--border); border-radius: 10px; background: var(--bg);
+    margin-bottom: 8px; text-decoration: none; color: var(--fg);
+  }
+  .acct-book-cover { width: 34px; aspect-ratio: 2/3; object-fit: cover; border-radius: 4px; border: 1px solid var(--border); flex-shrink: 0; }
+  .acct-book-cover-empty { width: 34px; aspect-ratio: 2/3; border-radius: 4px; border: 1px solid var(--border); background: var(--bg-subtle); flex-shrink: 0; }
+  .acct-book-t { font-size: 13px; font-weight: 600; line-height: 1.3; }
+  .acct-book-a { font-size: 11px; color: var(--fg-faint); }
+  .acct-stars { margin-left: auto; color: #f5a623; font-size: 13px; letter-spacing: 1px; white-space: nowrap; }
+
+  .acct-input {
+    width: 100%; box-sizing: border-box; padding: 10px 12px; font-size: 16px;
+    background: var(--bg-subtle); color: var(--fg);
+    border: 1px solid var(--border); border-radius: 8px; margin-bottom: 10px;
+  }
+  .acct-input:focus { outline: none; border-color: var(--accent); }
+  .acct-note { font-size: 12px; margin-top: 8px; }
+</style>
+
 <section class="account-page">
-  <div class="container" style="max-width:440px;padding-top:32px;padding-bottom:64px;">
+  <div class="container" style="max-width:520px;padding-top:32px;padding-bottom:64px;">
 
     <!-- Signed OUT: full sign-in / register forms -->
     <div id="acct-signed-out" style="display:none;">
@@ -14,45 +64,104 @@ permalink: /account/
         <p style="font-size:14px;color:var(--fg-muted);margin-top:8px;">Sync your library across devices, comment on books, and recommend your favorites.</p>
       </header>
 
-      <div class="auth-tabs" style="display:flex;gap:6px;margin-bottom:16px;">
-        <button class="auth-tab active" id="acct-tab-signin" onclick="acctMode('signin')">Sign in</button>
-        <button class="auth-tab" id="acct-tab-signup" onclick="acctMode('signup')">Create account</button>
-      </div>
+      <button class="auth-google-btn" onclick="acctGoogle()" style="max-width:380px;margin:0 auto;">
+        <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.84 14.1A6.6 6.6 0 0 1 5.5 12c0-.73.13-1.44.34-2.1V7.06H2.18A11 11 0 0 0 1 12c0 1.77.43 3.45 1.18 4.94l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.16-3.16A10.96 10.96 0 0 0 12 1 11 11 0 0 0 2.18 7.06l3.66 2.84C6.71 7.31 9.14 5.38 12 5.38z"/></svg>
+        Continue with Google
+      </button>
+      <div class="auth-divider" style="max-width:380px;margin:14px auto;"><span>or use email</span></div>
 
-      <form onsubmit="return acctSubmit(event)" style="background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:22px;">
-        <div id="acct-name-row" style="display:none;">
-          <label class="auth-label" for="acct-name">Display name</label>
-          <input class="auth-input" id="acct-name" type="text" minlength="2" maxlength="40" autocomplete="nickname" placeholder="Shown next to your comments">
+      <div style="max-width:380px;margin:0 auto;">
+        <div class="auth-tabs" style="display:flex;gap:6px;margin-bottom:16px;">
+          <button class="auth-tab active" id="acct-tab-signin" onclick="acctMode('signin')">Sign in</button>
+          <button class="auth-tab" id="acct-tab-signup" onclick="acctMode('signup')">Create account</button>
         </div>
-        <label class="auth-label" for="acct-email">Email</label>
-        <input class="auth-input" id="acct-email" type="email" required autocomplete="email">
-        <label class="auth-label" for="acct-password">Password</label>
-        <input class="auth-input" id="acct-password" type="password" minlength="6" required autocomplete="current-password">
-        <p class="auth-error" id="acct-error" style="display:none;"></p>
-        <button class="btn-primary auth-submit" id="acct-submit" type="submit" style="width:100%;justify-content:center;margin-top:14px;padding:10px 0;">Sign in</button>
-      </form>
-      <button class="auth-forgot" onclick="acctReset()">Forgot password?</button>
+
+        <form onsubmit="return acctSubmit(event)" style="background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:22px;">
+          <div id="acct-name-row" style="display:none;">
+            <label class="auth-label" for="acct-name">Display name</label>
+            <input class="auth-input" id="acct-name" type="text" minlength="2" maxlength="40" autocomplete="nickname" placeholder="Shown next to your comments">
+          </div>
+          <label class="auth-label" for="acct-email">Email</label>
+          <input class="auth-input" id="acct-email" type="email" required autocomplete="email">
+          <label class="auth-label" for="acct-password">Password</label>
+          <input class="auth-input" id="acct-password" type="password" minlength="6" required autocomplete="current-password">
+          <p class="auth-error" id="acct-error" style="display:none;"></p>
+          <button class="btn-primary auth-submit" id="acct-submit" type="submit" style="width:100%;justify-content:center;margin-top:14px;padding:10px 0;">Sign in</button>
+        </form>
+        <button class="auth-forgot" onclick="acctReset()">Forgot password?</button>
+      </div>
     </div>
 
-    <!-- Signed IN: profile summary -->
+    <!-- Signed IN: profile + data -->
     <div id="acct-signed-in" style="display:none;">
-      <header style="text-align:center;margin-bottom:24px;">
+      <header style="text-align:center;margin-bottom:20px;">
         <div class="auth-avatar" id="acct-avatar" style="width:72px;height:72px;font-size:28px;margin:0 auto 12px;">?</div>
         <h1 class="section-title" style="font-size:24px;" id="acct-display-name">Account</h1>
         <p style="font-size:13px;color:var(--fg-faint);margin-top:4px;" id="acct-email-line"></p>
       </header>
-      <div style="display:flex;flex-direction:column;gap:10px;">
-        <a class="btn-secondary" href="{{ '/tools/reading-list' | relative_url }}" style="justify-content:center;padding:10px 0;">📚 My Library</a>
-        <button class="btn-secondary" onclick="bhAuthOps.signOut()" style="justify-content:center;padding:10px 0;">Sign out</button>
+      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+        <a class="btn-secondary" href="{{ '/tools/reading-list' | relative_url }}" style="padding:9px 22px;">My Library</a>
+        <button class="btn-secondary" onclick="bhAuthOps.signOut()" style="padding:9px 22px;">Sign out</button>
       </div>
 
-      <!-- My favorite characters -->
-      <h2 style="font-size:16px;font-weight:700;margin:28px 0 10px;">❤ My favorite characters</h2>
-      <div id="acct-favchars" style="font-size:13px;color:var(--fg-muted);">Loading…</div>
+      <!-- Recently viewed -->
+      <div class="acct-section" id="acct-recent-section" style="display:none;">
+        <h2 class="acct-h2">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Recently viewed
+        </h2>
+        <div id="acct-recent"></div>
+      </div>
+
+      <!-- Favorite characters -->
+      <div class="acct-section">
+        <h2 class="acct-h2">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          My favorite characters
+        </h2>
+        <div id="acct-favchars" class="acct-empty">Loading…</div>
+      </div>
+
+      <!-- Favorite authors -->
+      <div class="acct-section">
+        <h2 class="acct-h2">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          My favorite authors
+        </h2>
+        <div id="acct-favauthors" class="acct-empty">Loading…</div>
+      </div>
+
+      <!-- My ratings -->
+      <div class="acct-section" id="acct-ratings-section" style="display:none;">
+        <h2 class="acct-h2">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          My ratings
+        </h2>
+        <div id="acct-ratings"></div>
+      </div>
 
       <!-- My comments -->
-      <h2 style="font-size:16px;font-weight:700;margin:28px 0 10px;">💬 My comments</h2>
-      <div id="acct-comments" style="font-size:13px;color:var(--fg-muted);">Loading…</div>
+      <div class="acct-section">
+        <h2 class="acct-h2">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          My comments &amp; reviews
+        </h2>
+        <div id="acct-comments" class="acct-empty">Loading…</div>
+      </div>
+
+      <!-- Change password (email/password accounts only) -->
+      <div class="acct-section" id="acct-pw-section" style="display:none;">
+        <h2 class="acct-h2">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Change password
+        </h2>
+        <form onsubmit="return acctChangePw(event)" style="max-width:380px;">
+          <input class="acct-input" id="acct-pw-current" type="password" required minlength="6" placeholder="Current password" autocomplete="current-password">
+          <input class="acct-input" id="acct-pw-new" type="password" required minlength="6" placeholder="New password (6+ characters)" autocomplete="new-password">
+          <button class="btn-secondary" type="submit" id="acct-pw-btn" style="padding:8px 20px;font-size:13px;">Update password</button>
+          <p class="acct-note" id="acct-pw-note"></p>
+        </form>
+      </div>
     </div>
 
   </div>
@@ -68,11 +177,15 @@ permalink: /account/
     "auth/weak-password": "Password must be at least 6 characters.",
     "auth/invalid-credential": "Wrong email or password.",
     "auth/user-not-found": "No account with this email.",
-    "auth/wrong-password": "Wrong email or password.",
+    "auth/wrong-password": "Wrong current password.",
     "auth/too-many-requests": "Too many attempts — try again in a few minutes.",
   };
   const explain = (e) => ERRORS[e && e.code] || "Something went wrong — please try again.";
   const err = (m) => { const el = $("acct-error"); el.textContent = m; el.style.display = m ? "block" : "none"; };
+  const esc = (s) => String(s == null ? "" : s)
+    .replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;").replaceAll("'", "&#39;");
+  const pretty = (slug) => slug.replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase());
 
   window.acctMode = function (m) {
     mode = m;
@@ -82,6 +195,11 @@ permalink: /account/
     $("acct-name").required = m === "signup";
     $("acct-submit").textContent = m === "signup" ? "Create account" : "Sign in";
     err("");
+  };
+
+  const afterAuthRedirect = () => {
+    const next = new URLSearchParams(location.search).get("next");
+    if (next && next.startsWith("/")) location.href = next;
   };
 
   window.acctSubmit = async function (ev) {
@@ -97,15 +215,19 @@ permalink: /account/
       } else {
         await bhAuthOps.signIn($("acct-email").value.trim(), $("acct-password").value);
       }
-      // Optional redirect back: /account/?next=/summary/
-      const next = new URLSearchParams(location.search).get("next");
-      if (next && next.startsWith("/")) location.href = next;
+      afterAuthRedirect();
     } catch (e) {
       err(explain(e));
     } finally {
       btn.disabled = false;
     }
     return false;
+  };
+
+  window.acctGoogle = async function () {
+    err("");
+    try { await bhAuthOps.signInGoogle(); afterAuthRedirect(); }
+    catch (e) { if (e && e.code !== "auth/popup-closed-by-user") err(explain(e)); }
   };
 
   window.acctReset = async function () {
@@ -115,14 +237,55 @@ permalink: /account/
     catch (e) { err(explain(e)); }
   };
 
-  const esc = (s) => String(s == null ? "" : s)
-    .replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;").replaceAll("'", "&#39;");
-  const pretty = (slug) => slug.replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+  window.acctChangePw = async function (ev) {
+    ev.preventDefault();
+    const note = $("acct-pw-note");
+    const btn = $("acct-pw-btn");
+    btn.disabled = true;
+    note.textContent = "";
+    try {
+      await bhAuthOps.changePassword($("acct-pw-current").value, $("acct-pw-new").value);
+      $("acct-pw-current").value = ""; $("acct-pw-new").value = "";
+      note.style.color = "#22a06b";
+      note.textContent = "Password updated.";
+    } catch (e) {
+      note.style.color = "#d33";
+      note.textContent = explain(e);
+    } finally {
+      btn.disabled = false;
+    }
+    return false;
+  };
 
-  // "My favorite characters" — collection-group query on likes.uid (rules
-  // allow owners to read exactly their own docs). Needs a one-time
-  // collection-group index exemption on likes.uid (console link on error).
+  // ── Recently viewed (local, written by the summary page) ──
+  function loadRecent() {
+    let items = [];
+    try { items = JSON.parse(localStorage.getItem("bookhub_recent_v1")) || []; } catch (e) {}
+    if (!items.length) return;
+    $("acct-recent-section").style.display = "block";
+    $("acct-recent").innerHTML = items.slice(0, 6).map(b => `
+      <a class="acct-book-row" href="{{ '/summary/' | relative_url }}?${b.b ? `b=${esc(b.b)}` : `q=${encodeURIComponent(b.title)}&direct=true`}">
+        ${b.cover ? `<img class="acct-book-cover" src="${esc(b.cover)}" alt="" loading="lazy">` : `<span class="acct-book-cover-empty"></span>`}
+        <span><span class="acct-book-t">${esc(b.title)}</span><br><span class="acct-book-a">${esc(b.author || "")}</span></span>
+      </a>`).join("");
+  }
+
+  // ── My ratings (from the My Library store) ─────────────────
+  function loadRatings() {
+    let list = [];
+    try { list = JSON.parse(localStorage.getItem("bookhub_rl_v1")) || []; } catch (e) {}
+    const rated = list.filter(b => (b.rating || 0) > 0).slice(0, 12);
+    if (!rated.length) return;
+    $("acct-ratings-section").style.display = "block";
+    $("acct-ratings").innerHTML = rated.map(b => `
+      <a class="acct-book-row" href="{{ '/summary/' | relative_url }}?q=${encodeURIComponent(b.title)}&direct=true">
+        ${b.cover_url ? `<img class="acct-book-cover" src="${esc(b.cover_url)}" alt="" loading="lazy">` : `<span class="acct-book-cover-empty"></span>`}
+        <span><span class="acct-book-t">${esc(b.title)}</span><br><span class="acct-book-a">${esc(b.author || "")}</span></span>
+        <span class="acct-stars">${"★".repeat(b.rating)}${"☆".repeat(5 - b.rating)}</span>
+      </a>`).join("");
+  }
+
+  // ── Favorite characters — real cards from the like snapshots ──
   async function loadFavChars(user) {
     const box = $("acct-favchars");
     if (!window.bhFs) { box.textContent = "…"; return; }
@@ -130,24 +293,30 @@ permalink: /account/
     try {
       const snap = await fs.getDocs(fs.query(
         fs.collectionGroup(db, "likes"), fs.where("uid", "==", user.uid), fs.limit(100)));
-      const items = [];
+      const chars = [], authors = [];
       snap.forEach(d => {
-        const charSlug = d.ref.parent.parent ? d.ref.parent.parent.id : null;
-        if (charSlug) items.push({ slug: charSlug, ref: d.ref });
+        const parent = d.ref.parent.parent;
+        if (!parent) return;
+        const root = parent.parent ? parent.parent.id : "";
+        const item = { slug: parent.id, ref: d.ref, data: d.data() };
+        if (root === "characters") chars.push(item);
+        else if (root === "authors") authors.push(item);
       });
-      if (!items.length) { box.textContent = "No favorite characters yet — tap ♡ on any character card."; return; }
-      box.innerHTML = items.map((it, i) => `
-        <span style="display:inline-flex;align-items:center;gap:6px;border:1px solid var(--border);border-radius:999px;padding:5px 6px 5px 14px;margin:0 6px 8px 0;background:var(--bg);">
-          <a href="{{ '/characters/' | relative_url }}${esc(it.slug)}/" style="color:var(--fg);text-decoration:none;font-weight:600;">${esc(pretty(it.slug))}</a>
-          <button onclick="acctUnlike(${i})" title="Remove" style="border:0;background:var(--bg-subtle);border-radius:50%;width:20px;height:20px;cursor:pointer;color:var(--fg-faint);font-size:11px;line-height:1;">✕</button>
-        </span>`).join("");
-      window.__favRefs = items.map(it => it.ref);
+      renderFavAuthors(authors);
+      if (!chars.length) { box.textContent = "No favorites yet — open any character card and tap Favorite."; return; }
+      box.classList.remove("acct-empty");
+      box.innerHTML = `<div class="acct-char-grid">` + chars.map((it, i) => `
+        <a class="acct-char-card" href="{{ '/characters/' | relative_url }}${esc(it.slug)}/">
+          <button class="acct-char-x" title="Remove" onclick="event.preventDefault();acctUnlike(${i})">✕</button>
+          <span class="acct-char-avatar">${it.data.image_url ? `<img src="${esc(it.data.image_url)}" alt="">` : esc((it.data.name || it.slug).slice(0, 1).toUpperCase())}</span>
+          <span class="acct-char-name">${esc(it.data.name || pretty(it.slug))}</span>
+          ${it.data.book_title ? `<span class="acct-char-book">${esc(it.data.book_title)}</span>` : ""}
+        </a>`).join("") + `</div>`;
+      window.__favRefs = chars.map(it => it.ref);
     } catch (e) {
-      // Technical cause (e.g. a missing Firestore index) goes to the
-      // console for us to diagnose — regular users just see a retry option.
       console.error("loadFavChars failed:", e);
       box.innerHTML = `Couldn't load your favorites right now. ` +
-        `<button class="btn-secondary" style="padding:4px 12px;font-size:12px;" onclick="loadFavChars(window.bhUser)">Retry</button>`;
+        `<button class="btn-secondary" style="padding:4px 12px;font-size:12px;" onclick="location.reload()">Retry</button>`;
     }
   }
   window.acctUnlike = async function (i) {
@@ -156,7 +325,24 @@ permalink: /account/
     try { await window.bhFs.deleteDoc(ref); loadFavChars(window.bhUser); } catch (e) { console.error(e); }
   };
 
-  // "My comments" — same owner-scoped group query on comments.uid.
+  function renderFavAuthors(authors) {
+    const box = $("acct-favauthors");
+    if (!authors.length) { box.textContent = "No favorite authors yet — tap the heart next to any author's name."; return; }
+    box.classList.remove("acct-empty");
+    box.innerHTML = authors.map((it, i) => `
+      <span style="display:inline-flex;align-items:center;gap:6px;border:1px solid var(--border);border-radius:999px;padding:6px 8px 6px 14px;margin:0 6px 8px 0;background:var(--bg);">
+        <a href="{{ '/authors/' | relative_url }}${esc(it.slug)}/" style="color:var(--fg);text-decoration:none;font-weight:600;font-size:13px;">${esc(it.data.name || pretty(it.slug))}</a>
+        <button onclick="acctUnlikeAuthor(${i})" title="Remove" style="border:0;background:var(--bg-subtle);border-radius:50%;width:20px;height:20px;cursor:pointer;color:var(--fg-faint);font-size:11px;line-height:1;">✕</button>
+      </span>`).join("");
+    window.__favAuthorRefs = authors.map(it => it.ref);
+  }
+  window.acctUnlikeAuthor = async function (i) {
+    const ref = (window.__favAuthorRefs || [])[i];
+    if (!ref) return;
+    try { await window.bhFs.deleteDoc(ref); loadFavChars(window.bhUser); } catch (e) { console.error(e); }
+  };
+
+  // ── My comments & reviews (books + authors) ────────────────
   async function loadMyComments(user) {
     const box = $("acct-comments");
     if (!window.bhFs) { box.textContent = "…"; return; }
@@ -165,14 +351,23 @@ permalink: /account/
       const snap = await fs.getDocs(fs.query(
         fs.collectionGroup(db, "comments"), fs.where("uid", "==", user.uid), fs.limit(100)));
       const items = [];
-      snap.forEach(d => items.push({ ref: d.ref, data: d.data(),
-        book: d.ref.parent.parent ? d.ref.parent.parent.id : "?" }));
+      snap.forEach(d => {
+        const parent = d.ref.parent.parent;
+        items.push({
+          ref: d.ref, data: d.data(),
+          slug: parent ? parent.id : "?",
+          kind: parent && parent.parent ? parent.parent.id : "books",
+        });
+      });
       items.sort((a, b) => (b.data.createdAt?.seconds || 0) - (a.data.createdAt?.seconds || 0));
       if (!items.length) { box.textContent = "No comments yet."; return; }
+      box.classList.remove("acct-empty");
       box.innerHTML = items.map((it, i) => `
         <div style="border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:8px;background:var(--bg);">
           <p style="font-size:11px;color:var(--fg-faint);">
-            on <a href="{{ '/summary/' | relative_url }}?b=${esc(it.book)}" style="color:var(--accent);">${esc(pretty(it.book))}</a>
+            on ${it.kind === "authors"
+              ? `<a href="{{ '/authors/' | relative_url }}${esc(it.slug)}/" style="color:var(--accent);">${esc(pretty(it.slug))}</a> <span style="opacity:.7;">(author)</span>`
+              : `<a href="{{ '/summary/' | relative_url }}?b=${esc(it.slug)}" style="color:var(--accent);">${esc(pretty(it.slug))}</a>`}
             · ${it.data.approved ? "<span style='color:#22a06b;font-weight:600;'>published</span>" : "<span style='color:var(--fg-faint);'>awaiting approval</span>"}
           </p>
           <p style="font-size:13px;color:var(--fg);line-height:1.55;margin:6px 0;white-space:pre-wrap;">${esc(it.data.text || "")}</p>
@@ -182,7 +377,7 @@ permalink: /account/
     } catch (e) {
       console.error("loadMyComments failed:", e);
       box.innerHTML = `Couldn't load your comments right now. ` +
-        `<button class="btn-secondary" style="padding:4px 12px;font-size:12px;" onclick="loadMyComments(window.bhUser)">Retry</button>`;
+        `<button class="btn-secondary" style="padding:4px 12px;font-size:12px;" onclick="location.reload()">Retry</button>`;
     }
   }
   window.acctDelComment = async function (i) {
@@ -199,6 +394,11 @@ permalink: /account/
       $("acct-avatar").textContent = name.slice(0, 1).toUpperCase();
       $("acct-display-name").textContent = name;
       $("acct-email-line").textContent = user.email || "";
+      // Password section only makes sense for email/password accounts.
+      const hasPw = window.bhAuthOps && bhAuthOps.providers().includes("password");
+      $("acct-pw-section").style.display = hasPw ? "block" : "none";
+      loadRecent();
+      loadRatings();
       loadFavChars(user);
       loadMyComments(user);
     }

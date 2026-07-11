@@ -10,6 +10,12 @@
     <button class="auth-close" onclick="bhAuthUI.close()" aria-label="Close">✕</button>
     <h2 id="auth-title" class="auth-heading">Sign in to BookHub</h2>
 
+    <button class="auth-google-btn" onclick="bhAuthUI.google()">
+      <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.84 14.1A6.6 6.6 0 0 1 5.5 12c0-.73.13-1.44.34-2.1V7.06H2.18A11 11 0 0 0 1 12c0 1.77.43 3.45 1.18 4.94l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.16-3.16A10.96 10.96 0 0 0 12 1 11 11 0 0 0 2.18 7.06l3.66 2.84C6.71 7.31 9.14 5.38 12 5.38z"/></svg>
+      Continue with Google
+    </button>
+    <div class="auth-divider"><span>or use email</span></div>
+
     <div class="auth-tabs">
       <button class="auth-tab active" data-mode="signin" onclick="bhAuthUI.mode('signin')">Sign in</button>
       <button class="auth-tab" data-mode="signup" onclick="bhAuthUI.mode('signup')">Create account</button>
@@ -49,6 +55,20 @@
     border-radius: 8px; padding: 4px 9px; font-size: 12px; cursor: pointer;
   }
   .auth-heading { font-size: 18px; font-weight: 700; margin-bottom: 16px; }
+  .auth-google-btn {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    width: 100%; padding: 10px 0; font-size: 13px; font-weight: 600; cursor: pointer;
+    background: var(--bg); color: var(--fg);
+    border: 1px solid var(--border); border-radius: 10px;
+  }
+  .auth-google-btn:hover { border-color: var(--accent); }
+  .auth-divider {
+    display: flex; align-items: center; gap: 10px; margin: 14px 0;
+    color: var(--fg-faint); font-size: 11px;
+  }
+  .auth-divider::before, .auth-divider::after {
+    content: ""; flex: 1; height: 1px; background: var(--border);
+  }
   .auth-tabs { display: flex; gap: 6px; margin-bottom: 16px; }
   .auth-tab {
     flex: 1; padding: 8px 0; font-size: 13px; font-weight: 600; cursor: pointer;
@@ -101,6 +121,8 @@
     getAuth, onAuthStateChanged, createUserWithEmailAndPassword,
     signInWithEmailAndPassword, sendPasswordResetEmail, signOut, updateProfile,
     setPersistence, browserLocalPersistence,
+    GoogleAuthProvider, signInWithPopup,
+    EmailAuthProvider, reauthenticateWithCredential, updatePassword,
   } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
   import {
     getFirestore, doc, getDoc, setDoc, addDoc, updateDoc, deleteDoc,
@@ -151,6 +173,10 @@
 
   // Raw auth operations for standalone pages (/account/) — the modal's
   // bhAuthUI and the account page share these instead of duplicating flows.
+  // Rules require a 2-40 char displayName on the profile doc.
+  const safeName = (u) =>
+    ((u.displayName || (u.email || "Reader").split("@")[0]) + "  ").slice(0, 40).trim() || "Reader";
+
   window.bhAuthOps = {
     signIn: (email, pw) => signInWithEmailAndPassword(auth, email, pw),
     async signUp(name, email, pw) {
@@ -160,8 +186,30 @@
                    { displayName: name, createdAt: serverTimestamp() });
       return cred;
     },
+    async signInGoogle() {
+      const cred = await signInWithPopup(auth, new GoogleAuthProvider());
+      // First Google sign-in has no profile doc yet — create/refresh it
+      // with the Google display name (merge keeps createdAt on repeats).
+      try {
+        await setDoc(doc(db, "users", cred.user.uid),
+                     { displayName: safeName(cred.user), createdAt: serverTimestamp() },
+                     { merge: true });
+      } catch (e) { console.warn("Profile doc write failed:", e); }
+      return cred;
+    },
     reset: (email) => sendPasswordResetEmail(auth, email),
     signOut: () => signOut(auth),
+    // Password change for email/password accounts: reauth with the current
+    // password (Firebase requires a recent login), then update.
+    async changePassword(currentPw, newPw) {
+      const user = auth.currentUser;
+      if (!user || !user.email) throw { code: "auth/no-user" };
+      const cred = EmailAuthProvider.credential(user.email, currentPw);
+      await reauthenticateWithCredential(user, cred);
+      await updatePassword(user, newPw);
+    },
+    // Which providers this account uses ("password", "google.com", …).
+    providers: () => (auth.currentUser ? auth.currentUser.providerData.map(p => p.providerId) : []),
   };
 
   const $ = (id) => document.getElementById(id);
@@ -235,6 +283,15 @@
         this.error("Reset link sent — check your inbox.");
       } catch (e) {
         this.error(explain(e));
+      }
+    },
+    async google() {
+      this.error("");
+      try {
+        await window.bhAuthOps.signInGoogle();
+        this.close();
+      } catch (e) {
+        if (e && e.code !== "auth/popup-closed-by-user") this.error(explain(e));
       }
     },
     async signOut() {

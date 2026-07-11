@@ -93,20 +93,75 @@ service cloud.firestore {
     }
 
     // ── Character likes (favorite a character) ───────────────
-    // characters/{charSlug}/likes/{uid}: {createdAt, uid}
+    // characters/{charSlug}/likes/{uid}:
+    //   {createdAt, uid, name?, image_url?, book_title?}
     // Doc id == liker uid → one like per user per character (identity is
     // the character's canonical slug, shared across every book they appear
     // in). uid is ALSO a field so the owner can list their favorites via a
-    // collection-group query on /account/.
+    // collection-group query on /account/. The optional display fields
+    // (name/image/book) are snapshotted at like-time so the account page
+    // can render real character cards without extra lookups.
     match /characters/{charSlug}/likes/{uid} {
       allow read: if true;
       allow create: if signedIn()
         && request.auth.uid == uid
         && request.resource.data.uid == request.auth.uid
-        && request.resource.data.keys().hasOnly(["createdAt", "uid"])
-        && request.resource.data.createdAt == request.time;
+        && request.resource.data.keys().hasOnly(
+             ["createdAt", "uid", "name", "image_url", "book_title"])
+        && request.resource.data.createdAt == request.time
+        && (!("name" in request.resource.data)
+            || (request.resource.data.name is string
+                && request.resource.data.name.size() <= 80))
+        && (!("image_url" in request.resource.data)
+            || (request.resource.data.image_url is string
+                && request.resource.data.image_url.size() <= 500))
+        && (!("book_title" in request.resource.data)
+            || (request.resource.data.book_title is string
+                && request.resource.data.book_title.size() <= 200));
       allow delete: if signedIn() && request.auth.uid == uid;
       allow update: if false;
+    }
+
+    // ── Author likes (favorite an author) ────────────────────
+    // authors/{authorSlug}/likes/{uid}: {createdAt, uid, name?}
+    // Same one-like-per-user shape as character likes.
+    match /authors/{authorSlug}/likes/{uid} {
+      allow read: if true;
+      allow create: if signedIn()
+        && request.auth.uid == uid
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.keys().hasOnly(["createdAt", "uid", "name"])
+        && request.resource.data.createdAt == request.time
+        && (!("name" in request.resource.data)
+            || (request.resource.data.name is string
+                && request.resource.data.name.size() <= 80));
+      allow delete: if signedIn() && request.auth.uid == uid;
+      allow update: if false;
+    }
+
+    // ── Author reviews (pre-moderated, same contract as book comments) ──
+    // authors/{authorSlug}/comments/{commentId}:
+    //   {uid, name, text, createdAt, approved}
+    // The admin moderation page's collectionGroup("comments") query picks
+    // these up automatically alongside book comments.
+    match /authors/{authorSlug}/comments/{commentId} {
+      allow read: if resource.data.approved == true
+        || (signedIn() && resource.data.uid == request.auth.uid)
+        || isAdmin();
+      allow create: if signedIn()
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.approved == false
+        && request.resource.data.text is string
+        && request.resource.data.text.size() >= 2
+        && request.resource.data.text.size() <= 1000
+        && request.resource.data.name is string
+        && request.resource.data.name.size() <= 40
+        && request.resource.data.createdAt == request.time
+        && request.resource.data.keys().hasOnly(
+             ["uid", "name", "text", "createdAt", "approved"]);
+      allow update: if isAdmin();
+      allow delete: if isAdmin()
+        || (signedIn() && resource.data.uid == request.auth.uid);
     }
 
     // Collection-group reads. Group queries are only authorized by

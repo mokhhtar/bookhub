@@ -20,7 +20,14 @@ layout: default
       {% endif %}
 
       <div style="flex:1;min-width:260px;">
-        <h1 itemprop="name" style="font-size:28px;font-weight:800;letter-spacing:-0.5px;">{{ page.name }}</h1>
+        <h1 itemprop="name" style="font-size:28px;font-weight:800;letter-spacing:-0.5px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+          {{ page.name }}
+          <button id="author-heart" onclick="toggleAuthorHeart()" title="Favorite this author"
+                  style="background:none;border:0;cursor:pointer;color:var(--fg-faint);padding:2px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+          <span id="author-heart-count" style="font-size:13px;font-weight:600;color:var(--fg-faint);"></span>
+        </h1>
         <div itemprop="description" style="font-size:15px;color:var(--fg-muted);line-height:1.75;margin-top:12px;max-width:640px;">
           {{ content }}
         </div>
@@ -49,5 +56,125 @@ layout: default
       <p style="font-size:14px;color:var(--fg-muted);">No summarized works yet.</p>
     {% endif %}
 
+    <!-- Reader reviews of this author (pre-moderated, same flow as book comments) -->
+    <h2 style="font-size:18px;font-weight:600;margin:36px 0 14px;">Reader reviews</h2>
+    <div id="author-reviews" style="font-size:13px;color:var(--fg-muted);">Loading…</div>
+    <div id="author-review-form" style="margin-top:14px;"></div>
+
   </div>
 </article>
+
+<script>
+(function () {
+  const AUTHOR_SLUG = "{{ page.slug }}";
+  const AUTHOR_NAME = "{{ page.name | escape }}";
+  const esc = (s) => String(s == null ? "" : s)
+    .replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;").replaceAll("'", "&#39;");
+
+  // ── Favorite heart + live count ────────────────────────────
+  async function refreshHeart() {
+    if (!window.bhFs) return;
+    const fs = window.bhFs, db = window.bhFirebase.db;
+    const el = document.getElementById("author-heart");
+    try {
+      const cnt = await fs.getCountFromServer(fs.collection(db, "authors", AUTHOR_SLUG, "likes"));
+      const n = cnt.data().count;
+      document.getElementById("author-heart-count").textContent = n ? String(n) : "";
+      let mine = false;
+      if (window.bhUser) {
+        const me = await fs.getDoc(fs.doc(db, "authors", AUTHOR_SLUG, "likes", window.bhUser.uid));
+        mine = me.exists();
+      }
+      el.dataset.mine = mine ? "1" : "";
+      el.style.color = mine ? "var(--accent)" : "var(--fg-faint)";
+      el.querySelector("svg").style.fill = mine ? "currentColor" : "none";
+    } catch (e) { console.warn("Author heart failed:", e); }
+  }
+
+  window.toggleAuthorHeart = async function () {
+    if (!window.bhUser) { bhAuthUI.open("signin"); return; }
+    const fs = window.bhFs, db = window.bhFirebase.db;
+    const el = document.getElementById("author-heart");
+    const ref = fs.doc(db, "authors", AUTHOR_SLUG, "likes", window.bhUser.uid);
+    try {
+      if (el && el.dataset.mine) await fs.deleteDoc(ref);
+      else await fs.setDoc(ref, {
+        createdAt: fs.serverTimestamp(), uid: window.bhUser.uid,
+        name: AUTHOR_NAME.slice(0, 80),
+      });
+      refreshHeart();
+    } catch (e) { console.warn("Author like failed:", e); }
+  };
+
+  // ── Reviews (approved-only reads; posting awaits moderation) ──
+  async function loadReviews() {
+    const box = document.getElementById("author-reviews");
+    const formBox = document.getElementById("author-review-form");
+    if (!window.bhFs) return;
+    const fs = window.bhFs, db = window.bhFirebase.db;
+    let items = [];
+    try {
+      const snap = await fs.getDocs(fs.query(
+        fs.collection(db, "authors", AUTHOR_SLUG, "comments"),
+        fs.where("approved", "==", true), fs.limit(30)));
+      snap.forEach(d => items.push(d.data()));
+      items.sort((a, b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0));
+    } catch (e) {
+      console.error(e);
+      box.textContent = "Couldn't load reviews right now.";
+      return;
+    }
+    box.innerHTML = items.length
+      ? items.map(c => `
+          <div style="border-bottom:1px solid var(--border);padding:10px 0;">
+            <p style="font-size:12px;font-weight:700;">${esc(c.name || "Reader")}
+              <span style="font-weight:400;color:var(--fg-faint);font-size:11px;margin-left:6px;">${c.createdAt ? new Date(c.createdAt.seconds * 1000).toLocaleDateString() : ""}</span></p>
+            <p style="font-size:13px;color:var(--fg-muted);line-height:1.6;margin-top:3px;white-space:pre-wrap;">${esc(c.text || "")}</p>
+          </div>`).join("")
+      : `<p>No reviews yet — be the first to share your view of ${esc(AUTHOR_NAME)}'s work.</p>`;
+
+    formBox.innerHTML = window.bhUser ? `
+      <textarea id="author-review-text" maxlength="1000" rows="3" placeholder="What do you think of ${esc(AUTHOR_NAME)}'s writing?"
+        style="width:100%;box-sizing:border-box;padding:10px 12px;font-size:16px;background:var(--bg-subtle);color:var(--fg);border:1px solid var(--border);border-radius:8px;resize:vertical;"></textarea>
+      <div style="display:flex;align-items:center;gap:10px;margin-top:8px;">
+        <button class="btn-primary" id="author-review-btn" onclick="postAuthorReview()" style="padding:8px 18px;font-size:13px;">Post review</button>
+        <span id="author-review-status" style="font-size:12px;color:var(--fg-faint);"></span>
+      </div>
+      <p style="font-size:11px;color:var(--fg-faint);margin-top:6px;">Reviews appear after moderation.</p>` : `
+      <button class="btn-secondary" onclick="bhAuthUI.open('signin')" style="padding:8px 18px;font-size:13px;">Sign in to review</button>`;
+  }
+
+  window.postAuthorReview = async function () {
+    const ta = document.getElementById("author-review-text");
+    const btn = document.getElementById("author-review-btn");
+    const status = document.getElementById("author-review-status");
+    if (!ta || !window.bhUser || !window.bhFs) return;
+    const text = ta.value.trim();
+    if (text.length < 2) { status.textContent = "Write a little more first."; return; }
+    btn.disabled = true;
+    status.textContent = "Posting…";
+    const fs = window.bhFs, db = window.bhFirebase.db;
+    try {
+      await fs.addDoc(fs.collection(db, "authors", AUTHOR_SLUG, "comments"), {
+        uid: window.bhUser.uid,
+        name: (window.bhUser.displayName || "Reader").slice(0, 40),
+        text: text,
+        createdAt: fs.serverTimestamp(),
+        approved: false,
+      });
+      ta.value = "";
+      status.textContent = "✓ Submitted — it will appear once approved.";
+    } catch (e) {
+      console.error(e);
+      status.textContent = "Couldn't post — try again in a moment.";
+    } finally {
+      btn.disabled = false;
+    }
+  };
+
+  document.addEventListener("bh-auth", () => { refreshHeart(); loadReviews(); });
+  refreshHeart();
+  loadReviews();
+})();
+</script>

@@ -1590,7 +1590,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
       // audio/reading-time bars, not crammed into the sidebar.
       const shelfBarHtml = `
         <div class="shelf-bar" id="shelf-bar">
-          <span class="shelf-label">📚 On my shelf</span>
+          <span class="shelf-label"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="vertical-align:-2px;"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> On my shelf</span>
           <div class="shelf-status" role="group" aria-label="Reading status">
             <button data-status="want" onclick="setShelfStatus('want')">Want to read</button>
             <button data-status="reading" onclick="setShelfStatus('reading')">Reading now</button>
@@ -1771,13 +1771,13 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
           ${readingBarHtml}
           ${shelfBarHtml}
           ${buildQuickNav([
-            { id: 'bh-characters', label: '👥 Characters', show: !!charactersHtml },
-            { id: 'bh-summary', label: '📖 Summary', show: true },
-            { id: 'bh-quotes', label: '❝ Quotes', show: !!quotesHtml },
-            { id: 'bh-chapters', label: '📑 Chapters', show: !!chaptersHtml },
-            { id: 'quiz-card', label: '🎯 Quiz', show: !!quizHtml },
-            { id: 'bh-similar', label: '📚 Similar', show: !!similarHtml },
-            { id: 'comments-card', label: '💬 Comments', show: !!commentsHtml },
+            { id: 'bh-characters', label: 'Characters', show: !!charactersHtml },
+            { id: 'bh-summary', label: 'Summary', show: true },
+            { id: 'bh-quotes', label: 'Quotes', show: !!quotesHtml },
+            { id: 'bh-chapters', label: 'Chapters', show: !!chaptersHtml },
+            { id: 'quiz-card', label: 'Quiz', show: !!quizHtml },
+            { id: 'bh-similar', label: 'Similar', show: !!similarHtml },
+            { id: 'comments-card', label: 'Comments', show: !!commentsHtml },
           ])}
 
           ${charactersHtml}
@@ -1806,15 +1806,19 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
             <div class="sidebar-top-info">
               <h2 class="sidebar-title">${data.title || title}</h2>
               ${data.author ? (data.author_slug
-                ? `<p class="sidebar-author">by <a href="${AUTHORS_BASE}${data.author_slug}/" style="color:inherit;text-decoration:underline;text-decoration-color:var(--border);text-underline-offset:3px;">${data.author}</a></p>`
+                ? `<p class="sidebar-author">by <a href="${AUTHORS_BASE}${data.author_slug}/" style="color:inherit;text-decoration:underline;text-decoration-color:var(--border);text-underline-offset:3px;">${data.author}</a>
+                    <button id="author-heart" onclick="toggleAuthorHeart('${data.author_slug}', '${(data.author || '').replace(/'/g, "\\'")}')" title="Favorite this author"
+                      style="background:none;border:0;cursor:pointer;color:var(--fg-faint);vertical-align:middle;padding:2px;">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                    </button></p>`
                 : `<p class="sidebar-author">by ${data.author}</p>`) : ''}
               <div class="sidebar-badges">
                 ${categoryChipsHtml(data)}
                 ${ratingBadgeHtml(data)}
                 ${data.published_year ? `<span class="sidebar-badge">${data.published_year}</span>` : ''}
                 ${data.page_count ? `<span class="sidebar-badge">${data.page_count} pages</span>` : ''}
-                ${data.reading_level ? `<span class="sidebar-badge" title="Estimated reading level">🎓 Reading level: ${data.reading_level}</span>` : ''}
-                ${data.editions && data.editions.editions >= 2 ? `<span class="sidebar-badge" title="Open Library edition data">🌍 ${data.editions.editions} editions${data.editions.languages >= 2 ? ` · ${data.editions.languages} languages` : ''}</span>` : ''}
+                ${data.reading_level ? `<span class="sidebar-badge" title="Estimated reading level">Reading level: ${data.reading_level}</span>` : ''}
+                ${data.editions && data.editions.editions >= 2 ? `<span class="sidebar-badge" title="Open Library edition data">${data.editions.editions} editions${data.editions.languages >= 2 ? ` · ${data.editions.languages} languages` : ''}</span>` : ''}
               </div>
             </div>
           </div>
@@ -1822,9 +1826,9 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
           <!-- CTAs first: every decision button visible without scrolling -->
           ${data.free_ebook ? `
           <div style="border:1px solid var(--accent);border-radius:12px;padding:12px 14px;margin-bottom:12px;background:var(--bg-subtle);">
-            <p style="font-size:12px;font-weight:700;color:var(--fg);margin:0 0 8px;">📖 Public domain — read it free</p>
+            <p style="font-size:12px;font-weight:700;color:var(--fg);margin:0 0 8px;">Public domain — read it free</p>
             <div style="display:flex;flex-wrap:wrap;gap:6px;">
-              ${data.free_ebook.source === 'project_gutenberg' && data.free_ebook.gutenberg_id ? `<a href="{{ '/reader/' | relative_url }}?id=${data.free_ebook.gutenberg_id}&title=${encodeURIComponent(data.title || '')}&author=${encodeURIComponent(data.author || '')}" class="btn-primary" style="padding:6px 12px;font-size:12px;">📖 Read here</a>` : ''}
+              ${data.free_ebook.source === 'project_gutenberg' && data.free_ebook.gutenberg_id ? `<a href="{{ '/reader/' | relative_url }}?id=${data.free_ebook.gutenberg_id}&title=${encodeURIComponent(data.title || '')}&author=${encodeURIComponent(data.author || '')}" class="btn-primary" style="padding:6px 12px;font-size:12px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="vertical-align:-2px;"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Read here</a>` : ''}
               <a href="${data.free_ebook.read_url || data.free_ebook.page_url}" target="_blank" rel="noopener" class="btn-secondary" style="padding:6px 12px;font-size:12px;">Read online</a>
               ${data.free_ebook.epub_url ? `<a href="${data.free_ebook.epub_url}" class="btn-secondary" style="padding:6px 12px;font-size:12px;">EPUB</a>` : ''}
               ${data.free_ebook.txt_url ? `<a href="${data.free_ebook.txt_url}" class="btn-secondary" style="padding:6px 12px;font-size:12px;">TXT</a>` : ''}
@@ -1840,19 +1844,19 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
 
           <button class="btn-secondary" id="add-library-btn" onclick="addCurrentToLibrary()"
                   style="width:100%;justify-content:center;margin:8px 0 8px;padding:9px 12px;font-size:13px;">
-            ➕ Add to My Library
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align:-2px;"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Add to My Library
           </button>
 
           ${data.slug ? `
           <button class="btn-secondary" id="recommend-btn" onclick="toggleRecommend()" data-book-slug="${escExt(data.slug)}"
                   style="width:100%;justify-content:center;margin:0 0 12px;padding:9px 12px;font-size:13px;">
-            👍 Recommend this book
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="vertical-align:-2px;"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg> Recommend this book
           </button>` : ''}
 
           <!-- Informational content below the fold is fine -->
           ${data.nyt && data.nyt.weeks_on_list ? `
           <div style="border:1px solid var(--accent);border-radius:12px;padding:10px 14px;margin:0 0 12px;background:var(--bg-subtle);">
-            <p style="font-size:12px;font-weight:700;color:var(--fg);margin:0;">🏆 New York Times Bestseller</p>
+            <p style="font-size:12px;font-weight:700;color:var(--fg);margin:0;">New York Times Bestseller</p>
             <p style="font-size:12px;color:var(--fg-muted);margin:4px 0 0;">${data.nyt.weeks_on_list} week${data.nyt.weeks_on_list > 1 ? 's' : ''} on the "${data.nyt.list_name}" list${data.nyt.rank ? ` · currently #${data.nyt.rank}` : ''}</p>
             ${data.nyt.review_url ? `<a href="${data.nyt.review_url}" target="_blank" rel="noopener nofollow" style="font-size:11px;color:var(--accent);display:inline-block;margin-top:4px;">Read the NYT review →</a>` : ''}
           </div>` : ''}
@@ -1899,6 +1903,10 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
       refreshLibraryBtn();
       refreshShelfBar();
       refreshRecommendBtn();
+      refreshAuthorHeart(data);
+      recordRecentView(data);
+      window.__bhCurrentCover = data.cover_url || '';       // for library adds
+      window.__bhCurrentShareSlug = data.share_slug || '';
       __charDetailsCache = {};   // fresh book → fresh character state
       __charOpenIndex = -1;
 
@@ -2038,6 +2046,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
         list.unshift({
           id: Date.now(), title: currentBookTitle, author: currentBookAuthor || '',
           status: 'want', rating: 0, addedAt: Date.now(),
+          cover_url: (window.__bhCurrentCover || ''), b: (window.__bhCurrentShareSlug || ''),
         });
         localStorage.setItem(RL_KEY, JSON.stringify(list));
         if (window.bhLibraryChanged) window.bhLibraryChanged();  // cloud sync when signed in
@@ -2083,6 +2092,52 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
     } catch (e) { /* enrichment only — never break the page */ }
   }
 
+  // ── Recently viewed (shown on /account/) ─────────────────
+  function recordRecentView(data) {
+    try {
+      const KEY = "bookhub_recent_v1";
+      let items = JSON.parse(localStorage.getItem(KEY)) || [];
+      items = items.filter(x => (x.title || "").toLowerCase() !== (data.title || "").toLowerCase());
+      items.unshift({
+        title: data.title, author: data.author || "",
+        cover: data.cover_url || "", b: data.share_slug || "", ts: Date.now(),
+      });
+      localStorage.setItem(KEY, JSON.stringify(items.slice(0, 12)));
+    } catch (e) {}
+  }
+
+  // ── Favorite the AUTHOR (heart next to the byline) ───────
+  async function refreshAuthorHeart(data) {
+    const el = document.getElementById("author-heart");
+    if (!el || !window.bhFs || !data.author_slug) return;
+    const fs = window.bhFs, db = window.bhFirebase.db;
+    try {
+      let mine = false;
+      if (window.bhUser) {
+        const me = await fs.getDoc(fs.doc(db, "authors", data.author_slug, "likes", window.bhUser.uid));
+        mine = me.exists();
+      }
+      el.dataset.mine = mine ? "1" : "";
+      el.style.color = mine ? "var(--accent)" : "var(--fg-faint)";
+      el.querySelector("svg").style.fill = mine ? "currentColor" : "none";
+    } catch (e) { console.warn("Author heart failed:", e); }
+  }
+
+  window.toggleAuthorHeart = async function (authorSlug, authorName) {
+    if (!window.bhUser) { bhAuthUI.open("signin"); return; }
+    const fs = window.bhFs, db = window.bhFirebase.db;
+    const el = document.getElementById("author-heart");
+    const ref = fs.doc(db, "authors", authorSlug, "likes", window.bhUser.uid);
+    try {
+      if (el && el.dataset.mine) await fs.deleteDoc(ref);
+      else await fs.setDoc(ref, {
+        createdAt: fs.serverTimestamp(), uid: window.bhUser.uid,
+        name: String(authorName || "").slice(0, 80),
+      });
+      refreshAuthorHeart({ author_slug: authorSlug });
+    } catch (e) { console.warn("Author like failed:", e); }
+  };
+
   // ── Shelf bar: status + rating against the My Library store ──
   function shelfEntry() {
     try {
@@ -2097,7 +2152,8 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
       let entry = list.find(b => (b.title || '').toLowerCase() === (currentBookTitle || '').toLowerCase());
       if (!entry) {
         entry = { id: Date.now(), title: currentBookTitle, author: currentBookAuthor || '',
-                  status: 'want', rating: 0, addedAt: Date.now() };
+                  status: 'want', rating: 0, addedAt: Date.now(),
+                  cover_url: (window.__bhCurrentCover || ''), b: (window.__bhCurrentShareSlug || '') };
         list.unshift(entry);
       }
       mutate(entry);
@@ -2210,7 +2266,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
       }
       btn.innerHTML = mine
         ? `✓ Recommended${n ? ` · ${n}` : ""}`
-        : `👍 Recommend this book${n ? ` · ${n}` : ""}`;
+        : `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="vertical-align:-2px;"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg> Recommend this book${n ? ` · ${n}` : ""}`;
       btn.dataset.mine = mine ? "1" : "";
     } catch (e) { console.warn("Recommend count failed:", e); }
   }
@@ -2340,10 +2396,22 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
     const ref = fs.doc(db, "characters", slug, "likes", window.bhUser.uid);
     if (btn) btn.disabled = true;
     try {
-      if (btn && btn.dataset.mine) await fs.deleteDoc(ref);
-      else await fs.setDoc(ref, { createdAt: fs.serverTimestamp(), uid: window.bhUser.uid });
+      if (btn && btn.dataset.mine) {
+        await fs.deleteDoc(ref);
+      } else {
+        // Snapshot display fields so /account/ renders a real card
+        // (photo + name + book) without any extra lookups later.
+        const c = (window.__bhCharacters || []).find(x => x.slug === slug) || {};
+        const detail = Object.values(__charDetailsCache || {})
+          .find(d => d && d.name === c.name) || {};
+        const payload = { createdAt: fs.serverTimestamp(), uid: window.bhUser.uid };
+        if (c.name) payload.name = String(c.name).slice(0, 80);
+        if (detail.image_url) payload.image_url = String(detail.image_url).slice(0, 500);
+        if (currentBookTitle) payload.book_title = String(currentBookTitle).slice(0, 200);
+        await fs.setDoc(ref, payload);
+      }
       await refreshCharLike(slug);
-    } catch (e) { /* rules reject anything malformed */ }
+    } catch (e) { console.warn("Character like failed:", e); }
     if (btn) btn.disabled = false;
   };
 
@@ -2432,7 +2500,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
           if (answered === questions.length) {
             const final = document.createElement("div");
             final.className = "quiz-card";
-            final.innerHTML = `<p class="quiz-q">Final score: ${correct} / ${questions.length} ${correct === questions.length ? "🏆" : correct >= questions.length / 2 ? "👍" : "📖 Keep reading!"}</p>`;
+            final.innerHTML = `<p class="quiz-q">Final score: ${correct} / ${questions.length} ${correct === questions.length ? "— perfect!" : correct >= questions.length / 2 ? "— well done" : "— keep reading!"}</p>`;
             const again = document.createElement("button");
             again.className = "btn-primary";
             again.style.cssText = "padding:8px 20px;font-size:13px;";
