@@ -2035,7 +2035,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
     if (!btn) return;
     if (libraryHas(currentBookTitle)) {
       btn.innerHTML = '✓ In My Library — open';
-      btn.onclick = () => { window.location.href = '{{ "/tools/reading-list" | relative_url }}'; };
+      btn.onclick = () => { window.location.href = '{{ "/My-Library" | relative_url }}'; };
     }
   }
 

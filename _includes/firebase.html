@@ -121,7 +121,7 @@
     getAuth, onAuthStateChanged, createUserWithEmailAndPassword,
     signInWithEmailAndPassword, sendPasswordResetEmail, signOut, updateProfile,
     setPersistence, browserLocalPersistence,
-    GoogleAuthProvider, signInWithPopup,
+    GoogleAuthProvider, signInWithPopup, signInWithRedirect, getRedirectResult,
     EmailAuthProvider, reauthenticateWithCredential, updatePassword,
   } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
   import {
@@ -177,6 +177,29 @@
   const safeName = (u) =>
     ((u.displayName || (u.email || "Reader").split("@")[0]) + "  ").slice(0, 40).trim() || "Reader";
 
+  // First Google sign-in has no profile doc yet — create/refresh it with
+  // the Google display name (merge keeps createdAt on repeats). Shared by
+  // both the popup and redirect completion paths below.
+  async function finishGoogleUser(cred) {
+    try {
+      await setDoc(doc(db, "users", cred.user.uid),
+                   { displayName: safeName(cred.user), createdAt: serverTimestamp() },
+                   { merge: true });
+    } catch (e) { console.warn("Profile doc write failed:", e); }
+    return cred;
+  }
+
+  // Popups are blocked outright in some browsers/in-app webviews (in-app
+  // browsers like Instagram/Facebook, some mobile Safari configs, popup
+  // blockers) — signInWithPopup throws instead of opening anything. Fall
+  // back to a full-page redirect in exactly those cases; a real user
+  // cancel (closed the popup themselves) should NOT redirect them away.
+  const POPUP_FALLBACK_CODES = new Set([
+    "auth/popup-blocked",
+    "auth/cancelled-popup-request",
+    "auth/operation-not-supported-in-this-environment",
+  ]);
+
   window.bhAuthOps = {
     signIn: (email, pw) => signInWithEmailAndPassword(auth, email, pw),
     async signUp(name, email, pw) {
@@ -187,15 +210,17 @@
       return cred;
     },
     async signInGoogle() {
-      const cred = await signInWithPopup(auth, new GoogleAuthProvider());
-      // First Google sign-in has no profile doc yet — create/refresh it
-      // with the Google display name (merge keeps createdAt on repeats).
       try {
-        await setDoc(doc(db, "users", cred.user.uid),
-                     { displayName: safeName(cred.user), createdAt: serverTimestamp() },
-                     { merge: true });
-      } catch (e) { console.warn("Profile doc write failed:", e); }
-      return cred;
+        const cred = await signInWithPopup(auth, new GoogleAuthProvider());
+        return await finishGoogleUser(cred);
+      } catch (e) {
+        console.error("Google popup sign-in failed:", e && e.code, e);
+        if (POPUP_FALLBACK_CODES.has(e && e.code)) {
+          await signInWithRedirect(auth, new GoogleAuthProvider());
+          return null; // page navigates away; onAuthStateChanged picks it up on return
+        }
+        throw e;
+      }
     },
     reset: (email) => sendPasswordResetEmail(auth, email),
     signOut: () => signOut(auth),
@@ -342,6 +367,12 @@
       document.dispatchEvent(new CustomEvent("bh-library-synced"));
     } catch (e) { console.warn("Library merge failed:", e); }
   }
+
+  // Completes a signInWithRedirect() round trip, if one is in progress —
+  // a no-op (resolves to null) on every normal page load.
+  getRedirectResult(auth).then((cred) => {
+    if (cred && cred.user) finishGoogleUser(cred);
+  }).catch((e) => console.error("Google redirect sign-in failed:", e && e.code, e));
 
   onAuthStateChanged(auth, (user) => {
     if (user) mergeLibraryOnLogin(user);

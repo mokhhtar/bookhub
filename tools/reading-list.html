@@ -2,6 +2,8 @@
 layout: default
 title: "My Library"
 description: "Track your reading list, rate books, and manage your progress — works without an account, syncs across devices when you sign in."
+permalink: /My-Library/
+redirect_from: /tools/reading-list/
 ---
 <style>
   .rl-toolbar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
@@ -56,6 +58,25 @@ description: "Track your reading list, rate books, and manage your progress — 
     color: var(--fg-faint); cursor: pointer; padding: 5px 10px; font-size: 11px;
   }
   .rl-remove:hover { color: #d33; border-color: #d33; }
+
+  /* Cover-picker autocomplete (same pattern as summary.html's search box) */
+  .rl-suggest-wrap { position: relative; }
+  .rl-suggestions {
+    position: absolute; top: 100%; left: 0; right: 0; z-index: 100;
+    background: var(--bg); border: 1px solid var(--border); border-radius: 8px;
+    max-height: 250px; overflow-y: auto; box-shadow: 0 10px 25px rgba(0,0,0,.08);
+    margin-top: 6px; display: none;
+  }
+  .rl-suggestion-item {
+    display: flex; align-items: center; gap: 12px; padding: 10px 14px; cursor: pointer;
+    border-bottom: 1px solid var(--border-subtle); font-size: 13px; transition: background .15s ease;
+  }
+  .rl-suggestion-item:last-child { border-bottom: 0; }
+  .rl-suggestion-item:hover { background: var(--bg-subtle); }
+  .rl-suggestion-item img, .rl-suggestion-item .rl-suggest-noimg {
+    width: 32px; height: 44px; object-fit: cover; border-radius: 4px; border: 1px solid var(--border); flex-shrink: 0;
+    background: var(--bg-subtle);
+  }
 </style>
 
 <div class="tool-page">
@@ -67,9 +88,10 @@ description: "Track your reading list, rate books, and manage your progress — 
     </div>
 
     <div class="tool-form" style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-end;">
-      <div class="form-group" style="flex:1;min-width:200px;margin-bottom:0;">
+      <div class="form-group rl-suggest-wrap" style="flex:1;min-width:200px;margin-bottom:0;">
         <label class="form-label" for="add-title">Book title</label>
-        <input type="text" id="add-title" class="form-input" placeholder="e.g. The Little Prince">
+        <input type="text" id="add-title" class="form-input" placeholder="e.g. The Little Prince" autocomplete="off" oninput="rlSearchInput(event)">
+        <div id="rl-suggestions" class="rl-suggestions"></div>
       </div>
       <div class="form-group" style="flex:1;min-width:160px;margin-bottom:0;">
         <label class="form-label" for="add-author">Author</label>
@@ -108,11 +130,62 @@ description: "Track your reading list, rate books, and manage your progress — 
 </div>
 
 <script>
+const API = "{{ site.api_url }}";
 const RL_KEY = 'bookhub_rl_v1';
 const VIEW_KEY = 'bookhub_rl_view';
 let currentFilter = 'all';
 let currentView = 'cards';
 try { currentView = localStorage.getItem(VIEW_KEY) || 'cards'; } catch {}
+
+// ── Cover picker: live search-as-you-type, reused from summary.html's
+// autocomplete so manually-added books still get a real cover/isbn/id. ──
+let rlSelected = null;   // { cover_url, isbn_13, isbn_10, google_id, openlibrary_id } or null
+let rlSearchTimeout;
+
+function rlSearchInput(event) {
+  const q = event.target.value.trim();
+  rlSelected = null;  // typing invalidates any prior pick
+  const box = document.getElementById('rl-suggestions');
+  if (q.length < 3) { box.style.display = 'none'; return; }
+  clearTimeout(rlSearchTimeout);
+  rlSearchTimeout = setTimeout(async () => {
+    try {
+      const res = await fetch(`${API}/search?q=${encodeURIComponent(q)}`);
+      if (!res.ok) return;
+      const data = await res.json();
+      if (!data || !data.length) { box.style.display = 'none'; return; }
+      box.innerHTML = data.slice(0, 5).map((b, i) => `
+        <div class="rl-suggestion-item" onclick="rlSelectSuggestion(${i})">
+          ${b.cover_url ? `<img src="${escRl(b.cover_url)}" alt="">` : `<span class="rl-suggest-noimg"></span>`}
+          <div>
+            <div style="font-weight:600;font-size:12px;line-height:1.2;margin-bottom:2px;color:var(--fg);">${escRl(b.title)}</div>
+            <div style="font-size:11px;color:var(--fg-faint);">${escRl(b.author || 'Unknown')}</div>
+          </div>
+        </div>`).join('');
+      window.__rlResults = data.slice(0, 5);
+      box.style.display = 'block';
+    } catch (e) { /* autocomplete only — silent on failure */ }
+  }, 250);
+}
+
+function rlSelectSuggestion(i) {
+  const b = (window.__rlResults || [])[i];
+  if (!b) return;
+  document.getElementById('add-title').value = b.title;
+  document.getElementById('add-author').value = b.author || '';
+  rlSelected = {
+    cover_url: b.cover_url || '', isbn_13: b.isbn_13 || '', isbn_10: b.isbn_10 || '',
+    google_id: b.google_id || '', openlibrary_id: b.openlibrary_id || '',
+  };
+  document.getElementById('rl-suggestions').style.display = 'none';
+}
+
+document.addEventListener('click', (e) => {
+  if (e.target.id !== 'add-title') {
+    const box = document.getElementById('rl-suggestions');
+    if (box) box.style.display = 'none';
+  }
+});
 
 const escRl = (s) => String(s == null ? '' : s)
   .replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;')
@@ -138,10 +211,18 @@ function addBook() {
     alert('This book is already in your list.');
     return;
   }
-  list.unshift({ id: Date.now(), title, author, status, rating: 0, addedAt: Date.now() });
+  const picked = (rlSelected && rlSelected.cover_url) ? rlSelected : null;
+  list.unshift({
+    id: Date.now(), title, author, status, rating: 0, addedAt: Date.now(),
+    cover_url: picked ? picked.cover_url : '',
+    isbn: picked ? (picked.isbn_13 || picked.isbn_10 || '') : '',
+    google_id: picked ? picked.google_id : '',
+    openlibrary_id: picked ? picked.openlibrary_id : '',
+  });
   saveList(list);
   document.getElementById('add-title').value = '';
   document.getElementById('add-author').value = '';
+  rlSelected = null;
   render();
 }
 

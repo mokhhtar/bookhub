@@ -21,7 +21,7 @@
       <a href="{{ '/categories/' | relative_url }}"        class="nav-link">Categories</a>
       <a href="{{ '/authors/' | relative_url }}"           class="nav-link">Authors</a>
       <a href="{{ '/characters/' | relative_url }}"        class="nav-link">Characters</a>
-      <a href="{{ '/tools/reading-list' | relative_url }}" class="nav-link">My Library</a>
+      <a href="{{ '/My-Library' | relative_url }}" class="nav-link">My Library</a>
     </nav>
 
     <div class="header-right" style="display: flex; align-items: center; gap: 12px; position: relative;">
@@ -32,7 +32,7 @@
       </button>
       <div class="auth-user-menu" id="auth-user-menu">
         <a href="{{ '/account/' | relative_url }}">My Account</a>
-        <a href="{{ '/tools/reading-list' | relative_url }}">My Library</a>
+        <a href="{{ '/My-Library' | relative_url }}">My Library</a>
         <button onclick="bhAuthUI.signOut()">Sign out</button>
       </div>
       <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme" title="Toggle theme">
