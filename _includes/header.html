@@ -31,6 +31,7 @@
         <span id="auth-chip-name">Account</span>
       </button>
       <div class="auth-user-menu" id="auth-user-menu">
+        <a href="{{ '/account/' | relative_url }}">My Account</a>
         <a href="{{ '/tools/reading-list' | relative_url }}">My Library</a>
         <button onclick="bhAuthUI.signOut()">Sign out</button>
       </div>

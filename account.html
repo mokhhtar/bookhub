@@ -1,0 +1,123 @@
+---
+layout: default
+title: "Your Account"
+description: "Sign in or create a BookHub account — sync your library, comment on books, and recommend your favorites."
+permalink: /account/
+---
+<section class="account-page">
+  <div class="container" style="max-width:440px;padding-top:32px;padding-bottom:64px;">
+
+    <!-- Signed OUT: full sign-in / register forms -->
+    <div id="acct-signed-out" style="display:none;">
+      <header style="text-align:center;margin-bottom:24px;">
+        <h1 class="section-title" style="font-size:26px;">Welcome to BookHub</h1>
+        <p style="font-size:14px;color:var(--fg-muted);margin-top:8px;">Sync your library across devices, comment on books, and recommend your favorites.</p>
+      </header>
+
+      <div class="auth-tabs" style="display:flex;gap:6px;margin-bottom:16px;">
+        <button class="auth-tab active" id="acct-tab-signin" onclick="acctMode('signin')">Sign in</button>
+        <button class="auth-tab" id="acct-tab-signup" onclick="acctMode('signup')">Create account</button>
+      </div>
+
+      <form onsubmit="return acctSubmit(event)" style="background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:22px;">
+        <div id="acct-name-row" style="display:none;">
+          <label class="auth-label" for="acct-name">Display name</label>
+          <input class="auth-input" id="acct-name" type="text" minlength="2" maxlength="40" autocomplete="nickname" placeholder="Shown next to your comments">
+        </div>
+        <label class="auth-label" for="acct-email">Email</label>
+        <input class="auth-input" id="acct-email" type="email" required autocomplete="email">
+        <label class="auth-label" for="acct-password">Password</label>
+        <input class="auth-input" id="acct-password" type="password" minlength="6" required autocomplete="current-password">
+        <p class="auth-error" id="acct-error" style="display:none;"></p>
+        <button class="btn-primary auth-submit" id="acct-submit" type="submit" style="width:100%;justify-content:center;margin-top:14px;padding:10px 0;">Sign in</button>
+      </form>
+      <button class="auth-forgot" onclick="acctReset()">Forgot password?</button>
+    </div>
+
+    <!-- Signed IN: profile summary -->
+    <div id="acct-signed-in" style="display:none;">
+      <header style="text-align:center;margin-bottom:24px;">
+        <div class="auth-avatar" id="acct-avatar" style="width:72px;height:72px;font-size:28px;margin:0 auto 12px;">?</div>
+        <h1 class="section-title" style="font-size:24px;" id="acct-display-name">Account</h1>
+        <p style="font-size:13px;color:var(--fg-faint);margin-top:4px;" id="acct-email-line"></p>
+      </header>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <a class="btn-secondary" href="{{ '/tools/reading-list' | relative_url }}" style="justify-content:center;padding:10px 0;">📚 My Library</a>
+        <button class="btn-secondary" onclick="bhAuthOps.signOut()" style="justify-content:center;padding:10px 0;">Sign out</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+(function () {
+  let mode = "signin";
+  const $ = (id) => document.getElementById(id);
+  const ERRORS = {
+    "auth/email-already-in-use": "An account with this email already exists.",
+    "auth/invalid-email": "That email address doesn't look valid.",
+    "auth/weak-password": "Password must be at least 6 characters.",
+    "auth/invalid-credential": "Wrong email or password.",
+    "auth/user-not-found": "No account with this email.",
+    "auth/wrong-password": "Wrong email or password.",
+    "auth/too-many-requests": "Too many attempts — try again in a few minutes.",
+  };
+  const explain = (e) => ERRORS[e && e.code] || "Something went wrong — please try again.";
+  const err = (m) => { const el = $("acct-error"); el.textContent = m; el.style.display = m ? "block" : "none"; };
+
+  window.acctMode = function (m) {
+    mode = m;
+    $("acct-tab-signin").classList.toggle("active", m === "signin");
+    $("acct-tab-signup").classList.toggle("active", m === "signup");
+    $("acct-name-row").style.display = m === "signup" ? "block" : "none";
+    $("acct-name").required = m === "signup";
+    $("acct-submit").textContent = m === "signup" ? "Create account" : "Sign in";
+    err("");
+  };
+
+  window.acctSubmit = async function (ev) {
+    ev.preventDefault();
+    const btn = $("acct-submit");
+    btn.disabled = true;
+    err("");
+    try {
+      if (mode === "signup") {
+        const name = $("acct-name").value.trim();
+        if (name.length < 2) { err("Please pick a display name (2-40 characters)."); return false; }
+        await bhAuthOps.signUp(name, $("acct-email").value.trim(), $("acct-password").value);
+      } else {
+        await bhAuthOps.signIn($("acct-email").value.trim(), $("acct-password").value);
+      }
+      // Optional redirect back: /account/?next=/summary/
+      const next = new URLSearchParams(location.search).get("next");
+      if (next && next.startsWith("/")) location.href = next;
+    } catch (e) {
+      err(explain(e));
+    } finally {
+      btn.disabled = false;
+    }
+    return false;
+  };
+
+  window.acctReset = async function () {
+    const email = $("acct-email").value.trim();
+    if (!email) { err("Enter your email above first, then tap 'Forgot password?'."); return; }
+    try { await bhAuthOps.reset(email); err("Reset link sent — check your inbox."); }
+    catch (e) { err(explain(e)); }
+  };
+
+  function render(user) {
+    $("acct-signed-out").style.display = user ? "none" : "block";
+    $("acct-signed-in").style.display = user ? "block" : "none";
+    if (user) {
+      const name = user.displayName || user.email || "Account";
+      $("acct-avatar").textContent = name.slice(0, 1).toUpperCase();
+      $("acct-display-name").textContent = name;
+      $("acct-email-line").textContent = user.email || "";
+    }
+  }
+  document.addEventListener("bh-auth", (e) => render(e.detail.user));
+  render(window.bhUser || null);
+})();
+</script>

@@ -1064,7 +1064,31 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
 
   // ── URL-driven page load ───────────────────────────────
   const urlParams = new URLSearchParams(window.location.search);
+  const urlB = urlParams.get("b");   // clean share slug (?b=dear-life-alice-munro)
   const urlQ = urlParams.get("q");
+
+  if (urlB && !urlQ) {
+    (async () => {
+      let resolved = null;
+      try {
+        const r = await apiFetch(`${API}/resolve/${encodeURIComponent(urlB)}`, {},
+          { onWaking: () => {} });
+        if (r.ok) { const d = await r.json(); if (d.found) resolved = d; }
+      } catch (e) { /* fall through to the slug-words search */ }
+      if (resolved) {
+        document.getElementById("book-title").value = resolved.title;
+        document.getElementById("book-author").value = resolved.author || "";
+        if (resolved.isbn) window.selectedBookIsbn = resolved.isbn;
+        if (resolved.google_id) window.selectedBookGoogleId = resolved.google_id;
+        if (resolved.openlibrary_id) window.selectedBookOpenLibraryId = resolved.openlibrary_id;
+        doSummary(true);
+      } else {
+        // Map expired → honest fallback: slug words become a title search.
+        document.getElementById("book-title").value = urlB.replace(/-/g, " ");
+        doSummary(false);
+      }
+    })();
+  }
   const urlAuthor = urlParams.get("author");
   const urlDirect = urlParams.get("direct") === "true";
   const urlIsbn = urlParams.get("isbn");
@@ -1379,6 +1403,10 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
       // query-param URL, which always works.
       if (data.static_page && data.slug) {
         window.history.replaceState(null, "", `{{ '/summary/' | relative_url }}${data.slug}/`);
+      } else if (data.share_slug) {
+        // Clean shareable URL — the backend keeps a 90-day slug→identifiers
+        // map; reloading resolves it via GET /resolve/<slug>.
+        window.history.replaceState(null, "", `{{ '/summary/' | relative_url }}?b=${data.share_slug}`);
       } else {
         updateBrowserURL(currentBookTitle, currentBookAuthor, true, data.isbn_13 || data.isbn_10 || null, data.google_volume_id || null, data.open_library_work_key || null);
       }

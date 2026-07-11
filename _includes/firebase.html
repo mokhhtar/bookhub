@@ -100,6 +100,7 @@
   import {
     getAuth, onAuthStateChanged, createUserWithEmailAndPassword,
     signInWithEmailAndPassword, sendPasswordResetEmail, signOut, updateProfile,
+    setPersistence, browserLocalPersistence,
   } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
   import {
     getFirestore, doc, getDoc, setDoc, addDoc, updateDoc, deleteDoc,
@@ -116,7 +117,27 @@
     appId: "1:482256955410:web:e323d058751081021e50cb",
   });
   const auth = getAuth(app);
+  // Explicit LOCAL persistence (IndexedDB) — sessions survive tabs,
+  // restarts and direct links; no cookies involved.
+  setPersistence(auth, browserLocalPersistence).catch(() => {});
   const db = getFirestore(app);
+
+  // Auth state restores ASYNCHRONOUSLY (~1-2s) — without a hint the header
+  // flashes "Sign in" on every page load and signed-in users think their
+  // session was lost. A localStorage hint renders the account chip
+  // instantly; onAuthStateChanged corrects it if the session truly ended.
+  const HINT_KEY = "bh_auth_hint";
+  try {
+    const hint = localStorage.getItem(HINT_KEY);
+    const signinBtn0 = document.getElementById("auth-signin-btn");
+    const chip0 = document.getElementById("auth-user-chip");
+    if (hint && chip0 && signinBtn0) {
+      signinBtn0.style.display = "none";
+      chip0.style.display = "flex";
+      document.getElementById("auth-avatar").textContent = hint.slice(0, 1).toUpperCase();
+      document.getElementById("auth-chip-name").textContent = hint.split(" ")[0].slice(0, 14);
+    }
+  } catch (e) {}
 
   // Small global surface for other pages (library sync, comments, recs).
   window.bhFirebase = { app, auth, db };
@@ -127,6 +148,21 @@
     getCountFromServer, serverTimestamp,
   };
   window.bhUser = null;
+
+  // Raw auth operations for standalone pages (/account/) — the modal's
+  // bhAuthUI and the account page share these instead of duplicating flows.
+  window.bhAuthOps = {
+    signIn: (email, pw) => signInWithEmailAndPassword(auth, email, pw),
+    async signUp(name, email, pw) {
+      const cred = await createUserWithEmailAndPassword(auth, email, pw);
+      await updateProfile(cred.user, { displayName: name });
+      await setDoc(doc(db, "users", cred.user.uid),
+                   { displayName: name, createdAt: serverTimestamp() });
+      return cred;
+    },
+    reset: (email) => sendPasswordResetEmail(auth, email),
+    signOut: () => signOut(auth),
+  };
 
   const $ = (id) => document.getElementById(id);
   let mode = "signin";
@@ -253,6 +289,10 @@
   onAuthStateChanged(auth, (user) => {
     if (user) mergeLibraryOnLogin(user);
     window.bhUser = user || null;
+    try {
+      if (user) localStorage.setItem(HINT_KEY, user.displayName || user.email || "Account");
+      else localStorage.removeItem(HINT_KEY);
+    } catch (e) {}
     const signinBtn = $("auth-signin-btn");
     const chip = $("auth-user-chip");
     if (signinBtn) signinBtn.style.display = user ? "none" : "";
