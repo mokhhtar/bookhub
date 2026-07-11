@@ -93,23 +93,34 @@ service cloud.firestore {
     }
 
     // ── Character likes (favorite a character) ───────────────
-    // characters/{charSlug}/likes/{uid}: {createdAt}
-    // Same shape as book recs: doc id == liker uid → one like per user.
+    // characters/{charSlug}/likes/{uid}: {createdAt, uid}
+    // Doc id == liker uid → one like per user per character (identity is
+    // the character's canonical slug, shared across every book they appear
+    // in). uid is ALSO a field so the owner can list their favorites via a
+    // collection-group query on /account/.
     match /characters/{charSlug}/likes/{uid} {
       allow read: if true;
       allow create: if signedIn()
         && request.auth.uid == uid
-        && request.resource.data.keys().hasOnly(["createdAt"])
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.keys().hasOnly(["createdAt", "uid"])
         && request.resource.data.createdAt == request.time;
       allow delete: if signedIn() && request.auth.uid == uid;
       allow update: if false;
     }
 
-    // Collection-group read for the admin moderation page: a
-    // collectionGroup("comments") query (pending comments across ALL
-    // books) is only authorized by a group-scoped match like this one.
+    // Collection-group reads. Group queries are only authorized by
+    // group-scoped matches like these:
+    //  - admin: all comments (the /admin/comments/ moderation page)
+    //  - owner: their own comments and likes (the /account/ page's
+    //    "my comments" / "my favorite characters" lists — queries MUST
+    //    filter where("uid","==",me) or they're denied wholesale)
     match /{path=**}/comments/{commentId} {
-      allow read: if isAdmin();
+      allow read: if isAdmin()
+        || (signedIn() && resource.data.uid == request.auth.uid);
+    }
+    match /{path=**}/likes/{likeId} {
+      allow read: if signedIn() && resource.data.uid == request.auth.uid;
     }
 
     // Everything else: denied.

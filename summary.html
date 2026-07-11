@@ -973,6 +973,12 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
 
 <script>
   const API = "{{ site.api_url }}";
+  // Declared BEFORE the URL-driven entry point below: arriving from the
+  // homepage with ?q=/?b= runs doSummary synchronously during parse, and a
+  // later `const` would still be in its temporal dead zone ("Cannot access
+  // 'TOOL_BASE_PATH' before initialization" — the exact homepage-only bug).
+  const TOOL_BASE_PATH = `{{ '/summary/' | relative_url }}`;
+  const AUTHORS_BASE = `{{ '/authors/' | relative_url }}`;
 
   // Resilient fetch for the free-tier backend. Render sleeps after ~15 min
   // idle; the first request then hits a cold instance and the browser can drop
@@ -1240,8 +1246,6 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
     }
   });
 
-  const TOOL_BASE_PATH = `{{ '/summary/' | relative_url }}`;
-  const AUTHORS_BASE = `{{ '/authors/' | relative_url }}`;
   const READ_PACE_KEY = "bookhub_read_pace_min";  // remembered daily reading pace
 
   function fmtDuration(min) {
@@ -2208,7 +2212,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
         ? `✓ Recommended${n ? ` · ${n}` : ""}`
         : `👍 Recommend this book${n ? ` · ${n}` : ""}`;
       btn.dataset.mine = mine ? "1" : "";
-    } catch (e) { /* counts are enrichment — never break the page */ }
+    } catch (e) { console.warn("Recommend count failed:", e); }
   }
 
   window.toggleRecommend = async function () {
@@ -2326,7 +2330,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
       btn.textContent = `${mine ? "❤" : "♡"} Favorite${n ? ` · ${n}` : ""}`;
       btn.dataset.mine = mine ? "1" : "";
       btn.style.borderColor = mine ? "var(--accent)" : "var(--border)";
-    } catch (e) { /* enrichment only */ }
+    } catch (e) { console.warn("Character like count failed:", e); }
   }
 
   window.toggleCharLike = async function (slug) {
@@ -2337,7 +2341,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
     if (btn) btn.disabled = true;
     try {
       if (btn && btn.dataset.mine) await fs.deleteDoc(ref);
-      else await fs.setDoc(ref, { createdAt: fs.serverTimestamp() });
+      else await fs.setDoc(ref, { createdAt: fs.serverTimestamp(), uid: window.bhUser.uid });
       await refreshCharLike(slug);
     } catch (e) { /* rules reject anything malformed */ }
     if (btn) btn.disabled = false;
