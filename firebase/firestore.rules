@@ -92,6 +92,19 @@ service cloud.firestore {
       allow update: if false;
     }
 
+    // ── Character likes (favorite a character) ───────────────
+    // characters/{charSlug}/likes/{uid}: {createdAt}
+    // Same shape as book recs: doc id == liker uid → one like per user.
+    match /characters/{charSlug}/likes/{uid} {
+      allow read: if true;
+      allow create: if signedIn()
+        && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly(["createdAt"])
+        && request.resource.data.createdAt == request.time;
+      allow delete: if signedIn() && request.auth.uid == uid;
+      allow update: if false;
+    }
+
     // Collection-group read for the admin moderation page: a
     // collectionGroup("comments") query (pending comments across ALL
     // books) is only authorized by a group-scoped match like this one.

@@ -768,6 +768,48 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
     .similar-marquee { overflow-x: auto; }
   }
 
+  /* ── Shelf bar: reading status + rating (main content) ────── */
+  .shelf-bar {
+    background: var(--bg-subtle); border: 1px solid var(--border); border-radius: 12px;
+    padding: 0.8rem 1.25rem; margin-bottom: 1.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 1rem; flex-wrap: wrap;
+  }
+  .shelf-label { font-size: 12px; font-weight: 600; color: var(--fg); display: flex; align-items: center; gap: 8px; }
+  .shelf-status { display: flex; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+  .shelf-status button {
+    border: 0; background: transparent; color: var(--fg-muted); cursor: pointer;
+    padding: 7px 13px; font-size: 12px; font-weight: 600; line-height: 1;
+    border-right: 1px solid var(--border); min-height: 34px;
+  }
+  .shelf-status button:last-child { border-right: 0; }
+  .shelf-status button.active { background: var(--accent); color: #fff; }
+  .shelf-stars { display: flex; align-items: center; gap: 2px; }
+  .shelf-stars button {
+    background: none; border: 0; cursor: pointer; font-size: 18px; padding: 2px;
+    color: var(--border); transition: color .12s, transform .12s;
+  }
+  .shelf-stars button:hover { transform: scale(1.15); }
+  .shelf-stars button.lit { color: #f5a623; }
+  @media (max-width: 560px) {
+    .shelf-bar { gap: 10px; }
+    .shelf-status button { padding: 8px 10px; }
+  }
+
+  /* ── Section quick-nav chips ───────────────────────────────── */
+  .section-nav {
+    display: flex; gap: 8px; overflow-x: auto; -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; padding: 2px 2px 8px; margin-bottom: 1rem;
+  }
+  .section-nav::-webkit-scrollbar { display: none; }
+  .section-nav a {
+    flex-shrink: 0; white-space: nowrap; text-decoration: none;
+    font-size: 12px; font-weight: 600; color: var(--fg-muted);
+    background: var(--bg-subtle); border: 1px solid var(--border);
+    border-radius: 999px; padding: 7px 14px;
+  }
+  .section-nav a:hover { border-color: var(--accent); color: var(--accent); }
+
   /* ── Characters (main-content cards, expand-in-place) ─────── */
   .char-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; }
   .char-item {
@@ -1512,7 +1554,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
             <p class="similar-a">${b.author || ''}</p>
           </a>`;
         };
-        similarHtml = `<div class="summary-card">
+        similarHtml = `<div class="summary-card" id="bh-similar">
             <div class="summary-card-title">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 3.5A2.5 2.5 0 0 1 6.5 6H20v12"/></svg>
               Similar Books
@@ -1527,7 +1569,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
       // AI-generated (same sourcing policy as ratings/awards).
       const wq = data.quotes;
       const quotesHtml = wq && wq.texts && wq.texts.length
-        ? `<div class="summary-card">
+        ? `<div class="summary-card" id="bh-quotes">
             <div class="summary-card-title">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9.583 17.321C8.553 16.227 8 15 8 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 0 1-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z"/></svg>
               Notable Quotes
@@ -1539,6 +1581,32 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
             <p style="font-size:11px;color:var(--fg-faint);margin:0;">Sourced verbatim from <a href="${wq.source_url}" target="_blank" rel="noopener nofollow" style="color:var(--accent);">Wikiquote</a> (CC BY-SA) — not AI-generated.</p>
            </div>` : '';
 
+      // Shelf bar — reading status + rating, wired to the same My Library
+      // localStorage store (and cloud sync when signed in). Lives with the
+      // audio/reading-time bars, not crammed into the sidebar.
+      const shelfBarHtml = `
+        <div class="shelf-bar" id="shelf-bar">
+          <span class="shelf-label">📚 On my shelf</span>
+          <div class="shelf-status" role="group" aria-label="Reading status">
+            <button data-status="want" onclick="setShelfStatus('want')">Want to read</button>
+            <button data-status="reading" onclick="setShelfStatus('reading')">Reading now</button>
+            <button data-status="done" onclick="setShelfStatus('done')">Finished</button>
+          </div>
+          <div class="shelf-stars" role="group" aria-label="Your rating">
+            ${[1,2,3,4,5].map(s => `<button data-star="${s}" onclick="setShelfRating(${s})" aria-label="Rate ${s} stars">★</button>`).join('')}
+          </div>
+        </div>`;
+
+      // Section quick-nav — jump chips (kept horizontally scrollable on
+      // phones so every section stays one tap away).
+      const buildQuickNav = (parts) => {
+        const items = parts.filter(p => p.show);
+        return items.length > 1 ? `
+          <nav class="section-nav" aria-label="Jump to section">
+            ${items.map(p => `<a href="#${p.id}" onclick="event.preventDefault();document.getElementById('${p.id}')?.scrollIntoView({behavior:'smooth',block:'start'})">${p.label}</a>`).join('')}
+          </nav>` : '';
+      };
+
       // Characters — main-content cards (NOT sidebar chips: the sidebar is
       // for identity + CTAs, content belongs in the main column). Click a
       // card → details (photo/age/facts) expand in place via
@@ -1548,7 +1616,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
         const isSeries = data.characters[0].source === 'fandom';
         window.__bhCharacters = data.characters;  // for the click handler
         charactersHtml = `
-        <div class="summary-card">
+        <div class="summary-card" id="bh-characters">
           <div class="summary-card-title">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             ${isSeries ? 'Series Characters' : 'Characters'}
@@ -1596,7 +1664,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
         </div>` : '';
 
       const chaptersHtml = data.chapters && data.chapters.length
-        ? `<div class="summary-card">
+        ? `<div class="summary-card" id="bh-chapters">
             <div class="summary-card-title" style="display:flex;align-items:center;justify-content:space-between;">
               <span style="display:flex;align-items:center;gap:8px;">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
@@ -1697,8 +1765,20 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
         <main class="summary-main">
           ${audioWidgetHtml}
           ${readingBarHtml}
+          ${shelfBarHtml}
+          ${buildQuickNav([
+            { id: 'bh-characters', label: '👥 Characters', show: !!charactersHtml },
+            { id: 'bh-summary', label: '📖 Summary', show: true },
+            { id: 'bh-quotes', label: '❝ Quotes', show: !!quotesHtml },
+            { id: 'bh-chapters', label: '📑 Chapters', show: !!chaptersHtml },
+            { id: 'quiz-card', label: '🎯 Quiz', show: !!quizHtml },
+            { id: 'bh-similar', label: '📚 Similar', show: !!similarHtml },
+            { id: 'comments-card', label: '💬 Comments', show: !!commentsHtml },
+          ])}
 
-          <div class="summary-card">
+          ${charactersHtml}
+
+          <div class="summary-card" id="bh-summary">
             <div class="summary-card-title" style="display:flex;align-items:center;gap:8px;">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
               AI Grounded Summary — Comprehensive Study Guide
@@ -1706,7 +1786,6 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
             <div class="ai-output">${parseSummaryMarkdown(data.summary)}</div>
           </div>
 
-          ${charactersHtml}
           ${quotesHtml}
           ${chaptersHtml}
           ${quizHtml}
@@ -1814,6 +1893,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
       // it never delays the main response (see ROADMAP 1.2).
       loadAuthorWorks(data);
       refreshLibraryBtn();
+      refreshShelfBar();
       refreshRecommendBtn();
       __charDetailsCache = {};   // fresh book → fresh character state
       __charOpenIndex = -1;
@@ -1849,7 +1929,8 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
       }
       const ka = ((searchSortField === "author" ? a.author : a.title) || "").toLowerCase();
       const kb = ((searchSortField === "author" ? b.author : b.title) || "").toLowerCase();
-      return ka.localeCompare(kb) * searchSortDir;
+      // numeric:true → "Volume 2" sorts before "Volume 10" (natural order)
+      return ka.localeCompare(kb, undefined, { numeric: true, sensitivity: "base" }) * searchSortDir;
     });
   }
 
@@ -1996,6 +2077,49 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
     } catch (e) { /* enrichment only — never break the page */ }
   }
 
+  // ── Shelf bar: status + rating against the My Library store ──
+  function shelfEntry() {
+    try {
+      const list = JSON.parse(localStorage.getItem(RL_KEY)) || [];
+      return list.find(b => (b.title || '').toLowerCase() === (currentBookTitle || '').toLowerCase()) || null;
+    } catch (e) { return null; }
+  }
+
+  function shelfSave(mutate) {
+    try {
+      const list = JSON.parse(localStorage.getItem(RL_KEY)) || [];
+      let entry = list.find(b => (b.title || '').toLowerCase() === (currentBookTitle || '').toLowerCase());
+      if (!entry) {
+        entry = { id: Date.now(), title: currentBookTitle, author: currentBookAuthor || '',
+                  status: 'want', rating: 0, addedAt: Date.now() };
+        list.unshift(entry);
+      }
+      mutate(entry);
+      localStorage.setItem(RL_KEY, JSON.stringify(list));
+      if (window.bhLibraryChanged) window.bhLibraryChanged();
+    } catch (e) { /* storage unavailable */ }
+    refreshShelfBar();
+    refreshLibraryBtn();
+  }
+
+  window.setShelfStatus = function (s) {
+    const cur = shelfEntry();
+    shelfSave(e => { e.status = (cur && cur.status === s) ? e.status : s; });
+  };
+  window.setShelfRating = function (n) {
+    shelfSave(e => { e.rating = (e.rating === n) ? 0 : n; });  // tap again clears
+  };
+
+  function refreshShelfBar() {
+    const bar = document.getElementById('shelf-bar');
+    if (!bar) return;
+    const entry = shelfEntry();
+    bar.querySelectorAll('.shelf-status button').forEach(b =>
+      b.classList.toggle('active', !!entry && entry.status === b.dataset.status));
+    bar.querySelectorAll('.shelf-stars button').forEach(b =>
+      b.classList.toggle('lit', !!entry && parseInt(b.dataset.star, 10) <= (entry.rating || 0)));
+  }
+
   // ── Character detail expansion (POST /character/details) ──
   let __charDetailsCache = {};
   let __charOpenIndex = -1;
@@ -2027,9 +2151,14 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
             <p style="font-size:14px;font-weight:700;">${escExt(c.name)}${c.role ? ` <span style="font-size:11px;color:var(--fg-faint);font-weight:500;text-transform:capitalize;">· ${escExt(c.role)}</span>` : ""}</p>
             <p style="font-size:13px;color:var(--fg-muted);line-height:1.65;margin-top:6px;">${escExt(d.description || c.description || "")}</p>
             ${factRows ? `<div class="char-facts">${factRows}</div>` : ""}
-            ${d.wiki_url ? `<a href="${escExt(d.wiki_url)}" target="_blank" rel="noopener nofollow" style="font-size:11px;color:var(--accent);display:inline-block;margin-top:10px;">${d.source === "wikipedia" ? "Wikipedia" : "Wiki page"} →</a>` : ""}
+            <div style="display:flex;align-items:center;gap:14px;margin-top:10px;">
+              ${c.slug ? `<button id="char-like-btn" onclick="toggleCharLike('${escExt(c.slug)}')"
+                style="background:var(--bg);border:1px solid var(--border);border-radius:999px;padding:5px 14px;font-size:12px;font-weight:600;color:var(--fg);cursor:pointer;">♡ Favorite</button>` : ""}
+              ${d.wiki_url ? `<a href="${escExt(d.wiki_url)}" target="_blank" rel="noopener nofollow" style="font-size:11px;color:var(--accent);">${d.source === "wikipedia" ? "Wikipedia" : "Wiki page"} →</a>` : ""}
+            </div>
           </div>
         </div>`;
+      if (c.slug) refreshCharLike(c.slug);
       box.style.display = "block";
       // Photo replaces the initials avatar once known.
       if (d.image_url) {
@@ -2177,6 +2306,39 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
     } finally {
       btn.disabled = false;
     }
+  };
+
+  // ── Character likes (Firestore, one per user — rules-enforced) ──
+  async function refreshCharLike(slug) {
+    const btn = document.getElementById("char-like-btn");
+    if (!btn || !window.bhFs) return;
+    const fs = window.bhFs, db = window.bhFirebase.db;
+    try {
+      const cnt = await fs.getCountFromServer(fs.collection(db, "characters", slug, "likes"));
+      const n = cnt.data().count;
+      let mine = false;
+      if (window.bhUser) {
+        const me = await fs.getDoc(fs.doc(db, "characters", slug, "likes", window.bhUser.uid));
+        mine = me.exists();
+      }
+      btn.textContent = `${mine ? "❤" : "♡"} Favorite${n ? ` · ${n}` : ""}`;
+      btn.dataset.mine = mine ? "1" : "";
+      btn.style.borderColor = mine ? "var(--accent)" : "var(--border)";
+    } catch (e) { /* enrichment only */ }
+  }
+
+  window.toggleCharLike = async function (slug) {
+    if (!window.bhUser) { bhAuthUI.open("signin"); return; }
+    const fs = window.bhFs, db = window.bhFirebase.db;
+    const btn = document.getElementById("char-like-btn");
+    const ref = fs.doc(db, "characters", slug, "likes", window.bhUser.uid);
+    if (btn) btn.disabled = true;
+    try {
+      if (btn && btn.dataset.mine) await fs.deleteDoc(ref);
+      else await fs.setDoc(ref, { createdAt: fs.serverTimestamp() });
+      await refreshCharLike(slug);
+    } catch (e) { /* rules reject anything malformed */ }
+    if (btn) btn.disabled = false;
   };
 
   // ── Book quiz (POST /quiz/book) ──────────────────────────
