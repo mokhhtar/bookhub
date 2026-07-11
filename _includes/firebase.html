@@ -354,6 +354,37 @@
     pushTimer = setTimeout(pushLibrary, 2000);
   };
 
+  // ── Shared cover backfill (self-heal) ─────────────────────
+  // Entries saved before the cover picker existed, added via a flow that
+  // had no cover, or synced from another device, can lack a cover image.
+  // Given a list of {title, author, <coverKey>} objects, look up the
+  // missing covers via /search and fill them IN PLACE. Returns true if it
+  // changed anything so the caller can persist + re-render. Grounded: only
+  // ever fills a real cover URL the catalog returned — never a guess.
+  const BH_API = "{{ site.api_url }}";
+  window.bhBackfillCovers = async function (items, coverKey = "cover_url") {
+    if (!Array.isArray(items)) return false;
+    const missing = items.filter(b => b && b.title && !b[coverKey]);
+    let changed = false;
+    for (const b of missing.slice(0, 25)) {   // cap the burst of requests
+      try {
+        const res = await fetch(`${BH_API}/search?q=${encodeURIComponent(b.title)}`);
+        if (!res.ok) continue;
+        const data = await res.json();
+        if (!Array.isArray(data) || !data.length) continue;
+        let hit = data[0];
+        if (b.author) {
+          const a = b.author.toLowerCase();
+          const m = data.find(x => (x.author || "").toLowerCase().includes(a)
+            || a.includes((x.author || "").toLowerCase()));
+          if (m) hit = m;
+        }
+        if (hit && hit.cover_url) { b[coverKey] = hit.cover_url; changed = true; }
+      } catch (e) { /* skip this one — best-effort enrichment */ }
+    }
+    return changed;
+  };
+
   async function mergeLibraryOnLogin(user) {
     try {
       const snap = await getDoc(doc(db, "users", user.uid, "library", "list"));

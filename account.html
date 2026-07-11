@@ -5,15 +5,41 @@ description: "Sign in or create a BookHub account — sync your library, comment
 permalink: /account/
 ---
 <style>
-  .acct-grid {
-    display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 28px;
+  /* Profile header */
+  .acct-hero {
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+    border: 1px solid var(--border); border-radius: 16px; background: var(--bg);
+    padding: 20px 22px; margin-bottom: 20px;
   }
-  @media (min-width: 760px) {
+  .acct-hero-info { flex: 1; min-width: 180px; }
+  .acct-hero-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+  /* Tab nav */
+  .acct-tabs {
+    display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 22px;
+    border-bottom: 1px solid var(--border);
+  }
+  .acct-tab {
+    appearance: none; background: none; border: 0; cursor: pointer;
+    padding: 10px 16px; font-size: 14px; font-weight: 600; color: var(--fg-muted);
+    border-bottom: 2px solid transparent; margin-bottom: -1px;
+    display: inline-flex; align-items: center; gap: 7px;
+  }
+  .acct-tab:hover { color: var(--fg); }
+  .acct-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+  .acct-tab svg { width: 15px; height: 15px; }
+
+  .acct-panel { display: none; }
+  .acct-panel.active { display: block; }
+
+  /* Section cards inside panels */
+  .acct-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+  @media (min-width: 720px) {
     .acct-grid { grid-template-columns: 1fr 1fr; align-items: start; }
     .acct-grid > .acct-section-wide { grid-column: 1 / -1; }
   }
   .acct-section {
-    margin-top: 0; border: 1px solid var(--border); border-radius: 14px;
+    border: 1px solid var(--border); border-radius: 14px;
     background: var(--bg); padding: 18px 20px;
   }
   .acct-h2 { font-size: 15px; font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
@@ -62,10 +88,13 @@ permalink: /account/
   }
   .acct-input:focus { outline: none; border-color: var(--accent); }
   .acct-note { font-size: 12px; margin-top: 8px; }
+  .acct-meta-row { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; padding: 8px 0; border-bottom: 1px solid var(--border-subtle); }
+  .acct-meta-row:last-child { border-bottom: 0; }
+  .acct-meta-row span:first-child { color: var(--fg-faint); }
 </style>
 
 <section class="account-page">
-  <div class="container" style="max-width:880px;padding-top:32px;padding-bottom:64px;">
+  <div class="container" style="max-width:860px;padding-top:32px;padding-bottom:64px;">
 
     <!-- Signed OUT: full sign-in / register forms -->
     <div id="acct-signed-out" style="display:none;max-width:480px;margin:0 auto;">
@@ -104,74 +133,119 @@ permalink: /account/
 
     <!-- Signed IN: profile + data -->
     <div id="acct-signed-in" style="display:none;">
-      <header style="text-align:center;margin-bottom:20px;">
-        <div class="auth-avatar" id="acct-avatar" style="width:72px;height:72px;font-size:28px;margin:0 auto 12px;">?</div>
-        <h1 class="section-title" style="font-size:24px;" id="acct-display-name">Account</h1>
-        <p style="font-size:13px;color:var(--fg-faint);margin-top:4px;" id="acct-email-line"></p>
-      </header>
-      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
-        <a class="btn-secondary" href="{{ '/My-Library' | relative_url }}" style="padding:9px 22px;">My Library</a>
-        <button class="btn-secondary" onclick="bhAuthOps.signOut()" style="padding:9px 22px;">Sign out</button>
+      <div class="acct-hero">
+        <div class="auth-avatar" id="acct-avatar" style="width:60px;height:60px;font-size:24px;flex-shrink:0;">?</div>
+        <div class="acct-hero-info">
+          <h1 class="section-title" style="font-size:22px;line-height:1.2;" id="acct-display-name">Account</h1>
+          <p style="font-size:13px;color:var(--fg-faint);margin-top:3px;" id="acct-email-line"></p>
+        </div>
+        <div class="acct-hero-actions">
+          <a class="btn-secondary" href="{{ '/My-Library' | relative_url }}" style="padding:9px 18px;">My Library</a>
+          <button class="btn-secondary" onclick="bhAuthOps.signOut()" style="padding:9px 18px;">Sign out</button>
+        </div>
       </div>
 
-      <div class="acct-grid">
-        <!-- Recently viewed -->
-        <div class="acct-section" id="acct-recent-section" style="display:none;">
-          <h2 class="acct-h2">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            Recently viewed
-          </h2>
-          <div id="acct-recent"></div>
-        </div>
+      <!-- Tab nav -->
+      <div class="acct-tabs" role="tablist">
+        <button class="acct-tab active" data-tab="reading" onclick="acctTab('reading')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          Reading
+        </button>
+        <button class="acct-tab" data-tab="favorites" onclick="acctTab('favorites')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          Favorites
+        </button>
+        <button class="acct-tab" data-tab="activity" onclick="acctTab('activity')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Activity
+        </button>
+        <button class="acct-tab" data-tab="settings" onclick="acctTab('settings')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          Settings
+        </button>
+      </div>
 
-        <!-- My ratings -->
-        <div class="acct-section" id="acct-ratings-section" style="display:none;">
-          <h2 class="acct-h2">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            My ratings
-          </h2>
-          <div id="acct-ratings"></div>
+      <!-- Reading tab -->
+      <div class="acct-panel active" id="acct-panel-reading">
+        <div class="acct-grid">
+          <div class="acct-section" id="acct-recent-section" style="display:none;">
+            <h2 class="acct-h2">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Recently viewed
+            </h2>
+            <div id="acct-recent"></div>
+          </div>
+          <div class="acct-section" id="acct-ratings-section" style="display:none;">
+            <h2 class="acct-h2">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              My ratings
+            </h2>
+            <div id="acct-ratings"></div>
+          </div>
         </div>
+        <div id="acct-reading-empty" class="acct-empty" style="display:none;text-align:center;padding:32px 0;">
+          Nothing here yet — <a href="{{ '/summary/' | relative_url }}" style="color:var(--accent);">summarize a book</a> or add one to <a href="{{ '/My-Library' | relative_url }}" style="color:var(--accent);">My Library</a>.
+        </div>
+      </div>
 
-        <!-- Favorite characters -->
+      <!-- Favorites tab -->
+      <div class="acct-panel" id="acct-panel-favorites">
+        <div class="acct-grid">
+          <div class="acct-section acct-section-wide">
+            <h2 class="acct-h2">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              My favorite characters
+            </h2>
+            <div id="acct-favchars" class="acct-empty">Loading…</div>
+          </div>
+          <div class="acct-section acct-section-wide">
+            <h2 class="acct-h2">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              My favorite authors
+            </h2>
+            <div id="acct-favauthors" class="acct-empty">Loading…</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Activity tab -->
+      <div class="acct-panel" id="acct-panel-activity">
         <div class="acct-section">
-          <h2 class="acct-h2">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-            My favorite characters
-          </h2>
-          <div id="acct-favchars" class="acct-empty">Loading…</div>
-        </div>
-
-        <!-- Favorite authors -->
-        <div class="acct-section">
-          <h2 class="acct-h2">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-            My favorite authors
-          </h2>
-          <div id="acct-favauthors" class="acct-empty">Loading…</div>
-        </div>
-
-        <!-- My comments -->
-        <div class="acct-section acct-section-wide">
           <h2 class="acct-h2">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
             My comments &amp; reviews
           </h2>
           <div id="acct-comments" class="acct-empty">Loading…</div>
         </div>
+      </div>
 
-        <!-- Change password (email/password accounts only) -->
-        <div class="acct-section acct-section-wide" id="acct-pw-section" style="display:none;">
-          <h2 class="acct-h2">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-            Change password
-          </h2>
-          <form onsubmit="return acctChangePw(event)" style="max-width:380px;">
-            <input class="acct-input" id="acct-pw-current" type="password" required minlength="6" placeholder="Current password" autocomplete="current-password">
-            <input class="acct-input" id="acct-pw-new" type="password" required minlength="6" placeholder="New password (6+ characters)" autocomplete="new-password">
-            <button class="btn-secondary" type="submit" id="acct-pw-btn" style="padding:8px 20px;font-size:13px;">Update password</button>
-            <p class="acct-note" id="acct-pw-note"></p>
-          </form>
+      <!-- Settings tab -->
+      <div class="acct-panel" id="acct-panel-settings">
+        <div class="acct-grid">
+          <div class="acct-section">
+            <h2 class="acct-h2">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              Account
+            </h2>
+            <div class="acct-meta-row"><span>Name</span><span id="acct-meta-name" style="font-weight:600;"></span></div>
+            <div class="acct-meta-row"><span>Email</span><span id="acct-meta-email" style="font-weight:600;"></span></div>
+            <div class="acct-meta-row"><span>Sign-in method</span><span id="acct-meta-provider" style="font-weight:600;"></span></div>
+            <button class="btn-secondary" onclick="bhAuthOps.signOut()" style="padding:8px 20px;font-size:13px;margin-top:14px;">Sign out</button>
+          </div>
+
+          <!-- Change password (email/password accounts only) -->
+          <div class="acct-section" id="acct-pw-section" style="display:none;">
+            <h2 class="acct-h2">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              Password &amp; security
+            </h2>
+            <form onsubmit="return acctChangePw(event)">
+              <input class="acct-input" id="acct-pw-current" type="password" required minlength="6" placeholder="Current password" autocomplete="current-password">
+              <input class="acct-input" id="acct-pw-new" type="password" required minlength="6" placeholder="New password (6+ characters)" autocomplete="new-password">
+              <button class="btn-secondary" type="submit" id="acct-pw-btn" style="padding:8px 20px;font-size:13px;">Update password</button>
+              <p class="acct-note" id="acct-pw-note"></p>
+            </form>
+          </div>
         </div>
       </div>
     </div>
@@ -191,6 +265,7 @@ permalink: /account/
     "auth/user-not-found": "No account with this email.",
     "auth/wrong-password": "Wrong current password.",
     "auth/too-many-requests": "Too many attempts — try again in a few minutes.",
+    "auth/unauthorized-domain": "This site isn't authorized for Google sign-in yet. Use email sign-in for now.",
   };
   const explain = (e) => ERRORS[e && e.code] || "Something went wrong — please try again.";
   const err = (m) => { const el = $("acct-error"); el.textContent = m; el.style.display = m ? "block" : "none"; };
@@ -198,6 +273,12 @@ permalink: /account/
     .replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;").replaceAll("'", "&#39;");
   const pretty = (slug) => slug.replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+
+  // ── Tab switching ──────────────────────────────────────────
+  window.acctTab = function (name) {
+    document.querySelectorAll(".acct-tab").forEach(t => t.classList.toggle("active", t.dataset.tab === name));
+    document.querySelectorAll(".acct-panel").forEach(p => p.classList.toggle("active", p.id === "acct-panel-" + name));
+  };
 
   window.acctMode = function (m) {
     mode = m;
@@ -295,6 +376,34 @@ permalink: /account/
         <span><span class="acct-book-t">${esc(b.title)}</span><br><span class="acct-book-a">${esc(b.author || "")}</span></span>
         <span class="acct-stars">${"★".repeat(b.rating)}${"☆".repeat(5 - b.rating)}</span>
       </a>`).join("");
+  }
+
+  // Show the "nothing here yet" note only when both reading sections are empty.
+  function refreshReadingEmpty() {
+    const empty = $("acct-recent-section").style.display === "none"
+      && $("acct-ratings-section").style.display === "none";
+    $("acct-reading-empty").style.display = empty ? "block" : "none";
+  }
+
+  // ── Book-cover self-heal (ratings + recently viewed) ───────
+  async function backfillAccountCovers() {
+    if (!window.bhBackfillCovers) return;
+    try {
+      const rl = JSON.parse(localStorage.getItem("bookhub_rl_v1")) || [];
+      if (await window.bhBackfillCovers(rl, "cover_url")) {
+        localStorage.setItem("bookhub_rl_v1", JSON.stringify(rl));
+        if (window.bhLibraryChanged) window.bhLibraryChanged();
+        loadRatings();
+      }
+    } catch (e) {}
+    try {
+      const rec = JSON.parse(localStorage.getItem("bookhub_recent_v1")) || [];
+      if (await window.bhBackfillCovers(rec, "cover")) {
+        localStorage.setItem("bookhub_recent_v1", JSON.stringify(rec));
+        loadRecent();
+      }
+    } catch (e) {}
+    refreshReadingEmpty();
   }
 
   // ── Favorite characters — real cards from the like snapshots ──
@@ -398,6 +507,8 @@ permalink: /account/
     try { await window.bhFs.deleteDoc(ref); loadMyComments(window.bhUser); } catch (e) { console.error(e); }
   };
 
+  const PROVIDER_LABEL = { "password": "Email & password", "google.com": "Google" };
+
   function render(user) {
     $("acct-signed-out").style.display = user ? "none" : "block";
     $("acct-signed-in").style.display = user ? "block" : "none";
@@ -406,11 +517,19 @@ permalink: /account/
       $("acct-avatar").textContent = name.slice(0, 1).toUpperCase();
       $("acct-display-name").textContent = name;
       $("acct-email-line").textContent = user.email || "";
+      // Settings tab meta.
+      $("acct-meta-name").textContent = user.displayName || "—";
+      $("acct-meta-email").textContent = user.email || "—";
+      const provs = (window.bhAuthOps ? bhAuthOps.providers() : [])
+        .map(p => PROVIDER_LABEL[p] || p);
+      $("acct-meta-provider").textContent = provs.join(", ") || "—";
       // Password section only makes sense for email/password accounts.
       const hasPw = window.bhAuthOps && bhAuthOps.providers().includes("password");
       $("acct-pw-section").style.display = hasPw ? "block" : "none";
       loadRecent();
       loadRatings();
+      refreshReadingEmpty();
+      backfillAccountCovers();
       loadFavChars(user);
       loadMyComments(user);
     }

@@ -126,6 +126,7 @@ redirect_from: /tools/reading-list/
     </div>
 
     <div id="list-container"></div>
+    <div id="rl-recs"></div>
   </div>
 </div>
 
@@ -198,7 +199,8 @@ function saveList(list) {
 }
 
 // Re-render after the signed-in merge pulls cloud items into localStorage.
-document.addEventListener('bh-library-synced', () => render());
+// (Cover backfill + recommendations are refreshed by a listener at the
+// bottom of this script, once those functions are defined.)
 
 function addBook() {
   const title  = document.getElementById('add-title').value.trim();
@@ -324,5 +326,75 @@ document.querySelectorAll('.book-tab').forEach(btn => {
 
 document.getElementById('add-title').addEventListener('keydown', e => { if (e.key === 'Enter') addBook(); });
 
+// ── Self-heal missing covers (entries added before the cover picker, or
+// synced from another device without one). Fills them via /search. ──
+async function backfillCovers() {
+  const list = getList();
+  if (!window.bhBackfillCovers) return;
+  const changed = await window.bhBackfillCovers(list, 'cover_url');
+  if (!changed) return;
+  // Re-read + merge by id so a book added/removed mid-lookup isn't clobbered.
+  const byId = new Map(list.map(b => [b.id, b.cover_url]));
+  const cur = getList();
+  cur.forEach(b => { if (!b.cover_url && byId.get(b.id)) b.cover_url = byId.get(b.id); });
+  saveList(cur);
+  render();
+}
+
+// ── Recommended for you — grounded in the authors you're already
+// tracking. Real works from /author/works only; excludes what's already
+// in your library; hides itself entirely when there's nothing to show. ──
+async function loadRecommendations() {
+  const box = document.getElementById('rl-recs');
+  if (!box) return;
+  const list = getList();
+  if (!list.length) return;   // nothing to base recommendations on
+
+  const owned = new Set(list.map(b => (b.title || '').toLowerCase().trim()));
+  // Distinct authors, most-recently-added first (list is already newest-first).
+  const authors = [];
+  const seenAuthor = new Set();
+  for (const b of list) {
+    const a = (b.author || '').trim();
+    if (a && !seenAuthor.has(a.toLowerCase())) { seenAuthor.add(a.toLowerCase()); authors.push(a); }
+    if (authors.length >= 4) break;
+  }
+  if (!authors.length) return;
+
+  const recs = [];
+  const seenRec = new Set();
+  await Promise.all(authors.map(async (author) => {
+    try {
+      const res = await fetch(`${API}/author/works?name=${encodeURIComponent(author)}`);
+      if (!res.ok) return;
+      const data = await res.json();
+      for (const w of (data.works || [])) {
+        const t = (w.title || '').toLowerCase().trim();
+        if (!w.cover_url || owned.has(t) || seenRec.has(t)) continue;
+        seenRec.add(t);
+        recs.push({ ...w, _via: author });
+      }
+    } catch (e) { /* skip this author */ }
+  }));
+
+  if (!recs.length) return;
+  const shown = recs.slice(0, 12);
+  box.innerHTML = `
+    <h2 style="font-size:16px;font-weight:700;margin:32px 0 4px;">Recommended for you</h2>
+    <p style="font-size:12px;color:var(--fg-faint);margin-bottom:14px;">More from authors you're reading.</p>
+    <div class="rl-grid">` + shown.map(w => {
+      const link = `{{ '/summary/' | relative_url }}?q=${encodeURIComponent(w.title)}${w._via ? `&author=${encodeURIComponent(w._via)}` : ''}&direct=true`;
+      return `
+        <div class="rl-card">
+          <a href="${link}"><img class="rl-card-cover" src="${escRl(w.cover_url)}" alt="" loading="lazy"></a>
+          <a class="rl-card-t" href="${link}">${escRl(w.title)}</a>
+          <span class="rl-card-a">${escRl(w._via)}${w.year ? ` · ${escRl(String(w.year))}` : ''}</span>
+        </div>`;
+    }).join('') + `</div>`;
+}
+
 render();
+backfillCovers();
+loadRecommendations();
+document.addEventListener('bh-library-synced', () => { render(); backfillCovers(); loadRecommendations(); });
 </script>
