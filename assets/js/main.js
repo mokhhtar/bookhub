@@ -1,5 +1,13 @@
 /* BookHub — main.js */
 
+// Everything lives inside one IIFE: this file loads on every page AFTER the
+// page's own inline <script>, and top-level const/let share the global
+// lexical scope across classic scripts — a page declaring the same name
+// (e.g. RL_KEY on the summary and My Library pages) made this whole file
+// throw "already been declared" and die. Shared helpers are exposed on
+// window explicitly below.
+(function () {
+
 // ── Mobile nav ──────────────────────────────────────────
 const toggle = document.querySelector('.nav-toggle');
 const nav    = document.querySelector('.site-nav');
@@ -101,3 +109,5 @@ if (document.readyState === 'loading') {
 } else {
   initThemeToggle();
 }
+
+})();
