@@ -1500,7 +1500,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
       } else if ((data.ratings && data.ratings.average) || data.average_rating) {
         const avg = (data.ratings && data.ratings.average) || data.average_rating;
         const cnt = data.ratings && data.ratings.count
-          ? ` <span style="color:var(--fg-faint);font-size:12px;">(${data.ratings.count.toLocaleString()} ratings)</span>` : '';
+          ? ` <span style="color:var(--fg-faint);font-size:12px;">(${data.ratings.count.toLocaleString()} rating${data.ratings.count === 1 ? '' : 's'})</span>` : '';
         awardsHtml = `
           <p class="sidebar-section-title">Reception</p>
           <p style="font-size:13px;color:var(--fg);margin:0;">
@@ -1541,8 +1541,9 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
       if (data.similar_books && data.similar_books.length) {
         let items = data.similar_books;
         while (items.length < 8) items = items.concat(data.similar_books);
-        const loop = items.concat(items);
-        const card = (b) => {
+        // dup: second copy is only for the seamless -50% loop — hidden from
+        // screen readers and keyboard focus (same as the homepage NYT strip).
+        const card = (b, dup) => {
           const te = b.title.replace(/'/g, "\\'").replace(/"/g, "&quot;");
           const ae = (b.author || '').replace(/'/g, "\\'").replace(/"/g, "&quot;");
           // Pass the exact identifiers the backend returns so a click opens
@@ -1552,7 +1553,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
           const gidV = b.google_id ? `'${String(b.google_id).replace(/'/g, "\\'")}'` : 'null';
           const olidV = b.openlibrary_id ? `'${String(b.openlibrary_id).replace(/'/g, "\\'")}'` : 'null';
           const url = `{{ '/summary/' | relative_url }}?q=${encodeURIComponent(b.title)}&author=${encodeURIComponent(b.author || '')}`;
-          return `<a href="${url}" class="similar-item" onclick="event.preventDefault();summarizeBook('${te}','${ae}',true,false,${isbnV},${gidV},${olidV})">
+          return `<a href="${url}" class="similar-item"${dup ? ' aria-hidden="true" tabindex="-1"' : ''} onclick="event.preventDefault();summarizeBook('${te}','${ae}',true,false,${isbnV},${gidV},${olidV})">
             ${b.cover_url ? `<img src="${b.cover_url}" alt="Cover of ${b.title}" loading="lazy">` : `<div class="similar-cover-empty">${b.title}</div>`}
             <p class="similar-t">${b.title}</p>
             <p class="similar-a">${b.author || ''}</p>
@@ -1564,7 +1565,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
               Similar Books
             </div>
             <div class="similar-marquee">
-              <div class="similar-track" style="animation-duration:${loop.length * 3}s;">${loop.map(card).join('')}</div>
+              <div class="similar-track" style="animation-duration:${items.length * 2 * 3}s;">${items.map((b) => card(b, false)).join('') + items.map((b) => card(b, true)).join('')}</div>
             </div>
            </div>`;
       }
