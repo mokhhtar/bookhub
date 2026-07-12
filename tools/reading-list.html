@@ -681,6 +681,11 @@ loadGenreRecs();
 // just cleared from localStorage in firebase.html).
 document.addEventListener('bh-auth', (e) => {
   if (e.detail && e.detail.signedOut) { location.href = "{{ '/' | relative_url }}"; return; }
+  // Signed in: the "sign in to sync" subtitle is stale — say what's true.
+  if (e.detail && e.detail.user) {
+    const desc = document.querySelector('.tool-page-desc');
+    if (desc) desc.textContent = 'Synced to your account — changes follow you across devices.';
+  }
   backfillCovers();
 });
 
