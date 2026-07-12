@@ -1,0 +1,10 @@
+---
+# Machine-readable index of every published book page. Client JS (e.g. My
+# Library's genre recommendations) fetches this instead of needing a backend
+# endpoint — the data is already public in the static pages themselves.
+layout: null
+permalink: /books.json
+---
+[
+{% for book in site.books %}  { "title": {{ book.title | jsonify }}, "author": {{ book.author | jsonify }}, "url": {{ book.url | relative_url | jsonify }}, "cover_url": {{ book.cover_url | jsonify }}, "categories": {{ book.categories | jsonify }} }{% unless forloop.last %},{% endunless %}
+{% endfor %}]

@@ -133,6 +133,7 @@ redirect_from: /tools/reading-list/
 
     <div id="list-container"></div>
     <div id="rl-recs"></div>
+    <div id="rl-genre-recs"></div>
 
     <div style="display:flex;gap:10px;margin-top:28px;align-items:center;">
       <button class="btn-secondary" onclick="exportLibrary()" style="padding:7px 16px;font-size:12px;">
@@ -274,7 +275,8 @@ function importLibrary(input) {
           notes: typeof b.notes === 'string' ? b.notes.slice(0, 2000) : '',
           progress_page: b.progress_page > 0 ? Math.min(20000, parseInt(b.progress_page, 10)) : 0,
           page_count: b.page_count > 0 ? Math.min(20000, parseInt(b.page_count, 10)) : 0,
-          category: typeof b.category === 'string' ? b.category.slice(0, 100) : '',
+          categories: Array.isArray(b.categories)
+            ? b.categories.filter(c => typeof c === 'string').slice(0, 3) : [],
           b: typeof b.b === 'string' ? b.b.slice(0, 200) : '',
         });
         added++;
@@ -604,8 +606,60 @@ async function loadRecommendations() {
     }).join('') + `</div>`;
 }
 
+// ── "From genres you read" — published BookHub pages sharing categories
+// with your library. Data source is the static site's own books.json
+// index (real published pages only — nothing generated). Items carry
+// category slugs only when added via the summary page; the section hides
+// itself entirely until such data exists.
+async function loadGenreRecs() {
+  const box = document.getElementById('rl-genre-recs');
+  if (!box) return;
+  const list = getList();
+  const counts = new Map();
+  for (const b of list)
+    for (const c of (Array.isArray(b.categories) ? b.categories : []))
+      counts.set(c, (counts.get(c) || 0) + 1);
+  if (!counts.size) return;
+  const topCats = [...counts.entries()].sort((a, b) => b[1] - a[1]).slice(0, 2).map(e => e[0]);
+
+  let books = [];
+  try {
+    const res = await fetch("{{ '/books.json' | relative_url }}");
+    if (!res.ok) return;
+    books = await res.json();
+  } catch (e) { return; }
+
+  const owned = new Set(list.map(b => rlNormTitle(b.title)).filter(Boolean));
+  const picks = [];
+  const seen = new Set();
+  for (const bk of books) {
+    const cats = Array.isArray(bk.categories) ? bk.categories : [];
+    if (!cats.some(c => topCats.includes(c))) continue;
+    const nt = rlNormTitle(bk.title);
+    if (!nt || owned.has(nt) || seen.has(nt)) continue;
+    seen.add(nt);
+    picks.push(bk);
+    if (picks.length >= 12) break;
+  }
+  if (!picks.length) return;
+
+  const pretty = (slug) => slug.replace(/-/g, ' ').replace(/\b\w/g, ch => ch.toUpperCase());
+  box.innerHTML = `
+    <h2 style="font-size:16px;font-weight:700;margin:32px 0 4px;">From genres you read</h2>
+    <p style="font-size:12px;color:var(--fg-faint);margin-bottom:14px;">${topCats.map(pretty).map(escRl).join(' · ')} — picks from BookHub's library.</p>
+    <div class="rl-grid">` + picks.map(bk => `
+      <div class="rl-card">
+        <a href="${escRl(bk.url)}">${bk.cover_url
+          ? `<img class="rl-card-cover" src="${escRl(bk.cover_url)}" alt="" loading="lazy">`
+          : `<div class="rl-card-cover-empty">${escRl((bk.title || '').slice(0, 40))}</div>`}</a>
+        <a class="rl-card-t" href="${escRl(bk.url)}">${escRl(bk.title)}</a>
+        ${bk.author ? `<span class="rl-card-a">${escRl(bk.author)}</span>` : ''}
+      </div>`).join('') + `</div>`;
+}
+
 render();
 loadRecommendations();  // uses fetch/API only — safe to run at parse time.
+loadGenreRecs();
 
 // bh-auth fires once the deferred firebase module has initialised (for
 // signed-OUT visitors too), so it's the earliest point window.bhBackfillCovers
@@ -619,5 +673,5 @@ document.addEventListener('bh-auth', (e) => {
 
 // After a signed-in cloud merge pulls the account's library into localStorage,
 // re-render and refresh covers + recommendations from the merged list.
-document.addEventListener('bh-library-synced', () => { render(); backfillCovers(); loadRecommendations(); });
+document.addEventListener('bh-library-synced', () => { render(); backfillCovers(); loadRecommendations(); loadGenreRecs(); });
 </script>

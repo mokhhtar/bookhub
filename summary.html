@@ -1907,6 +1907,10 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
       recordRecentView(data);
       window.__bhCurrentCover = data.cover_url || '';       // for library adds
       window.__bhCurrentShareSlug = data.share_slug || '';
+      // Category slugs + page count ride along into library items: genre
+      // recommendations and reading-progress % need them later.
+      window.__bhCurrentCategories = Array.isArray(data.categories) ? data.categories.slice(0, 3) : [];
+      window.__bhCurrentPages = data.page_count > 0 ? data.page_count : 0;
       __charDetailsCache = {};   // fresh book → fresh character state
       __charOpenIndex = -1;
 
@@ -2047,6 +2051,8 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
           id: Date.now(), title: currentBookTitle, author: currentBookAuthor || '',
           status: 'want', rating: 0, addedAt: Date.now(),
           cover_url: (window.__bhCurrentCover || ''), b: (window.__bhCurrentShareSlug || ''),
+          categories: (window.__bhCurrentCategories || []),
+          page_count: (window.__bhCurrentPages || 0),
         });
         localStorage.setItem(RL_KEY, JSON.stringify(list));
         if (window.bhLibraryChanged) window.bhLibraryChanged();  // cloud sync when signed in
@@ -2153,7 +2159,9 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
       if (!entry) {
         entry = { id: Date.now(), title: currentBookTitle, author: currentBookAuthor || '',
                   status: 'want', rating: 0, addedAt: Date.now(),
-                  cover_url: (window.__bhCurrentCover || ''), b: (window.__bhCurrentShareSlug || '') };
+                  cover_url: (window.__bhCurrentCover || ''), b: (window.__bhCurrentShareSlug || ''),
+                  categories: (window.__bhCurrentCategories || []),
+                  page_count: (window.__bhCurrentPages || 0) };
         list.unshift(entry);
       }
       mutate(entry);
