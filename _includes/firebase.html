@@ -263,6 +263,13 @@
     justify-content: center;
     font-size: 12px;
     font-weight: 800;
+    overflow: hidden;
+  }
+  .auth-avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
   }
   .auth-user-menu {
     position: absolute;
@@ -370,16 +377,35 @@
   // session was lost. A localStorage hint renders the account chip
   // instantly; onAuthStateChanged corrects it if the session truly ended.
   const HINT_KEY = "bh_auth_hint";
+  const PHOTO_KEY = "bh_auth_photo";
+
+  // Render an avatar circle: profile photo when available (Google accounts),
+  // otherwise the name's first letter. DOM-built (no innerHTML) and
+  // no-referrer — googleusercontent 403s photo requests that carry one.
+  function setAvatar(el, name, photo) {
+    if (!el) return;
+    el.textContent = "";
+    if (photo) {
+      const img = document.createElement("img");
+      img.src = photo;
+      img.alt = "";
+      img.referrerPolicy = "no-referrer";
+      el.appendChild(img);
+    } else {
+      el.textContent = (name || "?").slice(0, 1).toUpperCase();
+    }
+  }
+  window.bhSetAvatar = setAvatar; // account page reuses it
+
   try {
     const hint = localStorage.getItem(HINT_KEY);
+    const photoHint = localStorage.getItem(PHOTO_KEY);
     const signinBtn0 = document.getElementById("auth-signin-btn");
     const chip0 = document.getElementById("auth-user-chip");
     if (hint && chip0 && signinBtn0) {
       signinBtn0.style.display = "none";
       chip0.style.display = "flex";
-      document.getElementById("auth-avatar").textContent = hint
-        .slice(0, 1)
-        .toUpperCase();
+      setAvatar(document.getElementById("auth-avatar"), hint, photoHint);
       document.getElementById("auth-chip-name").textContent = hint
         .split(" ")[0]
         .slice(0, 14);
@@ -801,12 +827,17 @@
     }
 
     try {
-      if (user)
+      if (user) {
         localStorage.setItem(
           HINT_KEY,
           user.displayName || user.email || "Account",
         );
-      else localStorage.removeItem(HINT_KEY);
+        if (user.photoURL) localStorage.setItem(PHOTO_KEY, user.photoURL);
+        else localStorage.removeItem(PHOTO_KEY);
+      } else {
+        localStorage.removeItem(HINT_KEY);
+        localStorage.removeItem(PHOTO_KEY);
+      }
     } catch (e) {}
     const signinBtn = $("auth-signin-btn");
     const chip = $("auth-user-chip");
@@ -815,7 +846,7 @@
       chip.style.display = user ? "flex" : "none";
       if (user) {
         const name = user.displayName || user.email || "Account";
-        $("auth-avatar").textContent = name.slice(0, 1).toUpperCase();
+        setAvatar($("auth-avatar"), name, user.photoURL || null);
         $("auth-chip-name").textContent = name.split(" ")[0].slice(0, 14);
       }
     }

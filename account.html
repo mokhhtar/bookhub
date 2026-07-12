@@ -324,6 +324,24 @@ permalink: /account/
   const skel = (h, n = 1) => Array.from({ length: n },
     () => `<div class="bh-skel" style="height:${h}px;margin-bottom:8px;"></div>`).join("");
 
+  // Avatar: profile photo when available (Google), else first letter.
+  // DOM-built + no-referrer (googleusercontent 403s with a referrer).
+  // Local copy because fastPaint runs before firebase.html's module.
+  function setAcctAvatar(name, photo) {
+    const el = $("acct-avatar");
+    if (!el) return;
+    el.textContent = "";
+    if (photo) {
+      const img = document.createElement("img");
+      img.src = photo;
+      img.alt = "";
+      img.referrerPolicy = "no-referrer";
+      el.appendChild(img);
+    } else {
+      el.textContent = (name || "?").slice(0, 1).toUpperCase();
+    }
+  }
+
   // ── Tab switching ──────────────────────────────────────────
   window.acctTab = function (name) {
     document.querySelectorAll(".acct-tab").forEach(t => t.classList.toggle("active", t.dataset.tab === name));
@@ -611,7 +629,7 @@ permalink: /account/
     $("acct-signed-in").style.display = user ? "block" : "none";
     if (user) {
       const name = user.displayName || user.email || "Account";
-      $("acct-avatar").textContent = name.slice(0, 1).toUpperCase();
+      setAcctAvatar(name, user.photoURL || null);
       $("acct-display-name").textContent = name;
       $("acct-email-line").textContent = user.email || "";
       // Settings tab meta.
@@ -643,7 +661,9 @@ permalink: /account/
   function fastPaint(hint) {
     $("acct-signed-out").style.display = "none";
     $("acct-signed-in").style.display = "block";
-    $("acct-avatar").textContent = hint.slice(0, 1).toUpperCase();
+    let photoHint = null;
+    try { photoHint = localStorage.getItem("bh_auth_photo"); } catch (e) {}
+    setAcctAvatar(hint, photoHint);
     $("acct-display-name").textContent = hint;
     loadRecent();
     loadRatings();
