@@ -59,6 +59,30 @@ window.fillSearch = function(title) {
   if (input) { input.value = title; input.focus(); }
 };
 
+// ── Toasts (site-wide notification system) ───────────────
+// bhToast("Saved", "success") — types: info | success | error.
+// Container is aria-live so screen readers announce messages.
+window.bhToast = function (message, type = 'info', ms = 3200) {
+  let wrap = document.getElementById('bh-toasts');
+  if (!wrap) {
+    wrap = document.createElement('div');
+    wrap.id = 'bh-toasts';
+    wrap.setAttribute('role', 'status');
+    wrap.setAttribute('aria-live', 'polite');
+    document.body.appendChild(wrap);
+  }
+  const t = document.createElement('div');
+  t.className = 'bh-toast bh-toast-' + type;
+  t.textContent = message;
+  wrap.appendChild(t);
+  requestAnimationFrame(() => t.classList.add('show'));
+  setTimeout(() => {
+    t.classList.remove('show');
+    t.addEventListener('transitionend', () => t.remove(), { once: true });
+    setTimeout(() => t.remove(), 600); // fallback if transition never fires
+  }, ms);
+};
+
 // ── Theme Switcher ───────────────────────────────────────
 function initThemeToggle() {
   const toggleBtn = document.getElementById('theme-toggle');

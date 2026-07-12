@@ -210,7 +210,7 @@ function addBook() {
 
   const list = getList();
   if (list.find(b => b.title.toLowerCase() === title.toLowerCase())) {
-    alert('This book is already in your list.');
+    bhToast('This book is already in your list.', 'info');
     return;
   }
   const picked = (rlSelected && rlSelected.cover_url) ? rlSelected : null;
