@@ -115,11 +115,17 @@ redirect_from: /tools/reading-list/
         <button class="book-tab" data-filter="reading">Reading now</button>
         <button class="book-tab" data-filter="done">Finished</button>
       </div>
+      <select id="rl-sort" class="form-select rl-select" aria-label="Sort by" onchange="setSort(this.value)" style="margin-left:auto;">
+        <option value="added">Recently added</option>
+        <option value="title">Title A–Z</option>
+        <option value="rating">Highest rated</option>
+        <option value="status">By status</option>
+      </select>
       <div class="rl-view-toggle" role="group" aria-label="View">
-        <button id="view-cards" title="Card view" onclick="setView('cards')">
+        <button id="view-cards" title="Card view" aria-label="Card view" onclick="setView('cards')">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
         </button>
-        <button id="view-list" title="List view" onclick="setView('list')">
+        <button id="view-list" title="List view" aria-label="List view" onclick="setView('list')">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
         </button>
       </div>
@@ -127,6 +133,39 @@ redirect_from: /tools/reading-list/
 
     <div id="list-container"></div>
     <div id="rl-recs"></div>
+
+    <div style="display:flex;gap:10px;margin-top:28px;align-items:center;">
+      <button class="btn-secondary" onclick="exportLibrary()" style="padding:7px 16px;font-size:12px;">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="vertical-align:-2px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+        Export
+      </button>
+      <button class="btn-secondary" onclick="document.getElementById('rl-import-file').click()" style="padding:7px 16px;font-size:12px;">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="vertical-align:-2px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+        Import
+      </button>
+      <input type="file" id="rl-import-file" accept="application/json,.json" style="display:none;" onchange="importLibrary(this)">
+      <span style="font-size:11px;color:var(--fg-faint);">Backup your library as a file, or merge one back in.</span>
+    </div>
+  </div>
+</div>
+
+<!-- Notes & progress editor (one shared mini-modal) -->
+<div id="rl-edit-backdrop" style="display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.55);align-items:center;justify-content:center;padding:16px;" role="dialog" aria-modal="true" aria-labelledby="rl-edit-title">
+  <div style="position:relative;width:100%;max-width:420px;background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:24px;">
+    <button onclick="closeBookEditor()" aria-label="Close"
+            style="position:absolute;top:12px;right:12px;background:var(--bg-subtle);border:1px solid var(--border);color:var(--fg);border-radius:8px;padding:4px 9px;font-size:12px;cursor:pointer;display:inline-flex;align-items:center;">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <h2 id="rl-edit-title" style="font-size:16px;font-weight:700;margin-bottom:14px;padding-right:32px;"></h2>
+    <label class="form-label" for="rl-edit-page">Current page</label>
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
+      <input type="number" id="rl-edit-page" class="form-input" min="0" max="20000" placeholder="e.g. 120" style="width:120px;font-size:16px;">
+      <span id="rl-edit-pct" style="font-size:12px;color:var(--fg-faint);"></span>
+    </div>
+    <label class="form-label" for="rl-edit-notes">My notes</label>
+    <textarea id="rl-edit-notes" rows="5" maxlength="2000" placeholder="Thoughts, favorite quotes, where you left off…"
+              style="width:100%;box-sizing:border-box;padding:10px 12px;font-size:16px;background:var(--bg-subtle);color:var(--fg);border:1px solid var(--border);border-radius:8px;resize:vertical;"></textarea>
+    <button class="btn-primary" onclick="saveBookEditor()" style="width:100%;justify-content:center;margin-top:14px;padding:10px 0;">Save</button>
   </div>
 </div>
 
@@ -134,9 +173,122 @@ redirect_from: /tools/reading-list/
 const API = "{{ site.api_url }}";
 const RL_KEY = 'bookhub_rl_v1';
 const VIEW_KEY = 'bookhub_rl_view';
+const SORT_KEY = 'bookhub_rl_sort';
 let currentFilter = 'all';
 let currentView = 'cards';
+let currentSort = 'added';
 try { currentView = localStorage.getItem(VIEW_KEY) || 'cards'; } catch {}
+try { currentSort = localStorage.getItem(SORT_KEY) || 'added'; } catch {}
+
+function setSort(v) {
+  currentSort = v;
+  try { localStorage.setItem(SORT_KEY, v); } catch {}
+  render();
+}
+
+const STATUS_ORDER = { reading: 0, want: 1, done: 2 };
+function sortList(list) {
+  const l = [...list];
+  if (currentSort === 'title') l.sort((a, b) => (a.title || '').localeCompare(b.title || ''));
+  else if (currentSort === 'rating') l.sort((a, b) => (b.rating || 0) - (a.rating || 0) || (b.addedAt || 0) - (a.addedAt || 0));
+  else if (currentSort === 'status') l.sort((a, b) => (STATUS_ORDER[a.status] ?? 3) - (STATUS_ORDER[b.status] ?? 3) || (b.addedAt || 0) - (a.addedAt || 0));
+  else l.sort((a, b) => (b.addedAt || 0) - (a.addedAt || 0));
+  return l;
+}
+
+// ── Notes & reading-progress editor (shared mini-modal) ──
+let editingId = null;
+
+function openBookEditor(id) {
+  const b = getList().find(x => x.id === id);
+  if (!b) return;
+  editingId = id;
+  document.getElementById('rl-edit-title').textContent = b.title;
+  document.getElementById('rl-edit-page').value = b.progress_page > 0 ? b.progress_page : '';
+  document.getElementById('rl-edit-notes').value = b.notes || '';
+  updateEditorPct();
+  document.getElementById('rl-edit-backdrop').style.display = 'flex';
+  document.getElementById('rl-edit-page').focus();
+}
+function closeBookEditor() {
+  document.getElementById('rl-edit-backdrop').style.display = 'none';
+  editingId = null;
+}
+function updateEditorPct() {
+  const b = getList().find(x => x.id === editingId);
+  const el = document.getElementById('rl-edit-pct');
+  const page = parseInt(document.getElementById('rl-edit-page').value, 10);
+  el.textContent = (b && b.page_count > 0 && page > 0)
+    ? `of ${b.page_count} — ${Math.min(100, Math.round(page / b.page_count * 100))}%`
+    : (b && b.page_count > 0 ? `of ${b.page_count} pages` : '');
+}
+function saveBookEditor() {
+  if (editingId == null) return;
+  const page = parseInt(document.getElementById('rl-edit-page').value, 10);
+  const notes = document.getElementById('rl-edit-notes').value.trim().slice(0, 2000);
+  saveList(getList().map(b => b.id === editingId
+    ? { ...b, progress_page: (page > 0 ? Math.min(20000, page) : 0), notes }
+    : b));
+  closeBookEditor();
+  render();
+  bhToast('Saved', 'success');
+}
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeBookEditor(); });
+
+// ── Export / import (JSON backup, merge on import) ───────
+function exportLibrary() {
+  const payload = { app: 'bookhub', version: 1, exported: new Date().toISOString(), items: getList() };
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'bookhub-library.json';
+  a.click();
+  URL.revokeObjectURL(a.href);
+  bhToast('Library exported', 'success');
+}
+function importLibrary(input) {
+  const file = input.files && input.files[0];
+  input.value = '';
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    try {
+      const data = JSON.parse(reader.result);
+      const items = Array.isArray(data) ? data : (data.items || []);
+      const list = getList();
+      const have = new Set(list.map(b => (b.title || '').toLowerCase().trim()));
+      let added = 0;
+      for (const b of items) {
+        if (!b || typeof b.title !== 'string' || !b.title.trim()) continue;
+        const key = b.title.toLowerCase().trim();
+        if (have.has(key)) continue;   // existing entries win — import never overwrites
+        have.add(key);
+        list.push({
+          id: Date.now() + added,
+          title: b.title.slice(0, 300),
+          author: typeof b.author === 'string' ? b.author.slice(0, 200) : '',
+          status: ['want', 'reading', 'done'].includes(b.status) ? b.status : 'want',
+          rating: Math.max(0, Math.min(5, parseInt(b.rating, 10) || 0)),
+          addedAt: typeof b.addedAt === 'number' ? b.addedAt : Date.now(),
+          cover_url: typeof b.cover_url === 'string' ? b.cover_url.slice(0, 500) : '',
+          notes: typeof b.notes === 'string' ? b.notes.slice(0, 2000) : '',
+          progress_page: b.progress_page > 0 ? Math.min(20000, parseInt(b.progress_page, 10)) : 0,
+          page_count: b.page_count > 0 ? Math.min(20000, parseInt(b.page_count, 10)) : 0,
+          category: typeof b.category === 'string' ? b.category.slice(0, 100) : '',
+          b: typeof b.b === 'string' ? b.b.slice(0, 200) : '',
+        });
+        added++;
+      }
+      saveList(list);
+      render();
+      loadRecommendations();
+      bhToast(added ? `Imported ${added} book${added > 1 ? 's' : ''}` : 'Nothing new to import', added ? 'success' : 'info');
+    } catch (e) {
+      bhToast("Couldn't read that file — is it a BookHub export?", 'error');
+    }
+  };
+  reader.readAsText(file);
+}
 
 // ── Cover picker: live search-as-you-type, reused from summary.html's
 // autocomplete so manually-added books still get a real cover/isbn/id. ──
@@ -269,11 +421,31 @@ function coverHtml(b, cls, emptyCls) {
     : `<div class="${emptyCls}">${escRl((b.title || '').slice(0, 40))}</div>`;
 }
 
+// Reading-progress pill ("42%" when total pages known, else "p. 120").
+function progressHtml(b) {
+  if (b.status !== 'reading' || !(b.progress_page > 0)) return '';
+  const pct = b.page_count > 0 ? Math.min(100, Math.round(b.progress_page / b.page_count * 100)) : null;
+  return `<span class="rl-status-pill rl-status-reading" title="Reading progress">${pct !== null ? pct + '%' : 'p. ' + b.progress_page}</span>`;
+}
+
+// Notes/progress editor button — accent-tinted when the book has either.
+function noteBtnHtml(b) {
+  const has = !!(b.notes && b.notes.trim()) || b.progress_page > 0;
+  return `<button class="rl-remove" title="Notes & progress" aria-label="Notes and progress"
+    style="${has ? 'color:var(--accent);border-color:var(--accent);' : ''}" onclick="openBookEditor(${b.id})">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></button>`;
+}
+
+const removeBtnHtml = (b) => `<button class="rl-remove" onclick="removeBook(${b.id})" title="Remove" aria-label="Remove">
+  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>`;
+
 function render() {
   document.getElementById('view-cards').classList.toggle('active', currentView === 'cards');
   document.getElementById('view-list').classList.toggle('active', currentView === 'list');
+  const sortSel = document.getElementById('rl-sort');
+  if (sortSel && sortSel.value !== currentSort) sortSel.value = currentSort;
 
-  const list = getList().filter(b => currentFilter === 'all' || b.status === currentFilter);
+  const list = sortList(getList().filter(b => currentFilter === 'all' || b.status === currentFilter));
   const container = document.getElementById('list-container');
 
   if (list.length === 0) {
@@ -291,13 +463,17 @@ function render() {
     container.innerHTML = `<div class="rl-grid">` + list.map(b => `
       <div class="rl-card">
         <a href="${bookLink(b)}">${coverHtml(b, 'rl-card-cover', 'rl-card-cover-empty')}</a>
-        <span class="rl-status-pill rl-status-${b.status}">${statusLabel[b.status] || ''}</span>
+        <span>
+          <span class="rl-status-pill rl-status-${b.status}">${statusLabel[b.status] || ''}</span>
+          ${progressHtml(b)}
+        </span>
         <a class="rl-card-t" href="${bookLink(b)}">${escRl(b.title)}</a>
         ${b.author ? `<span class="rl-card-a">${escRl(b.author)}</span>` : ''}
         ${starsHtml(b)}
         <div style="display:flex;gap:8px;align-items:center;margin-top:auto;">
           ${statusSelect(b)}
-          <button class="rl-remove" onclick="removeBook(${b.id})" title="Remove">✕</button>
+          ${noteBtnHtml(b)}
+          ${removeBtnHtml(b)}
         </div>
       </div>`).join('') + `</div>`;
   } else {
@@ -308,9 +484,11 @@ function render() {
           <a href="${bookLink(b)}" style="font-weight:600;font-size:14px;color:var(--fg);text-decoration:none;">${escRl(b.title)}</a>
           ${b.author ? `<div style="font-size:12px;color:var(--fg-faint);">${escRl(b.author)}</div>` : ''}
         </div>
+        ${progressHtml(b)}
         ${starsHtml(b)}
         ${statusSelect(b)}
-        <button class="rl-remove" onclick="removeBook(${b.id})" title="Remove">✕</button>
+        ${noteBtnHtml(b)}
+        ${removeBtnHtml(b)}
       </div>`).join('');
   }
 }
@@ -325,6 +503,10 @@ document.querySelectorAll('.book-tab').forEach(btn => {
 });
 
 document.getElementById('add-title').addEventListener('keydown', e => { if (e.key === 'Enter') addBook(); });
+document.getElementById('rl-edit-page').addEventListener('input', updateEditorPct);
+document.getElementById('rl-edit-backdrop').addEventListener('click', (e) => {
+  if (e.target === e.currentTarget) closeBookEditor();  // click outside the card closes
+});
 
 // ── Self-heal missing covers (entries added before the cover picker, or
 // synced from another device without one). Fills them via /search. ──
