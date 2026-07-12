@@ -16,6 +16,12 @@
 
   <link rel="canonical" href="{{ page.url | absolute_url }}">
 
+  <!-- PWA: installable app + offline-tolerant shell (see /sw.js) -->
+  <link rel="manifest" href="{{ '/manifest.json' | relative_url }}">
+  <meta name="theme-color" content="#171717">
+  <link rel="apple-touch-icon" href="{{ '/assets/icons/apple-touch-icon.png' | relative_url }}">
+  <link rel="icon" type="image/png" sizes="192x192" href="{{ '/assets/icons/icon-192.png' | relative_url }}">
+
   <!-- Inter from Google Fonts — closest free match to system-ui clarity -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -59,5 +65,13 @@
   {% include firebase.html %}
 
   <script src="{{ '/assets/js/main.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
+  <script>
+    // Register after load so the SW never competes with first-paint work.
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("{{ '/sw.js' | relative_url }}").catch(() => {});
+      });
+    }
+  </script>
 </body>
 </html>
