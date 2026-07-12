@@ -7,6 +7,30 @@ permalink: /authors/
 <section class="authors-index">
   <div class="container">
 
+    <!-- Dynamic single-author view (?a=<name>) — the fallback for author
+         links whose static /authors/<slug>/ page hasn't been published yet
+         (404.html redirects those here). Wikipedia bio via /author/info,
+         works via /author/works; each section hides when its data is
+         absent — never an invented bio. -->
+    <div id="author-dyn" style="display:none;">
+      <nav class="breadcrumb" aria-label="Breadcrumb" style="font-size:13px;color:var(--fg-faint);margin-bottom:20px;">
+        <a href="{{ '/authors/' | relative_url }}" style="color:inherit;">Authors</a>
+        <span aria-hidden="true"> / </span>
+        <span id="adyn-crumb"></span>
+      </nav>
+      <div style="display:flex;gap:28px;align-items:flex-start;flex-wrap:wrap;margin-bottom:36px;">
+        <div id="adyn-photo"></div>
+        <div style="flex:1;min-width:260px;">
+          <h1 id="adyn-name" style="font-size:28px;font-weight:800;letter-spacing:-0.5px;"></h1>
+          <div id="adyn-bio" style="font-size:15px;color:var(--fg-muted);line-height:1.75;margin-top:12px;max-width:640px;"></div>
+          <a id="adyn-wiki" href="#" target="_blank" rel="noopener" style="display:none;font-size:13px;font-weight:500;color:var(--accent);margin-top:10px;">Wikipedia →</a>
+        </div>
+      </div>
+      <h2 style="font-size:18px;font-weight:600;margin-bottom:16px;">Notable works</h2>
+      <div id="adyn-works" style="font-size:13px;color:var(--fg-muted);">Loading…</div>
+    </div>
+
+    <div id="authors-static">
     <header class="section-header" style="margin-bottom:32px;">
       <h1 class="section-title" style="font-size:30px;">Authors</h1>
       <p style="font-size:15px;color:var(--fg-muted);margin-top:10px;">Every author with summarized works on BookHub.</p>
@@ -38,6 +62,78 @@ permalink: /authors/
         <a href="{{ '/summary/' | relative_url }}" class="btn-primary" style="margin-top:14px;display:inline-block;">Summarize a book →</a>
       </div>
     {% endif %}
+    </div>
 
   </div>
 </section>
+
+<script>
+// Declared at the very top of the script: the ?a= entry point below runs
+// synchronously during parse on direct links (see the TDZ note in CLAUDE.md).
+const API = "{{ site.api_url }}";
+const SUMMARY_BASE = "{{ '/summary/' | relative_url }}";
+const escA = (s) => String(s == null ? "" : s)
+  .replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;")
+  .replaceAll('"', "&quot;").replaceAll("'", "&#39;");
+
+(function () {
+  const raw = new URLSearchParams(location.search).get("a");
+  if (!raw) return;
+  // 404 fallback passes the URL slug; a hand-typed link may pass a name.
+  const name = raw.includes("-") && !raw.includes(" ")
+    ? raw.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase())
+    : raw;
+
+  document.getElementById("authors-static").style.display = "none";
+  const dyn = document.getElementById("author-dyn");
+  dyn.style.display = "block";
+  document.title = name + " — BookHub";
+  document.getElementById("adyn-crumb").textContent = name;
+  document.getElementById("adyn-name").textContent = name;
+  document.getElementById("adyn-photo").innerHTML =
+    `<div style="width:140px;height:140px;border-radius:14px;background:var(--bg-subtle);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:42px;font-weight:800;color:var(--fg-faint);flex-shrink:0;">${escA(name.slice(0, 2))}</div>`;
+
+  // Wikipedia bio — absent bio just means the section stays empty.
+  fetch(`${API}/author/info?name=${encodeURIComponent(name)}`)
+    .then((r) => (r.ok ? r.json() : { found: false }))
+    .then((d) => {
+      if (!d.found) return;
+      if (d.bio) document.getElementById("adyn-bio").textContent = d.bio;
+      if (d.photo_url)
+        document.getElementById("adyn-photo").innerHTML =
+          `<img src="${escA(d.photo_url)}" alt="Photo of ${escA(name)}" style="width:140px;height:140px;object-fit:cover;border-radius:14px;border:1px solid var(--border);flex-shrink:0;">`;
+      if (d.wikipedia_url) {
+        const w = document.getElementById("adyn-wiki");
+        w.href = d.wikipedia_url;
+        w.style.display = "inline-block";
+      }
+    })
+    .catch(() => {});
+
+  // Real catalog works — each opens the dynamic summarizer.
+  fetch(`${API}/author/works?name=${encodeURIComponent(name)}`)
+    .then((r) => (r.ok ? r.json() : { works: [] }))
+    .then((d) => {
+      const works = d.works || [];
+      const box = document.getElementById("adyn-works");
+      if (!works.length) {
+        box.innerHTML = `No catalog works found yet — try <a href="${SUMMARY_BASE}?q=${encodeURIComponent(name)}" style="color:var(--accent);">searching BookHub</a>.`;
+        return;
+      }
+      box.innerHTML =
+        `<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:16px;">` +
+        works.map((w) => `
+          <a href="${SUMMARY_BASE}?q=${encodeURIComponent(w.title)}&author=${encodeURIComponent(w.author || name)}&direct=true"
+             style="text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:6px;">
+            ${w.cover_url
+              ? `<img src="${escA(w.cover_url)}" alt="Cover of ${escA(w.title)}" loading="lazy" style="width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:8px;border:1px solid var(--border);">`
+              : `<div style="width:100%;aspect-ratio:2/3;background:var(--bg-subtle);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--fg-faint);padding:8px;text-align:center;">${escA(w.title)}</div>`}
+            <p style="font-size:12px;font-weight:600;line-height:1.3;">${escA(w.title)}</p>
+            ${w.year ? `<p style="font-size:10px;color:var(--fg-faint);">${escA(String(w.year))}</p>` : ""}
+          </a>`).join("") + `</div>`;
+    })
+    .catch(() => {
+      document.getElementById("adyn-works").textContent = "Couldn't load works right now — try again in a moment.";
+    });
+})();
+</script>

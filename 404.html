@@ -1,0 +1,35 @@
+---
+layout: default
+title: "Page not found"
+permalink: /404.html
+sitemap: false
+---
+<section>
+  <div class="container" style="max-width:560px;text-align:center;padding:72px 16px;">
+    <h1 class="section-title" style="font-size:28px;">Page not found</h1>
+    <p style="font-size:14px;color:var(--fg-muted);margin-top:12px;line-height:1.7;">
+      This page doesn't exist (yet). Book and author pages are published as
+      readers summarize books — the one you followed may simply not be built.
+    </p>
+    <div style="display:flex;gap:10px;justify-content:center;margin-top:24px;flex-wrap:wrap;">
+      <a class="btn-primary" href="{{ '/summary/' | relative_url }}">Search a book</a>
+      <a class="btn-secondary" href="{{ '/' | relative_url }}">Home</a>
+    </div>
+  </div>
+</section>
+
+<script>
+// Unpublished-page fallbacks — the static page may not exist, but a dynamic
+// equivalent does. Redirect before the visitor even reads the 404:
+//   /authors/<slug>/  → /authors/?a=<slug>   (dynamic author view)
+//   /summary/<slug>/  → /summary/?b=<slug>   (share-slug resolver)
+(function () {
+  var BASE = "{{ '/' | relative_url }}";                    // e.g. "/bookhub/"
+  var base = BASE.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");   // regex-escaped
+  var p = location.pathname;
+  var m = p.match(new RegExp("^" + base + "authors/([^/]+)/?$"));
+  if (m) { location.replace(BASE + "authors/?a=" + encodeURIComponent(m[1])); return; }
+  m = p.match(new RegExp("^" + base + "summary/([^/]+)/?$"));
+  if (m) { location.replace(BASE + "summary/?b=" + encodeURIComponent(m[1])); return; }
+})();
+</script>

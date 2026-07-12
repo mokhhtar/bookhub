@@ -615,12 +615,7 @@ async function loadGenreRecs() {
   const box = document.getElementById('rl-genre-recs');
   if (!box) return;
   const list = getList();
-  const counts = new Map();
-  for (const b of list)
-    for (const c of (Array.isArray(b.categories) ? b.categories : []))
-      counts.set(c, (counts.get(c) || 0) + 1);
-  if (!counts.size) return;
-  const topCats = [...counts.entries()].sort((a, b) => b[1] - a[1]).slice(0, 2).map(e => e[0]);
+  if (!list.length) return;
 
   let books = [];
   try {
@@ -628,6 +623,24 @@ async function loadGenreRecs() {
     if (!res.ok) return;
     books = await res.json();
   } catch (e) { return; }
+
+  // A library item's categories: stored on the item (books added via the
+  // summary page since categories shipped) — or, for older/manual entries,
+  // derived by matching the title against the site's own published pages.
+  const pubByTitle = new Map();
+  for (const bk of books) {
+    const nt = rlNormTitle(bk.title);
+    if (nt && Array.isArray(bk.categories)) pubByTitle.set(nt, bk.categories);
+  }
+  const counts = new Map();
+  for (const b of list) {
+    const cats = (Array.isArray(b.categories) && b.categories.length)
+      ? b.categories
+      : (pubByTitle.get(rlNormTitle(b.title)) || []);
+    for (const c of cats) counts.set(c, (counts.get(c) || 0) + 1);
+  }
+  if (!counts.size) return;
+  const topCats = [...counts.entries()].sort((a, b) => b[1] - a[1]).slice(0, 2).map(e => e[0]);
 
   const owned = new Set(list.map(b => rlNormTitle(b.title)).filter(Boolean));
   const picks = [];
