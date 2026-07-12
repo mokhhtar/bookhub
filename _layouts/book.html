@@ -258,6 +258,43 @@ layout: default
       </div>
     {% endif %}
 
+    {% comment %} "More in <category>" — static internal links between
+        published pages sharing this book's first category. Unlike the
+        similar-books marquee (dynamic-summary URLs from catalog data),
+        these are real crawlable links to other /summary/<slug>/ pages —
+        the internal linking that makes the published library indexable
+        as a web, not a set of orphan pages. {% endcomment %}
+    {% assign first_cat = page.categories | first %}
+    {% if first_cat %}
+      {% assign cat_books = site.books | where_exp: "b", "b.categories contains first_cat" %}
+      {% assign cat_meta = site.data.categories | where: "slug", first_cat | first %}
+      {% assign shown = 0 %}
+      {% capture related_html %}
+        {% for b in cat_books %}
+          {% if b.slug != page.slug and shown < 8 %}
+            {% assign shown = shown | plus: 1 %}
+            <a href="{{ b.url | relative_url }}" style="text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:6px;">
+              {% if b.cover_url and b.cover_url != "" %}
+                <img src="{{ b.cover_url }}" alt="Cover of {{ b.title }}" loading="lazy"
+                     style="width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:8px;border:1px solid var(--border);">
+              {% else %}
+                <div style="width:100%;aspect-ratio:2/3;background:var(--bg-subtle);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--fg-faint);padding:8px;text-align:center;">{{ b.title | truncate: 40 }}</div>
+              {% endif %}
+              <p style="font-size:12px;font-weight:600;line-height:1.3;">{{ b.title }}</p>
+            </a>
+          {% endif %}
+        {% endfor %}
+      {% endcapture %}
+      {% if shown > 0 %}
+        <div class="summary-card" style="margin-top:24px;">
+          <div class="summary-card-title">More in {{ cat_meta.name | default: first_cat }}</div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:16px;">
+            {{ related_html }}
+          </div>
+        </div>
+      {% endif %}
+    {% endif %}
+
   </div>
 </article>
 

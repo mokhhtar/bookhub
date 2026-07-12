@@ -1,0 +1,25 @@
+---
+# Hand-rolled RSS for the books collection (jekyll-feed only does posts).
+layout: null
+permalink: /feed.xml
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>{{ site.title | xml_escape }} — new book guides</title>
+    <description>{{ site.description | xml_escape }}</description>
+    <link>{{ site.url }}{{ site.baseurl }}/</link>
+    <atom:link href="{{ '/feed.xml' | absolute_url }}" rel="self" type="application/rss+xml" />
+    <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
+    {% assign recent = site.books | sort: "date" | reverse %}
+    {% for book in recent limit: 20 %}
+    <item>
+      <title>{{ book.title | xml_escape }}{% if book.author and book.author != "" %} — {{ book.author | xml_escape }}{% endif %}</title>
+      <description>{{ book.description | default: book.excerpt | strip_html | truncate: 300 | xml_escape }}</description>
+      <link>{{ book.url | absolute_url }}</link>
+      <guid isPermaLink="true">{{ book.url | absolute_url }}</guid>
+      <pubDate>{{ book.date | date_to_rfc822 }}</pubDate>
+    </item>
+    {% endfor %}
+  </channel>
+</rss>
