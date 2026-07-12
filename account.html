@@ -88,6 +88,19 @@ permalink: /account/
   }
   .acct-input:focus { outline: none; border-color: var(--accent); }
   .acct-note { font-size: 12px; margin-top: 8px; }
+
+  /* Skeleton shimmer — shown while Firestore data loads (or refreshes
+     behind a cached instant paint). */
+  .bh-skel {
+    position: relative; overflow: hidden;
+    background: var(--bg-subtle); border-radius: 8px;
+  }
+  .bh-skel::after {
+    content: ""; position: absolute; inset: 0; transform: translateX(-100%);
+    background: linear-gradient(90deg, transparent, rgba(128,128,128,.12), transparent);
+    animation: bh-shimmer 1.2s infinite;
+  }
+  @keyframes bh-shimmer { 100% { transform: translateX(100%); } }
   .acct-meta-row { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; padding: 8px 0; border-bottom: 1px solid var(--border-subtle); }
   .acct-meta-row:last-child { border-bottom: 0; }
   .acct-meta-row span:first-child { color: var(--fg-faint); }
@@ -286,6 +299,31 @@ permalink: /account/
     .replaceAll('"', "&quot;").replaceAll("'", "&#39;");
   const pretty = (slug) => slug.replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase());
 
+  // ── Instant-paint snapshot ─────────────────────────────────
+  // Firebase restores the session ~1-2s after load; without help this page
+  // flashes the sign-in form at every visit. We keep a small per-account
+  // snapshot of the Firestore-backed sections (favorites, comments) in
+  // localStorage: on load, if the bh_auth_hint says a session exists, we
+  // paint the signed-in view from the snapshot immediately and let the real
+  // auth/network pass silently correct it. Cleared on sign-out alongside
+  // the other personal stores (see firebase.html).
+  const ACCT_CACHE_KEY = "bh_acct_cache_v1";
+  function readAcctCache() {
+    try { return JSON.parse(localStorage.getItem(ACCT_CACHE_KEY)) || null; } catch (e) { return null; }
+  }
+  function saveAcctCache(patch) {
+    try {
+      const uid = window.bhUser && window.bhUser.uid;
+      if (!uid) return;
+      let c = readAcctCache() || {};
+      if (c.uid !== uid) c = {};            // never mix two accounts' data
+      Object.assign(c, patch, { uid, ts: Date.now() });
+      localStorage.setItem(ACCT_CACHE_KEY, JSON.stringify(c));
+    } catch (e) {}
+  }
+  const skel = (h, n = 1) => Array.from({ length: n },
+    () => `<div class="bh-skel" style="height:${h}px;margin-bottom:8px;"></div>`).join("");
+
   // ── Tab switching ──────────────────────────────────────────
   window.acctTab = function (name) {
     document.querySelectorAll(".acct-tab").forEach(t => t.classList.toggle("active", t.dataset.tab === name));
@@ -458,22 +496,37 @@ permalink: /account/
         if (root === "characters") chars.push(item);
         else if (root === "authors") authors.push(item);
       });
-      renderFavAuthors(authors);
-      if (!chars.length) { box.textContent = "No favorites yet — open any character card and tap Favorite."; return; }
-      box.classList.remove("acct-empty");
-      box.innerHTML = `<div class="acct-char-grid">` + chars.map((it, i) => `
-        <a class="acct-char-card" href="{{ '/characters/' | relative_url }}${esc(it.slug)}/">
-          <button class="acct-char-x" title="Remove" onclick="event.preventDefault();acctUnlike(${i})">✕</button>
-          <span class="acct-char-avatar">${it.data.image_url ? `<img src="${esc(it.data.image_url)}" alt="">` : esc((it.data.name || it.slug).slice(0, 1).toUpperCase())}</span>
-          <span class="acct-char-name">${esc(it.data.name || pretty(it.slug))}</span>
-          ${it.data.book_title ? `<span class="acct-char-book">${esc(it.data.book_title)}</span>` : ""}
-        </a>`).join("") + `</div>`;
+      const charData = chars.map(it => ({
+        slug: it.slug, name: it.data.name || "",
+        image_url: it.data.image_url || "", book_title: it.data.book_title || "",
+      }));
+      const authorData = authors.map(it => ({ slug: it.slug, name: it.data.name || "" }));
+      paintFavAuthors(authorData, true);
+      paintFavChars(charData, true);
       window.__favRefs = chars.map(it => it.ref);
+      window.__favAuthorRefs = authors.map(it => it.ref);
+      saveAcctCache({ chars: charData, authors: authorData });
     } catch (e) {
       console.error("loadFavChars failed:", e);
       box.innerHTML = `Couldn't load your favorites right now. ` +
         `<button class="btn-secondary" style="padding:4px 12px;font-size:12px;" onclick="location.reload()">Retry</button>`;
     }
+  }
+
+  // One template for both paints: `interactive` = live Firestore data with
+  // working remove buttons; false = instant paint from the local snapshot
+  // (buttons hidden — refs aren't known yet; the live pass re-renders).
+  function paintFavChars(chars, interactive) {
+    const box = $("acct-favchars");
+    if (!chars.length) { box.textContent = "No favorites yet — open any character card and tap Favorite."; return; }
+    box.classList.remove("acct-empty");
+    box.innerHTML = `<div class="acct-char-grid">` + chars.map((c, i) => `
+      <a class="acct-char-card" href="{{ '/characters/' | relative_url }}${esc(c.slug)}/">
+        ${interactive ? `<button class="acct-char-x" title="Remove" onclick="event.preventDefault();acctUnlike(${i})">✕</button>` : ""}
+        <span class="acct-char-avatar">${c.image_url ? `<img src="${esc(c.image_url)}" alt="">` : esc((c.name || c.slug).slice(0, 1).toUpperCase())}</span>
+        <span class="acct-char-name">${esc(c.name || pretty(c.slug))}</span>
+        ${c.book_title ? `<span class="acct-char-book">${esc(c.book_title)}</span>` : ""}
+      </a>`).join("") + `</div>`;
   }
   window.acctUnlike = async function (i) {
     const ref = (window.__favRefs || [])[i];
@@ -481,16 +534,15 @@ permalink: /account/
     try { await window.bhFs.deleteDoc(ref); loadFavChars(window.bhUser); } catch (e) { console.error(e); }
   };
 
-  function renderFavAuthors(authors) {
+  function paintFavAuthors(authors, interactive) {
     const box = $("acct-favauthors");
     if (!authors.length) { box.textContent = "No favorite authors yet — tap the heart next to any author's name."; return; }
     box.classList.remove("acct-empty");
-    box.innerHTML = authors.map((it, i) => `
+    box.innerHTML = authors.map((a, i) => `
       <span style="display:inline-flex;align-items:center;gap:6px;border:1px solid var(--border);border-radius:999px;padding:6px 8px 6px 14px;margin:0 6px 8px 0;background:var(--bg);">
-        <a href="{{ '/authors/' | relative_url }}${esc(it.slug)}/" style="color:var(--fg);text-decoration:none;font-weight:600;font-size:13px;">${esc(it.data.name || pretty(it.slug))}</a>
-        <button onclick="acctUnlikeAuthor(${i})" title="Remove" style="border:0;background:var(--bg-subtle);border-radius:50%;width:20px;height:20px;cursor:pointer;color:var(--fg-faint);font-size:11px;line-height:1;">✕</button>
+        <a href="{{ '/authors/' | relative_url }}${esc(a.slug)}/" style="color:var(--fg);text-decoration:none;font-weight:600;font-size:13px;">${esc(a.name || pretty(a.slug))}</a>
+        ${interactive ? `<button onclick="acctUnlikeAuthor(${i})" title="Remove" style="border:0;background:var(--bg-subtle);border-radius:50%;width:20px;height:20px;cursor:pointer;color:var(--fg-faint);font-size:11px;line-height:1;">✕</button>` : ""}
       </span>`).join("");
-    window.__favAuthorRefs = authors.map(it => it.ref);
   }
   window.acctUnlikeAuthor = async function (i) {
     const ref = (window.__favAuthorRefs || [])[i];
@@ -516,25 +568,35 @@ permalink: /account/
         });
       });
       items.sort((a, b) => (b.data.createdAt?.seconds || 0) - (a.data.createdAt?.seconds || 0));
-      if (!items.length) { box.textContent = "No comments yet."; return; }
-      box.classList.remove("acct-empty");
-      box.innerHTML = items.map((it, i) => `
-        <div style="border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:8px;background:var(--bg);">
-          <p style="font-size:11px;color:var(--fg-faint);">
-            on ${it.kind === "authors"
-              ? `<a href="{{ '/authors/' | relative_url }}${esc(it.slug)}/" style="color:var(--accent);">${esc(pretty(it.slug))}</a> <span style="opacity:.7;">(author)</span>`
-              : `<a href="{{ '/summary/' | relative_url }}?b=${esc(it.slug)}" style="color:var(--accent);">${esc(pretty(it.slug))}</a>`}
-            · ${it.data.approved ? "<span style='color:#22a06b;font-weight:600;'>published</span>" : "<span style='color:var(--fg-faint);'>awaiting approval</span>"}
-          </p>
-          <p style="font-size:13px;color:var(--fg);line-height:1.55;margin:6px 0;white-space:pre-wrap;">${esc(it.data.text || "")}</p>
-          <button class="btn-secondary" style="padding:4px 12px;font-size:11px;" onclick="acctDelComment(${i})">Delete</button>
-        </div>`).join("");
+      const itemData = items.map(it => ({
+        slug: it.slug, kind: it.kind,
+        text: (it.data.text || "").slice(0, 500), approved: !!it.data.approved,
+      }));
+      paintMyComments(itemData, true);
       window.__myCommentRefs = items.map(it => it.ref);
+      saveAcctCache({ comments: itemData.slice(0, 20) });
     } catch (e) {
       console.error("loadMyComments failed:", e);
       box.innerHTML = `Couldn't load your comments right now. ` +
         `<button class="btn-secondary" style="padding:4px 12px;font-size:12px;" onclick="location.reload()">Retry</button>`;
     }
+  }
+
+  function paintMyComments(items, interactive) {
+    const box = $("acct-comments");
+    if (!items.length) { box.textContent = "No comments yet."; return; }
+    box.classList.remove("acct-empty");
+    box.innerHTML = items.map((it, i) => `
+      <div style="border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:8px;background:var(--bg);">
+        <p style="font-size:11px;color:var(--fg-faint);">
+          on ${it.kind === "authors"
+            ? `<a href="{{ '/authors/' | relative_url }}${esc(it.slug)}/" style="color:var(--accent);">${esc(pretty(it.slug))}</a> <span style="opacity:.7;">(author)</span>`
+            : `<a href="{{ '/summary/' | relative_url }}?b=${esc(it.slug)}" style="color:var(--accent);">${esc(pretty(it.slug))}</a>`}
+          · ${it.approved ? "<span style='color:#22a06b;font-weight:600;'>published</span>" : "<span style='color:var(--fg-faint);'>awaiting approval</span>"}
+        </p>
+        <p style="font-size:13px;color:var(--fg);line-height:1.55;margin:6px 0;white-space:pre-wrap;">${esc(it.text || "")}</p>
+        ${interactive ? `<button class="btn-secondary" style="padding:4px 12px;font-size:11px;" onclick="acctDelComment(${i})">Delete</button>` : ""}
+      </div>`).join("");
   }
   window.acctDelComment = async function (i) {
     const ref = (window.__myCommentRefs || [])[i];
@@ -572,12 +634,40 @@ permalink: /account/
       loadMyComments(user);
     }
   }
+  // ── Instant paint (before Firebase restores the session) ───
+  // If the auth hint says a session exists, show the signed-in view NOW:
+  // name from the hint, ratings/recent from localStorage, favorites and
+  // comments from the snapshot (or skeletons on first-ever visit). The real
+  // bh-auth pass re-renders everything interactive 1-2s later — or swaps to
+  // the sign-in form if the session truly expired.
+  function fastPaint(hint) {
+    $("acct-signed-out").style.display = "none";
+    $("acct-signed-in").style.display = "block";
+    $("acct-avatar").textContent = hint.slice(0, 1).toUpperCase();
+    $("acct-display-name").textContent = hint;
+    loadRecent();
+    loadRatings();
+    refreshReadingEmpty();
+    const c = readAcctCache();
+    if (c && Array.isArray(c.chars)) paintFavChars(c.chars, false);
+    else $("acct-favchars").innerHTML = skel(52, 2);
+    if (c && Array.isArray(c.authors)) paintFavAuthors(c.authors, false);
+    else $("acct-favauthors").innerHTML = skel(34, 2);
+    if (c && Array.isArray(c.comments)) paintMyComments(c.comments, false);
+    else $("acct-comments").innerHTML = skel(72, 2);
+  }
+
   document.addEventListener("bh-auth", (e) => {
     // On a real sign-out, leave the account page entirely — don't linger on
     // stale personal data — and give a clear "you're signed out" signal.
     if (e.detail.signedOut) { location.href = "{{ '/' | relative_url }}"; return; }
     render(e.detail.user);
   });
-  render(window.bhUser || null);
+
+  let bootHint = null;
+  try { bootHint = localStorage.getItem("bh_auth_hint"); } catch (e) {}
+  if (window.bhUser) render(window.bhUser);   // module already restored (rare)
+  else if (bootHint) fastPaint(bootHint);     // instant paint, corrected by bh-auth
+  else render(null);                          // genuinely signed out
 })();
 </script>

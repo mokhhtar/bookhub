@@ -320,6 +320,9 @@
   } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
   import {
     getFirestore,
+    initializeFirestore,
+    persistentLocalCache,
+    persistentMultipleTabManager,
     doc,
     getDoc,
     setDoc,
@@ -348,7 +351,19 @@
   // Explicit LOCAL persistence (IndexedDB) — sessions survive tabs,
   // restarts and direct links; no cookies involved.
   setPersistence(auth, browserLocalPersistence).catch(() => {});
-  const db = getFirestore(app);
+  // Firestore with a persistent (IndexedDB) local cache: repeat reads of
+  // favorites/comments/library paint from disk instantly while the network
+  // refresh happens behind them. Multi-tab manager keeps several open tabs
+  // sharing one cache. Falls back to the default in-memory instance where
+  // IndexedDB is unavailable (e.g. some private-browsing modes).
+  let db;
+  try {
+    db = initializeFirestore(app, {
+      localCache: persistentLocalCache({ tabManager: persistentMultipleTabManager() }),
+    });
+  } catch (e) {
+    db = getFirestore(app);
+  }
 
   // Auth state restores ASYNCHRONOUSLY (~1-2s) — without a hint the header
   // flashes "Sign in" on every page load and signed-in users think their
@@ -781,6 +796,7 @@
       try {
         localStorage.removeItem(RL_KEY);
         localStorage.removeItem("bookhub_recent_v1");
+        localStorage.removeItem("bh_acct_cache_v1"); // account-page snapshot
       } catch (e) {}
     }
 
