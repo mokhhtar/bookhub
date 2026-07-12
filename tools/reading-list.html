@@ -344,13 +344,45 @@ async function backfillCovers() {
 // ── Recommended for you — grounded in the authors you're already
 // tracking. Real works from /author/works only; excludes what's already
 // in your library; hides itself entirely when there's nothing to show. ──
+// Loose title key for matching: lowercase, drop a ": subtitle", strip a
+// leading article, remove non-alphanumerics. Catches punctuation / article /
+// subtitle variants (not semantic ones like "1984" vs the spelled-out title).
+function rlNormTitle(t) {
+  return String(t || '')
+    .toLowerCase()
+    .split(':')[0]
+    .replace(/^(the|a|an)\s+/, '')
+    .replace(/[^a-z0-9]+/g, '');
+}
+
+// /author/works cached per author for the session, so the double-run
+// (parse + post-login merge) and repeat visits don't refetch. Returns [].
+async function rlAuthorWorks(author) {
+  const key = 'bh_aw_' + author.toLowerCase();
+  try { const c = sessionStorage.getItem(key); if (c) return JSON.parse(c); } catch (e) {}
+  try {
+    const res = await fetch(`${API}/author/works?name=${encodeURIComponent(author)}`);
+    if (!res.ok) return [];
+    const works = (await res.json()).works || [];
+    try { sessionStorage.setItem(key, JSON.stringify(works)); } catch (e) {}
+    return works;
+  } catch (e) { return []; }
+}
+
 async function loadRecommendations() {
   const box = document.getElementById('rl-recs');
   if (!box) return;
   const list = getList();
   if (!list.length) return;   // nothing to base recommendations on
 
-  const owned = new Set(list.map(b => (b.title || '').toLowerCase().trim()));
+  // Exclude anything already owned — by normalized title AND by catalog id
+  // (openlibrary/google), so the same work under a variant title is dropped.
+  const ownedTitles = new Set(list.map(b => rlNormTitle(b.title)).filter(Boolean));
+  const ownedIds = new Set();
+  for (const b of list) {
+    if (b.openlibrary_id) ownedIds.add(String(b.openlibrary_id));
+    if (b.google_id) ownedIds.add(String(b.google_id));
+  }
   // Distinct authors, most-recently-added first (list is already newest-first).
   const authors = [];
   const seenAuthor = new Set();
@@ -364,17 +396,14 @@ async function loadRecommendations() {
   const recs = [];
   const seenRec = new Set();
   await Promise.all(authors.map(async (author) => {
-    try {
-      const res = await fetch(`${API}/author/works?name=${encodeURIComponent(author)}`);
-      if (!res.ok) return;
-      const data = await res.json();
-      for (const w of (data.works || [])) {
-        const t = (w.title || '').toLowerCase().trim();
-        if (!w.cover_url || owned.has(t) || seenRec.has(t)) continue;
-        seenRec.add(t);
-        recs.push({ ...w, _via: author });
-      }
-    } catch (e) { /* skip this author */ }
+    for (const w of await rlAuthorWorks(author)) {
+      const nt = rlNormTitle(w.title);
+      const wid = w.openlibrary_id ? String(w.openlibrary_id) : '';
+      if (!w.cover_url || !nt || ownedTitles.has(nt) || seenRec.has(nt)
+          || (wid && ownedIds.has(wid))) continue;
+      seenRec.add(nt);
+      recs.push({ ...w, _via: author });
+    }
   }));
 
   if (!recs.length) return;
@@ -394,14 +423,19 @@ async function loadRecommendations() {
 }
 
 render();
-backfillCovers();
-loadRecommendations();
-document.addEventListener('bh-library-synced', () => { render(); backfillCovers(); loadRecommendations(); });
+loadRecommendations();  // uses fetch/API only — safe to run at parse time.
 
-// On a real sign-out, leave My Library immediately — the signed-out account's
-// library/ratings have just been cleared from localStorage (see firebase.html),
-// so redirect home rather than showing an emptied page to the next person.
+// bh-auth fires once the deferred firebase module has initialised (for
+// signed-OUT visitors too), so it's the earliest point window.bhBackfillCovers
+// exists — run the cover self-heal here, NOT at parse where it would no-op.
+// A real sign-out redirects home instead (the account's library/recent were
+// just cleared from localStorage in firebase.html).
 document.addEventListener('bh-auth', (e) => {
-  if (e.detail && e.detail.signedOut) location.href = "{{ '/' | relative_url }}";
+  if (e.detail && e.detail.signedOut) { location.href = "{{ '/' | relative_url }}"; return; }
+  backfillCovers();
 });
+
+// After a signed-in cloud merge pulls the account's library into localStorage,
+// re-render and refresh covers + recommendations from the merged list.
+document.addEventListener('bh-library-synced', () => { render(); backfillCovers(); loadRecommendations(); });
 </script>
