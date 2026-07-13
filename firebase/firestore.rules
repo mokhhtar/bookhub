@@ -100,6 +100,25 @@ service cloud.firestore {
       allow update: if false;
     }
 
+    // ── Reader star ratings (1-5, one per user per book) ─────
+    // books/{bookSlug}/ratings/{uid}: {stars, updatedAt}
+    // Doc id == rater uid → structurally one rating per user per book;
+    // update allowed so a reader can change their mind. Public read so
+    // COUNT aggregations work for every visitor — a rating carries no
+    // PII. Not gated on email_verified (same decision as likes/recs:
+    // low-stakes signals, only text content needs the verified gate).
+    match /books/{bookSlug}/ratings/{uid} {
+      allow read: if true;
+      allow create, update: if signedIn()
+        && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly(["stars", "updatedAt"])
+        && request.resource.data.stars is int
+        && request.resource.data.stars >= 1
+        && request.resource.data.stars <= 5
+        && request.resource.data.updatedAt == request.time;
+      allow delete: if signedIn() && request.auth.uid == uid;  // clear my rating
+    }
+
     // ── Character likes (favorite a character) ───────────────
     // characters/{charSlug}/likes/{uid}:
     //   {createdAt, uid, name?, image_url?, book_title?}

@@ -278,6 +278,7 @@ function importLibrary(input) {
           categories: Array.isArray(b.categories)
             ? b.categories.filter(c => typeof c === 'string').slice(0, 3) : [],
           b: typeof b.b === 'string' ? b.b.slice(0, 200) : '',
+          slug: typeof b.slug === 'string' ? b.slug.slice(0, 200) : '',
         });
         added++;
       }
@@ -385,7 +386,17 @@ function addBook() {
 function removeBook(id) { saveList(getList().filter(b => b.id !== id)); render(); }
 function setStatus(id, status) { saveList(getList().map(b => b.id === id ? { ...b, status } : b)); render(); }
 function setRating(id, rating) {
-  saveList(getList().map(b => b.id === id ? { ...b, rating: b.rating === rating ? 0 : rating } : b));
+  let publishSlug = '', publishStars = 0;
+  saveList(getList().map(b => {
+    if (b.id !== id) return b;
+    const next = { ...b, rating: b.rating === rating ? 0 : rating };
+    // Mirror to the public per-book aggregate when we know the book's
+    // canonical slug (items added via the summary page carry it).
+    publishSlug = b.slug || '';
+    publishStars = next.rating;
+    return next;
+  }));
+  if (publishSlug && window.bhPublishRating) window.bhPublishRating(publishSlug, publishStars);
   render();
 }
 function setView(v) {

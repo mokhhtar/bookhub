@@ -724,6 +724,51 @@
     await pushLibrary();
   }
 
+  // ── Reader star ratings (books/{slug}/ratings/{uid}) ──────
+  // Publish the signed-in user's 1-5 star rating, or remove it when stars
+  // is 0/null (rating toggled off). Fire-and-forget: the local library
+  // rating stays the user's own source of truth; this only feeds the
+  // public per-book aggregate.
+  window.bhPublishRating = async function (slug, stars) {
+    try {
+      if (!window.bhUser || !slug) return;
+      const ref = doc(db, "books", slug, "ratings", window.bhUser.uid);
+      const s = Math.round(Number(stars) || 0);
+      if (s >= 1 && s <= 5) {
+        await setDoc(ref, { stars: s, updatedAt: serverTimestamp() });
+      } else {
+        await deleteDoc(ref);
+      }
+    } catch (e) {
+      console.warn("Rating publish failed:", e && e.code, e);
+    }
+  };
+
+  // Aggregate a book's reader ratings via five COUNT queries (one per
+  // star) — no stored aggregate to drift, cheap on the free tier.
+  // Returns {total, avg, dist:{1..5}} or null when nobody rated yet, so
+  // callers hide the section entirely (no data beats wrong data).
+  window.bhFetchRatingStats = async function (slug) {
+    try {
+      if (!slug) return null;
+      const col = collection(db, "books", slug, "ratings");
+      const counts = await Promise.all([1, 2, 3, 4, 5].map((s) =>
+        getCountFromServer(query(col, where("stars", "==", s)))));
+      const dist = {};
+      let total = 0, sum = 0;
+      counts.forEach((c, i) => {
+        const n = c.data().count;
+        dist[i + 1] = n;
+        total += n;
+        sum += n * (i + 1);
+      });
+      return total ? { total, avg: sum / total, dist } : null;
+    } catch (e) {
+      console.warn("Rating stats failed:", e && e.code, e);
+      return null;
+    }
+  };
+
   // ── Shared cover backfill (self-heal) ─────────────────────
   // Entries saved before the cover picker existed, added via a flow that
   // had no cover, or synced from another device, can lack a cover image.

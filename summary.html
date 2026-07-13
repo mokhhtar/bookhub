@@ -1647,6 +1647,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
             Reader Comments
           </div>
+          <div id="reader-ratings" style="display:none;margin-bottom:14px;"></div>
           <button class="btn-secondary" id="comments-load-btn" onclick="loadComments()" style="padding:8px 18px;font-size:13px;">Show comments</button>
           <div id="comments-area" style="display:none;"></div>
         </div>` : '';
@@ -1908,10 +1909,15 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
       recordRecentView(data);
       window.__bhCurrentCover = data.cover_url || '';       // for library adds
       window.__bhCurrentShareSlug = data.share_slug || '';
+      // The COMMENTS/RATINGS key — books/{slug}/... — is data.slug (book
+      // only), NOT share_slug (book+author). Stored separately so the
+      // shelf bar can publish public star ratings under the right key.
+      window.__bhCurrentBookSlug = data.slug || '';
       // Category slugs + page count ride along into library items: genre
       // recommendations and reading-progress % need them later.
       window.__bhCurrentCategories = Array.isArray(data.categories) ? data.categories.slice(0, 3) : [];
       window.__bhCurrentPages = data.page_count > 0 ? data.page_count : 0;
+      loadReaderRatings(data.slug || '');
       __charDetailsCache = {};   // fresh book → fresh character state
       __charOpenIndex = -1;
 
@@ -2052,6 +2058,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
           id: Date.now(), title: currentBookTitle, author: currentBookAuthor || '',
           status: 'want', rating: 0, addedAt: Date.now(),
           cover_url: (window.__bhCurrentCover || ''), b: (window.__bhCurrentShareSlug || ''),
+          slug: (window.__bhCurrentBookSlug || ''),
           categories: (window.__bhCurrentCategories || []),
           page_count: (window.__bhCurrentPages || 0),
         });
@@ -2161,6 +2168,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
         entry = { id: Date.now(), title: currentBookTitle, author: currentBookAuthor || '',
                   status: 'want', rating: 0, addedAt: Date.now(),
                   cover_url: (window.__bhCurrentCover || ''), b: (window.__bhCurrentShareSlug || ''),
+                  slug: (window.__bhCurrentBookSlug || ''),
                   categories: (window.__bhCurrentCategories || []),
                   page_count: (window.__bhCurrentPages || 0) };
         list.unshift(entry);
@@ -2178,7 +2186,14 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
     shelfSave(e => { e.status = (cur && cur.status === s) ? e.status : s; });
   };
   window.setShelfRating = function (n) {
-    shelfSave(e => { e.rating = (e.rating === n) ? 0 : n; });  // tap again clears
+    let finalRating = 0;
+    shelfSave(e => { e.rating = (e.rating === n) ? 0 : n; finalRating = e.rating; });  // tap again clears
+    // Mirror to the public per-book aggregate (signed-in users only —
+    // bhPublishRating no-ops otherwise). Refresh the displayed stats after.
+    if (window.bhPublishRating && window.__bhCurrentBookSlug) {
+      window.bhPublishRating(window.__bhCurrentBookSlug, finalRating)
+        .then(() => loadReaderRatings(window.__bhCurrentBookSlug));
+    }
   };
 
   function refreshShelfBar() {
@@ -2258,6 +2273,42 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
       render({ description: c.description || "Details unavailable right now.", facts: {} });
     }
   };
+
+  // ── BookHub readers' star ratings (aggregate display) ─────
+  // Shows "★ 4.2 · 12 reader ratings" + a 5-bar histogram inside the
+  // comments card. Hidden entirely until at least one reader has rated
+  // (no data beats wrong data). Retries once the firebase module is
+  // ready, since the summary can render before it loads.
+  async function loadReaderRatings(slug) {
+    const box = document.getElementById("reader-ratings");
+    if (!box || !slug) return;
+    if (!window.bhFetchRatingStats) {
+      document.addEventListener("bh-auth", () => loadReaderRatings(slug), { once: true });
+      return;
+    }
+    const stats = await window.bhFetchRatingStats(slug);
+    if (!stats) { box.style.display = "none"; return; }
+    const bars = [5, 4, 3, 2, 1].map(s => {
+      const n = stats.dist[s] || 0;
+      const pct = Math.round(n / stats.total * 100);
+      return `
+        <div style="display:flex;align-items:center;gap:8px;font-size:11px;color:var(--fg-faint);">
+          <span style="width:22px;flex-shrink:0;">${s}★</span>
+          <div style="flex:1;height:6px;background:var(--bg-subtle);border-radius:3px;overflow:hidden;">
+            <div style="width:${pct}%;height:100%;background:#f5a623;border-radius:3px;"></div>
+          </div>
+          <span style="width:34px;text-align:right;">${n}</span>
+        </div>`;
+    }).join("");
+    box.innerHTML = `
+      <p style="font-size:13px;font-weight:700;margin-bottom:8px;">
+        <span style="color:#f5a623;font-size:15px;">★</span> ${stats.avg.toFixed(1)} / 5
+        <span style="font-weight:400;color:var(--fg-faint);">· ${stats.total} reader rating${stats.total > 1 ? "s" : ""} on BookHub</span>
+      </p>
+      <div style="display:flex;flex-direction:column;gap:4px;max-width:340px;">${bars}</div>`;
+    box.style.display = "block";
+  }
+  window.loadReaderRatings = loadReaderRatings;
 
   // ── Recommend button (Firestore recs, one vote per user) ──
   async function refreshRecommendBtn() {

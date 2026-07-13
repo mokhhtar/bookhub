@@ -117,6 +117,11 @@ layout: default
       </div>
     </div>
 
+    {% comment %} BookHub readers' own star ratings (Firestore aggregate).
+        Hidden until at least one reader has rated — populated client-side
+        once the firebase module is ready. {% endcomment %}
+    <div id="bh-reader-ratings" style="display:none;border:1px solid var(--border);border-radius:12px;background:var(--bg);padding:16px 18px;margin:20px 0;"></div>
+
     {% comment %} Transparency: what generated this page and what it's grounded in. {% endcomment %}
     <div class="ai-disclosure-notice">
       <strong>How this page was made:</strong> the summary below was written with AI assistance, grounded in the book's official description{% if page.isbn_13 and page.isbn_13 != "" or page.isbn_10 and page.isbn_10 != "" %} (Google Books / Open Library){% endif %}.
@@ -322,14 +327,51 @@ layout: default
       try {
         const list = JSON.parse(localStorage.getItem(RL_KEY)) || [];
         if (!has()) {
-          list.unshift({ id: Date.now(), title: TITLE, author: AUTHOR || '', status: 'want', rating: 0, addedAt: Date.now() });
+          // Full metadata — same shape as summary-page adds, so genre recs,
+          // progress % and public-rating publish all work for this item.
+          list.unshift({
+            id: Date.now(), title: TITLE, author: AUTHOR || '', status: 'want',
+            rating: 0, addedAt: Date.now(),
+            cover_url: {{ page.cover_url | jsonify }} || '',
+            slug: {{ page.slug | jsonify }} || '',
+            categories: {{ page.categories | jsonify }} || [],
+            page_count: {{ page.page_count | default: 0 | jsonify }} || 0,
+          });
           localStorage.setItem(RL_KEY, JSON.stringify(list));
+          if (window.bhLibraryChanged) window.bhLibraryChanged();
         }
         refresh();
       } catch (e) {}
     };
     refresh();
   })();
+
+  // ── BookHub readers' star ratings (aggregate, display-only) ──
+  // bh-auth fires once the firebase module is ready (signed-out too);
+  // stats hidden entirely until at least one reader has rated.
+  document.addEventListener('bh-auth', async function onceRatings() {
+    document.removeEventListener('bh-auth', onceRatings);
+    if (!window.bhFetchRatingStats) return;
+    const box = document.getElementById('bh-reader-ratings');
+    const stats = await window.bhFetchRatingStats({{ page.slug | jsonify }});
+    if (!box || !stats) return;
+    const bars = [5, 4, 3, 2, 1].map(s => {
+      const n = stats.dist[s] || 0;
+      const pct = Math.round(n / stats.total * 100);
+      return '<div style="display:flex;align-items:center;gap:8px;font-size:11px;color:var(--fg-faint);">' +
+        '<span style="width:22px;flex-shrink:0;">' + s + '★</span>' +
+        '<div style="flex:1;height:6px;background:var(--bg-subtle);border-radius:3px;overflow:hidden;">' +
+        '<div style="width:' + pct + '%;height:100%;background:#f5a623;border-radius:3px;"></div></div>' +
+        '<span style="width:34px;text-align:right;">' + n + '</span></div>';
+    }).join('');
+    box.innerHTML =
+      '<p style="font-size:13px;font-weight:700;margin-bottom:8px;">' +
+      '<span style="color:#f5a623;font-size:15px;">★</span> ' + stats.avg.toFixed(1) + ' / 5 ' +
+      '<span style="font-weight:400;color:var(--fg-faint);">· ' + stats.total +
+      ' reader rating' + (stats.total > 1 ? 's' : '') + ' on BookHub</span></p>' +
+      '<div style="display:flex;flex-direction:column;gap:4px;max-width:340px;">' + bars + '</div>';
+    box.style.display = 'block';
+  });
 </script>
 
 {% comment %} Additive Book schema — coexists with jekyll-seo-tag's own JSON-LD block (Google supports multiple structured-data blocks per page). {% endcomment %}
