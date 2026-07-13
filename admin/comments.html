@@ -41,41 +41,47 @@ sitemap: false
     const fs = window.bhFs, db = window.bhFirebase.db;
     statusEl.textContent = "Loading pending items…";
     let docs = [];
-    try {
-      // Two collection-group queries: comments (book + author reviews) and
-      // reader_recs. Each needs its own composite index (approved==false).
-      const [cSnap, rSnap] = await Promise.all([
-        fs.getDocs(fs.query(fs.collectionGroup(db, "comments"),
-          fs.where("approved", "==", false), fs.limit(100))),
-        fs.getDocs(fs.query(fs.collectionGroup(db, "reader_recs"),
-          fs.where("approved", "==", false), fs.limit(100))),
-      ]);
-      cSnap.forEach(d => docs.push(d));
-      rSnap.forEach(d => docs.push(d));
-    } catch (e) {
-      // Two expected cases: not the admin (permission-denied), or the
-      // collection-group index doesn't exist yet (failed-precondition —
-      // the browser console then contains a one-click index-creation link).
+    // Two independent collection-group queries: comments (book + author
+    // reviews) and reader_recs. allSettled so a missing index on one
+    // (reader_recs needs its own collection-group index on `approved`)
+    // never hides the other — comment moderation keeps working.
+    const [cRes, rRes] = await Promise.allSettled([
+      fs.getDocs(fs.query(fs.collectionGroup(db, "comments"),
+        fs.where("approved", "==", false), fs.limit(100))),
+      fs.getDocs(fs.query(fs.collectionGroup(db, "reader_recs"),
+        fs.where("approved", "==", false), fs.limit(100))),
+    ]);
+    if (cRes.status === "fulfilled") cRes.value.forEach(d => docs.push(d));
+    if (rRes.status === "fulfilled") rRes.value.forEach(d => docs.push(d));
+
+    const fail = [cRes, rRes].find(r => r.status === "rejected");
+    let partialNote = "";
+    if (fail) {
+      const e = fail.reason || {};
       if (e.code === "permission-denied") {
         statusEl.textContent = "This account is not authorized for moderation.";
-      } else if (/not ready|building/i.test(e.message || "")) {
-        statusEl.innerHTML = "The Firestore index is still building (takes a few minutes after enabling it). " +
-          "<button class='btn-secondary' style='padding:4px 12px;font-size:12px;margin-left:6px;' onclick='location.reload()'>Retry</button>";
-      } else {
-        statusEl.textContent = "Couldn't load — check the browser console (a missing Firestore index shows a creation link there).";
+        console.error(e);
+        return;   // both queries share the same auth — neither will load
       }
+      // A missing/building index on ONE query — note it but still render
+      // whatever the other query returned.
       console.error(e);
-      return;
+      partialNote = /not ready|building|index/i.test(e.message || "")
+        ? " · one list needs a Firestore index (console has a one-click link)"
+        : " · one list failed to load (see console)";
     }
 
     if (!docs.length) {
-      statusEl.textContent = "No pending items — all clear ✓";
+      statusEl.innerHTML = partialNote
+        ? "No items loaded" + partialNote +
+          " <button class='btn-secondary' style='padding:4px 12px;font-size:12px;margin-left:6px;' onclick='location.reload()'>Retry</button>"
+        : "No pending items — all clear ✓";
       listEl.innerHTML = "";
       return;
     }
     // Newest first across both types.
     docs.sort((a, b) => (b.data().createdAt?.seconds || 0) - (a.data().createdAt?.seconds || 0));
-    statusEl.textContent = `${docs.length} pending item${docs.length > 1 ? "s" : ""}:`;
+    statusEl.textContent = `${docs.length} pending item${docs.length > 1 ? "s" : ""}:` + partialNote;
     listEl.innerHTML = docs.map((d, i) => {
       const c = d.data();
       const coll = d.ref.parent.id;                       // "comments" | "reader_recs"
