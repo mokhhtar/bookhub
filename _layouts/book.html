@@ -41,6 +41,21 @@ layout: default
 </style>
 {% assign has_ratings = false %}
 {% if page.ratings and page.ratings.average %}{% assign has_ratings = true %}{% endif %}
+
+{% comment %} Community-data key (ratings/comments/recs) — must match the
+    dynamic summary page's canonical_id. Prefer the stored canonical_id
+    (new pages); else derive it from the Open Library work key the same way
+    the backend does; else fall back to the URL slug (pages published before
+    canonical_id, and books that resolved without a work key). {% endcomment %}
+{% assign bh_bookkey = page.canonical_id %}
+{% if bh_bookkey == nil or bh_bookkey == "" %}
+  {% if page.openlibrary_id and page.openlibrary_id != "" %}
+    {% assign bh_bookkey = page.openlibrary_id | remove: "/works/" | remove: "/books/" | downcase | prepend: "w-" %}
+  {% else %}
+    {% assign bh_bookkey = page.slug %}
+  {% endif %}
+{% endif %}
+
 <article class="book-page" itemscope itemtype="https://schema.org/Book">
   <div class="container">
 
@@ -341,7 +356,7 @@ layout: default
             id: Date.now(), title: TITLE, author: AUTHOR || '', status: 'want',
             rating: 0, addedAt: Date.now(),
             cover_url: {{ page.cover_url | jsonify }} || '',
-            slug: {{ page.slug | jsonify }} || '',
+            slug: {{ bh_bookkey | jsonify }} || '',
             categories: {{ page.categories | jsonify }} || [],
             page_count: {{ page.page_count | default: 0 | jsonify }} || 0,
           });
@@ -361,7 +376,7 @@ layout: default
     document.removeEventListener('bh-auth', onceRatings);
     if (!window.bhFetchRatingStats) return;
     const box = document.getElementById('bh-reader-ratings');
-    const stats = await window.bhFetchRatingStats({{ page.slug | jsonify }});
+    const stats = await window.bhFetchRatingStats({{ bh_bookkey | jsonify }});
     if (!box || !stats) return;
     const bars = [5, 4, 3, 2, 1].map(s => {
       const n = stats.dist[s] || 0;
@@ -392,7 +407,7 @@ layout: default
     let items = [];
     try {
       const snap = await fs.getDocs(fs.query(
-        fs.collection(fb.db, 'books', {{ page.slug | jsonify }}, 'reader_recs'),
+        fs.collection(fb.db, 'books', {{ bh_bookkey | jsonify }}, 'reader_recs'),
         fs.where('approved', '==', true), fs.limit(30)));
       snap.forEach(d => items.push(d.data()));
       items.sort((a, b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0));
