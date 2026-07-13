@@ -100,6 +100,44 @@ service cloud.firestore {
       allow update: if false;
     }
 
+    // ── Reader recommendations (pre-moderated) ───────────────
+    // books/{bookSlug}/reader_recs/{recId}:
+    //   {uid, name, rec_title, rec_author, rec_cover, reason, createdAt, approved}
+    // A reader recommends ANOTHER book as similar to bookSlug, with a
+    // reason. Same pre-moderation contract as comments: created
+    // approved=false, publicly readable only once an admin approves; the
+    // recommended book's title/author/cover are captured from the /search
+    // picker (a real catalog book, not free text). Text content → the
+    // email_verified gate applies.
+    match /books/{bookSlug}/reader_recs/{recId} {
+      allow read: if resource.data.approved == true
+        || (signedIn() && resource.data.uid == request.auth.uid)
+        || isAdmin();
+      allow create: if signedIn()
+        && request.auth.token.email_verified == true
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.approved == false
+        && request.resource.data.rec_title is string
+        && request.resource.data.rec_title.size() >= 1
+        && request.resource.data.rec_title.size() <= 200
+        && request.resource.data.rec_author is string
+        && request.resource.data.rec_author.size() <= 200
+        && request.resource.data.rec_cover is string
+        && request.resource.data.rec_cover.size() <= 500
+        && request.resource.data.reason is string
+        && request.resource.data.reason.size() >= 2
+        && request.resource.data.reason.size() <= 600
+        && request.resource.data.name is string
+        && request.resource.data.name.size() <= 40
+        && request.resource.data.createdAt == request.time
+        && request.resource.data.keys().hasOnly(
+             ["uid", "name", "rec_title", "rec_author", "rec_cover",
+              "reason", "createdAt", "approved"]);
+      allow update: if isAdmin();  // approve
+      allow delete: if isAdmin()
+        || (signedIn() && resource.data.uid == request.auth.uid);
+    }
+
     // ── Reader star ratings (1-5, one per user per book) ─────
     // books/{bookSlug}/ratings/{uid}: {stars, updatedAt}
     // Doc id == rater uid → structurally one rating per user per book;
@@ -204,6 +242,13 @@ service cloud.firestore {
     }
     match /{path=**}/likes/{likeId} {
       allow read: if signedIn() && resource.data.uid == request.auth.uid;
+    }
+    // reader_recs group query — admin moderates all pending; owner may list
+    // their own (both MUST filter, e.g. where("approved","==",false) for
+    // admin or where("uid","==",me) for owner, or they're denied wholesale).
+    match /{path=**}/reader_recs/{recId} {
+      allow read: if isAdmin()
+        || (signedIn() && resource.data.uid == request.auth.uid);
     }
 
     // Everything else: denied.

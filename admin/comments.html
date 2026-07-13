@@ -9,11 +9,11 @@ sitemap: false
 <section class="admin-comments">
   <div class="container" style="max-width:760px;">
     <header class="section-header" style="margin-bottom:24px;">
-      <h1 class="section-title" style="font-size:26px;">Comment moderation</h1>
+      <h1 class="section-title" style="font-size:26px;">Moderation</h1>
       <p style="font-size:13px;color:var(--fg-muted);margin-top:8px;">
-        Pending comments across every book. Only the admin account (the UID
-        set in firestore.rules) can load this list — anyone else gets a
-        permission error.
+        Pending comments, author reviews, and reader recommendations across
+        every book. Only the admin account (the UID set in firestore.rules)
+        can load this list — anyone else gets a permission error.
       </p>
     </header>
 
@@ -39,13 +39,19 @@ sitemap: false
       return;
     }
     const fs = window.bhFs, db = window.bhFirebase.db;
-    statusEl.textContent = "Loading pending comments…";
+    statusEl.textContent = "Loading pending items…";
     let docs = [];
     try {
-      const snap = await fs.getDocs(fs.query(
-        fs.collectionGroup(db, "comments"),
-        fs.where("approved", "==", false), fs.limit(100)));
-      snap.forEach(d => docs.push(d));
+      // Two collection-group queries: comments (book + author reviews) and
+      // reader_recs. Each needs its own composite index (approved==false).
+      const [cSnap, rSnap] = await Promise.all([
+        fs.getDocs(fs.query(fs.collectionGroup(db, "comments"),
+          fs.where("approved", "==", false), fs.limit(100))),
+        fs.getDocs(fs.query(fs.collectionGroup(db, "reader_recs"),
+          fs.where("approved", "==", false), fs.limit(100))),
+      ]);
+      cSnap.forEach(d => docs.push(d));
+      rSnap.forEach(d => docs.push(d));
     } catch (e) {
       // Two expected cases: not the admin (permission-denied), or the
       // collection-group index doesn't exist yet (failed-precondition —
@@ -63,17 +69,32 @@ sitemap: false
     }
 
     if (!docs.length) {
-      statusEl.textContent = "No pending comments — all clear ✓";
+      statusEl.textContent = "No pending items — all clear ✓";
       listEl.innerHTML = "";
       return;
     }
-    statusEl.textContent = `${docs.length} pending comment${docs.length > 1 ? "s" : ""}:`;
+    // Newest first across both types.
+    docs.sort((a, b) => (b.data().createdAt?.seconds || 0) - (a.data().createdAt?.seconds || 0));
+    statusEl.textContent = `${docs.length} pending item${docs.length > 1 ? "s" : ""}:`;
     listEl.innerHTML = docs.map((d, i) => {
       const c = d.data();
+      const coll = d.ref.parent.id;                       // "comments" | "reader_recs"
       const slug = d.ref.parent.parent ? d.ref.parent.parent.id : "?";
-      const kind = d.ref.parent.parent && d.ref.parent.parent.parent
+      const root = d.ref.parent.parent && d.ref.parent.parent.parent
         ? d.ref.parent.parent.parent.id : "";
-      const tag = kind === "authors" ? " (author)" : kind === "books" ? "" : "";
+      // Reader recommendation: show the recommended book + reason.
+      if (coll === "reader_recs") {
+        return `
+          <div style="border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:10px;" id="mod-item-${i}">
+            <p style="font-size:11px;color:var(--fg-faint);">recommends <b>${esc(c.rec_title || "?")}</b>${c.rec_author ? " · " + esc(c.rec_author) : ""} on <b>${esc(slug)}</b> <span style="opacity:.7;">(recommendation)</span> · by <b>${esc(c.name || "Reader")}</b>${c.createdAt ? " · " + new Date(c.createdAt.seconds * 1000).toLocaleString() : ""}</p>
+            <p style="font-size:13px;color:var(--fg);line-height:1.6;margin:8px 0;white-space:pre-wrap;">${esc(c.reason || "")}</p>
+            <div style="display:flex;gap:8px;">
+              <button class="btn-primary" style="padding:6px 16px;font-size:12px;" onclick="modAct(${i}, 'approve')">Approve</button>
+              <button class="btn-secondary" style="padding:6px 16px;font-size:12px;" onclick="modAct(${i}, 'delete')">Delete</button>
+            </div>
+          </div>`;
+      }
+      const tag = root === "authors" ? " (author)" : "";
       return `
         <div style="border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:10px;" id="mod-item-${i}">
           <p style="font-size:11px;color:var(--fg-faint);">on <b>${esc(slug)}</b>${tag} · by <b>${esc(c.name || "Reader")}</b>${c.createdAt ? " · " + new Date(c.createdAt.seconds * 1000).toLocaleString() : ""}</p>

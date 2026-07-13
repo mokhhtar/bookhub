@@ -300,6 +300,14 @@ layout: default
       {% endif %}
     {% endif %}
 
+    {% comment %} Reader recommendations (approved only) — populated
+        client-side from Firestore; hidden until at least one is approved.
+        Read-only here; the interactive summary page hosts the submit form. {% endcomment %}
+    <div id="bh-reader-recs" class="summary-card" style="display:none;margin-top:24px;">
+      <div class="summary-card-title">Readers recommend</div>
+      <div id="bh-reader-recs-list"></div>
+    </div>
+
   </div>
 </article>
 
@@ -370,6 +378,45 @@ layout: default
       '<span style="font-weight:400;color:var(--fg-faint);">· ' + stats.total +
       ' reader rating' + (stats.total > 1 ? 's' : '') + ' on BookHub</span></p>' +
       '<div style="display:flex;flex-direction:column;gap:4px;max-width:340px;">' + bars + '</div>';
+    box.style.display = 'block';
+  });
+
+  // ── Reader recommendations (approved only, read-only display) ──
+  document.addEventListener('bh-auth', async function onceRecs() {
+    document.removeEventListener('bh-auth', onceRecs);
+    const fs = window.bhFs, fb = window.bhFirebase;
+    if (!fs || !fb) return;
+    const esc = (s) => String(s == null ? '' : s)
+      .replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;')
+      .replaceAll('"', '&quot;').replaceAll("'", '&#39;');
+    let items = [];
+    try {
+      const snap = await fs.getDocs(fs.query(
+        fs.collection(fb.db, 'books', {{ page.slug | jsonify }}, 'reader_recs'),
+        fs.where('approved', '==', true), fs.limit(30)));
+      snap.forEach(d => items.push(d.data()));
+      items.sort((a, b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0));
+    } catch (e) { return; }
+    if (!items.length) return;
+    const box = document.getElementById('bh-reader-recs');
+    const listEl = document.getElementById('bh-reader-recs-list');
+    if (!box || !listEl) return;
+    const SUMMARY = {{ '/summary/' | relative_url | jsonify }};
+    listEl.innerHTML = '<div style="display:flex;flex-direction:column;gap:12px;">' + items.map(r => {
+      const link = SUMMARY + '?q=' + encodeURIComponent(r.rec_title) +
+        (r.rec_author ? '&author=' + encodeURIComponent(r.rec_author) : '') + '&direct=true';
+      return '<div style="display:flex;gap:12px;align-items:flex-start;border-bottom:1px solid var(--border);padding-bottom:12px;">' +
+        '<a href="' + link + '" style="flex-shrink:0;">' +
+        (r.rec_cover
+          ? '<img src="' + esc(r.rec_cover) + '" alt="" loading="lazy" style="width:44px;aspect-ratio:2/3;object-fit:cover;border-radius:5px;border:1px solid var(--border);">'
+          : '<div style="width:44px;aspect-ratio:2/3;background:var(--bg-subtle);border:1px solid var(--border);border-radius:5px;"></div>') +
+        '</a><div style="flex:1;min-width:0;">' +
+        '<a href="' + link + '" style="font-size:13px;font-weight:700;color:var(--fg);text-decoration:none;">' + esc(r.rec_title) + '</a>' +
+        (r.rec_author ? '<span style="font-size:11px;color:var(--fg-faint);"> · ' + esc(r.rec_author) + '</span>' : '') +
+        '<p style="font-size:12px;color:var(--fg-muted);line-height:1.55;margin-top:3px;white-space:pre-wrap;">' + esc(r.reason || '') + '</p>' +
+        '<p style="font-size:11px;color:var(--fg-faint);margin-top:3px;">— ' + esc(r.name || 'Reader') + '</p>' +
+        '</div></div>';
+    }).join('') + '</div>';
     box.style.display = 'block';
   });
 </script>

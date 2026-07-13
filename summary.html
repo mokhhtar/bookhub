@@ -1652,6 +1652,20 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
           <div id="comments-area" style="display:none;"></div>
         </div>` : '';
 
+      // Reader recommendations — books other readers say are similar, with
+      // their reason. Pre-moderated; the recommended book is picked from
+      // real catalog search (not free text).
+      const readerRecsHtml = data.slug ? `
+        <div class="summary-card" id="reader-recs-card" data-book-slug="${escExt(data.slug)}">
+          <div class="summary-card-title">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+            Readers recommend
+          </div>
+          <p style="font-size:12px;color:var(--fg-faint);margin-bottom:12px;">Books other readers say are similar — and why. Vetted before they appear.</p>
+          <div id="reader-recs-list"><p style="font-size:12px;color:var(--fg-faint);">Loading…</p></div>
+          <div id="reader-recs-form" style="margin-top:14px;"></div>
+        </div>` : '';
+
       // Quiz offer — only when real grounding text exists (original
       // Gutenberg text, or a Fandom wiki's chapter recaps). Books with
       // neither never see the button.
@@ -1779,6 +1793,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
             { id: 'bh-chapters', label: 'Chapters', show: !!chaptersHtml },
             { id: 'quiz-card', label: 'Quiz', show: !!quizHtml },
             { id: 'bh-similar', label: 'Similar', show: !!similarHtml },
+            { id: 'reader-recs-card', label: 'Readers recommend', show: !!readerRecsHtml },
             { id: 'comments-card', label: 'Comments', show: !!commentsHtml },
           ])}
 
@@ -1796,6 +1811,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
           ${chaptersHtml}
           ${quizHtml}
           ${similarHtml}
+          ${readerRecsHtml}
           ${commentsHtml}
         </main>
 
@@ -1918,6 +1934,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
       window.__bhCurrentCategories = Array.isArray(data.categories) ? data.categories.slice(0, 3) : [];
       window.__bhCurrentPages = data.page_count > 0 ? data.page_count : 0;
       loadReaderRatings(data.slug || '');
+      loadReaderRecs(data.slug || '');
       __charDetailsCache = {};   // fresh book → fresh character state
       __charOpenIndex = -1;
 
@@ -2309,6 +2326,153 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
     box.style.display = "block";
   }
   window.loadReaderRatings = loadReaderRatings;
+
+  // ── Reader recommendations (pre-moderated, book picker) ───
+  let __recPick = null;       // {title, author, cover} chosen from search
+  let __recSearchTimer = null;
+
+  async function loadReaderRecs(slug) {
+    const card = document.getElementById("reader-recs-card");
+    const listEl = document.getElementById("reader-recs-list");
+    const formEl = document.getElementById("reader-recs-form");
+    if (!card || !listEl) return;
+    slug = slug || card.dataset.bookSlug;
+    if (!window.bhFs) {   // firebase module not ready yet — retry once
+      document.addEventListener("bh-auth", () => loadReaderRecs(slug), { once: true });
+      return;
+    }
+    const fs = window.bhFs, db = window.bhFirebase.db;
+    let items = [];
+    try {
+      const snap = await fs.getDocs(fs.query(
+        fs.collection(db, "books", slug, "reader_recs"),
+        fs.where("approved", "==", true), fs.limit(30)));
+      snap.forEach(d => items.push(d.data()));
+      items.sort((a, b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0));
+    } catch (e) {
+      listEl.innerHTML = `<p style="font-size:12px;color:var(--fg-faint);">Couldn't load recommendations right now.</p>`;
+      return;
+    }
+
+    listEl.innerHTML = items.length
+      ? `<div style="display:flex;flex-direction:column;gap:12px;">` + items.map(r => {
+          const link = `{{ '/summary/' | relative_url }}?q=${encodeURIComponent(r.rec_title)}${r.rec_author ? `&author=${encodeURIComponent(r.rec_author)}` : ''}&direct=true`;
+          return `
+            <div style="display:flex;gap:12px;align-items:flex-start;border-bottom:1px solid var(--border);padding-bottom:12px;">
+              <a href="${link}" style="flex-shrink:0;">
+                ${r.rec_cover
+                  ? `<img src="${escExt(r.rec_cover)}" alt="" loading="lazy" style="width:44px;aspect-ratio:2/3;object-fit:cover;border-radius:5px;border:1px solid var(--border);">`
+                  : `<div style="width:44px;aspect-ratio:2/3;background:var(--bg-subtle);border:1px solid var(--border);border-radius:5px;"></div>`}
+              </a>
+              <div style="flex:1;min-width:0;">
+                <a href="${link}" style="font-size:13px;font-weight:700;color:var(--fg);text-decoration:none;">${escExt(r.rec_title)}</a>
+                ${r.rec_author ? `<span style="font-size:11px;color:var(--fg-faint);"> · ${escExt(r.rec_author)}</span>` : ''}
+                <p style="font-size:12px;color:var(--fg-muted);line-height:1.55;margin-top:3px;white-space:pre-wrap;">${escExt(r.reason || '')}</p>
+                <p style="font-size:11px;color:var(--fg-faint);margin-top:3px;">— ${escExt(r.name || 'Reader')}</p>
+              </div>
+            </div>`;
+        }).join("") + `</div>`
+      : `<p style="font-size:13px;color:var(--fg-muted);">No recommendations yet — be the first to suggest a similar book.</p>`;
+
+    formEl.innerHTML = window.bhUser ? `
+      <div style="border-top:1px solid var(--border);padding-top:14px;">
+        <p style="font-size:12px;font-weight:600;margin-bottom:8px;">Recommend a similar book</p>
+        <div style="position:relative;">
+          <input type="text" id="rec-book-input" autocomplete="off" placeholder="Search the book you'd recommend…" oninput="recSearchInput(event)"
+            style="width:100%;box-sizing:border-box;padding:9px 12px;font-size:16px;background:var(--bg-subtle);color:var(--fg);border:1px solid var(--border);border-radius:8px;">
+          <div id="rec-suggestions" style="position:absolute;top:100%;left:0;right:0;z-index:50;background:var(--bg);border:1px solid var(--border);border-radius:8px;max-height:230px;overflow-y:auto;box-shadow:0 10px 25px rgba(0,0,0,.1);margin-top:5px;display:none;"></div>
+        </div>
+        <textarea id="rec-reason" maxlength="600" rows="2" placeholder="Why is it similar? (a sentence or two)"
+          style="width:100%;box-sizing:border-box;margin-top:8px;padding:9px 12px;font-size:16px;background:var(--bg-subtle);color:var(--fg);border:1px solid var(--border);border-radius:8px;resize:vertical;"></textarea>
+        <div style="display:flex;align-items:center;gap:10px;margin-top:8px;">
+          <button class="btn-primary" id="rec-post-btn" onclick="postReaderRec()" style="padding:8px 18px;font-size:13px;">Submit recommendation</button>
+          <span id="rec-status" style="font-size:12px;color:var(--fg-faint);"></span>
+        </div>
+        <p style="font-size:11px;color:var(--fg-faint);margin-top:6px;">Recommendations appear after review by the site owner.</p>
+      </div>` : `
+      <div style="border-top:1px solid var(--border);padding-top:14px;">
+        <button class="btn-secondary" onclick="bhAuthUI.open('signin')" style="padding:8px 18px;font-size:13px;">Sign in to recommend</button>
+      </div>`;
+  }
+  window.loadReaderRecs = loadReaderRecs;
+
+  window.recSearchInput = function (event) {
+    const q = event.target.value.trim();
+    __recPick = null;   // typing invalidates a prior pick
+    const box = document.getElementById("rec-suggestions");
+    if (!box) return;
+    if (q.length < 3) { box.style.display = "none"; return; }
+    clearTimeout(__recSearchTimer);
+    __recSearchTimer = setTimeout(async () => {
+      try {
+        const res = await fetch(`${API}/search?q=${encodeURIComponent(q)}`);
+        if (!res.ok) return;
+        const data = await res.json();
+        if (!data || !data.length) { box.style.display = "none"; return; }
+        window.__recResults = data.slice(0, 6);
+        box.innerHTML = window.__recResults.map((b, i) => `
+          <div onclick="recPick(${i})" style="display:flex;align-items:center;gap:10px;padding:8px 12px;cursor:pointer;border-bottom:1px solid var(--border);font-size:13px;">
+            ${b.cover_url ? `<img src="${escExt(b.cover_url)}" alt="" style="width:28px;height:40px;object-fit:cover;border-radius:3px;border:1px solid var(--border);flex-shrink:0;">` : `<span style="width:28px;height:40px;background:var(--bg-subtle);border:1px solid var(--border);border-radius:3px;flex-shrink:0;"></span>`}
+            <span><span style="font-weight:600;">${escExt(b.title)}</span><br><span style="font-size:11px;color:var(--fg-faint);">${escExt(b.author || 'Unknown')}</span></span>
+          </div>`).join("");
+        box.style.display = "block";
+      } catch (e) { /* silent — autocomplete only */ }
+    }, 250);
+  };
+
+  window.recPick = function (i) {
+    const b = (window.__recResults || [])[i];
+    if (!b) return;
+    __recPick = { title: b.title, author: b.author || "", cover: b.cover_url || "" };
+    document.getElementById("rec-book-input").value = b.title + (b.author ? ` — ${b.author}` : "");
+    document.getElementById("rec-suggestions").style.display = "none";
+  };
+
+  window.postReaderRec = async function () {
+    const card = document.getElementById("reader-recs-card");
+    const reasonEl = document.getElementById("rec-reason");
+    const btn = document.getElementById("rec-post-btn");
+    const status = document.getElementById("rec-status");
+    if (!card || !reasonEl || !window.bhUser || !window.bhFs) return;
+    if (window.bhUser.emailVerified === false) {
+      status.textContent = "Confirm your email first — check your inbox, or resend from your account page.";
+      return;
+    }
+    if (!__recPick || !__recPick.title) { status.textContent = "Pick a book from the search list first."; return; }
+    const reason = reasonEl.value.trim();
+    if (reason.length < 2) { status.textContent = "Add a short reason why it's similar."; return; }
+    btn.disabled = true;
+    status.textContent = "Submitting…";
+    const fs = window.bhFs, db = window.bhFirebase.db;
+    try {
+      await fs.addDoc(fs.collection(db, "books", card.dataset.bookSlug, "reader_recs"), {
+        uid: window.bhUser.uid,
+        name: (window.bhUser.displayName || "Reader").slice(0, 40),
+        rec_title: __recPick.title.slice(0, 200),
+        rec_author: (__recPick.author || "").slice(0, 200),
+        rec_cover: (__recPick.cover || "").slice(0, 500),
+        reason: reason.slice(0, 600),
+        createdAt: fs.serverTimestamp(),
+        approved: false,
+      });
+      __recPick = null;
+      reasonEl.value = "";
+      document.getElementById("rec-book-input").value = "";
+      status.textContent = "✓ Submitted — it will appear once approved.";
+    } catch (e) {
+      status.textContent = "Couldn't submit — try again in a moment.";
+    } finally {
+      btn.disabled = false;
+    }
+  };
+
+  // Close the rec suggestions dropdown on outside click.
+  document.addEventListener("click", (e) => {
+    if (e.target && e.target.id !== "rec-book-input") {
+      const box = document.getElementById("rec-suggestions");
+      if (box) box.style.display = "none";
+    }
+  });
 
   // ── Recommend button (Firestore recs, one vote per user) ──
   async function refreshRecommendBtn() {
