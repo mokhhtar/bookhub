@@ -43,14 +43,14 @@ layout: default
 {% if page.ratings and page.ratings.average %}{% assign has_ratings = true %}{% endif %}
 
 {% comment %} Community-data key (ratings/comments/recs) — must match the
-    dynamic summary page's canonical_id. Prefer the stored canonical_id
-    (new pages); else derive it from the Open Library work key the same way
-    the backend does; else fall back to the URL slug (pages published before
-    canonical_id, and books that resolved without a work key). {% endcomment %}
+    dynamic summary page's canonical_id (base-title + author, edition-
+    independent). Prefer the stored canonical_id (new pages carry it); else
+    fall back to slug + author_slug, which equals the backend formula for a
+    title without a subtitle (true for pages published before the field). {% endcomment %}
 {% assign bh_bookkey = page.canonical_id %}
 {% if bh_bookkey == nil or bh_bookkey == "" %}
-  {% if page.openlibrary_id and page.openlibrary_id != "" %}
-    {% assign bh_bookkey = page.openlibrary_id | remove: "/works/" | remove: "/books/" | downcase | prepend: "w-" %}
+  {% if page.author_slug and page.author_slug != "" %}
+    {% assign bh_bookkey = page.slug | append: "-" | append: page.author_slug %}
   {% else %}
     {% assign bh_bookkey = page.slug %}
   {% endif %}
