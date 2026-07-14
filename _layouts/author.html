@@ -128,15 +128,18 @@ layout: default
     window.__authorReviewRefs = items.map(c => c.ref);
     box.innerHTML = items.length
       ? items.map((c, i) => `
-          <div style="border-bottom:1px solid var(--border);padding:10px 0;">
-            <p style="font-size:12px;font-weight:700;">${esc(c.name || "Reader")}
-              <span style="font-weight:400;color:var(--fg-faint);font-size:11px;margin-left:6px;">${c.createdAt ? new Date(c.createdAt.seconds * 1000).toLocaleDateString() : ""}</span></p>
-            <div style="font-size:13px;color:var(--fg-muted);line-height:1.6;margin-top:3px;">${(window.bhFormat ? window.bhFormat(c.text || "") : esc(c.text || ""))}</div>
-            <button id="rlike-${i}" onclick="toggleReviewLike(${i})" aria-label="Like this review"
-              style="margin-top:6px;background:none;border:0;cursor:pointer;color:var(--fg-faint);font-size:12px;display:inline-flex;align-items:center;gap:5px;padding:2px 0;">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-              <span id="rlike-n-${i}"></span>
-            </button>
+          <div style="border-bottom:1px solid var(--border);padding:10px 0;display:flex;gap:10px;align-items:flex-start;">
+            ${window.bhAvatar ? window.bhAvatar(c.name || "Reader") : ""}
+            <div style="flex:1;min-width:0;">
+              <p style="font-size:12px;font-weight:700;">${esc(c.name || "Reader")}
+                <span style="font-weight:400;color:var(--fg-faint);font-size:11px;margin-left:6px;">${c.createdAt ? new Date(c.createdAt.seconds * 1000).toLocaleDateString() : ""}</span></p>
+              <div style="font-size:13px;color:var(--fg-muted);line-height:1.6;margin-top:3px;overflow-wrap:anywhere;">${(window.bhFormat ? window.bhFormat(c.text || "") : esc(c.text || ""))}</div>
+              <button id="rlike-${i}" onclick="toggleReviewLike(${i})" aria-label="Like this review"
+                style="margin-top:6px;background:none;border:0;cursor:pointer;color:var(--fg-faint);font-size:12px;display:inline-flex;align-items:center;gap:5px;padding:2px 0;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                <span id="rlike-n-${i}"></span>
+              </button>
+            </div>
           </div>`).join("")
       : `<p>No reviews yet — be the first to share your view of ${esc(AUTHOR_NAME)}'s work.</p>`;
     (window.__authorReviewRefs || []).forEach((_, i) => refreshReviewLike(i));

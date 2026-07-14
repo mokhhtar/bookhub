@@ -121,6 +121,25 @@ window.bhFormat = function (raw) {
   return html;
 };
 
+// ── Comment/review avatar ────────────────────────────────
+// A colored initials circle. Universal — works without a stored photo
+// (comment docs only carry {uid,name,text,...}, and other users' Google
+// photos aren't reachable client-side), and the hue is derived from the
+// name so a given reader keeps one consistent color. Returns safe HTML.
+window.bhAvatar = function (name, size) {
+  size = size || 34;
+  const clean = String(name == null ? '' : name).trim();
+  const initial = (clean.match(/[\p{L}\p{N}]/u) || ['?'])[0].toUpperCase();
+  let h = 0;
+  for (let i = 0; i < clean.length; i++) h = (h * 31 + clean.charCodeAt(i)) >>> 0;
+  const hue = h % 360;
+  const safe = initial.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
+  return '<span aria-hidden="true" style="flex-shrink:0;width:' + size + 'px;height:' + size + 'px;'
+    + 'border-radius:50%;background:hsl(' + hue + ' 55% 42%);color:#fff;display:inline-flex;'
+    + 'align-items:center;justify-content:center;font-size:' + Math.round(size * 0.45) + 'px;'
+    + 'font-weight:700;line-height:1;">' + safe + '</span>';
+};
+
 // ── Theme Switcher ───────────────────────────────────────
 function initThemeToggle() {
   const toggleBtn = document.getElementById('theme-toggle');
