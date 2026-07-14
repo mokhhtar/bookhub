@@ -2201,7 +2201,12 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
 
   window.setShelfStatus = function (s) {
     const cur = shelfEntry();
-    shelfSave(e => { e.status = (cur && cur.status === s) ? e.status : s; });
+    shelfSave(e => {
+      e.status = (cur && cur.status === s) ? e.status : s;
+      // Stamp/clear finishedAt for the annual reading challenge.
+      if (e.status === 'done') { if (!e.finishedAt) e.finishedAt = Date.now(); }
+      else { delete e.finishedAt; }
+    });
   };
   window.setShelfRating = function (n) {
     let finalRating = 0;

@@ -271,6 +271,7 @@ function importLibrary(input) {
           status: ['want', 'reading', 'done'].includes(b.status) ? b.status : 'want',
           rating: Math.max(0, Math.min(5, parseInt(b.rating, 10) || 0)),
           addedAt: typeof b.addedAt === 'number' ? b.addedAt : Date.now(),
+          finishedAt: (b.status === 'done' && typeof b.finishedAt === 'number') ? b.finishedAt : undefined,
           cover_url: typeof b.cover_url === 'string' ? b.cover_url.slice(0, 500) : '',
           notes: typeof b.notes === 'string' ? b.notes.slice(0, 2000) : '',
           progress_page: b.progress_page > 0 ? Math.min(20000, parseInt(b.progress_page, 10)) : 0,
@@ -384,7 +385,15 @@ function addBook() {
 }
 
 function removeBook(id) { saveList(getList().filter(b => b.id !== id)); render(); }
-function setStatus(id, status) { saveList(getList().map(b => b.id === id ? { ...b, status } : b)); render(); }
+// Stamp finishedAt the first time a book becomes 'done' (drives the annual
+// reading challenge); clear it if it leaves 'done'. Keep an existing
+// finishedAt so re-saves don't move the date.
+function withFinish(b, status) {
+  if (status === 'done') return { ...b, status, finishedAt: b.finishedAt || Date.now() };
+  const { finishedAt, ...rest } = b;
+  return { ...rest, status };
+}
+function setStatus(id, status) { saveList(getList().map(b => b.id === id ? withFinish(b, status) : b)); render(); }
 function setRating(id, rating) {
   let publishSlug = '', publishStars = 0;
   saveList(getList().map(b => {

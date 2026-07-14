@@ -191,6 +191,14 @@ permalink: /account/
 
       <!-- Reading tab -->
       <div class="acct-panel active" id="acct-panel-reading">
+        <!-- Annual reading challenge -->
+        <div class="acct-section acct-section-wide" style="margin-bottom:16px;">
+          <h2 class="acct-h2">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+            <span id="acct-challenge-title">Reading Challenge</span>
+          </h2>
+          <div id="acct-challenge"></div>
+        </div>
         <div class="acct-grid">
           <div class="acct-section" id="acct-recent-section" style="display:none;">
             <h2 class="acct-h2">
@@ -455,6 +463,57 @@ permalink: /account/
       </a>`).join("");
   }
 
+  // ── Annual reading challenge ───────────────────────────────
+  // Progress = books in My Library marked "done" whose finishedAt falls in
+  // the current year. Goal is a per-device number (localStorage) — the
+  // finished books themselves ride in the synced library. Zero backend/AI.
+  const GOAL_KEY = "bookhub_reading_goal_v1";
+  function readGoal() {
+    try {
+      const g = JSON.parse(localStorage.getItem(GOAL_KEY));
+      if (g && g.year === new Date().getFullYear() && g.target > 0) return g.target;
+    } catch (e) {}
+    return 0;
+  }
+  window.acctSetGoal = function () {
+    const cur = readGoal();
+    const val = prompt("Set your reading goal for " + new Date().getFullYear() + " (number of books):", cur || 12);
+    if (val === null) return;
+    const n = Math.max(0, Math.min(1000, parseInt(val, 10) || 0));
+    try { localStorage.setItem(GOAL_KEY, JSON.stringify({ year: new Date().getFullYear(), target: n })); } catch (e) {}
+    loadChallenge();
+  };
+  function loadChallenge() {
+    const box = $("acct-challenge");
+    if (!box) return;
+    const year = new Date().getFullYear();
+    $("acct-challenge-title").textContent = year + " Reading Challenge";
+    let list = [];
+    try { list = JSON.parse(localStorage.getItem("bookhub_rl_v1")) || []; } catch (e) {}
+    const done = list.filter(b => b.status === "done"
+      && b.finishedAt && new Date(b.finishedAt).getFullYear() === year).length;
+    const goal = readGoal();
+    if (!goal) {
+      box.innerHTML = `<p style="font-size:13px;color:var(--fg-muted);">Set a goal for ${year} and track books you finish.
+        ${done ? `You've already finished <b>${done}</b> this year.` : ""}
+        <button class="btn-secondary" onclick="acctSetGoal()" style="padding:5px 14px;font-size:12px;margin-left:8px;">Set a goal</button></p>`;
+      return;
+    }
+    const pct = Math.min(100, Math.round(done / goal * 100));
+    const hit = done >= goal;
+    box.innerHTML = `
+      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:8px;">
+        <span style="font-size:22px;font-weight:800;">${done} <span style="font-size:14px;font-weight:600;color:var(--fg-faint);">/ ${goal} books</span></span>
+        <span style="font-size:12px;color:${hit ? '#1d7a50' : 'var(--fg-faint)'};font-weight:600;display:inline-flex;align-items:center;gap:4px;">
+          ${hit ? `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg> Goal reached!` : `${goal - done} to go · ${pct}%`}
+          <button class="btn-secondary" onclick="acctSetGoal()" style="padding:3px 10px;font-size:11px;margin-left:8px;">Edit</button>
+        </span>
+      </div>
+      <div style="height:10px;background:var(--bg-subtle);border-radius:5px;overflow:hidden;">
+        <div style="width:${pct}%;height:100%;background:${hit ? '#1d7a50' : 'var(--accent)'};border-radius:5px;transition:width .4s ease;"></div>
+      </div>`;
+  }
+
   // ── My ratings (from the My Library store) ─────────────────
   function loadRatings() {
     let list = [];
@@ -647,6 +706,7 @@ permalink: /account/
       $("acct-verify-notice").style.display = (hasPw && !user.emailVerified) ? "block" : "none";
       loadRecent();
       loadRatings();
+      loadChallenge();
       refreshReadingEmpty();
       backfillAccountCovers();
       loadFavChars(user);
@@ -668,6 +728,7 @@ permalink: /account/
     $("acct-display-name").textContent = hint;
     loadRecent();
     loadRatings();
+    loadChallenge();
     refreshReadingEmpty();
     const c = readAcctCache();
     if (c && Array.isArray(c.chars)) paintFavChars(c.chars, false);
