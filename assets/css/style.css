@@ -940,10 +940,16 @@ img { display: block; max-width: 100%; }
 }
 
 @media (max-width: 768px) {
+  /* Tighter gutters + header spacing on phones. The desktop 24px gutters
+     and 32px header gap overflow narrow viewports (≤360px), which let the
+     whole page scroll sideways and clipped the hamburger/search button. */
+  .container { padding: 0 16px; }
+  .header-inner { gap: 12px; }
   .site-nav { display: none; }
   .header-right {
     display: flex !important;
     margin-left: auto;
+    gap: 8px;
   }
   .header-right .btn-primary {
     display: none;
@@ -961,7 +967,7 @@ img { display: block; max-width: 100%; }
   }
   .nav-toggle {
     display: flex;
-    margin-left: 12px;
+    margin-left: 4px;
   }
 
   /* Hero */
