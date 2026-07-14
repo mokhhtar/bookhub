@@ -83,6 +83,19 @@ service cloud.firestore {
       // Authors may retract their own comment; admin may delete any.
       allow delete: if isAdmin()
         || (signedIn() && resource.data.uid == request.auth.uid);
+
+      // Likes on a comment — doc id == liker uid → one like per user per
+      // comment. Public read for the COUNT; the doc carries only a timestamp
+      // (no uid field, so it's never mistaken for a favorites-"likes" doc by
+      // the /account collection-group query, which filters where uid==me).
+      match /likes/{uid} {
+        allow read: if true;
+        allow create: if signedIn() && request.auth.uid == uid
+          && request.resource.data.keys().hasOnly(["createdAt"])
+          && request.resource.data.createdAt == request.time;
+        allow delete: if signedIn() && request.auth.uid == uid;
+        allow update: if false;
+      }
     }
 
     // ── Recommendation votes (v1) ────────────────────────────
@@ -228,6 +241,16 @@ service cloud.firestore {
       allow update: if isAdmin();
       allow delete: if isAdmin()
         || (signedIn() && resource.data.uid == request.auth.uid);
+
+      // Likes on an author review — same contract as book-comment likes.
+      match /likes/{uid} {
+        allow read: if true;
+        allow create: if signedIn() && request.auth.uid == uid
+          && request.resource.data.keys().hasOnly(["createdAt"])
+          && request.resource.data.createdAt == request.time;
+        allow delete: if signedIn() && request.auth.uid == uid;
+        allow update: if false;
+      }
     }
 
     // Collection-group reads. Group queries are only authorized by

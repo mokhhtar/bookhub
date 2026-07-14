@@ -769,6 +769,28 @@
     }
   };
 
+  // ── Comment likes (books/…/comments/{id}/likes/{uid}) ─────
+  // Doc id == uid → one like per user per comment. Shared by the book-
+  // comment (summary.html) and author-review (author.html) renderers;
+  // they pass the comment DocumentReference so the same code serves both.
+  window.bhCommentLike = {
+    async count(commentRef) {
+      try { return (await getCountFromServer(collection(commentRef, "likes"))).data().count; }
+      catch (e) { return 0; }
+    },
+    async mine(commentRef) {
+      if (!window.bhUser) return false;
+      try { return (await getDoc(doc(commentRef, "likes", window.bhUser.uid))).exists(); }
+      catch (e) { return false; }
+    },
+    async toggle(commentRef, on) {
+      if (!window.bhUser) return;
+      const ref = doc(commentRef, "likes", window.bhUser.uid);
+      if (on) await setDoc(ref, { createdAt: serverTimestamp() });
+      else await deleteDoc(ref);
+    },
+  };
+
   // ── Shared cover backfill (self-heal) ─────────────────────
   // Entries saved before the cover picker existed, added via a flow that
   // had no cover, or synced from another device, can lack a cover image.
