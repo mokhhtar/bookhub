@@ -189,7 +189,14 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
     background: var(--accent); border: 2px solid var(--bg); cursor: pointer;
   }
   @media (max-width: 560px) {
-    .reading-bar-control { justify-content: flex-start; width: 100%; flex-wrap: wrap; min-width: 0; }
+    /* The control's desktop `flex:1` forces flex-basis:0, so `width:100%`
+       is ignored and the control gets squeezed to a sliver beside the
+       "Reading time" block — then its nowrap "Finish in N days" badge spills
+       ~11px past the viewport and drags the whole page sideways. Force the
+       control onto its own full row with flex-basis, and give the badge its
+       own line within it. */
+    .reading-bar .reading-bar-control { justify-content: flex-start; flex: 1 1 100%; flex-wrap: wrap; min-width: 0; }
+    .reading-bar .reading-result { flex-basis: 100%; text-align: center; margin-top: 4px; }
   }
 
   .sound-wave { display: flex; align-items: flex-end; gap: 3px; height: 20px; }
