@@ -672,7 +672,7 @@ permalink: /account/
             : `<a href="{{ '/summary/' | relative_url }}?b=${esc(it.slug)}" style="color:var(--accent);">${esc(pretty(it.slug))}</a>`}
           · ${it.approved ? "<span style='color:#22a06b;font-weight:600;'>published</span>" : "<span style='color:var(--fg-faint);'>awaiting approval</span>"}
         </p>
-        <p style="font-size:13px;color:var(--fg);line-height:1.55;margin:6px 0;white-space:pre-wrap;">${esc(it.text || "")}</p>
+        <div style="font-size:13px;color:var(--fg);line-height:1.55;margin:6px 0;">${(window.bhFormat ? window.bhFormat(it.text || "") : esc(it.text || ""))}</div>
         ${interactive ? `<button class="btn-secondary" style="padding:4px 12px;font-size:11px;" onclick="acctDelComment(${i})">Delete</button>` : ""}
       </div>`).join("");
   }

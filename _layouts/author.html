@@ -130,12 +130,12 @@ layout: default
           <div style="border-bottom:1px solid var(--border);padding:10px 0;">
             <p style="font-size:12px;font-weight:700;">${esc(c.name || "Reader")}
               <span style="font-weight:400;color:var(--fg-faint);font-size:11px;margin-left:6px;">${c.createdAt ? new Date(c.createdAt.seconds * 1000).toLocaleDateString() : ""}</span></p>
-            <p style="font-size:13px;color:var(--fg-muted);line-height:1.6;margin-top:3px;white-space:pre-wrap;">${esc(c.text || "")}</p>
+            <div style="font-size:13px;color:var(--fg-muted);line-height:1.6;margin-top:3px;">${(window.bhFormat ? window.bhFormat(c.text || "") : esc(c.text || ""))}</div>
           </div>`).join("")
       : `<p>No reviews yet — be the first to share your view of ${esc(AUTHOR_NAME)}'s work.</p>`;
 
     formBox.innerHTML = window.bhUser ? `
-      <textarea id="author-review-text" maxlength="1000" rows="3" placeholder="What do you think of ${esc(AUTHOR_NAME)}'s writing?"
+      <textarea id="author-review-text" maxlength="4000" rows="4" placeholder="What do you think of ${esc(AUTHOR_NAME)}'s writing?"
         style="width:100%;box-sizing:border-box;padding:10px 12px;font-size:16px;background:var(--bg-subtle);color:var(--fg);border:1px solid var(--border);border-radius:8px;resize:vertical;"></textarea>
       <div style="display:flex;align-items:center;gap:10px;margin-top:8px;">
         <button class="btn-primary" id="author-review-btn" onclick="postAuthorReview()" style="padding:8px 18px;font-size:13px;">Post review</button>

@@ -70,7 +70,7 @@ service cloud.firestore {
         && request.resource.data.approved == false
         && request.resource.data.text is string
         && request.resource.data.text.size() >= 2
-        && request.resource.data.text.size() <= 1000
+        && request.resource.data.text.size() <= 4000
         && request.resource.data.name is string
         && request.resource.data.name.size() <= 40
         && request.resource.data.createdAt == request.time
@@ -219,7 +219,7 @@ service cloud.firestore {
         && request.resource.data.approved == false
         && request.resource.data.text is string
         && request.resource.data.text.size() >= 2
-        && request.resource.data.text.size() <= 1000
+        && request.resource.data.text.size() <= 4000
         && request.resource.data.name is string
         && request.resource.data.name.size() <= 40
         && request.resource.data.createdAt == request.time

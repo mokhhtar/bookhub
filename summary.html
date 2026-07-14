@@ -2550,19 +2550,19 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
           <div style="border-bottom:1px solid var(--border);padding:10px 0;">
             <p style="font-size:12px;font-weight:700;">${escExt(c.name || "Reader")}
               <span style="font-weight:400;color:var(--fg-faint);font-size:11px;margin-left:6px;">${c.createdAt ? new Date(c.createdAt.seconds * 1000).toLocaleDateString() : ""}</span></p>
-            <p style="font-size:13px;color:var(--fg-muted);line-height:1.6;margin-top:3px;white-space:pre-wrap;">${escExt(c.text || "")}</p>
+            <div style="font-size:13px;color:var(--fg-muted);line-height:1.6;margin-top:3px;">${(window.bhFormat ? window.bhFormat(c.text || "") : escExt(c.text || ""))}</div>
           </div>`).join("")
       : `<p style="font-size:13px;color:var(--fg-muted);">No comments yet — be the first.</p>`;
 
     const formHtml = window.bhUser ? `
       <div style="margin-top:14px;">
-        <textarea id="comment-text" maxlength="1000" rows="3" placeholder="Share your thoughts on this book…"
+        <textarea id="comment-text" maxlength="4000" rows="4" placeholder="Share your thoughts on this book…"
           style="width:100%;box-sizing:border-box;padding:10px 12px;font-size:16px;background:var(--bg-subtle);color:var(--fg);border:1px solid var(--border);border-radius:8px;resize:vertical;"></textarea>
         <div style="display:flex;align-items:center;gap:10px;margin-top:8px;">
           <button class="btn-primary" onclick="postComment()" id="comment-post-btn" style="padding:8px 18px;font-size:13px;">Post comment</button>
           <span id="comment-status" style="font-size:12px;color:var(--fg-faint);"></span>
         </div>
-        <p style="font-size:11px;color:var(--fg-faint);margin-top:6px;">Comments appear after review by the site owner.</p>
+        <p style="font-size:11px;color:var(--fg-faint);margin-top:6px;">Supports <b>**bold**</b>, <i>*italic*</i>, and "- " lists. Comments appear after review by the site owner.</p>
       </div>` : `
       <div style="margin-top:14px;">
         <button class="btn-secondary" onclick="bhAuthUI.open('signin')" style="padding:8px 18px;font-size:13px;">Sign in to comment</button>

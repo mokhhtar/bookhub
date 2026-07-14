@@ -91,6 +91,36 @@ window.bhToast = function (message, type = 'info', ms = 3200) {
   }, ms);
 };
 
+// ── Safe lightweight text formatting (comments/reviews) ──
+// Renders **bold**, *italic*, and "- "/"* " bullet lists from user text.
+// XSS-safe: the input is HTML-escaped FIRST, then only a fixed set of
+// safe tags (strong/em/ul/li/br) is introduced — raw HTML never survives.
+// Store text RAW; call bhFormat() at render time only.
+window.bhFormat = function (raw) {
+  const esc = (s) => String(s == null ? '' : s)
+    .replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;').replaceAll("'", '&#39;');
+  let t = esc(raw);
+  t = t.replace(/\*\*(\S(?:[^*\n]*\S)?)\*\*/g, '<strong>$1</strong>');
+  t = t.replace(/(^|[^*])\*(\S(?:[^*\n]*\S)?)\*(?!\*)/g, '$1<em>$2</em>');
+  const lines = t.split('\n');
+  const out = [];
+  let inList = false;
+  for (const line of lines) {
+    const m = line.match(/^\s*[-*]\s+(.+)$/);
+    if (m) { if (!inList) { out.push('<ul>'); inList = true; } out.push('<li>' + m[1] + '</li>'); }
+    else { if (inList) { out.push('</ul>'); inList = false; } out.push(line); }
+  }
+  if (inList) out.push('</ul>');
+  let html = '';
+  for (let i = 0; i < out.length; i++) {
+    const isTag = /^<\/?(ul|li)>/.test(out[i]);
+    if (i > 0 && !isTag && !/^<\/?(ul|li)>/.test(out[i - 1])) html += '<br>';
+    html += out[i];
+  }
+  return html;
+};
+
 // ── Theme Switcher ───────────────────────────────────────
 function initThemeToggle() {
   const toggleBtn = document.getElementById('theme-toggle');
