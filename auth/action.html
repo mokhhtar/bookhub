@@ -74,6 +74,14 @@ sitemap: false
   const qs = new URLSearchParams(location.search);
   const mode = qs.get("mode");
   const oobCode = qs.get("oobCode");
+  // Where to send the user afterwards — the page they were on when the email
+  // was sent (we pass location.href as actionCodeSettings.url). Same-origin
+  // only, so a crafted link can't bounce readers to another site.
+  let backUrl = "{{ '/' | relative_url }}";
+  try {
+    const cu = qs.get("continueUrl");
+    if (cu && new URL(cu).origin === location.origin) backUrl = cu;
+  } catch (e) {}
   const show = (id) => {
     ["act-loading","act-verified","act-reset","act-reset-done","act-error"]
       .forEach(x => document.getElementById(x).style.display = x === id ? "block" : "none");
@@ -119,10 +127,26 @@ sitemap: false
 
   whenAuthReady(function () {
     if (mode === "verifyEmail") {
+      const succeed = () => {
+        show("act-verified");
+        // Route them back to where they were (books page, etc.) after a
+        // beat — long enough to read the confirmation.
+        const btn = document.querySelector("#act-verified a");
+        if (btn) btn.href = backUrl;
+        setTimeout(() => { location.href = backUrl; }, 2500);
+      };
       window.bhAuthOps.applyAction(oobCode)
         .then(() => window.bhAuthOps.reloadUser())   // refresh emailVerified in this session
-        .then(() => show("act-verified"))
-        .catch(() => fail("This confirmation link has expired or was already used. You can re-send a fresh one from your account page."));
+        .then(succeed)
+        .catch(() =>
+          // A consumed code throws "expired" even though the email IS
+          // verified (double-click, mail-scanner prefetch, page reload).
+          // Check the real state before claiming failure.
+          window.bhAuthOps.reloadUser().then((u) => {
+            if (u && u.emailVerified) return succeed();
+            fail("This confirmation link has expired or was already used. If you clicked it before, your email may already be confirmed — sign in and check your account page. You can also re-send a fresh link from there.");
+          }).catch(() => fail("This confirmation link has expired or was already used. You can re-send a fresh one from your account page."))
+        );
     } else if (mode === "resetPassword") {
       window.bhAuthOps.verifyResetCode(oobCode)
         .then((email) => {

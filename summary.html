@@ -2223,6 +2223,10 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
     if (window.bhPublishRating && window.__bhCurrentBookSlug) {
       window.bhPublishRating(window.__bhCurrentBookSlug, finalRating)
         .then(() => loadReaderRatings(window.__bhCurrentBookSlug));
+    } else if (window.__bhCurrentBookSlug) {
+      // Anonymous: nothing published, but re-render the ratings box so the
+      // "Your rating" stars light up immediately.
+      loadReaderRatings(window.__bhCurrentBookSlug);
     }
   };
 
@@ -2317,7 +2321,27 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
       return;
     }
     const stats = await window.bhFetchRatingStats(slug);
-    if (!stats) { box.style.display = "none"; return; }
+    // Interactive "your rating" row — the same store as the shelf-bar stars
+    // (users kept missing them up there; rating belongs next to the ratings).
+    const myRating = (shelfEntry() || {}).rating || 0;
+    const rateRow = `
+      <div style="display:flex;align-items:center;gap:8px;margin-top:10px;padding-top:10px;border-top:1px dashed var(--border);">
+        <span style="font-size:12px;color:var(--fg-muted);">Your rating:</span>
+        <span role="group" aria-label="Rate this book">
+          ${[1,2,3,4,5].map(s =>
+            `<button onclick="setShelfRating(${s})" aria-label="Rate ${s} star${s>1?"s":""}"
+               style="background:none;border:0;cursor:pointer;font-size:19px;padding:0 2px;line-height:1;color:${s <= myRating ? "#f5a623" : "var(--border-med)"};">★</button>`
+          ).join("")}
+        </span>
+      </div>`;
+    if (!stats) {
+      box.innerHTML = `
+        <p style="font-size:13px;font-weight:700;">Reader ratings</p>
+        <p style="font-size:12px;color:var(--fg-faint);margin-top:2px;">No ratings yet — be the first.</p>
+        ${rateRow}`;
+      box.style.display = "block";
+      return;
+    }
     const bars = [5, 4, 3, 2, 1].map(s => {
       const n = stats.dist[s] || 0;
       const pct = Math.round(n / stats.total * 100);
@@ -2335,7 +2359,8 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
         <span style="color:#f5a623;font-size:15px;">★</span> ${stats.avg.toFixed(1)} / 5
         <span style="font-weight:400;color:var(--fg-faint);">· ${stats.total} reader rating${stats.total > 1 ? "s" : ""} on Litheca</span>
       </p>
-      <div style="display:flex;flex-direction:column;gap:4px;max-width:340px;">${bars}</div>`;
+      <div style="display:flex;flex-direction:column;gap:4px;max-width:340px;">${bars}</div>
+      ${rateRow}`;
     box.style.display = "block";
   }
   window.loadReaderRatings = loadReaderRatings;
@@ -2448,7 +2473,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
     const status = document.getElementById("rec-status");
     if (!card || !reasonEl || !window.bhUser || !window.bhFs) return;
     if (window.bhUser.emailVerified === false) {
-      status.textContent = "Confirm your email first — check your inbox, or resend from your account page.";
+      status.innerHTML = `Confirm your email first — check your inbox, or <a href="#" onclick="event.preventDefault();bhResendVerify(this)" style="color:var(--accent);text-decoration:underline;">resend the link</a>.`;
       return;
     }
     if (!__recPick || !__recPick.title) { status.textContent = "Pick a book from the search list first."; return; }
@@ -2624,7 +2649,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
     // Firestore rules require a verified email to post — surface a friendly
     // message instead of a raw permission error for unconfirmed accounts.
     if (window.bhUser.emailVerified === false) {
-      status.textContent = "Confirm your email first — check your inbox, or resend from your account page.";
+      status.innerHTML = `Confirm your email first — check your inbox, or <a href="#" onclick="event.preventDefault();bhResendVerify(this)" style="color:var(--accent);text-decoration:underline;">resend the link</a>.`;
       return;
     }
     const text = ta.value.trim();

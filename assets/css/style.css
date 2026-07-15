@@ -945,7 +945,40 @@ img { display: block; max-width: 100%; }
      whole page scroll sideways and clipped the hamburger/search button. */
   .container { padding: 0 16px; }
   .header-inner { gap: 12px; }
-  .site-nav { display: none; }
+  /* The header's backdrop-filter would become the containing block for the
+     drawer's position:fixed (a filtered ancestor traps fixed descendants),
+     pinning it inside the 56px header. Drop the blur on phones — the header
+     background is 92% opaque, so the visual difference is negligible. */
+  .site-header { backdrop-filter: none; -webkit-backdrop-filter: none; }
+
+  /* Mobile nav = right-side drawer (was a dropdown list under the header).
+     Kept off-canvas with a transform so it animates in; the huge box-shadow
+     spread on .open doubles as the dimmed backdrop without an extra element.
+     The existing outside-click handler in main.js closes it. */
+  .site-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    position: fixed;
+    top: 0; right: 0; bottom: 0;
+    width: min(78vw, 300px);
+    background: var(--bg);
+    border-left: 1px solid var(--border);
+    padding: 72px 18px 24px;
+    z-index: 200;
+    transform: translateX(105%);
+    transition: transform 0.25s var(--ease);
+    overflow-y: auto;
+  }
+  .site-nav.open {
+    transform: translateX(0);
+    box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.4), -16px 0 40px rgba(0, 0, 0, 0.18);
+  }
+  .site-nav .nav-link {
+    font-size: 15px;
+    padding: 12px 14px;
+    border-radius: var(--r);
+  }
   .header-right {
     display: flex !important;
     margin-left: auto;
@@ -953,17 +986,6 @@ img { display: block; max-width: 100%; }
   }
   .header-right .btn-primary {
     display: none;
-  }
-  .site-nav.open {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 56px; left: 0; right: 0;
-    background: var(--bg);
-    border-bottom: 1px solid var(--border);
-    padding: 12px 16px;
-    gap: 2px;
-    z-index: 99;
   }
   .nav-toggle {
     display: flex;

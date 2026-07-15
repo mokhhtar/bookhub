@@ -518,19 +518,22 @@
       });
       // Send the confirmation link but KEEP the new account signed in (the
       // standard flow — verification gates content, not the session).
+      // continueUrl = the page they're on, so after clicking the link the
+      // handler (ours or Firebase's default) routes them straight back.
       // Surface a send failure to the caller so the UI can say why.
       let verifyError = null;
       try {
-        await sendEmailVerification(cred.user);
+        await sendEmailVerification(cred.user, { url: location.href });
       } catch (e) {
         verifyError = e;
         console.warn("Verification email failed:", e && e.code, e);
       }
       return { email, verificationSent: !verifyError, verifyError };
     },
-    // Re-send the confirmation email. Works from a signed-in unverified
-    // session (account page) OR right after a blocked sign-in attempt.
-    resendVerification: () => sendEmailVerification(auth.currentUser),
+    // Re-send the confirmation email. Works from any signed-in unverified
+    // session (account page banner, or the comment/rec form gates).
+    resendVerification: () =>
+      sendEmailVerification(auth.currentUser, { url: location.href }),
     // Firebase action-link handlers, used by /auth/action/ (the branded
     // landing page the email links point at once the Console's Action URL
     // is set to https://litheca.com/auth/action/).
@@ -588,6 +591,22 @@
   };
   const explain = (e) =>
     ERRORS[e && e.code] || "Something went wrong — please try again.";
+
+  // Inline "Resend link" used by the comment/rec form gates: swaps the
+  // clicked link for a sent/failed note in place. Safe to call repeatedly —
+  // Firebase rate-limits resends and we surface that as a friendly message.
+  window.bhResendVerify = async function (el) {
+    if (!el) return;
+    el.textContent = "Sending…";
+    try {
+      await window.bhAuthOps.resendVerification();
+      el.textContent = "Sent — check your inbox (and spam).";
+    } catch (e) {
+      el.textContent = (e && e.code) === "auth/too-many-requests"
+        ? "Too many sends — try again in a few minutes."
+        : "Couldn't send — try again shortly.";
+    }
+  };
 
   window.bhAuthUI = {
     open(startMode) {
