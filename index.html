@@ -221,47 +221,6 @@ description: "Seven free AI-powered tools for readers — instant book summaries
   </div>
 </section>
 
-{% assign recent_books = site.books | sort: "date" | reverse %}
-{% if recent_books.size > 0 %}
-<!-- ═══════════════════════════════════════
-     RECENTLY SUMMARIZED (static, build-time)
-═══════════════════════════════════════ -->
-<section class="recent-section" aria-labelledby="recent-heading" style="padding:32px 0 8px;">
-  <div class="container">
-    <div class="section-header">
-      <div>
-        <h2 id="recent-heading" class="section-title">Recently summarized</h2>
-        <p class="section-sub">Real pages, ready to read — no waiting.</p>
-      </div>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:18px;margin-top:20px;">
-      {% for book in recent_books limit: 8 %}
-        <a href="{{ book.url | relative_url }}" style="text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:8px;">
-          {% if book.cover_url and book.cover_url != "" %}
-            <img src="{{ book.cover_url }}" alt="Cover of {{ book.title }}" loading="lazy"
-                 style="width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:8px;border:1px solid var(--border);">
-          {% elsif book.isbn_13 and book.isbn_13 != "" %}
-            {%- comment -%} Pages published before covers were stored (publish is
-            create-only) still have an ISBN — try Open Library's cover, falling
-            back to the text placeholder if it 404s. {%- endcomment -%}
-            <img src="https://covers.openlibrary.org/b/isbn/{{ book.isbn_13 }}-M.jpg?default=false" alt="Cover of {{ book.title }}" loading="lazy"
-                 style="width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:8px;border:1px solid var(--border);"
-                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-            <div style="width:100%;aspect-ratio:2/3;background:var(--bg-subtle);border:1px solid var(--border);border-radius:8px;display:none;align-items:center;justify-content:center;font-size:12px;color:var(--fg-faint);padding:10px;text-align:center;">{{ book.title | truncate: 40 }}</div>
-          {% else %}
-            <div style="width:100%;aspect-ratio:2/3;background:var(--bg-subtle);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--fg-faint);padding:10px;text-align:center;">{{ book.title | truncate: 40 }}</div>
-          {% endif %}
-          <div>
-            <p style="font-size:13px;font-weight:600;line-height:1.35;">{{ book.title }}</p>
-            <p style="font-size:12px;color:var(--fg-faint);margin-top:2px;">{{ book.author }}</p>
-          </div>
-        </a>
-      {% endfor %}
-    </div>
-  </div>
-</section>
-{% endif %}
-
 <!-- ═══════════════════════════════════════
      TOOLS GRID
 ═══════════════════════════════════════ -->
