@@ -983,13 +983,18 @@ img { display: block; max-width: 100%; }
   }
   /* Dimmed backdrop behind the open drawer. A real overlay element —
      Chromium caps huge box-shadow spreads, so that trick doesn't render.
-     Taps on it close the drawer via main.js's outside-click handler. */
+     Taps on it close the drawer via main.js's outside-click handler.
+     z-index MUST stay below the header's 100: the drawer lives inside
+     .site-header, whose sticky+z-index:100 forms a stacking context, so the
+     drawer's own z-index can never escape it — an overlay above 100 covers
+     the drawer too (uniform tint, no visible dim). Below 100, the page dims
+     while the header bar, hamburger, and drawer stay bright. */
   html.nav-open::after {
     content: "";
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.4);
-    z-index: 150;
+    z-index: 90;
   }
   .header-right {
     display: flex !important;
