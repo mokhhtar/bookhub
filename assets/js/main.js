@@ -13,16 +13,17 @@ const toggle = document.querySelector('.nav-toggle');
 const nav    = document.querySelector('.site-nav');
 
 if (toggle && nav) {
-  toggle.addEventListener('click', () => {
-    const isOpen = nav.classList.toggle('open');
+  // html.nav-open drives the dimmed backdrop (::after overlay in CSS) —
+  // a huge box-shadow spread was tried first but Chromium caps it.
+  const setOpen = (isOpen) => {
+    nav.classList.toggle('open', isOpen);
+    document.documentElement.classList.toggle('nav-open', isOpen);
     toggle.setAttribute('aria-expanded', String(isOpen));
-  });
-  // Close on outside click
+  };
+  toggle.addEventListener('click', () => setOpen(!nav.classList.contains('open')));
+  // Close on outside click (includes taps on the backdrop overlay)
   document.addEventListener('click', e => {
-    if (!toggle.contains(e.target) && !nav.contains(e.target)) {
-      nav.classList.remove('open');
-      toggle.setAttribute('aria-expanded', 'false');
-    }
+    if (!toggle.contains(e.target) && !nav.contains(e.target)) setOpen(false);
   });
 }
 

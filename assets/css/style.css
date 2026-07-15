@@ -958,6 +958,7 @@ img { display: block; max-width: 100%; }
   .site-nav {
     display: flex;
     flex-direction: column;
+    align-items: stretch;   /* left-aligned full-width rows (desktop centers) */
     gap: 4px;
     position: fixed;
     top: 0; right: 0; bottom: 0;
@@ -972,12 +973,23 @@ img { display: block; max-width: 100%; }
   }
   .site-nav.open {
     transform: translateX(0);
-    box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.4), -16px 0 40px rgba(0, 0, 0, 0.18);
+    box-shadow: -16px 0 40px rgba(0, 0, 0, 0.18);
   }
   .site-nav .nav-link {
     font-size: 15px;
     padding: 12px 14px;
     border-radius: var(--r);
+    text-align: left;
+  }
+  /* Dimmed backdrop behind the open drawer. A real overlay element —
+     Chromium caps huge box-shadow spreads, so that trick doesn't render.
+     Taps on it close the drawer via main.js's outside-click handler. */
+  html.nav-open::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 150;
   }
   .header-right {
     display: flex !important;
