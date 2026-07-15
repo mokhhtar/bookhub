@@ -45,7 +45,15 @@
   <link rel="modulepreload" href="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js">
   <link rel="modulepreload" href="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js">
 
-  {% seo %}
+  {%- comment -%}
+    jekyll-seo-tag ({% seo %}) was emitting a SECOND <title> plus duplicate
+    description/OG/canonical tags on top of the hand-written ones above —
+    conflicting SEO signals and a doubled brand in the title. The manual
+    block is the source of truth (it has custom per-book OG cover images
+    seo-tag can't produce), so seo-tag is disabled. Revisit at launch: either
+    re-adopt seo-tag fully (feed it page.image) or add a manual WebSite/
+    Organization JSON-LD block for structured data.
+  {%- endcomment -%}
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v={{ site.time | date: '%s' }}">
   <script>
     (function() {
