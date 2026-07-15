@@ -132,7 +132,7 @@ layout: default
       </div>
     </div>
 
-    {% comment %} BookHub readers' own star ratings (Firestore aggregate).
+    {% comment %} Litheca readers' own star ratings (Firestore aggregate).
         Hidden until at least one reader has rated — populated client-side
         once the firebase module is ready. {% endcomment %}
     <div id="bh-reader-ratings" style="display:none;border:1px solid var(--border);border-radius:12px;background:var(--bg);padding:16px 18px;margin:20px 0;"></div>
@@ -369,7 +369,7 @@ layout: default
     refresh();
   })();
 
-  // ── BookHub readers' star ratings (aggregate, display-only) ──
+  // ── Litheca readers' star ratings (aggregate, display-only) ──
   // bh-auth fires once the firebase module is ready (signed-out too);
   // stats hidden entirely until at least one reader has rated.
   document.addEventListener('bh-auth', async function onceRatings() {
@@ -391,7 +391,7 @@ layout: default
       '<p style="font-size:13px;font-weight:700;margin-bottom:8px;">' +
       '<span style="color:#f5a623;font-size:15px;">★</span> ' + stats.avg.toFixed(1) + ' / 5 ' +
       '<span style="font-weight:400;color:var(--fg-faint);">· ' + stats.total +
-      ' reader rating' + (stats.total > 1 ? 's' : '') + ' on BookHub</span></p>' +
+      ' reader rating' + (stats.total > 1 ? 's' : '') + ' on Litheca</span></p>' +
       '<div style="display:flex;flex-direction:column;gap:4px;max-width:340px;">' + bars + '</div>';
     box.style.display = 'block';
   });

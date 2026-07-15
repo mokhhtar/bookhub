@@ -3,7 +3,7 @@
 layout: null
 permalink: /sw.js
 ---
-// BookHub service worker.
+// Litheca service worker.
 // VERSION is stamped from the Jekyll build time, so every push to main ships
 // a byte-different sw.js → browsers install the new worker and the activate
 // step below drops all previous caches. No manual version bumping.

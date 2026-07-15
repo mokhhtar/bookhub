@@ -2304,7 +2304,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
     }
   };
 
-  // ── BookHub readers' star ratings (aggregate display) ─────
+  // ── Litheca readers' star ratings (aggregate display) ─────
   // Shows "★ 4.2 · 12 reader ratings" + a 5-bar histogram inside the
   // comments card. Hidden entirely until at least one reader has rated
   // (no data beats wrong data). Retries once the firebase module is
@@ -2333,7 +2333,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
     box.innerHTML = `
       <p style="font-size:13px;font-weight:700;margin-bottom:8px;">
         <span style="color:#f5a623;font-size:15px;">★</span> ${stats.avg.toFixed(1)} / 5
-        <span style="font-weight:400;color:var(--fg-faint);">· ${stats.total} reader rating${stats.total > 1 ? "s" : ""} on BookHub</span>
+        <span style="font-weight:400;color:var(--fg-faint);">· ${stats.total} reader rating${stats.total > 1 ? "s" : ""} on Litheca</span>
       </p>
       <div style="display:flex;flex-direction:column;gap:4px;max-width:340px;">${bars}</div>`;
     box.style.display = "block";

@@ -288,7 +288,7 @@ function importLibrary(input) {
       loadRecommendations();
       bhToast(added ? `Imported ${added} book${added > 1 ? 's' : ''}` : 'Nothing new to import', added ? 'success' : 'info');
     } catch (e) {
-      bhToast("Couldn't read that file — is it a BookHub export?", 'error');
+      bhToast("Couldn't read that file — is it a Litheca export?", 'error');
     }
   };
   reader.readAsText(file);
@@ -626,7 +626,7 @@ async function loadRecommendations() {
     }).join('') + `</div>`;
 }
 
-// ── "From genres you read" — published BookHub pages sharing categories
+// ── "From genres you read" — published Litheca pages sharing categories
 // with your library. Data source is the static site's own books.json
 // index (real published pages only — nothing generated). Items carry
 // category slugs only when added via the summary page; the section hides
@@ -679,7 +679,7 @@ async function loadGenreRecs() {
   const pretty = (slug) => slug.replace(/-/g, ' ').replace(/\b\w/g, ch => ch.toUpperCase());
   box.innerHTML = `
     <h2 style="font-size:16px;font-weight:700;margin:32px 0 4px;">From genres you read</h2>
-    <p style="font-size:12px;color:var(--fg-faint);margin-bottom:14px;">${topCats.map(pretty).map(escRl).join(' · ')} — picks from BookHub's library.</p>
+    <p style="font-size:12px;color:var(--fg-faint);margin-bottom:14px;">${topCats.map(pretty).map(escRl).join(' · ')} — picks from Litheca's library.</p>
     <div class="rl-grid">` + picks.map(bk => `
       <div class="rl-card">
         <a href="${escRl(bk.url)}">${bk.cover_url

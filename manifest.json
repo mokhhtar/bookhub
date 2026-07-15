@@ -4,8 +4,8 @@ layout: null
 permalink: /manifest.json
 ---
 {
-  "name": "BookHub — Read less. Understand more.",
-  "short_name": "BookHub",
+  "name": "Litheca — Read less. Understand more.",
+  "short_name": "Litheca",
   "description": "{{ site.description }}",
   "start_url": "{{ '/' | relative_url }}",
   "scope": "{{ '/' | relative_url }}",

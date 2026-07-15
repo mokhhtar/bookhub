@@ -1,4 +1,4 @@
-/* BookHub — main.js */
+/* Litheca — main.js */
 
 // Everything lives inside one IIFE: this file loads on every page AFTER the
 // page's own inline <script>, and top-level const/let share the global

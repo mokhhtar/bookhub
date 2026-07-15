@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Book Reader"
-description: "Read public-domain books right here on BookHub."
+description: "Read public-domain books right here on Litheca."
 permalink: /reader/
 sitemap: false
 ---
@@ -233,7 +233,7 @@ sitemap: false
   const pageTotal = document.getElementById("page-total");
 
   titleEl.textContent = title + (author ? " — " + author : "");
-  document.title = title + " | BookHub Reader";
+  document.title = title + " | Litheca Reader";
   document.getElementById("gutenberg-link").href = "https://www.gutenberg.org/ebooks/" + gid;
   const backParams = new URLSearchParams({ q: title, direct: "true" });
   if (author) backParams.set("author", author);
