@@ -1,0 +1,141 @@
+---
+layout: default
+title: "Account action"
+permalink: /auth/action/
+sitemap: false
+---
+
+{% comment %}
+  Branded landing page for Firebase Auth email links (email verification,
+  password reset). Point Firebase Console → Authentication → Templates →
+  Action URL at https://litheca.com/auth/action/ so the links in those
+  emails carry OUR domain instead of bookhub-42d9a.firebaseapp.com.
+  Handlers (applyAction / verifyResetCode / confirmReset) are exposed on
+  window.bhAuthOps by _includes/firebase.html, which every page loads.
+{% endcomment %}
+
+<section style="padding:56px 0;">
+  <div class="container" style="max-width:460px;">
+    <div style="border:1px solid var(--border);border-radius:12px;padding:28px;background:var(--bg-subtle);">
+
+      <!-- Working state -->
+      <div id="act-loading">
+        <h1 style="font-size:20px;margin-bottom:8px;">One moment…</h1>
+        <p style="font-size:14px;color:var(--fg-muted);">Checking your link.</p>
+      </div>
+
+      <!-- Email verified -->
+      <div id="act-verified" style="display:none;">
+        <h1 style="font-size:20px;margin-bottom:8px;">✓ Email confirmed</h1>
+        <p style="font-size:14px;color:var(--fg-muted);line-height:1.6;margin-bottom:18px;">
+          Your address is verified — you can now rate books and post comments.
+        </p>
+        <a class="btn-primary" href="{{ '/' | relative_url }}">Continue to Litheca</a>
+      </div>
+
+      <!-- Password reset form -->
+      <div id="act-reset" style="display:none;">
+        <h1 style="font-size:20px;margin-bottom:8px;">Choose a new password</h1>
+        <p style="font-size:13px;color:var(--fg-muted);margin-bottom:16px;">
+          for <b id="act-reset-email"></b>
+        </p>
+        <form id="act-reset-form" onsubmit="return window.__actReset(event)">
+          <input type="password" id="act-pw1" placeholder="New password (6+ characters)" minlength="6" required autocomplete="new-password"
+                 style="width:100%;box-sizing:border-box;padding:10px 12px;font-size:16px;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--fg);margin-bottom:10px;">
+          <input type="password" id="act-pw2" placeholder="Repeat new password" minlength="6" required autocomplete="new-password"
+                 style="width:100%;box-sizing:border-box;padding:10px 12px;font-size:16px;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--fg);margin-bottom:14px;">
+          <button type="submit" class="btn-primary" id="act-reset-btn" style="width:100%;justify-content:center;">Set new password</button>
+        </form>
+      </div>
+
+      <!-- Password reset done -->
+      <div id="act-reset-done" style="display:none;">
+        <h1 style="font-size:20px;margin-bottom:8px;">✓ Password updated</h1>
+        <p style="font-size:14px;color:var(--fg-muted);line-height:1.6;margin-bottom:18px;">
+          You can sign in with your new password now.
+        </p>
+        <a class="btn-primary" href="{{ '/' | relative_url }}" onclick="setTimeout(()=>window.bhAuthUI&&window.bhAuthUI.open('signin'),300)">Sign in</a>
+      </div>
+
+      <!-- Error -->
+      <div id="act-error" style="display:none;">
+        <h1 style="font-size:20px;margin-bottom:8px;">This link didn't work</h1>
+        <p id="act-error-msg" style="font-size:14px;color:var(--fg-muted);line-height:1.6;margin-bottom:18px;"></p>
+        <a class="btn-secondary" href="{{ '/account/' | relative_url }}">Go to my account</a>
+      </div>
+
+      <p id="act-inline-err" style="display:none;font-size:12px;color:#d33;margin-top:12px;line-height:1.5;"></p>
+    </div>
+  </div>
+</section>
+
+<script>
+(function () {
+  const qs = new URLSearchParams(location.search);
+  const mode = qs.get("mode");
+  const oobCode = qs.get("oobCode");
+  const show = (id) => {
+    ["act-loading","act-verified","act-reset","act-reset-done","act-error"]
+      .forEach(x => document.getElementById(x).style.display = x === id ? "block" : "none");
+  };
+  const fail = (msg) => {
+    document.getElementById("act-error-msg").textContent = msg;
+    show("act-error");
+  };
+  const inlineErr = (msg) => {
+    const el = document.getElementById("act-inline-err");
+    el.textContent = msg || "";
+    el.style.display = msg ? "block" : "none";
+  };
+
+  // firebase.html's module script populates bhAuthOps after this classic
+  // script runs — poll briefly instead of racing it.
+  function whenAuthReady(cb, tries) {
+    if (window.bhAuthOps && window.bhAuthOps.applyAction) return cb();
+    if ((tries || 0) > 100) return fail("Couldn't initialize — please reload the page.");
+    setTimeout(() => whenAuthReady(cb, (tries || 0) + 1), 100);
+  }
+
+  window.__actReset = function (ev) {
+    ev.preventDefault();
+    const pw1 = document.getElementById("act-pw1").value;
+    const pw2 = document.getElementById("act-pw2").value;
+    if (pw1 !== pw2) { inlineErr("Passwords don't match."); return false; }
+    inlineErr("");
+    const btn = document.getElementById("act-reset-btn");
+    btn.disabled = true;
+    window.bhAuthOps.confirmReset(oobCode, pw1)
+      .then(() => show("act-reset-done"))
+      .catch((e) => {
+        btn.disabled = false;
+        inlineErr((e && e.code) === "auth/weak-password"
+          ? "That password is too weak — use at least 6 characters."
+          : "Couldn't set the password — the link may have expired. Request a new one from “Forgot password?”.");
+      });
+    return false;
+  };
+
+  if (!mode || !oobCode) { fail("The link is incomplete — open it exactly as it appears in the email."); return; }
+
+  whenAuthReady(function () {
+    if (mode === "verifyEmail") {
+      window.bhAuthOps.applyAction(oobCode)
+        .then(() => window.bhAuthOps.reloadUser())   // refresh emailVerified in this session
+        .then(() => show("act-verified"))
+        .catch(() => fail("This confirmation link has expired or was already used. You can re-send a fresh one from your account page."));
+    } else if (mode === "resetPassword") {
+      window.bhAuthOps.verifyResetCode(oobCode)
+        .then((email) => {
+          document.getElementById("act-reset-email").textContent = email;
+          show("act-reset");
+        })
+        .catch(() => fail("This reset link has expired or was already used. Request a new one from “Forgot password?”."));
+    } else {
+      // recoverEmail / unknown modes: apply generically.
+      window.bhAuthOps.applyAction(oobCode)
+        .then(() => show("act-verified"))
+        .catch(() => fail("This link has expired or was already used."));
+    }
+  });
+})();
+</script>

@@ -218,6 +218,27 @@
     margin-top: 10px;
     line-height: 1.5;
   }
+  /* Same element, success flavor (e.g. "confirmation link sent") — green,
+     with a subtle tinted box so it never reads as an error. */
+  .auth-error.is-success {
+    color: #1a7f37;
+    background: rgba(26, 127, 55, 0.08);
+    border: 1px solid rgba(26, 127, 55, 0.25);
+    border-radius: 8px;
+    padding: 10px 12px;
+  }
+  /* Tiny inline spinner for the submit button while auth calls run. */
+  .auth-btn-spin {
+    display: inline-block;
+    width: 12px; height: 12px;
+    border: 2px solid rgba(255,255,255,0.35);
+    border-top-color: #fff;
+    border-radius: 50%;
+    vertical-align: -2px;
+    margin-right: 7px;
+    animation: bh-auth-spin 0.6s linear infinite;
+  }
+  @keyframes bh-auth-spin { to { transform: rotate(360deg); } }
   .auth-submit {
     width: 100%;
     justify-content: center;
@@ -324,6 +345,9 @@
     reauthenticateWithCredential,
     updatePassword,
     sendEmailVerification,
+    applyActionCode,
+    verifyPasswordResetCode,
+    confirmPasswordReset,
   } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
   import {
     getFirestore,
@@ -468,29 +492,22 @@
     "auth/operation-not-supported-in-this-environment",
   ]);
 
-  // One-shot flag: set right before an INTENTIONAL sign-out (post-sign-up, or
-  // a blocked unverified sign-in) so onAuthStateChanged doesn't treat it as a
-  // user sign-out (no data-clear, no personal-page redirect).
+  // One-shot flag: set right before an INTENTIONAL programmatic sign-out so
+  // onAuthStateChanged doesn't treat it as a user sign-out (no data-clear, no
+  // personal-page redirect). Currently unused — the transient sign-ups /
+  // blocked sign-ins that needed it are gone (unverified sessions now stay
+  // signed in) — but kept for any future programmatic sign-out.
   let suppressSignoutFx = false;
 
   window.bhAuthOps = {
-    // Email accounts must confirm their address before they can sign in.
-    // We create the account, but every entry point checks emailVerified;
-    // an unverified sign-in is bounced (and the link re-sent). Google
-    // accounts are always email_verified, so they pass straight through.
-    async signIn(email, pw) {
-      const cred = await signInWithEmailAndPassword(auth, email, pw);
-      if (!cred.user.emailVerified) {
-        // Only claim "we've re-sent the link" if the re-send actually went
-        // through — Firebase rate-limits sendEmailVerification and the very
-        // next attempt after sign-up fails with auth/too-many-requests.
-        let resent = true;
-        try { await sendEmailVerification(cred.user); } catch (e) { resent = false; }
-        suppressSignoutFx = true;
-        await signOut(auth);
-        throw { code: resent ? "auth/email-not-verified" : "auth/email-not-verified-no-resend" };
-      }
-      return cred;
+    // Standard industry flow (GitHub/Reddit-style): unverified accounts may
+    // sign in and stay signed in — they just can't post text content until
+    // the email is confirmed. Enforcement is layered: Firestore rules gate
+    // creates on request.auth.token.email_verified (the real teeth), and the
+    // comment/review/rec forms show a friendly "verify first" message.
+    // Google accounts are always email_verified, so they pass straight through.
+    signIn(email, pw) {
+      return signInWithEmailAndPassword(auth, email, pw);
     },
     async signUp(name, email, pw) {
       const cred = await createUserWithEmailAndPassword(auth, email, pw);
@@ -499,9 +516,9 @@
         displayName: name,
         createdAt: serverTimestamp(),
       });
-      // Send the confirmation link, then sign the new account OUT — it can't
-      // be used until the email is verified. Surface a send failure to the
-      // caller (instead of swallowing it) so the UI can say why.
+      // Send the confirmation link but KEEP the new account signed in (the
+      // standard flow — verification gates content, not the session).
+      // Surface a send failure to the caller so the UI can say why.
       let verifyError = null;
       try {
         await sendEmailVerification(cred.user);
@@ -509,13 +526,18 @@
         verifyError = e;
         console.warn("Verification email failed:", e && e.code, e);
       }
-      suppressSignoutFx = true;
-      await signOut(auth);
       return { email, verificationSent: !verifyError, verifyError };
     },
     // Re-send the confirmation email. Works from a signed-in unverified
     // session (account page) OR right after a blocked sign-in attempt.
     resendVerification: () => sendEmailVerification(auth.currentUser),
+    // Firebase action-link handlers, used by /auth/action/ (the branded
+    // landing page the email links point at once the Console's Action URL
+    // is set to https://litheca.com/auth/action/).
+    applyAction: (oobCode) => applyActionCode(auth, oobCode),
+    verifyResetCode: (oobCode) => verifyPasswordResetCode(auth, oobCode),   // → email
+    confirmReset: (oobCode, newPw) => confirmPasswordReset(auth, oobCode, newPw),
+    reloadUser: () => auth.currentUser ? auth.currentUser.reload().then(() => auth.currentUser) : Promise.resolve(null),
     async signInGoogle() {
       try {
         const cred = await signInWithPopup(auth, new GoogleAuthProvider());
@@ -563,10 +585,6 @@
     "auth/user-not-found": "No account with this email.",
     "auth/wrong-password": "Wrong email or password.",
     "auth/too-many-requests": "Too many attempts — try again in a few minutes.",
-    "auth/email-not-verified":
-      "Confirm your email first — we've re-sent the link. Check your inbox and spam folder.",
-    "auth/email-not-verified-no-resend":
-      "Confirm your email first — use the link we already sent (check spam too). We couldn't send a new one just now; try again in a few minutes.",
   };
   const explain = (e) =>
     ERRORS[e && e.code] || "Something went wrong — please try again.";
@@ -594,9 +612,10 @@
         m === "signup" ? "Create your Litheca account" : "Sign in to Litheca";
       this.error("");
     },
-    error(msg) {
+    error(msg, kind) {
       const el = $("auth-error");
       el.textContent = msg;
+      el.classList.toggle("is-success", kind === "success");
       el.style.display = msg ? "block" : "none";
     },
     async submit(ev) {
@@ -604,7 +623,13 @@
       const email = $("auth-email").value.trim();
       const password = $("auth-password").value;
       const btn = $("auth-submit");
+      const btnLabel = btn.textContent;
+      // Immediate feedback — the network round-trip (create + profile +
+      // verification email) can take several seconds.
       btn.disabled = true;
+      btn.innerHTML =
+        '<span class="auth-btn-spin"></span>' +
+        (mode === "signup" ? "Creating account…" : "Signing in…");
       this.error("");
       try {
         if (mode === "signup") {
@@ -613,19 +638,17 @@
             this.error("Please pick a display name (2-40 characters).");
             return false;
           }
-          // Delegate to the shared signUp (creates the account, emails the
-          // link, signs back out). Don't close — switch to sign-in and tell
-          // them to confirm first.
+          // signUp keeps the new account signed in (standard flow) — the
+          // header chip updates via onAuthStateChanged behind the modal.
           const res = await window.bhAuthOps.signUp(name, email, password);
-          this.mode("signin");
           this.error(
             res.verificationSent
-              ? `Almost there — we sent a confirmation link to ${email}. Click it (check spam too), then sign in.`
-              : `Account created, but the confirmation email couldn't be sent: ${explain(res.verifyError)} You can retry from "Forgot password?" or contact support.`,
+              ? `Welcome, ${name}! You're signed in. We sent a confirmation link to ${email} — click it (check spam too) to unlock commenting.`
+              : `Account created and you're signed in, but the confirmation email couldn't be sent: ${explain(res.verifyError)} You can re-send it anytime from your account page.`,
+            res.verificationSent ? "success" : undefined,
           );
           return false;
         } else {
-          // Routes through bhAuthOps.signIn, which blocks unverified accounts.
           await window.bhAuthOps.signIn(email, password);
           this.close();
         }
@@ -633,6 +656,7 @@
         this.error(explain(e));
       } finally {
         btn.disabled = false;
+        btn.textContent = btnLabel;
       }
       return false;
     },
@@ -880,10 +904,12 @@
     __prevUid = user ? user.uid : null;
 
     // Only merge/push the cloud library for a VERIFIED session. This skips
-    // the brief unverified sign-in that a sign-up or a blocked sign-in causes,
-    // so those transient sessions never pull an account's data into
-    // localStorage (no leak on a shared browser, no race with the sign-out).
-    if (user && user.emailVerified) mergeLibraryOnLogin(user);
+    // Unverified sessions are now real sessions (signup keeps you signed in;
+    // verification gates text content, not the session), so their library
+    // syncs too — Firestore rules only require auth for users/{uid}/library,
+    // not a verified email. The old verified-only gate existed for the
+    // transient sign-up sessions that no longer happen.
+    if (user) mergeLibraryOnLogin(user);
     window.bhUser = user || null;
 
     // On sign-out, wipe the per-account local stores so the next person on
