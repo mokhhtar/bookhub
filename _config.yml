@@ -1,8 +1,8 @@
 title: "Litheca"
 tagline: "Read less. Understand more."
 description: "Seven AI-powered tools for readers — summaries, recommendations, discussion questions, comparisons, and more."
-url: "https://mokhhtar.github.io"
-baseurl: "/bookhub"
+url: "https://litheca.com"
+baseurl: ""
 lang: "en"
 
 author:
