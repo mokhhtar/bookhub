@@ -41,6 +41,10 @@
   <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://firestore.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://identitytoolkit.googleapis.com" crossorigin>
+  <!-- Resolve the auth subdomain's DNS early — the Google sign-in popup's
+       first hop is auth.litheca.com and cold DNS+TLS there reads as a slow
+       popup (bhAuthUI.open() adds full preconnect at intent time). -->
+  <link rel="dns-prefetch" href="https://auth.litheca.com">
   <link rel="modulepreload" href="https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js">
   <link rel="modulepreload" href="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js">
   <link rel="modulepreload" href="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js">

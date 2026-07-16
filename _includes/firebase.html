@@ -647,6 +647,20 @@
       this.mode(startMode || "signin");
       $("auth-modal").style.display = "flex";
       $("auth-email").focus();
+      // Warm the Google-popup path while the user reads the modal: the
+      // popup's first hop is auth.litheca.com (fresh subdomain → full
+      // DNS+TLS cost inside the popup, which reads as a slow load).
+      // Preconnecting now makes the eventual click feel instant.
+      try {
+        if (!document.getElementById("bh-auth-preconnect")) {
+          [["bh-auth-preconnect", "https://auth.litheca.com"],
+           ["bh-goog-preconnect", "https://accounts.google.com"]].forEach(([id, href]) => {
+            const l = document.createElement("link");
+            l.id = id; l.rel = "preconnect"; l.href = href;
+            document.head.appendChild(l);
+          });
+        }
+      } catch (e) {}
     },
     close() {
       $("auth-modal").style.display = "none";
