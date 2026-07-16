@@ -966,6 +966,58 @@ description: "Get an instant AI study guide for any book — deep summary, chara
 
     <!-- State: results — disambiguation / summary / loading -->
     <div class="result-area" id="result" style="display:none;"></div>
+
+    <!-- FAQ — real crawlable copy for this JS-heavy page. Visible in the
+         idle/search state (what crawlers see in the initial HTML); hidden by
+         switchToState once results or a summary take over the page. -->
+    <section id="tool-faq" aria-labelledby="faq-heading" style="max-width:720px;margin:56px auto 24px;">
+      <h2 id="faq-heading" style="font-size:22px;margin-bottom:18px;">Frequently asked questions</h2>
+
+      <details style="border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:10px;">
+        <summary style="font-size:14px;font-weight:600;cursor:pointer;">Is the Litheca book summarizer free?</summary>
+        <p style="font-size:13px;color:var(--fg-muted);line-height:1.7;margin-top:10px;">Yes — completely free, with no account required to generate a summary. Signing up (also free) adds extras like a synced library, ratings, and commenting.</p>
+      </details>
+
+      <details style="border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:10px;">
+        <summary style="font-size:14px;font-weight:600;cursor:pointer;">How are the summaries generated — and can I trust them?</summary>
+        <p style="font-size:13px;color:var(--fg-muted);line-height:1.7;margin-top:10px;">Each guide is AI-generated, but only after the book is verified against real catalogs (Google Books and Open Library). Our rule is simple: <b>no data beats wrong data</b> — anything we can't verify (awards, ratings, quotes, free-ebook links) is left out rather than invented.</p>
+      </details>
+
+      <details style="border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:10px;">
+        <summary style="font-size:14px;font-weight:600;cursor:pointer;">What do I get besides the summary?</summary>
+        <p style="font-size:13px;color:var(--fg-muted);line-height:1.7;margin-top:10px;">A full study guide: chapter-aware deep summary, character profiles, key themes, notable quotes, reading-time planner, similar books, reader ratings and comments — plus a comprehension quiz whose answers are backed by quotes verified against the source text.</p>
+      </details>
+
+      <details style="border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:10px;">
+        <summary style="font-size:14px;font-weight:600;cursor:pointer;">Which books does it work for?</summary>
+        <p style="font-size:13px;color:var(--fg-muted);line-height:1.7;margin-top:10px;">Anything findable in the major catalogs we search — over 20 million records spanning fiction, non-fiction, and classics, plus popular web novels and manga through curated community wikis.</p>
+      </details>
+
+      <details style="border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:10px;">
+        <summary style="font-size:14px;font-weight:600;cursor:pointer;">How long does it take?</summary>
+        <p style="font-size:13px;color:var(--fg-muted);line-height:1.7;margin-top:10px;">Popular books open in a few seconds. A book being summarized for the first time takes up to a minute — and if the free server was asleep, the first request may add a short wake-up wait. We show progress the whole way.</p>
+      </details>
+
+      <details style="border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:10px;">
+        <summary style="font-size:14px;font-weight:600;cursor:pointer;">Do summaries replace reading the book?</summary>
+        <p style="font-size:13px;color:var(--fg-muted);line-height:1.7;margin-top:10px;">No — and we don't pretend otherwise. Litheca works best as a companion: decide whether a book deserves your time, refresh one you read years ago, or test your understanding after finishing it.</p>
+      </details>
+    </section>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type": "Question", "name": "Is the Litheca book summarizer free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — completely free, with no account required to generate a summary. Signing up (also free) adds extras like a synced library, ratings, and commenting."}},
+        {"@type": "Question", "name": "How are the summaries generated — and can I trust them?", "acceptedAnswer": {"@type": "Answer", "text": "Each guide is AI-generated, but only after the book is verified against real catalogs (Google Books and Open Library). Anything that can't be verified is left out rather than invented."}},
+        {"@type": "Question", "name": "What do I get besides the summary?", "acceptedAnswer": {"@type": "Answer", "text": "A full study guide: deep summary, character profiles, themes, notable quotes, reading-time planner, similar books, reader ratings and comments, plus a comprehension quiz with quote-verified answers."}},
+        {"@type": "Question", "name": "Which books does it work for?", "acceptedAnswer": {"@type": "Answer", "text": "Anything findable in the major catalogs we search — over 20 million records spanning fiction, non-fiction, and classics, plus popular web novels and manga through curated community wikis."}},
+        {"@type": "Question", "name": "How long does it take?", "acceptedAnswer": {"@type": "Answer", "text": "Popular books open in a few seconds; a first-time book takes up to a minute, plus a short wake-up wait if the free server was idle."}},
+        {"@type": "Question", "name": "Do summaries replace reading the book?", "acceptedAnswer": {"@type": "Answer", "text": "No — Litheca works best as a companion: decide whether a book deserves your time, refresh one you read years ago, or test your understanding after finishing it."}}
+      ]
+    }
+    </script>
   </div>
 </div>
 
@@ -1053,6 +1105,10 @@ description: "Get an instant AI study guide for any book — deep summary, chara
     const idle = document.getElementById("state-idle");
     const compact = document.getElementById("compact-search");
     const result = document.getElementById("result");
+    // FAQ is landing-page copy (crawlers see it in the initial HTML) —
+    // hide it once results/summary take over so it doesn't trail the tool.
+    const faq = document.getElementById("tool-faq");
+    if (faq) faq.style.display = state === "idle" ? "" : "none";
 
     if (state === "idle") {
       idle.style.display = "";
