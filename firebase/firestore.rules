@@ -109,7 +109,8 @@ service cloud.firestore {
         && request.auth.uid == uid
         && request.resource.data.keys().hasOnly(["createdAt"])
         && request.resource.data.createdAt == request.time;
-      allow delete: if signedIn() && request.auth.uid == uid;  // un-recommend
+      // un-recommend; admin may also remove any vote (moderation/cleanup)
+      allow delete: if isAdmin() || (signedIn() && request.auth.uid == uid);
       allow update: if false;
     }
 
@@ -167,7 +168,8 @@ service cloud.firestore {
         && request.resource.data.stars >= 1
         && request.resource.data.stars <= 5
         && request.resource.data.updatedAt == request.time;
-      allow delete: if signedIn() && request.auth.uid == uid;  // clear my rating
+      // clear my rating; admin may also remove any rating (moderation/cleanup)
+      allow delete: if isAdmin() || (signedIn() && request.auth.uid == uid);
     }
 
     // ── Character likes (favorite a character) ───────────────
