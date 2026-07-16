@@ -68,6 +68,13 @@ defaults:
       layout: "character"
       noindex: true
       sitemap: false
+  # Category pages are thin (auto-listing shells) — keep them out of the
+  # index/sitemap until they carry real content. Covers the hub too.
+  - scope:
+      path: "categories"
+    values:
+      noindex: true
+      sitemap: false
   - scope:
       path: ""
     values:
