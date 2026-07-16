@@ -372,7 +372,13 @@
 
   const app = initializeApp({
     apiKey: "AIzaSyB9nLUuq4e4bxFVlpSX3OwEqeKVzOWhhSs",
-    authDomain: "bookhub-42d9a.firebaseapp.com",
+    // Branded auth domain: auth.litheca.com is connected to Firebase
+    // Hosting (serves the reserved /__/auth/* handler) and registered in
+    // GCP OAuth credentials (origins + redirect URI) and Firebase
+    // authorized domains. Same-site with litheca.com, so redirect sign-in
+    // also survives third-party-cookie blocking. Verified the handler
+    // serves identically to bookhub-42d9a.firebaseapp.com before the flip.
+    authDomain: "auth.litheca.com",
     projectId: "bookhub-42d9a",
     storageBucket: "bookhub-42d9a.firebasestorage.app",
     messagingSenderId: "482256955410",
