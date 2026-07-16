@@ -419,15 +419,33 @@ permalink: /account/
 
   window.acctResendVerify = async function () {
     const note = $("acct-verify-note"), btn = $("acct-verify-btn");
+    // Visible cooldown instead of a vague rate-limit error: 60s after a
+    // successful send, 120s after hitting Firebase's resend limit.
+    const countdown = (secs, sentOk) => {
+      let left = secs;
+      const tick = () => {
+        if (left <= 0) { btn.disabled = false; note.textContent = ""; return; }
+        note.textContent = (sentOk ? "Sent — check your inbox (and spam). " : "Limit reached. ")
+          + `You can resend in ${left}s.`;
+        left -= 1; setTimeout(tick, 1000);
+      };
+      tick();
+    };
     btn.disabled = true; note.textContent = "Sending…";
     try {
       await bhAuthOps.resendVerification();
       note.style.color = "#22a06b";
-      note.textContent = "Sent — check your inbox (and spam).";
+      countdown(60, true);
     } catch (e) {
-      note.style.color = "#d33";
-      note.textContent = explain(e);
-    } finally { btn.disabled = false; }
+      if ((e && e.code) === "auth/too-many-requests") {
+        note.style.color = "#d33";
+        countdown(120, false);
+      } else {
+        note.style.color = "#d33";
+        note.textContent = explain(e);
+        btn.disabled = false;
+      }
+    }
   };
 
   window.acctChangePw = async function (ev) {

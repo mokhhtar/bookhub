@@ -144,8 +144,16 @@ sitemap: false
           // Check the real state before claiming failure.
           window.bhAuthOps.reloadUser().then((u) => {
             if (u && u.emailVerified) return succeed();
-            fail("This confirmation link has expired or was already used. If you clicked it before, your email may already be confirmed — sign in and check your account page. You can also re-send a fresh link from there.");
-          }).catch(() => fail("This confirmation link has expired or was already used. You can re-send a fresh one from your account page."))
+            // Most common cause: the mail provider's link scanner already
+            // consumed the one-time code, which VERIFIES the account — the
+            // user's own click then looks "expired" even though they're
+            // fine. Say so, and route them back to the site regardless.
+            fail("This link was already used — your email is most likely already confirmed. Taking you back to Litheca…");
+            setTimeout(() => { location.href = backUrl; }, 4000);
+          }).catch(() => {
+            fail("This link was already used — your email is most likely already confirmed. Taking you back to Litheca…");
+            setTimeout(() => { location.href = backUrl; }, 4000);
+          })
         );
     } else if (mode === "resetPassword") {
       window.bhAuthOps.verifyResetCode(oobCode)

@@ -108,8 +108,10 @@ layout: default
         </div>
 
         {% if page.amazon_url and page.amazon_url != "" %}
+          <p style="font-size:10px;color:var(--fg-faint);line-height:1.5;margin:6px 0 4px;">As an Amazon Associate, Litheca earns from qualifying purchases.</p>
           <a href="{{ page.amazon_url }}" class="btn-primary" target="_blank" rel="noopener sponsored">Buy on Amazon</a>
         {% elsif page.isbn_10 and page.isbn_10 != "" %}
+          <p style="font-size:10px;color:var(--fg-faint);line-height:1.5;margin:6px 0 4px;">As an Amazon Associate, Litheca earns from qualifying purchases.</p>
           <a href="https://www.amazon.com/dp/{{ page.isbn_10 }}?tag={{ site.amazon_tag }}"
              class="btn-primary" target="_blank" rel="noopener sponsored">Buy on Amazon</a>
         {% endif %}

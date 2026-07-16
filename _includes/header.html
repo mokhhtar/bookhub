@@ -26,11 +26,15 @@
 
     <div class="header-right" style="display: flex; align-items: center; gap: 12px; position: relative;">
       <button id="auth-signin-btn" class="btn-secondary btn-sm auth-header-btn" onclick="bhAuthUI.open('signin')">Sign in</button>
-      <button id="auth-user-chip" class="auth-user-chip" onclick="bhAuthUI.toggleMenu()" aria-haspopup="true">
+      {%- comment -%} chip + menu are hidden inline, not just via CSS: their
+      styles live in firebase.html at the END of body, so on a slow load the
+      raw elements flashed visible (unstyled Account/Sign out links). JS
+      toggles style.display, which overrides these inline defaults. {%- endcomment -%}
+      <button id="auth-user-chip" class="auth-user-chip" style="display:none" onclick="bhAuthUI.toggleMenu()" aria-haspopup="true">
         <span class="auth-avatar" id="auth-avatar">?</span>
         <span id="auth-chip-name">Account</span>
       </button>
-      <div class="auth-user-menu" id="auth-user-menu">
+      <div class="auth-user-menu" id="auth-user-menu" style="display:none">
         <a href="{{ '/account/' | relative_url }}">My Account</a>
         <a href="{{ '/My-Library' | relative_url }}">My Library</a>
         <button onclick="bhAuthUI.signOut()">Sign out</button>
@@ -53,7 +57,9 @@
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
         </svg>
       </button>
-      <a href="{{ '/summary' | relative_url }}" class="btn-primary btn-sm">Get started</a>
+      {%- comment -%} Signup CTA for visitors; hidden for signed-in users by
+      firebase.html's auth listener (it duplicated the Summarizer link before). {%- endcomment -%}
+      <button id="header-cta" class="btn-primary btn-sm" onclick="bhAuthUI.open('signup')">Sign up free</button>
     </div>
 
     <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">

@@ -59,6 +59,15 @@ sitemap: false
     if (fail) {
       const e = fail.reason || {};
       if (e.code === "permission-denied") {
+        // A permission error right after a page refresh is usually the auth
+        // token still being restored/refreshed, not a genuinely unauthorized
+        // account — retry once before saying so.
+        if (!window.__modRetried) {
+          window.__modRetried = true;
+          statusEl.textContent = "Checking your access…";
+          setTimeout(loadPending, 1600);
+          return;
+        }
         statusEl.textContent = "This account is not authorized for moderation.";
         console.error(e);
         return;   // both queries share the same auth — neither will load
@@ -71,6 +80,7 @@ sitemap: false
         : " · one list failed to load (see console)";
     }
 
+    window.__modRetried = false;   // queries authorized — future refreshes get a fresh retry
     if (!docs.length) {
       statusEl.innerHTML = partialNote
         ? "No items loaded" + partialNote +
@@ -122,8 +132,20 @@ sitemap: false
     try {
       if (action === "approve") await fs.updateDoc(d.ref, { approved: true });
       else await fs.deleteDoc(d.ref);
-      if (el) el.style.opacity = "0.35";
-      if (el) el.querySelectorAll("button").forEach(b => b.disabled = true);
+      // Remove the handled row right away (it used to just fade, which read
+      // as "nothing happened" until a manual refresh) and keep the counter
+      // honest.
+      if (el) {
+        el.style.transition = "opacity .3s";
+        el.style.opacity = "0";
+        setTimeout(() => {
+          el.remove();
+          const left = document.querySelectorAll("[id^='mod-item-']").length;
+          statusEl.textContent = left
+            ? `${left} pending item${left > 1 ? "s" : ""}:`
+            : "No pending items — all clear ✓";
+        }, 320);
+      }
     } catch (e) {
       alert("Action failed: " + (e.code || e.message));
     }

@@ -593,18 +593,38 @@
     ERRORS[e && e.code] || "Something went wrong — please try again.";
 
   // Inline "Resend link" used by the comment/rec form gates: swaps the
-  // clicked link for a sent/failed note in place. Safe to call repeatedly —
-  // Firebase rate-limits resends and we surface that as a friendly message.
+  // clicked link for a sent/failed note in place. Firebase rate-limits
+  // resends, so instead of a vague "too many attempts" we run a visible
+  // countdown (60s after a send, 120s after hitting the limit) — the
+  // window is Firebase-side and undocumented, so the timer is a floor,
+  // not a promise.
+  window.bhResendCountdown = function (el, secs, doneText) {
+    let left = secs;
+    el.style.pointerEvents = "none";
+    const tick = () => {
+      if (left <= 0) {
+        el.style.pointerEvents = "";
+        el.textContent = doneText;
+        return;
+      }
+      el.textContent = `You can resend in ${left}s…`;
+      left -= 1;
+      setTimeout(tick, 1000);
+    };
+    tick();
+  };
   window.bhResendVerify = async function (el) {
     if (!el) return;
     el.textContent = "Sending…";
     try {
       await window.bhAuthOps.resendVerification();
-      el.textContent = "Sent — check your inbox (and spam).";
+      window.bhResendCountdown(el, 60, "resend the link");
     } catch (e) {
-      el.textContent = (e && e.code) === "auth/too-many-requests"
-        ? "Too many sends — try again in a few minutes."
-        : "Couldn't send — try again shortly.";
+      if ((e && e.code) === "auth/too-many-requests") {
+        window.bhResendCountdown(el, 120, "resend the link");
+      } else {
+        el.textContent = "Couldn't send — try again shortly.";
+      }
     }
   };
 
@@ -959,7 +979,9 @@
     } catch (e) {}
     const signinBtn = $("auth-signin-btn");
     const chip = $("auth-user-chip");
+    const headerCta = $("header-cta");
     if (signinBtn) signinBtn.style.display = user ? "none" : "";
+    if (headerCta) headerCta.style.display = user ? "none" : "";
     if (chip) {
       chip.style.display = user ? "flex" : "none";
       if (user) {

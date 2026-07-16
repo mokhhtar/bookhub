@@ -1654,8 +1654,8 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
             Reader Comments
           </div>
-          <div id="reader-ratings" style="display:none;margin-bottom:14px;"></div>
-          <button class="btn-secondary" id="comments-load-btn" onclick="loadComments()" style="padding:8px 18px;font-size:13px;">Show comments</button>
+          <div id="reader-ratings" style="display:none;margin-bottom:16px;border:1px solid var(--border);border-radius:10px;padding:12px 14px;background:var(--bg-subtle);"></div>
+          <button class="btn-secondary" id="comments-load-btn" onclick="toggleComments()" style="padding:8px 18px;font-size:13px;">Hide comments</button>
           <div id="comments-area" style="display:none;"></div>
         </div>` : '';
 
@@ -1862,6 +1862,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
           </div>` : ''}
 
           ${data.amazon_url ? `
+          <p style="font-size:10px;color:var(--fg-faint);line-height:1.5;margin:6px 0 4px;">As an Amazon Associate, Litheca earns from qualifying purchases.</p>
           <a href="${data.amazon_url}" class="sidebar-amazon-btn" target="_blank" rel="noopener sponsored">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
             Buy on Amazon
@@ -1943,6 +1944,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
       window.__bhCurrentPages = data.page_count > 0 ? data.page_count : 0;
       loadReaderRatings(window.__bhCurrentBookSlug);
       loadReaderRecs(window.__bhCurrentBookSlug);
+      loadComments();   // comments visible by default (button = hide toggle)
       __charDetailsCache = {};   // fresh book → fresh character state
       __charOpenIndex = -1;
 
@@ -2434,19 +2436,29 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
   }
   window.loadReaderRecs = loadReaderRecs;
 
+  let __recSearchAbort = null;
   window.recSearchInput = function (event) {
     const q = event.target.value.trim();
     __recPick = null;   // typing invalidates a prior pick
     const box = document.getElementById("rec-suggestions");
     if (!box) return;
     if (q.length < 3) { box.style.display = "none"; return; }
+    // Instant feedback — the first uncached /search can take several seconds
+    // (multi-source cascade); without this the picker feels dead.
+    box.innerHTML = `<div style="padding:10px 12px;font-size:12px;color:var(--fg-faint);"><span class="spinner" style="width:11px;height:11px;margin-right:6px;display:inline-block;vertical-align:-1px;"></span>Searching…</div>`;
+    box.style.display = "block";
     clearTimeout(__recSearchTimer);
     __recSearchTimer = setTimeout(async () => {
       try {
-        const res = await fetch(`${API}/search?q=${encodeURIComponent(q)}`);
+        if (__recSearchAbort) __recSearchAbort.abort();  // stale keystroke → cancel
+        __recSearchAbort = new AbortController();
+        const res = await fetch(`${API}/search?q=${encodeURIComponent(q)}`, { signal: __recSearchAbort.signal });
         if (!res.ok) return;
         const data = await res.json();
-        if (!data || !data.length) { box.style.display = "none"; return; }
+        if (!data || !data.length) {
+          box.innerHTML = `<div style="padding:10px 12px;font-size:12px;color:var(--fg-faint);">No matches — try the full title.</div>`;
+          return;
+        }
         window.__recResults = data.slice(0, 6);
         box.innerHTML = window.__recResults.map((b, i) => `
           <div onclick="recPick(${i})" style="display:flex;align-items:center;gap:10px;padding:8px 12px;cursor:pointer;border-bottom:1px solid var(--border);font-size:13px;">
@@ -2552,13 +2564,26 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
   document.addEventListener("bh-auth", () => refreshRecommendBtn());
 
   // ── Reader comments (Firestore, pre-moderated) ───────────
+  // Loaded automatically after the summary renders (readers asked for
+  // comments visible by default); the button toggles visibility instead.
+  window.toggleComments = function () {
+    const area = document.getElementById("comments-area");
+    const btn = document.getElementById("comments-load-btn");
+    if (!area || !btn) return;
+    const hidden = area.style.display === "none";
+    area.style.display = hidden ? "block" : "none";
+    btn.textContent = hidden ? "Hide comments" : "Show comments";
+  };
   window.loadComments = async function () {
     const card = document.getElementById("comments-card");
     const area = document.getElementById("comments-area");
-    const loadBtn = document.getElementById("comments-load-btn");
-    if (!card || !area || !window.bhFs) return;
+    if (!card || !area || !window.bhFs) {
+      // Firestore not ready yet (firebase.html loads after this script on a
+      // cold parse) — retry once auth/db announce themselves.
+      if (card && area) document.addEventListener("bh-auth", () => window.loadComments(), { once: true });
+      return;
+    }
     const slug = card.dataset.bookSlug;
-    if (loadBtn) loadBtn.style.display = "none";
     area.style.display = "block";
     area.innerHTML = `<p style="font-size:12px;color:var(--fg-faint);">Loading comments…</p>`;
 
