@@ -2485,8 +2485,16 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
     const status = document.getElementById("rec-status");
     if (!card || !reasonEl || !window.bhUser || !window.bhFs) return;
     if (window.bhUser.emailVerified === false) {
-      status.innerHTML = `Confirm your email first — check your inbox, or <a href="#" onclick="event.preventDefault();bhResendVerify(this)" style="color:var(--accent);text-decoration:underline;">resend the link</a>.`;
-      return;
+      // May have verified on ANOTHER device (signed up on PC, clicked the
+      // link on the phone) — refresh profile + ID token once before blocking.
+      status.textContent = "Checking your verification…";
+      const u = window.bhAuthOps && window.bhAuthOps.reloadUser
+        ? await window.bhAuthOps.reloadUser().catch(() => null) : null;
+      if (u && u.emailVerified) { window.bhUser = u; status.textContent = ""; }
+      else {
+        status.innerHTML = `Confirm your email first — check your inbox, or <a href="#" onclick="event.preventDefault();bhResendVerify(this)" style="color:var(--accent);text-decoration:underline;">resend the link</a>.`;
+        return;
+      }
     }
     if (!__recPick || !__recPick.title) { status.textContent = "Pick a book from the search list first."; return; }
     const reason = reasonEl.value.trim();
@@ -2674,8 +2682,15 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
     // Firestore rules require a verified email to post — surface a friendly
     // message instead of a raw permission error for unconfirmed accounts.
     if (window.bhUser.emailVerified === false) {
-      status.innerHTML = `Confirm your email first — check your inbox, or <a href="#" onclick="event.preventDefault();bhResendVerify(this)" style="color:var(--accent);text-decoration:underline;">resend the link</a>.`;
-      return;
+      // Same cross-device path as the rec form: refresh once before blocking.
+      status.textContent = "Checking your verification…";
+      const u = window.bhAuthOps && window.bhAuthOps.reloadUser
+        ? await window.bhAuthOps.reloadUser().catch(() => null) : null;
+      if (u && u.emailVerified) { window.bhUser = u; status.textContent = ""; }
+      else {
+        status.innerHTML = `Confirm your email first — check your inbox, or <a href="#" onclick="event.preventDefault();bhResendVerify(this)" style="color:var(--accent);text-decoration:underline;">resend the link</a>.`;
+        return;
+      }
     }
     const text = ta.value.trim();
     if (text.length < 2) { status.textContent = "Write a little more first."; return; }

@@ -540,7 +540,15 @@
     applyAction: (oobCode) => applyActionCode(auth, oobCode),
     verifyResetCode: (oobCode) => verifyPasswordResetCode(auth, oobCode),   // → email
     confirmReset: (oobCode, newPw) => confirmPasswordReset(auth, oobCode, newPw),
-    reloadUser: () => auth.currentUser ? auth.currentUser.reload().then(() => auth.currentUser) : Promise.resolve(null),
+    // reload() refreshes the PROFILE, but Firestore rules read the ID
+    // token's email_verified claim — force-refresh that too, or a user who
+    // verified on another device stays blocked here until the hourly token
+    // rotation / a page reload.
+    reloadUser: () => auth.currentUser
+      ? auth.currentUser.reload()
+          .then(() => auth.currentUser.getIdToken(true))
+          .then(() => auth.currentUser)
+      : Promise.resolve(null),
     async signInGoogle() {
       try {
         const cred = await signInWithPopup(auth, new GoogleAuthProvider());

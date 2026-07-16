@@ -187,8 +187,15 @@ layout: default
     if (!ta || !window.bhUser || !window.bhFs) return;
     // Firestore rules require a verified email — friendly nudge for unconfirmed accounts.
     if (window.bhUser.emailVerified === false) {
-      status.innerHTML = `Confirm your email first — check your inbox, or <a href="#" onclick="event.preventDefault();bhResendVerify(this)" style="color:var(--accent);text-decoration:underline;">resend the link</a>.`;
-      return;
+      // May have verified on another device — refresh profile + token once.
+      status.textContent = "Checking your verification…";
+      const u = window.bhAuthOps && window.bhAuthOps.reloadUser
+        ? await window.bhAuthOps.reloadUser().catch(() => null) : null;
+      if (u && u.emailVerified) { window.bhUser = u; status.textContent = ""; }
+      else {
+        status.innerHTML = `Confirm your email first — check your inbox, or <a href="#" onclick="event.preventDefault();bhResendVerify(this)" style="color:var(--accent);text-decoration:underline;">resend the link</a>.`;
+        return;
+      }
     }
     const text = ta.value.trim();
     if (text.length < 2) { status.textContent = "Write a little more first."; return; }

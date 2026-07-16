@@ -139,21 +139,26 @@ sitemap: false
         .then(() => window.bhAuthOps.reloadUser())   // refresh emailVerified in this session
         .then(succeed)
         .catch(() =>
-          // A consumed code throws "expired" even though the email IS
-          // verified (double-click, mail-scanner prefetch, page reload).
-          // Check the real state before claiming failure.
+          // A consumed code throws "expired". Whether the account is
+          // actually verified can ONLY be known from a signed-in session
+          // (mail-scanner prefetch verifies it; a genuinely expired or
+          // superseded link does not) — so check the evidence and never
+          // claim success cross-device, where this page has no session.
           window.bhAuthOps.reloadUser().then((u) => {
-            if (u && u.emailVerified) return succeed();
-            // Most common cause: the mail provider's link scanner already
-            // consumed the one-time code, which VERIFIES the account — the
-            // user's own click then looks "expired" even though they're
-            // fine. Say so, and route them back to the site regardless.
-            fail("This link was already used — your email is most likely already confirmed. Taking you back to Litheca…");
-            setTimeout(() => { location.href = backUrl; }, 4000);
-          }).catch(() => {
-            fail("This link was already used — your email is most likely already confirmed. Taking you back to Litheca…");
-            setTimeout(() => { location.href = backUrl; }, 4000);
-          })
+            if (u && u.emailVerified) return succeed();   // same device, verified → truth
+            if (u) {
+              // Signed in and provably NOT verified (expired/superseded link).
+              fail("This link has expired or was replaced by a newer one — your email is still unconfirmed.");
+              document.getElementById("act-error-msg").innerHTML +=
+                ` <a href="#" onclick="event.preventDefault();bhResendVerify(this)" style="color:var(--accent);text-decoration:underline;">Resend a fresh link</a>.`;
+              return;
+            }
+            // No session here (e.g. signed up on the computer, opened the
+            // link on the phone) — unknowable from this device; don't guess.
+            fail("This link was already used or has expired. Sign in to check whether your email is already confirmed — if it isn't, you can resend the link from your account page.");
+            const actions = document.querySelector("#act-error a.btn-secondary");
+            if (actions) actions.textContent = "Sign in to check";
+          }).catch(() => fail("This link was already used or has expired. Sign in to check whether your email is already confirmed."))
         );
     } else if (mode === "resetPassword") {
       window.bhAuthOps.verifyResetCode(oobCode)
