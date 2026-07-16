@@ -42,22 +42,32 @@ exclude:
   - README.md
 
 # Defaults
+# Deferred-indexing strategy: generated content collections ship with
+# noindex + out of the sitemap until pages earn engagement (flip per-page
+# or per-collection at launch). Core product pages (home, tools) stay
+# indexable.
 defaults:
   - scope:
       path: ""
       type: "books"
     values:
       layout: "book"
+      noindex: true
+      sitemap: false
   - scope:
       path: ""
       type: "authors"
     values:
       layout: "author"
+      noindex: true
+      sitemap: false
   - scope:
       path: ""
       type: "characters"
     values:
       layout: "character"
+      noindex: true
+      sitemap: false
   - scope:
       path: ""
     values:

@@ -21,6 +21,10 @@
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }} — new book guides" href="{{ '/feed.xml' | relative_url }}">
 
   <link rel="canonical" href="{{ page.url | absolute_url }}">
+  {%- comment -%} Deferred-indexing strategy: generated content pages
+  (books/authors/characters collections — set via _config defaults) and
+  personal pages carry noindex until they earn engagement / launch. {%- endcomment -%}
+  {% if page.noindex %}<meta name="robots" content="noindex">{% endif %}
 
   <!-- PWA: installable app + offline-tolerant shell (see /sw.js) -->
   <link rel="manifest" href="{{ '/manifest.json' | relative_url }}">
