@@ -727,6 +727,20 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
   }
   /* Pause while the reader inspects/clicks a cover */
   .similar-marquee:hover .similar-track { animation-play-state: paused; }
+  /* Manual nudge arrows — appear on hover (always visible on touch, where
+     the marquee is scrollable anyway). First use freezes the auto-marquee. */
+  .similar-nav {
+    position: absolute; top: 50%; transform: translateY(-50%); z-index: 5;
+    width: 34px; height: 34px; border-radius: 50%;
+    border: 1px solid var(--border); background: var(--bg); color: var(--fg);
+    cursor: pointer; font-size: 20px; line-height: 1;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,.15);
+    opacity: 0; transition: opacity .15s;
+  }
+  .similar-marquee:hover .similar-nav { opacity: 1; }
+  .similar-nav.prev { left: 6px; }
+  .similar-nav.next { right: 6px; }
   @keyframes similar-scroll {
     from { transform: translateX(0); }
     to   { transform: translateX(-50%); }
@@ -806,7 +820,10 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
   /* ── Section quick-nav chips ───────────────────────────────── */
   .section-nav {
     display: flex; gap: 8px; overflow-x: auto; -webkit-overflow-scrolling: touch;
-    scrollbar-width: none; padding: 2px 2px 8px; margin-bottom: 1rem;
+    scrollbar-width: none; padding: 8px 2px; margin-bottom: 1rem;
+    /* Stays visible while reading — sits just below the sticky 56px header.
+       Desktop mice can also wheel-scroll it (JS maps vertical wheel → x). */
+    position: sticky; top: 56px; z-index: 40; background: var(--bg);
   }
   .section-nav::-webkit-scrollbar { display: none; }
   .section-nav a {
@@ -1572,7 +1589,9 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
               Similar Books
             </div>
             <div class="similar-marquee">
+              <button class="similar-nav prev" onclick="similarNudge(-1)" aria-label="Scroll similar books left">‹</button>
               <div class="similar-track" style="animation-duration:${items.length * 2 * 3}s;">${items.map((b) => card(b, false)).join('') + items.map((b) => card(b, true)).join('')}</div>
+              <button class="similar-nav next" onclick="similarNudge(1)" aria-label="Scroll similar books right">›</button>
             </div>
            </div>`;
       }
@@ -1649,12 +1668,19 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
       // Comments — pre-moderated (approved-only reads; see firestore.rules).
       // Lazy: nothing is fetched until the reader opens the section.
       const commentsHtml = data.slug ? `
+        <div class="summary-card" id="ratings-card" style="display:none;">
+          <div class="summary-card-title">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            Reader Ratings
+          </div>
+          <div id="reader-ratings"></div>
+        </div>
+
         <div class="summary-card" id="comments-card" data-book-slug="${escExt(data.canonical_id || data.slug)}">
           <div class="summary-card-title">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
             Reader Comments
           </div>
-          <div id="reader-ratings" style="display:none;margin-bottom:16px;border:1px solid var(--border);border-radius:10px;padding:12px 14px;background:var(--bg-subtle);"></div>
           <button class="btn-secondary" id="comments-load-btn" onclick="toggleComments()" style="padding:8px 18px;font-size:13px;">Hide comments</button>
           <div id="comments-area" style="display:none;"></div>
         </div>` : '';
@@ -1945,6 +1971,15 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
       loadReaderRatings(window.__bhCurrentBookSlug);
       loadReaderRecs(window.__bhCurrentBookSlug);
       loadComments();   // comments visible by default (button = hide toggle)
+      // Desktop mice have no horizontal wheel — map vertical wheel to the
+      // quick-nav's horizontal scroll so the chip bar is actually scrollable.
+      const sn = document.querySelector(".section-nav");
+      if (sn) sn.addEventListener("wheel", (e) => {
+        if (e.deltaY && Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+          e.preventDefault();
+          sn.scrollLeft += e.deltaY;
+        }
+      }, { passive: false });
       __charDetailsCache = {};   // fresh book → fresh character state
       __charOpenIndex = -1;
 
@@ -2336,12 +2371,12 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
           ).join("")}
         </span>
       </div>`;
+    const card = document.getElementById("ratings-card");
     if (!stats) {
       box.innerHTML = `
-        <p style="font-size:13px;font-weight:700;">Reader ratings</p>
-        <p style="font-size:12px;color:var(--fg-faint);margin-top:2px;">No ratings yet — be the first.</p>
+        <p style="font-size:12px;color:var(--fg-faint);">No ratings yet — be the first.</p>
         ${rateRow}`;
-      box.style.display = "block";
+      if (card) card.style.display = "";
       return;
     }
     const bars = [5, 4, 3, 2, 1].map(s => {
@@ -2363,7 +2398,7 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
       </p>
       <div style="display:flex;flex-direction:column;gap:4px;max-width:340px;">${bars}</div>
       ${rateRow}`;
-    box.style.display = "block";
+    if (card) card.style.display = "";
   }
   window.loadReaderRatings = loadReaderRatings;
 
@@ -2758,6 +2793,37 @@ description: "Get an instant AI-generated summary of any book — choose quick, 
       await refreshCharLike(slug);
     } catch (e) { console.warn("Character like failed:", e); }
     if (btn) btn.disabled = false;
+  };
+
+  // ── Similar-books carousel: manual nudge arrows ──────────
+  // The track auto-scrolls via a CSS transform animation; scrollLeft can't
+  // move it. First arrow press freezes the animation at its CURRENT offset
+  // (read from the computed matrix), then steps translateX manually with
+  // clamping. The track holds the item list twice (for the infinite loop),
+  // so the manual range is one full set: [-(width/2 - viewport), 0].
+  window.similarNudge = function (dir) {
+    const track = document.querySelector(".similar-track");
+    if (!track) return;
+    if (!track.dataset.manual) {
+      let x = 0;
+      const t = getComputedStyle(track).transform;
+      const m = t && t !== "none" ? t.match(/matrix\(([^)]+)\)/) : null;
+      if (m) x = parseFloat(m[1].split(",")[4]) || 0;
+      track.style.animation = "none";
+      track.dataset.manual = "1";
+      track.style.transform = `translateX(${x}px)`;
+      // Enable the transition AFTER the freeze frame is applied, or the
+      // freeze itself animates from 0.
+      requestAnimationFrame(() => { track.style.transition = "transform .3s ease"; });
+      track.dataset.x = String(x);
+    }
+    const view = track.parentElement.clientWidth;
+    const minX = Math.min(0, -(track.scrollWidth / 2 - view));
+    const step = 268;   // two covers per press
+    let nx = (parseFloat(track.dataset.x || "0") || 0) - dir * step;
+    nx = Math.max(minX, Math.min(0, nx));
+    track.dataset.x = String(nx);
+    track.style.transform = `translateX(${nx}px)`;
   };
 
   // ── Book quiz (POST /quiz/book) ──────────────────────────
