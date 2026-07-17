@@ -1021,6 +1021,109 @@ description: "Get an instant AI study guide for any book — deep summary, chara
   </div>
 </div>
 
+<!-- ── Floating audio dock (SoBrief-style) — appears while listening ── -->
+<style>
+  .audio-dock {
+    position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%);
+    z-index: 180; display: none; align-items: center; gap: 4px;
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: 999px; padding: 8px 10px;
+    box-shadow: 0 14px 44px rgba(0, 0, 0, 0.28);
+  }
+  .audio-dock.open { display: flex; }
+  .audio-dock button {
+    background: none; border: 0; cursor: pointer; color: var(--fg);
+    width: 38px; height: 38px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    transition: background .15s;
+  }
+  .audio-dock button:hover { background: var(--bg-subtle); }
+  .audio-dock .dock-main {
+    background: var(--fg); color: var(--bg); width: 44px; height: 44px;
+  }
+  .audio-dock .dock-main:hover { background: var(--fg); opacity: .88; }
+  .dock-status {
+    font-size: 11px; color: var(--fg-faint); max-width: 130px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    padding: 0 6px;
+  }
+  .audio-settings {
+    position: absolute; bottom: calc(100% + 10px); right: 0;
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: 14px; padding: 12px; width: 230px;
+    box-shadow: 0 14px 44px rgba(0, 0, 0, 0.25); display: none;
+  }
+  .audio-settings.open { display: block; }
+  .aset-label { font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--fg-faint); margin: 10px 0 6px; }
+  .aset-label:first-child { margin-top: 0; }
+  .aset-row { display: flex; flex-wrap: wrap; gap: 6px; }
+  .aset-pill {
+    font-size: 12px; font-weight: 600; color: var(--fg-muted);
+    border: 1px solid var(--border-med); background: var(--bg);
+    border-radius: 999px; padding: 5px 12px; cursor: pointer;
+  }
+  .aset-pill.on { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+  .aset-voice {
+    width: 100%; font-size: 12px; padding: 7px 8px; border-radius: 8px;
+    border: 1px solid var(--border); background: var(--bg-subtle); color: var(--fg);
+  }
+  .sec-play {
+    background: none; border: 1px solid var(--border-med); cursor: pointer;
+    color: var(--fg-muted); width: 24px; height: 24px; border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    margin-left: 8px; vertical-align: middle; flex-shrink: 0;
+  }
+  .sec-play:hover { color: var(--accent); border-color: var(--accent); }
+  @media (max-width: 560px) {
+    .audio-dock { bottom: 76px; padding: 6px 8px; }  /* clear the chat bubble */
+    .dock-status { display: none; }
+  }
+</style>
+<div class="audio-dock" id="audio-dock" role="group" aria-label="Audio player">
+  <button onclick="audioSkipSection(-1)" title="Previous section">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+  </button>
+  <button onclick="audioSkipChunk(-1)" title="Back one sentence">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M11 17l-5-5 5-5M18 17l-5-5 5-5"/></svg>
+  </button>
+  <button class="dock-main" onclick="toggleAudio()" title="Play / pause">
+    <svg id="dock-play-icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+  </button>
+  <button onclick="audioSkipChunk(1)" title="Forward one sentence">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 17l5-5-5-5M13 17l5-5-5-5"/></svg>
+  </button>
+  <button onclick="audioSkipSection(1)" title="Next section">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+  </button>
+  <span class="dock-status" id="dock-status"></span>
+  <button onclick="toggleAudioSettings()" title="Audio settings" aria-haspopup="true">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
+  </button>
+  <button onclick="stopAudio()" title="Stop listening">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+
+  <div class="audio-settings" id="audio-settings">
+    <div class="aset-label">Speed</div>
+    <div class="aset-row" id="aset-speed">
+      <button class="aset-pill" data-rate="1">1x</button>
+      <button class="aset-pill" data-rate="1.2">1.2x</button>
+      <button class="aset-pill" data-rate="1.4">1.4x</button>
+      <button class="aset-pill" data-rate="1.6">1.6x</button>
+      <button class="aset-pill" data-rate="2">2x</button>
+    </div>
+    <div class="aset-label">Voice</div>
+    <select class="aset-voice" id="aset-voice" onchange="setAudioVoice(this.value)"></select>
+    <div class="aset-label">Ambience</div>
+    <div class="aset-row" id="aset-amb">
+      <button class="aset-pill" data-amb="0">Off</button>
+      <button class="aset-pill" data-amb="0.05">Low</button>
+      <button class="aset-pill" data-amb="0.12">Medium</button>
+      <button class="aset-pill" data-amb="0.22">High</button>
+    </div>
+  </div>
+</div>
+
 <!-- ── Floating Chat Bubble (fixed, shown only on summary state) ── -->
 <button class="chat-float-btn" id="chat-float-btn" onclick="toggleChatPanel()" title="Ask the Book AI" aria-label="Open book AI chat">
   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -1545,8 +1648,27 @@ description: "Get an instant AI study guide for any book — deep summary, chara
       // same fields the page shows, nothing extra.
       {
         const secs = [];
+        // Chapter-aware: split the summary at its own h2/h3 headings so the
+        // player's sections mirror the visible chapters (SoBrief-style),
+        // instead of one monolithic "Summary" block.
+        try {
+          const sdoc = new DOMParser().parseFromString(parseSummaryMarkdown(data.summary || ""), "text/html");
+          let label = "Overview", buf = [];
+          const flush = () => {
+            const t = buf.join(" ").replace(/\s+/g, " ").trim();
+            if (t) secs.push({ label, text: t });
+            buf = [];
+          };
+          sdoc.body.childNodes.forEach(n => {
+            if (n.nodeType === 1 && /^H[23]$/.test(n.tagName)) {
+              flush();
+              label = (n.textContent || "").trim().slice(0, 70) || label;
+            } else if (n.textContent) buf.push(n.textContent);
+          });
+          flush();
+        } catch (e) { /* fall through to the plain fallback */ }
         const plain = (data.summary || "").replace(/<[^>]*>/g, " ");
-        if (plain.trim()) secs.push({ label: "Summary", text: plain });
+        if (!secs.length && plain.trim()) secs.push({ label: "Summary", text: plain });
         if (Array.isArray(data.themes) && data.themes.length)
           secs.push({ label: "Themes", text: "Key themes: " + data.themes.join(". ") + "." });
         if (Array.isArray(data.characters) && data.characters.length)
@@ -1848,7 +1970,7 @@ description: "Get an instant AI study guide for any book — deep summary, chara
             <option value="1.2">1.2x</option>
             <option value="1.4">1.4x</option>
             <option value="1.6">1.6x</option>
-            <option value="1.8">1.8x</option>
+            <option value="2">2x</option>
           </select>
           <div class="sound-wave" id="audio-wave">
             <div class="wave-bar"></div><div class="wave-bar"></div>
@@ -2057,6 +2179,8 @@ description: "Get an instant AI study guide for any book — deep summary, chara
       loadReaderRatings(window.__bhCurrentBookSlug);
       loadReaderRecs(window.__bhCurrentBookSlug);
       loadComments();   // comments visible by default (button = hide toggle)
+      injectSectionPlayBtns();   // ▶ chips beside chapter headings
+      { const sel = document.getElementById("audio-speed"); if (sel) sel.value = String(audioRate); }
       // Desktop mice have no horizontal wheel — map vertical wheel to the
       // quick-nav's horizontal scroll so the chip bar is actually scrollable.
       const sn = document.querySelector(".section-nav");
@@ -3158,6 +3282,9 @@ description: "Get an instant AI study guide for any book — deep summary, chara
   function pickAudioVoice() {
     const vs = (window.speechSynthesis.getVoices() || [])
       .filter(v => v.lang && v.lang.toLowerCase().startsWith("en"));
+    // A voice the user explicitly picked in settings wins outright.
+    const chosen = vs.find(v => v.name === audioVoiceName);
+    if (chosen) return chosen;
     const score = v =>
       (/natural|neural|premium|enhanced/i.test(v.name) ? 8 : 0) +
       (/google/i.test(v.name) ? 4 : 0) +
@@ -3211,6 +3338,23 @@ description: "Get an instant AI study guide for any book — deep summary, chara
   const ICON_PLAY = '<path d="M8 5v14l11-7z"/>';
   const ICON_PAUSE = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
 
+  // Inline widget + floating dock share state — mirror the play icon on both.
+  function setPlayIcons(playing) {
+    const svg = playing ? ICON_PAUSE : ICON_PLAY;
+    const a = document.getElementById("play-icon");
+    const b = document.getElementById("dock-play-icon");
+    if (a) a.innerHTML = svg;
+    if (b) b.innerHTML = svg;
+  }
+  function setDock(open) {
+    const d = document.getElementById("audio-dock");
+    if (d) d.classList.toggle("open", open);
+    if (!open) {
+      const s = document.getElementById("audio-settings");
+      if (s) s.classList.remove("open");
+    }
+  }
+
   function updateAudioProgress() {
     const ui = audioUi();
     if (!audioQueue.length) return;
@@ -3218,7 +3362,99 @@ description: "Get an instant AI study guide for any book — deep summary, chara
     const pct = Math.round(audioIdx / audioQueue.length * 100);
     if (ui.status) ui.status.textContent = `${cur.section} · ${pct}%`;
     if (ui.fill) ui.fill.style.width = pct + "%";
+    const ds = document.getElementById("dock-status");
+    if (ds) ds.textContent = `${cur.section} · ${pct}%`;
   }
+
+  // ── Ambience: generated brown-noise pad (Web Audio — no audio asset,
+  // nothing to license or download). Runs only while speech plays.
+  let ambCtx = null, ambGain = null;
+  let ambLevel = parseFloat(localStorage.getItem("bh_audio_amb") || "0") || 0;
+  function startAmbience() {
+    if (!ambLevel) return;
+    try {
+      if (!ambCtx) {
+        ambCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const sr = ambCtx.sampleRate, len = sr * 6;
+        const buf = ambCtx.createBuffer(1, len, sr);
+        const d = buf.getChannelData(0);
+        let last = 0;
+        for (let i = 0; i < len; i++) {
+          const w = Math.random() * 2 - 1;
+          last = (last + 0.02 * w) / 1.02;
+          d[i] = last * 3.2;
+        }
+        const src = ambCtx.createBufferSource();
+        src.buffer = buf; src.loop = true;
+        const lp = ambCtx.createBiquadFilter();
+        lp.type = "lowpass"; lp.frequency.value = 420;
+        ambGain = ambCtx.createGain();
+        src.connect(lp); lp.connect(ambGain); ambGain.connect(ambCtx.destination);
+        src.start();
+      }
+      ambCtx.resume();
+      ambGain.gain.value = ambLevel;
+    } catch (e) { /* no Web Audio → silently no ambience */ }
+  }
+  function stopAmbience() { try { if (ambCtx) ambCtx.suspend(); } catch (e) {} }
+  window.setAudioAmbience = function (level) {
+    ambLevel = parseFloat(level) || 0;
+    localStorage.setItem("bh_audio_amb", String(ambLevel));
+    if (audioOn && !audioPausedFlag && ambLevel) startAmbience();
+    else if (!ambLevel) stopAmbience();
+    syncSettingsUi();
+  };
+
+  // Voice + speed preferences (persisted).
+  let audioVoiceName = localStorage.getItem("bh_audio_voice") || "";
+  window.setAudioVoice = function (name) {
+    audioVoiceName = name || "";
+    localStorage.setItem("bh_audio_voice", audioVoiceName);
+    audioVoice = pickAudioVoice();
+    if (audioOn && !audioPausedFlag) { window.speechSynthesis.cancel(); speakCurrent(); }
+  };
+  window.setAudioRate = function (r) {
+    audioRate = parseFloat(r) || 1;
+    localStorage.setItem("bh_audio_rate", String(audioRate));
+    const sel = document.getElementById("audio-speed");
+    if (sel) sel.value = String(audioRate);
+    if (audioOn && !audioPausedFlag) { window.speechSynthesis.cancel(); speakCurrent(); }
+    syncSettingsUi();
+  };
+  audioRate = parseFloat(localStorage.getItem("bh_audio_rate") || "1") || 1;
+
+  function populateVoiceList() {
+    const sel = document.getElementById("aset-voice");
+    if (!sel) return;
+    const vs = (window.speechSynthesis.getVoices() || [])
+      .filter(v => v.lang && v.lang.toLowerCase().startsWith("en"));
+    sel.innerHTML = '<option value="">Auto (best available)</option>' +
+      vs.map(v => `<option value="${v.name.replace(/"/g, "&quot;")}"${v.name === audioVoiceName ? " selected" : ""}>${v.name.replace(/</g, "&lt;")}</option>`).join("");
+  }
+  function syncSettingsUi() {
+    document.querySelectorAll("#aset-speed .aset-pill").forEach(b =>
+      b.classList.toggle("on", parseFloat(b.dataset.rate) === audioRate));
+    document.querySelectorAll("#aset-amb .aset-pill").forEach(b =>
+      b.classList.toggle("on", parseFloat(b.dataset.amb) === ambLevel));
+  }
+  window.toggleAudioSettings = function () {
+    const s = document.getElementById("audio-settings");
+    if (!s) return;
+    populateVoiceList();
+    syncSettingsUi();
+    s.classList.toggle("open");
+  };
+  document.addEventListener("click", (e) => {
+    const s = document.getElementById("audio-settings");
+    const dock = document.getElementById("audio-dock");
+    if (s && s.classList.contains("open") && dock && !dock.contains(e.target)) s.classList.remove("open");
+  });
+  document.addEventListener("click", (e) => {
+    const t = e.target.closest && e.target.closest(".aset-pill");
+    if (!t) return;
+    if (t.dataset.rate) window.setAudioRate(t.dataset.rate);
+    if (t.dataset.amb !== undefined) window.setAudioAmbience(t.dataset.amb);
+  });
 
   function speakCurrent() {
     if (!audioOn) return;
@@ -3248,15 +3484,19 @@ description: "Get an instant AI study guide for any book — deep summary, chara
         // If resume() landed between chunks (utterance already ended while
         // paused), restart from the current index.
         if (!window.speechSynthesis.speaking) speakCurrent();
-        if (ui.icon) ui.icon.innerHTML = ICON_PAUSE;
+        setPlayIcons(true);
         if (ui.wave) ui.wave.classList.add("playing");
+        startAmbience();
         updateAudioProgress();
       } else {
         audioPausedFlag = true;
         window.speechSynthesis.pause();
-        if (ui.icon) ui.icon.innerHTML = ICON_PLAY;
+        setPlayIcons(false);
         if (ui.wave) ui.wave.classList.remove("playing");
         if (ui.status) ui.status.textContent = "Paused";
+        const ds = document.getElementById("dock-status");
+        if (ds) ds.textContent = "Paused";
+        stopAmbience();
       }
       return;
     }
@@ -3265,8 +3505,10 @@ description: "Get an instant AI study guide for any book — deep summary, chara
     audioOn = true;
     audioPausedFlag = false;
     window.speechSynthesis.cancel();
-    if (ui.icon) ui.icon.innerHTML = ICON_PAUSE;
+    setPlayIcons(true);
     if (ui.wave) ui.wave.classList.add("playing");
+    setDock(true);
+    startAmbience();
     updateAudioProgress();
     speakCurrent();
   }
@@ -3276,8 +3518,10 @@ description: "Get an instant AI study guide for any book — deep summary, chara
     audioPausedFlag = false;
     audioIdx = 0;
     window.speechSynthesis.cancel();
+    stopAmbience();
+    setDock(false);
     const ui = audioUi();
-    if (ui.icon) ui.icon.innerHTML = ICON_PLAY;
+    setPlayIcons(false);
     if (ui.wave) ui.wave.classList.remove("playing");
     if (ui.status) ui.status.textContent = "Click play to listen";
     if (ui.fill) ui.fill.style.width = "0%";
@@ -3286,12 +3530,60 @@ description: "Get an instant AI study guide for any book — deep summary, chara
   // Speed change keeps the position: re-speak the CURRENT chunk at the new
   // rate (the old engine restarted the whole summary from zero).
   function changeAudioSpeed() {
-    audioRate = parseFloat(document.getElementById("audio-speed").value || "1");
-    if (audioOn && !audioPausedFlag) {
-      window.speechSynthesis.cancel();
-      speakCurrent();
-    }
+    window.setAudioRate(document.getElementById("audio-speed").value || "1");
   }
+
+  // Jump one sentence back/forward.
+  window.audioSkipChunk = function (dir) {
+    if (!audioOn) return;
+    audioIdx = Math.max(0, Math.min(audioQueue.length - 1, audioIdx + dir));
+    audioPausedFlag = false;
+    window.speechSynthesis.cancel();
+    setPlayIcons(true);
+    updateAudioProgress();
+    speakCurrent();
+  };
+
+  // Start playback from a named section (the ▶ chips beside chapter
+  // headings). Works whether or not the engine was already running.
+  window.audioPlayFromSection = function (label) {
+    if (!audioQueue.length || !audioOn) {
+      if (!buildAudioQueue()) return;
+    }
+    const i = audioQueue.findIndex(c => c.section === label);
+    if (i < 0) return;
+    audioOn = true;
+    audioPausedFlag = false;
+    audioIdx = i;
+    window.speechSynthesis.cancel();
+    setPlayIcons(true);
+    setDock(true);
+    startAmbience();
+    const ui = audioUi();
+    if (ui.wave) ui.wave.classList.add("playing");
+    updateAudioProgress();
+    speakCurrent();
+  };
+
+  // Inject a small ▶ beside each chapter heading inside the rendered
+  // summary whose text matches an audio section (SoBrief-style).
+  window.injectSectionPlayBtns = function () {
+    const card = document.getElementById("bh-summary");
+    if (!card || !window.__audioSections) return;
+    const labels = new Set(window.__audioSections.map(s => s.label));
+    card.querySelectorAll(".ai-output h2, .ai-output h3").forEach(h => {
+      if (h.querySelector(".sec-play")) return;
+      const label = (h.textContent || "").trim().slice(0, 70);
+      if (!labels.has(label)) return;
+      const b = document.createElement("button");
+      b.className = "sec-play";
+      b.title = "Listen from this section";
+      b.setAttribute("aria-label", "Listen from this section");
+      b.innerHTML = '<svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
+      b.addEventListener("click", () => window.audioPlayFromSection(label));
+      h.appendChild(b);
+    });
+  };
 
   // Jump to the previous/next SECTION boundary (Summary → Characters → …).
   window.audioSkipSection = function (dir) {
