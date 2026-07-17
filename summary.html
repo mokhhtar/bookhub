@@ -1109,6 +1109,8 @@ description: "Get an instant AI study guide for any book — deep summary, chara
     // hide it once results/summary take over so it doesn't trail the tool.
     const faq = document.getElementById("tool-faq");
     if (faq) faq.style.display = state === "idle" ? "" : "none";
+    // Any state transition means the old book's audio must not keep talking.
+    if (typeof stopAudio === "function" && window.speechSynthesis) stopAudio();
 
     if (state === "idle") {
       idle.style.display = "";
@@ -1539,7 +1541,25 @@ description: "Get an instant AI study guide for any book — deep summary, chara
       currentBookSummary = data.summary || "";
       chatHistory = []; // Reset history
       chatMessageCount = 0; // Reset chat rate limit
-      audioText = (data.summary || "").replace(/<[^>]*>/g, '');
+      // Audio playlist sections (engine v2). Only verified/rendered data —
+      // same fields the page shows, nothing extra.
+      {
+        const secs = [];
+        const plain = (data.summary || "").replace(/<[^>]*>/g, " ");
+        if (plain.trim()) secs.push({ label: "Summary", text: plain });
+        if (Array.isArray(data.themes) && data.themes.length)
+          secs.push({ label: "Themes", text: "Key themes: " + data.themes.join(". ") + "." });
+        if (Array.isArray(data.characters) && data.characters.length)
+          secs.push({ label: "Characters", text: "Main characters: " +
+            data.characters.map(c => c.role ? `${c.name}, the ${c.role}` : c.name).join(". ") + "." });
+        if (data.quotes && Array.isArray(data.quotes.texts) && data.quotes.texts.length)
+          secs.push({ label: "Quotes", text: "Notable quotes: " +
+            data.quotes.texts.map((t, i) => {
+              const sp = (data.quotes.speakers || [])[i];
+              return `"${t}"${sp ? " — " + sp : ""}`;
+            }).join(". ") });
+        window.__audioSections = secs;
+      }
       resetAudioState();
       
       const coverHtml = data.cover_url
@@ -1799,18 +1819,27 @@ description: "Get an instant AI study guide for any book — deep summary, chara
 
       const audioWidgetHtml = `
       <div class="audio-player-container">
-        <div style="display:flex;align-items:center;gap:12px;">
+        <div style="display:flex;align-items:center;gap:12px;min-width:0;">
           <div class="audio-controls">
-            <button class="audio-btn" id="audio-play-btn" onclick="toggleAudio()" title="Listen to summary">
+            <button class="audio-btn" onclick="audioSkipSection(-1)" title="Previous section">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style="display:block;margin:auto;"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+            </button>
+            <button class="audio-btn" id="audio-play-btn" onclick="toggleAudio()" title="Listen to this guide">
               <svg id="play-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="display:block;margin:auto;"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+            <button class="audio-btn" onclick="audioSkipSection(1)" title="Next section">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style="display:block;margin:auto;"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
             </button>
             <button class="audio-btn" onclick="stopAudio()" title="Stop">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="display:block;margin:auto;"><path d="M6 19h12V5H6v14z"/></svg>
             </button>
           </div>
-          <div>
-            <span style="font-size:12px;font-weight:600;display:block;color:var(--fg);">Audio Synopsis</span>
+          <div style="min-width:0;">
+            <span style="font-size:12px;font-weight:600;display:block;color:var(--fg);">Listen to this guide</span>
             <span id="audio-status" style="font-size:10px;color:var(--fg-faint);">Click play to listen</span>
+            <div style="width:120px;height:3px;background:var(--border);border-radius:2px;margin-top:5px;overflow:hidden;">
+              <div id="audio-progress-fill" style="width:0%;height:100%;background:var(--accent);border-radius:2px;transition:width .4s;"></div>
+            </div>
           </div>
         </div>
         <div style="display:flex;align-items:center;gap:12px;">
@@ -1819,6 +1848,7 @@ description: "Get an instant AI study guide for any book — deep summary, chara
             <option value="1.2">1.2x</option>
             <option value="1.4">1.4x</option>
             <option value="1.6">1.6x</option>
+            <option value="1.8">1.8x</option>
           </select>
           <div class="sound-wave" id="audio-wave">
             <div class="wave-bar"></div><div class="wave-bar"></div>
@@ -3107,84 +3137,184 @@ description: "Get an instant AI study guide for any book — deep summary, chara
     }
   };
 
-  // Speech Synthesis Global State
-  let currentUtterance = null;
-  let isSpeaking = false;
-  let isPaused = false;
-  let audioText = "";
+  // ── Audio engine v2: sentence-queue playlist ─────────────
+  // The old engine fed the WHOLE summary to one SpeechSynthesisUtterance —
+  // Chrome silently stops long utterances after a couple of minutes, speed
+  // changes restarted from zero, and there was no progress or sections.
+  // v2 chunks every section into sentences and plays a queue: short
+  // utterances never trip Chrome's limit, position survives speed changes,
+  // and progress/section skipping fall out for free.
+  // Known platform limits (not fixable client-side): speech stops when a
+  // phone locks its screen, and voice quality = the device's voices.
+  let audioQueue = [];        // [{ text, section }]
+  let audioIdx = 0;
+  let audioOn = false;        // engine active (may be paused)
+  let audioPausedFlag = false;
+  let audioRate = 1.0;
+  let audioVoice = null;
+
+  // Prefer the device's best English voice — neural/natural voices first,
+  // then Google/Microsoft-online, over whatever happens to be listed first.
+  function pickAudioVoice() {
+    const vs = (window.speechSynthesis.getVoices() || [])
+      .filter(v => v.lang && v.lang.toLowerCase().startsWith("en"));
+    const score = v =>
+      (/natural|neural|premium|enhanced/i.test(v.name) ? 8 : 0) +
+      (/google/i.test(v.name) ? 4 : 0) +
+      (/microsoft.+online/i.test(v.name) ? 4 : 0) +
+      (v.localService ? 0 : 1);
+    return vs.sort((a, b) => score(b) - score(a))[0] || null;
+  }
+  if (window.speechSynthesis) {
+    window.speechSynthesis.onvoiceschanged = () => { audioVoice = pickAudioVoice(); };
+  }
+
+  // Split text into speakable chunks: sentence boundaries, long sentences
+  // broken again at commas — everything stays well under Chrome's stall zone.
+  function chunkSentences(text) {
+    const out = [];
+    const sentences = String(text || "").replace(/\s+/g, " ")
+      .match(/[^.!?]+[.!?]+["']?|[^.!?]+$/g) || [];
+    for (let s of sentences) {
+      s = s.trim();
+      if (!s) continue;
+      while (s.length > 240) {
+        let cut = s.lastIndexOf(",", 220);
+        if (cut < 80) cut = s.lastIndexOf(" ", 220);
+        if (cut < 80) cut = 220;
+        out.push(s.slice(0, cut + 1).trim());
+        s = s.slice(cut + 1).trim();
+      }
+      if (s) out.push(s);
+    }
+    return out;
+  }
+
+  // Rebuilds the playlist from the rendered sections (set at render time
+  // in window.__audioSections). Returns chunk count.
+  function buildAudioQueue() {
+    audioQueue = [];
+    (window.__audioSections || []).forEach(sec => {
+      chunkSentences(sec.text).forEach(t => audioQueue.push({ text: t, section: sec.label }));
+    });
+    return audioQueue.length;
+  }
+
+  function audioUi() {
+    return {
+      icon: document.getElementById("play-icon"),
+      wave: document.getElementById("audio-wave"),
+      status: document.getElementById("audio-status"),
+      fill: document.getElementById("audio-progress-fill"),
+    };
+  }
+  const ICON_PLAY = '<path d="M8 5v14l11-7z"/>';
+  const ICON_PAUSE = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
+
+  function updateAudioProgress() {
+    const ui = audioUi();
+    if (!audioQueue.length) return;
+    const cur = audioQueue[Math.min(audioIdx, audioQueue.length - 1)];
+    const pct = Math.round(audioIdx / audioQueue.length * 100);
+    if (ui.status) ui.status.textContent = `${cur.section} · ${pct}%`;
+    if (ui.fill) ui.fill.style.width = pct + "%";
+  }
+
+  function speakCurrent() {
+    if (!audioOn) return;
+    if (audioIdx >= audioQueue.length) { stopAudio(); return; }
+    const u = new SpeechSynthesisUtterance(audioQueue[audioIdx].text);
+    if (!audioVoice) audioVoice = pickAudioVoice();
+    if (audioVoice) u.voice = audioVoice;
+    u.rate = audioRate;
+    // cancel() fires onend/onerror too — audioOn guards against advancing
+    // the queue on an intentional stop/seek.
+    u.onend = () => {
+      if (!audioOn || audioPausedFlag) return;
+      audioIdx += 1;
+      updateAudioProgress();
+      speakCurrent();
+    };
+    u.onerror = u.onend;
+    window.speechSynthesis.speak(u);
+  }
 
   function toggleAudio() {
-    if (!audioText) return;
-    
-    if (isSpeaking) {
-      if (isPaused) {
+    const ui = audioUi();
+    if (audioOn) {
+      if (audioPausedFlag) {
+        audioPausedFlag = false;
         window.speechSynthesis.resume();
-        isPaused = false;
-        document.getElementById("play-icon").innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>'; // pause icon
-        document.getElementById("audio-wave").classList.add("playing");
-        document.getElementById("audio-status").textContent = "Speaking...";
+        // If resume() landed between chunks (utterance already ended while
+        // paused), restart from the current index.
+        if (!window.speechSynthesis.speaking) speakCurrent();
+        if (ui.icon) ui.icon.innerHTML = ICON_PAUSE;
+        if (ui.wave) ui.wave.classList.add("playing");
+        updateAudioProgress();
       } else {
+        audioPausedFlag = true;
         window.speechSynthesis.pause();
-        isPaused = true;
-        document.getElementById("play-icon").innerHTML = '<path d="M8 5v14l11-7z"/>'; // play icon
-        document.getElementById("audio-wave").classList.remove("playing");
-        document.getElementById("audio-status").textContent = "Paused";
+        if (ui.icon) ui.icon.innerHTML = ICON_PLAY;
+        if (ui.wave) ui.wave.classList.remove("playing");
+        if (ui.status) ui.status.textContent = "Paused";
       }
       return;
     }
-
+    if (!buildAudioQueue()) return;
+    audioIdx = 0;
+    audioOn = true;
+    audioPausedFlag = false;
     window.speechSynthesis.cancel();
-    
-    currentUtterance = new SpeechSynthesisUtterance(audioText);
-    
-    const voices = window.speechSynthesis.getVoices();
-    const voice = voices.find(v => v.lang.startsWith("en-"));
-    if (voice) currentUtterance.voice = voice;
-    
-    const speed = parseFloat(document.getElementById("audio-speed").value || "1");
-    currentUtterance.rate = speed;
-
-    currentUtterance.onstart = () => {
-      isSpeaking = true;
-      isPaused = false;
-      document.getElementById("play-icon").innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>'; // pause icon
-      document.getElementById("audio-wave").classList.add("playing");
-      document.getElementById("audio-status").textContent = "Speaking...";
-    };
-
-    currentUtterance.onend = () => {
-      resetAudioState();
-    };
-
-    currentUtterance.onerror = () => {
-      resetAudioState();
-    };
-
-    window.speechSynthesis.speak(currentUtterance);
+    if (ui.icon) ui.icon.innerHTML = ICON_PAUSE;
+    if (ui.wave) ui.wave.classList.add("playing");
+    updateAudioProgress();
+    speakCurrent();
   }
 
   function stopAudio() {
+    audioOn = false;
+    audioPausedFlag = false;
+    audioIdx = 0;
     window.speechSynthesis.cancel();
-    resetAudioState();
+    const ui = audioUi();
+    if (ui.icon) ui.icon.innerHTML = ICON_PLAY;
+    if (ui.wave) ui.wave.classList.remove("playing");
+    if (ui.status) ui.status.textContent = "Click play to listen";
+    if (ui.fill) ui.fill.style.width = "0%";
   }
 
+  // Speed change keeps the position: re-speak the CURRENT chunk at the new
+  // rate (the old engine restarted the whole summary from zero).
   function changeAudioSpeed() {
-    if (isSpeaking && !isPaused) {
+    audioRate = parseFloat(document.getElementById("audio-speed").value || "1");
+    if (audioOn && !audioPausedFlag) {
       window.speechSynthesis.cancel();
-      toggleAudio();
+      speakCurrent();
     }
   }
 
-  function resetAudioState() {
-    isSpeaking = false;
-    isPaused = false;
-    const playIcon = document.getElementById("play-icon");
-    if (playIcon) playIcon.innerHTML = '<path d="M8 5v14l11-7z"/>'; // play icon
-    const wave = document.getElementById("audio-wave");
-    if (wave) wave.classList.remove("playing");
-    const status = document.getElementById("audio-status");
-    if (status) status.textContent = "Click play to listen";
-  }
+  // Jump to the previous/next SECTION boundary (Summary → Characters → …).
+  window.audioSkipSection = function (dir) {
+    if (!audioOn) return;
+    const curSection = (audioQueue[audioIdx] || {}).section;
+    let target = audioIdx;
+    if (dir > 0) {
+      while (target < audioQueue.length && audioQueue[target].section === curSection) target++;
+    } else {
+      // Back to the START of the current section; twice lands on previous.
+      while (target > 0 && audioQueue[target - 1].section === curSection) target--;
+      if (target === audioIdx && target > 0) {
+        const prev = audioQueue[target - 1].section;
+        while (target > 0 && audioQueue[target - 1].section === prev) target--;
+      }
+    }
+    if (target >= audioQueue.length) { stopAudio(); return; }
+    audioIdx = target;
+    audioPausedFlag = false;
+    window.speechSynthesis.cancel();
+    updateAudioProgress();
+    speakCurrent();
+  };
 
   // Chat Parameters & Handlers
   let chatHistory = [];

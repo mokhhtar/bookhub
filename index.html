@@ -66,8 +66,43 @@ description: "Six free AI-powered tools for readers — instant book summaries, 
         <button class="pick-tag" onclick="fillSearch('The Alchemist')">The Alchemist</button>
         <button class="pick-tag" onclick="fillSearch('Thinking Fast and Slow')">Thinking, Fast and Slow</button>
       </div>
+
+      <!-- What every guide includes (SuperSummary-style feature pills) -->
+      <div class="hero-feats" aria-label="What every book guide includes">
+        <span class="hero-feat">Deep summary</span>
+        <span class="hero-feat">Characters</span>
+        <span class="hero-feat">Themes</span>
+        <span class="hero-feat">Real quotes</span>
+        <span class="hero-feat">Verified quiz</span>
+        <span class="hero-feat">Audio</span>
+        <span class="hero-feat">Similar books</span>
+      </div>
     </div>
 
+  </div>
+
+  {%- comment -%} Cover marquee (Shortform-style): instant "we have the books
+  you know" signal. Static + curated, reuses the NYT rail's .nyt-* styles;
+  covers come from Open Library by ISBN (same source used across the site)
+  and a failed cover simply hides its card. List rendered twice for the
+  infinite-loop animation. {%- endcomment -%}
+  {% assign hero_covers = "Atomic Habits|James Clear|9780735211292;Sapiens|Yuval Noah Harari|9780062316097;1984|George Orwell|9780451524935;The Psychology of Money|Morgan Housel|9780857197689;Deep Work|Cal Newport|9781455586691;The Alchemist|Paulo Coelho|9780062315007;Thinking, Fast and Slow|Daniel Kahneman|9780374533557;The Great Gatsby|F. Scott Fitzgerald|9780743273565;To Kill a Mockingbird|Harper Lee|9780061120084;Harry Potter and the Sorcerer's Stone|J.K. Rowling|9780590353427;Rich Dad Poor Dad|Robert T. Kiyosaki|9781612680194;Dune|Frank Herbert|9780441172719;The Hobbit|J.R.R. Tolkien|9780547928227;Educated|Tara Westover|9780399590504;Project Hail Mary|Andy Weir|9780593135204;The 7 Habits of Highly Effective People|Stephen R. Covey|9780743269513" | split: ";" %}
+  <div class="nyt-marquee hero-covers" aria-label="Popular books on Litheca">
+    <div class="nyt-track" style="animation-duration: 90s;">
+      {% for pass in (1..2) %}
+        {% for b in hero_covers %}
+          {% assign parts = b | split: "|" %}
+          <a href="{{ '/summary/' | relative_url }}?q={{ parts[0] | url_encode }}+{{ parts[1] | url_encode }}"
+             class="nyt-item" {% if pass == 2 %}aria-hidden="true" tabindex="-1"{% endif %}>
+            <img src="https://covers.openlibrary.org/b/isbn/{{ parts[2] }}-M.jpg?default=false"
+                 alt="Cover of {{ parts[0] }}" loading="lazy"
+                 onerror="this.parentElement.style.display='none'">
+            <p class="nyt-t">{{ parts[0] }}</p>
+            <p class="nyt-a">{{ parts[1] }}</p>
+          </a>
+        {% endfor %}
+      {% endfor %}
+    </div>
   </div>
 </section>
 

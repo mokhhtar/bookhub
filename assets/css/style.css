@@ -215,8 +215,37 @@ img { display: block; max-width: 100%; }
 /* ── HERO ────────────────────────────────────────────────── */
 .hero {
   border-bottom: 1px solid var(--border);
-  padding: 0 0 56px;
+  padding: 0 0 32px;
+  /* Warm bookish gradient (Shortform-style) — the stark white hero read as
+     a dev-tools SaaS next to every competitor. Dark theme gets its own
+     subtle version below. */
+  background: linear-gradient(180deg, var(--bg) 0%, #fdf6ef 62%, #f9ecdf 100%);
 }
+html[data-theme="dark"] .hero {
+  background: linear-gradient(180deg, var(--bg) 0%, #0e1322 62%, #151222 100%);
+}
+
+/* Feature pills — what every guide includes (SuperSummary pattern) */
+.hero-feats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px;
+}
+.hero-feat {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--fg-muted);
+  border: 1px solid var(--border-med);
+  background: var(--bg);
+  border-radius: 999px;
+  padding: 5px 12px;
+  white-space: nowrap;
+}
+.hero-feat::before { content: "✓ "; color: var(--accent); }
+
+/* Hero cover marquee (reuses the NYT rail item styles) */
+.hero-covers { margin-top: 40px; }
 
 /* Status strip — the Direction B signature */
 .hero-stats {
