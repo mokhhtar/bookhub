@@ -1,0 +1,54 @@
+---
+layout: default
+title: "Privacy Policy"
+description: "How Litheca handles your data — plainly and honestly."
+permalink: /privacy/
+---
+<section style="padding:48px 0;">
+  <div class="container" style="max-width:720px;">
+    <h1 style="font-size:30px;margin-bottom:6px;">Privacy Policy</h1>
+    <p style="font-size:13px;color:var(--fg-faint);margin-bottom:28px;">Last updated: July 17, 2026</p>
+
+    <div style="font-size:14px;line-height:1.75;color:var(--fg-muted);display:flex;flex-direction:column;gap:18px;">
+      <p>Litheca is built to need as little of your data as possible. This page describes, plainly, what we store and what we don't.</p>
+
+      <h2 style="font-size:19px;color:var(--fg);margin-top:10px;">What we don't do</h2>
+      <ul style="padding-left:22px;display:flex;flex-direction:column;gap:6px;">
+        <li>We set <b>no advertising or tracking cookies</b> and run <b>no third-party analytics</b> (no Google Analytics, no pixels).</li>
+        <li>We do not sell, rent, or share your personal data with advertisers.</li>
+        <li>We never post anything on your behalf.</li>
+      </ul>
+
+      <h2 style="font-size:19px;color:var(--fg);margin-top:10px;">What we store, and where</h2>
+      <ul style="padding-left:22px;display:flex;flex-direction:column;gap:6px;">
+        <li><b>On your device (localStorage):</b> your reading list, theme, audio preferences, and an anonymous identifier used for rate-limiting. This stays in your browser; clearing site data removes it.</li>
+        <li><b>If you create an account:</b> your email address, display name, and optional profile photo are stored with Google Firebase (our authentication and database provider). Your synced library, ratings, comments, and recommendations are stored in Firebase Firestore under your account.</li>
+        <li><b>Search and summary requests:</b> book titles you search for are processed by our server to generate results, and popular results are cached (without any link to you) so pages load faster for everyone.</li>
+      </ul>
+
+      <h2 style="font-size:19px;color:var(--fg);margin-top:10px;">Public content</h2>
+      <p>Comments, reviews, ratings, and book recommendations you post are <b>public once approved</b>, shown with your display name. Comments and reviews are pre-moderated by the site owner before they appear.</p>
+
+      <h2 style="font-size:19px;color:var(--fg);margin-top:10px;">Third-party services</h2>
+      <ul style="padding-left:22px;display:flex;flex-direction:column;gap:6px;">
+        <li><b>Google Firebase</b> — accounts and community data (<a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener" style="color:var(--accent);">Firebase privacy</a>).</li>
+        <li><b>Google Gemini API</b> — generates summaries from book metadata; your account identity is never sent to it.</li>
+        <li><b>Google Books / Open Library / Wikiquote / Project Gutenberg</b> — book data, covers, quotes, and public-domain texts.</li>
+        <li><b>Amazon Associates</b> — "Buy on Amazon" links are affiliate links; Amazon's own policies apply on their site.</li>
+      </ul>
+
+      <h2 style="font-size:19px;color:var(--fg);margin-top:10px;">Your choices</h2>
+      <ul style="padding-left:22px;display:flex;flex-direction:column;gap:6px;">
+        <li>Everything except posting comments and syncing works <b>without an account</b>.</li>
+        <li>You can delete your own comments and recommendations at any time.</li>
+        <li>To delete your account and its data entirely, <a href="{{ '/contact/' | relative_url }}" style="color:var(--accent);">contact us</a> — we'll remove it promptly.</li>
+      </ul>
+
+      <h2 style="font-size:19px;color:var(--fg);margin-top:10px;">Children</h2>
+      <p>Litheca is not directed at children under 13, and we do not knowingly collect their data.</p>
+
+      <h2 style="font-size:19px;color:var(--fg);margin-top:10px;">Changes</h2>
+      <p>If this policy changes materially, we'll update the date above. Questions? <a href="{{ '/contact/' | relative_url }}" style="color:var(--accent);">Get in touch</a>.</p>
+    </div>
+  </div>
+</section>
