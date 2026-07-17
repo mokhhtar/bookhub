@@ -141,6 +141,77 @@ window.bhAvatar = function (name, size) {
     + 'font-weight:700;line-height:1;">' + safe + '</span>';
 };
 
+// ── Ambience: generated background sounds (shared module) ─
+// Calm (brown-noise pad), Rain (banded white noise), Wind (bandpass noise
+// with a slow LFO) — all synthesized in Web Audio, so there is no audio
+// asset to download or license. Used by the summary page's audio player
+// AND standalone by the free-book reader. Type + level persist.
+window.bhAmbience = (function () {
+  let ctx = null, gain = null, nodes = [];
+  let type = localStorage.getItem('bh_amb_type') || 'calm';
+  let level = parseFloat(localStorage.getItem('bh_audio_amb') || '0') || 0;
+
+  function teardown() {
+    nodes.forEach(n => { try { n.stop && n.stop(); } catch (e) {} try { n.disconnect && n.disconnect(); } catch (e) {} });
+    nodes = [];
+  }
+  function noiseSource(fill) {
+    const sr = ctx.sampleRate, len = sr * 6;
+    const buf = ctx.createBuffer(1, len, sr);
+    fill(buf.getChannelData(0), sr);
+    const src = ctx.createBufferSource();
+    src.buffer = buf; src.loop = true;
+    return src;
+  }
+  function build() {
+    teardown();
+    if (type === 'rain') {
+      const n = noiseSource(d => { for (let i = 0; i < d.length; i++) d[i] = (Math.random() * 2 - 1) * 0.6; });
+      const hp = ctx.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = 500;
+      const lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 6500;
+      n.connect(hp); hp.connect(lp); lp.connect(gain);
+      n.start(); nodes.push(n, hp, lp);
+    } else if (type === 'wind') {
+      const n = noiseSource(d => { let l = 0; for (let i = 0; i < d.length; i++) { const w = Math.random() * 2 - 1; l = (l + 0.05 * w) / 1.05; d[i] = l * 4; } });
+      const bp = ctx.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.value = 320; bp.Q.value = 0.7;
+      const lfo = ctx.createOscillator(); lfo.frequency.value = 0.07;
+      const lg = ctx.createGain(); lg.gain.value = 190;
+      lfo.connect(lg); lg.connect(bp.frequency); lfo.start();
+      n.connect(bp); bp.connect(gain);
+      n.start(); nodes.push(n, bp, lfo, lg);
+    } else {  // calm
+      const n = noiseSource(d => { let l = 0; for (let i = 0; i < d.length; i++) { const w = Math.random() * 2 - 1; l = (l + 0.02 * w) / 1.02; d[i] = l * 3.2; } });
+      const lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 420;
+      n.connect(lp); lp.connect(gain);
+      n.start(); nodes.push(n, lp);
+    }
+  }
+  function ensure() {
+    if (!ctx) {
+      ctx = new (window.AudioContext || window.webkitAudioContext)();
+      gain = ctx.createGain(); gain.gain.value = level;
+      gain.connect(ctx.destination);
+      build();
+    }
+  }
+  return {
+    getType: () => type,
+    getLevel: () => level,
+    setType(t) {
+      type = t; localStorage.setItem('bh_amb_type', t);
+      if (ctx) { build(); if (level) ctx.resume(); }
+    },
+    setLevel(v) {
+      level = parseFloat(v) || 0;
+      localStorage.setItem('bh_audio_amb', String(level));
+      if (!level) { if (ctx) ctx.suspend(); return; }
+      try { ensure(); gain.gain.value = level; ctx.resume(); } catch (e) {}
+    },
+    start() { if (!level) return; try { ensure(); gain.gain.value = level; ctx.resume(); } catch (e) {} },
+    stop() { try { if (ctx) ctx.suspend(); } catch (e) {} },
+  };
+})();
+
 // ── Theme Switcher ───────────────────────────────────────
 function initThemeToggle() {
   const toggleBtn = document.getElementById('theme-toggle');

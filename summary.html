@@ -1114,7 +1114,13 @@ description: "Get an instant AI study guide for any book — deep summary, chara
     </div>
     <div class="aset-label">Voice</div>
     <select class="aset-voice" id="aset-voice" onchange="setAudioVoice(this.value)"></select>
-    <div class="aset-label">Ambience</div>
+    <div class="aset-label">Sound</div>
+    <div class="aset-row" id="aset-ambtype">
+      <button class="aset-pill" data-ambtype="calm" data-label="Calm">Calm</button>
+      <button class="aset-pill" data-ambtype="rain" data-label="Rain">Rain</button>
+      <button class="aset-pill" data-ambtype="wind" data-label="Wind">Wind</button>
+    </div>
+    <div class="aset-label">Volume</div>
     <div class="aset-row" id="aset-amb">
       <button class="aset-pill" data-amb="0">Off</button>
       <button class="aset-pill" data-amb="0.05">Low</button>
@@ -3366,44 +3372,25 @@ description: "Get an instant AI study guide for any book — deep summary, chara
     if (ds) ds.textContent = `${cur.section} · ${pct}%`;
   }
 
-  // ── Ambience: generated brown-noise pad (Web Audio — no audio asset,
-  // nothing to license or download). Runs only while speech plays.
-  let ambCtx = null, ambGain = null;
-  let ambLevel = parseFloat(localStorage.getItem("bh_audio_amb") || "0") || 0;
-  function startAmbience() {
-    if (!ambLevel) return;
-    try {
-      if (!ambCtx) {
-        ambCtx = new (window.AudioContext || window.webkitAudioContext)();
-        const sr = ambCtx.sampleRate, len = sr * 6;
-        const buf = ambCtx.createBuffer(1, len, sr);
-        const d = buf.getChannelData(0);
-        let last = 0;
-        for (let i = 0; i < len; i++) {
-          const w = Math.random() * 2 - 1;
-          last = (last + 0.02 * w) / 1.02;
-          d[i] = last * 3.2;
-        }
-        const src = ambCtx.createBufferSource();
-        src.buffer = buf; src.loop = true;
-        const lp = ambCtx.createBiquadFilter();
-        lp.type = "lowpass"; lp.frequency.value = 420;
-        ambGain = ambCtx.createGain();
-        src.connect(lp); lp.connect(ambGain); ambGain.connect(ambCtx.destination);
-        src.start();
-      }
-      ambCtx.resume();
-      ambGain.gain.value = ambLevel;
-    } catch (e) { /* no Web Audio → silently no ambience */ }
-  }
-  function stopAmbience() { try { if (ambCtx) ambCtx.suspend(); } catch (e) {} }
+  // ── Ambience: delegated to the shared window.bhAmbience module in
+  // main.js (Calm/Rain/Wind, all Web Audio-generated — also used
+  // standalone by the free-book reader). Level changes take effect
+  // immediately (instant preview, even before narration starts).
+  function startAmbience() { if (window.bhAmbience) window.bhAmbience.start(); }
+  function stopAmbience() { if (window.bhAmbience) window.bhAmbience.stop(); }
   window.setAudioAmbience = function (level) {
-    ambLevel = parseFloat(level) || 0;
-    localStorage.setItem("bh_audio_amb", String(ambLevel));
-    if (audioOn && !audioPausedFlag && ambLevel) startAmbience();
-    else if (!ambLevel) stopAmbience();
+    if (window.bhAmbience) window.bhAmbience.setLevel(level);
     syncSettingsUi();
   };
+  // Genre-based recommendation for the ★ in settings: atmospheric fiction
+  // gets Rain/Wind, everything else the neutral Calm pad. Purely a
+  // suggestion — the user always chooses.
+  function recommendedAmbience() {
+    const cats = (window.__bhCurrentCategories || []).join(" ").toLowerCase();
+    if (/mystery|thriller|horror/.test(cats)) return "rain";
+    if (/fantasy|adventure|science-fiction|sci-fi/.test(cats)) return "wind";
+    return "calm";
+  }
 
   // Voice + speed preferences (persisted).
   let audioVoiceName = localStorage.getItem("bh_audio_voice") || "";
@@ -3432,10 +3419,20 @@ description: "Get an instant AI study guide for any book — deep summary, chara
       vs.map(v => `<option value="${v.name.replace(/"/g, "&quot;")}"${v.name === audioVoiceName ? " selected" : ""}>${v.name.replace(/</g, "&lt;")}</option>`).join("");
   }
   function syncSettingsUi() {
+    const amb = window.bhAmbience;
+    const lvl = amb ? amb.getLevel() : 0;
+    const typ = amb ? amb.getType() : "calm";
+    const rec = recommendedAmbience();
     document.querySelectorAll("#aset-speed .aset-pill").forEach(b =>
       b.classList.toggle("on", parseFloat(b.dataset.rate) === audioRate));
     document.querySelectorAll("#aset-amb .aset-pill").forEach(b =>
-      b.classList.toggle("on", parseFloat(b.dataset.amb) === ambLevel));
+      b.classList.toggle("on", parseFloat(b.dataset.amb) === lvl));
+    document.querySelectorAll("#aset-ambtype .aset-pill").forEach(b => {
+      b.classList.toggle("on", b.dataset.ambtype === typ);
+      // ★ marks the genre-recommended sound for THIS book.
+      const star = b.dataset.ambtype === rec ? " ★" : "";
+      b.textContent = b.dataset.label + star;
+    });
   }
   window.toggleAudioSettings = function () {
     const s = document.getElementById("audio-settings");
@@ -3454,6 +3451,10 @@ description: "Get an instant AI study guide for any book — deep summary, chara
     if (!t) return;
     if (t.dataset.rate) window.setAudioRate(t.dataset.rate);
     if (t.dataset.amb !== undefined) window.setAudioAmbience(t.dataset.amb);
+    if (t.dataset.ambtype) {
+      if (window.bhAmbience) window.bhAmbience.setType(t.dataset.ambtype);
+      syncSettingsUi();
+    }
   });
 
   function speakCurrent() {

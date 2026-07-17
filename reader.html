@@ -183,6 +183,10 @@ sitemap: false
       <button class="rt-swatch rt-swatch-sepia" data-theme="sepia"   onclick="setReaderTheme('sepia')"   title="Sepia" aria-label="Sepia theme"></button>
       <button class="rt-swatch rt-swatch-dark"  data-theme="dark"    onclick="setReaderTheme('dark')"    title="Dark" aria-label="Dark theme"></button>
     </div>
+    <div class="rt-seg" role="group" aria-label="Background sound" title="Background sound while you read">
+      <button id="amb-type-btn" onclick="cycleAmbType()" style="min-width:52px;font-size:11px;">Calm</button>
+      <button id="amb-level-btn" onclick="cycleAmbLevel()" style="min-width:44px;font-size:11px;">Off</button>
+    </div>
     <div class="rt-search">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
       <input type="search" id="reader-search-input" placeholder="Search in this book…" aria-label="Search in this book" enterkeyhint="search">
@@ -439,6 +443,42 @@ sitemap: false
     if (e.key === "ArrowRight") window.go(1);
     if (e.key === "ArrowLeft") window.go(-1);
   });
+
+  // ── Background sound (standalone — no narrator needed here) ──
+  // Uses the shared generated-audio module in main.js; type + volume
+  // persist across pages and books.
+  const AMB_TYPES = ["calm", "rain", "wind"];
+  const AMB_LABEL = { calm: "Calm", rain: "Rain", wind: "Wind" };
+  const AMB_LEVELS = [0, 0.05, 0.12, 0.22];
+  const AMB_LVL_LABEL = ["Off", "Low", "Med", "High"];
+  function ambSync() {
+    const a = window.bhAmbience;
+    if (!a) return;
+    const tb = document.getElementById("amb-type-btn");
+    const lb = document.getElementById("amb-level-btn");
+    if (tb) tb.textContent = AMB_LABEL[a.getType()] || "Calm";
+    if (lb) {
+      const i = AMB_LEVELS.indexOf(a.getLevel());
+      lb.textContent = AMB_LVL_LABEL[i < 0 ? 0 : i];
+      lb.style.fontWeight = a.getLevel() ? "700" : "";
+    }
+  }
+  window.cycleAmbType = function () {
+    const a = window.bhAmbience;
+    if (!a) return;
+    const next = AMB_TYPES[(AMB_TYPES.indexOf(a.getType()) + 1) % AMB_TYPES.length];
+    a.setType(next);
+    ambSync();
+  };
+  window.cycleAmbLevel = function () {
+    const a = window.bhAmbience;
+    if (!a) return;
+    const i = AMB_LEVELS.indexOf(a.getLevel());
+    a.setLevel(AMB_LEVELS[(i < 0 ? 0 : i + 1) % AMB_LEVELS.length]);
+    ambSync();
+  };
+  // main.js loads after this inline script — sync once it's there.
+  setTimeout(ambSync, 300);
 
   applyPrefs();
   load(page);
