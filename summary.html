@@ -1345,7 +1345,12 @@ description: "Get an instant AI study guide for any book — deep summary, chara
     if (urlOpenLibraryId) {
       window.selectedBookOpenLibraryId = urlOpenLibraryId;
     }
-    doSummary(urlDirect);
+    // Deferred one tick: this boot code runs DURING script evaluation, and
+    // doSummary -> switchToState -> stopAudio() reads audio-engine `let`
+    // bindings declared further down — calling synchronously hit their
+    // temporal dead zone (ReferenceError) and silently killed every
+    // ?q= auto-search (homepage form, hero cover links).
+    setTimeout(() => doSummary(urlDirect), 0);
   }
 
   let debounceTimeout;
