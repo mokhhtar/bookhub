@@ -1560,7 +1560,7 @@ description: "Get an instant AI study guide for any book — deep summary, chara
             }).join(". ") });
         window.__audioSections = secs;
       }
-      resetAudioState();
+      stopAudio();   // fresh book → engine v2 reset (old resetAudioState is gone)
       
       const coverHtml = data.cover_url
         ? `<img class="sidebar-cover" src="${data.cover_url}" alt="Cover of ${data.title}">`
