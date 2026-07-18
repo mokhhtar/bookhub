@@ -1513,8 +1513,45 @@ description: "Get an instant AI study guide for any book — deep summary, chara
     // Base on the tool's own path, not location.pathname — the address bar
     // may hold a clean /summary/<slug>/ permalink after a static-page swap.
     const newUrl = TOOL_BASE_PATH + (params.toString() ? "?" + params.toString() : "");
-    window.history.pushState(null, "", newUrl);
+    // Don't stack duplicate entries (e.g. a ?q load already put this URL in
+    // the bar) — duplicates made Back appear dead until pressed twice.
+    if (newUrl !== location.pathname + location.search) {
+      window.history.pushState(null, "", newUrl);
+    }
   }
+
+  // ── Back/forward support ─────────────────────────────────
+  // Every meaningful view transition above pushes a URL that fully
+  // describes it (?q=… results/summary, base path = idle search, clean
+  // /summary/<slug>/ permalink). Before this handler existed the URL
+  // changed on Back but the PAGE didn't — the reported "back button does
+  // nothing". Re-boot the view from whatever URL we land on.
+  window.addEventListener("popstate", () => {
+    const p = new URLSearchParams(location.search);
+    const q = p.get("q");
+    if (q) {
+      document.getElementById("book-title").value = q;
+      document.getElementById("book-author").value = p.get("author") || "";
+      window.selectedBookIsbn = p.get("isbn") || null;
+      window.selectedBookGoogleId = p.get("google_id") || null;
+      window.selectedBookOpenLibraryId = p.get("openlibrary_id") || null;
+      doSummary(p.get("direct") === "true");
+    } else if (p.get("b") || /\/summary\/[^\/?]+\/?$/.test(location.pathname.replace(/^.*(?=\/summary\/)/, ""))
+               && location.pathname.replace(/\/$/, "") !== TOOL_BASE_PATH.replace(/\/$/, "")) {
+      // Share-slug or clean permalink entries carry their own boot logic in
+      // the page loader — a reload is the reliable route (the summary is
+      // server-cached, so it comes back in a couple of seconds).
+      location.reload();
+    } else {
+      // Base tool path → idle search state (goBackToSearch minus its own
+      // pushState, since the history entry is already correct).
+      switchToState("idle");
+      const fb = document.getElementById("chat-float-btn");
+      const fp = document.getElementById("chat-float-panel");
+      if (fb) fb.style.display = "none";
+      if (fp) fp.classList.remove("open");
+    }
+  });
 
   function summarizeBook(title, author, forceDirect = false, showSearch = false, isbn = null, googleId = null, openLibraryId = null) {
     document.getElementById("book-title").value = title;
@@ -2082,17 +2119,11 @@ description: "Get an instant AI study guide for any book — deep summary, chara
                       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
                     </button></p>`
                 : `<p class="sidebar-author">by ${data.author}</p>`) : ''}
-              <div class="sidebar-badges">
-                ${categoryChipsHtml(data)}
-                ${ratingBadgeHtml(data)}
-                ${data.published_year ? `<span class="sidebar-badge">${data.published_year}</span>` : ''}
-                ${data.page_count ? `<span class="sidebar-badge">${data.page_count} pages</span>` : ''}
-                ${data.reading_level ? `<span class="sidebar-badge" title="Estimated reading level">Reading level: ${data.reading_level}</span>` : ''}
-                ${data.editions && data.editions.editions >= 2 ? `<span class="sidebar-badge" title="Open Library edition data">${data.editions.editions} editions${data.editions.languages >= 2 ? ` · ${data.editions.languages} languages` : ''}</span>` : ''}
-              </div>
             </div>
           </div>
 
+          <!-- CTAs first — the six-badge info block used to sit above these
+               and pushed every action button below the fold. -->
           <!-- CTAs first: every decision button visible without scrolling -->
           ${data.free_ebook ? `
           <div style="border:1px solid var(--accent);border-radius:12px;padding:12px 14px;margin-bottom:12px;background:var(--bg-subtle);">
@@ -2123,6 +2154,15 @@ description: "Get an instant AI study guide for any book — deep summary, chara
                   style="width:100%;justify-content:center;margin:0 0 12px;padding:9px 12px;font-size:13px;">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="vertical-align:-2px;"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg> Recommend this book
           </button>` : ''}
+
+          <div class="sidebar-badges" style="margin-bottom:14px;">
+            ${categoryChipsHtml(data)}
+            ${ratingBadgeHtml(data)}
+            ${data.published_year ? `<span class="sidebar-badge">${data.published_year}</span>` : ''}
+            ${data.page_count ? `<span class="sidebar-badge">${data.page_count} pages</span>` : ''}
+            ${data.reading_level ? `<span class="sidebar-badge" title="Estimated reading level">Reading level: ${data.reading_level}</span>` : ''}
+            ${data.editions && data.editions.editions >= 2 ? `<span class="sidebar-badge" title="Open Library edition data">${data.editions.editions} editions${data.editions.languages >= 2 ? ` · ${data.editions.languages} languages` : ''}</span>` : ''}
+          </div>
 
           <!-- Informational content below the fold is fine -->
           ${data.nyt && data.nyt.weeks_on_list ? `
