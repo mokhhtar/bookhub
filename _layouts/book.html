@@ -317,12 +317,24 @@ layout: default
       {% endif %}
     {% endif %}
 
-    {% comment %} Reader recommendations (approved only) — populated
-        client-side from Firestore; hidden until at least one is approved.
-        Read-only here; the interactive summary page hosts the submit form. {% endcomment %}
+    {% comment %} Reader recommendations — same interactive card as the
+        dynamic page (replica rule): approved list + submit form. {% endcomment %}
     <div id="bh-reader-recs" class="summary-card" style="display:none;margin-top:24px;">
       <div class="summary-card-title">Readers recommend</div>
       <div id="bh-reader-recs-list"></div>
+      <div id="bh-rec-form"></div>
+    </div>
+
+    {% comment %} Reader Ratings — interactive (your-rating stars), parity
+        with the dynamic page. Populated client-side. {% endcomment %}
+
+    {% comment %} Reader Comments — full parity with the dynamic page:
+        approved list w/ avatars + likes, post form with the verified-email
+        gate, Hide/Show toggle. {% endcomment %}
+    <div class="summary-card" style="margin-top:24px;" id="bh-comments-card">
+      <div class="summary-card-title">Reader Comments</div>
+      <button class="btn-secondary" id="comments-load-btn" onclick="bhToggleComments()" style="padding:8px 18px;font-size:13px;">Hide comments</button>
+      <div id="comments-area" style="display:none;"></div>
     </div>
 
   </div>
@@ -371,15 +383,58 @@ layout: default
     refresh();
   })();
 
-  // ── Litheca readers' star ratings (aggregate, display-only) ──
-  // bh-auth fires once the firebase module is ready (signed-out too);
-  // stats hidden entirely until at least one reader has rated.
-  document.addEventListener('bh-auth', async function onceRatings() {
-    document.removeEventListener('bh-auth', onceRatings);
-    if (!window.bhFetchRatingStats) return;
+  // ── Litheca readers' star ratings — interactive, replica of the
+  // dynamic page: distribution bars + a "Your rating" row wired to the
+  // same library store and public aggregate.
+  const BOOKKEY = {{ bh_bookkey | jsonify }};
+  function bhMyRating() {
+    try {
+      const list = JSON.parse(localStorage.getItem('bookhub_rl_v1')) || [];
+      const e = list.find(b => (b.slug || '') === BOOKKEY);
+      return (e && e.rating) || 0;
+    } catch (e) { return 0; }
+  }
+  window.bhSetRating = function (n) {
+    try {
+      const KEY = 'bookhub_rl_v1';
+      const list = JSON.parse(localStorage.getItem(KEY)) || [];
+      let e = list.find(b => (b.slug || '') === BOOKKEY);
+      if (!e) {
+        e = { id: Date.now(), title: {{ page.title | jsonify }}, author: {{ page.author | jsonify }} || '',
+              status: 'want', rating: 0, addedAt: Date.now(),
+              cover_url: {{ page.cover_url | jsonify }} || '', slug: BOOKKEY,
+              categories: {{ page.categories | jsonify }} || [],
+              page_count: {{ page.page_count | default: 0 | jsonify }} || 0 };
+        list.unshift(e);
+      }
+      e.rating = (e.rating === n) ? 0 : n;   // tap again clears
+      localStorage.setItem(KEY, JSON.stringify(list));
+      if (window.bhLibraryChanged) window.bhLibraryChanged();
+      const final = e.rating;
+      if (window.bhPublishRating) {
+        window.bhPublishRating(BOOKKEY, final).then(() => bhRenderRatings());
+      } else bhRenderRatings();
+    } catch (e) {}
+  };
+  async function bhRenderRatings() {
     const box = document.getElementById('bh-reader-ratings');
-    const stats = await window.bhFetchRatingStats({{ bh_bookkey | jsonify }});
-    if (!box || !stats) return;
+    if (!box || !window.bhFetchRatingStats) return;
+    const stats = await window.bhFetchRatingStats(BOOKKEY);
+    const my = bhMyRating();
+    const rateRow =
+      '<div style="display:flex;align-items:center;gap:8px;margin-top:10px;padding-top:10px;border-top:1px dashed var(--border);">' +
+      '<span style="font-size:12px;color:var(--fg-muted);">Your rating:</span><span role="group" aria-label="Rate this book">' +
+      [1,2,3,4,5].map(s =>
+        '<button onclick="bhSetRating(' + s + ')" aria-label="Rate ' + s + '" ' +
+        'style="background:none;border:0;cursor:pointer;font-size:19px;padding:0 2px;line-height:1;color:' +
+        (s <= my ? '#f5a623' : 'var(--border-med)') + ';">★</button>').join('') +
+      '</span></div>';
+    if (!stats) {
+      box.innerHTML = '<p style="font-size:13px;font-weight:700;">Reader ratings</p>' +
+        '<p style="font-size:12px;color:var(--fg-faint);margin-top:2px;">No ratings yet — be the first.</p>' + rateRow;
+      box.style.display = 'block';
+      return;
+    }
     const bars = [5, 4, 3, 2, 1].map(s => {
       const n = stats.dist[s] || 0;
       const pct = Math.round(n / stats.total * 100);
@@ -394,8 +449,12 @@ layout: default
       '<span style="color:#f5a623;font-size:15px;">★</span> ' + stats.avg.toFixed(1) + ' / 5 ' +
       '<span style="font-weight:400;color:var(--fg-faint);">· ' + stats.total +
       ' reader rating' + (stats.total > 1 ? 's' : '') + ' on Litheca</span></p>' +
-      '<div style="display:flex;flex-direction:column;gap:4px;max-width:340px;">' + bars + '</div>';
+      '<div style="display:flex;flex-direction:column;gap:4px;max-width:340px;">' + bars + '</div>' + rateRow;
     box.style.display = 'block';
+  }
+  document.addEventListener('bh-auth', function onceRatings() {
+    document.removeEventListener('bh-auth', onceRatings);
+    bhRenderRatings();
   });
 
   // ── Reader recommendations (approved only, read-only display) ──
@@ -414,11 +473,14 @@ layout: default
       snap.forEach(d => items.push(d.data()));
       items.sort((a, b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0));
     } catch (e) { return; }
-    if (!items.length) return;
     const box = document.getElementById('bh-reader-recs');
     const listEl = document.getElementById('bh-reader-recs-list');
     if (!box || !listEl) return;
     const SUMMARY = {{ '/summary/' | relative_url | jsonify }};
+    // Submit form (parity with the dynamic page) — shown to signed-in users;
+    // the card appears if there are approved recs OR a form to show.
+    bhRenderRecForm();
+    if (!items.length) { if (window.bhUser) box.style.display = 'block'; return; }
     listEl.innerHTML = '<div style="display:flex;flex-direction:column;gap:12px;">' + items.map(r => {
       const link = SUMMARY + '?q=' + encodeURIComponent(r.rec_title) +
         (r.rec_author ? '&author=' + encodeURIComponent(r.rec_author) : '') + '&direct=true';
@@ -435,6 +497,213 @@ layout: default
         '</div></div>';
     }).join('') + '</div>';
     box.style.display = 'block';
+  });
+
+  // ── Reader-rec submit form (parity with the dynamic page) ──
+  const BH_API = {{ site.api_url | jsonify }};
+  let __recPick = null, __recTimer = null, __recAbort = null;
+  window.bhRenderRecForm = function () {
+    const el = document.getElementById('bh-rec-form');
+    if (!el) return;
+    if (!window.bhUser) { el.innerHTML = ''; return; }
+    el.innerHTML =
+      '<div style="border-top:1px solid var(--border);padding-top:14px;margin-top:14px;">' +
+      '<p style="font-size:12px;font-weight:600;margin-bottom:8px;">Recommend a similar book</p>' +
+      '<div style="position:relative;">' +
+      '<input type="text" id="rec-book-input" autocomplete="off" placeholder="Search the book you\'d recommend…" oninput="bhRecSearch(event)" ' +
+      'style="width:100%;box-sizing:border-box;padding:9px 12px;font-size:16px;background:var(--bg-subtle);color:var(--fg);border:1px solid var(--border);border-radius:8px;">' +
+      '<div id="rec-suggestions" style="position:absolute;top:100%;left:0;right:0;z-index:50;background:var(--bg);border:1px solid var(--border);border-radius:8px;max-height:230px;overflow-y:auto;box-shadow:0 10px 25px rgba(0,0,0,.1);margin-top:5px;display:none;"></div></div>' +
+      '<textarea id="rec-reason" maxlength="600" rows="2" placeholder="Why is it similar? (a sentence or two)" ' +
+      'style="width:100%;box-sizing:border-box;margin-top:8px;padding:9px 12px;font-size:16px;background:var(--bg-subtle);color:var(--fg);border:1px solid var(--border);border-radius:8px;resize:vertical;"></textarea>' +
+      '<div style="display:flex;align-items:center;gap:10px;margin-top:8px;">' +
+      '<button class="btn-primary" id="rec-post-btn" onclick="bhPostRec()" style="padding:8px 18px;font-size:13px;">Submit recommendation</button>' +
+      '<span id="rec-status" style="font-size:12px;color:var(--fg-faint);"></span></div>' +
+      '<p style="font-size:11px;color:var(--fg-faint);margin-top:6px;">Recommendations appear after review by the site owner.</p></div>';
+  };
+  window.bhRecSearch = function (event) {
+    const q = event.target.value.trim();
+    __recPick = null;
+    const box = document.getElementById('rec-suggestions');
+    if (!box) return;
+    if (q.length < 3) { box.style.display = 'none'; return; }
+    box.innerHTML = '<div style="padding:10px 12px;font-size:12px;color:var(--fg-faint);">Searching…</div>';
+    box.style.display = 'block';
+    clearTimeout(__recTimer);
+    __recTimer = setTimeout(async () => {
+      try {
+        if (__recAbort) __recAbort.abort();
+        __recAbort = new AbortController();
+        const res = await fetch(BH_API + '/search?q=' + encodeURIComponent(q), { signal: __recAbort.signal });
+        if (!res.ok) return;
+        const data = await res.json();
+        const esc = s => String(s == null ? '' : s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
+        if (!data || !data.length) { box.innerHTML = '<div style="padding:10px 12px;font-size:12px;color:var(--fg-faint);">No matches — try the full title.</div>'; return; }
+        window.__recResults = data.slice(0, 6);
+        box.innerHTML = window.__recResults.map((b, i) =>
+          '<div onclick="bhRecPick(' + i + ')" style="display:flex;align-items:center;gap:10px;padding:8px 12px;cursor:pointer;border-bottom:1px solid var(--border);font-size:13px;">' +
+          (b.cover_url ? '<img src="' + esc(b.cover_url) + '" alt="" style="width:28px;height:40px;object-fit:cover;border-radius:3px;border:1px solid var(--border);flex-shrink:0;">'
+                       : '<span style="width:28px;height:40px;background:var(--bg-subtle);border:1px solid var(--border);border-radius:3px;flex-shrink:0;"></span>') +
+          '<span><span style="font-weight:600;">' + esc(b.title) + '</span><br><span style="font-size:11px;color:var(--fg-faint);">' + esc(b.author || 'Unknown') + '</span></span></div>').join('');
+      } catch (e) { /* autocomplete only */ }
+    }, 300);
+  };
+  window.bhRecPick = function (i) {
+    const b = (window.__recResults || [])[i];
+    if (!b) return;
+    __recPick = { title: b.title, author: b.author || '', cover: b.cover_url || '' };
+    document.getElementById('rec-book-input').value = b.title + (b.author ? ' — ' + b.author : '');
+    document.getElementById('rec-suggestions').style.display = 'none';
+  };
+  window.bhPostRec = async function () {
+    const status = document.getElementById('rec-status');
+    const btn = document.getElementById('rec-post-btn');
+    const reasonEl = document.getElementById('rec-reason');
+    if (!status || !window.bhUser || !window.bhFs) return;
+    if (window.bhUser.emailVerified === false) {
+      status.textContent = 'Checking your verification…';
+      const u = window.bhAuthOps && window.bhAuthOps.reloadUser ? await window.bhAuthOps.reloadUser().catch(() => null) : null;
+      if (u && u.emailVerified) { window.bhUser = u; status.textContent = ''; }
+      else {
+        status.innerHTML = 'Confirm your email first — check your inbox, or <a href="#" onclick="event.preventDefault();bhResendVerify(this)" style="color:var(--accent);text-decoration:underline;">resend the link</a>.';
+        return;
+      }
+    }
+    if (!__recPick || !__recPick.title) { status.textContent = 'Pick a book from the search list first.'; return; }
+    const reason = reasonEl.value.trim();
+    if (reason.length < 2) { status.textContent = 'Add a short reason why it\'s similar.'; return; }
+    btn.disabled = true;
+    status.textContent = 'Submitting…';
+    const fs = window.bhFs, db = window.bhFirebase.db;
+    try {
+      await fs.addDoc(fs.collection(db, 'books', BOOKKEY, 'reader_recs'), {
+        uid: window.bhUser.uid,
+        name: (window.bhUser.displayName || 'Reader').slice(0, 40),
+        rec_title: __recPick.title.slice(0, 200),
+        rec_author: (__recPick.author || '').slice(0, 200),
+        rec_cover: (__recPick.cover || '').slice(0, 500),
+        reason: reason.slice(0, 600),
+        createdAt: fs.serverTimestamp(),
+        approved: false,
+      });
+      reasonEl.value = '';
+      document.getElementById('rec-book-input').value = '';
+      status.textContent = '✓ Submitted — it will appear once approved.';
+    } catch (e) {
+      status.textContent = 'Couldn\'t submit — try again in a moment.';
+    } finally { btn.disabled = false; }
+  };
+
+  // ── Reader Comments (full parity with the dynamic page) ──
+  window.bhToggleComments = function () {
+    const area = document.getElementById('comments-area');
+    const btn = document.getElementById('comments-load-btn');
+    if (!area || !btn) return;
+    const hidden = area.style.display === 'none';
+    area.style.display = hidden ? 'block' : 'none';
+    btn.textContent = hidden ? 'Hide comments' : 'Show comments';
+  };
+  window.bhRefreshCommentLike = async function (i) {
+    const ref = (window.__bookCommentRefs || [])[i];
+    const btn = document.getElementById('clike-' + i);
+    const nEl = document.getElementById('clike-n-' + i);
+    if (!ref || !btn || !window.bhCommentLike) return;
+    const [n, mine] = await Promise.all([window.bhCommentLike.count(ref), window.bhCommentLike.mine(ref)]);
+    if (nEl) nEl.textContent = n || '';
+    btn.style.color = mine ? 'var(--accent)' : 'var(--fg-faint)';
+    btn.dataset.mine = mine ? '1' : '';
+  };
+  window.bhToggleCommentLike = async function (i) {
+    if (!window.bhUser) { if (window.bhAuthUI) window.bhAuthUI.open('signin'); return; }
+    const ref = (window.__bookCommentRefs || [])[i];
+    const btn = document.getElementById('clike-' + i);
+    if (!ref || !btn || !window.bhCommentLike) return;
+    await window.bhCommentLike.toggle(ref, !btn.dataset.mine);
+    bhRefreshCommentLike(i);
+  };
+  window.bhLoadComments = async function () {
+    const area = document.getElementById('comments-area');
+    if (!area) return;
+    if (!window.bhFs) {
+      document.addEventListener('bh-auth', () => window.bhLoadComments(), { once: true });
+      return;
+    }
+    area.style.display = 'block';
+    area.innerHTML = '<p style="font-size:12px;color:var(--fg-faint);">Loading comments…</p>';
+    const fs = window.bhFs, db = window.bhFirebase.db;
+    const esc = s => String(s == null ? '' : s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#39;');
+    let items = [];
+    try {
+      const snap = await fs.getDocs(fs.query(
+        fs.collection(db, 'books', BOOKKEY, 'comments'),
+        fs.where('approved', '==', true), fs.limit(50)));
+      snap.forEach(d => items.push({ id: d.id, ref: d.ref, ...d.data() }));
+      items.sort((a, b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0));
+    } catch (e) {
+      area.innerHTML = '<p style="font-size:12px;color:var(--fg-faint);">Couldn\'t load comments right now.</p>';
+      return;
+    }
+    window.__bookCommentRefs = items.map(c => c.ref);
+    const listHtml = items.length
+      ? items.map((c, i) =>
+          '<div style="border-bottom:1px solid var(--border);padding:10px 0;display:flex;gap:10px;align-items:flex-start;">' +
+          (window.bhAvatar ? window.bhAvatar(c.name || 'Reader') : '') +
+          '<div style="flex:1;min-width:0;">' +
+          '<p style="font-size:12px;font-weight:700;">' + esc(c.name || 'Reader') +
+          '<span style="font-weight:400;color:var(--fg-faint);font-size:11px;margin-left:6px;">' + (c.createdAt ? new Date(c.createdAt.seconds * 1000).toLocaleDateString() : '') + '</span></p>' +
+          '<div style="font-size:13px;color:var(--fg-muted);line-height:1.6;margin-top:3px;overflow-wrap:anywhere;">' + (window.bhFormat ? window.bhFormat(c.text || '') : esc(c.text || '')) + '</div>' +
+          '<button id="clike-' + i + '" onclick="bhToggleCommentLike(' + i + ')" aria-label="Like this comment" ' +
+          'style="margin-top:6px;background:none;border:0;cursor:pointer;color:var(--fg-faint);font-size:12px;display:inline-flex;align-items:center;gap:5px;padding:2px 0;">' +
+          '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>' +
+          '<span id="clike-n-' + i + '"></span></button></div></div>').join('')
+      : '<p style="font-size:13px;color:var(--fg-muted);">No comments yet — be the first.</p>';
+    const formHtml = window.bhUser
+      ? '<div style="margin-top:14px;">' +
+        '<textarea id="comment-text" maxlength="4000" rows="4" placeholder="Share your thoughts on this book…" ' +
+        'style="width:100%;box-sizing:border-box;padding:10px 12px;font-size:16px;background:var(--bg-subtle);color:var(--fg);border:1px solid var(--border);border-radius:8px;resize:vertical;"></textarea>' +
+        '<div style="display:flex;align-items:center;gap:10px;margin-top:8px;">' +
+        '<button class="btn-primary" onclick="bhPostComment()" id="comment-post-btn" style="padding:8px 18px;font-size:13px;">Post comment</button>' +
+        '<span id="comment-status" style="font-size:12px;color:var(--fg-faint);"></span></div>' +
+        '<p style="font-size:11px;color:var(--fg-faint);margin-top:6px;">Supports <b>**bold**</b>, <i>*italic*</i>, and "- " lists. Comments appear after review by the site owner.</p></div>'
+      : '<div style="margin-top:14px;"><button class="btn-secondary" onclick="bhAuthUI.open(\'signin\')" style="padding:8px 18px;font-size:13px;">Sign in to comment</button></div>';
+    area.innerHTML = '<div style="margin-top:10px;">' + listHtml + '</div>' + formHtml;
+    (window.__bookCommentRefs || []).forEach((_, i) => bhRefreshCommentLike(i));
+  };
+  window.bhPostComment = async function () {
+    const ta = document.getElementById('comment-text');
+    const btn = document.getElementById('comment-post-btn');
+    const status = document.getElementById('comment-status');
+    if (!ta || !window.bhUser || !window.bhFs) return;
+    if (window.bhUser.emailVerified === false) {
+      status.textContent = 'Checking your verification…';
+      const u = window.bhAuthOps && window.bhAuthOps.reloadUser ? await window.bhAuthOps.reloadUser().catch(() => null) : null;
+      if (u && u.emailVerified) { window.bhUser = u; status.textContent = ''; }
+      else {
+        status.innerHTML = 'Confirm your email first — check your inbox, or <a href="#" onclick="event.preventDefault();bhResendVerify(this)" style="color:var(--accent);text-decoration:underline;">resend the link</a>.';
+        return;
+      }
+    }
+    const text = ta.value.trim();
+    if (text.length < 2) { status.textContent = 'Write a little more first.'; return; }
+    btn.disabled = true;
+    status.textContent = 'Posting…';
+    const fs = window.bhFs, db = window.bhFirebase.db;
+    try {
+      await fs.addDoc(fs.collection(db, 'books', BOOKKEY, 'comments'), {
+        uid: window.bhUser.uid,
+        name: (window.bhUser.displayName || 'Reader').slice(0, 40),
+        text: text,
+        createdAt: fs.serverTimestamp(),
+        approved: false,
+      });
+      ta.value = '';
+      status.textContent = '✓ Submitted — it will appear once approved.';
+    } catch (e) {
+      status.textContent = 'Couldn\'t post — try again in a moment.';
+    } finally { btn.disabled = false; }
+  };
+  document.addEventListener('bh-auth', function onceComments() {
+    document.removeEventListener('bh-auth', onceComments);
+    bhLoadComments();
   });
 </script>
 
