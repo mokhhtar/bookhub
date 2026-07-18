@@ -2071,7 +2071,7 @@ description: "Get an instant AI study guide for any book — deep summary, chara
       loadReaderRecs(window.__bhCurrentBookSlug);
       loadComments();   // comments visible by default (button = hide toggle)
       injectSectionPlayBtns();   // ▶ chips beside chapter headings
-      { const sel = document.getElementById("audio-speed"); if (sel) sel.value = String(audioRate); }
+      { const sel = document.getElementById("audio-speed"); if (sel) sel.value = localStorage.getItem("bh_audio_rate") || "1"; }
       // Desktop mice have no horizontal wheel — map vertical wheel to the
       // quick-nav's horizontal scroll so the chip bar is actually scrollable.
       const sn = document.querySelector(".section-nav");
