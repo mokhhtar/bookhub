@@ -134,6 +134,48 @@ layout: default
       </div>
     </div>
 
+    {% comment %} "Listen to this guide" — same widget as the dynamic page,
+        driven by the shared /assets/js/bh-audio.js engine. {% endcomment %}
+    <div class="audio-player-container" style="margin:20px 0 0;">
+      <div style="display:flex;align-items:center;gap:12px;min-width:0;">
+        <div class="audio-controls">
+          <button class="audio-btn" onclick="audioSkipSection(-1)" title="Previous section">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style="display:block;margin:auto;"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+          </button>
+          <button class="audio-btn" id="audio-play-btn" onclick="toggleAudio()" title="Listen to this guide">
+            <svg id="play-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="display:block;margin:auto;"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+          <button class="audio-btn" onclick="audioSkipSection(1)" title="Next section">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style="display:block;margin:auto;"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+          </button>
+          <button class="audio-btn" onclick="stopAudio()" title="Stop">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="display:block;margin:auto;"><path d="M6 19h12V5H6v14z"/></svg>
+          </button>
+        </div>
+        <div style="min-width:0;">
+          <span style="font-size:12px;font-weight:600;display:block;color:var(--fg);">Listen to this guide</span>
+          <span id="audio-status" style="font-size:10px;color:var(--fg-faint);">Click play to listen</span>
+          <div style="width:120px;height:3px;background:var(--border);border-radius:2px;margin-top:5px;overflow:hidden;">
+            <div id="audio-progress-fill" style="width:0%;height:100%;background:var(--accent);border-radius:2px;transition:width .4s;"></div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <select id="audio-speed" class="audio-speed-selector" onchange="changeAudioSpeed()">
+          <option value="1" selected>1.0x</option>
+          <option value="1.2">1.2x</option>
+          <option value="1.4">1.4x</option>
+          <option value="1.6">1.6x</option>
+          <option value="2">2x</option>
+        </select>
+        <div class="sound-wave" id="audio-wave">
+          <div class="wave-bar"></div><div class="wave-bar"></div>
+          <div class="wave-bar"></div><div class="wave-bar"></div>
+          <div class="wave-bar"></div>
+        </div>
+      </div>
+    </div>
+
     {% comment %} Litheca readers' own star ratings (Firestore aggregate).
         Hidden until at least one reader has rated — populated client-side
         once the firebase module is ready. {% endcomment %}
@@ -705,6 +747,57 @@ layout: default
     document.removeEventListener('bh-auth', onceComments);
     bhLoadComments();
   });
+</script>
+
+{% include audio-dock.html %}
+<script src="{{ '/assets/js/bh-audio.js' | relative_url }}"></script>
+<script>
+  // Audio playlist for the STATIC page: chapters from the rendered body's
+  // own h2/h3 headings, then Themes/Characters/Quotes from front matter —
+  // mirroring the dynamic page's section builder.
+  (function () {
+    window.__bhCurrentCategories = {{ page.categories | jsonify }} || [];
+    const secs = [];
+    const root = document.querySelector('article.book-page .ai-output');
+    if (root) {
+      let label = 'Overview', buf = [];
+      const flush = () => {
+        const t = buf.join(' ').replace(/\s+/g, ' ').trim();
+        if (t) secs.push({ label: label, text: t });
+        buf = [];
+      };
+      root.childNodes.forEach(n => {
+        if (n.nodeType === 1 && /^H[23]$/.test(n.tagName)) {
+          flush();
+          label = (n.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 70) || label;
+        } else if (n.textContent) buf.push(n.textContent);
+      });
+      flush();
+    }
+    {% if page.themes and page.themes.size > 0 %}
+    secs.push({ label: 'Themes', text: 'Key themes: ' + {{ page.themes | jsonify }}.join('. ') + '.' });
+    {% endif %}
+    {% if page.characters and page.characters.size > 0 %}
+    (function () {
+      const cs = {{ page.characters | jsonify }};
+      if (cs && cs.length) secs.push({ label: 'Characters', text: 'Main characters: ' +
+        cs.map(c => c.role ? c.name + ', the ' + c.role : c.name).join('. ') + '.' });
+    })();
+    {% endif %}
+    {% if page.quotes and page.quotes.texts and page.quotes.texts.size > 0 %}
+    (function () {
+      const wq = {{ page.quotes | jsonify }};
+      secs.push({ label: 'Quotes', text: 'Notable quotes: ' +
+        wq.texts.map((t, i) => '"' + t + '"' + ((wq.speakers || [])[i] ? ' — ' + wq.speakers[i] : '')).join('. ') });
+    })();
+    {% endif %}
+    window.__audioSections = secs;
+    if (window.injectSectionPlayBtns) window.injectSectionPlayBtns();
+    try {
+      const sel = document.getElementById('audio-speed');
+      if (sel) sel.value = localStorage.getItem('bh_audio_rate') || '1';
+    } catch (e) {}
+  })();
 </script>
 
 {% comment %} Additive Book schema — coexists with jekyll-seo-tag's own JSON-LD block (Google supports multiple structured-data blocks per page). {% endcomment %}

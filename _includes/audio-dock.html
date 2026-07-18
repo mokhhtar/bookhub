@@ -1,0 +1,167 @@
+{% comment %} Shared audio UI: "Listen to this guide" widget styles +
+the floating dock w/ settings. Engine: /assets/js/bh-audio.js. Used by
+summary.html AND _layouts/book.html (replica rule). {% endcomment %}
+<style>
+  .audio-player-container {
+    background: var(--bg-subtle);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 0.8rem 1.25rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .audio-controls { display: flex; align-items: center; gap: 0.75rem; }
+
+  .audio-btn {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--fg);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .audio-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+  .audio-speed-selector {
+    appearance: none; -webkit-appearance: none;
+    background: var(--bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23ff5b4f' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 10px center;
+    background-size: 10px;
+    padding: 6px 28px 6px 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 12px; font-weight: 600;
+    color: var(--fg); cursor: pointer; outline: none;
+  }
+
+  .audio-speed-selector:hover { border-color: var(--accent); }
+  .sound-wave { display: flex; align-items: flex-end; gap: 3px; height: 20px; }
+  .wave-bar { width: 3px; height: 4px; background: var(--accent); border-radius: 2px; transition: height 0.15s ease; }
+
+  .sound-wave.playing .wave-bar { animation: waveAnimation 1.2s ease-in-out infinite alternate; }
+  .sound-wave.playing .wave-bar:nth-child(1) { animation-delay: 0.1s; }
+  .sound-wave.playing .wave-bar:nth-child(2) { animation-delay: 0.3s; }
+  .sound-wave.playing .wave-bar:nth-child(3) { animation-delay: 0.5s; }
+  .sound-wave.playing .wave-bar:nth-child(4) { animation-delay: 0.2s; }
+  .sound-wave.playing .wave-bar:nth-child(5) { animation-delay: 0.4s; }
+
+  @keyframes waveAnimation { 0% { height: 4px; } 100% { height: 20px; } }
+  @keyframes fadeInUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+  @media (max-width: 768px) { .audio-player-container { flex-wrap: wrap; } }
+</style>
+<!-- ── Floating audio dock (SoBrief-style) — appears while listening ── -->
+<style>
+  .audio-dock {
+    position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%);
+    z-index: 180; display: none; align-items: center; gap: 4px;
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: 999px; padding: 8px 10px;
+    box-shadow: 0 14px 44px rgba(0, 0, 0, 0.28);
+  }
+  .audio-dock.open { display: flex; }
+  .audio-dock button {
+    background: none; border: 0; cursor: pointer; color: var(--fg);
+    width: 38px; height: 38px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    transition: background .15s;
+  }
+  .audio-dock button:hover { background: var(--bg-subtle); }
+  .audio-dock .dock-main {
+    background: var(--fg); color: var(--bg); width: 44px; height: 44px;
+  }
+  .audio-dock .dock-main:hover { background: var(--fg); opacity: .88; }
+  .dock-status {
+    font-size: 11px; color: var(--fg-faint); max-width: 130px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    padding: 0 6px;
+  }
+  .audio-settings {
+    position: absolute; bottom: calc(100% + 10px); right: 0;
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: 14px; padding: 12px; width: 230px;
+    box-shadow: 0 14px 44px rgba(0, 0, 0, 0.25); display: none;
+  }
+  .audio-settings.open { display: block; }
+  .aset-label { font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--fg-faint); margin: 10px 0 6px; }
+  .aset-label:first-child { margin-top: 0; }
+  .aset-row { display: flex; flex-wrap: wrap; gap: 6px; }
+  .aset-pill {
+    font-size: 12px; font-weight: 600; color: var(--fg-muted);
+    border: 1px solid var(--border-med); background: var(--bg);
+    border-radius: 999px; padding: 5px 12px; cursor: pointer;
+  }
+  .aset-pill.on { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+  .aset-voice {
+    width: 100%; font-size: 12px; padding: 7px 8px; border-radius: 8px;
+    border: 1px solid var(--border); background: var(--bg-subtle); color: var(--fg);
+  }
+  .sec-play {
+    background: none; border: 1px solid var(--border-med); cursor: pointer;
+    color: var(--fg-muted); width: 24px; height: 24px; border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    margin-left: 8px; vertical-align: middle; flex-shrink: 0;
+  }
+  .sec-play:hover { color: var(--accent); border-color: var(--accent); }
+  @media (max-width: 560px) {
+    .audio-dock { bottom: 76px; padding: 6px 8px; }  /* clear the chat bubble */
+    .dock-status { display: none; }
+  }
+</style>
+<div class="audio-dock" id="audio-dock" role="group" aria-label="Audio player">
+  <button onclick="audioSkipSection(-1)" title="Previous section">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+  </button>
+  <button onclick="audioSkipChunk(-1)" title="Back one sentence">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M11 17l-5-5 5-5M18 17l-5-5 5-5"/></svg>
+  </button>
+  <button class="dock-main" onclick="toggleAudio()" title="Play / pause">
+    <svg id="dock-play-icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+  </button>
+  <button onclick="audioSkipChunk(1)" title="Forward one sentence">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 17l5-5-5-5M13 17l5-5-5-5"/></svg>
+  </button>
+  <button onclick="audioSkipSection(1)" title="Next section">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+  </button>
+  <span class="dock-status" id="dock-status"></span>
+  <button onclick="toggleAudioSettings()" title="Audio settings" aria-haspopup="true">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
+  </button>
+  <button onclick="stopAudio()" title="Stop listening">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+
+  <div class="audio-settings" id="audio-settings">
+    <div class="aset-label">Speed</div>
+    <div class="aset-row" id="aset-speed">
+      <button class="aset-pill" data-rate="1">1x</button>
+      <button class="aset-pill" data-rate="1.2">1.2x</button>
+      <button class="aset-pill" data-rate="1.4">1.4x</button>
+      <button class="aset-pill" data-rate="1.6">1.6x</button>
+      <button class="aset-pill" data-rate="2">2x</button>
+    </div>
+    <div class="aset-label">Voice</div>
+    <select class="aset-voice" id="aset-voice" onchange="setAudioVoice(this.value)"></select>
+    <div class="aset-label">Sound</div>
+    <div class="aset-row" id="aset-ambtype">
+      <button class="aset-pill" data-ambtype="calm" data-label="Calm">Calm</button>
+      <button class="aset-pill" data-ambtype="rain" data-label="Rain">Rain</button>
+      <button class="aset-pill" data-ambtype="wind" data-label="Wind">Wind</button>
+    </div>
+    <div class="aset-label">Volume</div>
+    <div class="aset-row" id="aset-amb">
+      <button class="aset-pill" data-amb="0">Off</button>
+      <button class="aset-pill" data-amb="0.05">Low</button>
+      <button class="aset-pill" data-amb="0.12">Medium</button>
+      <button class="aset-pill" data-amb="0.22">High</button>
+    </div>
+  </div>
+</div>
