@@ -521,3 +521,28 @@
 .char-facts { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 6px 14px; margin-top: 10px; }
 .char-fact { font-size: 12px; color: var(--fg-muted); }
 .char-fact b { color: var(--fg); font-weight: 600; }
+
+/* ── Quiz (Test Your Knowledge) — dynamic page: live-generated via
+   POST /quiz/book. Static page: pre-generated at publish time and baked
+   into front matter (see _layouts/book.html's id="bh-quiz-data" block) —
+   same verified pipeline, no live call needed. Moved here from
+   summary.html's local styles once the static page needed them too;
+   tools/pdf-chat.html keeps its own separate copy (unrelated tool, not
+   part of this design system). ── */
+.quiz-card { border: 1px solid var(--border); border-radius: 12px; padding: 18px; margin-bottom: 14px; background: var(--bg); }
+.quiz-q { font-size: 14px; font-weight: 700; margin-bottom: 12px; line-height: 1.5; }
+.quiz-option {
+    display: block; width: 100%; text-align: left; padding: 10px 14px; margin-bottom: 8px;
+    border: 1px solid var(--border); border-radius: 8px; background: var(--bg-subtle);
+    color: var(--fg); font-size: 13px; cursor: pointer; transition: border-color .12s;
+  }
+.quiz-option:hover:not(:disabled) { border-color: var(--accent); }
+.quiz-option:disabled { cursor: default; }
+.quiz-option.correct { border-color: #22a06b; background: rgba(34,160,107,0.12); }
+.quiz-option.incorrect { border-color: #d33; background: rgba(221,51,51,0.10); }
+.quiz-quote {
+    margin-top: 10px; padding: 10px 14px; border-left: 3px solid var(--accent);
+    background: var(--bg-subtle); border-radius: 0 8px 8px 0; font-size: 12px;
+    color: var(--fg-muted); font-style: italic; line-height: 1.6;
+  }
+.quiz-score { position: sticky; top: 0; z-index: 5; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 10px 16px; font-size: 13px; font-weight: 600; margin-bottom: 14px; }

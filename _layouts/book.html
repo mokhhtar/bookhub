@@ -201,6 +201,23 @@ layout: default
           </div>
         {% endif %}
 
+        {% if page.quiz and page.quiz.size > 0 %}
+          {% comment %} Pre-generated at publish time (github_publisher.py's
+              _book_markdown -> tools/quiz.generate_static_quiz) via the same
+              quote-verification pipeline as POST /quiz/book — the static
+              page needs no live API call, just client-side scoring. {% endcomment %}
+          <div class="summary-card" id="bh-quiz">
+            <div class="summary-card-title">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              Test Your Knowledge
+            </div>
+            <p style="font-size:13px;color:var(--fg-muted);margin-bottom:12px;">Multiple-choice questions with verified supporting quotes, grounded in {% if page.quiz_source == "gutenberg_text" %}the book's original text{% else %}the story wiki's chapter summaries{% endif %}.</p>
+            <button class="btn-primary" id="quiz-start-btn" onclick="bhStartQuiz()" style="padding:8px 20px;font-size:13px;">Take a quiz</button>
+            <div id="quiz-area" style="margin-top:14px;"></div>
+          </div>
+          <script type="application/json" id="bh-quiz-data">{{ page.quiz | jsonify }}</script>
+        {% endif %}
+
         {% if page.similar_books and page.similar_books.size > 0 %}
           {% comment %} Repeat the list until wide enough for a seamless -50% loop,
               mirroring the dynamic page's marquee (≥8 items, then doubled). {% endcomment %}
@@ -543,6 +560,66 @@ layout: default
       }
     }, { passive: false });
   })();
+
+  // Pre-generated quiz — data already baked into the page at publish time
+  // (see the id="bh-quiz-data" JSON block), so unlike the dynamic page's
+  // startBookQuiz() this needs no fetch. Scoring logic is ported verbatim
+  // from summary.html's renderBookQuiz.
+  window.bhStartQuiz = function () {
+    const btn = document.getElementById('quiz-start-btn');
+    const area = document.getElementById('quiz-area');
+    const dataEl = document.getElementById('bh-quiz-data');
+    if (!btn || !area || !dataEl) return;
+    let questions;
+    try { questions = JSON.parse(dataEl.textContent); } catch (e) { return; }
+    if (!Array.isArray(questions) || !questions.length) return;
+    btn.style.display = 'none';
+    bhRenderQuiz(questions, area);
+  };
+  function bhRenderQuiz(questions, area) {
+    const esc = s => String(s == null ? '' : s).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#39;');
+    let answered = 0, correct = 0;
+    const score = document.createElement('div');
+    score.className = 'quiz-score';
+    score.textContent = `0 / ${questions.length} answered`;
+    area.appendChild(score);
+
+    questions.forEach((q, qi) => {
+      const card = document.createElement('div');
+      card.className = 'quiz-card';
+      card.innerHTML = `<p class="quiz-q">${qi + 1}. ${esc(q.question)}</p>`;
+      q.options.forEach((opt, oi) => {
+        const b = document.createElement('button');
+        b.className = 'quiz-option';
+        b.textContent = opt;
+        b.addEventListener('click', () => {
+          if (card.dataset.done) return;
+          card.dataset.done = '1';
+          answered++;
+          if (oi === q.answer_index) correct++;
+          card.querySelectorAll('.quiz-option').forEach((btn2, bi) => {
+            btn2.disabled = true;
+            if (bi === q.answer_index) btn2.classList.add('correct');
+            else if (bi === oi) btn2.classList.add('incorrect');
+          });
+          const quote = document.createElement('blockquote');
+          quote.className = 'quiz-quote';
+          quote.textContent = `From the source: "${q.supporting_quote}"`;
+          card.appendChild(quote);
+          score.textContent = `${answered} / ${questions.length} answered — ${correct} correct`;
+          if (answered === questions.length) {
+            const final = document.createElement('div');
+            final.className = 'quiz-card';
+            final.innerHTML = `<p class="quiz-q">Final score: ${correct} / ${questions.length} ${correct === questions.length ? '— perfect!' : correct >= questions.length / 2 ? '— well done' : '— keep reading!'}</p>`;
+            area.appendChild(final);
+            final.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }
+        });
+        card.appendChild(b);
+      });
+      area.appendChild(card);
+    });
+  }
 
   // My Library — same key + item shape as tools/reading-list.html.
   (function () {
