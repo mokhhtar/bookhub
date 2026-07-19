@@ -122,8 +122,28 @@ layout: default
           </div>
         </details>
 
+        {% comment %} Quick-jump chips — mirrors summary.html's buildQuickNav.
+            Plain #anchor links work with zero JS (a static-page requirement);
+            the smooth-scroll + sticky-wheel-scroll below are progressive
+            enhancement only. Only rendered when more than one section
+            exists, matching the dynamic page's `items.length > 1` gate. {% endcomment %}
+        {% assign nav_count = 1 %}
+        {% capture nav_links %}
+          {% if page.characters and page.characters.size > 0 %}{% assign nav_count = nav_count | plus: 1 %}<a href="#bh-characters">Characters</a>{% endif %}
+          <a href="#bh-summary">Summary</a>
+          {% if page.quotes and page.quotes.texts %}{% assign nav_count = nav_count | plus: 1 %}<a href="#bh-quotes">Quotes</a>{% endif %}
+          {% if page.chapters and page.chapters.size > 0 %}{% assign nav_count = nav_count | plus: 1 %}<a href="#bh-chapters">Chapters</a>{% endif %}
+          {% if page.quiz and page.quiz.size > 0 %}{% assign nav_count = nav_count | plus: 1 %}<a href="#bh-quiz">Quiz</a>{% endif %}
+          {% if page.similar_books and page.similar_books.size > 0 %}{% assign nav_count = nav_count | plus: 1 %}<a href="#bh-similar">Similar</a>{% endif %}
+          {% assign nav_count = nav_count | plus: 1 %}<a href="#bh-reader-recs">Readers recommend</a>
+          {% assign nav_count = nav_count | plus: 1 %}<a href="#bh-comments-card">Comments</a>
+        {% endcapture %}
+        {% if nav_count > 1 %}
+          <nav class="section-nav" aria-label="Jump to section" id="bh-section-nav">{{ nav_links }}</nav>
+        {% endif %}
+
         {% if page.characters and page.characters.size > 0 %}
-          <div class="summary-card">
+          <div class="summary-card" id="bh-characters">
             <div class="summary-card-title">Characters</div>
             <div class="char-grid">
               {% for c in page.characters %}
@@ -137,7 +157,7 @@ layout: default
           </div>
         {% endif %}
 
-        <div class="summary-card">
+        <div class="summary-card" id="bh-summary">
           <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:16px;">
             <div class="summary-card-title" style="margin-bottom:0;border-bottom:0;padding-bottom:0;">AI Grounded Summary</div>
             <a class="btn-secondary" style="padding:8px 16px;font-size:13px;"
@@ -151,7 +171,7 @@ layout: default
         </div>
 
         {% if page.quotes and page.quotes.texts %}
-          <div class="summary-card">
+          <div class="summary-card" id="bh-quotes">
             <div class="summary-card-title">Notable Quotes</div>
             {% for q in page.quotes.texts %}
               {% assign sp = page.quotes.speakers[forloop.index0] %}
@@ -162,13 +182,22 @@ layout: default
         {% endif %}
 
         {% if page.chapters and page.chapters.size > 0 %}
-          <div class="summary-card">
-            <div class="summary-card-title">Chapters ({{ page.chapters.size }})</div>
-            <ol style="font-size:13px;color:var(--fg);line-height:1.9;padding-left:1.2rem;margin:0;columns:2;column-gap:24px;">
-              {% for c in page.chapters %}
-                <li style="break-inside:avoid;">{{ c }}</li>
-              {% endfor %}
-            </ol>
+          <div class="summary-card" id="bh-chapters">
+            <div class="summary-card-title" style="display:flex;align-items:center;justify-content:space-between;">
+              <span style="display:flex;align-items:center;gap:8px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
+                Chapters
+              </span>
+              <span style="font-size:11px;font-weight:600;color:var(--accent);background:var(--bg-subtle);border:1px solid var(--border);border-radius:20px;padding:2px 10px;">{{ page.chapters.size }} chapters</span>
+            </div>
+            <div style="position:relative;">
+              <ul style="font-size:13px;color:var(--fg);line-height:1.9;list-style:none;padding-left:0;margin:0;max-height:320px;overflow-y:auto;padding-right:8px;scrollbar-width:thin;scrollbar-color:var(--accent) transparent;">
+                {% for c in page.chapters %}
+                  <li style="padding:3px 0;border-bottom:1px solid var(--border);"><span style="color:var(--fg-faint);font-size:11px;margin-right:6px;">{{ forloop.index | prepend: "00" | slice: -2, 2 }}</span>{{ c }}</li>
+                {% endfor %}
+              </ul>
+              <div style="position:absolute;bottom:0;left:0;right:0;height:40px;background:linear-gradient(transparent,var(--bg-card,var(--bg)));pointer-events:none;border-radius:0 0 8px 8px;"></div>
+            </div>
           </div>
         {% endif %}
 
@@ -181,7 +210,7 @@ layout: default
           {% endfor %}
           {% assign sim_loop = sim_items | concat: sim_items %}
           {% assign sim_duration = sim_loop.size | times: 3 %}
-          <div class="summary-card">
+          <div class="summary-card" id="bh-similar">
             <div class="summary-card-title">Similar Books</div>
             <div class="similar-marquee">
               <button class="similar-nav prev" onclick="bhSimilarNudge(-1)" aria-label="Scroll similar books left">‹</button>
@@ -494,6 +523,26 @@ layout: default
     track.dataset.x = String(nx);
     track.style.transform = "translateX(" + nx + "px)";
   };
+
+  // Quick-jump nav — smooth scroll + wheel-to-horizontal (progressive
+  // enhancement only; plain #anchor links already work with zero JS).
+  (function () {
+    const nav = document.getElementById('bh-section-nav');
+    if (!nav) return;
+    nav.addEventListener('click', function (e) {
+      const a = e.target.closest('a');
+      if (!a) return;
+      const id = a.getAttribute('href').slice(1);
+      const el = document.getElementById(id);
+      if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+    nav.addEventListener('wheel', function (e) {
+      if (e.deltaY && Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+        e.preventDefault();
+        nav.scrollLeft += e.deltaY;
+      }
+    }, { passive: false });
+  })();
 
   // My Library — same key + item shape as tools/reading-list.html.
   (function () {
