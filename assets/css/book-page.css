@@ -1,0 +1,523 @@
+/* ══════════════════════════════════════════════════════════════
+   Litheca book-page design system — SINGLE SOURCE OF TRUTH for
+   everything a book guide looks like: sidebar (cover/title/badges/
+   CTAs/awards), main-content cards, chapters/characters, the similar-
+   books marquee, shelf bar, reading-time planner, and section nav.
+
+   Loaded by BOTH:
+     - summary.html          (the interactive tool, JS-rendered)
+     - _layouts/book.html    (the published static page, Jekyll-rendered)
+
+   Change a color/spacing/style HERE and it updates both pages on the
+   next load — no more hand-syncing two copies (that drift is exactly
+   what caused the static page to look visibly different from the
+   dynamic one). Interactive-only chrome that has no static equivalent
+   (search box, floating chat, quiz) stays local to summary.html's own
+   <style> block — see the comment there for the list and why.
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── Reading-time planner (styled like the audio bar) ─────── */
+.reading-bar {
+    background: var(--bg-subtle);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 0.8rem 1.25rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+  }
+.reading-bar-left { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.reading-bar-icon {
+    width: 36px; height: 36px; border-radius: 50%;
+    border: 1px solid var(--border); background: var(--bg); color: var(--accent);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+.reading-bar-total { font-size: 12px; font-weight: 600; color: var(--fg); display: block; }
+.reading-bar-sub { font-size: 10px; color: var(--fg-faint); }
+.reading-bar-control { display: flex; align-items: center; gap: 12px; flex: 1; min-width: 220px; justify-content: flex-end; }
+.reading-pace-label { font-size: 11px; color: var(--fg-faint); white-space: nowrap; }
+.reading-pace-value { font-size: 12px; font-weight: 700; color: var(--fg); white-space: nowrap; min-width: 70px; text-align: right; }
+.reading-result {
+    font-size: 12px; font-weight: 700; color: var(--accent);
+    background: var(--bg); border: 1px solid var(--border); border-radius: 20px;
+    padding: 5px 12px; white-space: nowrap; flex-shrink: 0;
+  }
+.reading-slider {
+    -webkit-appearance: none; appearance: none;
+    flex: 1; min-width: 90px; max-width: 200px; height: 6px; border-radius: 99px;
+    background: var(--border); outline: none; cursor: pointer;
+  }
+.reading-slider::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none;
+    width: 18px; height: 18px; border-radius: 50%;
+    background: var(--accent); border: 2px solid var(--bg); cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+  }
+.reading-slider::-moz-range-thumb {
+    width: 18px; height: 18px; border-radius: 50%;
+    background: var(--accent); border: 2px solid var(--bg); cursor: pointer;
+  }
+@media (max-width: 560px) {
+  /* The control's desktop `flex:1` forces flex-basis:0, so `width:100%`
+     is ignored and the control gets squeezed to a sliver beside the
+     "Reading time" block — then its nowrap "Finish in N days" badge spills
+     ~11px past the viewport and drags the whole page sideways. Force the
+     control onto its own full row with flex-basis, and give the badge its
+     own line within it. */
+  .reading-bar .reading-bar-control { justify-content: flex-start; flex: 1 1 100%; flex-wrap: wrap; min-width: 0; }
+  .reading-bar .reading-result { flex-basis: 100%; text-align: center; margin-top: 4px; }
+}
+
+/* ── Sidebar + Main Layout ─────────────────────────────────── */
+.summary-layout {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+  }
+/* Main content first in DOM for SEO; sidebar visually on left via order */
+.summary-main {
+    flex: 1;
+    min-width: 0;
+    order: 2;
+  }
+.summary-sidebar {
+    width: 260px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 80px;
+    order: 1;
+  }
+.sidebar-cover {
+    width: 100%;
+    height: auto;
+    max-height: 340px;
+    object-fit: contain;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    display: block;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  }
+.sidebar-no-cover {
+    width: 100%;
+    height: 200px;
+    background: var(--bg-subtle);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--fg-faint);
+    font-size: 13px;
+  }
+.sidebar-title {
+    font-size: 17px;
+    font-weight: 800;
+    line-height: 1.25;
+    margin: 1rem 0 0.25rem;
+    color: var(--fg);
+  }
+.sidebar-author {
+    font-size: 13px;
+    color: var(--fg-faint);
+    margin: 0 0 0.75rem;
+  }
+.sidebar-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 1rem;
+  }
+.sidebar-badge {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--bg-subtle);
+    color: var(--fg);
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+.sidebar-badge.category {
+    background: var(--accent-bg);
+    border-color: rgba(255,91,79,0.2);
+    color: var(--accent);
+  }
+.sidebar-badge.rating {
+    background: rgba(245,158,11,0.08);
+    border-color: rgba(245,158,11,0.2);
+    color: #f59e0b;
+  }
+.sidebar-section-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--fg-faint);
+    margin: 1.25rem 0 0.6rem;
+  }
+.sidebar-awards-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+.sidebar-award-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-subtle, rgba(255,255,255,0.06));
+    font-size: 12px;
+    transition: all 0.2s ease;
+  }
+.sidebar-award-item:last-child { border-bottom: none; }
+.sidebar-award-logo-wrap {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--bg-subtle);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+.sidebar-award-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+.sidebar-award-logo-fallback {
+    font-size: 11px;
+    color: #f59e0b;
+    line-height: 1;
+  }
+.sidebar-award-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+.sidebar-award-name {
+    color: var(--fg);
+    font-weight: 500;
+    line-height: 1.3;
+  }
+.sidebar-award-year {
+    color: var(--fg-faint);
+    font-size: 10px;
+  }
+.sidebar-show-all {
+    font-size: 11px;
+    color: var(--accent);
+    cursor: pointer;
+    margin-top: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: none;
+    border: none;
+    padding: 0;
+    font-weight: 600;
+    transition: color 0.2s ease;
+    text-decoration: none;
+  }
+.sidebar-show-all:hover {
+    color: var(--accent-hover);
+    text-decoration: underline;
+  }
+.sidebar-amazon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 10px 16px;
+    background: #ff9900;
+    color: #111 !important;
+    border: none;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    margin-top: 1.25rem;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(255,153,0,0.3);
+  }
+.sidebar-amazon-btn:hover {
+    background: #e68a00;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(255,153,0,0.4);
+  }
+.sidebar-review-links {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+.sidebar-ext-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: var(--fg-faint);
+    text-decoration: none;
+    padding: 5px 8px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    transition: all 0.15s ease;
+  }
+.sidebar-ext-link:hover {
+    color: var(--fg);
+    border-color: var(--fg-faint);
+    background: var(--bg-subtle);
+  }
+/* ── Summary Main Content ─────────────────────────────────── */
+.summary-card {
+    background: var(--bg-subtle);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+  }
+.summary-card-title {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    color: var(--fg);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+.ai-output { font-size: 15px; line-height: 1.75; color: var(--fg); }
+.ai-output h2 {
+    font-size: 17px;
+    font-weight: 700;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    color: var(--accent);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 6px;
+  }
+.ai-output h2:first-of-type { margin-top: 0; }
+.ai-output h3 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: var(--accent);
+    opacity: 0.85;
+  }
+.ai-output p { margin-bottom: 1.25rem; }
+.ai-output p:last-child { margin-bottom: 0; }
+.ai-output ul { margin-bottom: 1.25rem; padding-left: 1.25rem; }
+.ai-output li { margin-bottom: 0.5rem; line-height: 1.65; }
+/* Meta badges (inside main content) */
+.meta-badge {
+    font-size: 12px;
+    color: var(--fg);
+    background: var(--bg-subtle);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+.meta-badge.category { background: var(--accent-bg); border-color: rgba(255,91,79,0.2); color: var(--accent); }
+.meta-badge.rating { background: rgba(245,158,11,0.08); border-color: rgba(245,158,11,0.2); color: #f59e0b; }
+/* Wrapper for cover + title/author/badges: plain blocks on desktop,
+   a compact side-by-side header on mobile. */
+.sidebar-top-info { min-width: 0; }
+/* ── Mobile Responsive ────────────────────────────────────── */
+@media (max-width: 900px) {
+  .summary-layout { flex-direction: column; gap: 1.5rem; }
+  /* Everything must fit the viewport — no element may widen the column
+     (the old 140px+1fr sidebar grid did exactly that and dragged the
+     whole page into horizontal overflow). */
+  .summary-layout > * { max-width: 100%; }
+  .summary-main, .summary-sidebar { width: 100%; box-sizing: border-box; }
+  .summary-sidebar {
+      position: static;
+      max-height: none;
+      order: 1;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1rem;
+    }
+  /* Compact header: cover beside title/author/badges; every block
+     after it (CTAs, NYT, themes, awards…) stacks full-width below. */
+  .sidebar-top { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 14px; }
+  .sidebar-cover-wrap { width: 108px; flex-shrink: 0; }
+  .sidebar-cover { max-height: 170px; }
+  .sidebar-no-cover { height: 140px; }
+  .sidebar-title { font-size: 15px; margin-top: 0; }
+  .sidebar-badges { flex-wrap: wrap; }
+  .sidebar-badge { white-space: normal; }  /* long badges wrap, never widen */
+  .sidebar-amazon-btn { margin-top: 0.5rem; width: 100%; justify-content: center; box-sizing: border-box; }
+  .sidebar-review-links { flex-direction: row; flex-wrap: wrap; margin-top: 0.5rem; }
+}
+
+@media (max-width: 480px) {
+  .summary-card { padding: 1rem; }
+  .sidebar-cover-wrap { width: 92px; }
+  .sidebar-cover { max-height: 140px; }
+}
+
+/* ── Similar books: infinite horizontal marquee ────────────── */
+.similar-marquee { overflow: hidden; position: relative; padding: 14px 0; }
+.similar-track {
+    display: flex;
+    width: max-content;
+    animation: similar-scroll 60s linear infinite;
+  }
+@keyframes similar-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+/* Pause while the reader inspects/clicks a cover */
+.similar-marquee:hover .similar-track { animation-play-state: paused; }
+/* Manual nudge arrows — appear on hover (always visible on touch, where
+   the marquee is scrollable anyway). First use freezes the auto-marquee. */
+.similar-nav {
+    position: absolute; top: 50%; transform: translateY(-50%); z-index: 5;
+    width: 34px; height: 34px; border-radius: 50%;
+    border: 1px solid var(--border); background: var(--bg); color: var(--fg);
+    cursor: pointer; font-size: 20px; line-height: 1;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,.15);
+    opacity: 0; transition: opacity .15s;
+  }
+.similar-marquee:hover .similar-nav { opacity: 1; }
+.similar-nav.prev { left: 6px; }
+.similar-nav.next { right: 6px; }
+.similar-item {
+    width: 118px;
+    flex-shrink: 0;
+    margin-right: 16px; /* margin, not flex gap — keeps -50% loop seamless */
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: transform .25s ease, opacity .25s ease;
+  }
+/* Hovered cover grows; its siblings recede */
+.similar-track:hover .similar-item { transform: scale(.92); opacity: .55; }
+.similar-track .similar-item:hover { transform: scale(1.12); opacity: 1; position: relative; z-index: 2; }
+.similar-item img,
+.similar-item .similar-cover-empty {
+    width: 100%;
+    aspect-ratio: 2/3;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    margin-bottom: 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.08);
+    transition: box-shadow .25s ease;
+  }
+.similar-item:hover img { box-shadow: 0 10px 24px rgba(0,0,0,.25); }
+.similar-item .similar-cover-empty {
+    display: flex; align-items: center; justify-content: center;
+    background: var(--bg-subtle); color: var(--fg-faint);
+    font-size: 11px; padding: 8px; box-sizing: border-box; text-align: center;
+  }
+.similar-item .similar-t {
+    font-size: 11px; font-weight: 600; line-height: 1.3; color: var(--fg);
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+    overflow: hidden; height: 29px; margin-bottom: 2px;
+  }
+.similar-item .similar-a {
+    font-size: 10px; color: var(--fg-faint);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+@media (prefers-reduced-motion: reduce) {
+  .similar-track { animation: none; }
+  .similar-marquee { overflow-x: auto; }
+}
+
+/* ── Shelf bar: reading status + rating (main content) ─────── */
+.shelf-bar {
+    background: var(--bg-subtle); border: 1px solid var(--border); border-radius: 12px;
+    padding: 0.8rem 1.25rem; margin-bottom: 1.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 1rem; flex-wrap: wrap;
+  }
+.shelf-label { font-size: 12px; font-weight: 600; color: var(--fg); display: flex; align-items: center; gap: 8px; }
+.shelf-status { display: flex; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+.shelf-status button {
+    border: 0; background: transparent; color: var(--fg-muted); cursor: pointer;
+    padding: 7px 13px; font-size: 12px; font-weight: 600; line-height: 1;
+    border-right: 1px solid var(--border); min-height: 34px;
+  }
+.shelf-status button:last-child { border-right: 0; }
+.shelf-status button.active { background: var(--accent); color: #fff; }
+.shelf-stars { display: flex; align-items: center; gap: 2px; }
+.shelf-stars button {
+    background: none; border: 0; cursor: pointer; font-size: 18px; padding: 2px;
+    color: var(--border); transition: color .12s, transform .12s;
+  }
+.shelf-stars button:hover { transform: scale(1.15); }
+.shelf-stars button.lit { color: #f5a623; }
+@media (max-width: 560px) {
+  .shelf-bar { gap: 10px; }
+  .shelf-status button { padding: 8px 10px; }
+}
+
+/* ── Section quick-nav chips ────────────────────────────────── */
+.section-nav {
+    display: flex; gap: 8px; overflow-x: auto; -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; padding: 8px 2px; margin-bottom: 1rem;
+    /* Stays visible while reading — sits just below the sticky 56px header.
+       Desktop mice can also wheel-scroll it (page-level JS maps vertical
+       wheel to horizontal scroll). */
+    position: sticky; top: 56px; z-index: 40; background: var(--bg);
+  }
+.section-nav::-webkit-scrollbar { display: none; }
+.section-nav a {
+    flex-shrink: 0; white-space: nowrap; text-decoration: none;
+    font-size: 12px; font-weight: 600; color: var(--fg-muted);
+    background: var(--bg-subtle); border: 1px solid var(--border);
+    border-radius: 999px; padding: 7px 14px;
+  }
+.section-nav a:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ── Characters (main-content cards, expand-in-place) ──────── */
+.char-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; }
+.char-item {
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+    padding: 14px 8px; cursor: pointer; text-align: center;
+    border: 1px solid var(--border); border-radius: 12px; background: var(--bg-subtle);
+    color: var(--fg); transition: border-color .15s, transform .15s;
+  }
+.char-item:hover { border-color: var(--accent); transform: translateY(-2px); }
+.char-item.active { border-color: var(--accent); }
+.char-avatar {
+    width: 52px; height: 52px; border-radius: 50%; overflow: hidden;
+    background: var(--bg); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; font-weight: 800; color: var(--fg-faint); flex-shrink: 0;
+  }
+.char-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.char-name { font-size: 12px; font-weight: 700; line-height: 1.25; }
+.char-role { font-size: 10px; color: var(--fg-faint); text-transform: capitalize; }
+.char-detail-box {
+    margin-top: 14px; padding: 16px; border: 1px solid var(--accent);
+    border-radius: 12px; background: var(--bg-subtle);
+    display: flex; gap: 16px; align-items: flex-start; flex-wrap: wrap;
+  }
+.char-detail-photo { width: 96px; border-radius: 10px; border: 1px solid var(--border); flex-shrink: 0; }
+.char-detail-body { flex: 1; min-width: 220px; }
+.char-facts { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 6px 14px; margin-top: 10px; }
+.char-fact { font-size: 12px; color: var(--fg-muted); }
+.char-fact b { color: var(--fg); font-weight: 600; }

@@ -1,44 +1,24 @@
 ---
 layout: default
 ---
-<style>
-  /* Similar-books marquee — mirrors the dynamic summary page's effect */
-  .similar-marquee { overflow: hidden; position: relative; padding: 14px 0; }
-  .similar-track { display: flex; width: max-content; animation: similar-scroll 60s linear infinite; }
-  .similar-marquee:hover .similar-track { animation-play-state: paused; }
-  @keyframes similar-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-  .similar-item {
-    width: 118px; flex-shrink: 0; margin-right: 16px; text-align: center;
-    text-decoration: none; color: inherit; display: block;
-    transition: transform .25s ease, opacity .25s ease;
-  }
-  .similar-track:hover .similar-item { transform: scale(.92); opacity: .55; }
-  .similar-track .similar-item:hover { transform: scale(1.12); opacity: 1; position: relative; z-index: 2; }
-  .similar-item img, .similar-item .similar-cover-empty {
-    width: 100%; aspect-ratio: 2/3; object-fit: cover; border-radius: 8px;
-    border: 1px solid var(--border); margin-bottom: 6px;
-    box-shadow: 0 4px 12px rgba(0,0,0,.08); transition: box-shadow .25s ease;
-  }
-  .similar-item:hover img { box-shadow: 0 10px 24px rgba(0,0,0,.25); }
-  .similar-item .similar-cover-empty {
-    display: flex; align-items: center; justify-content: center;
-    background: var(--bg-subtle); color: var(--fg-faint);
-    font-size: 11px; padding: 8px; box-sizing: border-box; text-align: center;
-  }
-  .similar-item .similar-t {
-    font-size: 11px; font-weight: 600; line-height: 1.3; color: var(--fg);
-    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
-    overflow: hidden; height: 29px; margin-bottom: 2px;
-  }
-  .similar-item .similar-a {
-    font-size: 10px; color: var(--fg-faint);
-    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .similar-track { animation: none; }
-    .similar-marquee { overflow-x: auto; }
-  }
-</style>
+<link rel="stylesheet" href="{{ '/assets/css/book-page.css' | relative_url }}">
+{% comment %}
+  Design parity rule: this template MUST render with the exact same
+  classes as summary.html's JS-built markup (.summary-layout >
+  .summary-main + .summary-sidebar, .sidebar-*, .summary-card, .ai-output,
+  .char-*, .similar-*, .reading-bar, etc.) — all defined ONCE in
+  assets/css/book-page.css and loaded by both pages. Change a color/
+  spacing/style there and both pages update together; don't reintroduce
+  a page-local copy of these classes here.
+
+  Not replicated (deliberately — see CLAUDE.md "known static-page gaps"):
+  the live character-detail expansion (needs a client-side call to
+  /character/details; here characters are plain links to their own page)
+  and the AI chat / quiz widgets (both need a live grounded API call with
+  no static equivalent — the "Open interactive summary & chat" link below
+  is the bridge to that experience).
+{% endcomment %}
+
 {% assign has_ratings = false %}
 {% if page.ratings and page.ratings.average %}{% assign has_ratings = true %}{% endif %}
 
@@ -58,331 +38,456 @@ layout: default
 
 <article class="book-page" itemscope itemtype="https://schema.org/Book">
   <div class="container">
+    <div class="summary-layout">
 
-    <div class="book-hero">
-      <div class="book-cover-wrap">
-        {% if page.cover_url and page.cover_url != "" %}
-          <img src="{{ page.cover_url }}" alt="Cover of {{ page.title }}" class="book-cover" itemprop="image">
-        {% else %}
-          <div class="book-cover-placeholder">{{ page.title | truncate: 2, "" }}</div>
-        {% endif %}
-      </div>
+      <!-- MAIN CONTENT (first in DOM for SEO) -->
+      <main class="summary-main">
 
-      <div class="book-meta">
-        {% if page.categories and page.categories.size > 0 %}
-          <div class="book-meta-row" style="margin-bottom:8px;">
-            {% for cat_slug in page.categories %}
-              {% assign cat = site.data.categories | where: "slug", cat_slug | first %}
-              {% if cat %}
-                <a href="{{ '/categories/' | relative_url }}{{ cat.slug }}/" class="book-meta-tag" style="text-decoration:none;">{{ cat.name }}</a>
-              {% endif %}
-            {% endfor %}
+        {% comment %} "Listen to this guide" — same widget as the dynamic page,
+            driven by the shared /assets/js/bh-audio.js engine. {% endcomment %}
+        <div class="audio-player-container">
+          <div style="display:flex;align-items:center;gap:12px;min-width:0;">
+            <div class="audio-controls">
+              <button class="audio-btn" onclick="audioSkipSection(-1)" title="Previous section">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style="display:block;margin:auto;"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+              </button>
+              <button class="audio-btn" id="audio-play-btn" onclick="toggleAudio()" title="Listen to this guide">
+                <svg id="play-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="display:block;margin:auto;"><path d="M8 5v14l11-7z"/></svg>
+              </button>
+              <button class="audio-btn" onclick="audioSkipSection(1)" title="Next section">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style="display:block;margin:auto;"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+              </button>
+              <button class="audio-btn" onclick="stopAudio()" title="Stop">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="display:block;margin:auto;"><path d="M6 19h12V5H6v14z"/></svg>
+              </button>
+            </div>
+            <div style="min-width:0;">
+              <span style="font-size:12px;font-weight:600;display:block;color:var(--fg);">Listen to this guide</span>
+              <span id="audio-status" style="font-size:10px;color:var(--fg-faint);">Click play to listen</span>
+              <div style="width:120px;height:3px;background:var(--border);border-radius:2px;margin-top:5px;overflow:hidden;">
+                <div id="audio-progress-fill" style="width:0%;height:100%;background:var(--accent);border-radius:2px;transition:width .4s;"></div>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <select id="audio-speed" class="audio-speed-selector" onchange="changeAudioSpeed()">
+              <option value="1" selected>1.0x</option>
+              <option value="1.2">1.2x</option>
+              <option value="1.4">1.4x</option>
+              <option value="1.6">1.6x</option>
+              <option value="2">2x</option>
+            </select>
+            <div class="sound-wave" id="audio-wave">
+              <div class="wave-bar"></div><div class="wave-bar"></div>
+              <div class="wave-bar"></div><div class="wave-bar"></div>
+              <div class="wave-bar"></div>
+            </div>
+          </div>
+        </div>
+
+        {% if page.page_count %}
+          <div class="reading-bar" id="reading-bar">
+            <div class="reading-bar-left">
+              <div class="reading-bar-icon">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+              </div>
+              <div>
+                <span class="reading-bar-total" id="reading-bar-total"></span>
+                <span class="reading-bar-sub">~{{ page.page_count | times: 275 | divided_by: 1000 | round }}k words · {{ page.page_count }} pages</span>
+              </div>
+            </div>
+            <div class="reading-bar-control">
+              <span class="reading-pace-label">You read</span>
+              <input type="range" class="reading-slider" id="reading-slider" min="5" max="240" step="5" value="30" aria-label="Minutes you read per day">
+              <span class="reading-pace-value" id="reading-pace-value"></span>
+              <span class="reading-result" id="reading-result"></span>
+            </div>
           </div>
         {% endif %}
 
-        <h1 class="book-title" itemprop="name">{{ page.title }}</h1>
-        {% if page.author_slug and page.author_slug != "" %}
-          <p class="book-author"><a href="{{ '/authors/' | relative_url }}{{ page.author_slug }}/" itemprop="author" style="color:inherit;">{{ page.author }}</a></p>
-        {% else %}
-          <p class="book-author" itemprop="author">{{ page.author }}</p>
+        {% comment %} Transparency: what generated this page and what it's grounded in. {% endcomment %}
+        <div class="ai-disclosure-notice">
+          <strong>How this page was made:</strong> the summary below was written with AI assistance, grounded in the book's official description{% if page.isbn_13 and page.isbn_13 != "" or page.isbn_10 and page.isbn_10 != "" %} (Google Books / Open Library){% endif %}.
+          {%- if has_ratings %} Ratings are sourced live from {% if page.ratings.source == "goodreads" %}Goodreads{% else %}Open Library{% endif %}{% if page.ratings.url and page.ratings.url != "" %} (<a href="{{ page.ratings.url }}" target="_blank" rel="noopener nofollow">view on {% if page.ratings.source == "goodreads" %}Goodreads{% else %}Open Library{% endif %}</a>){% endif %}.{% endif %}
+          {%- if page.awards.size > 0 %} Award data is sourced from <a href="https://www.wikidata.org" target="_blank" rel="noopener nofollow">Wikidata</a>.{% endif %}
+          {%- if page.quotes and page.quotes.texts %} Quotes are sourced verbatim from <a href="{{ page.quotes.source_url }}" target="_blank" rel="noopener nofollow">Wikiquote</a> (CC BY-SA) — not AI-generated.{% endif %}
+          {%- if page.nyt and page.nyt.weeks_on_list %} Bestseller data is from <a href="https://developer.nytimes.com" target="_blank" rel="noopener nofollow">The New York Times Books API</a>.{% endif %}
+          Last updated {{ page.date | date: "%B %-d, %Y" }}.
+        </div>
+
+        {% if page.characters and page.characters.size > 0 %}
+          <div class="summary-card">
+            <div class="summary-card-title">Characters</div>
+            <div class="char-grid">
+              {% for c in page.characters %}
+                <a href="{{ '/characters/' | relative_url }}{{ c.slug }}/" class="char-item" style="text-decoration:none;">
+                  <span class="char-avatar">{{ c.name | slice: 0, 1 }}</span>
+                  <span class="char-name">{{ c.name }}</span>
+                  {% if c.role and c.role != "" %}<span class="char-role">{{ c.role }}</span>{% endif %}
+                </a>
+              {% endfor %}
+            </div>
+          </div>
         {% endif %}
 
-        <div class="book-meta-row">
-          {% if page.page_count %}<span class="book-meta-tag">{{ page.page_count }} pages</span>{% endif %}
-          {% if page.page_count %}
-            {% assign rt_minutes = page.page_count | times: 275 | divided_by: 250 %}
-            {% assign rt_hours = rt_minutes | divided_by: 60 %}
-            {% assign rt_rem = rt_minutes | modulo: 60 %}
-            <span class="book-meta-tag" title="Estimated reading time">⏱ {% if rt_hours > 0 %}{{ rt_hours }} hr{% if rt_rem > 0 %} {{ rt_rem }} min{% endif %}{% else %}{{ rt_minutes }} min{% endif %}</span>
-          {% endif %}
-          {% if page.published_year and page.published_year != "" %}<span class="book-meta-tag"><span itemprop="datePublished">{{ page.published_year }}</span></span>{% endif %}
-          {% if page.reading_level and page.reading_level != "" %}<span class="book-meta-tag" title="Estimated reading level">🎓 Reading level: {{ page.reading_level }}</span>{% endif %}
-          {% if page.editions and page.editions.editions >= 2 %}<span class="book-meta-tag" title="Open Library edition data">🌍 {{ page.editions.editions }} editions{% if page.editions.languages >= 2 %} · {{ page.editions.languages }} languages{% endif %}</span>{% endif %}
-          {% if has_ratings %}
-            {% assign rc = page.ratings.count %}
-            <span class="book-meta-tag" title="{{ page.ratings.source }}, {{ rc }} ratings">★ {{ page.ratings.average }}{% if rc %} · {% if rc >= 1000000 %}{{ rc | divided_by: 100000 | times: 0.1 | round: 1 }}M{% elsif rc >= 1000 %}{{ rc | divided_by: 100 | times: 0.1 | round: 1 }}K{% else %}{{ rc }}{% endif %}{% endif %}</span>
-          {% elsif page.average_rating %}
-            <span class="book-meta-tag">★ {{ page.average_rating }}</span>
-          {% endif %}
-          {% if page.isbn_13 and page.isbn_13 != "" %}<meta itemprop="isbn" content="{{ page.isbn_13 }}">{% endif %}
+        <div class="summary-card">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:16px;">
+            <div class="summary-card-title" style="margin-bottom:0;border-bottom:0;padding-bottom:0;">AI Grounded Summary</div>
+            <a class="btn-secondary" style="padding:8px 16px;font-size:13px;"
+               href="{{ '/summary/' | relative_url }}?q={{ page.title | url_encode }}&author={{ page.author | url_encode }}{% if page.google_id and page.google_id != '' %}&google_id={{ page.google_id }}{% endif %}{% if page.isbn_13 and page.isbn_13 != '' %}&isbn={{ page.isbn_13 }}{% endif %}&direct=true">
+              Open interactive summary &amp; chat →
+            </a>
+          </div>
+          <div class="ai-output" itemprop="description">
+            {{ content }}
+          </div>
         </div>
+
+        {% if page.quotes and page.quotes.texts %}
+          <div class="summary-card">
+            <div class="summary-card-title">Notable Quotes</div>
+            {% for q in page.quotes.texts %}
+              {% assign sp = page.quotes.speakers[forloop.index0] %}
+              <blockquote style="font-size:14px;font-style:italic;line-height:1.65;color:var(--fg);border-left:3px solid var(--accent);padding:4px 0 4px 14px;margin:0 0 12px;">"{{ q }}"{% if sp and sp != "" %}<footer style="font-size:12px;font-style:normal;font-weight:600;color:var(--fg-faint);margin-top:4px;">— {{ sp }}</footer>{% endif %}</blockquote>
+            {% endfor %}
+            <p style="font-size:11px;color:var(--fg-faint);margin:0;">Sourced verbatim from <a href="{{ page.quotes.source_url }}" target="_blank" rel="noopener nofollow">Wikiquote</a> (CC BY-SA) — not AI-generated.</p>
+          </div>
+        {% endif %}
+
+        {% if page.chapters and page.chapters.size > 0 %}
+          <div class="summary-card">
+            <div class="summary-card-title">Chapters ({{ page.chapters.size }})</div>
+            <ol style="font-size:13px;color:var(--fg);line-height:1.9;padding-left:1.2rem;margin:0;columns:2;column-gap:24px;">
+              {% for c in page.chapters %}
+                <li style="break-inside:avoid;">{{ c }}</li>
+              {% endfor %}
+            </ol>
+          </div>
+        {% endif %}
+
+        {% if page.similar_books and page.similar_books.size > 0 %}
+          {% comment %} Repeat the list until wide enough for a seamless -50% loop,
+              mirroring the dynamic page's marquee (≥8 items, then doubled). {% endcomment %}
+          {% assign sim_items = page.similar_books %}
+          {% for i in (1..4) %}
+            {% if sim_items.size < 8 %}{% assign sim_items = sim_items | concat: page.similar_books %}{% endif %}
+          {% endfor %}
+          {% assign sim_loop = sim_items | concat: sim_items %}
+          {% assign sim_duration = sim_loop.size | times: 3 %}
+          <div class="summary-card">
+            <div class="summary-card-title">Similar Books</div>
+            <div class="similar-marquee">
+              <button class="similar-nav prev" onclick="bhSimilarNudge(-1)" aria-label="Scroll similar books left">‹</button>
+              <div class="similar-track" style="animation-duration:{{ sim_duration }}s;">
+                {% for b in sim_loop %}
+                  <a href="{{ '/summary/' | relative_url }}?q={{ b.title | url_encode }}&author={{ b.author | url_encode }}{% if b.google_id and b.google_id != '' %}&google_id={{ b.google_id }}{% endif %}{% if b.isbn_13 and b.isbn_13 != '' %}&isbn={{ b.isbn_13 }}{% endif %}&direct=true"
+                     class="similar-item">
+                    {% if b.cover_url and b.cover_url != "" %}
+                      <img src="{{ b.cover_url }}" alt="Cover of {{ b.title }}" loading="lazy">
+                    {% else %}
+                      <div class="similar-cover-empty">{{ b.title | truncate: 30 }}</div>
+                    {% endif %}
+                    <p class="similar-t">{{ b.title }}</p>
+                    <p class="similar-a">{{ b.author }}</p>
+                  </a>
+                {% endfor %}
+              </div>
+              <button class="similar-nav next" onclick="bhSimilarNudge(1)" aria-label="Scroll similar books right">›</button>
+            </div>
+          </div>
+        {% endif %}
+
+        {% comment %} "More in <category>" — real crawlable links to other
+            published /summary/<slug>/ pages sharing this book's first
+            category (unlike the marquee above, which links dynamic-summary
+            URLs from catalog data). This is the internal linking that makes
+            the published library indexable as a web, not orphan pages. {% endcomment %}
+        {% assign first_cat = page.categories | first %}
+        {% if first_cat %}
+          {% assign cat_books = site.books | where_exp: "b", "b.categories contains first_cat" %}
+          {% assign cat_meta = site.data.categories | where: "slug", first_cat | first %}
+          {% assign shown = 0 %}
+          {% capture related_html %}
+            {% for b in cat_books %}
+              {% if b.slug != page.slug and shown < 8 %}
+                {% assign shown = shown | plus: 1 %}
+                <a href="{{ b.url | relative_url }}" style="text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:6px;">
+                  {% if b.cover_url and b.cover_url != "" %}
+                    <img src="{{ b.cover_url }}" alt="Cover of {{ b.title }}" loading="lazy"
+                         style="width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:8px;border:1px solid var(--border);">
+                  {% else %}
+                    <div style="width:100%;aspect-ratio:2/3;background:var(--bg-subtle);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--fg-faint);padding:8px;text-align:center;">{{ b.title | truncate: 40 }}</div>
+                  {% endif %}
+                  <p style="font-size:12px;font-weight:600;line-height:1.3;">{{ b.title }}</p>
+                </a>
+              {% endif %}
+            {% endfor %}
+          {% endcapture %}
+          {% if shown > 0 %}
+            <div class="summary-card">
+              <div class="summary-card-title">More in {{ cat_meta.name | default: first_cat }}</div>
+              <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:16px;">
+                {{ related_html }}
+              </div>
+            </div>
+          {% endif %}
+        {% endif %}
+
+        {% comment %} Readers recommend — same interactive card as the
+            dynamic page (replica rule): approved list + submit form. {% endcomment %}
+        <div id="bh-reader-recs" class="summary-card" style="display:none;">
+          <div class="summary-card-title">Readers recommend</div>
+          <div id="bh-reader-recs-list"></div>
+          <div id="bh-rec-form"></div>
+        </div>
+
+        {% comment %} Litheca readers' own star ratings — same card/ids/
+            behavior as summary.html's #ratings-card + #reader-ratings,
+            just before Reader Comments. Hidden until populated client-side
+            (no data beats wrong data). {% endcomment %}
+        <div class="summary-card" id="ratings-card" style="display:none;">
+          <div class="summary-card-title">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            Reader Ratings
+          </div>
+          <div id="reader-ratings"></div>
+        </div>
+
+        {% comment %} Reader Comments — full parity with the dynamic page:
+            approved list w/ avatars + likes, post form with the verified-
+            email gate, Hide/Show toggle. {% endcomment %}
+        <div class="summary-card" id="bh-comments-card">
+          <div class="summary-card-title">Reader Comments</div>
+          <button class="btn-secondary" id="comments-load-btn" onclick="bhToggleComments()" style="padding:8px 18px;font-size:13px;">Hide comments</button>
+          <div id="comments-area" style="display:none;"></div>
+        </div>
+
+      </main>
+
+      <!-- SIDEBAR -->
+      <aside class="summary-sidebar">
+        <div class="sidebar-top">
+          <div class="sidebar-cover-wrap">
+            {% if page.cover_url and page.cover_url != "" %}
+              <img src="{{ page.cover_url }}" alt="Cover of {{ page.title }}" class="sidebar-cover" itemprop="image">
+            {% else %}
+              <div class="sidebar-no-cover">{{ page.title | truncate: 2, "" }}</div>
+            {% endif %}
+          </div>
+          <div class="sidebar-top-info">
+            <h1 class="sidebar-title" itemprop="name">{{ page.title }}</h1>
+            {% if page.author_slug and page.author_slug != "" %}
+              <p class="sidebar-author">by <a href="{{ '/authors/' | relative_url }}{{ page.author_slug }}/" itemprop="author" style="color:inherit;text-decoration:underline;text-decoration-color:var(--border);text-underline-offset:3px;">{{ page.author }}</a></p>
+            {% else %}
+              <p class="sidebar-author" itemprop="author">{{ page.author }}</p>
+            {% endif %}
+          </div>
+        </div>
+
+        {% if page.isbn_13 and page.isbn_13 != "" %}<meta itemprop="isbn" content="{{ page.isbn_13 }}">{% endif %}
+
+        {% comment %} CTAs first — every decision button visible without scrolling, same order as the dynamic page. {% endcomment %}
+        {% if page.free_ebook and page.free_ebook.page_url %}
+          <div style="border:1px solid var(--accent);border-radius:12px;padding:12px 14px;margin-bottom:12px;background:var(--bg-subtle);">
+            <p style="font-size:12px;font-weight:700;color:var(--fg);margin:0 0 8px;">Public domain — read it free</p>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;">
+              {% if page.free_ebook.gutenberg_id %}
+                <a href="{{ '/reader/' | relative_url }}?id={{ page.free_ebook.gutenberg_id }}&title={{ page.title | url_encode }}&author={{ page.author | url_encode }}" class="btn-primary" style="padding:6px 12px;font-size:12px;">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="vertical-align:-2px;"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Read here
+                </a>
+              {% endif %}
+              <a href="{% if page.free_ebook.read_url %}{{ page.free_ebook.read_url }}{% else %}{{ page.free_ebook.page_url }}{% endif %}" target="_blank" rel="noopener" class="btn-secondary" style="padding:6px 12px;font-size:12px;">Read online</a>
+              {% if page.free_ebook.epub_url %}<a href="{{ page.free_ebook.epub_url }}" class="btn-secondary" style="padding:6px 12px;font-size:12px;">EPUB</a>{% endif %}
+              {% if page.free_ebook.txt_url %}<a href="{{ page.free_ebook.txt_url }}" class="btn-secondary" style="padding:6px 12px;font-size:12px;">TXT</a>{% endif %}
+            </div>
+            <p style="font-size:10px;color:var(--fg-faint);margin:8px 0 0;">From <a href="{{ page.free_ebook.page_url }}" target="_blank" rel="noopener nofollow" style="color:inherit;">{% if page.free_ebook.source == "internet_archive" %}Internet Archive{% else %}Project Gutenberg{% endif %}</a></p>
+          </div>
+        {% endif %}
 
         {% if page.amazon_url and page.amazon_url != "" %}
           <p style="font-size:10px;color:var(--fg-faint);line-height:1.5;margin:6px 0 4px;">As an Amazon Associate, Litheca earns from qualifying purchases.</p>
-          <a href="{{ page.amazon_url }}" class="btn-primary" target="_blank" rel="noopener sponsored">Buy on Amazon</a>
+          <a href="{{ page.amazon_url }}" class="sidebar-amazon-btn" target="_blank" rel="noopener sponsored">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+            Buy on Amazon
+          </a>
         {% elsif page.isbn_10 and page.isbn_10 != "" %}
           <p style="font-size:10px;color:var(--fg-faint);line-height:1.5;margin:6px 0 4px;">As an Amazon Associate, Litheca earns from qualifying purchases.</p>
-          <a href="https://www.amazon.com/dp/{{ page.isbn_10 }}?tag={{ site.amazon_tag }}"
-             class="btn-primary" target="_blank" rel="noopener sponsored">Buy on Amazon</a>
+          <a href="https://www.amazon.com/dp/{{ page.isbn_10 }}?tag={{ site.amazon_tag }}" class="sidebar-amazon-btn" target="_blank" rel="noopener sponsored">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+            Buy on Amazon
+          </a>
         {% endif %}
-        {% if page.free_ebook and page.free_ebook.page_url %}
-          {% if page.free_ebook.gutenberg_id %}
-            <a href="{{ '/reader/' | relative_url }}?id={{ page.free_ebook.gutenberg_id }}&title={{ page.title | url_encode }}&author={{ page.author | url_encode }}"
-               class="btn-secondary" style="margin-left:8px;">📖 Read free — public domain</a>
-          {% else %}
-            <a href="{% if page.free_ebook.read_url %}{{ page.free_ebook.read_url }}{% else %}{{ page.free_ebook.page_url }}{% endif %}"
-               class="btn-secondary" target="_blank" rel="noopener" style="margin-left:8px;">📖 Read free — public domain</a>
+
+        <button class="btn-secondary" id="add-library-btn" onclick="bhAddToLibrary()"
+                style="width:100%;justify-content:center;margin:8px 0 8px;padding:9px 12px;font-size:13px;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align:-2px;"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Add to My Library
+        </button>
+
+        <div class="sidebar-badges">
+          {% for cat_slug in page.categories %}
+            {% assign cat = site.data.categories | where: "slug", cat_slug | first %}
+            {% if cat %}<a href="{{ '/categories/' | relative_url }}{{ cat.slug }}/" class="sidebar-badge category" style="text-decoration:none;">{{ cat.name }}</a>{% endif %}
+          {% endfor %}
+          {% if has_ratings %}
+            {% assign rc = page.ratings.count %}
+            <span class="sidebar-badge rating" title="{{ page.ratings.source }}, {{ rc }} ratings">★ {{ page.ratings.average }}{% if rc %} · {% if rc >= 1000000 %}{{ rc | divided_by: 100000 | times: 0.1 | round: 1 }}M{% elsif rc >= 1000 %}{{ rc | divided_by: 100 | times: 0.1 | round: 1 }}K{% else %}{{ rc }}{% endif %}{% endif %}</span>
+          {% elsif page.average_rating %}
+            <span class="sidebar-badge rating">★ {{ page.average_rating }}</span>
           {% endif %}
-        {% endif %}
-        <button class="btn-secondary" id="add-library-btn" onclick="bhAddToLibrary()" style="margin-left:8px;">➕ Add to My Library</button>
+          {% if page.published_year and page.published_year != "" %}<span class="sidebar-badge">{{ page.published_year }}</span>{% endif %}
+          {% if page.page_count %}<span class="sidebar-badge">{{ page.page_count }} pages</span>{% endif %}
+          {% if page.reading_level and page.reading_level != "" %}<span class="sidebar-badge" title="Estimated reading level">Reading level: {{ page.reading_level }}</span>{% endif %}
+          {% if page.editions and page.editions.editions >= 2 %}<span class="sidebar-badge" title="Open Library edition data">{{ page.editions.editions }} editions{% if page.editions.languages >= 2 %} · {{ page.editions.languages }} languages{% endif %}</span>{% endif %}
+        </div>
+
         {% if page.nyt and page.nyt.weeks_on_list %}
-          <div style="margin-top:12px;">
-            <span class="book-meta-tag" style="border-color:var(--accent);">🏆 NYT Bestseller — {{ page.nyt.weeks_on_list }} week{% if page.nyt.weeks_on_list > 1 %}s{% endif %} on the "{{ page.nyt.list_name }}" list{% if page.nyt.rank %} · currently #{{ page.nyt.rank }}{% endif %}</span>
-            {% if page.nyt.review_url %}<a href="{{ page.nyt.review_url }}" target="_blank" rel="noopener nofollow" style="font-size:12px;margin-left:6px;">NYT review →</a>{% endif %}
+          <div style="border:1px solid var(--accent);border-radius:12px;padding:10px 14px;margin:0 0 12px;background:var(--bg-subtle);">
+            <p style="font-size:12px;font-weight:700;color:var(--fg);margin:0;">New York Times Bestseller</p>
+            <p style="font-size:12px;color:var(--fg-muted);margin:4px 0 0;">{{ page.nyt.weeks_on_list }} week{% if page.nyt.weeks_on_list > 1 %}s{% endif %} on the "{{ page.nyt.list_name }}" list{% if page.nyt.rank %} · currently #{{ page.nyt.rank }}{% endif %}</p>
+            {% if page.nyt.review_url %}<a href="{{ page.nyt.review_url }}" target="_blank" rel="noopener nofollow" style="font-size:11px;color:var(--accent);display:inline-block;margin-top:4px;">Read the NYT review →</a>{% endif %}
           </div>
         {% endif %}
-      </div>
-    </div>
 
-    {% comment %} "Listen to this guide" — same widget as the dynamic page,
-        driven by the shared /assets/js/bh-audio.js engine. {% endcomment %}
-    <div class="audio-player-container" style="margin:20px 0 0;">
-      <div style="display:flex;align-items:center;gap:12px;min-width:0;">
-        <div class="audio-controls">
-          <button class="audio-btn" onclick="audioSkipSection(-1)" title="Previous section">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style="display:block;margin:auto;"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
-          </button>
-          <button class="audio-btn" id="audio-play-btn" onclick="toggleAudio()" title="Listen to this guide">
-            <svg id="play-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="display:block;margin:auto;"><path d="M8 5v14l11-7z"/></svg>
-          </button>
-          <button class="audio-btn" onclick="audioSkipSection(1)" title="Next section">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style="display:block;margin:auto;"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
-          </button>
-          <button class="audio-btn" onclick="stopAudio()" title="Stop">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="display:block;margin:auto;"><path d="M6 19h12V5H6v14z"/></svg>
-          </button>
-        </div>
-        <div style="min-width:0;">
-          <span style="font-size:12px;font-weight:600;display:block;color:var(--fg);">Listen to this guide</span>
-          <span id="audio-status" style="font-size:10px;color:var(--fg-faint);">Click play to listen</span>
-          <div style="width:120px;height:3px;background:var(--border);border-radius:2px;margin-top:5px;overflow:hidden;">
-            <div id="audio-progress-fill" style="width:0%;height:100%;background:var(--accent);border-radius:2px;transition:width .4s;"></div>
+        {% if page.themes and page.themes.size > 0 %}
+          <p class="sidebar-section-title">Themes</p>
+          <div class="sidebar-badges">
+            {% for t in page.themes %}<span class="sidebar-badge">{{ t }}</span>{% endfor %}
           </div>
-        </div>
-      </div>
-      <div style="display:flex;align-items:center;gap:12px;">
-        <select id="audio-speed" class="audio-speed-selector" onchange="changeAudioSpeed()">
-          <option value="1" selected>1.0x</option>
-          <option value="1.2">1.2x</option>
-          <option value="1.4">1.4x</option>
-          <option value="1.6">1.6x</option>
-          <option value="2">2x</option>
-        </select>
-        <div class="sound-wave" id="audio-wave">
-          <div class="wave-bar"></div><div class="wave-bar"></div>
-          <div class="wave-bar"></div><div class="wave-bar"></div>
-          <div class="wave-bar"></div>
-        </div>
-      </div>
-    </div>
+        {% endif %}
 
-    {% comment %} Litheca readers' own star ratings (Firestore aggregate).
-        Hidden until at least one reader has rated — populated client-side
-        once the firebase module is ready. {% endcomment %}
-    <div id="bh-reader-ratings" style="display:none;border:1px solid var(--border);border-radius:12px;background:var(--bg);padding:16px 18px;margin:20px 0;"></div>
-
-    {% comment %} Transparency: what generated this page and what it's grounded in. {% endcomment %}
-    <div class="ai-disclosure-notice">
-      <strong>How this page was made:</strong> the summary below was written with AI assistance, grounded in the book's official description{% if page.isbn_13 and page.isbn_13 != "" or page.isbn_10 and page.isbn_10 != "" %} (Google Books / Open Library){% endif %}.
-      {%- if has_ratings %} Ratings are sourced live from {% if page.ratings.source == "goodreads" %}Goodreads{% else %}Open Library{% endif %}{% if page.ratings.url and page.ratings.url != "" %} (<a href="{{ page.ratings.url }}" target="_blank" rel="noopener nofollow">view on {% if page.ratings.source == "goodreads" %}Goodreads{% else %}Open Library{% endif %}</a>){% endif %}.{% endif %}
-      {%- if page.awards.size > 0 %} Award data is sourced from <a href="https://www.wikidata.org" target="_blank" rel="noopener nofollow">Wikidata</a>.{% endif %}
-      {%- if page.quotes and page.quotes.texts %} Quotes are sourced verbatim from <a href="{{ page.quotes.source_url }}" target="_blank" rel="noopener nofollow">Wikiquote</a> (CC BY-SA) — not AI-generated.{% endif %}
-      {%- if page.nyt and page.nyt.weeks_on_list %} Bestseller data is from <a href="https://developer.nytimes.com" target="_blank" rel="noopener nofollow">The New York Times Books API</a>.{% endif %}
-      Last updated {{ page.date | date: "%B %-d, %Y" }}.
-    </div>
-
-    <div class="book-static-summary">
-      <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:16px;">
-        <h2 style="font-size:18px;font-weight:600;">AI Grounded Summary</h2>
-        <a class="btn-secondary" style="padding:8px 16px;font-size:13px;"
-           href="{{ '/summary/' | relative_url }}?q={{ page.title | url_encode }}&author={{ page.author | url_encode }}{% if page.google_id and page.google_id != '' %}&google_id={{ page.google_id }}{% endif %}{% if page.isbn_13 and page.isbn_13 != '' %}&isbn={{ page.isbn_13 }}{% endif %}&direct=true">
-          Open interactive summary &amp; chat →
-        </a>
-      </div>
-      <div class="ai-output" itemprop="description">
-        {{ content }}
-      </div>
-    </div>
-
-    {% if page.chapters and page.chapters.size > 0 %}
-      <div class="summary-card" style="margin-top:24px;">
-        <div class="summary-card-title">Chapters ({{ page.chapters.size }})</div>
-        <ol style="font-size:13px;color:var(--fg);line-height:1.9;padding-left:1.2rem;margin:0;columns:2;column-gap:24px;">
-          {% for c in page.chapters %}
-            <li style="break-inside:avoid;">{{ c }}</li>
-          {% endfor %}
-        </ol>
-      </div>
-    {% endif %}
-
-    {% if page.quotes and page.quotes.texts %}
-      <div class="summary-card" style="margin-top:24px;">
-        <div class="summary-card-title">Notable Quotes</div>
-        {% for q in page.quotes.texts %}
-          {% assign sp = page.quotes.speakers[forloop.index0] %}
-          <blockquote style="font-size:14px;font-style:italic;line-height:1.65;color:var(--fg);border-left:3px solid var(--accent);padding:4px 0 4px 14px;margin:0 0 12px;">"{{ q }}"{% if sp and sp != "" %}<footer style="font-size:12px;font-style:normal;font-weight:600;color:var(--fg-faint);margin-top:4px;">— {{ sp }}</footer>{% endif %}</blockquote>
-        {% endfor %}
-        <p style="font-size:11px;color:var(--fg-faint);margin:0;">Sourced verbatim from <a href="{{ page.quotes.source_url }}" target="_blank" rel="noopener nofollow">Wikiquote</a> (CC BY-SA) — not AI-generated.</p>
-      </div>
-    {% endif %}
-
-    {% if page.characters and page.characters.size > 0 %}
-      <div class="summary-card" style="margin-top:24px;">
-        <div class="summary-card-title">Characters</div>
-        <div style="display:flex;flex-wrap:wrap;gap:8px;">
-          {% for c in page.characters %}
-            <a href="{{ '/characters/' | relative_url }}{{ c.slug }}/" class="book-meta-tag" style="text-decoration:none;">{{ c.name }}{% if c.role and c.role != "" %} · {{ c.role }}{% endif %}</a>
-          {% endfor %}
-        </div>
-      </div>
-    {% endif %}
-
-    {% if page.themes and page.themes.size > 0 %}
-      <div class="summary-card" style="margin-top:24px;">
-        <div class="summary-card-title">Themes</div>
-        <div style="display:flex;flex-wrap:wrap;gap:8px;">
-          {% for t in page.themes %}
-            <span class="book-meta-tag">{{ t }}</span>
-          {% endfor %}
-        </div>
-      </div>
-    {% endif %}
-
-    {% if page.awards and page.awards.size > 0 %}
-      <div class="summary-card" style="margin-top:24px;">
-        <div class="summary-card-title">Awards</div>
-        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
-          {% for a in page.awards %}
-            <li style="display:flex;align-items:center;gap:10px;">
-              {% if a.logo_url and a.logo_url != "" %}
-                <img src="{{ a.logo_url }}" alt="" loading="lazy" style="width:26px;height:26px;object-fit:contain;border-radius:4px;flex-shrink:0;">
-              {% else %}
-                <span style="font-size:16px;flex-shrink:0;">🏆</span>
-              {% endif %}
-              <span style="font-size:13px;font-weight:600;">{{ a.name }}</span>
-              {% if a.year %}<span style="font-size:12px;color:var(--fg-faint);">{{ a.year }}</span>{% endif %}
-            </li>
-          {% endfor %}
-        </ul>
-      </div>
-    {% endif %}
-
-    {% if page.ratings.distribution %}
-      {% assign star_labels = "5,4,3,2,1" | split: "," %}
-      {% assign dist_total = 0 %}
-      {% for s in star_labels %}{% assign n = page.ratings.distribution[s] | default: 0 %}{% assign dist_total = dist_total | plus: n %}{% endfor %}
-      {% if dist_total > 0 %}
-        <div class="summary-card" style="margin-top:24px;">
-          <div class="summary-card-title">Rating breakdown</div>
-          {% assign dist_src = page.ratings.distribution_source | default: page.ratings.source %}
-          {% assign dist_n = page.ratings.distribution_count | default: dist_total %}
-          <p style="font-size:12px;color:var(--fg-faint);margin:-4px 0 10px;">Based on {{ dist_n }} {% if dist_src == "open_library" %}Open Library{% elsif dist_src == "goodreads" %}Goodreads{% else %}reader{% endif %} ratings</p>
-          <div style="display:flex;flex-direction:column;gap:5px;">
-            {% for s in star_labels %}
-              {% assign n = page.ratings.distribution[s] | default: 0 %}
-              {% assign pct = n | times: 100.0 | divided_by: dist_total | round %}
-              <div style="display:flex;align-items:center;gap:8px;font-size:11px;color:var(--fg-muted);">
-                <span style="width:22px;flex-shrink:0;">{{ s }}★</span>
-                <span style="flex:1;height:8px;background:var(--bg-subtle);border:1px solid var(--border);border-radius:99px;overflow:hidden;"><span style="display:block;height:100%;width:{{ pct }}%;background:var(--accent);"></span></span>
-                <span style="width:42px;text-align:right;flex-shrink:0;color:var(--fg-faint);">{{ n }}</span>
-              </div>
-            {% endfor %}
-          </div>
-        </div>
-      {% endif %}
-    {% endif %}
-
-    {% if page.similar_books and page.similar_books.size > 0 %}
-      {% comment %} Repeat the list until wide enough for a seamless -50% loop,
-          mirroring the dynamic page's marquee (≥8 items, then doubled). {% endcomment %}
-      {% assign sim_items = page.similar_books %}
-      {% for i in (1..4) %}
-        {% if sim_items.size < 8 %}{% assign sim_items = sim_items | concat: page.similar_books %}{% endif %}
-      {% endfor %}
-      {% assign sim_loop = sim_items | concat: sim_items %}
-      {% assign sim_duration = sim_loop.size | times: 3 %}
-      <div class="summary-card" style="margin-top:24px;">
-        <div class="summary-card-title">Similar Books</div>
-        <div class="similar-marquee">
-          <div class="similar-track" style="animation-duration:{{ sim_duration }}s;">
-            {% for b in sim_loop %}
-              <a href="{{ '/summary/' | relative_url }}?q={{ b.title | url_encode }}&author={{ b.author | url_encode }}{% if b.google_id and b.google_id != '' %}&google_id={{ b.google_id }}{% endif %}{% if b.isbn_13 and b.isbn_13 != '' %}&isbn={{ b.isbn_13 }}{% endif %}&direct=true"
-                 class="similar-item">
-                {% if b.cover_url and b.cover_url != "" %}
-                  <img src="{{ b.cover_url }}" alt="Cover of {{ b.title }}" loading="lazy">
+        {% if page.awards and page.awards.size > 0 %}
+          <p class="sidebar-section-title">Awards</p>
+          <ul class="sidebar-awards-list">
+            {% for a in page.awards %}
+              <li class="sidebar-award-item">
+                {% if a.logo_url and a.logo_url != "" %}
+                  <div class="sidebar-award-logo-wrap"><img class="sidebar-award-logo" src="{{ a.logo_url }}" alt="{{ a.name }}"></div>
                 {% else %}
-                  <div class="similar-cover-empty">{{ b.title | truncate: 30 }}</div>
+                  <div class="sidebar-award-logo-wrap"><span class="sidebar-award-logo-fallback">🏆</span></div>
                 {% endif %}
-                <p class="similar-t">{{ b.title }}</p>
-                <p class="similar-a">{{ b.author }}</p>
-              </a>
+                <div class="sidebar-award-content">
+                  <span class="sidebar-award-name">{{ a.name }}</span>
+                  {% if a.year %}<span class="sidebar-award-year">{{ a.year }}</span>{% endif %}
+                </div>
+              </li>
             {% endfor %}
-          </div>
-        </div>
-      </div>
-    {% endif %}
+          </ul>
+        {% elsif has_ratings or page.average_rating %}
+          {% assign avg = page.ratings.average | default: page.average_rating %}
+          <p class="sidebar-section-title">Reception</p>
+          <p style="font-size:13px;color:var(--fg);margin:0;">
+            <span style="color:#f59e0b;font-size:15px;">★</span> {{ avg }} / 5 avg. rating{% if page.ratings.count %} <span style="color:var(--fg-faint);font-size:12px;">({{ page.ratings.count }} ratings)</span>{% endif %}
+          </p>
+        {% endif %}
 
-    {% comment %} "More in <category>" — static internal links between
-        published pages sharing this book's first category. Unlike the
-        similar-books marquee (dynamic-summary URLs from catalog data),
-        these are real crawlable links to other /summary/<slug>/ pages —
-        the internal linking that makes the published library indexable
-        as a web, not a set of orphan pages. {% endcomment %}
-    {% assign first_cat = page.categories | first %}
-    {% if first_cat %}
-      {% assign cat_books = site.books | where_exp: "b", "b.categories contains first_cat" %}
-      {% assign cat_meta = site.data.categories | where: "slug", first_cat | first %}
-      {% assign shown = 0 %}
-      {% capture related_html %}
-        {% for b in cat_books %}
-          {% if b.slug != page.slug and shown < 8 %}
-            {% assign shown = shown | plus: 1 %}
-            <a href="{{ b.url | relative_url }}" style="text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:6px;">
-              {% if b.cover_url and b.cover_url != "" %}
-                <img src="{{ b.cover_url }}" alt="Cover of {{ b.title }}" loading="lazy"
-                     style="width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:8px;border:1px solid var(--border);">
-              {% else %}
-                <div style="width:100%;aspect-ratio:2/3;background:var(--bg-subtle);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--fg-faint);padding:8px;text-align:center;">{{ b.title | truncate: 40 }}</div>
-              {% endif %}
-              <p style="font-size:12px;font-weight:600;line-height:1.3;">{{ b.title }}</p>
-            </a>
+        {% if page.ratings.distribution %}
+          {% assign star_labels = "5,4,3,2,1" | split: "," %}
+          {% assign dist_total = 0 %}
+          {% for s in star_labels %}{% assign n = page.ratings.distribution[s] | default: 0 %}{% assign dist_total = dist_total | plus: n %}{% endfor %}
+          {% if dist_total > 0 %}
+            <p class="sidebar-section-title">Rating breakdown</p>
+            {% assign dist_src = page.ratings.distribution_source | default: page.ratings.source %}
+            {% assign dist_n = page.ratings.distribution_count | default: dist_total %}
+            <p style="font-size:10px;color:var(--fg-faint);margin:-2px 0 8px;">Based on {{ dist_n }} {% if dist_src == "open_library" %}Open Library{% elsif dist_src == "goodreads" %}Goodreads{% else %}reader{% endif %} ratings</p>
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              {% for s in star_labels %}
+                {% assign n = page.ratings.distribution[s] | default: 0 %}
+                {% assign pct = n | times: 100.0 | divided_by: dist_total | round %}
+                <div style="display:flex;align-items:center;gap:8px;font-size:11px;color:var(--fg-muted);">
+                  <span style="width:22px;flex-shrink:0;">{{ s }}★</span>
+                  <span style="flex:1;height:8px;background:var(--bg-subtle);border:1px solid var(--border);border-radius:99px;overflow:hidden;"><span style="display:block;height:100%;width:{{ pct }}%;background:var(--accent);"></span></span>
+                  <span style="width:42px;text-align:right;flex-shrink:0;color:var(--fg-faint);">{{ n }}</span>
+                </div>
+              {% endfor %}
+            </div>
           {% endif %}
-        {% endfor %}
-      {% endcapture %}
-      {% if shown > 0 %}
-        <div class="summary-card" style="margin-top:24px;">
-          <div class="summary-card-title">More in {{ cat_meta.name | default: first_cat }}</div>
-          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:16px;">
-            {{ related_html }}
-          </div>
+        {% endif %}
+
+        <div class="sidebar-review-links">
+          <a href="{{ page.ratings.url | default: 'https://www.goodreads.com/search?q=' | append: page.title | url_encode }}" target="_blank" class="sidebar-ext-link">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            Live Reviews on Goodreads
+          </a>
+          <a href="https://bookwyrm.social/search?q={{ page.title | url_encode }}" target="_blank" class="sidebar-ext-link">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 3.5A2.5 2.5 0 0 1 6.5 6H20v12"/></svg>
+            Search on BookWyrm
+          </a>
         </div>
-      {% endif %}
-    {% endif %}
+      </aside>
 
-    {% comment %} Reader recommendations — same interactive card as the
-        dynamic page (replica rule): approved list + submit form. {% endcomment %}
-    <div id="bh-reader-recs" class="summary-card" style="display:none;margin-top:24px;">
-      <div class="summary-card-title">Readers recommend</div>
-      <div id="bh-reader-recs-list"></div>
-      <div id="bh-rec-form"></div>
     </div>
-
-    {% comment %} Reader Ratings — interactive (your-rating stars), parity
-        with the dynamic page. Populated client-side. {% endcomment %}
-
-    {% comment %} Reader Comments — full parity with the dynamic page:
-        approved list w/ avatars + likes, post form with the verified-email
-        gate, Hide/Show toggle. {% endcomment %}
-    <div class="summary-card" style="margin-top:24px;" id="bh-comments-card">
-      <div class="summary-card-title">Reader Comments</div>
-      <button class="btn-secondary" id="comments-load-btn" onclick="bhToggleComments()" style="padding:8px 18px;font-size:13px;">Hide comments</button>
-      <div id="comments-area" style="display:none;"></div>
-    </div>
-
   </div>
 </article>
 
 <script>
+  // ── Reading-time planner: same math as the dynamic page's fmtDuration/
+  // fmtFinish, ported inline since this page has no shared "page state"
+  // object — just page_count from front matter and the same localStorage
+  // pace key. ──
+  {% if page.page_count %}
+  (function () {
+    const READ_PACE_KEY = "bookhub_read_pace_min";
+    const totalMin = {{ page.page_count | times: 275 | divided_by: 250 }};
+    function fmtDuration(min) {
+      min = Math.max(1, Math.round(min));
+      const h = Math.floor(min / 60), m = min % 60;
+      if (h && m) return h + " hr " + m + " min";
+      if (h) return h + " hr";
+      return m + " min";
+    }
+    function fmtFinish(total, pace) {
+      if (!pace) return "";
+      const days = Math.max(1, Math.ceil(total / pace));
+      if (days === 1) return "Finish in 1 day";
+      if (days < 7) return "Finish in " + days + " days";
+      const weeks = Math.round(days / 7);
+      return "Finish in " + days + " days (~" + weeks + " wk" + (weeks > 1 ? "s" : "") + ")";
+    }
+    const savedPace = parseInt(localStorage.getItem(READ_PACE_KEY), 10);
+    const pace = (savedPace >= 5 && savedPace <= 240) ? savedPace : 30;
+    const totalEl = document.getElementById("reading-bar-total");
+    const slider = document.getElementById("reading-slider");
+    const paceEl = document.getElementById("reading-pace-value");
+    const resultEl = document.getElementById("reading-result");
+    if (totalEl) totalEl.textContent = "Reading time · " + fmtDuration(totalMin);
+    if (slider) slider.value = String(pace);
+    if (paceEl) paceEl.textContent = fmtDuration(pace) + "/day";
+    if (resultEl) resultEl.textContent = fmtFinish(totalMin, pace);
+    if (slider) slider.addEventListener("input", () => {
+      const p = parseInt(slider.value, 10);
+      if (paceEl) paceEl.textContent = fmtDuration(p) + "/day";
+      if (resultEl) resultEl.textContent = fmtFinish(totalMin, p);
+      try { localStorage.setItem(READ_PACE_KEY, String(p)); } catch (e) {}
+    });
+  })();
+  {% endif %}
+
+  // ── Similar-books carousel: manual nudge arrows (same behavior as the
+  // dynamic page's similarNudge, namespaced bh* to avoid clashing if a
+  // reader opens the interactive page in another tab of the same session). ──
+  window.bhSimilarNudge = function (dir) {
+    const track = document.querySelector(".similar-track");
+    if (!track) return;
+    if (!track.dataset.manual) {
+      let x = 0;
+      const t = getComputedStyle(track).transform;
+      const m = t && t !== "none" ? t.match(/matrix\(([^)]+)\)/) : null;
+      if (m) x = parseFloat(m[1].split(",")[4]) || 0;
+      track.style.animation = "none";
+      track.dataset.manual = "1";
+      track.style.transform = "translateX(" + x + "px)";
+      requestAnimationFrame(() => { track.style.transition = "transform .3s ease"; });
+      track.dataset.x = String(x);
+    }
+    const view = track.parentElement.clientWidth;
+    const minX = Math.min(0, -(track.scrollWidth / 2 - view));
+    const step = 268;
+    let nx = (parseFloat(track.dataset.x || "0") || 0) - dir * step;
+    nx = Math.max(minX, Math.min(0, nx));
+    track.dataset.x = String(nx);
+    track.style.transform = "translateX(" + nx + "px)";
+  };
+
   // My Library — same key + item shape as tools/reading-list.html.
   (function () {
     const RL_KEY = 'bookhub_rl_v1';
@@ -406,8 +511,6 @@ layout: default
       try {
         const list = JSON.parse(localStorage.getItem(RL_KEY)) || [];
         if (!has()) {
-          // Full metadata — same shape as summary-page adds, so genre recs,
-          // progress % and public-rating publish all work for this item.
           list.unshift({
             id: Date.now(), title: TITLE, author: AUTHOR || '', status: 'want',
             rating: 0, addedAt: Date.now(),
@@ -425,44 +528,52 @@ layout: default
     refresh();
   })();
 
-  // ── Litheca readers' star ratings — interactive, replica of the
-  // dynamic page: distribution bars + a "Your rating" row wired to the
-  // same library store and public aggregate.
+  // ── Litheca readers' star ratings — same store + matching rule as the
+  // dynamic page's shelfEntry()/setShelfRating() (title match against
+  // bookhub_rl_v1, NOT slug — matching by slug here would miss entries
+  // the dynamic page already created and fork the same book into two
+  // separate My Library rows). The public aggregate is still keyed by
+  // the canonical_id (BOOKKEY), same as summary.html's __bhCurrentBookSlug.
   const BOOKKEY = {{ bh_bookkey | jsonify }};
-  function bhMyRating() {
+  const BH_TITLE = {{ page.title | jsonify }};
+  function bhShelfEntry() {
     try {
       const list = JSON.parse(localStorage.getItem('bookhub_rl_v1')) || [];
-      const e = list.find(b => (b.slug || '') === BOOKKEY);
-      return (e && e.rating) || 0;
-    } catch (e) { return 0; }
+      return list.find(b => (b.title || '').toLowerCase() === (BH_TITLE || '').toLowerCase()) || null;
+    } catch (e) { return null; }
   }
   window.bhSetRating = function (n) {
+    let finalRating = 0;
     try {
       const KEY = 'bookhub_rl_v1';
       const list = JSON.parse(localStorage.getItem(KEY)) || [];
-      let e = list.find(b => (b.slug || '') === BOOKKEY);
+      let e = list.find(b => (b.title || '').toLowerCase() === (BH_TITLE || '').toLowerCase());
       if (!e) {
-        e = { id: Date.now(), title: {{ page.title | jsonify }}, author: {{ page.author | jsonify }} || '',
+        e = { id: Date.now(), title: BH_TITLE, author: {{ page.author | jsonify }} || '',
               status: 'want', rating: 0, addedAt: Date.now(),
               cover_url: {{ page.cover_url | jsonify }} || '', slug: BOOKKEY,
               categories: {{ page.categories | jsonify }} || [],
               page_count: {{ page.page_count | default: 0 | jsonify }} || 0 };
         list.unshift(e);
       }
-      e.rating = (e.rating === n) ? 0 : n;   // tap again clears
+      e.rating = (e.rating === n) ? 0 : n;
+      finalRating = e.rating;
       localStorage.setItem(KEY, JSON.stringify(list));
       if (window.bhLibraryChanged) window.bhLibraryChanged();
-      const final = e.rating;
-      if (window.bhPublishRating) {
-        window.bhPublishRating(BOOKKEY, final).then(() => bhRenderRatings());
-      } else bhRenderRatings();
     } catch (e) {}
+    if (window.bhPublishRating && BOOKKEY) {
+      window.bhPublishRating(BOOKKEY, finalRating).then(() => loadReaderRatings());
+    } else loadReaderRatings();
   };
-  async function bhRenderRatings() {
-    const box = document.getElementById('bh-reader-ratings');
-    if (!box || !window.bhFetchRatingStats) return;
+  async function loadReaderRatings() {
+    const box = document.getElementById('reader-ratings');
+    if (!box || !BOOKKEY) return;
+    if (!window.bhFetchRatingStats) {
+      document.addEventListener('bh-auth', () => loadReaderRatings(), { once: true });
+      return;
+    }
     const stats = await window.bhFetchRatingStats(BOOKKEY);
-    const my = bhMyRating();
+    const my = (bhShelfEntry() || {}).rating || 0;
     const rateRow =
       '<div style="display:flex;align-items:center;gap:8px;margin-top:10px;padding-top:10px;border-top:1px dashed var(--border);">' +
       '<span style="font-size:12px;color:var(--fg-muted);">Your rating:</span><span role="group" aria-label="Rate this book">' +
@@ -471,10 +582,10 @@ layout: default
         'style="background:none;border:0;cursor:pointer;font-size:19px;padding:0 2px;line-height:1;color:' +
         (s <= my ? '#f5a623' : 'var(--border-med)') + ';">★</button>').join('') +
       '</span></div>';
+    const card = document.getElementById('ratings-card');
     if (!stats) {
-      box.innerHTML = '<p style="font-size:13px;font-weight:700;">Reader ratings</p>' +
-        '<p style="font-size:12px;color:var(--fg-faint);margin-top:2px;">No ratings yet — be the first.</p>' + rateRow;
-      box.style.display = 'block';
+      box.innerHTML = '<p style="font-size:12px;color:var(--fg-faint);">No ratings yet — be the first.</p>' + rateRow;
+      if (card) card.style.display = '';
       return;
     }
     const bars = [5, 4, 3, 2, 1].map(s => {
@@ -492,11 +603,11 @@ layout: default
       '<span style="font-weight:400;color:var(--fg-faint);">· ' + stats.total +
       ' reader rating' + (stats.total > 1 ? 's' : '') + ' on Litheca</span></p>' +
       '<div style="display:flex;flex-direction:column;gap:4px;max-width:340px;">' + bars + '</div>' + rateRow;
-    box.style.display = 'block';
+    if (card) card.style.display = '';
   }
   document.addEventListener('bh-auth', function onceRatings() {
     document.removeEventListener('bh-auth', onceRatings);
-    bhRenderRatings();
+    loadReaderRatings();
   });
 
   // ── Reader recommendations (approved only, read-only display) ──
@@ -519,8 +630,6 @@ layout: default
     const listEl = document.getElementById('bh-reader-recs-list');
     if (!box || !listEl) return;
     const SUMMARY = {{ '/summary/' | relative_url | jsonify }};
-    // Submit form (parity with the dynamic page) — shown to signed-in users;
-    // the card appears if there are approved recs OR a form to show.
     bhRenderRecForm();
     if (!items.length) { if (window.bhUser) box.style.display = 'block'; return; }
     listEl.innerHTML = '<div style="display:flex;flex-direction:column;gap:12px;">' + items.map(r => {
