@@ -105,15 +105,22 @@ layout: default
           </div>
         {% endif %}
 
-        {% comment %} Transparency: what generated this page and what it's grounded in. {% endcomment %}
-        <div class="ai-disclosure-notice">
-          <strong>How this page was made:</strong> the summary below was written with AI assistance, grounded in the book's official description{% if page.isbn_13 and page.isbn_13 != "" or page.isbn_10 and page.isbn_10 != "" %} (Google Books / Open Library){% endif %}.
-          {%- if has_ratings %} Ratings are sourced live from {% if page.ratings.source == "goodreads" %}Goodreads{% else %}Open Library{% endif %}{% if page.ratings.url and page.ratings.url != "" %} (<a href="{{ page.ratings.url }}" target="_blank" rel="noopener nofollow">view on {% if page.ratings.source == "goodreads" %}Goodreads{% else %}Open Library{% endif %}</a>){% endif %}.{% endif %}
-          {%- if page.awards.size > 0 %} Award data is sourced from <a href="https://www.wikidata.org" target="_blank" rel="noopener nofollow">Wikidata</a>.{% endif %}
-          {%- if page.quotes and page.quotes.texts %} Quotes are sourced verbatim from <a href="{{ page.quotes.source_url }}" target="_blank" rel="noopener nofollow">Wikiquote</a> (CC BY-SA) — not AI-generated.{% endif %}
-          {%- if page.nyt and page.nyt.weeks_on_list %} Bestseller data is from <a href="https://developer.nytimes.com" target="_blank" rel="noopener nofollow">The New York Times Books API</a>.{% endif %}
-          Last updated {{ page.date | date: "%B %-d, %Y" }}.
-        </div>
+        {% comment %} Transparency: what generated this page and its sources.
+            Collapsible (closed by default) — keeps the trust signal, the
+            required Wikiquote CC BY-SA attribution, and the crawlable source
+            text, without cluttering the page. See the vault note
+            "Static vs Dynamic Pages" for why it's static-only. {% endcomment %}
+        <details class="ai-disclosure-notice">
+          <summary>How this page was made &amp; sources</summary>
+          <div class="ai-disclosure-body">
+            The summary below was written with AI assistance, grounded in the book's official description{% if page.isbn_13 and page.isbn_13 != "" or page.isbn_10 and page.isbn_10 != "" %} (Google Books / Open Library){% endif %}.
+            {%- if has_ratings %} Ratings are sourced live from {% if page.ratings.source == "goodreads" %}Goodreads{% else %}Open Library{% endif %}{% if page.ratings.url and page.ratings.url != "" %} (<a href="{{ page.ratings.url }}" target="_blank" rel="noopener nofollow">view on {% if page.ratings.source == "goodreads" %}Goodreads{% else %}Open Library{% endif %}</a>){% endif %}.{% endif %}
+            {%- if page.awards.size > 0 %} Award data is sourced from <a href="https://www.wikidata.org" target="_blank" rel="noopener nofollow">Wikidata</a>.{% endif %}
+            {%- if page.quotes and page.quotes.texts %} Quotes are sourced verbatim from <a href="{{ page.quotes.source_url }}" target="_blank" rel="noopener nofollow">Wikiquote</a> (CC BY-SA) — not AI-generated.{% endif %}
+            {%- if page.nyt and page.nyt.weeks_on_list %} Bestseller data is from <a href="https://developer.nytimes.com" target="_blank" rel="noopener nofollow">The New York Times Books API</a>.{% endif %}
+            Last updated {{ page.date | date: "%B %-d, %Y" }}.
+          </div>
+        </details>
 
         {% if page.characters and page.characters.size > 0 %}
           <div class="summary-card">

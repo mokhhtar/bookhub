@@ -803,6 +803,26 @@ html[data-theme="dark"] .hero {
   margin: 20px 0 32px;
 }
 .ai-disclosure-notice strong { color: var(--fg); font-weight: 600; }
+/* Collapsible form: closed by default so it stays a quiet trust signal +
+   crawlable source attribution without taking over the page. */
+.ai-disclosure-notice > summary {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--fg);
+  font-weight: 600;
+  list-style: none;
+}
+.ai-disclosure-notice > summary::-webkit-details-marker { display: none; }
+.ai-disclosure-notice > summary::before {
+  content: "\25B8"; /* ▸ */
+  font-size: 10px;
+  color: var(--fg-faint);
+  transition: transform 0.15s ease;
+}
+.ai-disclosure-notice[open] > summary::before { transform: rotate(90deg); }
+.ai-disclosure-body { margin-top: 10px; }
 
 /* ── BOOK PAGE ───────────────────────────────────────────── */
 .book-page { padding: 48px 0 80px; }
