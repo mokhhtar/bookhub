@@ -110,6 +110,52 @@ description: "Six free AI-powered tools for readers — instant book summaries, 
 </section>
 
 <!-- ═══════════════════════════════════════
+     JUST SUMMARIZED — newest published book pages, server-rendered
+     directly from the _books collection (no API call, no loading
+     flicker; the real links also help search engines discover freshly
+     published pages fast). Driving visitors here doubles as growth for
+     the engagement-based indexing promotion (tools/indexing.py) — every
+     click/comment/rating on a not-yet-indexed page is a step toward it
+     earning indexing on its own merit.
+═══════════════════════════════════════ -->
+{% assign recent_books = site.books | sort: 'date' | reverse | limit: 16 %}
+{% if recent_books.size > 0 %}
+  {% assign recent_loop = recent_books %}
+  {% for i in (1..4) %}
+    {% if recent_loop.size < 8 %}{% assign recent_loop = recent_loop | concat: recent_books %}{% endif %}
+  {% endfor %}
+  {% assign recent_marquee = recent_loop | concat: recent_loop %}
+  <section class="nyt-section" id="recent-section" aria-labelledby="recent-heading" style="display:block;padding:32px 0 8px;">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <h2 id="recent-heading" class="section-title">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2.5px;margin-right:6px;" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Just summarized
+          </h2>
+          <p class="section-sub">The newest AI study guides on Litheca — be one of the first to rate, comment, or recommend.</p>
+        </div>
+      </div>
+      <div class="nyt-marquee">
+        <div class="nyt-track" style="animation-duration: {{ recent_marquee.size | times: 3 }}s;">
+          {% for b in recent_marquee %}
+            <a href="{{ b.url | relative_url }}" class="nyt-item"{% if forloop.index0 >= recent_loop.size %} aria-hidden="true" tabindex="-1"{% endif %}>
+              {% if b.cover_url and b.cover_url != "" %}
+                <img src="{{ b.cover_url }}" alt="Cover of {{ b.title }}" loading="lazy">
+              {% else %}
+                <div class="nyt-cover-empty">{{ b.title | truncate: 30 }}</div>
+              {% endif %}
+              <p class="nyt-t">{{ b.title }}</p>
+              <p class="nyt-a">{{ b.author }}</p>
+              <span class="nyt-rank-badge">{{ b.date | date: "%b %-d" }}</span>
+            </a>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+{% endif %}
+
+<!-- ═══════════════════════════════════════
      DAILY PICKS — book / author / quote of the day
      (filled client-side from GET /daily; hidden if the API is unreachable)
 ═══════════════════════════════════════ -->
