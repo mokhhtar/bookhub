@@ -1,7 +1,11 @@
 ---
 layout: default
 ---
-<link rel="stylesheet" href="{{ '/assets/css/book-page.css' | relative_url }}">
+{%- comment -%} Cache-busted like style.css. Without ?v= the browser
+and the service worker's stale-while-revalidate both kept serving an
+old copy, so edits to the shared book stylesheet silently did not
+reach anyone who had visited before. {%- endcomment -%}
+<link rel="stylesheet" href="{{ '/assets/css/book-page.css' | relative_url }}?v={{ site.time | date: '%s' }}">
 {% comment %}
   Design parity rule: this template MUST render with the exact same
   classes as summary.html's JS-built markup (.summary-layout >
@@ -50,14 +54,14 @@ layout: default
         <form action="{{ '/summary/' | relative_url }}" method="get"
               style="display:flex;align-items:center;gap:12px;margin-bottom:24px;flex-wrap:wrap;">
           <a class="btn-secondary" href="{{ '/summary/' | relative_url }}"
-             style="padding:6px 14px;font-size:13px;border-radius:var(--r);flex-shrink:0;text-decoration:none;" title="New search">
+             style="padding:6px 14px;font-size:var(--t-label);border-radius:var(--r);flex-shrink:0;text-decoration:none;" title="New search">
             ← New search
           </a>
           <div style="flex:1;min-width:140px;">
             <input type="text" name="q" class="form-input" placeholder="Search another book…" autocomplete="off"
-                   style="width:100%;box-sizing:border-box;padding:8px 14px;font-size:16px;background:var(--bg-subtle);color:var(--fg);border:1px solid var(--border);border-radius:8px;">
+                   style="width:100%;box-sizing:border-box;padding:8px 14px;font-size:var(--t-body);background:var(--bg-subtle);color:var(--fg);border:1px solid var(--border);border-radius:8px;">
           </div>
-          <button type="submit" class="btn-primary" style="padding:8px 18px;font-size:13px;flex-shrink:0;">Search</button>
+          <button type="submit" class="btn-primary" style="padding:8px 18px;font-size:var(--t-label);flex-shrink:0;">Search</button>
         </form>
 
         {% comment %} "Listen to this guide" — same widget as the dynamic page,
@@ -79,10 +83,10 @@ layout: default
               </button>
             </div>
             <div style="min-width:0;">
-              <span style="font-size:12px;font-weight:600;display:block;color:var(--fg);">Listen to this guide</span>
-              <span id="audio-status" style="font-size:10px;color:var(--fg-faint);">Click play to listen</span>
+              <span style="font-size:var(--t-label);font-weight:600;display:block;color:var(--fg);">Listen to this guide</span>
+              <span id="audio-status" style="font-size:var(--t-label);color:var(--fg-faint);">Click play to listen</span>
               <div style="width:120px;height:3px;background:var(--border);border-radius:2px;margin-top:5px;overflow:hidden;">
-                <div id="audio-progress-fill" style="width:0%;height:100%;background:var(--accent);border-radius:2px;transition:width .4s;"></div>
+                <div id="audio-progress-fill" style="width:100%;transform:scaleX(0);transform-origin:left;height:100%;background:var(--accent);border-radius:2px;transition:transform .4s var(--ease-out);"></div>
               </div>
             </div>
           </div>
@@ -198,7 +202,7 @@ layout: default
         <div class="summary-card" id="bh-summary">
           <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:16px;">
             <div class="summary-card-title" style="margin-bottom:0;border-bottom:0;padding-bottom:0;">AI Grounded Summary</div>
-            <a class="btn-secondary" style="padding:8px 16px;font-size:13px;"
+            <a class="btn-secondary" style="padding:8px 16px;font-size:var(--t-label);"
                href="{{ '/summary/' | relative_url }}?q={{ page.title | url_encode }}&author={{ page.author | url_encode }}{% if page.google_id and page.google_id != '' %}&google_id={{ page.google_id }}{% endif %}{% if page.isbn_13 and page.isbn_13 != '' %}&isbn={{ page.isbn_13 }}{% endif %}&direct=true">
               Open interactive summary &amp; chat →
             </a>
@@ -213,9 +217,9 @@ layout: default
             <div class="summary-card-title">Notable Quotes</div>
             {% for q in page.quotes.texts %}
               {% assign sp = page.quotes.speakers[forloop.index0] %}
-              <blockquote style="font-size:14px;font-style:italic;line-height:1.65;color:var(--fg);border-left:3px solid var(--accent);padding:4px 0 4px 14px;margin:0 0 12px;">"{{ q }}"{% if sp and sp != "" %}<footer style="font-size:12px;font-style:normal;font-weight:600;color:var(--fg-faint);margin-top:4px;">— {{ sp }}</footer>{% endif %}</blockquote>
+              <blockquote style="font-size:var(--t-body);font-style:italic;line-height:1.65;color:var(--fg);border-left:3px solid var(--accent);padding:4px 0 4px 14px;margin:0 0 12px;">"{{ q }}"{% if sp and sp != "" %}<footer style="font-size:var(--t-label);font-style:normal;font-weight:600;color:var(--fg-faint);margin-top:4px;">— {{ sp }}</footer>{% endif %}</blockquote>
             {% endfor %}
-            <p style="font-size:11px;color:var(--fg-faint);margin:0;">Sourced verbatim from <a href="{{ page.quotes.source_url }}" target="_blank" rel="noopener nofollow">Wikiquote</a> (CC BY-SA) — not AI-generated.</p>
+            <p style="font-size:var(--t-label);color:var(--fg-faint);margin:0;">Sourced verbatim from <a href="{{ page.quotes.source_url }}" target="_blank" rel="noopener nofollow">Wikiquote</a> (CC BY-SA) — not AI-generated.</p>
           </div>
         {% endif %}
 
@@ -226,12 +230,12 @@ layout: default
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
                 Chapters
               </span>
-              <span style="font-size:11px;font-weight:600;color:var(--accent);background:var(--bg-subtle);border:1px solid var(--border);border-radius:20px;padding:2px 10px;">{{ page.chapters.size }} chapters</span>
+              <span style="font-size:var(--t-label);font-weight:600;color:var(--accent);background:var(--bg-subtle);border:1px solid var(--border);border-radius:20px;padding:2px 10px;">{{ page.chapters.size }} chapters</span>
             </div>
             <div style="position:relative;">
-              <ul style="font-size:13px;color:var(--fg);line-height:1.9;list-style:none;padding-left:0;margin:0;max-height:320px;overflow-y:auto;padding-right:8px;scrollbar-width:thin;scrollbar-color:var(--accent) transparent;">
+              <ul style="font-size:var(--t-label);color:var(--fg);line-height:1.9;list-style:none;padding-left:0;margin:0;max-height:320px;overflow-y:auto;padding-right:8px;scrollbar-width:thin;scrollbar-color:var(--accent) transparent;">
                 {% for c in page.chapters %}
-                  <li style="padding:3px 0;border-bottom:1px solid var(--border);"><span style="color:var(--fg-faint);font-size:11px;margin-right:6px;">{{ forloop.index | prepend: "00" | slice: -2, 2 }}</span>{{ c }}</li>
+                  <li style="padding:3px 0;border-bottom:1px solid var(--border);"><span style="color:var(--fg-faint);font-size:var(--t-label);margin-right:6px;">{{ forloop.index | prepend: "00" | slice: -2, 2 }}</span>{{ c }}</li>
                 {% endfor %}
               </ul>
               <div style="position:absolute;bottom:0;left:0;right:0;height:40px;background:linear-gradient(transparent,var(--bg-card,var(--bg)));pointer-events:none;border-radius:0 0 8px 8px;"></div>
@@ -249,8 +253,8 @@ layout: default
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
               Test Your Knowledge
             </div>
-            <p style="font-size:13px;color:var(--fg-muted);margin-bottom:12px;">Multiple-choice questions with verified supporting quotes, grounded in {% if page.quiz_source == "gutenberg_text" %}the book's original text{% else %}the story wiki's chapter summaries{% endif %}.</p>
-            <button class="btn-primary" id="quiz-start-btn" onclick="bhStartQuiz()" style="padding:8px 20px;font-size:13px;">Take a quiz</button>
+            <p style="font-size:var(--t-label);color:var(--fg-muted);margin-bottom:12px;">Multiple-choice questions with verified supporting quotes, grounded in {% if page.quiz_source == "gutenberg_text" %}the book's original text{% else %}the story wiki's chapter summaries{% endif %}.</p>
+            <button class="btn-primary" id="quiz-start-btn" onclick="bhStartQuiz()" style="padding:8px 20px;font-size:var(--t-label);">Take a quiz</button>
             <div id="quiz-area" style="margin-top:14px;"></div>
           </div>
           <script type="application/json" id="bh-quiz-data">{{ page.quiz | jsonify }}</script>
@@ -307,9 +311,9 @@ layout: default
                     <img src="{{ b.cover_url }}" alt="Cover of {{ b.title }}" loading="lazy"
                          style="width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:8px;border:1px solid var(--border);">
                   {% else %}
-                    <div style="width:100%;aspect-ratio:2/3;background:var(--bg-subtle);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--fg-faint);padding:8px;text-align:center;">{{ b.title | truncate: 40 }}</div>
+                    <div style="width:100%;aspect-ratio:2/3;background:var(--bg-subtle);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:var(--t-label);color:var(--fg-faint);padding:8px;text-align:center;">{{ b.title | truncate: 40 }}</div>
                   {% endif %}
-                  <p style="font-size:12px;font-weight:600;line-height:1.3;">{{ b.title }}</p>
+                  <p style="font-size:var(--t-label);font-weight:600;line-height:1.3;">{{ b.title }}</p>
                 </a>
               {% endif %}
             {% endfor %}
@@ -349,7 +353,7 @@ layout: default
             email gate, Hide/Show toggle. {% endcomment %}
         <div class="summary-card" id="bh-comments-card">
           <div class="summary-card-title">Reader Comments</div>
-          <button class="btn-secondary" id="comments-load-btn" onclick="bhToggleComments()" style="padding:8px 18px;font-size:13px;">Hide comments</button>
+          <button class="btn-secondary" id="comments-load-btn" onclick="bhToggleComments()" style="padding:8px 18px;font-size:var(--t-label);">Hide comments</button>
           <div id="comments-area" style="display:none;"></div>
         </div>
 
@@ -380,29 +384,29 @@ layout: default
         {% comment %} CTAs first — every decision button visible without scrolling, same order as the dynamic page. {% endcomment %}
         {% if page.free_ebook and page.free_ebook.page_url %}
           <div style="border:1px solid var(--accent);border-radius:12px;padding:12px 14px;margin-bottom:12px;background:var(--bg-subtle);">
-            <p style="font-size:12px;font-weight:700;color:var(--fg);margin:0 0 8px;">Public domain — read it free</p>
+            <p style="font-size:var(--t-label);font-weight:700;color:var(--fg);margin:0 0 8px;">Public domain — read it free</p>
             <div style="display:flex;flex-wrap:wrap;gap:6px;">
               {% if page.free_ebook.gutenberg_id %}
-                <a href="{{ '/reader/' | relative_url }}?id={{ page.free_ebook.gutenberg_id }}&title={{ page.title | url_encode }}&author={{ page.author | url_encode }}" class="btn-primary" style="padding:6px 12px;font-size:12px;">
+                <a href="{{ '/reader/' | relative_url }}?id={{ page.free_ebook.gutenberg_id }}&title={{ page.title | url_encode }}&author={{ page.author | url_encode }}" class="btn-primary" style="padding:6px 12px;font-size:var(--t-label);">
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="vertical-align:-2px;"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Read here
                 </a>
               {% endif %}
-              <a href="{% if page.free_ebook.read_url %}{{ page.free_ebook.read_url }}{% else %}{{ page.free_ebook.page_url }}{% endif %}" target="_blank" rel="noopener" class="btn-secondary" style="padding:6px 12px;font-size:12px;">Read online</a>
-              {% if page.free_ebook.epub_url %}<a href="{{ page.free_ebook.epub_url }}" class="btn-secondary" style="padding:6px 12px;font-size:12px;">EPUB</a>{% endif %}
-              {% if page.free_ebook.txt_url %}<a href="{{ page.free_ebook.txt_url }}" class="btn-secondary" style="padding:6px 12px;font-size:12px;">TXT</a>{% endif %}
+              <a href="{% if page.free_ebook.read_url %}{{ page.free_ebook.read_url }}{% else %}{{ page.free_ebook.page_url }}{% endif %}" target="_blank" rel="noopener" class="btn-secondary" style="padding:6px 12px;font-size:var(--t-label);">Read online</a>
+              {% if page.free_ebook.epub_url %}<a href="{{ page.free_ebook.epub_url }}" class="btn-secondary" style="padding:6px 12px;font-size:var(--t-label);">EPUB</a>{% endif %}
+              {% if page.free_ebook.txt_url %}<a href="{{ page.free_ebook.txt_url }}" class="btn-secondary" style="padding:6px 12px;font-size:var(--t-label);">TXT</a>{% endif %}
             </div>
-            <p style="font-size:10px;color:var(--fg-faint);margin:8px 0 0;">From <a href="{{ page.free_ebook.page_url }}" target="_blank" rel="noopener nofollow" style="color:inherit;">{% if page.free_ebook.source == "internet_archive" %}Internet Archive{% else %}Project Gutenberg{% endif %}</a></p>
+            <p style="font-size:var(--t-label);color:var(--fg-faint);margin:8px 0 0;">From <a href="{{ page.free_ebook.page_url }}" target="_blank" rel="noopener nofollow" style="color:inherit;">{% if page.free_ebook.source == "internet_archive" %}Internet Archive{% else %}Project Gutenberg{% endif %}</a></p>
           </div>
         {% endif %}
 
         {% if page.amazon_url and page.amazon_url != "" %}
-          <p style="font-size:10px;color:var(--fg-faint);line-height:1.5;margin:6px 0 4px;">As an Amazon Associate, Litheca earns from qualifying purchases.</p>
+          <p style="font-size:var(--t-label);color:var(--fg-faint);line-height:1.5;margin:6px 0 4px;">As an Amazon Associate, Litheca earns from qualifying purchases.</p>
           <a href="{{ page.amazon_url }}" class="sidebar-amazon-btn" target="_blank" rel="noopener sponsored">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
             Buy on Amazon
           </a>
         {% elsif page.isbn_10 and page.isbn_10 != "" %}
-          <p style="font-size:10px;color:var(--fg-faint);line-height:1.5;margin:6px 0 4px;">As an Amazon Associate, Litheca earns from qualifying purchases.</p>
+          <p style="font-size:var(--t-label);color:var(--fg-faint);line-height:1.5;margin:6px 0 4px;">As an Amazon Associate, Litheca earns from qualifying purchases.</p>
           <a href="https://www.amazon.com/dp/{{ page.isbn_10 }}?tag={{ site.amazon_tag }}" class="sidebar-amazon-btn" target="_blank" rel="noopener sponsored">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
             Buy on Amazon
@@ -410,7 +414,7 @@ layout: default
         {% endif %}
 
         <button class="btn-secondary" id="add-library-btn" onclick="bhAddToLibrary()"
-                style="width:100%;justify-content:center;margin:8px 0 8px;padding:9px 12px;font-size:13px;">
+                style="width:100%;justify-content:center;margin:8px 0 8px;padding:9px 12px;font-size:var(--t-label);">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align:-2px;"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Add to My Library
         </button>
 
@@ -419,7 +423,7 @@ layout: default
             collection as the dynamic page's sidebar button. Distinct from
             the "Readers recommend" similar-book submissions lower down. {% endcomment %}
         <button class="btn-secondary" id="recommend-btn" onclick="bhToggleRecommend()"
-                style="width:100%;justify-content:center;margin:0 0 8px;padding:9px 12px;font-size:13px;">
+                style="width:100%;justify-content:center;margin:0 0 8px;padding:9px 12px;font-size:var(--t-label);">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="vertical-align:-2px;"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg> Recommend this book
         </button>
 
@@ -442,9 +446,9 @@ layout: default
 
         {% if page.nyt and page.nyt.weeks_on_list %}
           <div style="border:1px solid var(--accent);border-radius:12px;padding:10px 14px;margin:0 0 12px;background:var(--bg-subtle);">
-            <p style="font-size:12px;font-weight:700;color:var(--fg);margin:0;">New York Times Bestseller</p>
-            <p style="font-size:12px;color:var(--fg-muted);margin:4px 0 0;">{{ page.nyt.weeks_on_list }} week{% if page.nyt.weeks_on_list > 1 %}s{% endif %} on the "{{ page.nyt.list_name }}" list{% if page.nyt.rank %} · currently #{{ page.nyt.rank }}{% endif %}</p>
-            {% if page.nyt.review_url %}<a href="{{ page.nyt.review_url }}" target="_blank" rel="noopener nofollow" style="font-size:11px;color:var(--accent);display:inline-block;margin-top:4px;">Read the NYT review →</a>{% endif %}
+            <p style="font-size:var(--t-label);font-weight:700;color:var(--fg);margin:0;">New York Times Bestseller</p>
+            <p style="font-size:var(--t-label);color:var(--fg-muted);margin:4px 0 0;">{{ page.nyt.weeks_on_list }} week{% if page.nyt.weeks_on_list > 1 %}s{% endif %} on the "{{ page.nyt.list_name }}" list{% if page.nyt.rank %} · currently #{{ page.nyt.rank }}{% endif %}</p>
+            {% if page.nyt.review_url %}<a href="{{ page.nyt.review_url }}" target="_blank" rel="noopener nofollow" style="font-size:var(--t-label);color:var(--accent);display:inline-block;margin-top:4px;">Read the NYT review →</a>{% endif %}
           </div>
         {% endif %}
 
@@ -475,8 +479,8 @@ layout: default
         {% elsif has_ratings or page.average_rating %}
           {% assign avg = page.ratings.average | default: page.average_rating %}
           <p class="sidebar-section-title">Reception</p>
-          <p style="font-size:13px;color:var(--fg);margin:0;">
-            <span style="color:#f59e0b;font-size:15px;">★</span> {{ avg }} / 5 avg. rating{% if page.ratings.count %} <span style="color:var(--fg-faint);font-size:12px;">({{ page.ratings.count }} ratings)</span>{% endif %}
+          <p style="font-size:var(--t-label);color:var(--fg);margin:0;">
+            <span style="color:#f59e0b;font-size:var(--t-body);">★</span> {{ avg }} / 5 avg. rating{% if page.ratings.count %} <span style="color:var(--fg-faint);font-size:var(--t-label);">({{ page.ratings.count }} ratings)</span>{% endif %}
           </p>
         {% endif %}
 
@@ -488,12 +492,12 @@ layout: default
             <p class="sidebar-section-title">Rating breakdown</p>
             {% assign dist_src = page.ratings.distribution_source | default: page.ratings.source %}
             {% assign dist_n = page.ratings.distribution_count | default: dist_total %}
-            <p style="font-size:10px;color:var(--fg-faint);margin:-2px 0 8px;">Based on {{ dist_n }} {% if dist_src == "open_library" %}Open Library{% elsif dist_src == "goodreads" %}Goodreads{% else %}reader{% endif %} ratings</p>
+            <p style="font-size:var(--t-label);color:var(--fg-faint);margin:-2px 0 8px;">Based on {{ dist_n }} {% if dist_src == "open_library" %}Open Library{% elsif dist_src == "goodreads" %}Goodreads{% else %}reader{% endif %} ratings</p>
             <div style="display:flex;flex-direction:column;gap:5px;">
               {% for s in star_labels %}
                 {% assign n = page.ratings.distribution[s] | default: 0 %}
                 {% assign pct = n | times: 100.0 | divided_by: dist_total | round %}
-                <div style="display:flex;align-items:center;gap:8px;font-size:11px;color:var(--fg-muted);">
+                <div style="display:flex;align-items:center;gap:8px;font-size:var(--t-label);color:var(--fg-muted);">
                   <span style="width:22px;flex-shrink:0;">{{ s }}★</span>
                   <span style="flex:1;height:8px;background:var(--bg-subtle);border:1px solid var(--border);border-radius:99px;overflow:hidden;"><span style="display:block;height:100%;width:{{ pct }}%;background:var(--accent);"></span></span>
                   <span style="width:42px;text-align:right;flex-shrink:0;color:var(--fg-faint);">{{ n }}</span>
@@ -802,30 +806,30 @@ layout: default
     const my = (bhShelfEntry() || {}).rating || 0;
     const rateRow =
       '<div style="display:flex;align-items:center;gap:8px;margin-top:10px;padding-top:10px;border-top:1px dashed var(--border);">' +
-      '<span style="font-size:12px;color:var(--fg-muted);">Your rating:</span><span role="group" aria-label="Rate this book">' +
+      '<span style="font-size:var(--t-label);color:var(--fg-muted);">Your rating:</span><span role="group" aria-label="Rate this book">' +
       [1,2,3,4,5].map(s =>
         '<button onclick="bhSetRating(' + s + ')" aria-label="Rate ' + s + '" ' +
-        'style="background:none;border:0;cursor:pointer;font-size:19px;padding:0 2px;line-height:1;color:' +
+        'style="background:none;border:0;cursor:pointer;font-size: var(--t-lead);padding:0 2px;line-height:1;color:' +
         (s <= my ? '#f5a623' : 'var(--border-med)') + ';">★</button>').join('') +
       '</span></div>';
     const card = document.getElementById('ratings-card');
     if (!stats) {
-      box.innerHTML = '<p style="font-size:12px;color:var(--fg-faint);">No ratings yet — be the first.</p>' + rateRow;
+      box.innerHTML = '<p style="font-size:var(--t-label);color:var(--fg-faint);">No ratings yet — be the first.</p>' + rateRow;
       if (card) card.style.display = '';
       return;
     }
     const bars = [5, 4, 3, 2, 1].map(s => {
       const n = stats.dist[s] || 0;
       const pct = Math.round(n / stats.total * 100);
-      return '<div style="display:flex;align-items:center;gap:8px;font-size:11px;color:var(--fg-faint);">' +
+      return '<div style="display:flex;align-items:center;gap:8px;font-size:var(--t-label);color:var(--fg-faint);">' +
         '<span style="width:22px;flex-shrink:0;">' + s + '★</span>' +
         '<div style="flex:1;height:6px;background:var(--bg-subtle);border-radius:3px;overflow:hidden;">' +
         '<div style="width:' + pct + '%;height:100%;background:#f5a623;border-radius:3px;"></div></div>' +
         '<span style="width:34px;text-align:right;">' + n + '</span></div>';
     }).join('');
     box.innerHTML =
-      '<p style="font-size:13px;font-weight:700;margin-bottom:8px;">' +
-      '<span style="color:#f5a623;font-size:15px;">★</span> ' + stats.avg.toFixed(1) + ' / 5 ' +
+      '<p style="font-size:var(--t-label);font-weight:700;margin-bottom:8px;">' +
+      '<span style="color:#f5a623;font-size:var(--t-body);">★</span> ' + stats.avg.toFixed(1) + ' / 5 ' +
       '<span style="font-weight:400;color:var(--fg-faint);">· ' + stats.total +
       ' reader rating' + (stats.total > 1 ? 's' : '') + ' on Litheca</span></p>' +
       '<div style="display:flex;flex-direction:column;gap:4px;max-width:340px;">' + bars + '</div>' + rateRow;
@@ -867,10 +871,10 @@ layout: default
           ? '<img src="' + esc(r.rec_cover) + '" alt="" loading="lazy" style="width:44px;aspect-ratio:2/3;object-fit:cover;border-radius:5px;border:1px solid var(--border);">'
           : '<div style="width:44px;aspect-ratio:2/3;background:var(--bg-subtle);border:1px solid var(--border);border-radius:5px;"></div>') +
         '</a><div style="flex:1;min-width:0;">' +
-        '<a href="' + link + '" style="font-size:13px;font-weight:700;color:var(--fg);text-decoration:none;">' + esc(r.rec_title) + '</a>' +
-        (r.rec_author ? '<span style="font-size:11px;color:var(--fg-faint);"> · ' + esc(r.rec_author) + '</span>' : '') +
-        '<p style="font-size:12px;color:var(--fg-muted);line-height:1.55;margin-top:3px;white-space:pre-wrap;">' + esc(r.reason || '') + '</p>' +
-        '<p style="font-size:11px;color:var(--fg-faint);margin-top:3px;">— ' + esc(r.name || 'Reader') + '</p>' +
+        '<a href="' + link + '" style="font-size:var(--t-label);font-weight:700;color:var(--fg);text-decoration:none;">' + esc(r.rec_title) + '</a>' +
+        (r.rec_author ? '<span style="font-size:var(--t-label);color:var(--fg-faint);"> · ' + esc(r.rec_author) + '</span>' : '') +
+        '<p style="font-size:var(--t-label);color:var(--fg-muted);line-height:1.55;margin-top:3px;white-space:pre-wrap;">' + esc(r.reason || '') + '</p>' +
+        '<p style="font-size:var(--t-label);color:var(--fg-faint);margin-top:3px;">— ' + esc(r.name || 'Reader') + '</p>' +
         '</div></div>';
     }).join('') + '</div>';
     box.style.display = 'block';
@@ -885,17 +889,17 @@ layout: default
     if (!window.bhUser) { el.innerHTML = ''; return; }
     el.innerHTML =
       '<div style="border-top:1px solid var(--border);padding-top:14px;margin-top:14px;">' +
-      '<p style="font-size:12px;font-weight:600;margin-bottom:8px;">Recommend a similar book</p>' +
+      '<p style="font-size:var(--t-label);font-weight:600;margin-bottom:8px;">Recommend a similar book</p>' +
       '<div style="position:relative;">' +
       '<input type="text" id="rec-book-input" autocomplete="off" placeholder="Search the book you\'d recommend…" oninput="bhRecSearch(event)" ' +
-      'style="width:100%;box-sizing:border-box;padding:9px 12px;font-size:16px;background:var(--bg-subtle);color:var(--fg);border:1px solid var(--border);border-radius:8px;">' +
+      'style="width:100%;box-sizing:border-box;padding:9px 12px;font-size:var(--t-body);background:var(--bg-subtle);color:var(--fg);border:1px solid var(--border);border-radius:8px;">' +
       '<div id="rec-suggestions" style="position:absolute;top:100%;left:0;right:0;z-index:50;background:var(--bg);border:1px solid var(--border);border-radius:8px;max-height:230px;overflow-y:auto;box-shadow:0 10px 25px rgba(0,0,0,.1);margin-top:5px;display:none;"></div></div>' +
       '<textarea id="rec-reason" maxlength="600" rows="2" placeholder="Why is it similar? (a sentence or two)" ' +
-      'style="width:100%;box-sizing:border-box;margin-top:8px;padding:9px 12px;font-size:16px;background:var(--bg-subtle);color:var(--fg);border:1px solid var(--border);border-radius:8px;resize:vertical;"></textarea>' +
+      'style="width:100%;box-sizing:border-box;margin-top:8px;padding:9px 12px;font-size:var(--t-body);background:var(--bg-subtle);color:var(--fg);border:1px solid var(--border);border-radius:8px;resize:vertical;"></textarea>' +
       '<div style="display:flex;align-items:center;gap:10px;margin-top:8px;">' +
-      '<button class="btn-primary" id="rec-post-btn" onclick="bhPostRec()" style="padding:8px 18px;font-size:13px;">Submit recommendation</button>' +
-      '<span id="rec-status" style="font-size:12px;color:var(--fg-faint);"></span></div>' +
-      '<p style="font-size:11px;color:var(--fg-faint);margin-top:6px;">Recommendations appear after review by the site owner.</p></div>';
+      '<button class="btn-primary" id="rec-post-btn" onclick="bhPostRec()" style="padding:8px 18px;font-size:var(--t-label);">Submit recommendation</button>' +
+      '<span id="rec-status" style="font-size:var(--t-label);color:var(--fg-faint);"></span></div>' +
+      '<p style="font-size:var(--t-label);color:var(--fg-faint);margin-top:6px;">Recommendations appear after review by the site owner.</p></div>';
   };
   window.bhRecSearch = function (event) {
     const q = event.target.value.trim();
@@ -903,7 +907,7 @@ layout: default
     const box = document.getElementById('rec-suggestions');
     if (!box) return;
     if (q.length < 3) { box.style.display = 'none'; return; }
-    box.innerHTML = '<div style="padding:10px 12px;font-size:12px;color:var(--fg-faint);">Searching…</div>';
+    box.innerHTML = '<div style="padding:10px 12px;font-size:var(--t-label);color:var(--fg-faint);">Searching…</div>';
     box.style.display = 'block';
     clearTimeout(__recTimer);
     __recTimer = setTimeout(async () => {
@@ -914,13 +918,13 @@ layout: default
         if (!res.ok) return;
         const data = await res.json();
         const esc = s => String(s == null ? '' : s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
-        if (!data || !data.length) { box.innerHTML = '<div style="padding:10px 12px;font-size:12px;color:var(--fg-faint);">No matches — try the full title.</div>'; return; }
+        if (!data || !data.length) { box.innerHTML = '<div style="padding:10px 12px;font-size:var(--t-label);color:var(--fg-faint);">No matches — try the full title.</div>'; return; }
         window.__recResults = data.slice(0, 6);
         box.innerHTML = window.__recResults.map((b, i) =>
-          '<div onclick="bhRecPick(' + i + ')" style="display:flex;align-items:center;gap:10px;padding:8px 12px;cursor:pointer;border-bottom:1px solid var(--border);font-size:13px;">' +
+          '<div onclick="bhRecPick(' + i + ')" style="display:flex;align-items:center;gap:10px;padding:8px 12px;cursor:pointer;border-bottom:1px solid var(--border);font-size:var(--t-label);">' +
           (b.cover_url ? '<img src="' + esc(b.cover_url) + '" alt="" style="width:28px;height:40px;object-fit:cover;border-radius:3px;border:1px solid var(--border);flex-shrink:0;">'
                        : '<span style="width:28px;height:40px;background:var(--bg-subtle);border:1px solid var(--border);border-radius:3px;flex-shrink:0;"></span>') +
-          '<span><span style="font-weight:600;">' + esc(b.title) + '</span><br><span style="font-size:11px;color:var(--fg-faint);">' + esc(b.author || 'Unknown') + '</span></span></div>').join('');
+          '<span><span style="font-weight:600;">' + esc(b.title) + '</span><br><span style="font-size:var(--t-label);color:var(--fg-faint);">' + esc(b.author || 'Unknown') + '</span></span></div>').join('');
       } catch (e) { /* autocomplete only */ }
     }, 300);
   };
@@ -1005,7 +1009,7 @@ layout: default
       return;
     }
     area.style.display = 'block';
-    area.innerHTML = '<p style="font-size:12px;color:var(--fg-faint);">Loading comments…</p>';
+    area.innerHTML = '<p style="font-size:var(--t-label);color:var(--fg-faint);">Loading comments…</p>';
     const fs = window.bhFs, db = window.bhFirebase.db;
     const esc = s => String(s == null ? '' : s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#39;');
     let items = [];
@@ -1016,7 +1020,7 @@ layout: default
       snap.forEach(d => items.push({ id: d.id, ref: d.ref, ...d.data() }));
       items.sort((a, b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0));
     } catch (e) {
-      area.innerHTML = '<p style="font-size:12px;color:var(--fg-faint);">Couldn\'t load comments right now.</p>';
+      area.innerHTML = '<p style="font-size:var(--t-label);color:var(--fg-faint);">Couldn\'t load comments right now.</p>';
       return;
     }
     window.__bookCommentRefs = items.map(c => c.ref);
@@ -1025,23 +1029,23 @@ layout: default
           '<div style="border-bottom:1px solid var(--border);padding:10px 0;display:flex;gap:10px;align-items:flex-start;">' +
           (window.bhAvatar ? window.bhAvatar(c.name || 'Reader') : '') +
           '<div style="flex:1;min-width:0;">' +
-          '<p style="font-size:12px;font-weight:700;">' + esc(c.name || 'Reader') +
-          '<span style="font-weight:400;color:var(--fg-faint);font-size:11px;margin-left:6px;">' + (c.createdAt ? new Date(c.createdAt.seconds * 1000).toLocaleDateString() : '') + '</span></p>' +
-          '<div style="font-size:13px;color:var(--fg-muted);line-height:1.6;margin-top:3px;overflow-wrap:anywhere;">' + (window.bhFormat ? window.bhFormat(c.text || '') : esc(c.text || '')) + '</div>' +
+          '<p style="font-size:var(--t-label);font-weight:700;">' + esc(c.name || 'Reader') +
+          '<span style="font-weight:400;color:var(--fg-faint);font-size:var(--t-label);margin-left:6px;">' + (c.createdAt ? new Date(c.createdAt.seconds * 1000).toLocaleDateString() : '') + '</span></p>' +
+          '<div style="font-size:var(--t-label);color:var(--fg-muted);line-height:1.6;margin-top:3px;overflow-wrap:anywhere;">' + (window.bhFormat ? window.bhFormat(c.text || '') : esc(c.text || '')) + '</div>' +
           '<button id="clike-' + i + '" onclick="bhToggleCommentLike(' + i + ')" aria-label="Like this comment" ' +
-          'style="margin-top:6px;background:none;border:0;cursor:pointer;color:var(--fg-faint);font-size:12px;display:inline-flex;align-items:center;gap:5px;padding:2px 0;">' +
+          'style="margin-top:6px;background:none;border:0;cursor:pointer;color:var(--fg-faint);font-size:var(--t-label);display:inline-flex;align-items:center;gap:5px;padding:2px 0;">' +
           '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>' +
           '<span id="clike-n-' + i + '"></span></button></div></div>').join('')
-      : '<p style="font-size:13px;color:var(--fg-muted);">No comments yet — be the first.</p>';
+      : '<p style="font-size:var(--t-label);color:var(--fg-muted);">No comments yet — be the first.</p>';
     const formHtml = window.bhUser
       ? '<div style="margin-top:14px;">' +
         '<textarea id="comment-text" maxlength="4000" rows="4" placeholder="Share your thoughts on this book…" ' +
-        'style="width:100%;box-sizing:border-box;padding:10px 12px;font-size:16px;background:var(--bg-subtle);color:var(--fg);border:1px solid var(--border);border-radius:8px;resize:vertical;"></textarea>' +
+        'style="width:100%;box-sizing:border-box;padding:10px 12px;font-size:var(--t-body);background:var(--bg-subtle);color:var(--fg);border:1px solid var(--border);border-radius:8px;resize:vertical;"></textarea>' +
         '<div style="display:flex;align-items:center;gap:10px;margin-top:8px;">' +
-        '<button class="btn-primary" onclick="bhPostComment()" id="comment-post-btn" style="padding:8px 18px;font-size:13px;">Post comment</button>' +
-        '<span id="comment-status" style="font-size:12px;color:var(--fg-faint);"></span></div>' +
-        '<p style="font-size:11px;color:var(--fg-faint);margin-top:6px;">Supports <b>**bold**</b>, <i>*italic*</i>, and "- " lists. Comments appear after review by the site owner.</p></div>'
-      : '<div style="margin-top:14px;"><button class="btn-secondary" onclick="bhAuthUI.open(\'signin\')" style="padding:8px 18px;font-size:13px;">Sign in to comment</button></div>';
+        '<button class="btn-primary" onclick="bhPostComment()" id="comment-post-btn" style="padding:8px 18px;font-size:var(--t-label);">Post comment</button>' +
+        '<span id="comment-status" style="font-size:var(--t-label);color:var(--fg-faint);"></span></div>' +
+        '<p style="font-size:var(--t-label);color:var(--fg-faint);margin-top:6px;">Supports <b>**bold**</b>, <i>*italic*</i>, and "- " lists. Comments appear after review by the site owner.</p></div>'
+      : '<div style="margin-top:14px;"><button class="btn-secondary" onclick="bhAuthUI.open(\'signin\')" style="padding:8px 18px;font-size:var(--t-label);">Sign in to comment</button></div>';
     area.innerHTML = '<div style="margin-top:10px;">' + listHtml + '</div>' + formHtml;
     (window.__bookCommentRefs || []).forEach((_, i) => bhRefreshCommentLike(i));
   };
@@ -1146,9 +1150,9 @@ layout: default
           ${works.map(w => {
             const url = `${SUMMARY}?q=${encodeURIComponent(w.title)}&author=${encodeURIComponent(w.author || '')}&direct=true`;
             return `<a href="${url}" style="text-align:center;text-decoration:none;display:block;color:inherit;">
-              ${w.cover_url ? `<img src="${esc(w.cover_url)}" alt="Cover of ${esc(w.title)}" loading="lazy" style="width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:6px;border:1px solid var(--border);margin-bottom:6px;">` : `<div style="width:100%;aspect-ratio:2/3;background:var(--bg-subtle);border:1px solid var(--border);border-radius:6px;margin-bottom:6px;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--fg-faint);padding:8px;">${esc(w.title)}</div>`}
-              <p style="font-size:11px;font-weight:600;line-height:1.3;margin-bottom:2px;color:var(--fg);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;height:28px;">${esc(w.title)}</p>
-              ${w.year ? `<p style="font-size:10px;color:var(--fg-faint);">${w.year}</p>` : ''}
+              ${w.cover_url ? `<img src="${esc(w.cover_url)}" alt="Cover of ${esc(w.title)}" loading="lazy" style="width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:6px;border:1px solid var(--border);margin-bottom:6px;">` : `<div style="width:100%;aspect-ratio:2/3;background:var(--bg-subtle);border:1px solid var(--border);border-radius:6px;margin-bottom:6px;display:flex;align-items:center;justify-content:center;font-size:var(--t-label);color:var(--fg-faint);padding:8px;">${esc(w.title)}</div>`}
+              <p style="font-size:var(--t-label);font-weight:600;line-height:1.3;margin-bottom:2px;color:var(--fg);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;height:28px;">${esc(w.title)}</p>
+              ${w.year ? `<p style="font-size:var(--t-label);color:var(--fg-faint);">${w.year}</p>` : ''}
             </a>`;
           }).join('')}
         </div>`;

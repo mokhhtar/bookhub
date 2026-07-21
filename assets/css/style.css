@@ -1044,7 +1044,7 @@ html[data-theme="dark"] .hero-search-btn { color: #12160F; }
 .ai-disclosure-notice > summary::-webkit-details-marker { display: none; }
 .ai-disclosure-notice > summary::before {
   content: "\25B8"; /* ▸ */
-  font-size: 10px;
+  font-size: var(--t-label);
   color: var(--fg-faint);
   transition: transform 0.15s ease;
 }
@@ -1084,7 +1084,7 @@ html[data-theme="dark"] .hero-search-btn { color: #12160F; }
 }
 
 .book-genre {
-  font-size: 11px;
+  font-size: var(--t-label);
   font-weight: 600;
   color: var(--accent);
   letter-spacing: 0.08em;
@@ -1172,7 +1172,7 @@ html[data-theme="dark"] .hero-search-btn { color: #12160F; }
 }
 
 .footer-col-title {
-  font-size: 11px;
+  font-size: var(--t-label);
   font-weight: 600;
   color: var(--fg);
   letter-spacing: 0.06em;
@@ -1408,7 +1408,7 @@ html[data-theme="dark"] .logo-mark rect:first-child {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.15s var(--ease);
+  transition: border-color .15s var(--ease), background-color .15s var(--ease), color .15s var(--ease);
   padding: 0;
 }
 

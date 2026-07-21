@@ -4,7 +4,11 @@ title: "Book Summarizer"
 description: "Get an instant AI study guide for any book — deep summary, characters, quotes, and a verified quiz."
 ---
 
-<link rel="stylesheet" href="{{ '/assets/css/book-page.css' | relative_url }}">
+{%- comment -%} Cache-busted like style.css. Without ?v= the browser
+and the service worker's stale-while-revalidate both kept serving an
+old copy, so edits to the shared book stylesheet silently did not
+reach anyone who had visited before. {%- endcomment -%}
+<link rel="stylesheet" href="{{ '/assets/css/book-page.css' | relative_url }}?v={{ site.time | date: '%s' }}">
 <style>
   /* Interactive-tool-only chrome: search box/autocomplete, floating chat,
      book quiz, search-results sort bar. Shared visual components (sidebar,
@@ -13,13 +17,18 @@ description: "Get an instant AI study guide for any book — deep summary, chara
      (assets/css/book-page.css) — also used by _layouts/book.html, so a
      style change there updates both pages, no hand-syncing. */
 /* ── Summarizer Tool — New Sidebar Layout ────────────────── */
+/* This heading used to be filled with a gradient rather than a colour.
+   That is one of the most recognisable AI-landing-page tells, it fades
+   the tail of every heading toward --fg-faint (so contrast drops across
+   the word), and it breaks selection highlighting. A heading does not
+   need a gradient to be a heading; size and weight already do that work.
+   (Worded without the CSS property name on purpose: the linter scans the
+   built HTML as text and matched the description itself.) */
 .tool-page-title {
-    font-size: 32px;
-    font-weight: 800;
-    letter-spacing: -0.5px;
-    background: linear-gradient(135deg, var(--fg) 40%, var(--fg-faint));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-size: var(--t-title);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    color: var(--fg);
     margin-bottom: 0.5rem;
   }
 .tool-form {
@@ -33,8 +42,8 @@ description: "Get an instant AI study guide for any book — deep summary, chara
 .form-input {
     border-radius: 8px;
     padding: 0.75rem 1rem;
-    font-size: 14px;
-    transition: all 0.2s ease;
+    font-size: var(--t-body);
+    transition: border-color .2s var(--ease-out), background-color .2s var(--ease-out), color .2s var(--ease-out);
     background: var(--bg);
   }
 .form-input:focus {
@@ -46,11 +55,11 @@ description: "Get an instant AI study guide for any book — deep summary, chara
     color: #fff !important;
     border: none;
     padding: 0.8rem 1.8rem;
-    font-size: 14px;
+    font-size: var(--t-body);
     font-weight: 600;
     border-radius: var(--r);
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: border-color .2s var(--ease-out), background-color .2s var(--ease-out), color .2s var(--ease-out);
     box-shadow: 0 4px 14px rgba(255,91,79,0.18);
   }
 .tool-form .btn-primary:hover {
@@ -87,7 +96,7 @@ description: "Get an instant AI study guide for any book — deep summary, chara
     padding: 10px 14px;
     cursor: pointer;
     border-bottom: 1px solid var(--border-subtle);
-    font-size: 13px;
+    font-size: var(--t-label);
     transition: background 0.15s ease;
   }
 .suggestion-item:hover { background: var(--bg-subtle); }
@@ -124,7 +133,7 @@ description: "Get an instant AI study guide for any book — deep summary, chara
     align-items: center;
     justify-content: center;
     box-shadow: 0 4px 20px rgba(255,91,79,0.4);
-    transition: all 0.2s ease;
+    transition: border-color .2s var(--ease-out), background-color .2s var(--ease-out), color .2s var(--ease-out);
   }
 .chat-float-btn:hover {
     transform: scale(1.08);
@@ -159,7 +168,7 @@ description: "Get an instant AI study guide for any book — deep summary, chara
     border-radius: 16px 16px 0 0;
   }
 .chat-panel-title {
-    font-size: 13px;
+    font-size: var(--t-label);
     font-weight: 700;
     color: var(--fg);
     display: flex;
@@ -175,8 +184,8 @@ description: "Get an instant AI study guide for any book — deep summary, chara
     color: var(--fg-faint);
     cursor: pointer;
     display: flex; align-items: center; justify-content: center;
-    transition: all 0.15s ease;
-    font-size: 12px;
+    transition: border-color .15s var(--ease-out), background-color .15s var(--ease-out), color .15s var(--ease-out);
+    font-size: var(--t-label);
   }
 .chat-panel-btn:hover { color: var(--fg); border-color: var(--fg-faint); }
 .chat-messages {
@@ -191,13 +200,13 @@ description: "Get an instant AI study guide for any book — deep summary, chara
     max-width: 85%;
     padding: 0.65rem 0.9rem;
     border-radius: 10px;
-    font-size: 13px;
+    font-size: var(--t-label);
     line-height: 1.5;
     animation: fadeInUp 0.25s ease forwards;
   }
 .chat-msg.user { align-self: flex-end; background: var(--accent); color: #fff; border-bottom-right-radius: 2px; }
 .chat-msg.assistant { align-self: flex-start; background: var(--bg-subtle); border: 1px solid var(--border); color: var(--fg); border-bottom-left-radius: 2px; }
-.chat-msg.system { align-self: center; background: transparent; color: var(--fg-faint); font-size: 11px; text-align: center; }
+.chat-msg.system { align-self: center; background: transparent; color: var(--fg-faint); font-size: var(--t-label); text-align: center; }
 .chat-input-area {
     display: flex;
     border-top: 1px solid var(--border);
@@ -210,7 +219,7 @@ description: "Get an instant AI study guide for any book — deep summary, chara
     border: 1px solid var(--border);
     border-radius: 8px;
     padding: 0.55rem 0.8rem;
-    font-size: 13px;
+    font-size: var(--t-label);
     background: var(--bg-subtle);
     color: var(--fg);
     outline: none;
@@ -225,7 +234,7 @@ description: "Get an instant AI study guide for any book — deep summary, chara
     padding: 0 1rem;
     cursor: pointer;
     font-weight: 600;
-    font-size: 13px;
+    font-size: var(--t-label);
     transition: background 0.2s ease;
   }
 .chat-send-btn:hover { background: var(--accent-hover); }
@@ -238,14 +247,14 @@ description: "Get an instant AI study guide for any book — deep summary, chara
 
 
 .search-sort-bar { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.search-sort-bar label { font-size: 12px; color: var(--fg-faint); }
+.search-sort-bar label { font-size: var(--t-label); color: var(--fg-faint); }
 .search-sort-bar select {
     background: var(--bg-subtle); border: 1px solid var(--border); color: var(--fg);
     border-radius: 8px; padding: 6px 10px; font-size: 12.5px; cursor: pointer;
   }
 .search-sort-dir-btn {
     background: var(--bg-subtle); border: 1px solid var(--border); color: var(--fg);
-    border-radius: 8px; padding: 6px 10px; font-size: 13px; cursor: pointer; line-height: 1;
+    border-radius: 8px; padding: 6px 10px; font-size: var(--t-label); cursor: pointer; line-height: 1;
   }
 .search-sort-dir-btn:disabled { opacity: .4; cursor: default; }
 </style>
@@ -308,13 +317,13 @@ description: "Get an instant AI study guide for any book — deep summary, chara
     <!-- Compact search bar for results/summary states -->
     <div id="compact-search" style="display:none;">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px;flex-wrap:wrap;">
-        <button class="btn-secondary" onclick="goBackToSearch()" style="padding:6px 14px;font-size:13px;border-radius:var(--r);flex-shrink:0;" title="New search">
+        <button class="btn-secondary" onclick="goBackToSearch()" style="padding:6px 14px;font-size:var(--t-label);border-radius:var(--r);flex-shrink:0;" title="New search">
           ← New search
         </button>
         <div style="flex:1;min-width:140px;position:relative;">
-          <input type="text" id="book-title-compact" class="form-input" placeholder="Search another book…" autocomplete="off" style="width:100%;padding:8px 14px;font-size:13px;" />
+          <input type="text" id="book-title-compact" class="form-input" placeholder="Search another book…" autocomplete="off" style="width:100%;padding:8px 14px;font-size:var(--t-label);" />
         </div>
-        <button class="btn-primary" onclick="doSummaryFromCompact()" style="padding:8px 18px;font-size:13px;flex-shrink:0;">Search</button>
+        <button class="btn-primary" onclick="doSummaryFromCompact()" style="padding:8px 18px;font-size:var(--t-label);flex-shrink:0;">Search</button>
       </div>
     </div>
 
@@ -325,36 +334,36 @@ description: "Get an instant AI study guide for any book — deep summary, chara
          idle/search state (what crawlers see in the initial HTML); hidden by
          switchToState once results or a summary take over the page. -->
     <section id="tool-faq" aria-labelledby="faq-heading" style="max-width:720px;margin:56px auto 24px;">
-      <h2 id="faq-heading" style="font-size:22px;margin-bottom:18px;">Frequently asked questions</h2>
+      <h2 id="faq-heading" style="font-size:var(--t-lead);margin-bottom:18px;">Frequently asked questions</h2>
 
       <details style="border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:10px;">
-        <summary style="font-size:14px;font-weight:600;cursor:pointer;">Is the Litheca book summarizer free?</summary>
-        <p style="font-size:13px;color:var(--fg-muted);line-height:1.7;margin-top:10px;">Yes — completely free, with no account required to generate a summary. Signing up (also free) adds extras like a synced library, ratings, and commenting.</p>
+        <summary style="font-size:var(--t-body);font-weight:600;cursor:pointer;">Is the Litheca book summarizer free?</summary>
+        <p style="font-size:var(--t-label);color:var(--fg-muted);line-height:1.7;margin-top:10px;">Yes — completely free, with no account required to generate a summary. Signing up (also free) adds extras like a synced library, ratings, and commenting.</p>
       </details>
 
       <details style="border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:10px;">
-        <summary style="font-size:14px;font-weight:600;cursor:pointer;">How are the summaries generated — and can I trust them?</summary>
-        <p style="font-size:13px;color:var(--fg-muted);line-height:1.7;margin-top:10px;">Each guide is AI-generated, but only after the book is verified against real catalogs (Google Books and Open Library). Our rule is simple: <b>no data beats wrong data</b> — anything we can't verify (awards, ratings, quotes, free-ebook links) is left out rather than invented.</p>
+        <summary style="font-size:var(--t-body);font-weight:600;cursor:pointer;">How are the summaries generated — and can I trust them?</summary>
+        <p style="font-size:var(--t-label);color:var(--fg-muted);line-height:1.7;margin-top:10px;">Each guide is AI-generated, but only after the book is verified against real catalogs (Google Books and Open Library). Our rule is simple: <b>no data beats wrong data</b> — anything we can't verify (awards, ratings, quotes, free-ebook links) is left out rather than invented.</p>
       </details>
 
       <details style="border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:10px;">
-        <summary style="font-size:14px;font-weight:600;cursor:pointer;">What do I get besides the summary?</summary>
-        <p style="font-size:13px;color:var(--fg-muted);line-height:1.7;margin-top:10px;">A full study guide: chapter-aware deep summary, character profiles, key themes, notable quotes, reading-time planner, similar books, reader ratings and comments — plus a comprehension quiz whose answers are backed by quotes verified against the source text.</p>
+        <summary style="font-size:var(--t-body);font-weight:600;cursor:pointer;">What do I get besides the summary?</summary>
+        <p style="font-size:var(--t-label);color:var(--fg-muted);line-height:1.7;margin-top:10px;">A full study guide: chapter-aware deep summary, character profiles, key themes, notable quotes, reading-time planner, similar books, reader ratings and comments — plus a comprehension quiz whose answers are backed by quotes verified against the source text.</p>
       </details>
 
       <details style="border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:10px;">
-        <summary style="font-size:14px;font-weight:600;cursor:pointer;">Which books does it work for?</summary>
-        <p style="font-size:13px;color:var(--fg-muted);line-height:1.7;margin-top:10px;">Anything findable in the major catalogs we search — over 20 million records spanning fiction, non-fiction, and classics, plus popular web novels and manga through curated community wikis.</p>
+        <summary style="font-size:var(--t-body);font-weight:600;cursor:pointer;">Which books does it work for?</summary>
+        <p style="font-size:var(--t-label);color:var(--fg-muted);line-height:1.7;margin-top:10px;">Anything findable in the major catalogs we search — over 20 million records spanning fiction, non-fiction, and classics, plus popular web novels and manga through curated community wikis.</p>
       </details>
 
       <details style="border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:10px;">
-        <summary style="font-size:14px;font-weight:600;cursor:pointer;">How long does it take?</summary>
-        <p style="font-size:13px;color:var(--fg-muted);line-height:1.7;margin-top:10px;">Popular books open in a few seconds. A book being summarized for the first time takes up to a minute — and if the free server was asleep, the first request may add a short wake-up wait. We show progress the whole way.</p>
+        <summary style="font-size:var(--t-body);font-weight:600;cursor:pointer;">How long does it take?</summary>
+        <p style="font-size:var(--t-label);color:var(--fg-muted);line-height:1.7;margin-top:10px;">Popular books open in a few seconds. A book being summarized for the first time takes up to a minute — and if the free server was asleep, the first request may add a short wake-up wait. We show progress the whole way.</p>
       </details>
 
       <details style="border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:10px;">
-        <summary style="font-size:14px;font-weight:600;cursor:pointer;">Do summaries replace reading the book?</summary>
-        <p style="font-size:13px;color:var(--fg-muted);line-height:1.7;margin-top:10px;">No — and we don't pretend otherwise. Litheca works best as a companion: decide whether a book deserves your time, refresh one you read years ago, or test your understanding after finishing it.</p>
+        <summary style="font-size:var(--t-body);font-weight:600;cursor:pointer;">Do summaries replace reading the book?</summary>
+        <p style="font-size:var(--t-label);color:var(--fg-muted);line-height:1.7;margin-top:10px;">No — and we don't pretend otherwise. Litheca works best as a companion: decide whether a book deserves your time, refresh one you read years ago, or test your understanding after finishing it.</p>
       </details>
     </section>
 
@@ -639,8 +648,8 @@ description: "Get an instant AI study guide for any book — deep summary, chara
             <div class="suggestion-item" onclick="selectSuggestion('${titleEscaped}', '${authorEscaped}', '${b.isbn_13 || b.isbn_10 || ''}', '${b.google_id || ''}', '${b.openlibrary_id || ''}')">
               ${b.cover_url ? `<img src="${b.cover_url}" alt="cover">` : `<div style="width:28px;height:38px;background:var(--bg-subtle);border:1px solid var(--border);border-radius:2px;"></div>`}
               <div>
-                <div style="font-weight: 600; font-size:12px; line-height:1.2; margin-bottom:2px; color:var(--fg);">${b.title}</div>
-                <div style="font-size: 11px; color: var(--fg-faint);">${b.author || "Unknown"}</div>
+                <div style="font-weight: 600; font-size:var(--t-label); line-height:1.2; margin-bottom:2px; color:var(--fg);">${b.title}</div>
+                <div style="font-size: var(--t-label); color: var(--fg-faint);">${b.author || "Unknown"}</div>
               </div>
             </div>
           `;
@@ -1018,11 +1027,11 @@ description: "Get an instant AI study guide for any book — deep summary, chara
       } else if ((data.ratings && data.ratings.average) || data.average_rating) {
         const avg = (data.ratings && data.ratings.average) || data.average_rating;
         const cnt = data.ratings && data.ratings.count
-          ? ` <span style="color:var(--fg-faint);font-size:12px;">(${data.ratings.count.toLocaleString()} rating${data.ratings.count === 1 ? '' : 's'})</span>` : '';
+          ? ` <span style="color:var(--fg-faint);font-size:var(--t-label);">(${data.ratings.count.toLocaleString()} rating${data.ratings.count === 1 ? '' : 's'})</span>` : '';
         awardsHtml = `
           <p class="sidebar-section-title">Reception</p>
-          <p style="font-size:13px;color:var(--fg);margin:0;">
-            <span style="color:#f59e0b;font-size:15px;">★</span> ${avg} / 5 avg. rating${cnt}
+          <p style="font-size:var(--t-label);color:var(--fg);margin:0;">
+            <span style="color:#f59e0b;font-size:var(--t-body);">★</span> ${avg} / 5 avg. rating${cnt}
           </p>`;
       }
 
@@ -1036,7 +1045,7 @@ description: "Get an instant AI study guide for any book — deep summary, chara
           const rows = [5, 4, 3, 2, 1].map(star => {
             const n = dist[String(star)] || 0;
             const pct = Math.round((n / total) * 100);
-            return `<div style="display:flex;align-items:center;gap:8px;font-size:11px;color:var(--fg-muted);">
+            return `<div style="display:flex;align-items:center;gap:8px;font-size:var(--t-label);color:var(--fg-muted);">
               <span style="width:22px;flex-shrink:0;">${star}★</span>
               <span style="flex:1;height:8px;background:var(--bg-subtle);border:1px solid var(--border);border-radius:99px;overflow:hidden;"><span style="display:block;height:100%;width:${pct}%;background:var(--accent);"></span></span>
               <span style="width:42px;text-align:right;flex-shrink:0;color:var(--fg-faint);">${formatRatingCount(n)}</span>
@@ -1046,7 +1055,7 @@ description: "Get an instant AI study guide for any book — deep summary, chara
           const distN = data.ratings.distribution_count || total;
           ratingDistHtml = `
             <p class="sidebar-section-title">Rating breakdown</p>
-            <p style="font-size:10px;color:var(--fg-faint);margin:-2px 0 8px;">Based on ${distN.toLocaleString()} ${distSrc} ratings</p>
+            <p style="font-size:var(--t-label);color:var(--fg-faint);margin:-2px 0 8px;">Based on ${distN.toLocaleString()} ${distSrc} ratings</p>
             <div style="display:flex;flex-direction:column;gap:5px;">${rows}</div>`;
         }
       }
@@ -1101,9 +1110,9 @@ description: "Get an instant AI study guide for any book — deep summary, chara
             </div>
             ${wq.texts.map((t, i) => {
               const sp = (wq.speakers || [])[i];
-              return `<blockquote style="font-size:14px;font-style:italic;line-height:1.65;color:var(--fg);border-left:3px solid var(--accent);padding:4px 0 4px 14px;margin:0 0 12px;">"${escExt(t)}"${sp ? `<footer style="font-size:12px;font-style:normal;font-weight:600;color:var(--fg-faint);margin-top:4px;">— ${escExt(sp)}</footer>` : ''}</blockquote>`;
+              return `<blockquote style="font-size:var(--t-body);font-style:italic;line-height:1.65;color:var(--fg);border-left:3px solid var(--accent);padding:4px 0 4px 14px;margin:0 0 12px;">"${escExt(t)}"${sp ? `<footer style="font-size:var(--t-label);font-style:normal;font-weight:600;color:var(--fg-faint);margin-top:4px;">— ${escExt(sp)}</footer>` : ''}</blockquote>`;
             }).join('')}
-            <p style="font-size:11px;color:var(--fg-faint);margin:0;">Sourced verbatim from <a href="${wq.source_url}" target="_blank" rel="noopener nofollow" style="color:var(--accent);">Wikiquote</a> (CC BY-SA) — not AI-generated.</p>
+            <p style="font-size:var(--t-label);color:var(--fg-faint);margin:0;">Sourced verbatim from <a href="${wq.source_url}" target="_blank" rel="noopener nofollow" style="color:var(--accent);">Wikiquote</a> (CC BY-SA) — not AI-generated.</p>
            </div>` : '';
 
       // Shelf bar — reading status + rating, wired to the same My Library
@@ -1146,7 +1155,7 @@ description: "Get an instant AI study guide for any book — deep summary, chara
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             ${isSeries ? 'Series Characters' : 'Characters'}
           </div>
-          ${isSeries ? `<p style="font-size:11px;color:var(--fg-faint);margin:-4px 0 12px;">From the series' wiki — some characters may appear only in later volumes.</p>` : ''}
+          ${isSeries ? `<p style="font-size:var(--t-label);color:var(--fg-faint);margin:-4px 0 12px;">From the series' wiki — some characters may appear only in later volumes.</p>` : ''}
           <div class="char-grid">
             ${data.characters.map((c, i) => `
               <button class="char-item" onclick="toggleCharacter(${i})" id="char-btn-${i}">
@@ -1175,7 +1184,7 @@ description: "Get an instant AI study guide for any book — deep summary, chara
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
             Reader Comments
           </div>
-          <button class="btn-secondary" id="comments-load-btn" onclick="toggleComments()" style="padding:8px 18px;font-size:13px;">Hide comments</button>
+          <button class="btn-secondary" id="comments-load-btn" onclick="toggleComments()" style="padding:8px 18px;font-size:var(--t-label);">Hide comments</button>
           <div id="comments-area" style="display:none;"></div>
         </div>` : '';
 
@@ -1188,8 +1197,8 @@ description: "Get an instant AI study guide for any book — deep summary, chara
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
             Readers recommend
           </div>
-          <p style="font-size:12px;color:var(--fg-faint);margin-bottom:12px;">Books other readers say are similar — and why. Vetted before they appear.</p>
-          <div id="reader-recs-list"><p style="font-size:12px;color:var(--fg-faint);">Loading…</p></div>
+          <p style="font-size:var(--t-label);color:var(--fg-faint);margin-bottom:12px;">Books other readers say are similar — and why. Vetted before they appear.</p>
+          <div id="reader-recs-list"><p style="font-size:var(--t-label);color:var(--fg-faint);">Loading…</p></div>
           <div id="reader-recs-form" style="margin-top:14px;"></div>
         </div>` : '';
 
@@ -1204,9 +1213,9 @@ description: "Get an instant AI study guide for any book — deep summary, chara
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
             Test Your Knowledge
           </div>
-          <p style="font-size:13px;color:var(--fg-muted);margin-bottom:12px;">Multiple-choice questions with verified supporting quotes, grounded in ${quizFromOriginal ? "the book's original text" : "the story wiki's chapter summaries"}.</p>
-          <button class="btn-primary" id="quiz-start-btn" onclick="startBookQuiz()" style="padding:8px 20px;font-size:13px;">Take a quiz</button>
-          <div id="quiz-status" style="font-size:12px;color:var(--fg-faint);margin-top:8px;display:none;"></div>
+          <p style="font-size:var(--t-label);color:var(--fg-muted);margin-bottom:12px;">Multiple-choice questions with verified supporting quotes, grounded in ${quizFromOriginal ? "the book's original text" : "the story wiki's chapter summaries"}.</p>
+          <button class="btn-primary" id="quiz-start-btn" onclick="startBookQuiz()" style="padding:8px 20px;font-size:var(--t-label);">Take a quiz</button>
+          <div id="quiz-status" style="font-size:var(--t-label);color:var(--fg-faint);margin-top:8px;display:none;"></div>
           <div id="quiz-area" style="margin-top:14px;"></div>
         </div>` : '';
 
@@ -1217,17 +1226,17 @@ description: "Get an instant AI study guide for any book — deep summary, chara
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
                 Chapters
               </span>
-              <span style="font-size:11px;font-weight:600;color:var(--accent);background:var(--bg-subtle);border:1px solid var(--border);border-radius:20px;padding:2px 10px;">${data.chapters.length} chapters</span>
+              <span style="font-size:var(--t-label);font-weight:600;color:var(--accent);background:var(--bg-subtle);border:1px solid var(--border);border-radius:20px;padding:2px 10px;">${data.chapters.length} chapters</span>
             </div>
             <div style="position:relative;">
-              <ul id="chapters-scroll-list" style="font-size:13px;color:var(--fg);line-height:1.9;list-style:none;padding-left:0;margin:0;max-height:320px;overflow-y:auto;padding-right:8px;scrollbar-width:thin;scrollbar-color:var(--accent) transparent;">
+              <ul id="chapters-scroll-list" style="font-size:var(--t-label);color:var(--fg);line-height:1.9;list-style:none;padding-left:0;margin:0;max-height:320px;overflow-y:auto;padding-right:8px;scrollbar-width:thin;scrollbar-color:var(--accent) transparent;">
                 ${data.chapters.map((c, i) => {
                   // Sources (Fandom/Open Library) often already number their
                   // chapters ("01 Experiment 626", "Chapter 3: ...") — strip
                   // that leading numbering so our padded index isn't doubled.
                   const stripped = c.replace(/^\s*(?:ch(?:apter)?\.?\s*)?\d{1,4}\s*[-–—.:)\]]?\s*/i, "");
                   const label = stripped.trim() ? stripped : c;
-                  return `<li style="padding:3px 0;border-bottom:1px solid var(--border);"><span style="color:var(--fg-faint);font-size:11px;margin-right:6px;">${String(i+1).padStart(2,'0')}</span>${label}</li>`;
+                  return `<li style="padding:3px 0;border-bottom:1px solid var(--border);"><span style="color:var(--fg-faint);font-size:var(--t-label);margin-right:6px;">${String(i+1).padStart(2,'0')}</span>${label}</li>`;
                 }).join('')}
               </ul>
               <div style="position:absolute;bottom:0;left:0;right:0;height:40px;background:linear-gradient(transparent,var(--bg-card,var(--bg)));pointer-events:none;border-radius:0 0 8px 8px;"></div>
@@ -1253,10 +1262,10 @@ description: "Get an instant AI study guide for any book — deep summary, chara
             </button>
           </div>
           <div style="min-width:0;">
-            <span style="font-size:12px;font-weight:600;display:block;color:var(--fg);">Listen to this guide</span>
-            <span id="audio-status" style="font-size:10px;color:var(--fg-faint);">Click play to listen</span>
+            <span style="font-size:var(--t-label);font-weight:600;display:block;color:var(--fg);">Listen to this guide</span>
+            <span id="audio-status" style="font-size:var(--t-label);color:var(--fg-faint);">Click play to listen</span>
             <div style="width:120px;height:3px;background:var(--border);border-radius:2px;margin-top:5px;overflow:hidden;">
-              <div id="audio-progress-fill" style="width:0%;height:100%;background:var(--accent);border-radius:2px;transition:width .4s;"></div>
+              <div id="audio-progress-fill" style="width:100%;transform:scaleX(0);transform-origin:left;height:100%;background:var(--accent);border-radius:2px;transition:transform .4s var(--ease-out);"></div>
             </div>
           </div>
         </div>
@@ -1375,31 +1384,31 @@ description: "Get an instant AI study guide for any book — deep summary, chara
           <!-- CTAs first: every decision button visible without scrolling -->
           ${data.free_ebook ? `
           <div style="border:1px solid var(--accent);border-radius:12px;padding:12px 14px;margin-bottom:12px;background:var(--bg-subtle);">
-            <p style="font-size:12px;font-weight:700;color:var(--fg);margin:0 0 8px;">Public domain — read it free</p>
+            <p style="font-size:var(--t-label);font-weight:700;color:var(--fg);margin:0 0 8px;">Public domain — read it free</p>
             <div style="display:flex;flex-wrap:wrap;gap:6px;">
-              ${data.free_ebook.source === 'project_gutenberg' && data.free_ebook.gutenberg_id ? `<a href="{{ '/reader/' | relative_url }}?id=${data.free_ebook.gutenberg_id}&title=${encodeURIComponent(data.title || '')}&author=${encodeURIComponent(data.author || '')}" class="btn-primary" style="padding:6px 12px;font-size:12px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="vertical-align:-2px;"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Read here</a>` : ''}
-              <a href="${data.free_ebook.read_url || data.free_ebook.page_url}" target="_blank" rel="noopener" class="btn-secondary" style="padding:6px 12px;font-size:12px;">Read online</a>
-              ${data.free_ebook.epub_url ? `<a href="${data.free_ebook.epub_url}" class="btn-secondary" style="padding:6px 12px;font-size:12px;">EPUB</a>` : ''}
-              ${data.free_ebook.txt_url ? `<a href="${data.free_ebook.txt_url}" class="btn-secondary" style="padding:6px 12px;font-size:12px;">TXT</a>` : ''}
+              ${data.free_ebook.source === 'project_gutenberg' && data.free_ebook.gutenberg_id ? `<a href="{{ '/reader/' | relative_url }}?id=${data.free_ebook.gutenberg_id}&title=${encodeURIComponent(data.title || '')}&author=${encodeURIComponent(data.author || '')}" class="btn-primary" style="padding:6px 12px;font-size:var(--t-label);"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="vertical-align:-2px;"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Read here</a>` : ''}
+              <a href="${data.free_ebook.read_url || data.free_ebook.page_url}" target="_blank" rel="noopener" class="btn-secondary" style="padding:6px 12px;font-size:var(--t-label);">Read online</a>
+              ${data.free_ebook.epub_url ? `<a href="${data.free_ebook.epub_url}" class="btn-secondary" style="padding:6px 12px;font-size:var(--t-label);">EPUB</a>` : ''}
+              ${data.free_ebook.txt_url ? `<a href="${data.free_ebook.txt_url}" class="btn-secondary" style="padding:6px 12px;font-size:var(--t-label);">TXT</a>` : ''}
             </div>
-            <p style="font-size:10px;color:var(--fg-faint);margin:8px 0 0;">From <a href="${data.free_ebook.page_url}" target="_blank" rel="noopener nofollow" style="color:inherit;">${data.free_ebook.source === 'internet_archive' ? 'Internet Archive' : 'Project Gutenberg'}</a></p>
+            <p style="font-size:var(--t-label);color:var(--fg-faint);margin:8px 0 0;">From <a href="${data.free_ebook.page_url}" target="_blank" rel="noopener nofollow" style="color:inherit;">${data.free_ebook.source === 'internet_archive' ? 'Internet Archive' : 'Project Gutenberg'}</a></p>
           </div>` : ''}
 
           ${data.amazon_url ? `
-          <p style="font-size:10px;color:var(--fg-faint);line-height:1.5;margin:6px 0 4px;">As an Amazon Associate, Litheca earns from qualifying purchases.</p>
+          <p style="font-size:var(--t-label);color:var(--fg-faint);line-height:1.5;margin:6px 0 4px;">As an Amazon Associate, Litheca earns from qualifying purchases.</p>
           <a href="${data.amazon_url}" class="sidebar-amazon-btn" target="_blank" rel="noopener sponsored">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
             Buy on Amazon
           </a>` : ''}
 
           <button class="btn-secondary" id="add-library-btn" onclick="addCurrentToLibrary()"
-                  style="width:100%;justify-content:center;margin:8px 0 8px;padding:9px 12px;font-size:13px;">
+                  style="width:100%;justify-content:center;margin:8px 0 8px;padding:9px 12px;font-size:var(--t-label);">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align:-2px;"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Add to My Library
           </button>
 
           ${data.slug ? `
           <button class="btn-secondary" id="recommend-btn" onclick="toggleRecommend()" data-book-slug="${escExt(data.canonical_id || data.slug)}"
-                  style="width:100%;justify-content:center;margin:0 0 12px;padding:9px 12px;font-size:13px;">
+                  style="width:100%;justify-content:center;margin:0 0 12px;padding:9px 12px;font-size:var(--t-label);">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="vertical-align:-2px;"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg> Recommend this book
           </button>` : ''}
 
@@ -1415,9 +1424,9 @@ description: "Get an instant AI study guide for any book — deep summary, chara
           <!-- Informational content below the fold is fine -->
           ${data.nyt && data.nyt.weeks_on_list ? `
           <div style="border:1px solid var(--accent);border-radius:12px;padding:10px 14px;margin:0 0 12px;background:var(--bg-subtle);">
-            <p style="font-size:12px;font-weight:700;color:var(--fg);margin:0;">New York Times Bestseller</p>
-            <p style="font-size:12px;color:var(--fg-muted);margin:4px 0 0;">${data.nyt.weeks_on_list} week${data.nyt.weeks_on_list > 1 ? 's' : ''} on the "${data.nyt.list_name}" list${data.nyt.rank ? ` · currently #${data.nyt.rank}` : ''}</p>
-            ${data.nyt.review_url ? `<a href="${data.nyt.review_url}" target="_blank" rel="noopener nofollow" style="font-size:11px;color:var(--accent);display:inline-block;margin-top:4px;">Read the NYT review →</a>` : ''}
+            <p style="font-size:var(--t-label);font-weight:700;color:var(--fg);margin:0;">New York Times Bestseller</p>
+            <p style="font-size:var(--t-label);color:var(--fg-muted);margin:4px 0 0;">${data.nyt.weeks_on_list} week${data.nyt.weeks_on_list > 1 ? 's' : ''} on the "${data.nyt.list_name}" list${data.nyt.rank ? ` · currently #${data.nyt.rank}` : ''}</p>
+            ${data.nyt.review_url ? `<a href="${data.nyt.review_url}" target="_blank" rel="noopener nofollow" style="font-size:var(--t-label);color:var(--accent);display:inline-block;margin-top:4px;">Read the NYT review →</a>` : ''}
           </div>` : ''}
 
           ${data.themes && data.themes.length ? `
@@ -1500,7 +1509,7 @@ description: "Get an instant AI study guide for any book — deep summary, chara
       const hint = (e && e.message ? String(e.message).slice(0, 140) : "");
       result.innerHTML = networky
         ? `<p class="result-error">Our free server may be waking up or briefly unavailable. Please try again in a moment.</p>`
-        : `<p class="result-error">Couldn't generate the summary. Please try again.${hint ? `<br><span style="font-size:11px;color:var(--fg-faint);">(${hint})</span>` : ""}</p>`;
+        : `<p class="result-error">Couldn't generate the summary. Please try again.${hint ? `<br><span style="font-size:var(--t-label);color:var(--fg-faint);">(${hint})</span>` : ""}</p>`;
     } finally {
       document.getElementById("submit-btn").disabled = false;
     }
@@ -1667,9 +1676,9 @@ description: "Get an instant AI study guide for any book — deep summary, chara
             const olidV = w.openlibrary_id ? `'${String(w.openlibrary_id).replace(/'/g, "\\'")}'` : 'null';
             const url = `{{ '/summary/' | relative_url }}?q=${encodeURIComponent(w.title)}&author=${encodeURIComponent(w.author || '')}&direct=true`;
             return `<a href="${url}" onclick="event.preventDefault();summarizeBook('${te}','${ae}',true,false,null,null,${olidV})" style="text-align:center;cursor:pointer;text-decoration:none;display:block;color:inherit;">
-              ${w.cover_url ? `<img src="${w.cover_url}" alt="Cover of ${escExt(w.title)}" loading="lazy" style="width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:6px;border:1px solid var(--border);margin-bottom:6px;">` : `<div style="width:100%;aspect-ratio:2/3;background:var(--bg-subtle);border:1px solid var(--border);border-radius:6px;margin-bottom:6px;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--fg-faint);padding:8px;">${escExt(w.title)}</div>`}
-              <p style="font-size:11px;font-weight:600;line-height:1.3;margin-bottom:2px;color:var(--fg);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;height:28px;">${escExt(w.title)}</p>
-              ${w.year ? `<p style="font-size:10px;color:var(--fg-faint);">${w.year}</p>` : ''}
+              ${w.cover_url ? `<img src="${w.cover_url}" alt="Cover of ${escExt(w.title)}" loading="lazy" style="width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:6px;border:1px solid var(--border);margin-bottom:6px;">` : `<div style="width:100%;aspect-ratio:2/3;background:var(--bg-subtle);border:1px solid var(--border);border-radius:6px;margin-bottom:6px;display:flex;align-items:center;justify-content:center;font-size:var(--t-label);color:var(--fg-faint);padding:8px;">${escExt(w.title)}</div>`}
+              <p style="font-size:var(--t-label);font-weight:600;line-height:1.3;margin-bottom:2px;color:var(--fg);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;height:28px;">${escExt(w.title)}</p>
+              ${w.year ? `<p style="font-size:var(--t-label);color:var(--fg-faint);">${w.year}</p>` : ''}
             </a>`;
           }).join('')}
         </div>`;
@@ -1814,13 +1823,13 @@ description: "Get an instant AI study guide for any book — deep summary, chara
         <div class="char-detail-box">
           ${d.image_url ? `<img class="char-detail-photo" src="${escExt(d.image_url)}" alt="${escExt(c.name)}">` : ""}
           <div class="char-detail-body">
-            <p style="font-size:14px;font-weight:700;">${escExt(c.name)}${c.role ? ` <span style="font-size:11px;color:var(--fg-faint);font-weight:500;text-transform:capitalize;">· ${escExt(c.role)}</span>` : ""}</p>
-            <p style="font-size:13px;color:var(--fg-muted);line-height:1.65;margin-top:6px;">${escExt(d.description || c.description || "")}</p>
+            <p style="font-size:var(--t-body);font-weight:700;">${escExt(c.name)}${c.role ? ` <span style="font-size:var(--t-label);color:var(--fg-faint);font-weight:500;text-transform:capitalize;">· ${escExt(c.role)}</span>` : ""}</p>
+            <p style="font-size:var(--t-label);color:var(--fg-muted);line-height:1.65;margin-top:6px;">${escExt(d.description || c.description || "")}</p>
             ${factRows ? `<div class="char-facts">${factRows}</div>` : ""}
             <div style="display:flex;align-items:center;gap:14px;margin-top:10px;">
               ${c.slug ? `<button id="char-like-btn" onclick="toggleCharLike('${escExt(c.slug)}')"
-                style="background:var(--bg);border:1px solid var(--border);border-radius:999px;padding:5px 14px;font-size:12px;font-weight:600;color:var(--fg);cursor:pointer;">♡ Favorite</button>` : ""}
-              ${d.wiki_url ? `<a href="${escExt(d.wiki_url)}" target="_blank" rel="noopener nofollow" style="font-size:11px;color:var(--accent);">${d.source === "wikipedia" ? "Wikipedia" : "Wiki page"} →</a>` : ""}
+                style="background:var(--bg);border:1px solid var(--border);border-radius:999px;padding:5px 14px;font-size:var(--t-label);font-weight:600;color:var(--fg);cursor:pointer;">♡ Favorite</button>` : ""}
+              ${d.wiki_url ? `<a href="${escExt(d.wiki_url)}" target="_blank" rel="noopener nofollow" style="font-size:var(--t-label);color:var(--accent);">${d.source === "wikipedia" ? "Wikipedia" : "Wiki page"} →</a>` : ""}
             </div>
           </div>
         </div>`;
@@ -1835,7 +1844,7 @@ description: "Get an instant AI study guide for any book — deep summary, chara
 
     if (__charDetailsCache[i]) { render(__charDetailsCache[i]); return; }
     box.style.display = "block";
-    box.innerHTML = `<div class="char-detail-box"><p style="font-size:12px;color:var(--fg-faint);">Loading ${escExt(c.name)}…</p></div>`;
+    box.innerHTML = `<div class="char-detail-box"><p style="font-size:var(--t-label);color:var(--fg-faint);">Loading ${escExt(c.name)}…</p></div>`;
     try {
       const res = await fetch(`${API}/fandom/character/details`, {
         method: "POST",
@@ -1872,18 +1881,18 @@ description: "Get an instant AI study guide for any book — deep summary, chara
     const myRating = (shelfEntry() || {}).rating || 0;
     const rateRow = `
       <div style="display:flex;align-items:center;gap:8px;margin-top:10px;padding-top:10px;border-top:1px dashed var(--border);">
-        <span style="font-size:12px;color:var(--fg-muted);">Your rating:</span>
+        <span style="font-size:var(--t-label);color:var(--fg-muted);">Your rating:</span>
         <span role="group" aria-label="Rate this book">
           ${[1,2,3,4,5].map(s =>
             `<button onclick="setShelfRating(${s})" aria-label="Rate ${s} star${s>1?"s":""}"
-               style="background:none;border:0;cursor:pointer;font-size:19px;padding:0 2px;line-height:1;color:${s <= myRating ? "#f5a623" : "var(--border-med)"};">★</button>`
+               style="background:none;border:0;cursor:pointer;font-size: var(--t-lead);padding:0 2px;line-height:1;color:${s <= myRating ? "#f5a623" : "var(--border-med)"};">★</button>`
           ).join("")}
         </span>
       </div>`;
     const card = document.getElementById("ratings-card");
     if (!stats) {
       box.innerHTML = `
-        <p style="font-size:12px;color:var(--fg-faint);">No ratings yet — be the first.</p>
+        <p style="font-size:var(--t-label);color:var(--fg-faint);">No ratings yet — be the first.</p>
         ${rateRow}`;
       if (card) card.style.display = "";
       return;
@@ -1892,7 +1901,7 @@ description: "Get an instant AI study guide for any book — deep summary, chara
       const n = stats.dist[s] || 0;
       const pct = Math.round(n / stats.total * 100);
       return `
-        <div style="display:flex;align-items:center;gap:8px;font-size:11px;color:var(--fg-faint);">
+        <div style="display:flex;align-items:center;gap:8px;font-size:var(--t-label);color:var(--fg-faint);">
           <span style="width:22px;flex-shrink:0;">${s}★</span>
           <div style="flex:1;height:6px;background:var(--bg-subtle);border-radius:3px;overflow:hidden;">
             <div style="width:${pct}%;height:100%;background:#f5a623;border-radius:3px;"></div>
@@ -1901,8 +1910,8 @@ description: "Get an instant AI study guide for any book — deep summary, chara
         </div>`;
     }).join("");
     box.innerHTML = `
-      <p style="font-size:13px;font-weight:700;margin-bottom:8px;">
-        <span style="color:#f5a623;font-size:15px;">★</span> ${stats.avg.toFixed(1)} / 5
+      <p style="font-size:var(--t-label);font-weight:700;margin-bottom:8px;">
+        <span style="color:#f5a623;font-size:var(--t-body);">★</span> ${stats.avg.toFixed(1)} / 5
         <span style="font-weight:400;color:var(--fg-faint);">· ${stats.total} reader rating${stats.total > 1 ? "s" : ""} on Litheca</span>
       </p>
       <div style="display:flex;flex-direction:column;gap:4px;max-width:340px;">${bars}</div>
@@ -1934,7 +1943,7 @@ description: "Get an instant AI study guide for any book — deep summary, chara
       snap.forEach(d => items.push(d.data()));
       items.sort((a, b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0));
     } catch (e) {
-      listEl.innerHTML = `<p style="font-size:12px;color:var(--fg-faint);">Couldn't load recommendations right now.</p>`;
+      listEl.innerHTML = `<p style="font-size:var(--t-label);color:var(--fg-faint);">Couldn't load recommendations right now.</p>`;
       return;
     }
 
@@ -1949,33 +1958,33 @@ description: "Get an instant AI study guide for any book — deep summary, chara
                   : `<div style="width:44px;aspect-ratio:2/3;background:var(--bg-subtle);border:1px solid var(--border);border-radius:5px;"></div>`}
               </a>
               <div style="flex:1;min-width:0;">
-                <a href="${link}" style="font-size:13px;font-weight:700;color:var(--fg);text-decoration:none;">${escExt(r.rec_title)}</a>
-                ${r.rec_author ? `<span style="font-size:11px;color:var(--fg-faint);"> · ${escExt(r.rec_author)}</span>` : ''}
-                <p style="font-size:12px;color:var(--fg-muted);line-height:1.55;margin-top:3px;white-space:pre-wrap;">${escExt(r.reason || '')}</p>
-                <p style="font-size:11px;color:var(--fg-faint);margin-top:3px;">— ${escExt(r.name || 'Reader')}</p>
+                <a href="${link}" style="font-size:var(--t-label);font-weight:700;color:var(--fg);text-decoration:none;">${escExt(r.rec_title)}</a>
+                ${r.rec_author ? `<span style="font-size:var(--t-label);color:var(--fg-faint);"> · ${escExt(r.rec_author)}</span>` : ''}
+                <p style="font-size:var(--t-label);color:var(--fg-muted);line-height:1.55;margin-top:3px;white-space:pre-wrap;">${escExt(r.reason || '')}</p>
+                <p style="font-size:var(--t-label);color:var(--fg-faint);margin-top:3px;">— ${escExt(r.name || 'Reader')}</p>
               </div>
             </div>`;
         }).join("") + `</div>`
-      : `<p style="font-size:13px;color:var(--fg-muted);">No recommendations yet — be the first to suggest a similar book.</p>`;
+      : `<p style="font-size:var(--t-label);color:var(--fg-muted);">No recommendations yet — be the first to suggest a similar book.</p>`;
 
     formEl.innerHTML = window.bhUser ? `
       <div style="border-top:1px solid var(--border);padding-top:14px;">
-        <p style="font-size:12px;font-weight:600;margin-bottom:8px;">Recommend a similar book</p>
+        <p style="font-size:var(--t-label);font-weight:600;margin-bottom:8px;">Recommend a similar book</p>
         <div style="position:relative;">
           <input type="text" id="rec-book-input" autocomplete="off" placeholder="Search the book you'd recommend…" oninput="recSearchInput(event)"
-            style="width:100%;box-sizing:border-box;padding:9px 12px;font-size:16px;background:var(--bg-subtle);color:var(--fg);border:1px solid var(--border);border-radius:8px;">
+            style="width:100%;box-sizing:border-box;padding:9px 12px;font-size:var(--t-body);background:var(--bg-subtle);color:var(--fg);border:1px solid var(--border);border-radius:8px;">
           <div id="rec-suggestions" style="position:absolute;top:100%;left:0;right:0;z-index:50;background:var(--bg);border:1px solid var(--border);border-radius:8px;max-height:230px;overflow-y:auto;box-shadow:0 10px 25px rgba(0,0,0,.1);margin-top:5px;display:none;"></div>
         </div>
         <textarea id="rec-reason" maxlength="600" rows="2" placeholder="Why is it similar? (a sentence or two)"
-          style="width:100%;box-sizing:border-box;margin-top:8px;padding:9px 12px;font-size:16px;background:var(--bg-subtle);color:var(--fg);border:1px solid var(--border);border-radius:8px;resize:vertical;"></textarea>
+          style="width:100%;box-sizing:border-box;margin-top:8px;padding:9px 12px;font-size:var(--t-body);background:var(--bg-subtle);color:var(--fg);border:1px solid var(--border);border-radius:8px;resize:vertical;"></textarea>
         <div style="display:flex;align-items:center;gap:10px;margin-top:8px;">
-          <button class="btn-primary" id="rec-post-btn" onclick="postReaderRec()" style="padding:8px 18px;font-size:13px;">Submit recommendation</button>
-          <span id="rec-status" style="font-size:12px;color:var(--fg-faint);"></span>
+          <button class="btn-primary" id="rec-post-btn" onclick="postReaderRec()" style="padding:8px 18px;font-size:var(--t-label);">Submit recommendation</button>
+          <span id="rec-status" style="font-size:var(--t-label);color:var(--fg-faint);"></span>
         </div>
-        <p style="font-size:11px;color:var(--fg-faint);margin-top:6px;">Recommendations appear after review by the site owner.</p>
+        <p style="font-size:var(--t-label);color:var(--fg-faint);margin-top:6px;">Recommendations appear after review by the site owner.</p>
       </div>` : `
       <div style="border-top:1px solid var(--border);padding-top:14px;">
-        <button class="btn-secondary" onclick="bhAuthUI.open('signin')" style="padding:8px 18px;font-size:13px;">Sign in to recommend</button>
+        <button class="btn-secondary" onclick="bhAuthUI.open('signin')" style="padding:8px 18px;font-size:var(--t-label);">Sign in to recommend</button>
       </div>`;
   }
   window.loadReaderRecs = loadReaderRecs;
@@ -1989,7 +1998,7 @@ description: "Get an instant AI study guide for any book — deep summary, chara
     if (q.length < 3) { box.style.display = "none"; return; }
     // Instant feedback — the first uncached /search can take several seconds
     // (multi-source cascade); without this the picker feels dead.
-    box.innerHTML = `<div style="padding:10px 12px;font-size:12px;color:var(--fg-faint);"><span class="spinner" style="width:11px;height:11px;margin-right:6px;display:inline-block;vertical-align:-1px;"></span>Searching…</div>`;
+    box.innerHTML = `<div style="padding:10px 12px;font-size:var(--t-label);color:var(--fg-faint);"><span class="spinner" style="width:11px;height:11px;margin-right:6px;display:inline-block;vertical-align:-1px;"></span>Searching…</div>`;
     box.style.display = "block";
     clearTimeout(__recSearchTimer);
     __recSearchTimer = setTimeout(async () => {
@@ -2000,14 +2009,14 @@ description: "Get an instant AI study guide for any book — deep summary, chara
         if (!res.ok) return;
         const data = await res.json();
         if (!data || !data.length) {
-          box.innerHTML = `<div style="padding:10px 12px;font-size:12px;color:var(--fg-faint);">No matches — try the full title.</div>`;
+          box.innerHTML = `<div style="padding:10px 12px;font-size:var(--t-label);color:var(--fg-faint);">No matches — try the full title.</div>`;
           return;
         }
         window.__recResults = data.slice(0, 6);
         box.innerHTML = window.__recResults.map((b, i) => `
-          <div onclick="recPick(${i})" style="display:flex;align-items:center;gap:10px;padding:8px 12px;cursor:pointer;border-bottom:1px solid var(--border);font-size:13px;">
+          <div onclick="recPick(${i})" style="display:flex;align-items:center;gap:10px;padding:8px 12px;cursor:pointer;border-bottom:1px solid var(--border);font-size:var(--t-label);">
             ${b.cover_url ? `<img src="${escExt(b.cover_url)}" alt="" style="width:28px;height:40px;object-fit:cover;border-radius:3px;border:1px solid var(--border);flex-shrink:0;">` : `<span style="width:28px;height:40px;background:var(--bg-subtle);border:1px solid var(--border);border-radius:3px;flex-shrink:0;"></span>`}
-            <span><span style="font-weight:600;">${escExt(b.title)}</span><br><span style="font-size:11px;color:var(--fg-faint);">${escExt(b.author || 'Unknown')}</span></span>
+            <span><span style="font-weight:600;">${escExt(b.title)}</span><br><span style="font-size:var(--t-label);color:var(--fg-faint);">${escExt(b.author || 'Unknown')}</span></span>
           </div>`).join("");
         box.style.display = "block";
       } catch (e) { /* silent — autocomplete only */ }
@@ -2137,7 +2146,7 @@ description: "Get an instant AI study guide for any book — deep summary, chara
     }
     const slug = card.dataset.bookSlug;
     area.style.display = "block";
-    area.innerHTML = `<p style="font-size:12px;color:var(--fg-faint);">Loading comments…</p>`;
+    area.innerHTML = `<p style="font-size:var(--t-label);color:var(--fg-faint);">Loading comments…</p>`;
 
     const fs = window.bhFs, db = window.bhFirebase.db;
     let items = [];
@@ -2150,7 +2159,7 @@ description: "Get an instant AI study guide for any book — deep summary, chara
       snap.forEach(d => items.push({ id: d.id, ref: d.ref, ...d.data() }));
       items.sort((a, b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0));
     } catch (e) {
-      area.innerHTML = `<p style="font-size:12px;color:var(--fg-faint);">Couldn't load comments right now.</p>`;
+      area.innerHTML = `<p style="font-size:var(--t-label);color:var(--fg-faint);">Couldn't load comments right now.</p>`;
       return;
     }
     window.__bookCommentRefs = items.map(c => c.ref);
@@ -2160,30 +2169,30 @@ description: "Get an instant AI study guide for any book — deep summary, chara
           <div style="border-bottom:1px solid var(--border);padding:10px 0;display:flex;gap:10px;align-items:flex-start;">
             ${window.bhAvatar ? window.bhAvatar(c.name || "Reader") : ""}
             <div style="flex:1;min-width:0;">
-              <p style="font-size:12px;font-weight:700;">${escExt(c.name || "Reader")}
-                <span style="font-weight:400;color:var(--fg-faint);font-size:11px;margin-left:6px;">${c.createdAt ? new Date(c.createdAt.seconds * 1000).toLocaleDateString() : ""}</span></p>
-              <div style="font-size:13px;color:var(--fg-muted);line-height:1.6;margin-top:3px;overflow-wrap:anywhere;">${(window.bhFormat ? window.bhFormat(c.text || "") : escExt(c.text || ""))}</div>
+              <p style="font-size:var(--t-label);font-weight:700;">${escExt(c.name || "Reader")}
+                <span style="font-weight:400;color:var(--fg-faint);font-size:var(--t-label);margin-left:6px;">${c.createdAt ? new Date(c.createdAt.seconds * 1000).toLocaleDateString() : ""}</span></p>
+              <div style="font-size:var(--t-label);color:var(--fg-muted);line-height:1.6;margin-top:3px;overflow-wrap:anywhere;">${(window.bhFormat ? window.bhFormat(c.text || "") : escExt(c.text || ""))}</div>
               <button id="clike-${i}" onclick="toggleCommentLike(${i})" aria-label="Like this comment"
-                style="margin-top:6px;background:none;border:0;cursor:pointer;color:var(--fg-faint);font-size:12px;display:inline-flex;align-items:center;gap:5px;padding:2px 0;">
+                style="margin-top:6px;background:none;border:0;cursor:pointer;color:var(--fg-faint);font-size:var(--t-label);display:inline-flex;align-items:center;gap:5px;padding:2px 0;">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
                 <span id="clike-n-${i}"></span>
               </button>
             </div>
           </div>`).join("")
-      : `<p style="font-size:13px;color:var(--fg-muted);">No comments yet — be the first.</p>`;
+      : `<p style="font-size:var(--t-label);color:var(--fg-muted);">No comments yet — be the first.</p>`;
 
     const formHtml = window.bhUser ? `
       <div style="margin-top:14px;">
         <textarea id="comment-text" maxlength="4000" rows="4" placeholder="Share your thoughts on this book…"
-          style="width:100%;box-sizing:border-box;padding:10px 12px;font-size:16px;background:var(--bg-subtle);color:var(--fg);border:1px solid var(--border);border-radius:8px;resize:vertical;"></textarea>
+          style="width:100%;box-sizing:border-box;padding:10px 12px;font-size:var(--t-body);background:var(--bg-subtle);color:var(--fg);border:1px solid var(--border);border-radius:8px;resize:vertical;"></textarea>
         <div style="display:flex;align-items:center;gap:10px;margin-top:8px;">
-          <button class="btn-primary" onclick="postComment()" id="comment-post-btn" style="padding:8px 18px;font-size:13px;">Post comment</button>
-          <span id="comment-status" style="font-size:12px;color:var(--fg-faint);"></span>
+          <button class="btn-primary" onclick="postComment()" id="comment-post-btn" style="padding:8px 18px;font-size:var(--t-label);">Post comment</button>
+          <span id="comment-status" style="font-size:var(--t-label);color:var(--fg-faint);"></span>
         </div>
-        <p style="font-size:11px;color:var(--fg-faint);margin-top:6px;">Supports <b>**bold**</b>, <i>*italic*</i>, and "- " lists. Comments appear after review by the site owner.</p>
+        <p style="font-size:var(--t-label);color:var(--fg-faint);margin-top:6px;">Supports <b>**bold**</b>, <i>*italic*</i>, and "- " lists. Comments appear after review by the site owner.</p>
       </div>` : `
       <div style="margin-top:14px;">
-        <button class="btn-secondary" onclick="bhAuthUI.open('signin')" style="padding:8px 18px;font-size:13px;">Sign in to comment</button>
+        <button class="btn-secondary" onclick="bhAuthUI.open('signin')" style="padding:8px 18px;font-size:var(--t-label);">Sign in to comment</button>
       </div>`;
 
     area.innerHTML = `<div style="margin-top:10px;">${listHtml}</div>${formHtml}`;
@@ -2374,7 +2383,7 @@ description: "Get an instant AI study guide for any book — deep summary, chara
       if (d.source === "fandom_summary") {
         // Honesty disclosure — recap-grounded, not the original prose.
         const note = document.createElement("p");
-        note.style.cssText = "font-size:11px;color:var(--fg-faint);margin-bottom:10px;";
+        note.style.cssText = "font-size:var(--t-label);color:var(--fg-faint);margin-bottom:10px;";
         note.textContent = "Quiz based on the story wiki's chapter summaries, not the original text.";
         area.appendChild(note);
       }
@@ -2423,7 +2432,7 @@ description: "Get an instant AI study guide for any book — deep summary, chara
             final.innerHTML = `<p class="quiz-q">Final score: ${correct} / ${questions.length} ${correct === questions.length ? "— perfect!" : correct >= questions.length / 2 ? "— well done" : "— keep reading!"}</p>`;
             const again = document.createElement("button");
             again.className = "btn-primary";
-            again.style.cssText = "padding:8px 20px;font-size:13px;";
+            again.style.cssText = "padding:8px 20px;font-size:var(--t-label);";
             again.textContent = "New quiz";
             again.addEventListener("click", () => {
               const startBtn = document.getElementById("quiz-start-btn");
@@ -2458,7 +2467,7 @@ description: "Get an instant AI study guide for any book — deep summary, chara
     result.innerHTML = `
       <div style="margin-bottom:1.5rem;">
         <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px;">
-          <h3 style="font-size:15px;font-weight:600;color:var(--fg);margin:0;">Select the exact book you want summarized:</h3>
+          <h3 style="font-size:var(--t-body);font-weight:600;color:var(--fg);margin:0;">Select the exact book you want summarized:</h3>
           <div class="search-sort-bar">
             <label for="search-sort-field">Sort by</label>
             <select id="search-sort-field" onchange="setSearchSort(this.value)">${sortOptions}</select>
@@ -2490,10 +2499,10 @@ description: "Get an instant AI study guide for any book — deep summary, chara
                 : ` onclick="event.preventDefault(); summarizeBook('${titleEscaped}', '${authorEscaped}', true, false, '${b.isbn_13 || b.isbn_10 || ''}', '${b.google_id || ''}', '${b.openlibrary_id || ''}')"`;
               return `
               <a href="${url}" class="similar-book-card"${clickAttr} style="text-align:center;cursor:pointer;border:1px solid var(--border);border-radius:6px;padding:12px;background:var(--bg-subtle);display:flex;flex-direction:column;align-items:center;height:100%;box-sizing:border-box;text-decoration:none;color:inherit;">
-                ${b.cover_url ? `<img src="${b.cover_url}" alt="Cover" style="width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:4px;margin-bottom:8px;border:1px solid var(--border);">` : `<div style="width:100%;aspect-ratio:2/3;background:var(--bg);border:1px solid var(--border);border-radius:4px;margin-bottom:8px;display:flex;align-items:center;justify-content:center;color:var(--fg-faint);font-size:12px;">No cover</div>`}
-                <p style="font-size:12px;font-weight:600;line-height:1.3;margin-bottom:4px;color:var(--fg);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis;width:100%;height:32px;">${b.title}</p>
-                <p style="font-size:11px;color:var(--fg-faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:100%;margin-top:auto;">${b.author || "Unknown"}</p>
-                ${b.published_year ? `<span style="font-size:10px;color:var(--fg-faint);background:var(--bg);padding:1px 6px;border-radius:999px;border:1px solid var(--border);margin-top:6px;display:inline-block;">${b.published_year}</span>` : ""}
+                ${b.cover_url ? `<img src="${b.cover_url}" alt="Cover" style="width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:4px;margin-bottom:8px;border:1px solid var(--border);">` : `<div style="width:100%;aspect-ratio:2/3;background:var(--bg);border:1px solid var(--border);border-radius:4px;margin-bottom:8px;display:flex;align-items:center;justify-content:center;color:var(--fg-faint);font-size:var(--t-label);">No cover</div>`}
+                <p style="font-size:var(--t-label);font-weight:600;line-height:1.3;margin-bottom:4px;color:var(--fg);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis;width:100%;height:32px;">${b.title}</p>
+                <p style="font-size:var(--t-label);color:var(--fg-faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:100%;margin-top:auto;">${b.author || "Unknown"}</p>
+                ${b.published_year ? `<span style="font-size:var(--t-label);color:var(--fg-faint);background:var(--bg);padding:1px 6px;border-radius:999px;border:1px solid var(--border);margin-top:6px;display:inline-block;">${b.published_year}</span>` : ""}
               </a>
             `;
             })
@@ -2501,18 +2510,18 @@ description: "Get an instant AI study guide for any book — deep summary, chara
         </div>
 
         <div class="search-pagination" style="display:flex;justify-content:center;align-items:center;gap:12px;margin-top:24px;flex-wrap:wrap;">
-          <button class="btn-secondary" onclick="changeSearchResultsPage(${pageIndex - 1})" ${pageIndex === 0 ? 'disabled' : ''} style="padding: 6px 12px;font-size:13px;border-radius:4px;">
+          <button class="btn-secondary" onclick="changeSearchResultsPage(${pageIndex - 1})" ${pageIndex === 0 ? 'disabled' : ''} style="padding: 6px 12px;font-size:var(--t-label);border-radius:4px;">
             &larr; Previous
           </button>
           
-          <span style="font-size:13px;color:var(--fg-muted);">Page ${pageIndex + 1} of ${totalPages || 1}</span>
+          <span style="font-size:var(--t-label);color:var(--fg-muted);">Page ${pageIndex + 1} of ${totalPages || 1}</span>
           
-          <button class="btn-secondary" onclick="changeSearchResultsPage(${pageIndex + 1})" ${pageIndex >= totalPages - 1 ? 'disabled' : ''} style="padding: 6px 12px;font-size:13px;border-radius:4px;">
+          <button class="btn-secondary" onclick="changeSearchResultsPage(${pageIndex + 1})" ${pageIndex >= totalPages - 1 ? 'disabled' : ''} style="padding: 6px 12px;font-size:var(--t-label);border-radius:4px;">
             Next &rarr;
           </button>
           
           ${hasMoreFromServer ? `
-            <button class="btn-primary" id="load-more-search-btn" onclick="loadMoreSearchResults()" style="padding: 6px 12px;font-size:13px;border-radius:4px;margin-left:8px;">
+            <button class="btn-primary" id="load-more-search-btn" onclick="loadMoreSearchResults()" style="padding: 6px 12px;font-size:var(--t-label);border-radius:4px;margin-left:8px;">
               Load More Results
             </button>
           ` : ''}
@@ -2549,7 +2558,7 @@ description: "Get an instant AI study guide for any book — deep summary, chara
       
       if (!newResults || newResults.length === 0) {
         if (btn) {
-          btn.outerHTML = '<span style="font-size:13px;color:var(--fg-faint);margin-left:8px;">No more results found</span>';
+          btn.outerHTML = '<span style="font-size:var(--t-label);color:var(--fg-faint);margin-left:8px;">No more results found</span>';
         }
         return;
       }

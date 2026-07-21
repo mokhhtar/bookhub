@@ -103,7 +103,8 @@
     const cur = audioQueue[Math.min(audioIdx, audioQueue.length - 1)];
     const pct = Math.round(audioIdx / audioQueue.length * 100);
     if (ui.status) ui.status.textContent = `${cur.section} · ${pct}%`;
-    if (ui.fill) ui.fill.style.width = pct + "%";
+    // scaleX, not width: animating width forces a layout pass per frame.
+    if (ui.fill) ui.fill.style.transform = "scaleX(" + (pct / 100) + ")";
     const ds = document.getElementById("dock-status");
     if (ds) ds.textContent = `${cur.section} · ${pct}%`;
   }
@@ -261,7 +262,7 @@
     setPlayIcons(false);
     if (ui.wave) ui.wave.classList.remove("playing");
     if (ui.status) ui.status.textContent = "Click play to listen";
-    if (ui.fill) ui.fill.style.width = "0%";
+    if (ui.fill) ui.fill.style.transform = "scaleX(0)";
   }
 
   // Speed change keeps the position: re-speak the CURRENT chunk at the new

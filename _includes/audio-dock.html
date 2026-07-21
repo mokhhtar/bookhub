@@ -31,18 +31,25 @@ summary.html AND _layouts/book.html (replica rule). {% endcomment %}
 
   .audio-speed-selector {
     appearance: none; -webkit-appearance: none;
-    background: var(--bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23ff5b4f' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 10px center;
+    background: var(--bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%232F4A3C' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 10px center;
     background-size: 10px;
     padding: 6px 28px 6px 12px;
     border: 1px solid var(--border);
     border-radius: 8px;
-    font-size: 12px; font-weight: 600;
+    font-size: var(--t-label); font-weight: 600;
     color: var(--fg); cursor: pointer; outline: none;
   }
 
   .audio-speed-selector:hover { border-color: var(--accent); }
   .sound-wave { display: flex; align-items: flex-end; gap: 3px; height: 20px; }
-  .wave-bar { width: 3px; height: 4px; background: var(--accent); border-radius: 2px; transition: height 0.15s ease; }
+  /* Full height + scaleY rather than an animated height: this loops
+     forever while audio plays, and animating height relayouts the dock on
+     every frame of all five bars. scaleY is composited. */
+  .wave-bar {
+    width: 3px; height: 20px; background: var(--accent); border-radius: 2px;
+    transform: scaleY(0.2); transform-origin: bottom;
+    transition: transform 0.15s ease;
+  }
 
   .sound-wave.playing .wave-bar { animation: waveAnimation 1.2s ease-in-out infinite alternate; }
   .sound-wave.playing .wave-bar:nth-child(1) { animation-delay: 0.1s; }
@@ -51,7 +58,7 @@ summary.html AND _layouts/book.html (replica rule). {% endcomment %}
   .sound-wave.playing .wave-bar:nth-child(4) { animation-delay: 0.2s; }
   .sound-wave.playing .wave-bar:nth-child(5) { animation-delay: 0.4s; }
 
-  @keyframes waveAnimation { 0% { height: 4px; } 100% { height: 20px; } }
+  @keyframes waveAnimation { 0% { transform: scaleY(0.2); } 100% { transform: scaleY(1); } }
   @keyframes fadeInUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
 
@@ -79,7 +86,7 @@ summary.html AND _layouts/book.html (replica rule). {% endcomment %}
   }
   .audio-dock .dock-main:hover { background: var(--fg); opacity: .88; }
   .dock-status {
-    font-size: 11px; color: var(--fg-faint); max-width: 130px;
+    font-size: var(--t-label); color: var(--fg-faint); max-width: 130px;
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     padding: 0 6px;
   }
@@ -90,17 +97,17 @@ summary.html AND _layouts/book.html (replica rule). {% endcomment %}
     box-shadow: 0 14px 44px rgba(0, 0, 0, 0.25); display: none;
   }
   .audio-settings.open { display: block; }
-  .aset-label { font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--fg-faint); margin: 10px 0 6px; }
+  .aset-label { font-size: var(--t-label); font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--fg-faint); margin: 10px 0 6px; }
   .aset-label:first-child { margin-top: 0; }
   .aset-row { display: flex; flex-wrap: wrap; gap: 6px; }
   .aset-pill {
-    font-size: 12px; font-weight: 600; color: var(--fg-muted);
+    font-size: var(--t-label); font-weight: 600; color: var(--fg-muted);
     border: 1px solid var(--border-med); background: var(--bg);
     border-radius: 999px; padding: 5px 12px; cursor: pointer;
   }
   .aset-pill.on { background: var(--fg); color: var(--bg); border-color: var(--fg); }
   .aset-voice {
-    width: 100%; font-size: 12px; padding: 7px 8px; border-radius: 8px;
+    width: 100%; font-size: var(--t-label); padding: 7px 8px; border-radius: 8px;
     border: 1px solid var(--border); background: var(--bg-subtle); color: var(--fg);
   }
   .sec-play {
