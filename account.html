@@ -90,34 +90,34 @@ sitemap: false
   .acct-empty a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
 
   /* Favourite-character cards */
-  .acct-char-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 8px; }
-  .acct-char-card {
+  .acct-fav-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 8px; }
+  .acct-fav-card {
     position: relative; display: flex; flex-direction: column; align-items: center; gap: 6px;
     padding: 14px 8px 12px; text-align: center; text-decoration: none; color: var(--fg);
     border: 1px solid var(--border); border-radius: var(--r); background: var(--bg);
     transition: border-color .18s var(--ease-out);
   }
-  .acct-char-card:hover { border-color: var(--border-med); text-decoration: none; }
-  .acct-char-avatar {
+  .acct-fav-card:hover { border-color: var(--border-med); text-decoration: none; }
+  .acct-fav-avatar {
     width: 48px; height: 48px; border-radius: 50%; overflow: hidden;
     background: var(--bg-subtle); border: 1px solid var(--border);
     display: flex; align-items: center; justify-content: center;
     font-size: var(--ui-head); font-weight: 600; color: var(--fg-faint);
   }
-  .acct-char-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
-  .acct-char-name { font-size: var(--ui-sm); font-weight: 600; line-height: 1.25; }
-  .acct-char-book { font-size: var(--ui-sm); color: var(--fg-faint); }
-  .acct-char-x {
+  .acct-fav-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+  .acct-fav-name { font-size: var(--ui-sm); font-weight: 600; line-height: 1.25; }
+  .acct-fav-sub { font-size: var(--ui-sm); color: var(--fg-faint); }
+  .acct-fav-x {
     position: absolute; top: 5px; right: 5px; width: 22px; height: 22px;
     border: 0; border-radius: 50%; background: transparent; color: var(--fg-faint);
     font-size: var(--ui-sm); line-height: 1; cursor: pointer;
     opacity: 0; transition: opacity .18s var(--ease-out), color .18s var(--ease-out);
   }
   /* Revealed on hover/focus, but never hidden from keyboards or touch. */
-  .acct-char-card:hover .acct-char-x,
-  .acct-char-x:focus-visible { opacity: 1; }
-  @media (hover: none) { .acct-char-x { opacity: 1; } }
-  .acct-char-x:hover, .acct-char-x:focus-visible { color: var(--danger); background: var(--danger-bg); }
+  .acct-fav-card:hover .acct-fav-x,
+  .acct-fav-x:focus-visible { opacity: 1; }
+  @media (hover: none) { .acct-fav-x { opacity: 1; } }
+  .acct-fav-x:hover, .acct-fav-x:focus-visible { color: var(--danger); background: var(--danger-bg); }
 
   /* Recently viewed / rated rows. Ruled, not boxed: a list of six books
      inside a panel does not need six more borders around it. */
@@ -371,14 +371,18 @@ sitemap: false
       <!-- Favorites tab -->
       <div class="acct-panel" id="acct-panel-favorites">
         <div class="acct-grid">
-          <div class="acct-section acct-section-wide">
+          {%- comment -%} Not acct-section-wide: forcing both to full width
+          put a single small card in a panel the width of the page. They
+          sit side by side now and the auto-fit grid still gives one of
+          them the full row if the other is empty. {%- endcomment -%}
+          <div class="acct-section">
             <h2 class="acct-h2">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
               My favorite characters
             </h2>
             <div id="acct-favchars" class="acct-empty">Loading…</div>
           </div>
-          <div class="acct-section acct-section-wide">
+          <div class="acct-section">
             <h2 class="acct-h2">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
               My favorite authors
@@ -786,14 +790,18 @@ sitemap: false
   // (buttons hidden — refs aren't known yet; the live pass re-renders).
   function paintFavChars(chars, interactive) {
     const box = $("acct-favchars");
-    if (!chars.length) { box.textContent = "No favorites yet — open any character card and tap Favorite."; return; }
+    if (!chars.length) {
+      box.classList.add("acct-empty");
+      box.innerHTML = "Open any character on a book page and tap Favorite, and they'll collect here.";
+      return;
+    }
     box.classList.remove("acct-empty");
-    box.innerHTML = `<div class="acct-char-grid">` + chars.map((c, i) => `
-      <a class="acct-char-card" href="{{ '/characters/' | relative_url }}${esc(c.slug)}/">
-        ${interactive ? `<button class="acct-char-x" title="Remove" onclick="event.preventDefault();acctUnlike(${i})">✕</button>` : ""}
-        <span class="acct-char-avatar">${c.image_url ? `<img src="${esc(c.image_url)}" alt="">` : esc((c.name || c.slug).slice(0, 1).toUpperCase())}</span>
-        <span class="acct-char-name">${esc(c.name || pretty(c.slug))}</span>
-        ${c.book_title ? `<span class="acct-char-book">${esc(c.book_title)}</span>` : ""}
+    box.innerHTML = `<div class="acct-fav-grid">` + chars.map((c, i) => `
+      <a class="acct-fav-card" href="{{ '/characters/' | relative_url }}${esc(c.slug)}/">
+        ${interactive ? `<button class="acct-fav-x" title="Remove" onclick="event.preventDefault();acctUnlike(${i})">✕</button>` : ""}
+        <span class="acct-fav-avatar">${c.image_url ? `<img src="${esc(c.image_url)}" alt="">` : esc((c.name || c.slug).slice(0, 1).toUpperCase())}</span>
+        <span class="acct-fav-name">${esc(c.name || pretty(c.slug))}</span>
+        ${c.book_title ? `<span class="acct-fav-sub">${esc(c.book_title)}</span>` : ""}
       </a>`).join("") + `</div>`;
   }
   window.acctUnlike = async function (i) {
@@ -802,15 +810,26 @@ sitemap: false
     try { await window.bhFs.deleteDoc(ref); loadFavChars(window.bhUser); } catch (e) { console.error(e); }
   };
 
+  /* Authors used to render as inline 999px pills with their own inline
+     styles and their own little round remove button, while characters
+     rendered as cards — two vocabularies for the same idea ("a person I
+     follow"), on the same tab. They share the card now. */
   function paintFavAuthors(authors, interactive) {
     const box = $("acct-favauthors");
-    if (!authors.length) { box.textContent = "No favorite authors yet — tap the heart next to any author's name."; return; }
+    if (!authors.length) {
+      box.classList.add("acct-empty");
+      box.innerHTML = "Tap the heart beside an author's name on any book or author page, and they'll collect here.";
+      return;
+    }
     box.classList.remove("acct-empty");
-    box.innerHTML = authors.map((a, i) => `
-      <span style="display:inline-flex;align-items:center;gap:6px;border:1px solid var(--border);border-radius:999px;padding:6px 8px 6px 14px;margin:0 6px 8px 0;background:var(--bg);">
-        <a href="{{ '/authors/' | relative_url }}${esc(a.slug)}/" style="color:var(--fg);text-decoration:none;font-weight:600;font-size:var(--ui-sm);">${esc(a.name || pretty(a.slug))}</a>
-        ${interactive ? `<button onclick="acctUnlikeAuthor(${i})" title="Remove" style="border:0;background:var(--bg-subtle);border-radius:50%;width:20px;height:20px;cursor:pointer;color:var(--fg-faint);font-size:var(--ui-sm);line-height:1;">✕</button>` : ""}
-      </span>`).join("");
+    box.innerHTML = `<div class="acct-fav-grid">` + authors.map((a, i) => {
+      const label = a.name || pretty(a.slug);
+      return `<a class="acct-fav-card" href="{{ '/authors/' | relative_url }}${esc(a.slug)}/">
+        ${interactive ? `<button class="acct-fav-x" title="Remove" aria-label="Remove ${esc(label)} from favorites" onclick="event.preventDefault();acctUnlikeAuthor(${i})">✕</button>` : ""}
+        <span class="acct-fav-avatar">${a.photo_url ? `<img src="${esc(a.photo_url)}" alt="" onerror="bhCoverFail(this)">` : esc(label.slice(0, 1).toUpperCase())}</span>
+        <span class="acct-fav-name">${esc(label)}</span>
+      </a>`;
+    }).join("") + `</div>`;
   }
   window.acctUnlikeAuthor = async function (i) {
     const ref = (window.__favAuthorRefs || [])[i];
