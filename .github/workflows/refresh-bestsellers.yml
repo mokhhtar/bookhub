@@ -67,10 +67,41 @@ jobs:
                   "isbn_13": b.get("isbn_13") or "",
               }
 
+          # One book can top several lists at once — Fiction and the
+          # Combined list, or the print and the audio edition — so the raw
+          # feed repeats it once per list. Merge by the WORK (title+author),
+          # not the edition: an audio ISBN differs from the print ISBN, but
+          # both lead to the same summary, so keying on ISBN would still
+          # show the same title twice. One card per book, keeping every list
+          # it leads and its longest run.
+          import re as _re
+          def workkey(b):
+              t = _re.sub(r"[^a-z0-9]+", "", b["title"].lower())
+              a = _re.sub(r"[^a-z0-9]+", "", b["author"].lower())
+              return t + "|" + a
+          merged = {}
+          order = []
+          for raw in books:
+              b = clean(raw)
+              if not b["title"]:
+                  continue
+              key = workkey(b)
+              if key not in merged:
+                  merged[key] = {**b, "list_names": [b["list_name"]] if b["list_name"] else []}
+                  order.append(key)
+              else:
+                  m = merged[key]
+                  if b["list_name"] and b["list_name"] not in m["list_names"]:
+                      m["list_names"].append(b["list_name"])
+                  m["weeks_on_list"] = max(m["weeks_on_list"], b["weeks_on_list"])
+                  # Prefer a row that actually has a cover.
+                  if not m["book_image"] and b["book_image"]:
+                      m["book_image"] = b["book_image"]
+
           out = {
               "updated": datetime.datetime.now(datetime.timezone.utc)
                           .strftime("%Y-%m-%d"),
-              "books": [clean(b) for b in books if (b.get("title") or "").strip()],
+              "books": [merged[k] for k in order],
           }
 
           # Hand-rolled YAML: no PyYAML on a bare runner, and the shape is
@@ -88,10 +119,12 @@ jobs:
           for b in out["books"]:
               lines.append(f"  - title: {q(b['title'])}")
               lines.append(f"    author: {q(b['author'])}")
-              lines.append(f"    list_name: {q(b['list_name'])}")
               lines.append(f"    weeks_on_list: {b['weeks_on_list']}")
               lines.append(f"    book_image: {q(b['book_image'])}")
               lines.append(f"    isbn_13: {q(b['isbn_13'])}")
+              lines.append(f"    list_names:")
+              for ln in b["list_names"]:
+                  lines.append(f"      - {q(ln)}")
 
           pathlib.Path("_data").mkdir(exist_ok=True)
           pathlib.Path("_data/nyt_leaders.yml").write_text(

@@ -5,115 +5,104 @@ updated: "2026-07-21"
 books:
   - title: "THEO OF GOLDEN"
     author: "Allen Levi"
-    list_name: "Combined Print & E-Book Fiction"
-    weeks_on_list: 32
-    book_image: "https://static01.nyt.com/bestsellers/images/9781668236512.jpg"
-    isbn_13: "9781668236512"
-  - title: "REGIME CHANGE"
-    author: "Maggie Haberman and Jonathan Swan"
-    list_name: "Combined Print & E-Book Nonfiction"
-    weeks_on_list: 3
-    book_image: "https://static01.nyt.com/bestsellers/images/9781668067246.jpg"
-    isbn_13: "9781668067246"
-  - title: "YESTERYEAR"
-    author: "Caro Claire Burke"
-    list_name: "Hardcover Fiction"
-    weeks_on_list: 14
-    book_image: "https://static01.nyt.com/bestsellers/images/9780593804216.jpg"
-    isbn_13: "9780593804216"
-  - title: "REGIME CHANGE"
-    author: "Maggie Haberman and Jonathan Swan"
-    list_name: "Hardcover Nonfiction"
-    weeks_on_list: 3
-    book_image: "https://static01.nyt.com/bestsellers/images/9781668067246.jpg"
-    isbn_13: "9781668067246"
-  - title: "THEO OF GOLDEN"
-    author: "Allen Levi"
-    list_name: "Paperback Trade Fiction"
     weeks_on_list: 33
     book_image: "https://static01.nyt.com/bestsellers/images/9781668236512.jpg"
     isbn_13: "9781668236512"
+    list_names:
+      - "Combined Print & E-Book Fiction"
+      - "Paperback Trade Fiction"
+  - title: "REGIME CHANGE"
+    author: "Maggie Haberman and Jonathan Swan"
+    weeks_on_list: 3
+    book_image: "https://static01.nyt.com/bestsellers/images/9781668067246.jpg"
+    isbn_13: "9781668067246"
+    list_names:
+      - "Combined Print & E-Book Nonfiction"
+      - "Hardcover Nonfiction"
+      - "Audio Nonfiction"
+  - title: "YESTERYEAR"
+    author: "Caro Claire Burke"
+    weeks_on_list: 14
+    book_image: "https://static01.nyt.com/bestsellers/images/9780593804216.jpg"
+    isbn_13: "9780593804216"
+    list_names:
+      - "Hardcover Fiction"
   - title: "THE LET THEM THEORY"
     author: "Mel Robbins"
-    list_name: "Advice, How-To & Miscellaneous"
     weeks_on_list: 81
     book_image: "https://static01.nyt.com/bestsellers/images/9781401971366.jpg"
     isbn_13: "9781401971366"
+    list_names:
+      - "Advice, How-To & Miscellaneous"
+      - "Audio Advice, How-To & Misc"
+      - "Business"
   - title: "WONDER"
     author: "R.J. Palacio"
-    list_name: "Children’s Middle Grade Hardcover"
     weeks_on_list: 551
     book_image: "https://static01.nyt.com/bestsellers/images/9780375869020.jpg"
     isbn_13: "9780375869020"
+    list_names:
+      - "Children’s Middle Grade Hardcover"
   - title: "SING THE 50 UNITED STATES!"
     author: "Dr"
-    list_name: "Children’s Picture Books"
     weeks_on_list: 6
     book_image: "https://static01.nyt.com/bestsellers/images/9798217228560.jpg"
     isbn_13: "9798217228560"
+    list_names:
+      - "Children’s Picture Books"
   - title: "THE HUNGER GAMES"
     author: "Suzanne Collins"
-    list_name: "Children’s & Young Adult Series"
     weeks_on_list: 431
     book_image: "https://static01.nyt.com/bestsellers/images/9780439023528.jpg"
     isbn_13: "9780439023528"
+    list_names:
+      - "Children’s & Young Adult Series"
   - title: "THE ESCAPE GAME"
     author: "Marissa Meyer and Tamara Moss"
-    list_name: "Young Adult Hardcover"
     weeks_on_list: 14
     book_image: "https://static01.nyt.com/bestsellers/images/9798217006120.jpg"
     isbn_13: "9798217006120"
-  - title: "THE LET THEM THEORY"
-    author: "Mel Robbins"
-    list_name: "Audio Advice, How-To & Misc"
-    weeks_on_list: 4
-    book_image: "https://static01.nyt.com/bestsellers/images/9798350429084.jpg"
-    isbn_13: "9798350429084"
+    list_names:
+      - "Young Adult Hardcover"
   - title: "HARRY POTTER AND THE DEATHLY HALLOWS (FULL-CAST EDITION)"
     author: "J.K. Rowling"
-    list_name: "Audio Children's"
     weeks_on_list: 2
     book_image: "https://static01.nyt.com/bestsellers/images/9781789392920.jpg"
     isbn_13: "9781789392920"
+    list_names:
+      - "Audio Children's"
   - title: "THE CALAMITY CLUB"
     author: "Kathryn Stockett"
-    list_name: "Audio Fiction"
     weeks_on_list: 2
     book_image: "https://static01.nyt.com/bestsellers/images/9798347810307.jpg"
     isbn_13: "9798347810307"
-  - title: "REGIME CHANGE"
-    author: "Maggie Haberman and Jonathan Swan"
-    list_name: "Audio Nonfiction"
-    weeks_on_list: 1
-    book_image: "https://static01.nyt.com/bestsellers/images/9781668113660.jpg"
-    isbn_13: "9781668113660"
-  - title: "THE LET THEM THEORY"
-    author: "Mel Robbins"
-    list_name: "Business"
-    weeks_on_list: 19
-    book_image: "https://static01.nyt.com/bestsellers/images/9781401971366.jpg"
-    isbn_13: "9781401971366"
+    list_names:
+      - "Audio Fiction"
   - title: "INVESTIGATORS: WEATHER OR NOT"
     author: "John Patrick Green"
-    list_name: "Graphic Books and Manga"
     weeks_on_list: 1
     book_image: "https://static01.nyt.com/bestsellers/images/9781250357915.jpg"
     isbn_13: "9781250357915"
+    list_names:
+      - "Graphic Books and Manga"
   - title: "THE SCHOOL FOR THIEVES"
     author: "Peter Burns"
-    list_name: "Middle Grade Paperback"
     weeks_on_list: 1
     book_image: "https://static01.nyt.com/bestsellers/images/9781665982290.jpg"
     isbn_13: "9781665982290"
+    list_names:
+      - "Middle Grade Paperback"
   - title: "THE BODY KEEPS THE SCORE"
     author: "Bessel van der Kolk"
-    list_name: "Paperback Nonfiction"
     weeks_on_list: 4
     book_image: "https://static01.nyt.com/bestsellers/images/9780143127741.jpg"
     isbn_13: "9780143127741"
+    list_names:
+      - "Paperback Nonfiction"
   - title: "BETTER THAN THE MOVIES"
     author: "Lynn Painter"
-    list_name: "Young Adult Paperback"
     weeks_on_list: 44
     book_image: "https://static01.nyt.com/bestsellers/images/9781534467637.jpg"
     isbn_13: "9781534467637"
+    list_names:
+      - "Young Adult Paperback"

@@ -76,11 +76,14 @@ permalink: /bestsellers/
             {% else %}
               <div class="bs-cover-empty">{{ b.title }}</div>
             {% endif %}
-            <span class="bs-list-name">{{ b.list_name }}</span>
+            {%- comment -%} A book leading more than one list shows all of
+            them here rather than appearing as several identical cards.
+            {%- endcomment -%}
+            <span class="bs-list-name">{{ b.list_names | join: " · " }}</span>
             <span class="bs-title">{{ b.title }}</span>
             <span class="bs-author">{{ b.author }}</span>
             {% if b.weeks_on_list > 0 %}
-              <span class="bs-weeks">{{ b.weeks_on_list }} week{% if b.weeks_on_list > 1 %}s{% endif %} on this list</span>
+              <span class="bs-weeks">{{ b.weeks_on_list }} week{% if b.weeks_on_list > 1 %}s{% endif %} on {% if b.list_names.size > 1 %}its top list{% else %}this list{% endif %}</span>
             {% endif %}
           </a>
         {%- endfor -%}
@@ -112,8 +115,34 @@ permalink: /bestsellers/
     .replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;").replaceAll("'", "&#39;");
 
-  function render(books) {
-    if (!books.length) { fail(); return; }
+  // Mirror the workflow's merge: /nyt/leaders returns one row per list, so
+  // a book topping several lists (or a print + audio edition) arrives
+  // repeated. Collapse by the work — normalised title+author — keeping
+  // every list it leads and its longest run, so a live refresh produces
+  // the same de-duplicated cards the server rendered.
+  function mergeByWork(rows) {
+    const key = (b) =>
+      String(b.title || "").toLowerCase().replace(/[^a-z0-9]+/g, "") + "|" +
+      String(b.author || "").toLowerCase().replace(/[^a-z0-9]+/g, "");
+    const map = new Map();
+    for (const b of rows) {
+      if (!b.title) continue;
+      const k = key(b);
+      if (!map.has(k)) {
+        map.set(k, { ...b, list_names: b.list_name ? [b.list_name] : [] });
+      } else {
+        const m = map.get(k);
+        if (b.list_name && !m.list_names.includes(b.list_name)) m.list_names.push(b.list_name);
+        m.weeks_on_list = Math.max(m.weeks_on_list || 0, b.weeks_on_list || 0);
+        if (!m.book_image && b.book_image) m.book_image = b.book_image;
+      }
+    }
+    return [...map.values()];
+  }
+
+  function render(rawBooks) {
+    if (!rawBooks.length) { fail(); return; }
+    const books = mergeByWork(rawBooks);
     grid.innerHTML = books.map((b) => {
       const p = new URLSearchParams({ q: b.title || "", direct: "true" });
       if (b.author) p.set("author", b.author);
@@ -121,12 +150,15 @@ permalink: /bestsellers/
       const cover = b.book_image
         ? `<img src="${esc(b.book_image)}" alt="Cover of ${esc(b.title)}" loading="lazy">`
         : `<div class="bs-cover-empty">${esc(b.title)}</div>`;
+      const lists = (b.list_names && b.list_names.length ? b.list_names : [b.list_name])
+        .filter(Boolean).map(esc).join(" · ");
+      const multi = b.list_names && b.list_names.length > 1;
       return `<a href="${SUMMARY_PATH}?${p.toString()}" class="bs-card">
         ${cover}
-        <span class="bs-list-name">${esc(b.list_name)}</span>
+        <span class="bs-list-name">${lists}</span>
         <span class="bs-title">${esc(b.title)}</span>
         <span class="bs-author">${esc(b.author)}</span>
-        ${b.weeks_on_list ? `<span class="bs-weeks">${b.weeks_on_list} week${b.weeks_on_list > 1 ? "s" : ""} on this list</span>` : ""}
+        ${b.weeks_on_list ? `<span class="bs-weeks">${b.weeks_on_list} week${b.weeks_on_list > 1 ? "s" : ""} on ${multi ? "its top list" : "this list"}</span>` : ""}
       </a>`;
     }).join("");
   }
