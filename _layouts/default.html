@@ -35,7 +35,13 @@
   <!-- Inter from Google Fonts — closest free match to system-ui clarity -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  {%- comment -%} Literata carries reading text and headings (it was drawn for
+  Google Play Books, so a book platform is its native register); Archivo
+  carries UI, labels and numerals. Inter was removed deliberately: it is the
+  single most legible "AI default" typeface and it made the whole site read as
+  generic. Both families ship an italic — the pull-quote depends on Literata's.
+  {%- endcomment -%}
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;0,7..72,700;1,7..72,400;1,7..72,600&display=swap" rel="stylesheet">
 
   <!-- Firebase auth restores ~1-2s after load; every ms of connection setup
        shows up as "am I signed in?" lag. Warm the connections and fetch the

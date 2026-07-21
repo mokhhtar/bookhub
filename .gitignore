@@ -2,3 +2,13 @@
 /_site
 /_site
 /_site
+
+# Local design tooling (impeccable / taste-skill / ui-ux-pro-max).
+# Third-party skill installs, ~5MB, machine-local — not project source.
+/.claude
+/.agents
+/skills-lock.json
+
+# Local preview override pointing the front end at the CORS proxy.
+# Must never ship: it would send production traffic to localhost.
+/_config.local.yml

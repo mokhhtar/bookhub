@@ -1,46 +1,29 @@
 ---
 layout: default
 title: "AI Reading Tools for Serious Readers"
-description: "Six free AI-powered tools for readers — instant book summaries, personalized recommendations, PDF chat, comparisons, and more."
+description: "Free AI book guides that stay grounded: deep summaries, characters, themes, real quotes, and quizzes verified against the source text."
 ---
 
 <!-- ═══════════════════════════════════════
      HERO
+     Was: a 4-metric status strip, a warm gradient, tick-mark feature
+     pills, and a scrolling cover marquee, all stacked in one fold.
+     Now: the thesis, the search (the primary CTA), and a still shelf
+     of real covers carrying the "we have your book" signal the
+     marquee used to carry.
 ═══════════════════════════════════════ -->
 <section class="hero" aria-labelledby="hero-heading">
-  <div class="container">
-
-    <!-- Status strip — Direction B signature -->
-    <div class="hero-stats" role="list" aria-label="Platform stats">
-      <div class="hero-stat" role="listitem">
-        <span class="hero-stat-val">6</span>
-        <span class="hero-stat-label">Free tools</span>
-      </div>
-      <div class="hero-stat-divider" aria-hidden="true"></div>
-      <div class="hero-stat" role="listitem">
-        <span class="hero-stat-val">20M<em>+</em></span>
-        <span class="hero-stat-label">Books searchable</span>
-      </div>
-      <div class="hero-stat-divider" aria-hidden="true"></div>
-      <div class="hero-stat" role="listitem">
-        <span class="hero-stat-val">100<em>%</em></span>
-        <span class="hero-stat-label">Quiz quotes verified</span>
-      </div>
-      <div class="hero-stat-divider" aria-hidden="true"></div>
-      <div class="hero-stat" role="listitem">
-        <span class="hero-stat-val free-val">$0</span>
-        <span class="hero-stat-label">To start</span>
-      </div>
-    </div>
+  <div class="container hero-grid">
 
     <div class="hero-body">
-      <p class="hero-eyebrow">Book intelligence platform</p>
+      <p class="u-label hero-kicker">Grounded book guides</p>
       <h1 id="hero-heading" class="hero-heading">
-        Read less.<br>Understand&nbsp;more.
+        Everything here is real, or it <em>isn't here</em>.
       </h1>
       <p class="hero-sub">
-        Six AI-powered tools that help students, educators, and avid readers
-        get more from every book — without leaving the page.
+        Deep summaries, characters, themes, and quizzes whose every question is
+        backed by a quote checked against the actual text. Where we can't verify
+        something, we leave it out instead of inventing it.
       </p>
 
       <!-- Search -->
@@ -51,61 +34,94 @@ description: "Six free AI-powered tools for readers — instant book summaries, 
           id="hero-q"
           name="q"
           class="hero-search-input"
-          placeholder="Enter a book title or author..."
+          placeholder="Enter a book title or author"
           autocomplete="off"
           spellcheck="false"
         >
-        <button type="submit" class="hero-search-btn">Summarize →</button>
+        <button type="submit" class="hero-search-btn">Build the guide</button>
       </form>
+
+      {%- comment -%} What the button actually produces. This is the old
+      tick-mark feature-pill row, kept as information but set as running
+      text: the content was worth keeping, the rounded chips were the
+      template tell. Sits under the CTA because it answers "what do I get
+      if I press this". {%- endcomment -%}
+      <p class="hero-includes">
+        <span class="hero-includes-label">Every guide</span>
+        Deep summary · Characters · Themes · Real quotes · Verified quiz · Audio · Similar books
+      </p>
 
       <!-- Quick picks -->
       <div class="hero-picks" aria-label="Popular books">
-        <span class="picks-label">Try:</span>
+        <span class="picks-label">Try</span>
         <button class="pick-tag" onclick="fillSearch('Atomic Habits')">Atomic Habits</button>
         <button class="pick-tag" onclick="fillSearch('Sapiens')">Sapiens</button>
         <button class="pick-tag" onclick="fillSearch('The Alchemist')">The Alchemist</button>
         <button class="pick-tag" onclick="fillSearch('Thinking Fast and Slow')">Thinking, Fast and Slow</button>
       </div>
+    </div>
 
-      <!-- What every guide includes (SuperSummary-style feature pills) -->
-      <div class="hero-feats" aria-label="What every book guide includes">
-        <span class="hero-feat">Deep summary</span>
-        <span class="hero-feat">Characters</span>
-        <span class="hero-feat">Themes</span>
-        <span class="hero-feat">Real quotes</span>
-        <span class="hero-feat">Verified quiz</span>
-        <span class="hero-feat">Audio</span>
-        <span class="hero-feat">Similar books</span>
+    {%- comment -%} The shelf. Same Google Books ISBN covers the old hero
+    marquee used (each verified to return a real image), but held still: a
+    second moving rail in the fold was the "same component four times"
+    problem. Not links — the search is the fold's one action. {%- endcomment -%}
+    <div class="hero-shelf">
+      <div class="hero-shelf-row">
+        <img src="https://books.google.com/books/content?vid=ISBN9780735211292&printsec=frontcover&img=1&zoom=1" alt="Atomic Habits by James Clear" loading="eager" width="116" height="174">
+        <img src="https://books.google.com/books/content?vid=ISBN9780451524935&printsec=frontcover&img=1&zoom=1" alt="1984 by George Orwell" loading="eager" width="116" height="174">
+        <img src="https://books.google.com/books/content?vid=ISBN9780441172719&printsec=frontcover&img=1&zoom=1" alt="Dune by Frank Herbert" loading="eager" width="116" height="174">
+        <img src="https://books.google.com/books/content?vid=ISBN9780857197689&printsec=frontcover&img=1&zoom=1" alt="The Psychology of Money by Morgan Housel" loading="eager" width="116" height="174">
+        <img src="https://books.google.com/books/content?vid=ISBN9780399590504&printsec=frontcover&img=1&zoom=1" alt="Educated by Tara Westover" loading="eager" width="116" height="174">
       </div>
     </div>
 
   </div>
 
-  {%- comment -%} Cover marquee (Shortform-style): instant "we have the books
-  you know" signal. Static + curated, reuses the NYT rail's .nyt-* styles;
-  covers come from Open Library by ISBN (same source used across the site)
-  and a failed cover simply hides its card. List rendered twice for the
-  infinite-loop animation. {%- endcomment -%}
-  {% assign hero_covers = "Atomic Habits|James Clear|9780735211292;Sapiens|Yuval Noah Harari|9780062316097;1984|George Orwell|9780451524935;The Psychology of Money|Morgan Housel|9780857197689;Deep Work|Cal Newport|9781455586691;The Alchemist|Paulo Coelho|9780062315007;Thinking, Fast and Slow|Daniel Kahneman|9780374533557;The Great Gatsby|F. Scott Fitzgerald|9780743273565;To Kill a Mockingbird|Harper Lee|9780061120084;Harry Potter and the Sorcerer's Stone|J.K. Rowling|9780590353427;Rich Dad Poor Dad|Robert T. Kiyosaki|9781612680194;Dune|Frank Herbert|9780441172719;The Hobbit|J.R.R. Tolkien|9780547928227;Educated|Tara Westover|9780399590504;Project Hail Mary|Andy Weir|9780593135204;The 7 Habits of Highly Effective People|Stephen R. Covey|9780743269513" | split: ";" %}
-  <div class="nyt-marquee hero-covers" aria-label="Popular books on Litheca">
-    <div class="nyt-track" style="animation-duration: 90s;">
-      {% for pass in (1..2) %}
-        {% for b in hero_covers %}
-          {% assign parts = b | split: "|" %}
-          <a href="{{ '/summary/' | relative_url }}?q={{ parts[0] | url_encode }}+{{ parts[1] | url_encode }}"
-             class="nyt-item" {% if pass == 2 %}aria-hidden="true" tabindex="-1"{% endif %}>
-            {%- comment -%} Google Books ISBN covers: OL throttled the 16
-            concurrent requests (random covers vanished per load); GB's CDN
-            serves all 16 reliably — verified each ISBN returns a real image. {%- endcomment -%}
-            <img src="https://books.google.com/books/content?vid=ISBN{{ parts[2] }}&printsec=frontcover&img=1&zoom=1"
-                 alt="Cover of {{ parts[0] }}" loading="lazy"
-                 onerror="this.parentElement.style.display='none'">
-            <p class="nyt-t">{{ parts[0] }}</p>
-            <p class="nyt-a">{{ parts[1] }}</p>
-          </a>
-        {% endfor %}
-      {% endfor %}
+  {%- comment -%} The old status strip's numbers, kept because they carry
+  the belief ladder (coverage, cost, verification) — but set as one ruled
+  colophon line in the UI face rather than four big display numerals with
+  divider bars, which was the SaaS-dashboard tell. {%- endcomment -%}
+  <div class="container">
+    <ul class="hero-facts">
+      <li><b>20M+</b> books searchable</li>
+      <li><b>Six</b> free tools</li>
+      <li><b>Every</b> quiz quote verified</li>
+      <li><b>No account</b> needed</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     THE STATEMENT BAND
+     The page's one bold gesture: full-bleed library green breaking the
+     paper, carrying the claim the product rests on. The day's quote
+     lives here as a real pull-quote rather than as a third card in the
+     daily grid, which is what it used to be.
+═══════════════════════════════════════ -->
+<section class="statement" aria-labelledby="statement-heading">
+  <div class="container statement-inner">
+    <div>
+      <span class="statement-label">Why trust it</span>
+      <h2 id="statement-heading" class="statement-claim">
+        Most AI book tools will confidently invent a character, an award, or a
+        quote. <em>This one returns nothing instead.</em>
+      </h2>
+      <p class="statement-body">
+        Every book is verified against Google Books and Open Library before a
+        single word is generated, and every quiz question carries a quote matched
+        against the source text. Sections with nothing real behind them simply
+        don't appear.
+      </p>
     </div>
+
+    {%- comment -%} Filled by the /daily fetch below; stays hidden if the
+    API is unreachable, so the band never renders an empty quote frame.
+    {%- endcomment -%}
+    <figure class="statement-quote" id="statement-quote" hidden>
+      <span class="statement-label">Quote of the day</span>
+      <blockquote id="statement-quote-text"></blockquote>
+      <figcaption id="statement-quote-source"></figcaption>
+    </figure>
   </div>
 </section>
 
@@ -117,71 +133,93 @@ description: "Six free AI-powered tools for readers — instant book summaries, 
      the engagement-based indexing promotion (tools/indexing.py) — every
      click/comment/rating on a not-yet-indexed page is a step toward it
      earning indexing on its own merit.
+
+     Was a marquee identical to the NYT rail. A list of what was just
+     published is a list, so it is set as one: numbered, ruled, cover as
+     a small plate. The NYT rail stays a rail because a weekly ranking
+     is the one thing on this page a rail actually suits.
 ═══════════════════════════════════════ -->
-{% assign recent_books = site.books | sort: 'date' | reverse | limit: 16 %}
+{% assign recent_books = site.books | sort: 'date' | reverse | limit: 8 %}
 {% if recent_books.size > 0 %}
-  {% assign recent_loop = recent_books %}
-  {% for i in (1..4) %}
-    {% if recent_loop.size < 8 %}{% assign recent_loop = recent_loop | concat: recent_books %}{% endif %}
-  {% endfor %}
-  {% assign recent_marquee = recent_loop | concat: recent_loop %}
-  <section class="nyt-section" id="recent-section" aria-labelledby="recent-heading" style="display:block;padding:32px 0 8px;">
+  <section class="tools-section" id="recent-section" aria-labelledby="recent-heading">
     <div class="container">
       <div class="section-header">
         <div>
-          <h2 id="recent-heading" class="section-title">
-            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2.5px;margin-right:6px;" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Just summarized
-          </h2>
-          <p class="section-sub">The newest AI study guides on Litheca — be one of the first to rate, comment, or recommend.</p>
+          <h2 id="recent-heading" class="section-title">Just summarized</h2>
+          <p class="section-sub">The newest guides on Litheca. Be the first to rate, comment, or recommend one.</p>
         </div>
       </div>
-      <div class="nyt-marquee">
-        <div class="nyt-track" style="animation-duration: {{ recent_marquee.size | times: 3 }}s;">
-          {% for b in recent_marquee %}
-            <a href="{{ b.url | relative_url }}" class="nyt-item"{% if forloop.index0 >= recent_loop.size %} aria-hidden="true" tabindex="-1"{% endif %}>
-              {% if b.cover_url and b.cover_url != "" %}
-                <img src="{{ b.cover_url }}" alt="Cover of {{ b.title }}" loading="lazy">
-              {% else %}
-                <div class="nyt-cover-empty">{{ b.title | truncate: 30 }}</div>
-              {% endif %}
-              <p class="nyt-t">{{ b.title }}</p>
-              <p class="nyt-a">{{ b.author }}</p>
-              <span class="nyt-rank-badge">{{ b.date | date: "%b %-d" }}</span>
-            </a>
-          {% endfor %}
-        </div>
+      <div class="index-list">
+        {% for b in recent_books %}
+          {%- comment -%} No 01/02/03 markers here: impeccable flags numbered
+          display markers as the editorial scaffold one tier deeper than
+          tracked eyebrow chips. The rule and the cover do the separating.
+          {%- endcomment -%}
+          <a href="{{ b.url | relative_url }}" class="index-item">
+            {% if b.cover_url and b.cover_url != "" %}
+              <img class="index-cover" src="{{ b.cover_url }}" alt="" loading="lazy" width="44" height="66">
+            {% endif %}
+            <span class="index-text">
+              <span class="index-title">{{ b.title }}</span>
+              <span class="index-meta">{{ b.author }} · {{ b.date | date: "%b %-d" }}</span>
+            </span>
+          </a>
+        {% endfor %}
       </div>
     </div>
   </section>
 {% endif %}
 
 <!-- ═══════════════════════════════════════
-     DAILY PICKS — book / author / quote of the day
-     (filled client-side from GET /daily; hidden if the API is unreachable)
+     DAILY PICKS — book / author of the day
+     (filled client-side from GET /daily; hidden if the API is
+     unreachable). The quote that used to be a third card here now
+     renders into the statement band above.
 ═══════════════════════════════════════ -->
 <style>
-  .daily-section { padding: 40px 0 8px; }
-  .daily-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 20px; }
+  .daily-section { padding: clamp(48px, 6vw, 72px) 0 0; }
+  .daily-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+    gap: clamp(24px, 4vw, 56px);
+    margin-top: 28px;
+    border-top: 1px solid var(--rule);
+  }
   .daily-card {
-    border: 1px solid var(--border); border-radius: 12px; background: var(--bg);
-    padding: 20px; display: flex; flex-direction: column; gap: 12px; min-height: 180px;
+    border: none;
+    border-bottom: 1px solid var(--border);
+    border-radius: 0;
+    background: none;
+    padding: 22px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
   }
   .daily-card-label {
-    font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    font-family: var(--font-ui);
+    font-size: var(--t-label);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
     color: var(--fg-faint);
   }
-  .daily-card-body { display: flex; gap: 14px; align-items: flex-start; }
-  .daily-cover { width: 64px; aspect-ratio: 2/3; object-fit: cover; border-radius: 6px; border: 1px solid var(--border); flex-shrink: 0; }
-  .daily-photo { width: 64px; height: 64px; object-fit: cover; border-radius: 50%; border: 1px solid var(--border); flex-shrink: 0; }
-  .daily-card h3 { font-size: 15px; font-weight: 700; line-height: 1.35; }
+  .daily-card-body { display: flex; gap: 18px; align-items: flex-start; }
+  .daily-cover {
+    width: 72px; aspect-ratio: 2/3; object-fit: cover;
+    border: 1px solid var(--border-med); flex-shrink: 0;
+  }
+  .daily-photo {
+    width: 72px; height: 72px; object-fit: cover; border-radius: 50%;
+    border: 1px solid var(--border-med); flex-shrink: 0;
+  }
+  .daily-card h3 { font-size: var(--t-lead); font-weight: 600; line-height: 1.25; }
   .daily-card h3 a { color: inherit; text-decoration: none; }
-  .daily-card h3 a:hover { text-decoration: underline; }
-  .daily-card p { font-size: 13px; color: var(--fg-muted); line-height: 1.6; }
-  .daily-meta { font-size: 12px; color: var(--fg-faint); }
-  .daily-quote-text { font-size: 15px; line-height: 1.65; font-style: italic; }
+  .daily-card h3 a:hover { color: var(--accent); text-decoration: none; }
+  .daily-card p { font-size: var(--t-body); color: var(--fg-muted); line-height: 1.6; }
+  .daily-meta { font-family: var(--font-ui); font-size: var(--t-label); color: var(--fg-faint); }
   .skeleton {
     background: linear-gradient(90deg, var(--bg-subtle) 25%, var(--border) 50%, var(--bg-subtle) 75%);
-    background-size: 200% 100%; animation: shimmer 1.4s infinite; border-radius: 6px;
+    background-size: 200% 100%; animation: shimmer 1.4s infinite;
   }
   @keyframes shimmer { to { background-position: -200% 0; } }
 </style>
@@ -195,30 +233,22 @@ description: "Six free AI-powered tools for readers — instant book summaries, 
     </div>
     <div class="daily-grid" id="daily-grid">
       <div class="daily-card" aria-hidden="true">
-        <div class="skeleton" style="width:110px;height:12px;"></div>
+        <div class="skeleton" style="width:110px;height:13px;"></div>
         <div class="daily-card-body"><div class="skeleton daily-cover"></div>
-          <div style="flex:1;display:flex;flex-direction:column;gap:8px;">
-            <div class="skeleton" style="height:16px;width:80%;"></div>
-            <div class="skeleton" style="height:12px;width:100%;"></div>
-            <div class="skeleton" style="height:12px;width:60%;"></div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:10px;">
+            <div class="skeleton" style="height:22px;width:80%;"></div>
+            <div class="skeleton" style="height:13px;width:100%;"></div>
+            <div class="skeleton" style="height:13px;width:60%;"></div>
           </div></div>
       </div>
       <div class="daily-card" aria-hidden="true">
-        <div class="skeleton" style="width:110px;height:12px;"></div>
+        <div class="skeleton" style="width:110px;height:13px;"></div>
         <div class="daily-card-body"><div class="skeleton daily-photo"></div>
-          <div style="flex:1;display:flex;flex-direction:column;gap:8px;">
-            <div class="skeleton" style="height:16px;width:70%;"></div>
-            <div class="skeleton" style="height:12px;width:100%;"></div>
-            <div class="skeleton" style="height:12px;width:50%;"></div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:10px;">
+            <div class="skeleton" style="height:22px;width:70%;"></div>
+            <div class="skeleton" style="height:13px;width:100%;"></div>
+            <div class="skeleton" style="height:13px;width:50%;"></div>
           </div></div>
-      </div>
-      <div class="daily-card" aria-hidden="true">
-        <div class="skeleton" style="width:110px;height:12px;"></div>
-        <div style="display:flex;flex-direction:column;gap:8px;">
-          <div class="skeleton" style="height:14px;width:100%;"></div>
-          <div class="skeleton" style="height:14px;width:90%;"></div>
-          <div class="skeleton" style="height:12px;width:40%;"></div>
-        </div>
       </div>
     </div>
   </div>
@@ -226,45 +256,48 @@ description: "Six free AI-powered tools for readers — instant book summaries, 
 
 <!-- ═══════════════════════════════════════
      NYT BESTSELLERS THIS WEEK — horizontal marquee rail
-     (filled client-side from GET /nyt/weekly; hidden until data arrives)
+     (filled client-side from GET /nyt/weekly; hidden until data
+     arrives). The page's only rail, kept because a weekly ranking is
+     genuinely a rail-shaped thing.
 ═══════════════════════════════════════ -->
 <style>
-  .nyt-section { padding: 32px 0 8px; display: none; }
-  .nyt-marquee { overflow: hidden; position: relative; padding: 14px 0; margin-top: 8px; }
+  .nyt-section { padding: clamp(48px, 6vw, 72px) 0 0; display: none; }
+  .nyt-marquee { overflow: hidden; position: relative; padding: 22px 0 8px; margin-top: 20px; border-top: 1px solid var(--rule); }
   .nyt-track { display: flex; width: max-content; animation: nyt-scroll 60s linear infinite; }
   .nyt-marquee:hover .nyt-track { animation-play-state: paused; }
   @keyframes nyt-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
   .nyt-item {
-    width: 128px; flex-shrink: 0; margin-right: 18px; text-align: center;
+    width: 132px; flex-shrink: 0; margin-right: 26px;
     text-decoration: none; color: inherit; display: block;
-    transition: transform .25s ease, opacity .25s ease;
+    transition: opacity .3s var(--ease-out);
   }
-  .nyt-track:hover .nyt-item { transform: scale(.92); opacity: .55; }
-  .nyt-track .nyt-item:hover { transform: scale(1.12); opacity: 1; position: relative; z-index: 2; }
+  .nyt-track:hover .nyt-item { opacity: .45; }
+  .nyt-track .nyt-item:hover { opacity: 1; }
   .nyt-item img, .nyt-item .nyt-cover-empty {
-    width: 100%; aspect-ratio: 2/3; object-fit: cover; border-radius: 8px;
-    border: 1px solid var(--border); margin-bottom: 6px;
-    box-shadow: 0 4px 12px rgba(0,0,0,.08); transition: box-shadow .25s ease;
+    width: 100%; aspect-ratio: 2/3; object-fit: cover;
+    border: 1px solid var(--border-med); margin-bottom: 10px;
+    background: var(--bg-subtle);
+    box-shadow: 0 8px 20px -12px rgba(24,28,26,.5);
   }
-  .nyt-item:hover img { box-shadow: 0 10px 24px rgba(0,0,0,.25); }
   .nyt-item .nyt-cover-empty {
     display: flex; align-items: center; justify-content: center;
-    background: var(--bg-subtle); color: var(--fg-faint);
-    font-size: 11px; padding: 8px; box-sizing: border-box; text-align: center;
+    color: var(--fg-faint);
+    font-size: var(--t-label); padding: 8px; box-sizing: border-box; text-align: center;
   }
   .nyt-item .nyt-t {
-    font-size: 11px; font-weight: 600; line-height: 1.3; color: var(--fg);
+    font-size: var(--t-body); font-weight: 600; line-height: 1.3; color: var(--fg);
     display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
-    overflow: hidden; height: 29px; margin-bottom: 2px;
+    overflow: hidden; margin-bottom: 3px;
   }
+  .nyt-item:hover .nyt-t { color: var(--accent); }
   .nyt-item .nyt-a {
-    font-size: 10px; color: var(--fg-faint);
+    font-family: var(--font-ui); font-size: var(--t-label); color: var(--fg-faint);
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   }
   .nyt-rank-badge {
-    font-size: 10px; font-weight: 700; color: var(--accent);
-    background: var(--bg-subtle); border: 1px solid var(--border);
-    border-radius: 999px; padding: 1px 8px; margin-top: 5px; display: inline-block;
+    font-family: var(--font-ui);
+    font-size: var(--t-label); font-weight: 600; color: var(--brass);
+    margin-top: 6px; display: inline-block;
     max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   }
   @media (prefers-reduced-motion: reduce) {
@@ -276,8 +309,8 @@ description: "Six free AI-powered tools for readers — instant book summaries, 
   <div class="container">
     <div class="section-header">
       <div>
-        <h2 id="nyt-heading" class="section-title"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2.5px;margin-right:6px;" aria-hidden="true"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>NYT Bestsellers this week</h2>
-        <p class="section-sub">From the current New York Times lists — tap any book for its summary</p>
+        <h2 id="nyt-heading" class="section-title">The New York Times list, this week</h2>
+        <p class="section-sub">Tap any book for its guide.</p>
       </div>
     </div>
     <div class="nyt-marquee">
@@ -287,26 +320,7 @@ description: "Six free AI-powered tools for readers — instant book summaries, 
 </section>
 
 <!-- ═══════════════════════════════════════
-     CATEGORIES STRIP
-═══════════════════════════════════════ -->
-<section class="categories-strip" aria-labelledby="categories-heading" style="padding:32px 0 8px;">
-  <div class="container">
-    <div class="section-header">
-      <div>
-        <h2 id="categories-heading" class="section-title">Browse by category</h2>
-      </div>
-    </div>
-    <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;">
-      {% for cat in site.data.categories limit: 8 %}
-        <a href="{{ '/categories/' | relative_url }}{{ cat.slug }}/" class="pick-tag" style="text-decoration:none;">{{ cat.name }}</a>
-      {% endfor %}
-      <a href="{{ '/categories/' | relative_url }}" class="pick-tag" style="text-decoration:none;font-weight:600;">All categories →</a>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════
-     TOOLS GRID
+     TOOLS — ruled index, not a card grid
 ═══════════════════════════════════════ -->
 <section class="tools-section" aria-labelledby="tools-heading">
   <div class="container">
@@ -314,7 +328,7 @@ description: "Six free AI-powered tools for readers — instant book summaries, 
     <div class="section-header">
       <div>
         <h2 id="tools-heading" class="section-title">All tools</h2>
-        <p class="section-sub">7 available · all free</p>
+        <p class="section-sub">Six of them, all free, none behind an account.</p>
       </div>
     </div>
 
@@ -322,69 +336,52 @@ description: "Six free AI-powered tools for readers — instant book summaries, 
 
       <a href="{{ '/summary' | relative_url }}" class="tool-card tool-card--featured" role="listitem">
         <div class="tool-card-top">
-          <div class="tool-card-icon" aria-hidden="true">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10,9 9,9 8,9"/></svg>
-          </div>
           <span class="tool-badge tool-badge--hot">Popular</span>
         </div>
         <h3 class="tool-card-title">Book Summarizer</h3>
-        <p class="tool-card-desc">A complete study guide for any book — summary, characters, quotes, and a verified quiz.</p>
+        <p class="tool-card-desc">A full study guide for any book: summary, characters, quotes, and a verified quiz.</p>
         <span class="tool-card-arrow" aria-hidden="true">↗</span>
       </a>
 
       <a href="{{ '/tools/recommender' | relative_url }}" class="tool-card" role="listitem">
         <div class="tool-card-top">
-          <div class="tool-card-icon" aria-hidden="true">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-          </div>
           <span class="tool-badge">AI</span>
         </div>
-        <h3 class="tool-card-title">AI Recommender</h3>
-        <p class="tool-card-desc">Tell us 3 books you love. Get 5 precision-matched recommendations.</p>
+        <h3 class="tool-card-title">Recommender</h3>
+        <p class="tool-card-desc">Name three books you love and get five precision-matched suggestions.</p>
         <span class="tool-card-arrow" aria-hidden="true">↗</span>
       </a>
 
       <a href="{{ '/tools/pdf-chat' | relative_url }}" class="tool-card" role="listitem">
         <div class="tool-card-top">
-          <div class="tool-card-icon" aria-hidden="true">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><path d="M9 15h6"/><path d="M9 11h6"/></svg>
-          </div>
           <span class="tool-badge tool-badge--hot">New</span>
         </div>
         <h3 class="tool-card-title">PDF Chat &amp; Quiz</h3>
-        <p class="tool-card-desc">Upload any PDF book — chat with it and quiz yourself, grounded in the actual text.</p>
+        <p class="tool-card-desc">Upload any PDF book, then chat with it and quiz yourself, grounded in its actual text.</p>
         <span class="tool-card-arrow" aria-hidden="true">↗</span>
       </a>
 
       <a href="{{ '/tools/compare' | relative_url }}" class="tool-card" role="listitem">
         <div class="tool-card-top">
-          <div class="tool-card-icon" aria-hidden="true">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-          </div>
           <span class="tool-badge">AI</span>
         </div>
         <h3 class="tool-card-title">Comparison Matrix</h3>
-        <p class="tool-card-desc">Style, audience, difficulty — compare two books side by side.</p>
+        <p class="tool-card-desc">Put two books side by side on style, audience, and difficulty.</p>
         <span class="tool-card-arrow" aria-hidden="true">↗</span>
       </a>
 
       <a href="{{ '/My-Library' | relative_url }}" class="tool-card" role="listitem">
         <div class="tool-card-top">
-          <div class="tool-card-icon" aria-hidden="true">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-          </div>
           <span class="tool-badge">Local + sync</span>
         </div>
         <h3 class="tool-card-title">My Library</h3>
-        <p class="tool-card-desc">Track progress and ratings. Works without an account, syncs when signed in.</p>
+        <p class="tool-card-desc">Track progress and ratings. Works without an account, syncs once you sign in.</p>
         <span class="tool-card-arrow" aria-hidden="true">↗</span>
       </a>
 
       <a href="{{ '/tools/search' | relative_url }}" class="tool-card" role="listitem">
         <div class="tool-card-top">
-          <div class="tool-card-icon" aria-hidden="true">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          </div>
+          <span class="tool-badge">Catalog</span>
         </div>
         <h3 class="tool-card-title">Advanced Search</h3>
         <p class="tool-card-desc">Filter the catalog by genre, year, language, and rating.</p>
@@ -396,16 +393,32 @@ description: "Six free AI-powered tools for readers — instant book summaries, 
 </section>
 
 <!-- ═══════════════════════════════════════
+     CATEGORIES
+═══════════════════════════════════════ -->
+<section class="categories-strip" aria-labelledby="categories-heading" style="padding:clamp(48px,6vw,72px) 0 0;">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <h2 id="categories-heading" class="section-title">Browse by category</h2>
+      </div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:20px;padding-top:22px;border-top:1px solid var(--rule);">
+      {% for cat in site.data.categories limit: 8 %}
+        <a href="{{ '/categories/' | relative_url }}{{ cat.slug }}/" class="pick-tag" style="text-decoration:none;">{{ cat.name }}</a>
+      {% endfor %}
+      <a href="{{ '/categories/' | relative_url }}" class="pick-tag" style="text-decoration:none;font-weight:600;">All categories ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
      AFFILIATE STRIP — Amazon Bounty
 ═══════════════════════════════════════ -->
-<section class="affiliate-strip" aria-label="Amazon offer">
+<section class="affiliate-strip" aria-label="Amazon offer" style="margin-top:clamp(48px,6vw,72px);">
   <div class="container affiliate-inner">
     <div class="affiliate-left">
-      <div class="affiliate-icon" aria-hidden="true">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16,8 20,8 23,11 23,16 16,16 16,8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-      </div>
       <div class="affiliate-text">
-        <strong>Kindle Unlimited — 3 months free</strong>
+        <strong>Kindle Unlimited, three months free</strong>
         <span>Read any book from our library instantly. New Amazon members only.</span>
       </div>
     </div>
@@ -416,7 +429,7 @@ description: "Six free AI-powered tools for readers — instant book summaries, 
       rel="noopener sponsored"
       aria-label="Get Kindle Unlimited 3 months free on Amazon (affiliate link)"
     >
-      Claim offer →
+      Claim offer ↗
     </a>
   </div>
 </section>
@@ -456,17 +469,31 @@ function fillSearch(title) {
     if (dateEl && d.date) dateEl.textContent = new Date(d.date + "T00:00:00Z")
       .toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric", timeZone: "UTC" });
 
+    // The quote renders into the statement band, not into this grid.
+    const qWrap = document.getElementById("statement-quote");
+    if (qWrap && d.quote && d.quote.text) {
+      document.getElementById("statement-quote-text").textContent = "“" + d.quote.text + "”";
+      const src = document.getElementById("statement-quote-source");
+      if (d.quote.book) {
+        src.innerHTML = '<a href="' + esc(bookLink(d.quote.book)) + '">' + esc(d.quote.book.title) + "</a>" +
+          (d.quote.book.author ? ", " + esc(d.quote.book.author) : "");
+      } else {
+        src.textContent = "";
+      }
+      qWrap.hidden = false;
+    }
+
     const cards = [];
     if (d.book) {
       cards.push(`<article class="daily-card">
-        <span class="daily-card-label"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px;" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>Book of the day</span>
+        <span class="daily-card-label">Book of the day</span>
         <div class="daily-card-body">
           ${d.book.cover_url ? `<img class="daily-cover" src="${esc(d.book.cover_url)}" alt="Cover of ${esc(d.book.title)}" loading="lazy">` : ""}
           <div>
             <h3><a href="${bookLink(d.book)}">${esc(d.book.title)}</a></h3>
             <p class="daily-meta">${esc(d.book.author)}</p>
-            ${d.book.event ? `<p style="margin-top:8px;"><strong>On this day${d.book.event.year ? " in " + esc(d.book.event.year) : ""}:</strong> ${esc(d.book.event.text)}</p>` : ""}
-            ${d.book.connection ? `<p style="margin-top:6px;">${esc(d.book.connection)}</p>` : ""}
+            ${d.book.event ? `<p style="margin-top:10px;"><strong>On this day${d.book.event.year ? " in " + esc(d.book.event.year) : ""}:</strong> ${esc(d.book.event.text)}</p>` : ""}
+            ${d.book.connection ? `<p style="margin-top:8px;">${esc(d.book.connection)}</p>` : ""}
           </div>
         </div>
       </article>`);
@@ -474,23 +501,16 @@ function fillSearch(title) {
     if (d.author) {
       const a = d.author;
       cards.push(`<article class="daily-card">
-        <span class="daily-card-label"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px;" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>Author of the day</span>
+        <span class="daily-card-label">Author of the day</span>
         <div class="daily-card-body">
           ${a.photo_url ? `<img class="daily-photo" src="${esc(a.photo_url)}" alt="Photo of ${esc(a.name)}" loading="lazy">` : ""}
           <div>
             <h3>${a.wikipedia_url ? `<a href="${esc(a.wikipedia_url)}" target="_blank" rel="noopener">${esc(a.name)}</a>` : esc(a.name)}</h3>
             ${a.born_year ? `<p class="daily-meta">Born on this day, ${esc(a.born_year)}</p>` : ""}
-            ${a.blurb ? `<p style="margin-top:8px;">${esc(a.blurb)}</p>` : ""}
-            ${a.notable_book ? `<p style="margin-top:6px;">Best known for <a href="${bookLink(a.notable_book)}" style="color:var(--accent);font-weight:500;">${esc(a.notable_book.title)}</a></p>` : ""}
+            ${a.blurb ? `<p style="margin-top:10px;">${esc(a.blurb)}</p>` : ""}
+            ${a.notable_book ? `<p style="margin-top:8px;">Best known for <a href="${bookLink(a.notable_book)}" style="color:var(--accent);font-weight:600;">${esc(a.notable_book.title)}</a></p>` : ""}
           </div>
         </div>
-      </article>`);
-    }
-    if (d.quote) {
-      cards.push(`<article class="daily-card">
-        <span class="daily-card-label">❝ Quote of the day</span>
-        <blockquote class="daily-quote-text">"${esc(d.quote.text)}"</blockquote>
-        ${d.quote.book ? `<p class="daily-meta">— <a href="${bookLink(d.quote.book)}" style="color:var(--accent);font-weight:500;">${esc(d.quote.book.title)}</a>${d.quote.book.author ? ", " + esc(d.quote.book.author) : ""}</p>` : ""}
       </article>`);
     }
 

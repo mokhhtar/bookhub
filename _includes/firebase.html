@@ -112,6 +112,11 @@
     justify-content: center;
     padding: 16px;
   }
+  /* Auth is interface, not reading matter, so it takes the UI family and
+     the shared type scale rather than its own set of one-off sizes. */
+  .auth-modal, .auth-modal input, .auth-modal button {
+    font-family: var(--font-ui);
+  }
   .auth-modal {
     position: relative;
     width: 100%;
@@ -130,12 +135,12 @@
     color: var(--fg);
     border-radius: 8px;
     padding: 4px 9px;
-    font-size: 12px;
+    font-size: var(--t-label);
     cursor: pointer;
   }
   .auth-heading {
-    font-size: 18px;
-    font-weight: 700;
+    font-size: var(--t-lead);
+    font-weight: 600;
     margin-bottom: 16px;
   }
   .auth-google-btn {
@@ -145,7 +150,7 @@
     gap: 10px;
     width: 100%;
     padding: 10px 0;
-    font-size: 13px;
+    font-size: var(--t-label);
     font-weight: 600;
     cursor: pointer;
     background: var(--bg);
@@ -162,7 +167,7 @@
     gap: 10px;
     margin: 14px 0;
     color: var(--fg-faint);
-    font-size: 11px;
+    font-size: var(--t-label);
   }
   .auth-divider::before,
   .auth-divider::after {
@@ -179,7 +184,7 @@
   .auth-tab {
     flex: 1;
     padding: 8px 0;
-    font-size: 13px;
+    font-size: var(--t-label);
     font-weight: 600;
     cursor: pointer;
     background: var(--bg-subtle);
@@ -193,7 +198,7 @@
   }
   .auth-label {
     display: block;
-    font-size: 12px;
+    font-size: var(--t-label);
     font-weight: 600;
     color: var(--fg-muted);
     margin: 10px 0 4px;
@@ -202,7 +207,8 @@
     width: 100%;
     box-sizing: border-box;
     padding: 10px 12px;
-    font-size: 16px;
+    /* Must stay >=16px: iOS Safari zooms the viewport on focus below that. */
+    font-size: var(--t-body);
     background: var(--bg-subtle);
     color: var(--fg);
     border: 1px solid var(--border);
@@ -213,7 +219,7 @@
     border-color: var(--accent);
   }
   .auth-error {
-    font-size: 12px;
+    font-size: var(--t-label);
     color: #d33;
     margin-top: 10px;
     line-height: 1.5;
@@ -251,7 +257,7 @@
     background: none;
     border: 0;
     color: var(--fg-faint);
-    font-size: 12px;
+    font-size: var(--t-label);
     cursor: pointer;
     text-decoration: underline;
   }
@@ -269,7 +275,7 @@
     border-radius: 999px;
     padding: 4px 12px 4px 4px;
     color: var(--fg);
-    font-size: 12px;
+    font-size: var(--t-label);
     font-weight: 600;
   }
   .auth-avatar {
@@ -282,7 +288,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 12px;
+    font-size: var(--t-label);
     font-weight: 800;
     overflow: hidden;
   }
@@ -311,7 +317,7 @@
     width: 100%;
     text-align: left;
     padding: 8px 12px;
-    font-size: 13px;
+    font-size: var(--t-label);
     color: var(--fg);
     background: none;
     border: 0;
