@@ -65,12 +65,17 @@ sitemap: false
   .acct-panel { display: none; }
   .acct-panel.active { display: block; }
 
-  /* Panels. One neutral layer above the page ground, flat corners. */
-  .acct-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
-  @media (min-width: 720px) {
-    .acct-grid { grid-template-columns: 1fr 1fr; align-items: start; }
-    .acct-grid > .acct-section-wide { grid-column: 1 / -1; }
+  /* Panels. One neutral layer above the page ground, flat corners.
+     auto-fit rather than a fixed 1fr 1fr: panels here hide themselves
+     when they have no data, and a fixed two-column track left the one
+     surviving panel stranded in the left half beside a dead column. */
+  .acct-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+    gap: 16px;
+    align-items: start;
   }
+  .acct-grid > .acct-section-wide { grid-column: 1 / -1; }
   .acct-section {
     border: 1px solid var(--border); border-radius: var(--r);
     background: var(--bg-subtle); padding: 18px 20px;
@@ -374,6 +379,17 @@ sitemap: false
 (function () {
   let mode = "signin";
   const $ = (id) => document.getElementById(id);
+
+  // Cover URLs go stale (Google Books rotates them, Open Library throttles),
+  // and a failed <img> renders the browser's broken-image icon, which looks
+  // like the page is broken rather than like a book without a cover.
+  // Swapping the element out is the only reliable fix: clearing src alone
+  // leaves Chrome still painting the broken state.
+  window.bhCoverFail = function (img) {
+    const span = document.createElement("span");
+    span.className = "acct-book-cover-empty";
+    img.replaceWith(span);
+  };
   const ERRORS = {
     "auth/email-already-in-use": "An account with this email already exists.",
     "auth/invalid-email": "That email address doesn't look valid.",
@@ -561,7 +577,7 @@ sitemap: false
     $("acct-recent-section").style.display = "block";
     $("acct-recent").innerHTML = items.slice(0, 6).map(b => `
       <a class="acct-book-row" href="{{ '/summary/' | relative_url }}?${b.b ? `b=${esc(b.b)}` : `q=${encodeURIComponent(b.title)}&direct=true`}">
-        ${b.cover ? `<img class="acct-book-cover" src="${esc(b.cover)}" alt="" loading="lazy">` : `<span class="acct-book-cover-empty"></span>`}
+        ${b.cover ? `<img class="acct-book-cover" src="${esc(b.cover)}" alt="" loading="lazy" onerror="bhCoverFail(this)">` : `<span class="acct-book-cover-empty"></span>`}
         <span><span class="acct-book-t">${esc(b.title)}</span><br><span class="acct-book-a">${esc(b.author || "")}</span></span>
       </a>`).join("");
   }
@@ -626,7 +642,7 @@ sitemap: false
     $("acct-ratings-section").style.display = "block";
     $("acct-ratings").innerHTML = rated.map(b => `
       <a class="acct-book-row" href="{{ '/summary/' | relative_url }}?q=${encodeURIComponent(b.title)}&direct=true">
-        ${b.cover_url ? `<img class="acct-book-cover" src="${esc(b.cover_url)}" alt="" loading="lazy">` : `<span class="acct-book-cover-empty"></span>`}
+        ${b.cover_url ? `<img class="acct-book-cover" src="${esc(b.cover_url)}" alt="" loading="lazy" onerror="bhCoverFail(this)">` : `<span class="acct-book-cover-empty"></span>`}
         <span><span class="acct-book-t">${esc(b.title)}</span><br><span class="acct-book-a">${esc(b.author || "")}</span></span>
         <span class="acct-stars">${"★".repeat(b.rating)}${"☆".repeat(5 - b.rating)}</span>
       </a>`).join("");
@@ -791,9 +807,11 @@ sitemap: false
     $("acct-signed-out").style.display = user ? "none" : "block";
     $("acct-signed-in").style.display = user ? "block" : "none";
     if (user) {
-      const name = user.displayName || user.email || "Account";
-      setAcctAvatar(name, user.photoURL || null);
-      $("acct-display-name").textContent = name;
+      // Falling back to the email here printed it twice: once as the
+      // heading and again on the line directly beneath it.
+      const name = user.displayName || "";
+      setAcctAvatar(name || user.email || "Account", user.photoURL || null);
+      $("acct-display-name").textContent = name || "Your account";
       $("acct-email-line").textContent = user.email || "";
       // Settings tab meta.
       $("acct-meta-name").textContent = user.displayName || "—";
