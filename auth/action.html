@@ -3,6 +3,11 @@ layout: default
 title: "Account action"
 permalink: /auth/action/
 sitemap: false
+# Firebase's email-link handler (verification, password reset). It is a
+# functional endpoint with no reader-facing content, and it is reached
+# from emails rather than from the site, so `sitemap: false` alone never
+# stopped it being indexed once a link leaked into a crawl.
+noindex: true
 ---
 
 {% comment %}

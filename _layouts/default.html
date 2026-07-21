@@ -23,8 +23,21 @@
   <link rel="canonical" href="{{ page.url | absolute_url }}">
   {%- comment -%} Deferred-indexing strategy: generated content pages
   (books/authors/characters collections — set via _config defaults) and
-  personal pages carry noindex until they earn engagement / launch. {%- endcomment -%}
-  {% if page.noindex %}<meta name="robots" content="noindex">{% endif %}
+  personal pages carry noindex until they earn engagement / launch.
+
+  `noindex_when_empty: <collection>` extends the same idea to hub pages.
+  A hub that lists a collection is thin content while that collection is
+  empty, and a set of empty hubs is exactly what gets a whole site
+  classified as low quality. So the hub stays out of the index until it
+  has something to show, then becomes indexable on its own — no manual
+  flip to remember. Same spirit as the book-page policy: publish nothing
+  rather than publish an empty shell. {%- endcomment -%}
+  {%- assign empty_gate = false -%}
+  {%- if page.noindex_when_empty -%}
+    {%- assign gated = site[page.noindex_when_empty] -%}
+    {%- if gated == nil or gated.size == 0 -%}{%- assign empty_gate = true -%}{%- endif -%}
+  {%- endif -%}
+  {% if page.noindex or empty_gate %}<meta name="robots" content="noindex">{% endif %}
 
   <!-- PWA: installable app + offline-tolerant shell (see /sw.js) -->
   <link rel="manifest" href="{{ '/manifest.json' | relative_url }}">
