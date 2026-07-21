@@ -184,6 +184,54 @@ sitemap: false
   .acct-meta-row:last-of-type { border-bottom: 0; }
   .acct-meta-row span:first-child { color: var(--fg-faint); }
 
+  /* ── Activity feed ──────────────────────────────────────────────
+     The comment leads; attribution sits under it, smaller and quieter. */
+  .acct-feed { list-style: none; margin: 0; padding: 0; }
+  .acct-feed-item {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .acct-feed-item:first-child { padding-top: 2px; }
+  .acct-feed-item:last-child { border-bottom: 0; padding-bottom: 2px; }
+  .acct-feed-text {
+    font-size: var(--ui-body);
+    line-height: 1.6;
+    color: var(--fg);
+    /* The user's own prose, so it gets a reading measure. */
+    max-width: 62ch;
+  }
+  .acct-feed-meta {
+    display: flex; align-items: center; flex-wrap: wrap; gap: 7px;
+    margin-top: 8px;
+    font-size: var(--ui-sm);
+    color: var(--fg-faint);
+  }
+  .acct-feed-on { color: var(--fg-muted); font-weight: 600; text-decoration: none; }
+  .acct-feed-on:hover { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+  .acct-feed-kind {
+    font-size: var(--ui-sm); color: var(--fg-faint);
+    border: 1px solid var(--border-med); border-radius: var(--r-sm);
+    padding: 0 5px; line-height: 1.5;
+  }
+  .acct-feed-sep { color: var(--border-med); }
+  /* Only the state you can act on gets colour. */
+  .acct-feed-pending { color: var(--brass); font-weight: 600; }
+  .acct-feed-del {
+    margin-left: auto;
+    appearance: none; background: none; border: 0; padding: 2px 4px;
+    font-family: var(--font-ui); font-size: var(--ui-sm);
+    color: var(--fg-faint); cursor: pointer; border-radius: var(--r-sm);
+    opacity: 0;
+    transition: opacity .18s var(--ease-out), color .18s var(--ease-out);
+  }
+  .acct-feed-item:hover .acct-feed-del,
+  .acct-feed-del:focus-visible { opacity: 1; }
+  /* Never hide a real action from touch or keyboard users. */
+  @media (hover: none) { .acct-feed-del { opacity: 1; } }
+  .acct-feed-del:hover, .acct-feed-del:focus-visible {
+    color: var(--danger); text-decoration: underline; text-underline-offset: 2px;
+  }
+
   /* Signed-out panel */
   .acct-authcard {
     background: var(--bg-subtle); border: 1px solid var(--border);
@@ -768,6 +816,9 @@ sitemap: false
       const itemData = items.map(it => ({
         slug: it.slug, kind: it.kind,
         text: (it.data.text || "").slice(0, 500), approved: !!it.data.approved,
+        // Was dropped here, so the feed could never show when anything was
+        // written even though the sort above already relied on it.
+        at: it.data.createdAt?.seconds || 0,
       }));
       paintMyComments(itemData, true);
       window.__myCommentRefs = items.map(it => it.ref);
@@ -779,21 +830,62 @@ sitemap: false
     }
   }
 
+  // Relative time, because "3 days ago" is what someone actually wants to
+  // know about their own writing; the exact stamp goes in the tooltip.
+  function whenText(seconds) {
+    if (!seconds) return "";
+    const d = new Date(seconds * 1000);
+    const mins = Math.floor((Date.now() - d.getTime()) / 60000);
+    if (mins < 1) return "just now";
+    if (mins < 60) return mins + (mins === 1 ? " minute ago" : " minutes ago");
+    const hrs = Math.floor(mins / 60);
+    if (hrs < 24) return hrs + (hrs === 1 ? " hour ago" : " hours ago");
+    const days = Math.floor(hrs / 24);
+    if (days < 30) return days + (days === 1 ? " day ago" : " days ago");
+    return d.toLocaleDateString(undefined, { month: "long", day: "numeric", year: "numeric" });
+  }
+
+  /* The activity list was a stack of bordered boxes, each nested inside the
+     bordered panel, with the metadata line set at the same size as the
+     comment itself and a full Delete button on every row. Nothing led, so
+     it read as undifferentiated text.
+
+     What changed and why:
+       * The comment leads. It is the content; everything else is context,
+         so attribution drops below it and gets smaller and quieter.
+       * Rows are ruled, not boxed — matching the ratings list, and ending
+         the box-inside-a-box.
+       * Status only appears when it tells you something. "published" on
+         every row is noise; "awaiting approval" is the state you can act
+         on, so only that one gets a marker.
+       * The date is shown at all (it was fetched and discarded).
+       * Delete is a quiet text action revealed on hover/focus rather than
+         the loudest element in every row. A destructive action should not
+         out-shout the thing it destroys. */
   function paintMyComments(items, interactive) {
     const box = $("acct-comments");
-    if (!items.length) { box.textContent = "No comments yet."; return; }
+    if (!items.length) {
+      box.classList.add("acct-empty");
+      box.innerHTML = `Reviews and comments you post on book and author pages collect here, ` +
+        `so you can see what's live and what's still awaiting approval.`;
+      return;
+    }
     box.classList.remove("acct-empty");
-    box.innerHTML = items.map((it, i) => `
-      <div style="border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:8px;background:var(--bg);">
-        <p style="font-size:var(--ui-sm);color:var(--fg-faint);">
-          on ${it.kind === "authors"
-            ? `<a href="{{ '/authors/' | relative_url }}${esc(it.slug)}/" style="color:var(--accent);">${esc(pretty(it.slug))}</a> <span style="opacity:.7;">(author)</span>`
-            : `<a href="{{ '/summary/' | relative_url }}?b=${esc(it.slug)}" style="color:var(--accent);">${esc(pretty(it.slug))}</a>`}
-          · ${it.approved ? "<span style='color:var(--success);font-weight:600;'>published</span>" : "<span style='color:var(--fg-faint);'>awaiting approval</span>"}
-        </p>
-        <div style="font-size:var(--ui-sm);color:var(--fg);line-height:1.55;margin:6px 0;">${(window.bhFormat ? window.bhFormat(it.text || "") : esc(it.text || ""))}</div>
-        ${interactive ? `<button class="btn-secondary" style="padding:4px 12px;font-size:var(--ui-sm);" onclick="acctDelComment(${i})">Delete</button>` : ""}
-      </div>`).join("");
+    box.innerHTML = `<ul class="acct-feed">` + items.map((it, i) => {
+      const href = it.kind === "authors"
+        ? `{{ '/authors/' | relative_url }}${esc(it.slug)}/`
+        : `{{ '/summary/' | relative_url }}?b=${esc(it.slug)}`;
+      const when = whenText(it.at);
+      return `<li class="acct-feed-item">
+        <div class="acct-feed-text">${(window.bhFormat ? window.bhFormat(it.text || "") : esc(it.text || ""))}</div>
+        <div class="acct-feed-meta">
+          <a class="acct-feed-on" href="${href}">${esc(pretty(it.slug))}</a>${it.kind === "authors" ? ` <span class="acct-feed-kind">author</span>` : ""}
+          ${when ? `<span class="acct-feed-sep" aria-hidden="true">·</span><span>${esc(when)}</span>` : ""}
+          ${it.approved ? "" : `<span class="acct-feed-sep" aria-hidden="true">·</span><span class="acct-feed-pending">Awaiting approval</span>`}
+          ${interactive ? `<button class="acct-feed-del" onclick="acctDelComment(${i})" aria-label="Delete this comment">Delete</button>` : ""}
+        </div>
+      </li>`;
+    }).join("") + `</ul>`;
   }
   window.acctDelComment = async function (i) {
     const ref = (window.__myCommentRefs || [])[i];
@@ -808,11 +900,21 @@ sitemap: false
     $("acct-signed-in").style.display = user ? "block" : "none";
     if (user) {
       // Falling back to the email here printed it twice: once as the
-      // heading and again on the line directly beneath it.
+      // heading and again on the line directly beneath it. "Your account"
+      // is only the placeholder while the real name resolves (or for an
+      // account that genuinely has none) — see bhAuthOps.resolveName.
       const name = user.displayName || "";
       setAcctAvatar(name || user.email || "Account", user.photoURL || null);
       $("acct-display-name").textContent = name || "Your account";
       $("acct-email-line").textContent = user.email || "";
+      if (!name && window.bhAuthOps && window.bhAuthOps.resolveName) {
+        window.bhAuthOps.resolveName(user).then((real) => {
+          if (!real) return;
+          $("acct-display-name").textContent = real;
+          $("acct-meta-name").textContent = real;
+          setAcctAvatar(real, user.photoURL || null);
+        });
+      }
       // Settings tab meta.
       $("acct-meta-name").textContent = user.displayName || "—";
       $("acct-meta-email").textContent = user.email || "—";

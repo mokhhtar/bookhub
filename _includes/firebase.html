@@ -521,6 +521,40 @@
     signIn(email, pw) {
       return signInWithEmailAndPassword(auth, email, pw);
     },
+    // The name someone typed at registration kept not showing: the header
+    // and /account/ fell back to their email address instead.
+    //
+    // signUp() does call updateProfile(), but onAuthStateChanged fires with
+    // the user object from BEFORE that call resolves, and Firebase keeps
+    // serving that cached profile for the rest of the session — so
+    // user.displayName reads null even though the write succeeded. Accounts
+    // created before the name field existed have a genuinely empty profile
+    // too. Either way the name IS in users/{uid}.displayName, because
+    // signUp() writes it there as well.
+    //
+    // So: reload first (fixes the race), then fall back to Firestore, and
+    // when Firestore has a name the auth profile lacks, write it back so
+    // this repairs itself permanently rather than on every page load.
+    async resolveName(user) {
+      if (!user) return "";
+      if (user.displayName) return user.displayName;
+      try {
+        await user.reload();
+        const fresh = auth.currentUser;
+        if (fresh && fresh.displayName) return fresh.displayName;
+      } catch (e) {}
+      try {
+        const snap = await getDoc(doc(db, "users", user.uid));
+        const stored = snap.exists() && snap.data().displayName;
+        if (stored) {
+          try {
+            await updateProfile(auth.currentUser || user, { displayName: stored });
+          } catch (e) {}
+          return stored;
+        }
+      } catch (e) {}
+      return "";
+    },
     async signUp(name, email, pw) {
       const cred = await createUserWithEmailAndPassword(auth, email, pw);
       await updateProfile(cred.user, { displayName: name });
@@ -1019,9 +1053,22 @@
     if (chip) {
       chip.style.display = user ? "flex" : "none";
       if (user) {
-        const name = user.displayName || user.email || "Account";
-        setAvatar($("auth-avatar"), name, user.photoURL || null);
-        $("auth-chip-name").textContent = name.split(" ")[0].slice(0, 14);
+        // Paint immediately with whatever is on hand so the chip never
+        // flashes empty, then upgrade once the real name resolves.
+        const provisional = user.displayName || user.email || "Account";
+        setAvatar($("auth-avatar"), provisional, user.photoURL || null);
+        $("auth-chip-name").textContent = provisional.split(" ")[0].slice(0, 14);
+        if (!user.displayName) {
+          window.bhAuthOps.resolveName(user).then((real) => {
+            if (!real) return;
+            setAvatar($("auth-avatar"), real, user.photoURL || null);
+            $("auth-chip-name").textContent = real.split(" ")[0].slice(0, 14);
+            try { localStorage.setItem(HINT_KEY, real); } catch (e) {}
+            document.dispatchEvent(
+              new CustomEvent("bh-name", { detail: { name: real } }),
+            );
+          });
+        }
       }
     }
     // Let feature scripts (library sync, comments…) react to auth state.
