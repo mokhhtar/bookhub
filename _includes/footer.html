@@ -16,7 +16,11 @@
 
     <nav class="footer-nav" aria-label="Footer navigation">
       <div class="footer-col">
-        <h3 class="footer-col-title">Tools</h3>
+        {%- comment -%} h2, not h3: these are top-level sections of the
+        footer, and pages whose body has no h2 produced an h1 -> h3 skip
+        that breaks screen-reader outline navigation on every page.
+        {%- endcomment -%}
+        <h2 class="footer-col-title">Tools</h2>
         <a href="{{ '/summary'      | relative_url }}">Book Summarizer</a>
         <a href="{{ '/tools/recommender'  | relative_url }}">AI Recommender</a>
         <a href="{{ '/tools/compare'      | relative_url }}">Comparison Matrix</a>
@@ -25,7 +29,7 @@
         <a href="{{ '/tools/search'       | relative_url }}">Advanced Search</a>
       </div>
       <div class="footer-col">
-        <h3 class="footer-col-title">Site</h3>
+        <h2 class="footer-col-title">Site</h2>
         <a href="{{ '/'            | relative_url }}">Home</a>
         <a href="{{ '/categories/' | relative_url }}">Categories</a>
         <a href="{{ '/authors/'    | relative_url }}">Authors</a>
@@ -35,7 +39,7 @@
         <a href="{{ '/terms/'      | relative_url }}">Terms</a>
       </div>
       <div class="footer-col">
-        <h3 class="footer-col-title">Disclosure</h3>
+        <h2 class="footer-col-title">Disclosure</h2>
         <p class="footer-disclosure">Litheca participates in the Amazon Associates program. Affiliate links help keep all tools free.</p>
       </div>
     </nav>
