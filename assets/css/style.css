@@ -34,11 +34,16 @@ html { font-size: 16px; scroll-behavior: smooth; -webkit-text-size-adjust: 100%;
   --bg-subtle:    #EFEDE7;
   --fg:           #181C1A;  /* ink, warm near-black */
   --fg-muted:     #4A524D;
-  --fg-faint:     #7C847E;
+  /* Both of these were set by eye and measured 3.29:1 and 2.99:1 against
+     the panel surface — below the 4.5:1 AA floor for normal text, and
+     used site-wide for secondary copy, star ratings and badges. Darkened
+     until they measure above it on --bg-subtle, the harder of the two
+     grounds. Verified in-browser, not by eye. */
+  --fg-faint:     #61685F;
   --accent:       #2F4A3C;  /* library green — the one bold accent */
   --accent-bg:    #E7ECE7;
   --accent-hover: #24382D;
-  --brass:        #A9824F;  /* quiet secondary */
+  --brass:        #7F5E33;  /* quiet secondary */
   --blue:         #2F4A3C;  /* links inherit the green; no stray 4th hue */
   --blue-bg:      #E7ECE7;
   --surface:      #EFEDE7;
@@ -60,6 +65,27 @@ html { font-size: 16px; scroll-behavior: smooth; -webkit-text-size-adjust: 100%;
   --t-lead:  22px;
   --t-title: 33px;
   --t-hero:  clamp(40px, 6vw, 52px);
+
+  /* Product-surface steps (account, library, tools). Authenticated UI is
+     a different register from the marketing pages: it carries far more
+     type elements, so the wide brand ratio above turns into noise there.
+     Fixed px rather than clamp — a heading that shrinks inside a panel
+     looks worse, not better — and a tighter ~1.15-1.2 progression.
+     13 -> 15 -> 18 -> 22 */
+  --ui-sm:    13px;
+  --ui-body:  15px;
+  --ui-head:  18px;
+  --ui-title: 22px;
+
+  /* Semantic state colours. Previously each surface hardcoded its own
+     (#f5a623 here, #d33 there), which is how a product UI ends up with
+     three different reds. */
+  --danger:      #A3342A;
+  --danger-bg:   #F7E9E7;
+  --warn:        #A9824F;
+  --warn-bg:     #F6EFE4;
+  --success:     #2F6B4F;
+  --border-subtle: #E8E5DD;  /* was referenced but never defined */
 
   /* Near-flat. The old 8px-on-everything was the template tell. */
   --r:    3px;
@@ -198,7 +224,10 @@ html[data-theme="dark"] input:focus-visible { outline-color: var(--accent); }
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(255,255,255,0.92);
+  /* Tinted to the paper, not white. This was rgba(255,255,255,.92) from
+     the era when --bg actually was #ffffff; against the warmer paper it
+     left a visible seam under the header on every page. */
+  background: rgba(247, 246, 243, 0.92);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
@@ -1333,7 +1362,8 @@ html[data-theme="dark"] {
   --bg-subtle:    #1A1F18;
   --fg:           #EDEAE1;
   --fg-muted:     #A8AEA3;
-  --fg-faint:     #7A8177;
+  /* Lifted from #7A8177, which measured 4.18:1 on the dark panel. */
+  --fg-faint:     #8B9287;
   --accent:       #8FB89B;
   --accent-bg:    #1E2A22;
   --accent-hover: #A6C9B0;
@@ -1344,11 +1374,18 @@ html[data-theme="dark"] {
   --border:       #2A3027;
   --border-med:   #3D453A;
   --rule:         #EDEAE1;
+  --danger:       #E88A7D;
+  --danger-bg:    #2E1D1A;
+  --warn:         #C9A268;
+  --warn-bg:      #2A2318;
+  --success:      #7FBF9B;
+  --border-subtle: #232922;
 }
 
 /* Adjust header backdrop in dark mode */
 html[data-theme="dark"] .site-header {
-  background: rgba(11, 15, 25, 0.85);
+  /* Matches the current dark ground (#12160F); was the old blue-black. */
+  background: rgba(18, 22, 15, 0.88);
 }
 
 /* Flip logo colors in dark mode */

@@ -7,95 +7,161 @@ noindex: true
 sitemap: false
 ---
 <style>
+  /* ── /account/ — product register ─────────────────────────────────
+     This is an authenticated task surface, not a marketing page, so it
+     follows different rules from the homepage:
+
+       * The UI face throughout. The site body font is now Literata, a
+         serif drawn for reading books; inheriting it here put a serif in
+         every button, label and data value, which is the clearest tell
+         that a product UI was styled by a brand brief.
+       * A tighter type scale (~1.15-1.2). There are far more type
+         elements on this page than on a landing page, and the wide
+         brand ratio just turns into noise.
+       * One radius, one border weight, one panel treatment. The page
+         previously mixed six radii (16/14/12/10/8/4px), which reads as
+         several component libraries sharing a screen.
+       * Semantic state colours from the shared tokens instead of the
+         hardcoded #f5a623 / #d33 that used to live here.
+       * Every interactive element carries hover, focus, active and
+         disabled. Half a set is what makes an interface feel unfinished.
+     ─────────────────────────────────────────────────────────────── */
+  .account-page,
+  .account-page input,
+  .account-page button,
+  .account-page select {
+    font-family: var(--font-ui);
+  }
+  .account-page { font-size: var(--ui-body); }
+
   /* Profile header */
   .acct-hero {
     display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
-    border: 1px solid var(--border); border-radius: 16px; background: var(--bg);
-    padding: 20px 22px; margin-bottom: 20px;
+    border: 1px solid var(--border); border-radius: var(--r);
+    background: var(--bg-subtle);
+    padding: 18px 20px; margin-bottom: 24px;
   }
   .acct-hero-info { flex: 1; min-width: 180px; }
   .acct-hero-actions { display: flex; gap: 8px; flex-wrap: wrap; }
 
   /* Tab nav */
   .acct-tabs {
-    display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 22px;
+    display: flex; gap: 2px; flex-wrap: wrap; margin-bottom: 24px;
     border-bottom: 1px solid var(--border);
   }
   .acct-tab {
     appearance: none; background: none; border: 0; cursor: pointer;
-    padding: 10px 16px; font-size: 14px; font-weight: 600; color: var(--fg-muted);
+    padding: 10px 14px; font-size: var(--ui-sm); font-weight: 600;
+    color: var(--fg-muted);
     border-bottom: 2px solid transparent; margin-bottom: -1px;
     display: inline-flex; align-items: center; gap: 7px;
+    transition: color .18s var(--ease-out), border-color .18s var(--ease-out);
   }
   .acct-tab:hover { color: var(--fg); }
+  .acct-tab:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
   .acct-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
   .acct-tab svg { width: 15px; height: 15px; }
 
   .acct-panel { display: none; }
   .acct-panel.active { display: block; }
 
-  /* Section cards inside panels */
+  /* Panels. One neutral layer above the page ground, flat corners. */
   .acct-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
   @media (min-width: 720px) {
     .acct-grid { grid-template-columns: 1fr 1fr; align-items: start; }
     .acct-grid > .acct-section-wide { grid-column: 1 / -1; }
   }
   .acct-section {
-    border: 1px solid var(--border); border-radius: 14px;
-    background: var(--bg); padding: 18px 20px;
+    border: 1px solid var(--border); border-radius: var(--r);
+    background: var(--bg-subtle); padding: 18px 20px;
   }
-  .acct-h2 { font-size: 15px; font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
-  .acct-h2 svg { color: var(--accent); flex-shrink: 0; }
-  .acct-empty { font-size: 13px; color: var(--fg-muted); }
+  .acct-h2 {
+    font-size: var(--ui-sm); font-weight: 600; margin-bottom: 14px;
+    display: flex; align-items: center; gap: 8px;
+    letter-spacing: .06em; text-transform: uppercase; color: var(--fg-muted);
+  }
+  .acct-h2 svg { color: var(--fg-faint); flex-shrink: 0; }
+  .acct-empty { font-size: var(--ui-sm); color: var(--fg-muted); line-height: 1.6; }
+  .acct-empty a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
 
-  /* Favorite-character cards (mirrors the summary page's char cards) */
-  .acct-char-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; }
+  /* Favourite-character cards */
+  .acct-char-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 8px; }
   .acct-char-card {
     position: relative; display: flex; flex-direction: column; align-items: center; gap: 6px;
     padding: 14px 8px 12px; text-align: center; text-decoration: none; color: var(--fg);
-    border: 1px solid var(--border); border-radius: 12px; background: var(--bg);
+    border: 1px solid var(--border); border-radius: var(--r); background: var(--bg);
+    transition: border-color .18s var(--ease-out);
   }
+  .acct-char-card:hover { border-color: var(--border-med); text-decoration: none; }
   .acct-char-avatar {
-    width: 52px; height: 52px; border-radius: 50%; overflow: hidden;
+    width: 48px; height: 48px; border-radius: 50%; overflow: hidden;
     background: var(--bg-subtle); border: 1px solid var(--border);
     display: flex; align-items: center; justify-content: center;
-    font-size: 20px; font-weight: 800; color: var(--fg-faint);
+    font-size: var(--ui-head); font-weight: 600; color: var(--fg-faint);
   }
   .acct-char-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
-  .acct-char-name { font-size: 12px; font-weight: 700; line-height: 1.25; }
-  .acct-char-book { font-size: 10px; color: var(--fg-faint); }
+  .acct-char-name { font-size: var(--ui-sm); font-weight: 600; line-height: 1.25; }
+  .acct-char-book { font-size: var(--ui-sm); color: var(--fg-faint); }
   .acct-char-x {
-    position: absolute; top: 6px; right: 6px; width: 20px; height: 20px;
-    border: 0; border-radius: 50%; background: var(--bg-subtle); color: var(--fg-faint);
-    font-size: 11px; line-height: 1; cursor: pointer;
+    position: absolute; top: 5px; right: 5px; width: 22px; height: 22px;
+    border: 0; border-radius: 50%; background: transparent; color: var(--fg-faint);
+    font-size: var(--ui-sm); line-height: 1; cursor: pointer;
+    opacity: 0; transition: opacity .18s var(--ease-out), color .18s var(--ease-out);
   }
-  .acct-char-x:hover { color: #d33; }
+  /* Revealed on hover/focus, but never hidden from keyboards or touch. */
+  .acct-char-card:hover .acct-char-x,
+  .acct-char-x:focus-visible { opacity: 1; }
+  @media (hover: none) { .acct-char-x { opacity: 1; } }
+  .acct-char-x:hover, .acct-char-x:focus-visible { color: var(--danger); background: var(--danger-bg); }
 
-  /* Recently viewed / rated rows */
+  /* Recently viewed / rated rows. Ruled, not boxed: a list of six books
+     inside a panel does not need six more borders around it. */
   .acct-book-row {
-    display: flex; align-items: center; gap: 12px; padding: 8px 10px;
-    border: 1px solid var(--border); border-radius: 10px; background: var(--bg);
-    margin-bottom: 8px; text-decoration: none; color: var(--fg);
+    display: flex; align-items: center; gap: 12px; padding: 10px 0;
+    border: 0; border-bottom: 1px solid var(--border-subtle); border-radius: 0;
+    background: none; text-decoration: none; color: var(--fg);
+    transition: opacity .18s var(--ease-out);
   }
-  .acct-book-cover { width: 34px; aspect-ratio: 2/3; object-fit: cover; border-radius: 4px; border: 1px solid var(--border); flex-shrink: 0; }
-  .acct-book-cover-empty { width: 34px; aspect-ratio: 2/3; border-radius: 4px; border: 1px solid var(--border); background: var(--bg-subtle); flex-shrink: 0; }
-  .acct-book-t { font-size: 13px; font-weight: 600; line-height: 1.3; }
-  .acct-book-a { font-size: 11px; color: var(--fg-faint); }
-  .acct-stars { margin-left: auto; color: #f5a623; font-size: 13px; letter-spacing: 1px; white-space: nowrap; }
+  .acct-book-row:last-child { border-bottom: 0; }
+  .acct-book-row:hover { text-decoration: none; opacity: .68; }
+  .acct-book-cover, .acct-book-cover-empty {
+    width: 32px; aspect-ratio: 2/3; object-fit: cover;
+    border-radius: var(--r-sm); border: 1px solid var(--border); flex-shrink: 0;
+  }
+  .acct-book-cover-empty { background: var(--bg-subtle); }
+  .acct-book-t { font-size: var(--ui-body); font-weight: 600; line-height: 1.3; }
+  .acct-book-a { font-size: var(--ui-sm); color: var(--fg-faint); }
+  .acct-stars { margin-left: auto; color: var(--brass); font-size: var(--ui-sm); letter-spacing: 1px; white-space: nowrap; }
 
+  /* Form controls — one vocabulary, all states. */
   .acct-input {
-    width: 100%; box-sizing: border-box; padding: 10px 12px; font-size: 16px;
-    background: var(--bg-subtle); color: var(--fg);
-    border: 1px solid var(--border); border-radius: 8px; margin-bottom: 10px;
+    width: 100%; box-sizing: border-box; padding: 10px 12px;
+    /* Stays >=16px: iOS Safari zooms the viewport on focus below that. */
+    font-size: 16px;
+    background: var(--bg); color: var(--fg);
+    border: 1px solid var(--border-med); border-radius: var(--r); margin-bottom: 10px;
+    transition: border-color .18s var(--ease-out), box-shadow .18s var(--ease-out);
   }
-  .acct-input:focus { outline: none; border-color: var(--accent); }
-  .acct-note { font-size: 12px; margin-top: 8px; }
+  .acct-input::placeholder { color: var(--fg-faint); }
+  .acct-input:hover { border-color: var(--fg-faint); }
+  .acct-input:focus {
+    outline: none; border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-bg);
+  }
+  .acct-input:disabled { opacity: .55; cursor: not-allowed; background: var(--bg-subtle); }
+  .acct-input[aria-invalid="true"] { border-color: var(--danger); }
+  .acct-note { font-size: var(--ui-sm); margin-top: 8px; }
+
+  /* Buttons in a busy panel need a disabled state or the page looks
+     broken the moment an async action is in flight. */
+  .account-page .btn-primary:disabled,
+  .account-page .btn-secondary:disabled { opacity: .55; cursor: not-allowed; }
 
   /* Skeleton shimmer — shown while Firestore data loads (or refreshes
      behind a cached instant paint). */
   .bh-skel {
     position: relative; overflow: hidden;
-    background: var(--bg-subtle); border-radius: 8px;
+    background: var(--bg-subtle); border-radius: var(--r);
   }
   .bh-skel::after {
     content: ""; position: absolute; inset: 0; transform: translateX(-100%);
@@ -103,9 +169,21 @@ sitemap: false
     animation: bh-shimmer 1.2s infinite;
   }
   @keyframes bh-shimmer { 100% { transform: translateX(100%); } }
-  .acct-meta-row { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; padding: 8px 0; border-bottom: 1px solid var(--border-subtle); }
-  .acct-meta-row:last-child { border-bottom: 0; }
+  @media (prefers-reduced-motion: reduce) { .bh-skel::after { animation: none; } }
+
+  .acct-meta-row {
+    display: flex; justify-content: space-between; gap: 12px;
+    font-size: var(--ui-sm); padding: 10px 0;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .acct-meta-row:last-of-type { border-bottom: 0; }
   .acct-meta-row span:first-child { color: var(--fg-faint); }
+
+  /* Signed-out panel */
+  .acct-authcard {
+    background: var(--bg-subtle); border: 1px solid var(--border);
+    border-radius: var(--r); padding: 22px;
+  }
 </style>
 
 <section class="account-page">
@@ -114,8 +192,8 @@ sitemap: false
     <!-- Signed OUT: full sign-in / register forms -->
     <div id="acct-signed-out" style="display:none;max-width:480px;margin:0 auto;">
       <header style="text-align:center;margin-bottom:24px;">
-        <h1 class="section-title" style="font-size:26px;">Welcome to Litheca</h1>
-        <p style="font-size:14px;color:var(--fg-muted);margin-top:8px;">Sync your library across devices, comment on books, and recommend your favorites.</p>
+        <h1 class="section-title" style="font-size:var(--ui-title);">Welcome to Litheca</h1>
+        <p style="font-size:var(--ui-body);color:var(--fg-muted);margin-top:8px;line-height:1.6;">Sync your library across devices, comment on books, and recommend your favorites.</p>
       </header>
 
       <button class="auth-google-btn" onclick="acctGoogle()" style="max-width:380px;margin:0 auto;">
@@ -130,7 +208,7 @@ sitemap: false
           <button class="auth-tab" id="acct-tab-signup" onclick="acctMode('signup')">Create account</button>
         </div>
 
-        <form onsubmit="return acctSubmit(event)" style="background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:22px;">
+        <form onsubmit="return acctSubmit(event)" class="acct-authcard">
           <div id="acct-name-row" style="display:none;">
             <label class="auth-label" for="acct-name">Display name</label>
             <input class="auth-input" id="acct-name" type="text" minlength="2" maxlength="40" autocomplete="nickname" placeholder="Shown next to your comments">
@@ -149,10 +227,10 @@ sitemap: false
     <!-- Signed IN: profile + data -->
     <div id="acct-signed-in" style="display:none;">
       <div class="acct-hero">
-        <div class="auth-avatar" id="acct-avatar" style="width:60px;height:60px;font-size:24px;flex-shrink:0;">?</div>
+        <div class="auth-avatar" id="acct-avatar" style="width:60px;height:60px;font-size:var(--ui-title);flex-shrink:0;">?</div>
         <div class="acct-hero-info">
-          <h1 class="section-title" style="font-size:22px;line-height:1.2;" id="acct-display-name">Account</h1>
-          <p style="font-size:13px;color:var(--fg-faint);margin-top:3px;" id="acct-email-line"></p>
+          <h1 class="section-title" style="font-size:var(--ui-title);line-height:1.2;" id="acct-display-name">Account</h1>
+          <p style="font-size:var(--ui-sm);color:var(--fg-faint);margin-top:4px;" id="acct-email-line"></p>
         </div>
         <div class="acct-hero-actions">
           <a class="btn-secondary" href="{{ '/My-Library' | relative_url }}" style="padding:9px 18px;">My Library</a>
@@ -161,13 +239,13 @@ sitemap: false
       </div>
 
       <!-- Email-verification notice (email/password accounts that haven't confirmed) -->
-      <div id="acct-verify-notice" style="display:none;border:1px solid #f5a623;background:rgba(245,166,35,.10);border-radius:12px;padding:14px 16px;margin-bottom:20px;">
-        <p style="font-size:13px;color:var(--fg);line-height:1.6;">
-          <b>Confirm your email.</b> We sent a verification link to your inbox — confirm it to post comments and reviews.
+      <div id="acct-verify-notice" style="display:none;border:1px solid var(--warn);background:var(--warn-bg);border-radius:var(--r);padding:14px 16px;margin-bottom:20px;">
+        <p style="font-size:var(--ui-sm);color:var(--fg);line-height:1.6;">
+          <b>Confirm your email.</b> We sent a verification link to your inbox. Confirm it to post comments and reviews.
         </p>
-        <div style="display:flex;align-items:center;gap:10px;margin-top:8px;">
-          <button class="btn-secondary" id="acct-verify-btn" onclick="acctResendVerify()" style="padding:6px 16px;font-size:12px;">Resend email</button>
-          <span id="acct-verify-note" style="font-size:12px;color:var(--fg-faint);"></span>
+        <div style="display:flex;align-items:center;gap:10px;margin-top:10px;">
+          <button class="btn-secondary" id="acct-verify-btn" onclick="acctResendVerify()" style="padding:7px 16px;font-size:var(--ui-sm);">Resend email</button>
+          <span id="acct-verify-note" style="font-size:var(--ui-sm);color:var(--fg-faint);"></span>
         </div>
       </div>
 
@@ -217,8 +295,13 @@ sitemap: false
             <div id="acct-ratings"></div>
           </div>
         </div>
-        <div id="acct-reading-empty" class="acct-empty" style="display:none;text-align:center;padding:32px 0;">
-          Nothing here yet — <a href="{{ '/summary/' | relative_url }}" style="color:var(--accent);">summarize a book</a> or add one to <a href="{{ '/My-Library' | relative_url }}" style="color:var(--accent);">My Library</a>.
+        {%- comment -%} Empty states here name the action that fills them,
+        rather than only reporting that they are empty. {%- endcomment -%}
+        <div id="acct-reading-empty" class="acct-empty" style="display:none;text-align:center;padding:36px 16px;max-width:38rem;margin:0 auto;">
+          Books you open show up here, along with any you rate. Start by
+          <a href="{{ '/summary/' | relative_url }}">building a guide</a>
+          for something you're reading, or add a title to
+          <a href="{{ '/My-Library' | relative_url }}">My Library</a>.
         </div>
       </div>
 
@@ -264,7 +347,7 @@ sitemap: false
             <div class="acct-meta-row"><span>Name</span><span id="acct-meta-name" style="font-weight:600;"></span></div>
             <div class="acct-meta-row"><span>Email</span><span id="acct-meta-email" style="font-weight:600;"></span></div>
             <div class="acct-meta-row"><span>Sign-in method</span><span id="acct-meta-provider" style="font-weight:600;"></span></div>
-            <button class="btn-secondary" onclick="bhAuthOps.signOut()" style="padding:8px 20px;font-size:13px;margin-top:14px;">Sign out</button>
+            <button class="btn-secondary" onclick="bhAuthOps.signOut()" style="padding:8px 20px;font-size:var(--ui-sm);margin-top:14px;">Sign out</button>
           </div>
 
           <!-- Change password (email/password accounts only) -->
@@ -276,7 +359,7 @@ sitemap: false
             <form onsubmit="return acctChangePw(event)">
               <input class="acct-input" id="acct-pw-current" type="password" required minlength="6" placeholder="Current password" autocomplete="current-password">
               <input class="acct-input" id="acct-pw-new" type="password" required minlength="6" placeholder="New password (6+ characters)" autocomplete="new-password">
-              <button class="btn-secondary" type="submit" id="acct-pw-btn" style="padding:8px 20px;font-size:13px;">Update password</button>
+              <button class="btn-secondary" type="submit" id="acct-pw-btn" style="padding:8px 20px;font-size:var(--ui-sm);">Update password</button>
               <p class="acct-note" id="acct-pw-note"></p>
             </form>
           </div>
@@ -388,7 +471,7 @@ sitemap: false
         // Account created + signed back out; it can't be used until verified.
         acctMode("signin");
         const note = $("acct-error");
-        note.style.color = res.verificationSent ? "#22a06b" : "#d33";
+        note.style.color = res.verificationSent ? "var(--success)" : "var(--danger)";
         note.style.display = "block";
         note.textContent = res.verificationSent
           ? `Almost there — we sent a confirmation link to ${email}. Click it (check spam too), then sign in.`
@@ -436,14 +519,14 @@ sitemap: false
     btn.disabled = true; note.textContent = "Sending…";
     try {
       await bhAuthOps.resendVerification();
-      note.style.color = "#22a06b";
+      note.style.color = "var(--success)";
       countdown(60, true);
     } catch (e) {
       if ((e && e.code) === "auth/too-many-requests") {
-        note.style.color = "#d33";
+        note.style.color = "var(--danger)";
         countdown(120, false);
       } else {
-        note.style.color = "#d33";
+        note.style.color = "var(--danger)";
         note.textContent = explain(e);
         btn.disabled = false;
       }
@@ -459,10 +542,10 @@ sitemap: false
     try {
       await bhAuthOps.changePassword($("acct-pw-current").value, $("acct-pw-new").value);
       $("acct-pw-current").value = ""; $("acct-pw-new").value = "";
-      note.style.color = "#22a06b";
+      note.style.color = "var(--success)";
       note.textContent = "Password updated.";
     } catch (e) {
-      note.style.color = "#d33";
+      note.style.color = "var(--danger)";
       note.textContent = explain(e);
     } finally {
       btn.disabled = false;
@@ -514,23 +597,23 @@ sitemap: false
       && b.finishedAt && new Date(b.finishedAt).getFullYear() === year).length;
     const goal = readGoal();
     if (!goal) {
-      box.innerHTML = `<p style="font-size:13px;color:var(--fg-muted);">Set a goal for ${year} and track books you finish.
+      box.innerHTML = `<p style="font-size:var(--ui-sm);color:var(--fg-muted);">Set a goal for ${year} and track books you finish.
         ${done ? `You've already finished <b>${done}</b> this year.` : ""}
-        <button class="btn-secondary" onclick="acctSetGoal()" style="padding:5px 14px;font-size:12px;margin-left:8px;">Set a goal</button></p>`;
+        <button class="btn-secondary" onclick="acctSetGoal()" style="padding:5px 14px;font-size:var(--ui-sm);margin-left:8px;">Set a goal</button></p>`;
       return;
     }
     const pct = Math.min(100, Math.round(done / goal * 100));
     const hit = done >= goal;
     box.innerHTML = `
       <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:8px;">
-        <span style="font-size:22px;font-weight:800;">${done} <span style="font-size:14px;font-weight:600;color:var(--fg-faint);">/ ${goal} books</span></span>
-        <span style="font-size:12px;color:${hit ? '#1d7a50' : 'var(--fg-faint)'};font-weight:600;display:inline-flex;align-items:center;gap:4px;">
+        <span style="font-size:var(--ui-title);font-weight:800;">${done} <span style="font-size:var(--ui-body);font-weight:600;color:var(--fg-faint);">/ ${goal} books</span></span>
+        <span style="font-size:var(--ui-sm);color:${hit ? 'var(--success)' : 'var(--fg-faint)'};font-weight:600;display:inline-flex;align-items:center;gap:4px;">
           ${hit ? `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg> Goal reached!` : `${goal - done} to go · ${pct}%`}
-          <button class="btn-secondary" onclick="acctSetGoal()" style="padding:3px 10px;font-size:11px;margin-left:8px;">Edit</button>
+          <button class="btn-secondary" onclick="acctSetGoal()" style="padding:3px 10px;font-size:var(--ui-sm);margin-left:8px;">Edit</button>
         </span>
       </div>
       <div style="height:10px;background:var(--bg-subtle);border-radius:5px;overflow:hidden;">
-        <div style="width:${pct}%;height:100%;background:${hit ? '#1d7a50' : 'var(--accent)'};border-radius:5px;transition:width .4s ease;"></div>
+        <div style="width:${pct}%;height:100%;background:${hit ? 'var(--success)' : 'var(--accent)'};border-radius:5px;transition:width .4s ease;"></div>
       </div>`;
   }
 
@@ -607,7 +690,7 @@ sitemap: false
     } catch (e) {
       console.error("loadFavChars failed:", e);
       box.innerHTML = `Couldn't load your favorites right now. ` +
-        `<button class="btn-secondary" style="padding:4px 12px;font-size:12px;" onclick="location.reload()">Retry</button>`;
+        `<button class="btn-secondary" style="padding:4px 12px;font-size:var(--ui-sm);" onclick="location.reload()">Retry</button>`;
     }
   }
 
@@ -638,8 +721,8 @@ sitemap: false
     box.classList.remove("acct-empty");
     box.innerHTML = authors.map((a, i) => `
       <span style="display:inline-flex;align-items:center;gap:6px;border:1px solid var(--border);border-radius:999px;padding:6px 8px 6px 14px;margin:0 6px 8px 0;background:var(--bg);">
-        <a href="{{ '/authors/' | relative_url }}${esc(a.slug)}/" style="color:var(--fg);text-decoration:none;font-weight:600;font-size:13px;">${esc(a.name || pretty(a.slug))}</a>
-        ${interactive ? `<button onclick="acctUnlikeAuthor(${i})" title="Remove" style="border:0;background:var(--bg-subtle);border-radius:50%;width:20px;height:20px;cursor:pointer;color:var(--fg-faint);font-size:11px;line-height:1;">✕</button>` : ""}
+        <a href="{{ '/authors/' | relative_url }}${esc(a.slug)}/" style="color:var(--fg);text-decoration:none;font-weight:600;font-size:var(--ui-sm);">${esc(a.name || pretty(a.slug))}</a>
+        ${interactive ? `<button onclick="acctUnlikeAuthor(${i})" title="Remove" style="border:0;background:var(--bg-subtle);border-radius:50%;width:20px;height:20px;cursor:pointer;color:var(--fg-faint);font-size:var(--ui-sm);line-height:1;">✕</button>` : ""}
       </span>`).join("");
   }
   window.acctUnlikeAuthor = async function (i) {
@@ -676,7 +759,7 @@ sitemap: false
     } catch (e) {
       console.error("loadMyComments failed:", e);
       box.innerHTML = `Couldn't load your comments right now. ` +
-        `<button class="btn-secondary" style="padding:4px 12px;font-size:12px;" onclick="location.reload()">Retry</button>`;
+        `<button class="btn-secondary" style="padding:4px 12px;font-size:var(--ui-sm);" onclick="location.reload()">Retry</button>`;
     }
   }
 
@@ -686,14 +769,14 @@ sitemap: false
     box.classList.remove("acct-empty");
     box.innerHTML = items.map((it, i) => `
       <div style="border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:8px;background:var(--bg);">
-        <p style="font-size:11px;color:var(--fg-faint);">
+        <p style="font-size:var(--ui-sm);color:var(--fg-faint);">
           on ${it.kind === "authors"
             ? `<a href="{{ '/authors/' | relative_url }}${esc(it.slug)}/" style="color:var(--accent);">${esc(pretty(it.slug))}</a> <span style="opacity:.7;">(author)</span>`
             : `<a href="{{ '/summary/' | relative_url }}?b=${esc(it.slug)}" style="color:var(--accent);">${esc(pretty(it.slug))}</a>`}
-          · ${it.approved ? "<span style='color:#22a06b;font-weight:600;'>published</span>" : "<span style='color:var(--fg-faint);'>awaiting approval</span>"}
+          · ${it.approved ? "<span style='color:var(--success);font-weight:600;'>published</span>" : "<span style='color:var(--fg-faint);'>awaiting approval</span>"}
         </p>
-        <div style="font-size:13px;color:var(--fg);line-height:1.55;margin:6px 0;">${(window.bhFormat ? window.bhFormat(it.text || "") : esc(it.text || ""))}</div>
-        ${interactive ? `<button class="btn-secondary" style="padding:4px 12px;font-size:11px;" onclick="acctDelComment(${i})">Delete</button>` : ""}
+        <div style="font-size:var(--ui-sm);color:var(--fg);line-height:1.55;margin:6px 0;">${(window.bhFormat ? window.bhFormat(it.text || "") : esc(it.text || ""))}</div>
+        ${interactive ? `<button class="btn-secondary" style="padding:4px 12px;font-size:var(--ui-sm);" onclick="acctDelComment(${i})">Delete</button>` : ""}
       </div>`).join("");
   }
   window.acctDelComment = async function (i) {
