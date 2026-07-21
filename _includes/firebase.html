@@ -535,6 +535,28 @@
     // So: reload first (fixes the race), then fall back to Firestore, and
     // when Firestore has a name the auth profile lacks, write it back so
     // this repairs itself permanently rather than on every page load.
+    // Until now the display name could only ever be set at registration,
+    // and Settings showed it as read-only text. Anyone whose name did not
+    // save — an account older than the name field, a Google sign-in they
+    // want to override, or a failed profile write — had no way to fix it,
+    // and the name is what appears next to their comments. Writes both
+    // places signUp() writes, so the two cannot drift apart.
+    async updateName(name) {
+      const clean = String(name || "").trim().replace(/\s+/g, " ");
+      // Matches the 2-40 char rule the Firestore profile rules enforce.
+      if (clean.length < 2 || clean.length > 40) {
+        throw new Error("Please use between 2 and 40 characters.");
+      }
+      const user = auth.currentUser;
+      if (!user) throw new Error("You are signed out.");
+      await updateProfile(user, { displayName: clean });
+      await setDoc(
+        doc(db, "users", user.uid),
+        { displayName: clean },
+        { merge: true },
+      );
+      return clean;
+    },
     async resolveName(user) {
       if (!user) return "";
       if (user.displayName) return user.displayName;

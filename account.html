@@ -232,6 +232,16 @@ sitemap: false
     color: var(--danger); text-decoration: underline; text-underline-offset: 2px;
   }
 
+  /* Editable display name in Settings */
+  .acct-name-form { margin-bottom: 18px; }
+  .acct-field-hint {
+    font-size: var(--ui-sm); color: var(--fg-faint);
+    margin: 2px 0 8px;
+  }
+  .acct-field-row { display: flex; gap: 8px; align-items: flex-start; }
+  .acct-field-row .acct-input { margin-bottom: 0; }
+  .acct-field-row .btn-secondary { flex-shrink: 0; padding: 10px 18px; font-size: var(--ui-sm); }
+
   /* Signed-out panel */
   .acct-authcard {
     background: var(--bg-subtle); border: 1px solid var(--border);
@@ -397,7 +407,20 @@ sitemap: false
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
               Account
             </h2>
-            <div class="acct-meta-row"><span>Name</span><span id="acct-meta-name" style="font-weight:600;"></span></div>
+            {%- comment -%} The name was read-only here and only settable at
+            registration, so anyone whose name never saved had no way to fix
+            the name that shows next to their comments. {%- endcomment -%}
+            <form class="acct-name-form" onsubmit="return acctSaveName(event)">
+              <label class="auth-label" for="acct-name-input">Display name</label>
+              <p class="acct-field-hint">Shown next to your comments and reviews.</p>
+              <div class="acct-field-row">
+                <input class="acct-input" id="acct-name-input" type="text"
+                       minlength="2" maxlength="40" autocomplete="nickname"
+                       placeholder="Your name">
+                <button class="btn-secondary" type="submit" id="acct-name-btn">Save</button>
+              </div>
+              <p class="acct-note" id="acct-name-note" style="display:none;"></p>
+            </form>
             <div class="acct-meta-row"><span>Email</span><span id="acct-meta-email" style="font-weight:600;"></span></div>
             <div class="acct-meta-row"><span>Sign-in method</span><span id="acct-meta-provider" style="font-weight:600;"></span></div>
             <button class="btn-secondary" onclick="bhAuthOps.signOut()" style="padding:8px 20px;font-size:var(--ui-sm);margin-top:14px;">Sign out</button>
@@ -887,6 +910,41 @@ sitemap: false
       </li>`;
     }).join("") + `</ul>`;
   }
+  window.acctSaveName = async function (e) {
+    e.preventDefault();
+    const input = $("acct-name-input");
+    const btn = $("acct-name-btn");
+    const note = $("acct-name-note");
+    const value = input.value;
+    btn.disabled = true;
+    input.setAttribute("aria-invalid", "false");
+    note.style.display = "block";
+    note.style.color = "var(--fg-faint)";
+    note.textContent = "Saving…";
+    try {
+      const saved = await window.bhAuthOps.updateName(value);
+      input.value = saved;
+      // Reflect it everywhere the old name was showing, without a reload.
+      $("acct-display-name").textContent = saved;
+      setAcctAvatar(saved, (window.bhUser && window.bhUser.photoURL) || null);
+      const chip = document.getElementById("auth-chip-name");
+      if (chip) chip.textContent = saved.split(" ")[0].slice(0, 14);
+      const chipAvatar = document.getElementById("auth-avatar");
+      if (chipAvatar && window.bhSetAvatar) {
+        window.bhSetAvatar(chipAvatar, saved, (window.bhUser && window.bhUser.photoURL) || null);
+      }
+      note.style.color = "var(--success)";
+      note.textContent = "Saved.";
+    } catch (err) {
+      input.setAttribute("aria-invalid", "true");
+      note.style.color = "var(--danger)";
+      note.textContent = (err && err.message) || "Couldn't save that name.";
+    } finally {
+      btn.disabled = false;
+    }
+    return false;
+  };
+
   window.acctDelComment = async function (i) {
     const ref = (window.__myCommentRefs || [])[i];
     if (!ref) return;
@@ -911,12 +969,12 @@ sitemap: false
         window.bhAuthOps.resolveName(user).then((real) => {
           if (!real) return;
           $("acct-display-name").textContent = real;
-          $("acct-meta-name").textContent = real;
+          $("acct-name-input").value = real;
           setAcctAvatar(real, user.photoURL || null);
         });
       }
-      // Settings tab meta.
-      $("acct-meta-name").textContent = user.displayName || "—";
+      // Settings tab. The name is an editable field now, not a meta row.
+      $("acct-name-input").value = name;
       $("acct-meta-email").textContent = user.email || "—";
       const provs = (window.bhAuthOps ? bhAuthOps.providers() : [])
         .map(p => PROVIDER_LABEL[p] || p);
