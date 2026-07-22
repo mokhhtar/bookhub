@@ -59,7 +59,7 @@ reach anyone who had visited before. {%- endcomment -%}
           </a>
           <div style="flex:1;min-width:140px;">
             <input type="text" name="q" class="form-input" placeholder="Search another book…" autocomplete="off"
-                   style="width:100%;box-sizing:border-box;padding:8px 14px;font-size:var(--t-body);background:var(--bg-subtle);color:var(--fg);border:1px solid var(--border);border-radius:8px;">
+                   style="width:100%;box-sizing:border-box;padding:8px 14px;font-size:var(--t-body);background:var(--bg-subtle);color:var(--fg);border:1px solid var(--border);border-radius:var(--r);">
           </div>
           <button type="submit" class="btn-primary" style="padding:8px 18px;font-size:var(--t-label);flex-shrink:0;">Search</button>
         </form>
@@ -85,8 +85,8 @@ reach anyone who had visited before. {%- endcomment -%}
             <div style="min-width:0;">
               <span style="font-size:var(--t-label);font-weight:600;display:block;color:var(--fg);">Listen to this guide</span>
               <span id="audio-status" style="font-size:var(--t-label);color:var(--fg-faint);">Click play to listen</span>
-              <div style="width:120px;height:3px;background:var(--border);border-radius:2px;margin-top:5px;overflow:hidden;">
-                <div id="audio-progress-fill" style="width:100%;transform:scaleX(0);transform-origin:left;height:100%;background:var(--accent);border-radius:2px;transition:transform .4s var(--ease-out);"></div>
+              <div style="width:120px;height:3px;background:var(--border);border-radius:var(--r);margin-top:5px;overflow:hidden;">
+                <div id="audio-progress-fill" style="width:100%;transform:scaleX(0);transform-origin:left;height:100%;background:var(--accent);border-radius:var(--r);transition:transform .4s var(--ease-out);"></div>
               </div>
             </div>
           </div>
@@ -158,7 +158,7 @@ reach anyone who had visited before. {%- endcomment -%}
             The summary below was written with AI assistance, grounded in the book's official description{% if page.isbn_13 and page.isbn_13 != "" or page.isbn_10 and page.isbn_10 != "" %} (Google Books / Open Library){% endif %}.
             {%- if has_ratings %} Ratings are sourced live from {% if page.ratings.source == "goodreads" %}Goodreads{% else %}Open Library{% endif %}{% if page.ratings.url and page.ratings.url != "" %} (<a href="{{ page.ratings.url }}" target="_blank" rel="noopener nofollow">view on {% if page.ratings.source == "goodreads" %}Goodreads{% else %}Open Library{% endif %}</a>){% endif %}.{% endif %}
             {%- if page.awards.size > 0 %} Award data is sourced from <a href="https://www.wikidata.org" target="_blank" rel="noopener nofollow">Wikidata</a>.{% endif %}
-            {%- if page.quotes and page.quotes.texts %} Quotes are sourced verbatim from <a href="{{ page.quotes.source_url }}" target="_blank" rel="noopener nofollow">Wikiquote</a> (CC BY-SA) — not AI-generated.{% endif %}
+            {%- if page.quotes and page.quotes.texts %} Quotes are sourced verbatim from <a href="{{ page.quotes.source_url }}" target="_blank" rel="noopener nofollow">Wikiquote</a> (CC BY-SA), not AI-generated.{% endif %}
             {%- if page.nyt and page.nyt.weeks_on_list %} Bestseller data is from <a href="https://developer.nytimes.com" target="_blank" rel="noopener nofollow">The New York Times Books API</a>.{% endif %}
             Last updated {{ page.date | date: "%B %-d, %Y" }}.
           </div>
@@ -219,7 +219,7 @@ reach anyone who had visited before. {%- endcomment -%}
               {% assign sp = page.quotes.speakers[forloop.index0] %}
               <blockquote style="font-size:var(--t-body);font-style:italic;line-height:1.65;color:var(--fg);border-left:3px solid var(--accent);padding:4px 0 4px 14px;margin:0 0 12px;">"{{ q }}"{% if sp and sp != "" %}<footer style="font-size:var(--t-label);font-style:normal;font-weight:600;color:var(--fg-faint);margin-top:4px;">— {{ sp }}</footer>{% endif %}</blockquote>
             {% endfor %}
-            <p style="font-size:var(--t-label);color:var(--fg-faint);margin:0;">Sourced verbatim from <a href="{{ page.quotes.source_url }}" target="_blank" rel="noopener nofollow">Wikiquote</a> (CC BY-SA) — not AI-generated.</p>
+            <p style="font-size:var(--t-label);color:var(--fg-faint);margin:0;">Sourced verbatim from <a href="{{ page.quotes.source_url }}" target="_blank" rel="noopener nofollow">Wikiquote</a> (CC BY-SA), not AI-generated.</p>
           </div>
         {% endif %}
 
@@ -230,7 +230,7 @@ reach anyone who had visited before. {%- endcomment -%}
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
                 Chapters
               </span>
-              <span style="font-size:var(--t-label);font-weight:600;color:var(--accent);background:var(--bg-subtle);border:1px solid var(--border);border-radius:20px;padding:2px 10px;">{{ page.chapters.size }} chapters</span>
+              <span style="font-size:var(--t-label);font-weight:600;color:var(--accent);background:var(--bg-subtle);border:1px solid var(--border);border-radius:var(--r);padding:2px 10px;">{{ page.chapters.size }} chapters</span>
             </div>
             <div style="position:relative;">
               <ul style="font-size:var(--t-label);color:var(--fg);line-height:1.9;list-style:none;padding-left:0;margin:0;max-height:320px;overflow-y:auto;padding-right:8px;scrollbar-width:thin;scrollbar-color:var(--accent) transparent;">
@@ -309,9 +309,9 @@ reach anyone who had visited before. {%- endcomment -%}
                 <a href="{{ b.url | relative_url }}" style="text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:6px;">
                   {% if b.cover_url and b.cover_url != "" %}
                     <img src="{{ b.cover_url }}" alt="Cover of {{ b.title }}" loading="lazy"
-                         style="width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:8px;border:1px solid var(--border);">
+                         style="width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:var(--r);border:1px solid var(--border);">
                   {% else %}
-                    <div style="width:100%;aspect-ratio:2/3;background:var(--bg-subtle);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:var(--t-label);color:var(--fg-faint);padding:8px;text-align:center;">{{ b.title | truncate: 40 }}</div>
+                    <div style="width:100%;aspect-ratio:2/3;background:var(--bg-subtle);border:1px solid var(--border);border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-size:var(--t-label);color:var(--fg-faint);padding:8px;text-align:center;">{{ b.title | truncate: 40 }}</div>
                   {% endif %}
                   <p style="font-size:var(--t-label);font-weight:600;line-height:1.3;">{{ b.title }}</p>
                 </a>
@@ -383,8 +383,8 @@ reach anyone who had visited before. {%- endcomment -%}
 
         {% comment %} CTAs first — every decision button visible without scrolling, same order as the dynamic page. {% endcomment %}
         {% if page.free_ebook and page.free_ebook.page_url %}
-          <div style="border:1px solid var(--accent);border-radius:12px;padding:12px 14px;margin-bottom:12px;background:var(--bg-subtle);">
-            <p style="font-size:var(--t-label);font-weight:700;color:var(--fg);margin:0 0 8px;">Public domain — read it free</p>
+          <div style="border:1px solid var(--border-med);border-radius:var(--r);padding:12px 14px;margin-bottom:12px;background:var(--bg-subtle);">
+            <p style="font-size:var(--t-label);font-weight:700;color:var(--fg);margin:0 0 8px;">Public domain. Read it free</p>
             <div style="display:flex;flex-wrap:wrap;gap:6px;">
               {% if page.free_ebook.gutenberg_id %}
                 <a href="{{ '/reader/' | relative_url }}?id={{ page.free_ebook.gutenberg_id }}&title={{ page.title | url_encode }}&author={{ page.author | url_encode }}" class="btn-primary" style="padding:6px 12px;font-size:var(--t-label);">
@@ -445,7 +445,7 @@ reach anyone who had visited before. {%- endcomment -%}
         </div>
 
         {% if page.nyt and page.nyt.weeks_on_list %}
-          <div style="border:1px solid var(--accent);border-radius:12px;padding:10px 14px;margin:0 0 12px;background:var(--bg-subtle);">
+          <div style="border:1px solid var(--border-med);border-radius:var(--r);padding:10px 14px;margin:0 0 12px;background:var(--bg-subtle);">
             <p style="font-size:var(--t-label);font-weight:700;color:var(--fg);margin:0;">New York Times Bestseller</p>
             <p style="font-size:var(--t-label);color:var(--fg-muted);margin:4px 0 0;">{{ page.nyt.weeks_on_list }} week{% if page.nyt.weeks_on_list > 1 %}s{% endif %} on the "{{ page.nyt.list_name }}" list{% if page.nyt.rank %} · currently #{{ page.nyt.rank }}{% endif %}</p>
             {% if page.nyt.review_url %}<a href="{{ page.nyt.review_url }}" target="_blank" rel="noopener nofollow" style="font-size:var(--t-label);color:var(--accent);display:inline-block;margin-top:4px;">Read the NYT review →</a>{% endif %}
@@ -814,7 +814,7 @@ reach anyone who had visited before. {%- endcomment -%}
       '</span></div>';
     const card = document.getElementById('ratings-card');
     if (!stats) {
-      box.innerHTML = '<p style="font-size:var(--t-label);color:var(--fg-faint);">No ratings yet — be the first.</p>' + rateRow;
+      box.innerHTML = '<p style="font-size:var(--t-label);color:var(--fg-faint);">No ratings yet. Be the first.</p>' + rateRow;
       if (card) card.style.display = '';
       return;
     }
@@ -823,8 +823,8 @@ reach anyone who had visited before. {%- endcomment -%}
       const pct = Math.round(n / stats.total * 100);
       return '<div style="display:flex;align-items:center;gap:8px;font-size:var(--t-label);color:var(--fg-faint);">' +
         '<span style="width:22px;flex-shrink:0;">' + s + '★</span>' +
-        '<div style="flex:1;height:6px;background:var(--bg-subtle);border-radius:3px;overflow:hidden;">' +
-        '<div style="width:' + pct + '%;height:100%;background:#f5a623;border-radius:3px;"></div></div>' +
+        '<div style="flex:1;height:6px;background:var(--bg-subtle);border-radius:var(--r);overflow:hidden;">' +
+        '<div style="width:' + pct + '%;height:100%;background:#f5a623;border-radius:var(--r);"></div></div>' +
         '<span style="width:34px;text-align:right;">' + n + '</span></div>';
     }).join('');
     box.innerHTML =
@@ -868,8 +868,8 @@ reach anyone who had visited before. {%- endcomment -%}
       return '<div style="display:flex;gap:12px;align-items:flex-start;border-bottom:1px solid var(--border);padding-bottom:12px;">' +
         '<a href="' + link + '" style="flex-shrink:0;">' +
         (r.rec_cover
-          ? '<img src="' + esc(r.rec_cover) + '" alt="" loading="lazy" style="width:44px;aspect-ratio:2/3;object-fit:cover;border-radius:5px;border:1px solid var(--border);">'
-          : '<div style="width:44px;aspect-ratio:2/3;background:var(--bg-subtle);border:1px solid var(--border);border-radius:5px;"></div>') +
+          ? '<img src="' + esc(r.rec_cover) + '" alt="" loading="lazy" style="width:44px;aspect-ratio:2/3;object-fit:cover;border-radius:var(--r);border:1px solid var(--border);">'
+          : '<div style="width:44px;aspect-ratio:2/3;background:var(--bg-subtle);border:1px solid var(--border);border-radius:var(--r);"></div>') +
         '</a><div style="flex:1;min-width:0;">' +
         '<a href="' + link + '" style="font-size:var(--t-label);font-weight:700;color:var(--fg);text-decoration:none;">' + esc(r.rec_title) + '</a>' +
         (r.rec_author ? '<span style="font-size:var(--t-label);color:var(--fg-faint);"> · ' + esc(r.rec_author) + '</span>' : '') +
@@ -892,10 +892,10 @@ reach anyone who had visited before. {%- endcomment -%}
       '<p style="font-size:var(--t-label);font-weight:600;margin-bottom:8px;">Recommend a similar book</p>' +
       '<div style="position:relative;">' +
       '<input type="text" id="rec-book-input" autocomplete="off" placeholder="Search the book you\'d recommend…" oninput="bhRecSearch(event)" ' +
-      'style="width:100%;box-sizing:border-box;padding:9px 12px;font-size:var(--t-body);background:var(--bg-subtle);color:var(--fg);border:1px solid var(--border);border-radius:8px;">' +
-      '<div id="rec-suggestions" style="position:absolute;top:100%;left:0;right:0;z-index:50;background:var(--bg);border:1px solid var(--border);border-radius:8px;max-height:230px;overflow-y:auto;box-shadow:0 10px 25px rgba(0,0,0,.1);margin-top:5px;display:none;"></div></div>' +
+      'style="width:100%;box-sizing:border-box;padding:9px 12px;font-size:var(--t-body);background:var(--bg-subtle);color:var(--fg);border:1px solid var(--border);border-radius:var(--r);">' +
+      '<div id="rec-suggestions" style="position:absolute;top:100%;left:0;right:0;z-index:50;background:var(--bg);border:1px solid var(--border);border-radius:var(--r);max-height:230px;overflow-y:auto;box-shadow:0 10px 25px rgba(0,0,0,.1);margin-top:5px;display:none;"></div></div>' +
       '<textarea id="rec-reason" maxlength="600" rows="2" placeholder="Why is it similar? (a sentence or two)" ' +
-      'style="width:100%;box-sizing:border-box;margin-top:8px;padding:9px 12px;font-size:var(--t-body);background:var(--bg-subtle);color:var(--fg);border:1px solid var(--border);border-radius:8px;resize:vertical;"></textarea>' +
+      'style="width:100%;box-sizing:border-box;margin-top:8px;padding:9px 12px;font-size:var(--t-body);background:var(--bg-subtle);color:var(--fg);border:1px solid var(--border);border-radius:var(--r);resize:vertical;"></textarea>' +
       '<div style="display:flex;align-items:center;gap:10px;margin-top:8px;">' +
       '<button class="btn-primary" id="rec-post-btn" onclick="bhPostRec()" style="padding:8px 18px;font-size:var(--t-label);">Submit recommendation</button>' +
       '<span id="rec-status" style="font-size:var(--t-label);color:var(--fg-faint);"></span></div>' +
@@ -922,8 +922,8 @@ reach anyone who had visited before. {%- endcomment -%}
         window.__recResults = data.slice(0, 6);
         box.innerHTML = window.__recResults.map((b, i) =>
           '<div onclick="bhRecPick(' + i + ')" style="display:flex;align-items:center;gap:10px;padding:8px 12px;cursor:pointer;border-bottom:1px solid var(--border);font-size:var(--t-label);">' +
-          (b.cover_url ? '<img src="' + esc(b.cover_url) + '" alt="" style="width:28px;height:40px;object-fit:cover;border-radius:3px;border:1px solid var(--border);flex-shrink:0;">'
-                       : '<span style="width:28px;height:40px;background:var(--bg-subtle);border:1px solid var(--border);border-radius:3px;flex-shrink:0;"></span>') +
+          (b.cover_url ? '<img src="' + esc(b.cover_url) + '" alt="" style="width:28px;height:40px;object-fit:cover;border-radius:var(--r);border:1px solid var(--border);flex-shrink:0;">'
+                       : '<span style="width:28px;height:40px;background:var(--bg-subtle);border:1px solid var(--border);border-radius:var(--r);flex-shrink:0;"></span>') +
           '<span><span style="font-weight:600;">' + esc(b.title) + '</span><br><span style="font-size:var(--t-label);color:var(--fg-faint);">' + esc(b.author || 'Unknown') + '</span></span></div>').join('');
       } catch (e) { /* autocomplete only */ }
     }, 300);
@@ -1036,11 +1036,11 @@ reach anyone who had visited before. {%- endcomment -%}
           'style="margin-top:6px;background:none;border:0;cursor:pointer;color:var(--fg-faint);font-size:var(--t-label);display:inline-flex;align-items:center;gap:5px;padding:2px 0;">' +
           '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>' +
           '<span id="clike-n-' + i + '"></span></button></div></div>').join('')
-      : '<p style="font-size:var(--t-label);color:var(--fg-muted);">No comments yet — be the first.</p>';
+      : '<p style="font-size:var(--t-label);color:var(--fg-muted);">No comments yet. Be the first.</p>';
     const formHtml = window.bhUser
       ? '<div style="margin-top:14px;">' +
         '<textarea id="comment-text" maxlength="4000" rows="4" placeholder="Share your thoughts on this book…" ' +
-        'style="width:100%;box-sizing:border-box;padding:10px 12px;font-size:var(--t-body);background:var(--bg-subtle);color:var(--fg);border:1px solid var(--border);border-radius:8px;resize:vertical;"></textarea>' +
+        'style="width:100%;box-sizing:border-box;padding:10px 12px;font-size:var(--t-body);background:var(--bg-subtle);color:var(--fg);border:1px solid var(--border);border-radius:var(--r);resize:vertical;"></textarea>' +
         '<div style="display:flex;align-items:center;gap:10px;margin-top:8px;">' +
         '<button class="btn-primary" onclick="bhPostComment()" id="comment-post-btn" style="padding:8px 18px;font-size:var(--t-label);">Post comment</button>' +
         '<span id="comment-status" style="font-size:var(--t-label);color:var(--fg-faint);"></span></div>' +
@@ -1150,7 +1150,7 @@ reach anyone who had visited before. {%- endcomment -%}
           ${works.map(w => {
             const url = `${SUMMARY}?q=${encodeURIComponent(w.title)}&author=${encodeURIComponent(w.author || '')}&direct=true`;
             return `<a href="${url}" style="text-align:center;text-decoration:none;display:block;color:inherit;">
-              ${w.cover_url ? `<img src="${esc(w.cover_url)}" alt="Cover of ${esc(w.title)}" loading="lazy" style="width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:6px;border:1px solid var(--border);margin-bottom:6px;">` : `<div style="width:100%;aspect-ratio:2/3;background:var(--bg-subtle);border:1px solid var(--border);border-radius:6px;margin-bottom:6px;display:flex;align-items:center;justify-content:center;font-size:var(--t-label);color:var(--fg-faint);padding:8px;">${esc(w.title)}</div>`}
+              ${w.cover_url ? `<img src="${esc(w.cover_url)}" alt="Cover of ${esc(w.title)}" loading="lazy" style="width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:var(--r);border:1px solid var(--border);margin-bottom:6px;">` : `<div style="width:100%;aspect-ratio:2/3;background:var(--bg-subtle);border:1px solid var(--border);border-radius:var(--r);margin-bottom:6px;display:flex;align-items:center;justify-content:center;font-size:var(--t-label);color:var(--fg-faint);padding:8px;">${esc(w.title)}</div>`}
               <p style="font-size:var(--t-label);font-weight:600;line-height:1.3;margin-bottom:2px;color:var(--fg);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;height:28px;">${esc(w.title)}</p>
               ${w.year ? `<p style="font-size:var(--t-label);color:var(--fg-faint);">${w.year}</p>` : ''}
             </a>`;

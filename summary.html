@@ -34,13 +34,13 @@ reach anyone who had visited before. {%- endcomment -%}
 .tool-form {
     background: var(--bg-subtle);
     border: 1px solid var(--border);
-    border-radius: 12px;
+    border-radius: var(--r);
     padding: 1.75rem;
     box-shadow: 0 4px 20px rgba(0,0,0,0.02);
     margin-bottom: 2rem;
   }
 .form-input {
-    border-radius: 8px;
+    border-radius: var(--r);
     padding: 0.75rem 1rem;
     font-size: var(--t-body);
     transition: border-color .2s var(--ease-out), background-color .2s var(--ease-out), color .2s var(--ease-out);
@@ -82,7 +82,7 @@ reach anyone who had visited before. {%- endcomment -%}
     right: 0;
     background: var(--bg);
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: var(--r);
     z-index: 100;
     max-height: 250px;
     overflow-y: auto;
@@ -103,7 +103,7 @@ reach anyone who had visited before. {%- endcomment -%}
 .suggestion-item img {
     width: 32px; height: 44px;
     object-fit: cover;
-    border-radius: 4px;
+    border-radius: var(--r);
     border: 1px solid var(--border);
   }
 .skeleton-line {
@@ -111,7 +111,7 @@ reach anyone who had visited before. {%- endcomment -%}
     background: linear-gradient(90deg, var(--bg-subtle) 25%, var(--border) 50%, var(--bg-subtle) 75%);
     background-size: 200% 100%;
     animation: shimmer 1.5s infinite;
-    border-radius: 4px;
+    border-radius: var(--r);
     margin-bottom: 8px;
   }
 /* Search Results Pagination */
@@ -147,7 +147,7 @@ reach anyone who had visited before. {%- endcomment -%}
     height: 460px;
     background: var(--bg);
     border: 1px solid var(--border);
-    border-radius: 16px;
+    border-radius: var(--r);
     box-shadow: 0 16px 48px rgba(0,0,0,0.14);
     z-index: 999;
     display: none;
@@ -165,7 +165,7 @@ reach anyone who had visited before. {%- endcomment -%}
     background: var(--bg-subtle);
     cursor: move;
     user-select: none;
-    border-radius: 16px 16px 0 0;
+    border-radius: var(--r) 16px 0 0;
   }
 .chat-panel-title {
     font-size: var(--t-label);
@@ -178,7 +178,7 @@ reach anyone who had visited before. {%- endcomment -%}
 .chat-panel-actions { display: flex; gap: 6px; }
 .chat-panel-btn {
     width: 26px; height: 26px;
-    border-radius: 6px;
+    border-radius: var(--r);
     border: 1px solid var(--border);
     background: var(--bg);
     color: var(--fg-faint);
@@ -199,7 +199,7 @@ reach anyone who had visited before. {%- endcomment -%}
 .chat-msg {
     max-width: 85%;
     padding: 0.65rem 0.9rem;
-    border-radius: 10px;
+    border-radius: var(--r);
     font-size: var(--t-label);
     line-height: 1.5;
     animation: fadeInUp 0.25s ease forwards;
@@ -217,7 +217,7 @@ reach anyone who had visited before. {%- endcomment -%}
 .chat-input {
     flex-grow: 1;
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: var(--r);
     padding: 0.55rem 0.8rem;
     font-size: var(--t-label);
     background: var(--bg-subtle);
@@ -250,11 +250,11 @@ reach anyone who had visited before. {%- endcomment -%}
 .search-sort-bar label { font-size: var(--t-label); color: var(--fg-faint); }
 .search-sort-bar select {
     background: var(--bg-subtle); border: 1px solid var(--border); color: var(--fg);
-    border-radius: 8px; padding: 6px 10px; font-size: 12.5px; cursor: pointer;
+    border-radius: var(--r); padding: 6px 10px; font-size: 12.5px; cursor: pointer;
   }
 .search-sort-dir-btn {
     background: var(--bg-subtle); border: 1px solid var(--border); color: var(--fg);
-    border-radius: 8px; padding: 6px 10px; font-size: var(--t-label); cursor: pointer; line-height: 1;
+    border-radius: var(--r); padding: 6px 10px; font-size: var(--t-label); cursor: pointer; line-height: 1;
   }
 .search-sort-dir-btn:disabled { opacity: .4; cursor: default; }
 </style>
@@ -336,34 +336,34 @@ reach anyone who had visited before. {%- endcomment -%}
     <section id="tool-faq" aria-labelledby="faq-heading" style="max-width:720px;margin:56px auto 24px;">
       <h2 id="faq-heading" style="font-size:var(--t-lead);margin-bottom:18px;">Frequently asked questions</h2>
 
-      <details style="border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:10px;">
+      <details style="border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;margin-bottom:10px;">
         <summary style="font-size:var(--t-body);font-weight:600;cursor:pointer;">Is the Litheca book summarizer free?</summary>
-        <p style="font-size:var(--t-label);color:var(--fg-muted);line-height:1.7;margin-top:10px;">Yes — completely free, with no account required to generate a summary. Signing up (also free) adds extras like a synced library, ratings, and commenting.</p>
+        <p style="font-size:var(--t-label);color:var(--fg-muted);line-height:1.7;margin-top:10px;">Yes, completely free, with no account required to generate a summary. Signing up (also free) adds extras like a synced library, ratings, and commenting.</p>
       </details>
 
-      <details style="border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:10px;">
-        <summary style="font-size:var(--t-body);font-weight:600;cursor:pointer;">How are the summaries generated — and can I trust them?</summary>
-        <p style="font-size:var(--t-label);color:var(--fg-muted);line-height:1.7;margin-top:10px;">Each guide is AI-generated, but only after the book is verified against real catalogs (Google Books and Open Library). Our rule is simple: <b>no data beats wrong data</b> — anything we can't verify (awards, ratings, quotes, free-ebook links) is left out rather than invented.</p>
+      <details style="border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;margin-bottom:10px;">
+        <summary style="font-size:var(--t-body);font-weight:600;cursor:pointer;">How are the summaries generated, and can I trust them?</summary>
+        <p style="font-size:var(--t-label);color:var(--fg-muted);line-height:1.7;margin-top:10px;">Each guide is AI-generated, but only after the book is verified against real catalogs (Google Books and Open Library). Our rule is simple: <b>no data beats wrong data</b>. Anything we can't verify (awards, ratings, quotes, free-ebook links) is left out rather than invented.</p>
       </details>
 
-      <details style="border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:10px;">
+      <details style="border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;margin-bottom:10px;">
         <summary style="font-size:var(--t-body);font-weight:600;cursor:pointer;">What do I get besides the summary?</summary>
-        <p style="font-size:var(--t-label);color:var(--fg-muted);line-height:1.7;margin-top:10px;">A full study guide: chapter-aware deep summary, character profiles, key themes, notable quotes, reading-time planner, similar books, reader ratings and comments — plus a comprehension quiz whose answers are backed by quotes verified against the source text.</p>
+        <p style="font-size:var(--t-label);color:var(--fg-muted);line-height:1.7;margin-top:10px;">A full study guide: chapter-aware deep summary, character profiles, key themes, notable quotes, reading-time planner, similar books, reader ratings and comments, plus a comprehension quiz whose answers are backed by quotes verified against the source text.</p>
       </details>
 
-      <details style="border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:10px;">
+      <details style="border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;margin-bottom:10px;">
         <summary style="font-size:var(--t-body);font-weight:600;cursor:pointer;">Which books does it work for?</summary>
-        <p style="font-size:var(--t-label);color:var(--fg-muted);line-height:1.7;margin-top:10px;">Anything findable in the major catalogs we search — over 20 million records spanning fiction, non-fiction, and classics, plus popular web novels and manga through curated community wikis.</p>
+        <p style="font-size:var(--t-label);color:var(--fg-muted);line-height:1.7;margin-top:10px;">Anything findable in the major catalogs we search (over 20 million records spanning fiction, non-fiction, and classics), plus popular web novels and manga through curated community wikis.</p>
       </details>
 
-      <details style="border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:10px;">
+      <details style="border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;margin-bottom:10px;">
         <summary style="font-size:var(--t-body);font-weight:600;cursor:pointer;">How long does it take?</summary>
-        <p style="font-size:var(--t-label);color:var(--fg-muted);line-height:1.7;margin-top:10px;">Popular books open in a few seconds. A book being summarized for the first time takes up to a minute — and if the free server was asleep, the first request may add a short wake-up wait. We show progress the whole way.</p>
+        <p style="font-size:var(--t-label);color:var(--fg-muted);line-height:1.7;margin-top:10px;">Popular books open in a few seconds. A book being summarized for the first time takes up to a minute, and if the free server was asleep, the first request may add a short wake-up wait. We show progress the whole way.</p>
       </details>
 
-      <details style="border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:10px;">
+      <details style="border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;margin-bottom:10px;">
         <summary style="font-size:var(--t-body);font-weight:600;cursor:pointer;">Do summaries replace reading the book?</summary>
-        <p style="font-size:var(--t-label);color:var(--fg-muted);line-height:1.7;margin-top:10px;">No — and we don't pretend otherwise. Litheca works best as a companion: decide whether a book deserves your time, refresh one you read years ago, or test your understanding after finishing it.</p>
+        <p style="font-size:var(--t-label);color:var(--fg-muted);line-height:1.7;margin-top:10px;">No, and we don't pretend otherwise. Litheca works best as a companion: decide whether a book deserves your time, refresh one you read years ago, or test your understanding after finishing it.</p>
       </details>
     </section>
 
@@ -372,10 +372,10 @@ reach anyone who had visited before. {%- endcomment -%}
       "@context": "https://schema.org",
       "@type": "FAQPage",
       "mainEntity": [
-        {"@type": "Question", "name": "Is the Litheca book summarizer free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — completely free, with no account required to generate a summary. Signing up (also free) adds extras like a synced library, ratings, and commenting."}},
-        {"@type": "Question", "name": "How are the summaries generated — and can I trust them?", "acceptedAnswer": {"@type": "Answer", "text": "Each guide is AI-generated, but only after the book is verified against real catalogs (Google Books and Open Library). Anything that can't be verified is left out rather than invented."}},
+        {"@type": "Question", "name": "Is the Litheca book summarizer free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, completely free, with no account required to generate a summary. Signing up (also free) adds extras like a synced library, ratings, and commenting."}},
+        {"@type": "Question", "name": "How are the summaries generated, and can I trust them?", "acceptedAnswer": {"@type": "Answer", "text": "Each guide is AI-generated, but only after the book is verified against real catalogs (Google Books and Open Library). Anything that can't be verified is left out rather than invented."}},
         {"@type": "Question", "name": "What do I get besides the summary?", "acceptedAnswer": {"@type": "Answer", "text": "A full study guide: deep summary, character profiles, themes, notable quotes, reading-time planner, similar books, reader ratings and comments, plus a comprehension quiz with quote-verified answers."}},
-        {"@type": "Question", "name": "Which books does it work for?", "acceptedAnswer": {"@type": "Answer", "text": "Anything findable in the major catalogs we search — over 20 million records spanning fiction, non-fiction, and classics, plus popular web novels and manga through curated community wikis."}},
+        {"@type": "Question", "name": "Which books does it work for?", "acceptedAnswer": {"@type": "Answer", "text": "Anything findable in the major catalogs we search (over 20 million records spanning fiction, non-fiction, and classics), plus popular web novels and manga through curated community wikis."}},
         {"@type": "Question", "name": "How long does it take?", "acceptedAnswer": {"@type": "Answer", "text": "Popular books open in a few seconds; a first-time book takes up to a minute, plus a short wake-up wait if the free server was idle."}},
         {"@type": "Question", "name": "Do summaries replace reading the book?", "acceptedAnswer": {"@type": "Answer", "text": "No — Litheca works best as a companion: decide whether a book deserves your time, refresh one you read years ago, or test your understanding after finishing it."}}
       ]
@@ -646,7 +646,7 @@ reach anyone who had visited before. {%- endcomment -%}
 
             return `
             <div class="suggestion-item" onclick="selectSuggestion('${titleEscaped}', '${authorEscaped}', '${b.isbn_13 || b.isbn_10 || ''}', '${b.google_id || ''}', '${b.openlibrary_id || ''}')">
-              ${b.cover_url ? `<img src="${b.cover_url}" alt="cover">` : `<div style="width:28px;height:38px;background:var(--bg-subtle);border:1px solid var(--border);border-radius:2px;"></div>`}
+              ${b.cover_url ? `<img src="${b.cover_url}" alt="cover">` : `<div style="width:28px;height:38px;background:var(--bg-subtle);border:1px solid var(--border);border-radius:var(--r);"></div>`}
               <div>
                 <div style="font-weight: 600; font-size:var(--t-label); line-height:1.2; margin-bottom:2px; color:var(--fg);">${b.title}</div>
                 <div style="font-size: var(--t-label); color: var(--fg-faint);">${b.author || "Unknown"}</div>
@@ -1112,7 +1112,7 @@ reach anyone who had visited before. {%- endcomment -%}
               const sp = (wq.speakers || [])[i];
               return `<blockquote style="font-size:var(--t-body);font-style:italic;line-height:1.65;color:var(--fg);border-left:3px solid var(--accent);padding:4px 0 4px 14px;margin:0 0 12px;">"${escExt(t)}"${sp ? `<footer style="font-size:var(--t-label);font-style:normal;font-weight:600;color:var(--fg-faint);margin-top:4px;">— ${escExt(sp)}</footer>` : ''}</blockquote>`;
             }).join('')}
-            <p style="font-size:var(--t-label);color:var(--fg-faint);margin:0;">Sourced verbatim from <a href="${wq.source_url}" target="_blank" rel="noopener nofollow" style="color:var(--accent);">Wikiquote</a> (CC BY-SA) — not AI-generated.</p>
+            <p style="font-size:var(--t-label);color:var(--fg-faint);margin:0;">Sourced verbatim from <a href="${wq.source_url}" target="_blank" rel="noopener nofollow" style="color:var(--accent);">Wikiquote</a> (CC BY-SA), not AI-generated.</p>
            </div>` : '';
 
       // Shelf bar — reading status + rating, wired to the same My Library
@@ -1226,7 +1226,7 @@ reach anyone who had visited before. {%- endcomment -%}
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
                 Chapters
               </span>
-              <span style="font-size:var(--t-label);font-weight:600;color:var(--accent);background:var(--bg-subtle);border:1px solid var(--border);border-radius:20px;padding:2px 10px;">${data.chapters.length} chapters</span>
+              <span style="font-size:var(--t-label);font-weight:600;color:var(--accent);background:var(--bg-subtle);border:1px solid var(--border);border-radius:var(--r);padding:2px 10px;">${data.chapters.length} chapters</span>
             </div>
             <div style="position:relative;">
               <ul id="chapters-scroll-list" style="font-size:var(--t-label);color:var(--fg);line-height:1.9;list-style:none;padding-left:0;margin:0;max-height:320px;overflow-y:auto;padding-right:8px;scrollbar-width:thin;scrollbar-color:var(--accent) transparent;">
@@ -1264,8 +1264,8 @@ reach anyone who had visited before. {%- endcomment -%}
           <div style="min-width:0;">
             <span style="font-size:var(--t-label);font-weight:600;display:block;color:var(--fg);">Listen to this guide</span>
             <span id="audio-status" style="font-size:var(--t-label);color:var(--fg-faint);">Click play to listen</span>
-            <div style="width:120px;height:3px;background:var(--border);border-radius:2px;margin-top:5px;overflow:hidden;">
-              <div id="audio-progress-fill" style="width:100%;transform:scaleX(0);transform-origin:left;height:100%;background:var(--accent);border-radius:2px;transition:transform .4s var(--ease-out);"></div>
+            <div style="width:120px;height:3px;background:var(--border);border-radius:var(--r);margin-top:5px;overflow:hidden;">
+              <div id="audio-progress-fill" style="width:100%;transform:scaleX(0);transform-origin:left;height:100%;background:var(--accent);border-radius:var(--r);transition:transform .4s var(--ease-out);"></div>
             </div>
           </div>
         </div>
@@ -1383,8 +1383,8 @@ reach anyone who had visited before. {%- endcomment -%}
                and pushed every action button below the fold. -->
           <!-- CTAs first: every decision button visible without scrolling -->
           ${data.free_ebook ? `
-          <div style="border:1px solid var(--accent);border-radius:12px;padding:12px 14px;margin-bottom:12px;background:var(--bg-subtle);">
-            <p style="font-size:var(--t-label);font-weight:700;color:var(--fg);margin:0 0 8px;">Public domain — read it free</p>
+          <div style="border:1px solid var(--border-med);border-radius:var(--r);padding:12px 14px;margin-bottom:12px;background:var(--bg-subtle);">
+            <p style="font-size:var(--t-label);font-weight:700;color:var(--fg);margin:0 0 8px;">Public domain. Read it free</p>
             <div style="display:flex;flex-wrap:wrap;gap:6px;">
               ${data.free_ebook.source === 'project_gutenberg' && data.free_ebook.gutenberg_id ? `<a href="{{ '/reader/' | relative_url }}?id=${data.free_ebook.gutenberg_id}&title=${encodeURIComponent(data.title || '')}&author=${encodeURIComponent(data.author || '')}" class="btn-primary" style="padding:6px 12px;font-size:var(--t-label);"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="vertical-align:-2px;"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Read here</a>` : ''}
               <a href="${data.free_ebook.read_url || data.free_ebook.page_url}" target="_blank" rel="noopener" class="btn-secondary" style="padding:6px 12px;font-size:var(--t-label);">Read online</a>
@@ -1423,7 +1423,7 @@ reach anyone who had visited before. {%- endcomment -%}
 
           <!-- Informational content below the fold is fine -->
           ${data.nyt && data.nyt.weeks_on_list ? `
-          <div style="border:1px solid var(--accent);border-radius:12px;padding:10px 14px;margin:0 0 12px;background:var(--bg-subtle);">
+          <div style="border:1px solid var(--border-med);border-radius:var(--r);padding:10px 14px;margin:0 0 12px;background:var(--bg-subtle);">
             <p style="font-size:var(--t-label);font-weight:700;color:var(--fg);margin:0;">New York Times Bestseller</p>
             <p style="font-size:var(--t-label);color:var(--fg-muted);margin:4px 0 0;">${data.nyt.weeks_on_list} week${data.nyt.weeks_on_list > 1 ? 's' : ''} on the "${data.nyt.list_name}" list${data.nyt.rank ? ` · currently #${data.nyt.rank}` : ''}</p>
             ${data.nyt.review_url ? `<a href="${data.nyt.review_url}" target="_blank" rel="noopener nofollow" style="font-size:var(--t-label);color:var(--accent);display:inline-block;margin-top:4px;">Read the NYT review →</a>` : ''}
@@ -1676,7 +1676,7 @@ reach anyone who had visited before. {%- endcomment -%}
             const olidV = w.openlibrary_id ? `'${String(w.openlibrary_id).replace(/'/g, "\\'")}'` : 'null';
             const url = `{{ '/summary/' | relative_url }}?q=${encodeURIComponent(w.title)}&author=${encodeURIComponent(w.author || '')}&direct=true`;
             return `<a href="${url}" onclick="event.preventDefault();summarizeBook('${te}','${ae}',true,false,null,null,${olidV})" style="text-align:center;cursor:pointer;text-decoration:none;display:block;color:inherit;">
-              ${w.cover_url ? `<img src="${w.cover_url}" alt="Cover of ${escExt(w.title)}" loading="lazy" style="width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:6px;border:1px solid var(--border);margin-bottom:6px;">` : `<div style="width:100%;aspect-ratio:2/3;background:var(--bg-subtle);border:1px solid var(--border);border-radius:6px;margin-bottom:6px;display:flex;align-items:center;justify-content:center;font-size:var(--t-label);color:var(--fg-faint);padding:8px;">${escExt(w.title)}</div>`}
+              ${w.cover_url ? `<img src="${w.cover_url}" alt="Cover of ${escExt(w.title)}" loading="lazy" style="width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:var(--r);border:1px solid var(--border);margin-bottom:6px;">` : `<div style="width:100%;aspect-ratio:2/3;background:var(--bg-subtle);border:1px solid var(--border);border-radius:var(--r);margin-bottom:6px;display:flex;align-items:center;justify-content:center;font-size:var(--t-label);color:var(--fg-faint);padding:8px;">${escExt(w.title)}</div>`}
               <p style="font-size:var(--t-label);font-weight:600;line-height:1.3;margin-bottom:2px;color:var(--fg);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;height:28px;">${escExt(w.title)}</p>
               ${w.year ? `<p style="font-size:var(--t-label);color:var(--fg-faint);">${w.year}</p>` : ''}
             </a>`;
@@ -1892,7 +1892,7 @@ reach anyone who had visited before. {%- endcomment -%}
     const card = document.getElementById("ratings-card");
     if (!stats) {
       box.innerHTML = `
-        <p style="font-size:var(--t-label);color:var(--fg-faint);">No ratings yet — be the first.</p>
+        <p style="font-size:var(--t-label);color:var(--fg-faint);">No ratings yet. Be the first.</p>
         ${rateRow}`;
       if (card) card.style.display = "";
       return;
@@ -1903,8 +1903,8 @@ reach anyone who had visited before. {%- endcomment -%}
       return `
         <div style="display:flex;align-items:center;gap:8px;font-size:var(--t-label);color:var(--fg-faint);">
           <span style="width:22px;flex-shrink:0;">${s}★</span>
-          <div style="flex:1;height:6px;background:var(--bg-subtle);border-radius:3px;overflow:hidden;">
-            <div style="width:${pct}%;height:100%;background:#f5a623;border-radius:3px;"></div>
+          <div style="flex:1;height:6px;background:var(--bg-subtle);border-radius:var(--r);overflow:hidden;">
+            <div style="width:${pct}%;height:100%;background:#f5a623;border-radius:var(--r);"></div>
           </div>
           <span style="width:34px;text-align:right;">${n}</span>
         </div>`;
@@ -1954,8 +1954,8 @@ reach anyone who had visited before. {%- endcomment -%}
             <div style="display:flex;gap:12px;align-items:flex-start;border-bottom:1px solid var(--border);padding-bottom:12px;">
               <a href="${link}" style="flex-shrink:0;">
                 ${r.rec_cover
-                  ? `<img src="${escExt(r.rec_cover)}" alt="" loading="lazy" style="width:44px;aspect-ratio:2/3;object-fit:cover;border-radius:5px;border:1px solid var(--border);">`
-                  : `<div style="width:44px;aspect-ratio:2/3;background:var(--bg-subtle);border:1px solid var(--border);border-radius:5px;"></div>`}
+                  ? `<img src="${escExt(r.rec_cover)}" alt="" loading="lazy" style="width:44px;aspect-ratio:2/3;object-fit:cover;border-radius:var(--r);border:1px solid var(--border);">`
+                  : `<div style="width:44px;aspect-ratio:2/3;background:var(--bg-subtle);border:1px solid var(--border);border-radius:var(--r);"></div>`}
               </a>
               <div style="flex:1;min-width:0;">
                 <a href="${link}" style="font-size:var(--t-label);font-weight:700;color:var(--fg);text-decoration:none;">${escExt(r.rec_title)}</a>
@@ -1965,18 +1965,18 @@ reach anyone who had visited before. {%- endcomment -%}
               </div>
             </div>`;
         }).join("") + `</div>`
-      : `<p style="font-size:var(--t-label);color:var(--fg-muted);">No recommendations yet — be the first to suggest a similar book.</p>`;
+      : `<p style="font-size:var(--t-label);color:var(--fg-muted);">No recommendations yet. Be the first to suggest a similar book.</p>`;
 
     formEl.innerHTML = window.bhUser ? `
       <div style="border-top:1px solid var(--border);padding-top:14px;">
         <p style="font-size:var(--t-label);font-weight:600;margin-bottom:8px;">Recommend a similar book</p>
         <div style="position:relative;">
           <input type="text" id="rec-book-input" autocomplete="off" placeholder="Search the book you'd recommend…" oninput="recSearchInput(event)"
-            style="width:100%;box-sizing:border-box;padding:9px 12px;font-size:var(--t-body);background:var(--bg-subtle);color:var(--fg);border:1px solid var(--border);border-radius:8px;">
-          <div id="rec-suggestions" style="position:absolute;top:100%;left:0;right:0;z-index:50;background:var(--bg);border:1px solid var(--border);border-radius:8px;max-height:230px;overflow-y:auto;box-shadow:0 10px 25px rgba(0,0,0,.1);margin-top:5px;display:none;"></div>
+            style="width:100%;box-sizing:border-box;padding:9px 12px;font-size:var(--t-body);background:var(--bg-subtle);color:var(--fg);border:1px solid var(--border);border-radius:var(--r);">
+          <div id="rec-suggestions" style="position:absolute;top:100%;left:0;right:0;z-index:50;background:var(--bg);border:1px solid var(--border);border-radius:var(--r);max-height:230px;overflow-y:auto;box-shadow:0 10px 25px rgba(0,0,0,.1);margin-top:5px;display:none;"></div>
         </div>
         <textarea id="rec-reason" maxlength="600" rows="2" placeholder="Why is it similar? (a sentence or two)"
-          style="width:100%;box-sizing:border-box;margin-top:8px;padding:9px 12px;font-size:var(--t-body);background:var(--bg-subtle);color:var(--fg);border:1px solid var(--border);border-radius:8px;resize:vertical;"></textarea>
+          style="width:100%;box-sizing:border-box;margin-top:8px;padding:9px 12px;font-size:var(--t-body);background:var(--bg-subtle);color:var(--fg);border:1px solid var(--border);border-radius:var(--r);resize:vertical;"></textarea>
         <div style="display:flex;align-items:center;gap:10px;margin-top:8px;">
           <button class="btn-primary" id="rec-post-btn" onclick="postReaderRec()" style="padding:8px 18px;font-size:var(--t-label);">Submit recommendation</button>
           <span id="rec-status" style="font-size:var(--t-label);color:var(--fg-faint);"></span>
@@ -2015,7 +2015,7 @@ reach anyone who had visited before. {%- endcomment -%}
         window.__recResults = data.slice(0, 6);
         box.innerHTML = window.__recResults.map((b, i) => `
           <div onclick="recPick(${i})" style="display:flex;align-items:center;gap:10px;padding:8px 12px;cursor:pointer;border-bottom:1px solid var(--border);font-size:var(--t-label);">
-            ${b.cover_url ? `<img src="${escExt(b.cover_url)}" alt="" style="width:28px;height:40px;object-fit:cover;border-radius:3px;border:1px solid var(--border);flex-shrink:0;">` : `<span style="width:28px;height:40px;background:var(--bg-subtle);border:1px solid var(--border);border-radius:3px;flex-shrink:0;"></span>`}
+            ${b.cover_url ? `<img src="${escExt(b.cover_url)}" alt="" style="width:28px;height:40px;object-fit:cover;border-radius:var(--r);border:1px solid var(--border);flex-shrink:0;">` : `<span style="width:28px;height:40px;background:var(--bg-subtle);border:1px solid var(--border);border-radius:var(--r);flex-shrink:0;"></span>`}
             <span><span style="font-weight:600;">${escExt(b.title)}</span><br><span style="font-size:var(--t-label);color:var(--fg-faint);">${escExt(b.author || 'Unknown')}</span></span>
           </div>`).join("");
         box.style.display = "block";
@@ -2179,12 +2179,12 @@ reach anyone who had visited before. {%- endcomment -%}
               </button>
             </div>
           </div>`).join("")
-      : `<p style="font-size:var(--t-label);color:var(--fg-muted);">No comments yet — be the first.</p>`;
+      : `<p style="font-size:var(--t-label);color:var(--fg-muted);">No comments yet. Be the first.</p>`;
 
     const formHtml = window.bhUser ? `
       <div style="margin-top:14px;">
         <textarea id="comment-text" maxlength="4000" rows="4" placeholder="Share your thoughts on this book…"
-          style="width:100%;box-sizing:border-box;padding:10px 12px;font-size:var(--t-body);background:var(--bg-subtle);color:var(--fg);border:1px solid var(--border);border-radius:8px;resize:vertical;"></textarea>
+          style="width:100%;box-sizing:border-box;padding:10px 12px;font-size:var(--t-body);background:var(--bg-subtle);color:var(--fg);border:1px solid var(--border);border-radius:var(--r);resize:vertical;"></textarea>
         <div style="display:flex;align-items:center;gap:10px;margin-top:8px;">
           <button class="btn-primary" onclick="postComment()" id="comment-post-btn" style="padding:8px 18px;font-size:var(--t-label);">Post comment</button>
           <span id="comment-status" style="font-size:var(--t-label);color:var(--fg-faint);"></span>
@@ -2498,8 +2498,8 @@ reach anyone who had visited before. {%- endcomment -%}
                 ? ''
                 : ` onclick="event.preventDefault(); summarizeBook('${titleEscaped}', '${authorEscaped}', true, false, '${b.isbn_13 || b.isbn_10 || ''}', '${b.google_id || ''}', '${b.openlibrary_id || ''}')"`;
               return `
-              <a href="${url}" class="similar-book-card"${clickAttr} style="text-align:center;cursor:pointer;border:1px solid var(--border);border-radius:6px;padding:12px;background:var(--bg-subtle);display:flex;flex-direction:column;align-items:center;height:100%;box-sizing:border-box;text-decoration:none;color:inherit;">
-                ${b.cover_url ? `<img src="${b.cover_url}" alt="Cover" style="width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:4px;margin-bottom:8px;border:1px solid var(--border);">` : `<div style="width:100%;aspect-ratio:2/3;background:var(--bg);border:1px solid var(--border);border-radius:4px;margin-bottom:8px;display:flex;align-items:center;justify-content:center;color:var(--fg-faint);font-size:var(--t-label);">No cover</div>`}
+              <a href="${url}" class="similar-book-card"${clickAttr} style="text-align:center;cursor:pointer;border:1px solid var(--border);border-radius:var(--r);padding:12px;background:var(--bg-subtle);display:flex;flex-direction:column;align-items:center;height:100%;box-sizing:border-box;text-decoration:none;color:inherit;">
+                ${b.cover_url ? `<img src="${b.cover_url}" alt="Cover" style="width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:var(--r);margin-bottom:8px;border:1px solid var(--border);">` : `<div style="width:100%;aspect-ratio:2/3;background:var(--bg);border:1px solid var(--border);border-radius:var(--r);margin-bottom:8px;display:flex;align-items:center;justify-content:center;color:var(--fg-faint);font-size:var(--t-label);">No cover</div>`}
                 <p style="font-size:var(--t-label);font-weight:600;line-height:1.3;margin-bottom:4px;color:var(--fg);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis;width:100%;height:32px;">${b.title}</p>
                 <p style="font-size:var(--t-label);color:var(--fg-faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:100%;margin-top:auto;">${b.author || "Unknown"}</p>
                 ${b.published_year ? `<span style="font-size:var(--t-label);color:var(--fg-faint);background:var(--bg);padding:1px 6px;border-radius:999px;border:1px solid var(--border);margin-top:6px;display:inline-block;">${b.published_year}</span>` : ""}
@@ -2510,18 +2510,18 @@ reach anyone who had visited before. {%- endcomment -%}
         </div>
 
         <div class="search-pagination" style="display:flex;justify-content:center;align-items:center;gap:12px;margin-top:24px;flex-wrap:wrap;">
-          <button class="btn-secondary" onclick="changeSearchResultsPage(${pageIndex - 1})" ${pageIndex === 0 ? 'disabled' : ''} style="padding: 6px 12px;font-size:var(--t-label);border-radius:4px;">
+          <button class="btn-secondary" onclick="changeSearchResultsPage(${pageIndex - 1})" ${pageIndex === 0 ? 'disabled' : ''} style="padding: 6px 12px;font-size:var(--t-label);border-radius:var(--r);">
             &larr; Previous
           </button>
           
           <span style="font-size:var(--t-label);color:var(--fg-muted);">Page ${pageIndex + 1} of ${totalPages || 1}</span>
           
-          <button class="btn-secondary" onclick="changeSearchResultsPage(${pageIndex + 1})" ${pageIndex >= totalPages - 1 ? 'disabled' : ''} style="padding: 6px 12px;font-size:var(--t-label);border-radius:4px;">
+          <button class="btn-secondary" onclick="changeSearchResultsPage(${pageIndex + 1})" ${pageIndex >= totalPages - 1 ? 'disabled' : ''} style="padding: 6px 12px;font-size:var(--t-label);border-radius:var(--r);">
             Next &rarr;
           </button>
           
           ${hasMoreFromServer ? `
-            <button class="btn-primary" id="load-more-search-btn" onclick="loadMoreSearchResults()" style="padding: 6px 12px;font-size:var(--t-label);border-radius:4px;margin-left:8px;">
+            <button class="btn-primary" id="load-more-search-btn" onclick="loadMoreSearchResults()" style="padding: 6px 12px;font-size:var(--t-label);border-radius:var(--r);margin-left:8px;">
               Load More Results
             </button>
           ` : ''}
