@@ -22,8 +22,9 @@
         {%- endcomment -%}
         <h2 class="footer-col-title">Tools</h2>
         <a href="{{ '/summary'      | relative_url }}">Book Summarizer</a>
-        <a href="{{ '/tools/recommender'  | relative_url }}">AI Recommender</a>
-        <a href="{{ '/tools/compare'      | relative_url }}">Comparison Matrix</a>
+        {%- comment -%} Recommender and Comparison Matrix omitted: their
+        backend endpoints (/recommend, /compare) don't exist yet, so they
+        fail on use. Re-add once the API supports them. {%- endcomment -%}
         <a href="{{ '/tools/pdf-chat'     | relative_url }}">PDF Chat &amp; Quiz</a>
         <a href="{{ '/My-Library' | relative_url }}">My Library</a>
         <a href="{{ '/tools/search'       | relative_url }}">Advanced Search</a>

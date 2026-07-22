@@ -84,7 +84,7 @@ description: "Free AI book guides that stay grounded: deep summaries, characters
   <div class="container">
     <ul class="hero-facts">
       <li><b>20M+</b> books searchable</li>
-      <li><b>Six</b> free tools</li>
+      <li><b>Four</b> free tools</li>
       <li><b>Every</b> quiz quote verified</li>
       <li><b>No account</b> needed</li>
     </ul>
@@ -328,7 +328,7 @@ description: "Free AI book guides that stay grounded: deep summaries, characters
     <div class="section-header">
       <div>
         <h2 id="tools-heading" class="section-title">All tools</h2>
-        <p class="section-sub">Six of them, all free, none behind an account.</p>
+        <p class="section-sub">Four of them, all free, none behind an account.</p>
       </div>
     </div>
 
@@ -343,30 +343,18 @@ description: "Free AI book guides that stay grounded: deep summaries, characters
         <span class="tool-card-arrow" aria-hidden="true">↗</span>
       </a>
 
-      <a href="{{ '/tools/recommender' | relative_url }}" class="tool-card" role="listitem">
-        <div class="tool-card-top">
-          <span class="tool-badge">AI</span>
-        </div>
-        <h3 class="tool-card-title">Recommender</h3>
-        <p class="tool-card-desc">Name three books you love and get five precision-matched suggestions.</p>
-        <span class="tool-card-arrow" aria-hidden="true">↗</span>
-      </a>
-
+      {%- comment -%} Recommender and Comparison Matrix are hidden here and in
+      the footer: their front ends call POST /recommend and /compare, which do
+      not exist on the backend, so they fail on every use. Advertising a
+      broken AI tool is the opposite of the trust the site is built on ("no
+      data beats wrong data"). The pages stay in the repo, ready to re-list
+      once the endpoints exist. {%- endcomment -%}
       <a href="{{ '/tools/pdf-chat' | relative_url }}" class="tool-card" role="listitem">
         <div class="tool-card-top">
           <span class="tool-badge tool-badge--hot">New</span>
         </div>
         <h3 class="tool-card-title">PDF Chat &amp; Quiz</h3>
         <p class="tool-card-desc">Upload any PDF book, then chat with it and quiz yourself, grounded in its actual text.</p>
-        <span class="tool-card-arrow" aria-hidden="true">↗</span>
-      </a>
-
-      <a href="{{ '/tools/compare' | relative_url }}" class="tool-card" role="listitem">
-        <div class="tool-card-top">
-          <span class="tool-badge">AI</span>
-        </div>
-        <h3 class="tool-card-title">Comparison Matrix</h3>
-        <p class="tool-card-desc">Put two books side by side on style, audience, and difficulty.</p>
         <span class="tool-card-arrow" aria-hidden="true">↗</span>
       </a>
 
