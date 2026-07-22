@@ -99,16 +99,39 @@
   GA is NOT loaded here. Even under Consent Mode "denied", GA4 still writes a
   _ga_* session cookie and sends cookieless pings to Google — which would
   make /privacy/'s promise ("nothing is set until you accept") untrue. So
-  gtag.js is fetched only after the visitor accepts on the banner (see
-  _includes/consent-banner.html): before that there is no GA request and no
-  GA cookie at all. lithecaLoadGA() is the single entry point; the banner
-  calls it on Accept, and a returning visitor who already accepted calls it
-  on load. {%- endcomment -%}
+  gtag.js is fetched only after the visitor accepts analytics on the banner
+  (see _includes/consent-banner.html): before that there is no GA request and
+  no GA cookie at all. lithecaLoadGA() is the single entry point; the banner
+  calls it on "Accept all", and a returning visitor whose stored choice is
+  analytics=on calls it on load.
+
+  It also NEVER loads off the production host, so localhost, 127.0.0.1 and any
+  preview/staging host are never counted — a client-side guarantee that does
+  not depend on GA's IP filters. {%- endcomment -%}
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+    // Consent record schema (localStorage 'litheca_consent'):
+    //   { analytics: bool, ts: <epoch ms>, v: <policy version> }
+    // Re-ask when: no record, record older than 12 months, or v is behind.
+    window.LITHECA_CONSENT_KEY = 'litheca_consent';
+    window.LITHECA_CONSENT_VERSION = 1;
+    window.LITHECA_CONSENT_MAX_AGE = 365 * 24 * 60 * 60 * 1000; // 12 months
+    window.lithecaReadConsent = function () {
+      try {
+        var raw = localStorage.getItem(window.LITHECA_CONSENT_KEY);
+        if (!raw) return null;
+        var c = JSON.parse(raw);
+        if (typeof c !== 'object' || c === null) return null;
+        if (c.v !== window.LITHECA_CONSENT_VERSION) return null;      // policy changed
+        if (Date.now() - (c.ts || 0) > window.LITHECA_CONSENT_MAX_AGE) return null; // expired
+        return c;
+      } catch (e) { return null; }
+    };
+    var GA_HOSTS = ['litheca.com', 'www.litheca.com'];
     window.lithecaLoadGA = function () {
       if (window.__gaLoaded) return;
+      if (GA_HOSTS.indexOf(location.hostname) === -1) return; // never off production
       window.__gaLoaded = true;
       var s = document.createElement('script');
       s.async = true;
@@ -117,9 +140,10 @@
       gtag('js', new Date());
       gtag('config', 'G-7QBV21WC8Y');
     };
-    try {
-      if (localStorage.getItem('litheca_consent') === 'granted') window.lithecaLoadGA();
-    } catch (e) {}
+    (function () {
+      var c = window.lithecaReadConsent();
+      if (c && c.analytics) window.lithecaLoadGA();
+    })();
   </script>
 </head>
 <body>

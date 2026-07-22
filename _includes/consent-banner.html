@@ -1,43 +1,56 @@
-{%- comment -%} Cookie-consent banner for the GA4 Consent Mode setup in
-_layouts/default.html. Analytics defaults to denied; this is the only place
-that grants it. The choice is stored in localStorage so the banner shows
-once, and "Decline" is a real choice that keeps analytics off — not a dark
-pattern where only Accept dismisses it. {%- endcomment -%}
+{%- comment -%} Two-tier cookie consent for the GA4 setup in
+_layouts/default.html, built to the GDPR / ePrivacy pattern:
+
+  * Two categories only, because that is all the site actually has —
+    Necessary (theme, reading list, rate-limit id, Firebase session; always
+    on, exempt from consent) and Analytics (GA4; opt-in).
+  * "Accept all" and "Necessary only" carry equal visual weight — reject is
+    as easy as accept, no dark pattern, no cookie wall.
+  * Prior consent: GA is never loaded until "Accept all" (see the head).
+  * Withdrawal is as easy as consent: a "Cookie preferences" link in the
+    footer re-opens this banner any time (lithecaOpenConsent).
+  * The choice is recorded with a timestamp and policy version so it can
+    expire (12 months) or be re-asked when the policy changes.
+{%- endcomment -%}
 <div id="consent-banner" class="consent-banner" role="dialog" aria-live="polite"
      aria-label="Cookie consent" hidden>
-  <p class="consent-text">
-    Litheca uses a single analytics cookie to count visits, only if you agree.
-    Nothing is set until you do. See our
-    <a href="{{ '/privacy/' | relative_url }}">privacy policy</a>.
-  </p>
+  <div class="consent-text">
+    <p><b>Cookies.</b> We use cookies that are strictly necessary to run the
+    site. With your consent, we also use one analytics cookie (Google
+    Analytics) to count visits so we can improve pages. Nothing
+    analytics-related is set unless you choose “Accept all”.</p>
+    <p class="consent-links"><a href="{{ '/privacy/' | relative_url }}">Privacy policy</a></p>
+  </div>
   <div class="consent-actions">
-    <button type="button" class="consent-btn consent-decline" onclick="lithecaConsent(false)">Decline</button>
-    <button type="button" class="consent-btn consent-accept" onclick="lithecaConsent(true)">Accept</button>
+    <button type="button" class="consent-btn consent-decline" onclick="lithecaConsent(false)">Necessary only</button>
+    <button type="button" class="consent-btn consent-accept" onclick="lithecaConsent(true)">Accept all</button>
   </div>
 </div>
 
 <style>
   .consent-banner {
     position: fixed; left: 50%; bottom: 18px; transform: translateX(-50%);
-    z-index: 190; width: min(680px, calc(100vw - 32px));
-    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+    z-index: 190; width: min(720px, calc(100vw - 32px));
+    display: flex; align-items: center; gap: 18px; flex-wrap: wrap;
     background: var(--bg); border: 1px solid var(--border-med);
-    border-radius: var(--r); padding: 14px 18px;
+    border-radius: var(--r); padding: 16px 20px;
     box-shadow: 0 10px 30px -12px rgba(24, 28, 26, 0.4);
     font-family: var(--font-ui);
   }
-  .consent-text {
-    flex: 1; min-width: 220px;
-    font-size: var(--ui-sm); line-height: 1.55; color: var(--fg-muted);
-    margin: 0;
+  .consent-text { flex: 1; min-width: 240px; }
+  .consent-text p {
+    font-size: var(--ui-sm); line-height: 1.55; color: var(--fg-muted); margin: 0;
   }
-  .consent-text a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+  .consent-text b { color: var(--fg); }
+  .consent-links { margin-top: 6px !important; }
+  .consent-links a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
   .consent-actions { display: flex; gap: 8px; flex-shrink: 0; }
   .consent-btn {
     font-family: var(--font-ui); font-size: var(--ui-sm); font-weight: 600;
-    border-radius: var(--r-sm); padding: 8px 16px; cursor: pointer;
+    border-radius: var(--r-sm); padding: 9px 16px; cursor: pointer;
     border: 1px solid var(--border-med); background: transparent; color: var(--fg-muted);
     transition: border-color .18s var(--ease-out), color .18s var(--ease-out), background .18s var(--ease-out);
+    white-space: nowrap;
   }
   .consent-decline:hover { border-color: var(--fg-faint); color: var(--fg); }
   .consent-accept {
@@ -45,7 +58,7 @@ pattern where only Accept dismisses it. {%- endcomment -%}
   }
   .consent-accept:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
   html[data-theme="dark"] .consent-accept { color: #12160F; }
-  @media (max-width: 480px) {
+  @media (max-width: 520px) {
     .consent-banner { flex-direction: column; align-items: stretch; }
     .consent-actions { justify-content: flex-end; }
   }
@@ -53,20 +66,39 @@ pattern where only Accept dismisses it. {%- endcomment -%}
 
 <script>
   (function () {
-    var KEY = 'litheca_consent';
     var banner = document.getElementById('consent-banner');
     if (!banner) return;
-    var choice;
-    try { choice = localStorage.getItem(KEY); } catch (e) {}
-    // Show the banner only when the visitor hasn't chosen yet.
-    if (choice !== 'granted' && choice !== 'denied') { banner.hidden = false; }
 
-    window.lithecaConsent = function (accepted) {
-      try { localStorage.setItem(KEY, accepted ? 'granted' : 'denied'); } catch (e) {}
-      // Loading GA is the grant: gtag.js is fetched here and nowhere earlier,
-      // so declining means no GA request or cookie ever happens.
-      if (accepted && typeof window.lithecaLoadGA === 'function') window.lithecaLoadGA();
+    // Show only when there is no valid current choice (missing / expired /
+    // older policy version) — lithecaReadConsent() in the head applies those
+    // rules and returns null when the visitor should be asked again.
+    if (!window.lithecaReadConsent || !window.lithecaReadConsent()) {
+      banner.hidden = false;
+    }
+
+    function store(analytics) {
+      try {
+        localStorage.setItem(window.LITHECA_CONSENT_KEY, JSON.stringify({
+          analytics: !!analytics,
+          ts: Date.now(),
+          v: window.LITHECA_CONSENT_VERSION
+        }));
+      } catch (e) {}
+    }
+
+    window.lithecaConsent = function (analytics) {
+      store(analytics);
+      // Loading GA is the grant, and it is gated to production in the head,
+      // so declining — or accepting on localhost — never starts GA.
+      if (analytics && typeof window.lithecaLoadGA === 'function') window.lithecaLoadGA();
       banner.hidden = true;
+    };
+
+    // Re-open from the footer "Cookie preferences" link (withdraw/change).
+    window.lithecaOpenConsent = function () {
+      banner.hidden = false;
+      var firstBtn = banner.querySelector('.consent-btn');
+      if (firstBtn) firstBtn.focus();
     };
   })();
 </script>

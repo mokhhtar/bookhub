@@ -1206,9 +1206,23 @@ html[data-theme="dark"] .hero-search-btn { color: #12160F; }
   flex-wrap: wrap;
 }
 .footer-bottom p {
-  font-size: 12px;
+  font-size: var(--t-label);
   color: var(--fg-faint);
 }
+/* "Cookie preferences" is a real control (re-opens the consent banner), so
+   it is a button, styled to sit inline with the surrounding footer text. */
+.footer-link-btn {
+  font-family: var(--font-ui);
+  font-size: inherit;
+  color: var(--fg-faint);
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.footer-link-btn:hover { color: var(--accent); }
 
 /* ── RESPONSIVE ──────────────────────────────────────────── */
 @media (max-width: 1024px) {
