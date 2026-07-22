@@ -4,25 +4,97 @@ title: "About"
 description: "What Litheca is, and the one rule everything here follows."
 permalink: /about/
 ---
-<section style="padding:48px 0;">
-  <div class="container" style="max-width:720px;">
-    <h1 style="font-size:30px;margin-bottom:18px;">About Litheca</h1>
+<section class="about-page">
+  <div class="container">
+    <p class="u-label about-kicker">About</p>
+    <h1 class="about-h1">A study guide for any book, that refuses to guess.</h1>
 
-    <div style="font-size:14.5px;line-height:1.8;color:var(--fg-muted);display:flex;flex-direction:column;gap:18px;">
-      <p><b style="color:var(--fg);">Litheca</b> (from <i>bibliothēca</i> — library — and <i>lit</i>erature) turns any book into a complete study guide in seconds: a deep summary, characters, themes, real quotes, a comprehension quiz, and reader tools — free, for any of the 20&nbsp;million+ books in the catalogs we search.</p>
+    <div class="about-body">
+      <p><b>Litheca</b> (from <i>bibliothēca</i>, library, and <i>lit</i>erature)
+      turns any book into a complete study guide in seconds: a deep summary,
+      characters, themes, real quotes, a comprehension quiz, and reader tools.
+      Free, for any of the 20&nbsp;million+ books in the catalogs we search.</p>
 
-      <h2 style="font-size:19px;color:var(--fg);margin-top:8px;">The one rule</h2>
-      <p style="border-left:3px solid var(--accent);padding-left:14px;">
-        <b style="color:var(--fg);">No data beats wrong data.</b> Every fact on a guide is either verified against a real source or left out. Books are checked against Google Books and Open Library before a single word is generated; quotes come verbatim from Wikiquote; quiz answers are backed by quotes matched against the source text; ratings and awards we can't confirm simply don't appear. AI can still make mistakes — <a href="{{ '/contact/' | relative_url }}" style="color:var(--accent);">tell us</a> when it does and we fix it.
-      </p>
+      {%- comment -%} The core rule was a border-left:3px callout, which
+      impeccable flags as the side-tab pattern. It is the thesis of the whole
+      product, so it earns the statement treatment used on the homepage: a
+      real Literata-italic pull-quote rather than a tab in the margin. {%- endcomment -%}
+      <figure class="about-rule">
+        <blockquote>No data beats wrong data.</blockquote>
+        <figcaption>The one rule everything here follows.</figcaption>
+      </figure>
 
-      <h2 style="font-size:19px;color:var(--fg);margin-top:8px;">Guides are companions, not replacements</h2>
-      <p>We think summaries are for deciding what deserves your time, refreshing a book you read years ago, or testing yourself after finishing one. When a book is in the public domain, we go further and let you <b>read the whole book free</b> right here.</p>
+      <p>Every fact on a guide is either verified against a real source or left
+      out. Books are checked against Google Books and Open Library before a
+      single word is generated; quotes come verbatim from Wikiquote; quiz
+      answers are backed by quotes matched against the source text; ratings and
+      awards we can't confirm simply don't appear. AI can still make mistakes,
+      so <a href="{{ '/contact/' | relative_url }}">tell us</a> when it does and
+      we fix it.</p>
 
-      <h2 style="font-size:19px;color:var(--fg);margin-top:8px;">How it stays free</h2>
-      <p>No ads, no trackers, no paywall. As an Amazon Associate, Litheca earns from qualifying purchases through the "Buy on Amazon" links — that's the entire business model, and it never influences what a guide says.</p>
+      <h2>Guides are companions, not replacements</h2>
+      <p>Summaries are for deciding what deserves your time, refreshing a book
+      you read years ago, or testing yourself after finishing one. When a book
+      is in the public domain, we go further and let you <b>read the whole book
+      free</b> right here.</p>
 
-      <p style="margin-top:6px;"><a class="btn-primary" href="{{ '/summary/' | relative_url }}">Try it on any book →</a></p>
+      <h2>How it stays free</h2>
+      <p>No ads, no trackers, no paywall. As an Amazon Associate, Litheca earns
+      from qualifying purchases through the "Buy on Amazon" links. That is the
+      entire business model, and it never influences what a guide says.</p>
+
+      <p class="about-cta"><a class="btn-primary" href="{{ '/summary/' | relative_url }}">Try it on any book →</a></p>
     </div>
   </div>
 </section>
+
+<style>
+  .about-page { padding: clamp(48px, 7vw, 88px) 0; }
+  .about-page .container { max-width: 46rem; }
+  .about-kicker { display: block; margin-bottom: 18px; }
+  .about-h1 {
+    font-size: var(--t-title);
+    font-weight: 600;
+    line-height: 1.12;
+    letter-spacing: -0.015em;
+    margin-bottom: 28px;
+    text-wrap: balance;
+  }
+  .about-body {
+    font-size: var(--t-body);
+    line-height: 1.7;
+    color: var(--fg-muted);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .about-body b { color: var(--fg); }
+  .about-body a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+  .about-body h2 {
+    font-size: var(--t-lead);
+    color: var(--fg);
+    margin-top: 12px;
+    line-height: 1.2;
+  }
+  /* The core rule as a pull-quote, not a margin tab. Literata italic is
+     right here: /about/ is reading matter, not interface. */
+  .about-rule {
+    margin: 16px 0;
+    padding: 8px 0 8px 28px;
+    border-left: 1px solid var(--rule);
+  }
+  .about-rule blockquote {
+    font-size: var(--t-lead);
+    font-style: italic;
+    font-weight: 500;
+    line-height: 1.3;
+    color: var(--fg);
+  }
+  .about-rule figcaption {
+    font-family: var(--font-ui);
+    font-size: var(--t-label);
+    color: var(--fg-faint);
+    margin-top: 12px;
+  }
+  .about-cta { margin-top: 12px; }
+</style>
