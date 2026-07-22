@@ -93,6 +93,34 @@
       }
     })();
   </script>
+
+  {%- comment -%} Google Analytics 4 (G-7QBV21WC8Y), opt-in.
+
+  GA is NOT loaded here. Even under Consent Mode "denied", GA4 still writes a
+  _ga_* session cookie and sends cookieless pings to Google — which would
+  make /privacy/'s promise ("nothing is set until you accept") untrue. So
+  gtag.js is fetched only after the visitor accepts on the banner (see
+  _includes/consent-banner.html): before that there is no GA request and no
+  GA cookie at all. lithecaLoadGA() is the single entry point; the banner
+  calls it on Accept, and a returning visitor who already accepted calls it
+  on load. {%- endcomment -%}
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    window.lithecaLoadGA = function () {
+      if (window.__gaLoaded) return;
+      window.__gaLoaded = true;
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-7QBV21WC8Y';
+      document.head.appendChild(s);
+      gtag('js', new Date());
+      gtag('config', 'G-7QBV21WC8Y');
+    };
+    try {
+      if (localStorage.getItem('litheca_consent') === 'granted') window.lithecaLoadGA();
+    } catch (e) {}
+  </script>
 </head>
 <body>
 
@@ -104,6 +132,7 @@
 
   {% include footer.html %}
   {% include firebase.html %}
+  {% include consent-banner.html %}
 
   <script src="{{ '/assets/js/main.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
   <script>
