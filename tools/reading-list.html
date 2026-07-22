@@ -65,6 +65,18 @@ sitemap: false
   .rl-stars button { background: none; border: 0; cursor: pointer; font-size: var(--ui-body); padding: 1px; color: var(--border-med, var(--border)); }
   .rl-stars button.lit { color: var(--brass); }
   .rl-select { width: auto; padding: 6px 10px; font-size: var(--ui-sm); }
+
+  /* Card action row. The status select plus the two icon buttons overflowed
+     the 150px card, so the buttons pushed past the border. The select now
+     shrinks (min-width:0) and takes the first line; the buttons keep their
+     size and wrap to a second line only when the card is too narrow to hold
+     all three, so nothing ever escapes the card. */
+  .rl-card-actions {
+    display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+    margin-top: auto;
+  }
+  .rl-card-actions .rl-select { flex: 1 1 90px; min-width: 0; }
+  .rl-card-btns { display: inline-flex; gap: 8px; flex-shrink: 0; }
   .rl-remove {
     background: var(--bg-subtle); border: 1px solid var(--border); border-radius: var(--r);
     color: var(--fg-faint); cursor: pointer; padding: 5px 10px; font-size: var(--ui-sm);
@@ -504,10 +516,12 @@ function render() {
         <a class="rl-card-t" href="${bookLink(b)}">${escRl(b.title)}</a>
         ${b.author ? `<span class="rl-card-a">${escRl(b.author)}</span>` : ''}
         ${starsHtml(b)}
-        <div style="display:flex;gap:8px;align-items:center;margin-top:auto;">
+        <div class="rl-card-actions">
           ${statusSelect(b)}
-          ${noteBtnHtml(b)}
-          ${removeBtnHtml(b)}
+          <span class="rl-card-btns">
+            ${noteBtnHtml(b)}
+            ${removeBtnHtml(b)}
+          </span>
         </div>
       </div>`).join('') + `</div>`;
   } else {
