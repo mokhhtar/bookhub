@@ -4,8 +4,12 @@ title: "Characters"
 description: "Browse every literary character analyzed on Litheca — grounded bios and the books they appear in."
 permalink: /characters/
 # Nothing has published into _characters yet, so this hub renders an
-# empty shell. Stays out of the index until it has real entries.
+# empty shell. Stays out of the index until it has real entries. A page
+# that is noindexed must not be in the sitemap either (the standard:
+# sitemaps list canonical, indexable URLs only) — flip both when the
+# collection gains real entries.
 noindex_when_empty: characters
+sitemap: false
 ---
 <section class="characters-index">
   <div class="container">

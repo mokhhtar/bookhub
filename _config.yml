@@ -39,7 +39,21 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - node_modules
+  # Internal docs and dev artefacts. Without these, Jekyll copies them into
+  # _site and serves them publicly — litheca.com/CLAUDE.md and, worse,
+  # /SECURITY_AUDIT.md were returning 200, and they leaked into the sitemap.
+  # None are needed by the served site. (.claude/.agents/_config.local.yml
+  # are already skipped as dot/underscore-prefixed.)
   - README.md
+  - CLAUDE.md
+  - PRODUCT.md
+  - SECURITY_AUDIT.md
+  - skills-lock.json
+  - firebase/DATA_MODEL.md
+  # firestore.rules is a Firebase deploy artefact, enforced server-side; the
+  # site only mentions it in comments and never fetches it. No reason to
+  # publish the security model.
+  - firebase/firestore.rules
 
 # Defaults
 # Deferred-indexing strategy: generated content collections ship with
