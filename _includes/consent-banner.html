@@ -28,6 +28,13 @@ _layouts/default.html, built to the GDPR / ePrivacy pattern:
 </div>
 
 <style>
+  /* This MUST have higher specificity than `.consent-banner { display:flex }`
+     below, or the `hidden` attribute never hides the banner: author CSS beats
+     the UA stylesheet's `[hidden]{display:none}`, so `display:flex` would win
+     and the banner would stay visible even after a choice is made (and show
+     when consent is already stored). `.consent-banner[hidden]` is (0,2,0) vs
+     `.consent-banner` (0,1,0), so display:none wins whenever hidden is set. */
+  .consent-banner[hidden] { display: none; }
   .consent-banner {
     position: fixed; left: 50%; bottom: 18px; transform: translateX(-50%);
     z-index: 190; width: min(720px, calc(100vw - 32px));
