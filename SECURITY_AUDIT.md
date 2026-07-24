@@ -108,6 +108,25 @@ of this file. Each entry records what shipped and how it was verified.
   confirm the deployed rules match (the repo file is not auto-deployed).
   Commit: bookhub firebase/storage.rules (this commit).
 
+- **2026-07-24 — M-06 (Storage rules) — DEPLOY CONFIRMED.** Owner pasted the
+  deny-by-default rules into Firebase Console → Storage → Rules. Source and
+  live now match; the bucket is closed.
+
+- **2026-07-24 — M-05 (admin UID) — REMEDIATED.** `isAdmin()` in
+  `bookhub/firebase/firestore.rules` now pins the owner's real account UID
+  (`Vw6fkxgSBygc4RvMa0cgkW3KSqe2`) instead of the `REPLACE_WITH_ADMIN_UID`
+  placeholder; comment notes a UID is non-secret and safe in source. **Action:**
+  re-paste firestore.rules into Console so the live rules match source (if they
+  already carried the real UID, this just removes the source drift).
+
+- **2026-07-24 — L-08 (CORS wildcard) — REMEDIATED.** `bookhub-api/main.py` no
+  longer falls back to `["*"]`. An unset/blank/bare-`*` `ALLOWED_ORIGINS` now
+  resolves to the known production origins (litheca.com, www.litheca.com,
+  mokhhtar.github.io, localhost:4000), never a wildcard; an explicit
+  comma-separated value is still honored verbatim (prod already sets the full
+  list). Verified across unset/blank/`*`/explicit inputs — `*` never survives.
+  Commit: bookhub-api `b2e367f`.
+
 ## Verified: unverified Firebase accounts cannot create text content
 
 For book comments, author comments, and reader recommendations, creation requires:
@@ -160,6 +179,13 @@ The document identifier is the SHA-256 hash of the extracted PDF text. Storage k
 > derivable from public approved comments). Decision: accept pre-launch (opaque
 > Firebase UIDs + reading preferences on a book site = moderate harm) and do
 > the trusted-aggregation fix when Blaze is enabled at launch.
+>
+> **Update 2026-07-24:** Blaze is currently **blocked** — Google is rejecting
+> the owner's payment card, so Cloud Functions may be unavailable for a while,
+> not merely deferred. If Blaze stays blocked through launch, the only
+> non-Blaze path is the client-maintained denormalized-counter design (raw docs
+> owner-only + public aggregate docs), accepting its count-integrity weakness —
+> revisit that tradeoff then. Until then the risk remains accepted.
 
 **Affected:** `bookhub/firebase/firestore.rules`  
 **Class:** Privacy exposure / identifier enumeration  
@@ -198,7 +224,7 @@ Successful public English `/summary` requests enqueue publishing of a book, auth
 
 **Required fix direction:** separate publishing from public read/generation requests. Queue only allow-listed or moderator-approved records, require an internal authenticated job trigger, and apply strict per-origin quotas.
 
-### M-05 — Firestore rule source has no active administrator UID (confirmed in repository; live deployment unknown)
+### M-05 — Firestore rule source has no active administrator UID — REMEDIATED 2026-07-24 (source set; confirm Console matches)
 
 **Affected:** `bookhub/firebase/firestore.rules`  
 **Class:** Configuration drift / availability risk  
@@ -208,7 +234,7 @@ Successful public English `/summary` requests enqueue publishing of a book, auth
 
 **Required fix direction:** maintain a deployment-safe rule source with the correct non-secret UID, or use a reproducible deployment process; immediately compare the Console rules with source after every change. Never expose service-account credentials in client code.
 
-### M-06 — Firebase Storage rules are absent from the reviewed repository — SOURCE ADDED 2026-07-24 (deploy via Console)
+### M-06 — Firebase Storage rules are absent from the reviewed repository — REMEDIATED 2026-07-24 (source added + Console deploy confirmed)
 
 **Affected:** Firebase Storage bucket configuration  
 **Class:** Missing configuration evidence  
@@ -228,7 +254,7 @@ The frontend declares a Storage bucket but no `storage.rules` file or Storage SD
 
 **Required fix direction:** restrict diagnostic endpoints in production or return only a minimal health status.
 
-### L-08 — CORS default is unrestricted (confirmed)
+### L-08 — CORS default is unrestricted (confirmed) — REMEDIATED 2026-07-24
 
 **Affected:** `bookhub-api/main.py`  
 **Class:** Permissive cross-origin policy  

@@ -19,11 +19,13 @@ service cloud.firestore {
   match /databases/{database}/documents {
 
     // ── Admin ────────────────────────────────────────────────
-    // Replace with your own account's UID (Console → Authentication →
-    // Users → copy UID) BEFORE publishing the rules.
+    // The owner's Firebase account UID (Console → Authentication → Users).
+    // A UID is NOT a secret — it only grants privileges to whoever can
+    // authenticate as this exact account, so it is safe to keep in source.
+    // If the account ever changes, update BOTH here and the live Console rules.
     function isAdmin() {
       return request.auth != null
-        && request.auth.uid == "REPLACE_WITH_ADMIN_UID";
+        && request.auth.uid == "Vw6fkxgSBygc4RvMa0cgkW3KSqe2";
     }
 
     function signedIn() {
