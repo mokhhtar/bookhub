@@ -106,7 +106,9 @@ sitemap: false
 <div class="tool-page">
   <div class="container">
     <div class="tool-page-header">
-      <p class="breadcrumb"><a href="{{ '/' | relative_url }}">Home</a> <span class="breadcrumb-sep">/</span> Tools <span class="breadcrumb-sep">/</span> My Library</p>
+      {%- comment -%} No "Tools" segment: the real URL is /My-Library/, not
+      under /tools/, so the crumb was misleading. {%- endcomment -%}
+      <p class="breadcrumb"><a href="{{ '/' | relative_url }}">Home</a> <span class="breadcrumb-sep">/</span> My Library</p>
       <h1 class="tool-page-title">My Library</h1>
       <p class="tool-page-desc">Saved on this device — sign in to sync across devices.</p>
     </div>
@@ -182,11 +184,20 @@ sitemap: false
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
     </button>
     <h2 id="rl-edit-title" style="font-size:var(--ui-body);font-weight:700;margin-bottom:14px;padding-right:32px;"></h2>
-    <label class="form-label" for="rl-edit-page">Current page</label>
-    <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
-      <input type="number" id="rl-edit-page" class="form-input" min="0" max="20000" placeholder="e.g. 120" style="width:120px;font-size:16px;">
-      <span id="rl-edit-pct" style="font-size:var(--ui-sm);color:var(--fg-faint);"></span>
+    {%- comment -%} type="text" inputmode="numeric", not type="number": the
+    native number field shows the OS spinner and a Windows validation bubble.
+    Total pages is editable and saved locally, because the count differs by
+    edition. {%- endcomment -%}
+    <label class="form-label">Reading progress</label>
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap;">
+      <span style="font-size:var(--ui-sm);color:var(--fg-muted);">Page</span>
+      <input type="text" inputmode="numeric" id="rl-edit-page" class="form-input" maxlength="6" placeholder="120" aria-label="Current page" style="width:78px;font-size:16px;text-align:center;">
+      <span style="font-size:var(--ui-sm);color:var(--fg-muted);">of</span>
+      <input type="text" inputmode="numeric" id="rl-edit-pages" class="form-input" maxlength="6" placeholder="—" aria-label="Total pages" style="width:78px;font-size:16px;text-align:center;">
+      <span style="font-size:var(--ui-sm);color:var(--fg-muted);">pages</span>
     </div>
+    <div id="rl-edit-pct" style="font-size:var(--ui-sm);color:var(--accent);font-weight:600;min-height:1.3em;margin-bottom:4px;"></div>
+    <p style="font-size:var(--ui-sm);color:var(--fg-faint);margin-bottom:12px;">Total pages vary by edition; your change stays on this device.</p>
     <label class="form-label" for="rl-edit-notes">My notes</label>
     <textarea id="rl-edit-notes" rows="5" maxlength="2000" placeholder="Thoughts, favorite quotes, where you left off…"
               style="width:100%;box-sizing:border-box;padding:10px 12px;font-size:16px;background:var(--bg-subtle);color:var(--fg);border:1px solid var(--border);border-radius:var(--r);resize:vertical;"></textarea>
@@ -224,12 +235,18 @@ function sortList(list) {
 // ── Notes & reading-progress editor (shared mini-modal) ──
 let editingId = null;
 
+// Digits only, capped — used for both page fields.
+function rlNum(id) {
+  const v = (document.getElementById(id).value || '').replace(/[^0-9]/g, '');
+  return v ? Math.min(20000, parseInt(v, 10)) : 0;
+}
 function openBookEditor(id) {
   const b = getList().find(x => x.id === id);
   if (!b) return;
   editingId = id;
   document.getElementById('rl-edit-title').textContent = b.title;
   document.getElementById('rl-edit-page').value = b.progress_page > 0 ? b.progress_page : '';
+  document.getElementById('rl-edit-pages').value = b.page_count > 0 ? b.page_count : '';
   document.getElementById('rl-edit-notes').value = b.notes || '';
   updateEditorPct();
   document.getElementById('rl-edit-backdrop').style.display = 'flex';
@@ -240,20 +257,25 @@ function closeBookEditor() {
   editingId = null;
 }
 function updateEditorPct() {
-  const b = getList().find(x => x.id === editingId);
   const el = document.getElementById('rl-edit-pct');
-  const page = parseInt(document.getElementById('rl-edit-page').value, 10);
-  el.textContent = (b && b.page_count > 0 && page > 0)
-    ? `of ${b.page_count} — ${Math.min(100, Math.round(page / b.page_count * 100))}%`
-    : (b && b.page_count > 0 ? `of ${b.page_count} pages` : '');
+  const page = rlNum('rl-edit-page');
+  const total = rlNum('rl-edit-pages');
+  el.textContent = (total > 0 && page > 0)
+    ? `${Math.min(100, Math.round(page / total * 100))}% read`
+    : '';
 }
 function saveBookEditor() {
   if (editingId == null) return;
-  const page = parseInt(document.getElementById('rl-edit-page').value, 10);
+  const page = rlNum('rl-edit-page');
+  const total = rlNum('rl-edit-pages');   // editable total pages, kept local
   const notes = document.getElementById('rl-edit-notes').value.trim().slice(0, 2000);
-  saveList(getList().map(b => b.id === editingId
-    ? { ...b, progress_page: (page > 0 ? Math.min(20000, page) : 0), notes }
-    : b));
+  saveList(getList().map(b => {
+    if (b.id !== editingId) return b;
+    // Entering a progress page means the book is being read: promote it out
+    // of "Want to read" automatically rather than blocking the input.
+    const status = (page > 0 && b.status === 'want') ? 'reading' : b.status;
+    return { ...b, progress_page: page, page_count: total, notes, status };
+  }));
   closeBookEditor();
   render();
   bhToast('Saved', 'success');
@@ -552,6 +574,7 @@ document.querySelectorAll('.book-tab').forEach(btn => {
 
 document.getElementById('add-title').addEventListener('keydown', e => { if (e.key === 'Enter') addBook(); });
 document.getElementById('rl-edit-page').addEventListener('input', updateEditorPct);
+document.getElementById('rl-edit-pages').addEventListener('input', updateEditorPct);
 document.getElementById('rl-edit-backdrop').addEventListener('click', (e) => {
   if (e.target === e.currentTarget) closeBookEditor();  // click outside the card closes
 });
