@@ -682,7 +682,7 @@ sitemap: false
                value="${cur || ''}" placeholder="12"
                style="width:72px;margin-bottom:0;text-align:center;" aria-label="Reading goal">
         <button class="btn-primary" onclick="acctSaveGoal()" style="padding:9px 18px;">Save</button>
-        <button class="btn-secondary" onclick="loadChallenge()" style="padding:9px 18px;">Cancel</button>
+        <button class="btn-secondary" onclick="acctRenderChallenge()" style="padding:9px 18px;">Cancel</button>
       </div>`;
     const input = $("acct-goal-input");
     input.focus();
@@ -694,6 +694,10 @@ sitemap: false
     try { localStorage.setItem(GOAL_KEY, JSON.stringify({ year: new Date().getFullYear(), target: n })); } catch (e) {}
     loadChallenge();
   };
+  // Exposed for the Cancel button's inline onclick — loadChallenge itself is
+  // closure-scoped, so a bare onclick="loadChallenge()" hits global scope and
+  // silently fails.
+  window.acctRenderChallenge = function () { loadChallenge(); };
   function loadChallenge() {
     const box = $("acct-challenge");
     if (!box) return;
