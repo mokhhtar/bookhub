@@ -25,14 +25,14 @@ noindex: true
 
       <!-- Working state -->
       <div id="act-loading">
-        <h1 style="font-size:20px;margin-bottom:8px;">One moment…</h1>
-        <p style="font-size:14px;color:var(--fg-muted);">Checking your link.</p>
+        <h1 style="font-size:var(--t-lead);margin-bottom:8px;">One moment…</h1>
+        <p style="font-size:var(--t-body);color:var(--fg-muted);">Checking your link.</p>
       </div>
 
       <!-- Email verified -->
       <div id="act-verified" style="display:none;">
-        <h1 style="font-size:20px;margin-bottom:8px;">✓ Email confirmed</h1>
-        <p style="font-size:14px;color:var(--fg-muted);line-height:1.6;margin-bottom:18px;">
+        <h1 style="font-size:var(--t-lead);margin-bottom:8px;">✓ Email confirmed</h1>
+        <p style="font-size:var(--t-body);color:var(--fg-muted);line-height:1.6;margin-bottom:18px;">
           Your address is verified — you can now rate books and post comments.
         </p>
         <a class="btn-primary" href="{{ '/' | relative_url }}">Continue to Litheca</a>
@@ -40,23 +40,23 @@ noindex: true
 
       <!-- Password reset form -->
       <div id="act-reset" style="display:none;">
-        <h1 style="font-size:20px;margin-bottom:8px;">Choose a new password</h1>
-        <p style="font-size:13px;color:var(--fg-muted);margin-bottom:16px;">
+        <h1 style="font-size:var(--t-lead);margin-bottom:8px;">Choose a new password</h1>
+        <p style="font-size:var(--t-label);color:var(--fg-muted);margin-bottom:16px;">
           for <b id="act-reset-email"></b>
         </p>
         <form id="act-reset-form" onsubmit="return window.__actReset(event)">
           <input type="password" id="act-pw1" placeholder="New password (6+ characters)" minlength="6" required autocomplete="new-password"
-                 style="width:100%;box-sizing:border-box;padding:10px 12px;font-size:16px;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--fg);margin-bottom:10px;">
+                 style="width:100%;box-sizing:border-box;padding:10px 12px;font-size:var(--t-body);border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--fg);margin-bottom:10px;">
           <input type="password" id="act-pw2" placeholder="Repeat new password" minlength="6" required autocomplete="new-password"
-                 style="width:100%;box-sizing:border-box;padding:10px 12px;font-size:16px;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--fg);margin-bottom:14px;">
+                 style="width:100%;box-sizing:border-box;padding:10px 12px;font-size:var(--t-body);border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--fg);margin-bottom:14px;">
           <button type="submit" class="btn-primary" id="act-reset-btn" style="width:100%;justify-content:center;">Set new password</button>
         </form>
       </div>
 
       <!-- Password reset done -->
       <div id="act-reset-done" style="display:none;">
-        <h1 style="font-size:20px;margin-bottom:8px;">✓ Password updated</h1>
-        <p style="font-size:14px;color:var(--fg-muted);line-height:1.6;margin-bottom:18px;">
+        <h1 style="font-size:var(--t-lead);margin-bottom:8px;">✓ Password updated</h1>
+        <p style="font-size:var(--t-body);color:var(--fg-muted);line-height:1.6;margin-bottom:18px;">
           You can sign in with your new password now.
         </p>
         <a class="btn-primary" href="{{ '/' | relative_url }}" onclick="setTimeout(()=>window.bhAuthUI&&window.bhAuthUI.open('signin'),300)">Sign in</a>
@@ -64,12 +64,12 @@ noindex: true
 
       <!-- Error -->
       <div id="act-error" style="display:none;">
-        <h1 style="font-size:20px;margin-bottom:8px;">This link didn't work</h1>
-        <p id="act-error-msg" style="font-size:14px;color:var(--fg-muted);line-height:1.6;margin-bottom:18px;"></p>
+        <h1 style="font-size:var(--t-lead);margin-bottom:8px;">This link didn't work</h1>
+        <p id="act-error-msg" style="font-size:var(--t-body);color:var(--fg-muted);line-height:1.6;margin-bottom:18px;"></p>
         <a class="btn-secondary" href="{{ '/account/' | relative_url }}">Go to my account</a>
       </div>
 
-      <p id="act-inline-err" style="display:none;font-size:12px;color:#d33;margin-top:12px;line-height:1.5;"></p>
+      <p id="act-inline-err" style="display:none;font-size:var(--t-label);color:var(--danger);margin-top:12px;line-height:1.5;"></p>
     </div>
   </div>
 </section>
