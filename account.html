@@ -669,11 +669,28 @@ sitemap: false
     } catch (e) {}
     return 0;
   }
-  window.acctSetGoal = function () {
+  // Inline goal editor — replaces window.prompt(), which showed an OS dialog.
+  window.acctEditGoal = function () {
+    const box = $("acct-challenge");
+    if (!box) return;
+    const year = new Date().getFullYear();
     const cur = readGoal();
-    const val = prompt("Set your reading goal for " + new Date().getFullYear() + " (number of books):", cur || 12);
-    if (val === null) return;
-    const n = Math.max(0, Math.min(1000, parseInt(val, 10) || 0));
+    box.innerHTML = `
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+        <span style="font-size:var(--ui-sm);color:var(--fg-muted);">Books to read in ${year}:</span>
+        <input type="text" inputmode="numeric" id="acct-goal-input" class="acct-input" maxlength="4"
+               value="${cur || ''}" placeholder="12"
+               style="width:72px;margin-bottom:0;text-align:center;" aria-label="Reading goal">
+        <button class="btn-primary" onclick="acctSaveGoal()" style="padding:9px 18px;">Save</button>
+        <button class="btn-secondary" onclick="loadChallenge()" style="padding:9px 18px;">Cancel</button>
+      </div>`;
+    const input = $("acct-goal-input");
+    input.focus();
+    input.addEventListener("keydown", (e) => { if (e.key === "Enter") acctSaveGoal(); });
+  };
+  window.acctSaveGoal = function () {
+    const raw = ($("acct-goal-input").value || "").replace(/[^0-9]/g, "");
+    const n = Math.max(0, Math.min(1000, parseInt(raw, 10) || 0));
     try { localStorage.setItem(GOAL_KEY, JSON.stringify({ year: new Date().getFullYear(), target: n })); } catch (e) {}
     loadChallenge();
   };
@@ -688,23 +705,35 @@ sitemap: false
       && b.finishedAt && new Date(b.finishedAt).getFullYear() === year).length;
     const goal = readGoal();
     if (!goal) {
-      box.innerHTML = `<p style="font-size:var(--ui-sm);color:var(--fg-muted);">Set a goal for ${year} and track books you finish.
+      box.innerHTML = `<p style="font-size:var(--ui-sm);color:var(--fg-muted);line-height:1.6;">Set a yearly goal and watch it fill as you finish books.
         ${done ? `You've already finished <b>${done}</b> this year.` : ""}
-        <button class="btn-secondary" onclick="acctSetGoal()" style="padding:5px 14px;font-size:var(--ui-sm);margin-left:8px;">Set a goal</button></p>`;
+        <button class="btn-primary" onclick="acctEditGoal()" style="padding:8px 16px;margin-left:6px;">Set a goal</button></p>`;
       return;
     }
     const pct = Math.min(100, Math.round(done / goal * 100));
     const hit = done >= goal;
+    const col = hit ? "var(--success)" : "var(--brass)";
+    // Circular progress ring (r=32 → circumference ~201) makes the challenge
+    // read as a headline stat rather than a stray line of text.
+    const C = 201.06, off = C * (1 - pct / 100);
     box.innerHTML = `
-      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:8px;">
-        <span style="font-size:var(--ui-title);font-weight:800;">${done} <span style="font-size:var(--ui-body);font-weight:600;color:var(--fg-faint);">/ ${goal} books</span></span>
-        <span style="font-size:var(--ui-sm);color:${hit ? 'var(--success)' : 'var(--fg-faint)'};font-weight:600;display:inline-flex;align-items:center;gap:4px;">
-          ${hit ? `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg> Goal reached!` : `${goal - done} to go · ${pct}%`}
-          <button class="btn-secondary" onclick="acctSetGoal()" style="padding:3px 10px;font-size:var(--ui-sm);margin-left:8px;">Edit</button>
-        </span>
-      </div>
-      <div style="height:10px;background:var(--bg-subtle);border-radius:5px;overflow:hidden;">
-        <div style="width:${pct}%;height:100%;background:${hit ? 'var(--success)' : 'var(--accent)'};border-radius:5px;transition:width .4s ease;"></div>
+      <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+        <div style="position:relative;width:76px;height:76px;flex-shrink:0;">
+          <svg width="76" height="76" viewBox="0 0 76 76" aria-hidden="true">
+            <circle cx="38" cy="38" r="32" fill="none" stroke="var(--border)" stroke-width="7"/>
+            <circle cx="38" cy="38" r="32" fill="none" stroke="${col}" stroke-width="7" stroke-linecap="round"
+                    stroke-dasharray="${C}" stroke-dashoffset="${off}" transform="rotate(-90 38 38)"
+                    style="transition:stroke-dashoffset .5s var(--ease-out);"/>
+          </svg>
+          <span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:var(--ui-body);font-weight:700;color:${col};">${pct}%</span>
+        </div>
+        <div style="flex:1;min-width:150px;">
+          <div style="font-size:var(--ui-title);font-weight:800;line-height:1.1;">${done}<span style="font-size:var(--ui-body);font-weight:600;color:var(--fg-faint);"> / ${goal} books</span></div>
+          <div style="font-size:var(--ui-sm);color:${hit ? 'var(--success)' : 'var(--fg-muted)'};font-weight:600;margin-top:4px;display:inline-flex;align-items:center;gap:5px;">
+            ${hit ? `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg> Goal reached this year!` : `${goal - done} to go this year`}
+          </div>
+          <div style="margin-top:8px;"><button class="btn-secondary" onclick="acctEditGoal()" style="padding:6px 14px;">Edit goal</button></div>
+        </div>
       </div>`;
   }
 
