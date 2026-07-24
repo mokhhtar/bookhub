@@ -26,6 +26,21 @@ of this file. Each entry records what shipped and how it was verified.
   sanitizer; legitimate formatting preserved; fail-closed paths fall back to
   text escaping. Commits: bookhub `e557995`, bookhub-api `4953602`.
 
+- **2026-07-24 — H-03 (part 1 of 3: `/summary/chat`) — REMEDIATED.** This
+  route was an unauthenticated Gemini call with no rate limit and unbounded
+  `summary`/`history` bodies. Added Pydantic caps to `ChatRequest`
+  (`bookhub-api/tools/summary.py`): title/author ≤300, summary ≤30000 (~6x
+  the largest real summary), question ≤2000, history ≤20 turns, plus a
+  per-message 4000-char truncation in the route. Added a per-real-client-IP
+  daily limit (`SUMMARY_CHAT_DAILY`, default 60) via a new `_client_ip()`
+  that reads the first X-Forwarded-For hop — correct behind Render's proxy,
+  where `request.client.host` is the shared proxy address. Verified with a
+  full ASGI test: oversized bodies → 422 before any Gemini call, 60 allowed
+  then 429 per IP, and separate IPs keep independent budgets. **Still open
+  (parts 2–3, next up):** the shared limiter fails *open* when Redis is
+  unavailable, and the pdf/book-quiz routes still trust a caller-supplied
+  `client_id`. Commit: bookhub-api `509369f`.
+
 ## Verified: unverified Firebase accounts cannot create text content
 
 For book comments, author comments, and reader recommendations, creation requires:
@@ -82,7 +97,7 @@ Character and author-like documents additionally store `uid` and optional displa
 
 **Required fix direction:** treat aggregate counts as a server-side concern. Use trusted aggregation (for example Cloud Functions/Cloud Run with Admin SDK) and restrict raw reaction documents to the owner and trusted server. Do not rely on the UI hiding UIDs.
 
-### H-03 — Public API permits cost and availability abuse (confirmed)
+### H-03 — Public API permits cost and availability abuse (confirmed) — PARTIALLY REMEDIATED 2026-07-24
 
 **Affected:** FastAPI routes invoking Gemini, external catalog sources, or GitHub publishing  
 **Class:** Insufficient rate limiting / resource exhaustion  
