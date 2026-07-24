@@ -64,7 +64,8 @@ sitemap: false
   .rl-stars { display: flex; align-items: center; gap: 1px; }
   .rl-stars button { background: none; border: 0; cursor: pointer; font-size: var(--ui-body); padding: 1px; color: var(--border-med, var(--border)); }
   .rl-stars button.lit { color: var(--brass); }
-  .rl-select { width: auto; padding: 6px 10px; font-size: var(--ui-sm); }
+  /* Keep the right padding so the custom .form-select arrow has room. */
+  .rl-select { width: auto; padding: 6px 32px 6px 10px; font-size: var(--ui-sm); }
 
   /* Card action row. The status select plus the two icon buttons overflowed
      the 150px card, so the buttons pushed past the border. The select now

@@ -2470,7 +2470,7 @@ reach anyone who had visited before. {%- endcomment -%}
           <h3 style="font-size:var(--t-body);font-weight:600;color:var(--fg);margin:0;">Select the exact book you want summarized:</h3>
           <div class="search-sort-bar">
             <label for="search-sort-field">Sort by</label>
-            <select id="search-sort-field" onchange="setSearchSort(this.value)">${sortOptions}</select>
+            <select id="search-sort-field" class="form-select" onchange="setSearchSort(this.value)">${sortOptions}</select>
             <button class="search-sort-dir-btn" onclick="toggleSearchSortDir()"
                     ${searchSortField === "relevance" ? "disabled" : ""}
                     title="${searchSortDir === 1 ? "Ascending — click for descending" : "Descending — click for ascending"}">
