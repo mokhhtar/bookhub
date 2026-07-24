@@ -412,6 +412,12 @@ reach anyone who had visited before. {%- endcomment -%}
   </div>
 </div>
 
+<!-- Self-hosted DOMPurify (Cure53) — the final HTML sanitizer for AI/backend
+     output before it reaches innerHTML. Vendored (not CDN) so a security-
+     critical dependency has no runtime supply-chain exposure. Loaded as a
+     classic script BEFORE the inline script below so window.DOMPurify exists
+     by the time any summary/chat renderer runs. -->
+<script src="{{ '/assets/js/purify.min.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/bh-audio.js' | relative_url }}"></script>
 <script>
   const API = "{{ site.api_url }}";
@@ -957,7 +963,7 @@ reach anyone who had visited before. {%- endcomment -%}
         // player's sections mirror the visible chapters (SoBrief-style),
         // instead of one monolithic "Summary" block.
         try {
-          const sdoc = new DOMParser().parseFromString(parseSummaryMarkdown(data.summary || ""), "text/html");
+          const sdoc = new DOMParser().parseFromString(sanitizeHtml(parseSummaryMarkdown(data.summary || "")), "text/html");
           let label = "Overview", buf = [];
           const flush = () => {
             const t = buf.join(" ").replace(/\s+/g, " ").trim();
@@ -1350,7 +1356,7 @@ reach anyone who had visited before. {%- endcomment -%}
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
               AI Grounded Summary — Comprehensive Study Guide
             </div>
-            <div class="ai-output">${parseSummaryMarkdown(data.summary)}</div>
+            <div class="ai-output">${sanitizeHtml(parseSummaryMarkdown(data.summary))}</div>
           </div>
 
           ${quotesHtml}
@@ -1598,7 +1604,7 @@ reach anyone who had visited before. {%- endcomment -%}
                 </div>`;
               streamOut = document.getElementById("stream-progress");
             }
-            if (streamOut) streamOut.innerHTML = parseSummaryMarkdown(acc);
+            if (streamOut) streamOut.innerHTML = sanitizeHtml(parseSummaryMarkdown(acc));
           }
         }
       }
@@ -2634,7 +2640,7 @@ reach anyone who had visited before. {%- endcomment -%}
 
       document.getElementById(loadingId).remove();
 
-      const parsedAnswer = formatMarkdown(data.answer);
+      const parsedAnswer = sanitizeHtml(formatMarkdown(data.answer));
       msgsBox.innerHTML += `<div class="chat-msg assistant">${parsedAnswer}</div>`;
       msgsBox.scrollTop = msgsBox.scrollHeight;
 
@@ -2650,12 +2656,32 @@ reach anyone who had visited before. {%- endcomment -%}
   }
 
   function escapeHtml(text) {
-    return text
+    return String(text == null ? "" : text)
       .replace(/&/g, "&amp;")
       .replace(/</g, "&lt;")
       .replace(/>/g, "&gt;")
       .replace(/"/g, "&quot;")
       .replace(/'/g, "&#039;");
+  }
+
+  // Final DOM-boundary sanitizer. parseSummaryMarkdown() and formatMarkdown()
+  // build HTML from Gemini/backend output (and parseSummaryMarkdown passes
+  // backend HTML through verbatim), then that string is written to innerHTML.
+  // Without this, an injected <script>/<img onerror>/<svg onload> reaching a
+  // summary or chat answer would execute on this Firebase-authenticated page
+  // (→ ID-token / account takeover). Allow ONLY the closed formatting
+  // vocabulary the summaries actually use (verified against every _books/*.md:
+  // p, strong, li, h2, h3, em, ul — plus br/ol/b/i as harmless supersets),
+  // with ZERO attributes so every event handler and url attribute is dropped.
+  // Fail CLOSED: if DOMPurify somehow didn't load, escape to plain text rather
+  // than inject unsanitized HTML.
+  const SANITIZE_ALLOWED_TAGS = ["h2", "h3", "p", "ul", "ol", "li", "strong", "em", "b", "i", "br"];
+  function sanitizeHtml(html) {
+    const s = String(html == null ? "" : html);
+    if (window.DOMPurify && typeof DOMPurify.sanitize === "function") {
+      return DOMPurify.sanitize(s, { ALLOWED_TAGS: SANITIZE_ALLOWED_TAGS, ALLOWED_ATTR: [] });
+    }
+    return escapeHtml(s);
   }
 
   function formatMarkdown(text) {
