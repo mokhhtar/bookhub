@@ -86,6 +86,28 @@ of this file. Each entry records what shipped and how it was verified.
   uploader's dedup response carries their own filename, not the first
   uploader's. Commits: bookhub-api `c0e7140`, bookhub pdf-chat.html (this commit).
 
+- **2026-07-24 — M-07 (operational info disclosure) — REMEDIATED.**
+  Diagnostic surfaces are now gated behind an `EXPOSE_DIAGNOSTICS` env flag
+  (default off) in `bookhub-api/main.py`: `/health` returns just
+  `{"status":"ok"}` (still 200, so Render's health check + keep-warm ping keep
+  working) instead of the model/publishing/config block; `/models` returns 404
+  (it also made a live upstream call per hit); `/` returns a minimal identifier
+  instead of the full route list; and FastAPI's `/docs`, `/redoc`,
+  `/openapi.json` are disabled. Set `EXPOSE_DIAGNOSTICS=true` in the Render
+  dashboard to re-enable all of them for debugging. Verified with TestClient
+  both ways. Commit: bookhub-api `fe9cf72`.
+
+- **2026-07-24 — M-06 (Firebase Storage rules) — SOURCE ADDED (needs Console
+  deploy).** BookHub uses no Firebase Storage (the bucket
+  `bookhub-42d9a.firebasestorage.app` is declared in the web config but no
+  Storage SDK is loaded and no object is read/written; PDF text goes to the API
+  → Redis). Added a deny-by-default `bookhub/firebase/storage.rules`
+  (`allow read, write: if false` for `/{allPaths=**}`) as the version-
+  controlled source of truth, mirroring the firestore.rules convention.
+  **Action required:** paste it into Firebase Console → Storage → Rules and
+  confirm the deployed rules match (the repo file is not auto-deployed).
+  Commit: bookhub firebase/storage.rules (this commit).
+
 ## Verified: unverified Firebase accounts cannot create text content
 
 For book comments, author comments, and reader recommendations, creation requires:
@@ -186,7 +208,7 @@ Successful public English `/summary` requests enqueue publishing of a book, auth
 
 **Required fix direction:** maintain a deployment-safe rule source with the correct non-secret UID, or use a reproducible deployment process; immediately compare the Console rules with source after every change. Never expose service-account credentials in client code.
 
-### M-06 — Firebase Storage rules are absent from the reviewed repository (unknown live state)
+### M-06 — Firebase Storage rules are absent from the reviewed repository — SOURCE ADDED 2026-07-24 (deploy via Console)
 
 **Affected:** Firebase Storage bucket configuration  
 **Class:** Missing configuration evidence  
@@ -196,7 +218,7 @@ The frontend declares a Storage bucket but no `storage.rules` file or Storage SD
 
 **Required fix direction:** export/version-control Storage rules, deny by default, and verify the deployed rules.
 
-### M-07 — Operational information disclosure (confirmed)
+### M-07 — Operational information disclosure (confirmed) — REMEDIATED 2026-07-24
 
 **Affected:** `/health`, `/models`, API root  
 **Class:** Excessive service metadata  
