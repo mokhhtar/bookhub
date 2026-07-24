@@ -57,6 +57,16 @@ of this file. Each entry records what shipped and how it was verified.
   enforces the cap with Redis down and keeps per-client budgets; a rotating
   client_id from one IP still hits the cap. Commit: bookhub-api `b981191`.
 
+- **2026-07-24 — H-02 (UID/preference exposure) — DEFERRED (accepted risk).**
+  The proper fix needs trusted server-side aggregation (Cloud Functions →
+  Firebase Blaze plan), which is on the deferred launch checklist. Public
+  counts use Firestore COUNT aggregation queries governed by the same read
+  rules, so owner-only raw docs would break every count; client-maintained
+  counters were declined (they trade privacy for count-integrity). Accepted as
+  a moderate pre-launch risk (opaque UIDs + reading preferences); proper fix
+  scheduled for Blaze enablement at launch. No code change. See the H-02
+  section for the full rationale.
+
 ## Verified: unverified Firebase accounts cannot create text content
 
 For book comments, author comments, and reader recommendations, creation requires:
@@ -94,7 +104,21 @@ The document identifier is the SHA-256 hash of the extracted PDF text. Storage k
 
 **Required fix direction:** associate every uploaded document with an authenticated user or an unguessable, server-generated capability bound to the initiating browser/session; enforce it on every read and write. Do not use a shared content hash as the authorization boundary. Reconsider cross-user deduplication for private uploads.
 
-### H-02 — Public Firestore reaction documents expose UIDs and preference graphs (confirmed)
+### H-02 — Public Firestore reaction documents expose UIDs and preference graphs (confirmed) — DEFERRED (accepted risk) 2026-07-24
+
+> **Status (2026-07-24): DEFERRED — accepted risk until launch.** The proper
+> fix (trusted server-side aggregation) requires Cloud Functions, which need
+> the Firebase **Blaze** plan — already deferred to the launch checklist. The
+> public counts (ratings/likes/recs) are computed with Firestore COUNT
+> aggregation queries, and those are governed by the same read rules, so
+> making the raw UID-keyed docs owner-only would break every count. Interim
+> alternatives were weighed and declined: client-maintained aggregate counters
+> trade this privacy leak for a **count-integrity** hole (rules can't
+> atomically bind a counter bump to its reaction write); dropping the
+> snapshotted display name from like docs is marginal (uid→name is already
+> derivable from public approved comments). Decision: accept pre-launch (opaque
+> Firebase UIDs + reading preferences on a book site = moderate harm) and do
+> the trusted-aggregation fix when Blaze is enabled at launch.
 
 **Affected:** `bookhub/firebase/firestore.rules`  
 **Class:** Privacy exposure / identifier enumeration  
