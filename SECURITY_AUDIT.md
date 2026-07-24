@@ -41,6 +41,22 @@ of this file. Each entry records what shipped and how it was verified.
   unavailable, and the pdf/book-quiz routes still trust a caller-supplied
   `client_id`. Commit: bookhub-api `509369f`.
 
+- **2026-07-24 — H-03 (parts 2–3: fail-open + spoofable client_id) —
+  REMEDIATED.** The shared limiter (`bookhub-api/tools/quiz_core.py`
+  `_rate_limit`) no longer fails fully open when Redis is down: it degrades to
+  a process-local per-instance counter (single Render instance → still a real
+  global cap; resets daily, size-bounded) — a graceful degrade, not a hard
+  fail-closed, so the feature keeps working during a cache outage. All
+  rate-limited routes now key on a server-derived, spoof-resistant client IP
+  via a new shared `_client_ip()` instead of a body `client_id` a caller can
+  rotate to mint fresh quota: `/quiz/book`, PDF-chat `/ingest` `/chat` `/quiz`
+  (each now takes the Request), and `/summary/chat`. `_client_ip()` uses the
+  RIGHTMOST X-Forwarded-For hop — the one Render's single proxy appends from
+  the real connection — which also corrects part 1's earlier leftmost
+  (spoofable) choice. Verified: rightmost-hop selection; the degrade counter
+  enforces the cap with Redis down and keeps per-client budgets; a rotating
+  client_id from one IP still hits the cap. Commit: bookhub-api `b981191`.
+
 ## Verified: unverified Firebase accounts cannot create text content
 
 For book comments, author comments, and reader recommendations, creation requires:
@@ -97,7 +113,7 @@ Character and author-like documents additionally store `uid` and optional displa
 
 **Required fix direction:** treat aggregate counts as a server-side concern. Use trusted aggregation (for example Cloud Functions/Cloud Run with Admin SDK) and restrict raw reaction documents to the owner and trusted server. Do not rely on the UI hiding UIDs.
 
-### H-03 — Public API permits cost and availability abuse (confirmed) — PARTIALLY REMEDIATED 2026-07-24
+### H-03 — Public API permits cost and availability abuse (confirmed) — REMEDIATED 2026-07-24
 
 **Affected:** FastAPI routes invoking Gemini, external catalog sources, or GitHub publishing  
 **Class:** Insufficient rate limiting / resource exhaustion  
