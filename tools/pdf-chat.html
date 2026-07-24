@@ -276,7 +276,12 @@ description: "Upload any PDF book — chat with an AI grounded in the actual tex
 
       setStatus("Checking if this book is already prepared…", 65);
       const chk = await apiPost("/pdfchat/check", { doc_id: docId, client_id: CLIENT_ID });
-      if (chk.exists) { enterWorkspace(docId, chk.meta); return; }
+      // Already prepared (dedup). /check returns existence only — never another
+      // user's metadata — so render from the metadata we hold for THIS file.
+      if (chk.exists) {
+        enterWorkspace(docId, { title, filename: file.name || "", pages: pdf.numPages, chars: text.length });
+        return;
+      }
 
       // Warm the free server (may be asleep) then ingest.
       fetch(API + "/health").catch(() => {});
@@ -288,7 +293,11 @@ description: "Upload any PDF book — chat with an AI grounded in the actual tex
           title, filename: file.name || "", pages: pdf.numPages,
         }, 120000);
       } catch (e) {
-        if (e.code === "ingest_in_progress") { res = await pollUntilReady(docId); }
+        if (e.code === "ingest_in_progress") {
+          await pollUntilReady(docId);   // resolves when ready, throws on timeout
+          enterWorkspace(docId, { title, filename: file.name || "", pages: pdf.numPages, chars: text.length });
+          return;
+        }
         else throw e;
       }
       if (res?.meta) enterWorkspace(docId, res.meta);
@@ -305,7 +314,7 @@ description: "Upload any PDF book — chat with an AI grounded in the actual tex
     for (let i = 0; i < 30; i++) {
       await new Promise(r => setTimeout(r, 3000));
       const chk = await apiPost("/pdfchat/check", { doc_id: docId, client_id: CLIENT_ID });
-      if (chk.exists) return { meta: chk.meta };
+      if (chk.exists) return true;
     }
     throw new Error("Timed out waiting — please try again.");
   }
@@ -450,7 +459,8 @@ description: "Upload any PDF book — chat with an AI grounded in the actual tex
     setStatus("Checking this book…", 50);
     try {
       const chk = await apiPost("/pdfchat/check", { doc_id: doc.doc_id, client_id: CLIENT_ID });
-      if (chk.exists) enterWorkspace(doc.doc_id, chk.meta);
+      // /check is existence-only; reopen from the locally stored library entry.
+      if (chk.exists) enterWorkspace(doc.doc_id, doc);
       else showError(`"${doc.title}" — ${ERROR_COPY.doc_expired}`);
     } catch (e) { showError(e.message); }
   }

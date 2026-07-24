@@ -67,6 +67,25 @@ of this file. Each entry records what shipped and how it was verified.
   scheduled for Blaze enablement at launch. No code change. See the H-02
   section for the full rationale.
 
+- **2026-07-24 — C-01 (PDF-chat cross-user access) — REMEDIATED (scoped).**
+  Root-cause review narrowed the real exposure: doc_id is a SHA-256 of the PDF
+  text and never appears in any URL or shareable surface (verified in
+  pdf-chat.html — computed client-side, kept only in POST bodies and
+  localStorage), so holding a doc_id implies holding the file; the
+  contents/digest are thus not a cross-user disclosure. The one genuine leak
+  was metadata: `/check` and `/ingest`'s dedup path returned the FIRST
+  uploader's chosen title/filename (which can carry PII) to any later user who
+  ingests the same file. Fix: `/pdfchat/check` now returns existence only (no
+  meta); `/pdfchat/ingest`'s dedup path echoes the caller's OWN submitted
+  metadata. The frontend renders from metadata it already holds (the open
+  file, or its local-library entry) at all three `/check` call sites.
+  Cross-user text dedup (a deliberate free-tier cost saver) is preserved; a
+  full server-minted capability system was considered and judged
+  disproportionate given the hash-id + no-URL-exposure facts — revisit only if
+  doc_ids ever become URL-exposed. Verified: `/check` leaks no meta; a second
+  uploader's dedup response carries their own filename, not the first
+  uploader's. Commits: bookhub-api `c0e7140`, bookhub pdf-chat.html (this commit).
+
 ## Verified: unverified Firebase accounts cannot create text content
 
 For book comments, author comments, and reader recommendations, creation requires:
@@ -94,7 +113,7 @@ No client-only bypass exists unless a separate privileged system can mint Fireba
 
 ## Findings requiring remediation
 
-### C-01 — PDF-chat cross-user document access (confirmed)
+### C-01 — PDF-chat cross-user document access (confirmed) — REMEDIATED (scoped) 2026-07-24
 
 **Affected:** `bookhub-api/tools/pdfchat.py` (`/pdfchat/check`, `/ingest`, `/chat`, `/quiz`)  
 **Class:** Broken object-level authorization / IDOR  
