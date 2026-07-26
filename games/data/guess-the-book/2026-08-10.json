@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "n": 10,
+ "date": "2026-08-10",
+ "answer_hash": "b3a6a3ec7dafde4476ffe2cdf31d2d5ae528e7d095980840608e4cd552cdc20d",
+ "author_hash": "dd2c7088b6188cd677334f7cea2aa111d5d519fddbfab57032c19bc0d9fb62eb",
+ "clues": [
+  {
+   "i": 0,
+   "type": "quote",
+   "text": "The framework of his nature, originally strong and massive, was not yet crumbled into ruin.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 25344,
+    "chunk": 13
+   }
+  },
+  {
+   "i": 1,
+   "type": "quote",
+   "text": "Nothing is too small or too trifling to undergo this change, and acquire dignity thereby.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 25344,
+    "chunk": 24
+   }
+  },
+  {
+   "i": 2,
+   "type": "fact",
+   "label": "First published",
+   "text": "1850 · originally in English",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 3,
+   "type": "fact",
+   "label": "Author",
+   "text": "N. H. — American, 1804–1864",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 4,
+   "type": "fact",
+   "label": "A character",
+   "text": "One of them is called Hester Prynne.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 25344
+   }
+  },
+  {
+   "i": 5,
+   "type": "fact",
+   "label": "The story",
+   "text": "A woman in Puritan Boston is sentenced to wear a mark of adultery.",
+   "source": {
+    "kind": "curated"
+   }
+  }
+ ],
+ "cover": {
+  "levels": [
+   "/assets/games/gtb/p0010/b0.webp",
+   "/assets/games/gtb/p0010/b1.webp",
+   "/assets/games/gtb/p0010/b2.webp",
+   "/assets/games/gtb/p0010/b3.webp",
+   "/assets/games/gtb/p0010/b4.webp"
+  ],
+  "credit": "Project Gutenberg #25344 (public domain)"
+ },
+ "reveal_enc": "cBxpr14LoZi1Y2E3cOSv1x7FI7x5n3EOwAJwJDLIB+AxFzvqYuW8bDmRFGKvRgowULT8jDeHqgCJHK95yc2qqwG8W+nG8ASuBAoobmRpe/NzvKy0BoSBXdVM/7LsGarmk5RdcMNpw26ZEP6zHaeB0hL9j9I/+ZfzpvQpPQI9ihX1R+WTkpDtds6hyoZOOXraT8oUgAvH+UUnPqUNZ5iJon/zSkIOE5qfguFUlDBmD3HE+MKYjkds596LhT8MutZC+u+z8AF+p3t/6BPqxyxXXmC42NisQPIUq6Z2yDCbh7BdqiVjnt3qDM54uqF/jFHJyimo+cvkI/8mFRP7LxH01Lcz8y0oOzNfbyfrCHniDBOy4meKkHsza/OB/4yTJRoll+D3uJDoL4kJaLP+J3b+bo6nSCDl"
+}

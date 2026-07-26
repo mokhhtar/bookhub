@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "n": 11,
+ "date": "2026-08-11",
+ "answer_hash": "c477d81068fbcd932be056e00ee735a665d25f711cced6b131b0718aae025ea4",
+ "author_hash": "8ece2347dc120ad40735ee327c43dfea693f051722f8bb749df5c0d57d440d5f",
+ "clues": [
+  {
+   "i": 0,
+   "type": "quote",
+   "text": "The moon in its first quarter hung over the westward hill, and the stars were clear and almost tropically bright.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 5230,
+    "chunk": 44
+   }
+  },
+  {
+   "i": 1,
+   "type": "quote",
+   "text": "I had never realised it before, but the nose is to the mind of a dog what the eye is to the mind of a seeing man.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 5230,
+    "chunk": 62
+   }
+  },
+  {
+   "i": 2,
+   "type": "fact",
+   "label": "First published",
+   "text": "1897 · originally in English",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 3,
+   "type": "fact",
+   "label": "Author",
+   "text": "H. G. W. — English, 1866–1946",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 4,
+   "type": "fact",
+   "label": "A character",
+   "text": "One of them is called Kemp.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 5230
+   }
+  },
+  {
+   "i": 5,
+   "type": "fact",
+   "label": "The story",
+   "text": "A stranger swathed in bandages takes a room at a village inn.",
+   "source": {
+    "kind": "curated"
+   }
+  }
+ ],
+ "cover": {
+  "levels": [
+   "/assets/games/gtb/p0011/b0.webp",
+   "/assets/games/gtb/p0011/b1.webp",
+   "/assets/games/gtb/p0011/b2.webp",
+   "/assets/games/gtb/p0011/b3.webp",
+   "/assets/games/gtb/p0011/b4.webp"
+  ],
+  "credit": "Project Gutenberg #5230 (public domain)"
+ },
+ "reveal_enc": "2Ecc7tvRBiZ89FL+nSCZ5ingZV+GqjbO27w871wHhSa2SGZLPAFq4og65VT5RAbZEVikVoY2TUJlIItLaRRDUumvPpZeinh207ctF43QV0l0wMhXQ7L2FGnR9jv2pMATqrYNjfhm9g+/Ox8+vx0X6WtpgEnWhDmpGc2fDOqQpw/AHkgTa3uX/jRo1jMcIrBEvuE6stuR22DBU8JlyyoK7jNsQ3E6ZxI/KLwnmRkgVop70b96o+hIfAhdl2eq48cq/hjq22FlrMyWa+K8q6ZkFZv8KouqecUZUEEaLxc91iE3U1CsYiK5KS9eCMdv8aJREkK0+bVT8ysOnwhwlRDthJUtoaUTGc5iR1DoY6PMfRT2B0I="
+}

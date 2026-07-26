@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "n": 6,
+ "date": "2026-08-06",
+ "answer_hash": "fe524cbd74de147d41948dae06352a8160de8fb2e83663a3b9c53aa722ca8b7e",
+ "author_hash": "391f1430628d02c7b64ff408aec6caae10af176d74c9c558daaff01690c7b6a3",
+ "clues": [
+  {
+   "i": 0,
+   "type": "quote",
+   "text": "It was all the romance of the nursery and the poetry of the schoolroom.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 209,
+    "chunk": 16
+   }
+  },
+  {
+   "i": 1,
+   "type": "quote",
+   "text": "The only thing indeed that in this early outlook might have made me shrink again was the clear circumstance of her being so glad to see me.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 209,
+    "chunk": 6
+   }
+  },
+  {
+   "i": 2,
+   "type": "fact",
+   "label": "First published",
+   "text": "1898 · originally in English",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 3,
+   "type": "fact",
+   "label": "Author",
+   "text": "H. J. — American, 1843–1916",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 4,
+   "type": "fact",
+   "label": "A character",
+   "text": "One of them is called Mrs. Grose.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 209
+   }
+  },
+  {
+   "i": 5,
+   "type": "fact",
+   "label": "The story",
+   "text": "A governess at a country house called Bly becomes certain the children see ghosts.",
+   "source": {
+    "kind": "curated"
+   }
+  }
+ ],
+ "cover": {
+  "levels": [
+   "/assets/games/gtb/p0006/b0.webp",
+   "/assets/games/gtb/p0006/b1.webp",
+   "/assets/games/gtb/p0006/b2.webp",
+   "/assets/games/gtb/p0006/b3.webp",
+   "/assets/games/gtb/p0006/b4.webp"
+  ],
+  "credit": "Project Gutenberg #209 (public domain)"
+ },
+ "reveal_enc": "vfwP5LkTZMSCEeF5Jf5jQHsyzWpVtSLt6f8OfChen+ZrN9QJnUjLkAexZZWON0WIj0Hj3xqhfVJvd34EsdSvg5ONacmvsHQrGILcBXjWrAN7QdXJre3nREhta5LwpfqSqe0yV8CRqmfzq1SG8iT4hD78y+8zh/HPdBFdSn6NtqWZq18PLJaqm7PfCk2mnL14w382S0zjCEg/HzqgxJ+locy2drtP7nakV0X/I6scyfUD908Bcw5rtnBlxmJjOCMFrNYpEHlLVK6FGNmwH52X3IWn0V7TQylymmgje6foYwtFVqS5GUwt9eGzStSy1rPtIWHb5Y/nuJNnuFLseOrWceQfmBREm70pvJglT6rlmcTurg780H08oy78Qqhkg91B"
+}

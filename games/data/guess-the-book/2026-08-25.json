@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "n": 25,
+ "date": "2026-08-25",
+ "answer_hash": "077940b4c28488b67adc4334fcb8e9908c9f1e1ace2d447fae984c05a3158bae",
+ "author_hash": "c002943eb7fa8a08cfa658720b2da3b14e97c63186aa18710c6470e7fad2ef49",
+ "clues": [
+  {
+   "i": 0,
+   "type": "quote",
+   "text": "The bells ceased as they had begun, together. They were succeeded by a clanking noise, deep down below; as if some person were dragging a heavy chain over the casks in the wine-merchant's cellar.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 46,
+    "chunk": 8
+   }
+  },
+  {
+   "i": 1,
+   "type": "quote",
+   "text": "The city had entirely vanished. Not a vestige of it was to be seen. The darkness and the mist had vanished with it, for it was a clear, cold, winter day, with snow upon the ground.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 46,
+    "chunk": 15
+   }
+  },
+  {
+   "i": 2,
+   "type": "fact",
+   "label": "First published",
+   "text": "1843 · originally in English",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 3,
+   "type": "fact",
+   "label": "Author",
+   "text": "C. D. — English, 1812–1870",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 4,
+   "type": "fact",
+   "label": "A character",
+   "text": "One of them is called Bob Cratchit.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 46
+   }
+  },
+  {
+   "i": 5,
+   "type": "fact",
+   "label": "The story",
+   "text": "A miser in a London counting-house is visited by three spirits in one night.",
+   "source": {
+    "kind": "curated"
+   }
+  }
+ ],
+ "cover": {
+  "levels": [
+   "/assets/games/gtb/p0025/b0.webp",
+   "/assets/games/gtb/p0025/b1.webp",
+   "/assets/games/gtb/p0025/b2.webp",
+   "/assets/games/gtb/p0025/b3.webp",
+   "/assets/games/gtb/p0025/b4.webp"
+  ],
+  "credit": "Project Gutenberg #46 (public domain)"
+ },
+ "reveal_enc": "7b47oJgkxJBigJTyNwuWoAhoIvHq5rfIxkEWyT/gVgcC1oLFejexybaQqjuLaT5kccC55cyo3z82lJHRN1dRqpcjCKAZP288xy3bTxA+bKx5vCqp9RNYA4oDksPiA8WYe9Bhx/7JTWx+p3xha0VZWi1ALKcRYRqlaf0iWTK4b+zmLpLTufcJQQyFZ6i8Ly0Mb00s0IzXRooe8W38UTqUjD3kfNWsdHOEYw2/nnc0Zs/JO2Lhb78Zri1pkomVaBN71hzgCzEJVB+mP11TZxfF7Ld4JDF8hsXyeEN7KiEBkM0sGB42V6rE5XigGJ/N43Qm5tzhcvjrNkgTACX977OgezUelY6qExgeKTzxiUu0NEB6homEGg2dLl2rt176"
+}

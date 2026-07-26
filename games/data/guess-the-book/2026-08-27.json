@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "n": 27,
+ "date": "2026-08-27",
+ "answer_hash": "7f6277db2d4193f7967153d090e7d98134a9ca1a5692ba118fd82195b6666cb0",
+ "author_hash": "7d652ebc9892abe8554686a0165f4feaaef72104fd4e2d9667010aaa6026832f",
+ "clues": [
+  {
+   "i": 0,
+   "type": "quote",
+   "text": "The whisper of his name makes their wicked tails cold.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 236,
+    "chunk": 19
+   }
+  },
+  {
+   "i": 1,
+   "type": "quote",
+   "text": "He could fluff up his tail till it looked like a bottle brush, and his war cry as he scuttled through the long grass was: “Rikk-tikk-tikki-tikki-tchk!”",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 236,
+    "chunk": 56
+   }
+  },
+  {
+   "i": 2,
+   "type": "fact",
+   "label": "First published",
+   "text": "1894 · originally in English",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 3,
+   "type": "fact",
+   "label": "Author",
+   "text": "R. K. — English, 1865–1936",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 4,
+   "type": "fact",
+   "label": "A character",
+   "text": "One of them is called Baloo.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 236
+   }
+  },
+  {
+   "i": 5,
+   "type": "fact",
+   "label": "The story",
+   "text": "A boy raised by wolves in the Seeonee hills.",
+   "source": {
+    "kind": "curated"
+   }
+  }
+ ],
+ "cover": {
+  "levels": [
+   "/assets/games/gtb/p0027/b0.webp",
+   "/assets/games/gtb/p0027/b1.webp",
+   "/assets/games/gtb/p0027/b2.webp",
+   "/assets/games/gtb/p0027/b3.webp",
+   "/assets/games/gtb/p0027/b4.webp"
+  ],
+  "credit": "Project Gutenberg #236 (public domain)"
+ },
+ "reveal_enc": "PM31yEKDDkvyykDOLCtB5XhwBwuDBx0yTUbZqUQ6O5GzGIIGi4V4SWn0EArTxuqirxz02KCR30ju+z05nOLKEPDTO+5GIIB1NY/NZng355m16ZGLhoyNkLr3jl6CbFu7KMS1kjePVkMgI/tadOw7oOCP1ndJrnESC/x7oXemwkp8+uYhgxN5BwDClkdSnWHK3oMWmxjW71cfNbTZ/uW2DezEM2crg8o4mGeFP7WR7bD1LBDZpxfhN6YGIKCa9VZe+hXjL8BmsHHRcCjf6hVglMGDpxcoSYBmx02Rme8Y6LzijvXdIrwNwRuC9tLhAjoa1WGIXGPri4Rs7o6FmUxKipwcBDorRMY/mqygCFW5Ek+eJ3evzxnGit3t"
+}

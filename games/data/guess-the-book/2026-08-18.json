@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "n": 18,
+ "date": "2026-08-18",
+ "answer_hash": "ef4b7e73f495175ee4a3976d64891a7ed29ca868485da3affb14de81e12fdaa0",
+ "author_hash": "febc67a44e3e547a09c042fa3d212b81e8c547c6cd1b4a5ed5e02ee6db7041d0",
+ "clues": [
+  {
+   "i": 0,
+   "type": "quote",
+   "text": "I was brought up in the country, and my father in his leisure time was something of a poacher.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 1257,
+    "chunk": 181
+   }
+  },
+  {
+   "i": 1,
+   "type": "quote",
+   "text": "The queen ran to a little table, on which were ink, paper, and pens.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 1257,
+    "chunk": 123
+   }
+  },
+  {
+   "i": 2,
+   "type": "fact",
+   "label": "First published",
+   "text": "1844 · originally in French",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 3,
+   "type": "fact",
+   "label": "Author",
+   "text": "A. D. — French, 1802–1870",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 4,
+   "type": "fact",
+   "label": "A character",
+   "text": "One of them is called Athos.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 1257
+   }
+  },
+  {
+   "i": 5,
+   "type": "fact",
+   "label": "The story",
+   "text": "A young Gascon comes to Paris to join the king's guards.",
+   "source": {
+    "kind": "curated"
+   }
+  }
+ ],
+ "cover": {
+  "levels": [
+   "/assets/games/gtb/p0018/b0.webp",
+   "/assets/games/gtb/p0018/b1.webp",
+   "/assets/games/gtb/p0018/b2.webp",
+   "/assets/games/gtb/p0018/b3.webp",
+   "/assets/games/gtb/p0018/b4.webp"
+  ],
+  "credit": "Project Gutenberg #1257 (public domain)"
+ },
+ "reveal_enc": "mp4pWDE6JxDAmOS5MkXXRvMs3FCe4cpwbM4h8TscZvf1LOGfU3TA7BCgOt3mv5IM2elte1Kk5hoh4uUXvu0NbL9rqb03DeYSEKTUFzbP7FrZR/nfoCY0HA+vCL2LI+Tw84RXZQNU1ThkrxkXd9Rvhri/iq5E4EZoWpGvZdLnkyR8qsa6N5wDkAEtX1UQszCTggKivTQ7jXrPL30jsUKDtAL49UMQxtRI0vo1v0j1X9uBEbrojAy9AmNi5CQlNCGv+GK8K/fB7vuP0bKV/Law4RCZhw9L89TKS810ryRY1rMscrA2nWaqLP8oOuqcqyzNb0428UVLxHT5v/oNx/TpD9iBS1/Ex+YHm3YWmGZj6/QDmZGWPA/sjP2RleJkFao+gXY0egpHuYPreysP"
+}

@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "n": 3,
+ "date": "2026-08-03",
+ "answer_hash": "9729babef2ebcf73e94ee93bfe8f4423f2ebe8a4dc657e1af3a07e127ccfdc7a",
+ "author_hash": "eaae16810e89035c76365844c10ec9eef7e00a3a994f36ac0d84999938f0d188",
+ "clues": [
+  {
+   "i": 0,
+   "type": "quote",
+   "text": "Everything’s got a moral, if only you can find it.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 11,
+    "chunk": 33
+   }
+  },
+  {
+   "i": 1,
+   "type": "quote",
+   "text": "One side will make you grow taller, and the other side will make you grow shorter.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 11,
+    "chunk": 17
+   }
+  },
+  {
+   "i": 2,
+   "type": "fact",
+   "label": "First published",
+   "text": "1865 · originally in English",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 3,
+   "type": "fact",
+   "label": "Author",
+   "text": "L. C. — English, 1832–1898",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 4,
+   "type": "fact",
+   "label": "A character",
+   "text": "One of them is called the Cheshire Cat.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 11
+   }
+  },
+  {
+   "i": 5,
+   "type": "fact",
+   "label": "The story",
+   "text": "A girl falls down a rabbit-hole into a kingdom of playing cards.",
+   "source": {
+    "kind": "curated"
+   }
+  }
+ ],
+ "cover": {
+  "levels": [
+   "/assets/games/gtb/p0003/b0.webp",
+   "/assets/games/gtb/p0003/b1.webp",
+   "/assets/games/gtb/p0003/b2.webp",
+   "/assets/games/gtb/p0003/b3.webp",
+   "/assets/games/gtb/p0003/b4.webp"
+  ],
+  "credit": "Project Gutenberg #11 (public domain)"
+ },
+ "reveal_enc": "9w6U7Om1jkNPQvCDQGvFEW3daFIp7kVbKU37qG2hTjuwCyJHRYZBNivIPsXuuHP1kkzQ6JA8lC0XXkivYjiRvjyjhDnlAk0Byfh4UMFWGg7If/cFcUWASSYfJT3zapxAdqmBWKBGmSf6gTOSxiXPUgrf/OAKd4qTCwMW5UcRcVjAPQPurA0eJwX6Exd+2l7/M4ITL7xKM1XQJaMGqxjPgWlqm/Q9JkADut/t0jCpq+9uxgUJaTl+xP9DITD+5WpmeGchsInLzb25Tl1li3hdU+1fPgxn625Owy/75y60FpLpTtSFNqvHcIifiG/WYIbWCbgI8BxepsDq9e6JhcnuXp3HH8BE9MvIcst9ept8wsQ8n55+qgOdh9rkAqjfidmH+srq0XPTLerzLGhbEktWWfLsQRXiMcnrP+rK2ZhE1O6kivXa"
+}

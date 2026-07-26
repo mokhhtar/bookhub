@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "n": 21,
+ "date": "2026-08-21",
+ "answer_hash": "eddea5d929343f80a63e5c3d3ae80d0fb6991e34b063c2977a4b2b49eeb59415",
+ "author_hash": "14b83b290be7f2c4583038b169909ccbdfec5e09a64be222d8ea50bf37a078d6",
+ "clues": [
+  {
+   "i": 0,
+   "type": "quote",
+   "text": "I am divided from mankind—a solitaire; one banished from human society.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 521,
+    "chunk": 45
+   }
+  },
+  {
+   "i": 1,
+   "type": "quote",
+   "text": "I had nothing about me but a knife, a tobacco-pipe, and a little tobacco in a box.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 521,
+    "chunk": 31
+   }
+  },
+  {
+   "i": 2,
+   "type": "fact",
+   "label": "First published",
+   "text": "1719 · originally in English",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 3,
+   "type": "fact",
+   "label": "Author",
+   "text": "D. D. — English, 1660–1731",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 4,
+   "type": "fact",
+   "label": "A character",
+   "text": "One of them is called Friday.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 521
+   }
+  },
+  {
+   "i": 5,
+   "type": "fact",
+   "label": "The story",
+   "text": "A sailor is wrecked alone on an island and stays there for years.",
+   "source": {
+    "kind": "curated"
+   }
+  }
+ ],
+ "cover": {
+  "levels": [
+   "/assets/games/gtb/p0021/b0.webp",
+   "/assets/games/gtb/p0021/b1.webp",
+   "/assets/games/gtb/p0021/b2.webp",
+   "/assets/games/gtb/p0021/b3.webp",
+   "/assets/games/gtb/p0021/b4.webp"
+  ],
+  "credit": "Project Gutenberg #521 (public domain)"
+ },
+ "reveal_enc": "Esl9GGQ8B5U4nOHGKIkCLZ2UWwxTN/B6QytsAcJ94GKzix872XZKpYnDcBenxNNCevyvBr0fn29Glv7XgRsAIQ2R5IQ8KZvNdiiHRzXteUauf7V+qWf5IGp3vfpIzE9gQhDLIWcjCn3TEsbd5AHjeXzizQ5SXr2+ZQSllCNzszHPyAK6bbvfrR5kGLbiNhvEmjyq4+NIAyCxaCmje8cZ8RHV3qg1JalCqVuMCn3t0pWK9j1sgRuk4w68oIUjh3sejQkA0Qj1KKPuvrgiWdtlivhrBH43hHfxvpgx0Tgiinb7lADeCNESlGCqAW07bf+emyNfza2nQ09tlxqGk7ojYDlZWkkojY73agYLyFWRo232"
+}

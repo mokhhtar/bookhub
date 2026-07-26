@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "n": 12,
+ "date": "2026-08-12",
+ "answer_hash": "4fe9998c0f974aa9eac41bac72d5f5d7bd6073e2aa638db0213f4bbd2019f613",
+ "author_hash": "f682bd22136722563e216fb8a06656e91a7e9cf362a30b99dd43120d62a36b54",
+ "clues": [
+  {
+   "i": 0,
+   "type": "quote",
+   "text": "The devil’s agents may be of flesh and blood, may they not?",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 2852,
+    "chunk": 16
+   }
+  },
+  {
+   "i": 1,
+   "type": "quote",
+   "text": "I heard it distinctly, and I am sure that it was really the sob of a woman.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 2852,
+    "chunk": 38
+   }
+  },
+  {
+   "i": 2,
+   "type": "fact",
+   "label": "First published",
+   "text": "1902 · originally in English",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 3,
+   "type": "fact",
+   "label": "Author",
+   "text": "A. C. D. — Scottish, 1859–1930",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 4,
+   "type": "fact",
+   "label": "A character",
+   "text": "One of them is called Sir Henry.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 2852
+   }
+  },
+  {
+   "i": 5,
+   "type": "fact",
+   "label": "The story",
+   "text": "A family curse and a great black dog on the Devon moors.",
+   "source": {
+    "kind": "curated"
+   }
+  }
+ ],
+ "cover": {
+  "levels": [
+   "/assets/games/gtb/p0012/b0.webp",
+   "/assets/games/gtb/p0012/b1.webp",
+   "/assets/games/gtb/p0012/b2.webp",
+   "/assets/games/gtb/p0012/b3.webp",
+   "/assets/games/gtb/p0012/b4.webp"
+  ],
+  "credit": "Project Gutenberg #2852 (public domain)"
+ },
+ "reveal_enc": "TAMd8YAX+wNnxUADBpxdAKWQ2QUjWHzn4gkkSnEtonSmMLNnaVbZSFCWrjy/MtzO0a0Ps7UB7+YqSaK2cwUouTbjaQZqOV6HcPk6gJvfW4oUfApkkTPdg3GR07FHxPr44hjFgSCnkDsDCXxHQtAEJ6mOUKfL/27v+UDMHv0tvCBQdm6Z5POCjXENDm98ePvEAKHapKT8Bebjd2d3PXGTo11uQp7BWwByIkas4aUPm7HyTFR/xr2+9HXDgSl16M98RgyQmNO3AJ8utt5Ll90IB1EeHLcXlFoyCrQb8IiqPuN6u6RuYRKUe56XVEUpw3GD5W9PzT5+1CbhMfM4JZf0zRNFr6HYjif7bkGwRhlXlhL7R3N5SWHxkRGCOqksOo0LYMlhTRAoBwB79dl+1JM7IvKa3Ky3CIuLqkLKmBorYF+I4xPTgLS2K3EzlIT4acXg"
+}

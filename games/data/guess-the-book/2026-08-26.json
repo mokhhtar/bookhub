@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "n": 26,
+ "date": "2026-08-26",
+ "answer_hash": "b6c02b4854d51b7316047ebfeabe42989fb405b8d99d16c5e0b676f1399fb9c9",
+ "author_hash": "3b1cd7b7caf37493447bf566395af47d177611e34667145f7f4f5a9832303402",
+ "clues": [
+  {
+   "i": 0,
+   "type": "quote",
+   "text": "Yes, devotion; for that is, I believe, the phrase for hopeful ambition.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 1184,
+    "chunk": 72
+   }
+  },
+  {
+   "i": 1,
+   "type": "quote",
+   "text": "At your age we have faith in life; it is the privilege of youth to believe and hope, but old men see death more clearly.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 1184,
+    "chunk": 131
+   }
+  },
+  {
+   "i": 2,
+   "type": "fact",
+   "label": "First published",
+   "text": "1844 · originally in French",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 3,
+   "type": "fact",
+   "label": "Author",
+   "text": "A. D. — French, 1802–1870",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 4,
+   "type": "fact",
+   "label": "A character",
+   "text": "One of them is called Edmond Dantès.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 1184
+   }
+  },
+  {
+   "i": 5,
+   "type": "fact",
+   "label": "The story",
+   "text": "A sailor is imprisoned in an island fortress and returns immensely rich.",
+   "source": {
+    "kind": "curated"
+   }
+  }
+ ],
+ "cover": {
+  "levels": [
+   "/assets/games/gtb/p0026/b0.webp",
+   "/assets/games/gtb/p0026/b1.webp",
+   "/assets/games/gtb/p0026/b2.webp",
+   "/assets/games/gtb/p0026/b3.webp",
+   "/assets/games/gtb/p0026/b4.webp"
+  ],
+  "credit": "Project Gutenberg #1184 (public domain)"
+ },
+ "reveal_enc": "IewN4AEsQzh9HeuEaCNSJcnp5jRzCchWcEqHraoFoMx3qIJO7Wa5/j5KQdCrZnTGzqh/QQSIqB9j9JNLIobmL/Yhn63V91MK/n7025wcLS1SyHVoQzV5qM88jf4EJ+cntMGjizikSGh8EGpItUaXOXjimDKixGX42hacHNjvyk3zRzVSy31qdALb8TIZ10rVAdPhSEHv6L9k0+uFpoQoZDZDaiih67TnrWjaxxcmIr6Qq+RmjNnExZyO1ubxsHHppxDb/q8JlELjgwK1oKx7NgWMNyc8rVyo+JWJeric8NJ2MmEumTuThrxmvaSpJkQD4Mh/d+fCHGrcYmMDGf+t1IGG/GremOo9zTZXkBVlU/Lm/YHQk8cksJhjtf25RkgH86krgvwAKph1HMjNOQy4uN60EZAucwCpeEwC"
+}

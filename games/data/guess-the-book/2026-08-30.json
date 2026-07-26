@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "n": 30,
+ "date": "2026-08-30",
+ "answer_hash": "6c20d326c243342bdbc31d2c0d7235010ba8fa89d97e07fe74ea5ad7175fcc41",
+ "author_hash": "0b58001beb8ee21a96e4eb5a043f4b8ac616cc5c0dba08b60c3d40cd5950f627",
+ "clues": [
+  {
+   "i": 0,
+   "type": "quote",
+   "text": "The ocean was watched with renewed attention.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 164,
+    "chunk": 16
+   }
+  },
+  {
+   "i": 1,
+   "type": "quote",
+   "text": "I breathed with difficulty. The heavy air seemed to oppress my lungs.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 164,
+    "chunk": 30
+   }
+  },
+  {
+   "i": 2,
+   "type": "fact",
+   "label": "First published",
+   "text": "1870 · originally in French",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 3,
+   "type": "fact",
+   "label": "Author",
+   "text": "J. V. — French, 1828–1905",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 4,
+   "type": "fact",
+   "label": "A character",
+   "text": "One of them is called Captain Nemo.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 164
+   }
+  },
+  {
+   "i": 5,
+   "type": "fact",
+   "label": "The story",
+   "text": "Three castaways live aboard a submarine commanded by an exile.",
+   "source": {
+    "kind": "curated"
+   }
+  }
+ ],
+ "cover": {
+  "levels": [
+   "/assets/games/gtb/p0030/b0.webp",
+   "/assets/games/gtb/p0030/b1.webp",
+   "/assets/games/gtb/p0030/b2.webp",
+   "/assets/games/gtb/p0030/b3.webp",
+   "/assets/games/gtb/p0030/b4.webp"
+  ],
+  "credit": "Project Gutenberg #164 (public domain)"
+ },
+ "reveal_enc": "aZJ3dOC/949/B/qKuLhLQRtD6Lkc2E/EaDw37QvJ/J4oVELIe1le+UU6dbz5IN7O3Ni8zcqeBpNwbYrgtKxJ9487BFmx1zO9MJoyb4GFUSqcEib0G5SJXvvOWW+st1KGw/C4lkE7Ov4fS4jb8nqwx7weGLHDF/esztXV4cwC7NfGKOaiQBWolhHiWjNwSF6giH4bqPuEZ3f1kN50mR7CBX8hJBvp2q7e/FMSBMu3LEBGZEeseLjYLqYjPQ11NX2JHhlGYI6pea9RVh0ubo2S2uDp3Q6NQqRzxwPR0Ge0YKC8Oc0A60WQceZLsclT5mGlSCRlUrzpabGeGhilOIgFaieyw2ncVgIrMWGy3fUVKQoD+LRoxBgSixphT6EDNw7fGbhaLLK1+P77IRXh163tLvKcdkFc7tOJJoy1HXeRtZOWxOKU55Dj7lf6UxwjHz/Q"
+}

@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "n": 29,
+ "date": "2026-08-29",
+ "answer_hash": "2c4bbe3776ed94fa677f845a50f37e2adc8c6c7523957611706948b88b260e1f",
+ "author_hash": "34fa57fedb5fc34bd9a54133393bf8e95d267b59d5a7c6cb0cc9ad4b6988d126",
+ "clues": [
+  {
+   "i": 0,
+   "type": "quote",
+   "text": "The only way to get rid of a temptation is to yield to it.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 174,
+    "chunk": 12
+   }
+  },
+  {
+   "i": 1,
+   "type": "quote",
+   "text": "A long engagement exhausts them, but they are capital at a steeplechase.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 174,
+    "chunk": 22
+   }
+  },
+  {
+   "i": 2,
+   "type": "fact",
+   "label": "First published",
+   "text": "1890 · originally in English",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 3,
+   "type": "fact",
+   "label": "Author",
+   "text": "O. W. — Irish, 1854–1900",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 4,
+   "type": "fact",
+   "label": "A character",
+   "text": "One of them is called Lord Henry.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 174
+   }
+  },
+  {
+   "i": 5,
+   "type": "fact",
+   "label": "The story",
+   "text": "A young man in London stays beautiful while his portrait ages.",
+   "source": {
+    "kind": "curated"
+   }
+  }
+ ],
+ "cover": {
+  "levels": [
+   "/assets/games/gtb/p0029/b0.webp",
+   "/assets/games/gtb/p0029/b1.webp",
+   "/assets/games/gtb/p0029/b2.webp",
+   "/assets/games/gtb/p0029/b3.webp",
+   "/assets/games/gtb/p0029/b4.webp"
+  ],
+  "credit": "Project Gutenberg #174 (public domain)"
+ },
+ "reveal_enc": "Wi5qjpO9bHBRRYAzXbvSQXbzVBB3j9QkQWd+AS8yivyg7B8uaBuq89iMTUGDxkQtwaJX52w+RuFgMFn5DV4glB5J0aIZmZYEMx+toMqXRgsa2EvnjbSBuP/b6AXRTw+yw+Fd+7JpMr0mPT1cWKGmJ6zO+H3DY3xC15NJlst40cw/UDbazqNJq1bgoIOaV0bvSob5IvypKJxMVzeHAVHeicAE5T7tTGWc+oLL45at2hz4/JWzP7mCSCyxGW1L8tBvrLhRBln71RmCecd9Rm9fB0z12mjpDDsoKltED3wAqceLwK2CQ5wmrvvbV427foykM/llyw4u8laN55aN0WhWnQR4YrpMDugHnqHJWubQqwp0HFeWFHqTy9yORRjbVhYfusu5G811x4z5Zx2ged7I"
+}

@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "n": 5,
+ "date": "2026-08-05",
+ "answer_hash": "56ea45aed1d52d8493099acc903d21ef990a6a6b04c3cf944694994304ff2037",
+ "author_hash": "2c805fc69c23bbc9a2c2f96e41b9a6d25fdf39855936fca27e528aaccd98b964",
+ "clues": [
+  {
+   "i": 0,
+   "type": "quote",
+   "text": "Beauty to her, as to all who have felt, lay not in the thing, but in what the thing symbolized.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 110,
+    "chunk": 213
+   }
+  },
+  {
+   "i": 1,
+   "type": "quote",
+   "text": "The sea was near at hand, but not intrusive; it murmured, and he thought it was the pines; the pines murmured in precisely the same tones, and he thought they were the sea.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 110,
+    "chunk": 270
+   }
+  },
+  {
+   "i": 2,
+   "type": "fact",
+   "label": "First published",
+   "text": "1891 · originally in English",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 3,
+   "type": "fact",
+   "label": "Author",
+   "text": "T. H. — English, 1840–1928",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 4,
+   "type": "fact",
+   "label": "A character",
+   "text": "One of them is called Angel Clare.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 110
+   }
+  },
+  {
+   "i": 5,
+   "type": "fact",
+   "label": "The story",
+   "text": "A village girl from Marlott is sent to claim kin with a rich family.",
+   "source": {
+    "kind": "curated"
+   }
+  }
+ ],
+ "cover": {
+  "levels": [
+   "/assets/games/gtb/p0005/b0.webp",
+   "/assets/games/gtb/p0005/b1.webp",
+   "/assets/games/gtb/p0005/b2.webp",
+   "/assets/games/gtb/p0005/b3.webp",
+   "/assets/games/gtb/p0005/b4.webp"
+  ],
+  "credit": "Project Gutenberg #110 (public domain)"
+ },
+ "reveal_enc": "G1wnMUTAFO7Lqq4efnKphnZkHuaE6lHn0Hx9LM5D7p7y8SkKGc1+uiAWglxT63vBb+fX/R3U4Zsgip5ObSiONOvHXC1sv8KXCdxPQ0g6UNAxbk0AEwaG9jLn2RTVz4UhMFFlMirY3mn4eUrjXgdPBx3xJRWuh11f3ycwcpqFSJC8ctCGyciCFdJEgqT/1+ZT0UOE2nBnYw7G46FmaFvq84B+WoVYvvp9CzS51qiiWV9dwH4QcEFcvVLJicPvjNDHx1k2DdNwKb2w06fzHC37KgIXyaprHAJb5pfOjZ6gFgb9mDWgKYge1szF3K6NId+DF2SyG2f56xkSwrYKIXqI55RdQdVOB9uKLMGW/I/4KvhxSJJkQW8inIV4bRDGzGgp9Vh9SwVjo0uPL+JTjt6C"
+}

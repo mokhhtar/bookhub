@@ -1,0 +1,79 @@
+{
+ "v": 1,
+ "n": 14,
+ "date": "2026-08-14",
+ "answer_hash": "9435987128d0e62cbd67f085165bd133990fb32c6ecb9fc647510f9951b74add",
+ "author_hash": "09274944c053b70b09738b194c125b352ab5c6efb0ad6a1bd044848de8c9f242",
+ "clues": [
+  {
+   "i": 0,
+   "type": "quote",
+   "text": "The prince listened to the princess's scolding rather a long while without speaking, but his face was more and more frowning.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 1399,
+    "chunk": 98
+   },
+   "note": "trans. Constance Garnett"
+  },
+  {
+   "i": 1,
+   "type": "quote",
+   "text": "He felt almost like a man not dressed in a crowd.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 1399,
+    "chunk": 187
+   },
+   "note": "trans. Constance Garnett"
+  },
+  {
+   "i": 2,
+   "type": "fact",
+   "label": "First published",
+   "text": "1878 · originally in Russian",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 3,
+   "type": "fact",
+   "label": "Author",
+   "text": "L. T. — Russian, 1828–1910",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 4,
+   "type": "fact",
+   "label": "A character",
+   "text": "One of them is called Vronsky.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 1399
+   }
+  },
+  {
+   "i": 5,
+   "type": "fact",
+   "label": "The story",
+   "text": "A married woman's affair with a cavalry officer in imperial Russia.",
+   "source": {
+    "kind": "curated"
+   }
+  }
+ ],
+ "cover": {
+  "levels": [
+   "/assets/games/gtb/p0014/b0.webp",
+   "/assets/games/gtb/p0014/b1.webp",
+   "/assets/games/gtb/p0014/b2.webp",
+   "/assets/games/gtb/p0014/b3.webp",
+   "/assets/games/gtb/p0014/b4.webp"
+  ],
+  "credit": "Project Gutenberg #1399 (public domain)"
+ },
+ "reveal_enc": "3Rue3sr9O1Vvm3Ypmsdd4H5jfzkb8NNjiLhqhsbuWSJuJZjl8uuKYD70IdsnmVpu+Ou4l3YTWzrhRHTgeuJsoZM7clTvk1AFMR78foBda3OGeaaZLyF7CtrohRcwp4EV8dVagwJ3JfVljQP0l7bAOSVRYgbMVyZ/kL8yzECpOHSOOfi3e0JElOMuw4a2Ixux7+JQXu9QFxiUSbhb6p518q4Dk2YbedtPsEITvQNmWI82o4w7BZVySpziqYSQWo+0VgDltbMTCKy5xLPX9r98qcrlU6A6uCOQSnLoRrdm+vHyDtjw57c0SVZn95Zgf+z3EpwhvGDhANwrono3/RqdILRWbYb0+jKUNxnLZNd3lkE3B9/2e4Ng4qP/8rox7NOu3v9RvlwS0YuxiTdA"
+}

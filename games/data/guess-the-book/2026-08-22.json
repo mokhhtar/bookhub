@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "n": 22,
+ "date": "2026-08-22",
+ "answer_hash": "db1ea3f92f24e05cdc759898a668ddb71274a44d89bb5ec1af9166c8bffcfa2b",
+ "author_hash": "043dbd02a7dd353aff7f442819defad2fe58406dd87cbf08d336e1290b34071d",
+ "clues": [
+  {
+   "i": 0,
+   "type": "quote",
+   "text": "The atmosphere of the earth, we now know, contains far more oxygen or far less argon (whichever way one likes to put it) than does Mars’.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 36,
+    "chunk": 17
+   }
+  },
+  {
+   "i": 1,
+   "type": "quote",
+   "text": "The crowd swayed a little, and I elbowed my way through. Every one seemed greatly excited. I heard a peculiar humming sound from the pit.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 36,
+    "chunk": 9
+   }
+  },
+  {
+   "i": 2,
+   "type": "fact",
+   "label": "First published",
+   "text": "1898 · originally in English",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 3,
+   "type": "fact",
+   "label": "Author",
+   "text": "H. G. W. — English, 1866–1946",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 4,
+   "type": "fact",
+   "label": "A character",
+   "text": "One of them is called Ogilvy.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 36
+   }
+  },
+  {
+   "i": 5,
+   "type": "fact",
+   "label": "The story",
+   "text": "Cylinders fall on Horsell Common and an invasion moves on London.",
+   "source": {
+    "kind": "curated"
+   }
+  }
+ ],
+ "cover": {
+  "levels": [
+   "/assets/games/gtb/p0022/b0.webp",
+   "/assets/games/gtb/p0022/b1.webp",
+   "/assets/games/gtb/p0022/b2.webp",
+   "/assets/games/gtb/p0022/b3.webp",
+   "/assets/games/gtb/p0022/b4.webp"
+  ],
+  "credit": "Project Gutenberg #36 (public domain)"
+ },
+ "reveal_enc": "P4tmZz7kb0xupEvvaJ1R3vPoG6qOFeV1+xXLZBLxDHy3gTVyeau51pjo/QbqMHi6Eqm7PFLfNwgW9x/JYecbigWpM10xvjJqHhzTEeDQ66Y+q+S7/zw6EdXlKCdeSDWmVlNNcekBzAGuzqsQED5gMBHIadmAn+9RIYzuTAjiLyfvtdK+TGzyCgDJxp3dEvsTx1yI6ERaZoKnMx2v4dPA7SeZTRThE2iXQs0Pqg8Do0k8wkHN8/eb3h23DKJoD4E7zrORPrmTxMtEH39ogLeY/qVly9HOLYnK6oGbHkVDJQgZR7E1mtOMuY2A3CX4WrxqN+ZYOJUCq2ot67TPzuf1WlY6U0GfvoQS13NwJb1NTOEf0SXP7L9l00M="
+}

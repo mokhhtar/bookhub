@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "n": 2,
+ "date": "2026-08-02",
+ "answer_hash": "08c05c96e3bfe1148ce3c20331d6ded11014e2958206f952e34ea2906fa9456a",
+ "author_hash": "836532034ab25db285e748b2ae25c7a82f96a3d3468ce53019ea98b4f980ec41",
+ "clues": [
+  {
+   "i": 0,
+   "type": "quote",
+   "text": "It is such an uncomfortable feeling to know one is a fool.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 55,
+    "chunk": 11
+   }
+  },
+  {
+   "i": 1,
+   "type": "quote",
+   "text": "I have no heart, you know, so I am careful to help all those who may need a friend, even if it happens to be only a mouse.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 55,
+    "chunk": 25
+   }
+  },
+  {
+   "i": 2,
+   "type": "fact",
+   "label": "First published",
+   "text": "1900 · originally in English",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 3,
+   "type": "fact",
+   "label": "Author",
+   "text": "L. F. B. — American, 1856–1919",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 4,
+   "type": "fact",
+   "label": "A character",
+   "text": "One of them is called Dorothy.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 55
+   }
+  },
+  {
+   "i": 5,
+   "type": "fact",
+   "label": "The story",
+   "text": "A cyclone carries a Kansas farm girl to a country of witches.",
+   "source": {
+    "kind": "curated"
+   }
+  }
+ ],
+ "cover": {
+  "levels": [
+   "/assets/games/gtb/p0002/b0.webp",
+   "/assets/games/gtb/p0002/b1.webp",
+   "/assets/games/gtb/p0002/b2.webp",
+   "/assets/games/gtb/p0002/b3.webp",
+   "/assets/games/gtb/p0002/b4.webp"
+  ],
+  "credit": "Project Gutenberg #55 (public domain)"
+ },
+ "reveal_enc": "xsBM63UsY4QSVjOAolebm9jj1QTotsFZYi2z4eW3LnUrxdHxrbKcc5giUAkDl9EHNQlE6QRzcNSUB8cUzhHUHUoaBQMduP+rFhGyUW7k0JFwpI/HukMD33GMS3Puom3NZP+MZJSr96JnynqNArAJXwhEHoM5j6dgwU7ojQvoZtyJUmRNDOJtGFCT8QnODY0A8p5the/X31P1RoPC48uXLuxrhOodg9oIxWbtTWNX3RHPccKo4NP7Z1SfhT6O6Fd4SHwb7DCujQWJcyE7z9HRZa5Ai8XHv3pyCJ0vQdai5GZAaCoJmCdm1Wqop1NflS7ifqDimLEJuo1TU5mjNWFXUAftLp4JqtXXamTGRtqiMo0AvYeUKjr0mcRl22pFSQHuh0gJB9eb3IrGQT3pLlIBIw=="
+}

@@ -1,0 +1,79 @@
+{
+ "v": 1,
+ "n": 23,
+ "date": "2026-08-23",
+ "answer_hash": "c9e5baefb30feb4b5d6509af6f5645a6c9babc579b3f28a547db1f0e4e0b5ab0",
+ "author_hash": "e36f12a53ce16cf03647405c8bebfbf22338e49d5a9cbdf812b0e97d6d9b412f",
+ "clues": [
+  {
+   "i": 0,
+   "type": "quote",
+   "text": "The atmosphere of the ball was heavy; the lamps were growing dim.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 2413,
+    "chunk": 33
+   },
+   "note": "trans. Eleanor Marx Aveling"
+  },
+  {
+   "i": 1,
+   "type": "quote",
+   "text": "He wore a blue frock-coat falling in a straight line round his thin body, and his leather cap, with its lappets knotted over the top of his head with string, showed under the turned-up peak a bald forehead, flattened by the constant wearing of a helmet.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 2413,
+    "chunk": 48
+   },
+   "note": "trans. Eleanor Marx Aveling"
+  },
+  {
+   "i": 2,
+   "type": "fact",
+   "label": "First published",
+   "text": "1856 · originally in French",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 3,
+   "type": "fact",
+   "label": "Author",
+   "text": "G. F. — French, 1821–1880",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 4,
+   "type": "fact",
+   "label": "A character",
+   "text": "One of them is called Homais.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 2413
+   }
+  },
+  {
+   "i": 5,
+   "type": "fact",
+   "label": "The story",
+   "text": "A country doctor's wife in Yonville ruins herself chasing the life she has read about.",
+   "source": {
+    "kind": "curated"
+   }
+  }
+ ],
+ "cover": {
+  "levels": [
+   "/assets/games/gtb/p0023/b0.webp",
+   "/assets/games/gtb/p0023/b1.webp",
+   "/assets/games/gtb/p0023/b2.webp",
+   "/assets/games/gtb/p0023/b3.webp",
+   "/assets/games/gtb/p0023/b4.webp"
+  ],
+  "credit": "Project Gutenberg #2413 (public domain)"
+ },
+ "reveal_enc": "cU2OTjd4r7ToTiyOAVmFNMZ2Sg41tEa8Tx/zq8GnVzrkZh6G43djhqk8xHuoh3zV0/V5NQ4yFvqgnFlb2ORtN/wF+dxddlZPQKHZsMTLGRDgRL4jYtSQAfMhPUmxZKnc+iR6J0jK5HAYhM35rGiPUUgZtMXsxC5EXZXzPxLxJkFi9js7zoIJ4Hf0OOHb1cesb+PB3IFLXeoRdPWUNJfeZg+GOFwrLQoXa718GnWzdtO1iddD8jbqGJ4lH4fSe+FG3KU3+iz0Qn3S54hI568cOCccgej6E4Q8xBg/KkPy1sLlOrbShu6YR4FbE4DhjzbgryJC643XHTJWU0yophP7KmBj9uqJI5Qnpl9Vgz2ov41gzOppzdn+JaHUhkvw3MXB0lIA6er039ksspWHica1Tx1F11NESQsmUhnTF2OA"
+}

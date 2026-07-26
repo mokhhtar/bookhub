@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "n": 1,
+ "date": "2026-08-01",
+ "answer_hash": "8fea80b3b6cb513209830c6d9bb68f21925d0fa208f49a1cc0391e3c962d4f7c",
+ "author_hash": "475abdc506b8d55d65453293f69e0f75f1c704ca87f85e20804b40bb6c0c8ad8",
+ "clues": [
+  {
+   "i": 0,
+   "type": "quote",
+   "text": "The steps drew swiftly nearer, and swelled out suddenly louder as they turned the end of the street.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 43,
+    "chunk": 7
+   }
+  },
+  {
+   "i": 1,
+   "type": "quote",
+   "text": "I was suddenly aware that I had lost in stature.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 43,
+    "chunk": 36
+   }
+  },
+  {
+   "i": 2,
+   "type": "fact",
+   "label": "First published",
+   "text": "1886 · originally in English",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 3,
+   "type": "fact",
+   "label": "Author",
+   "text": "R. L. S. — Scottish, 1850–1894",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 4,
+   "type": "fact",
+   "label": "A character",
+   "text": "One of them is called Mr. Utterson.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 43
+   }
+  },
+  {
+   "i": 5,
+   "type": "fact",
+   "label": "The story",
+   "text": "A London lawyer investigates his friend's sinister associate.",
+   "source": {
+    "kind": "curated"
+   }
+  }
+ ],
+ "cover": {
+  "levels": [
+   "/assets/games/gtb/p0001/b0.webp",
+   "/assets/games/gtb/p0001/b1.webp",
+   "/assets/games/gtb/p0001/b2.webp",
+   "/assets/games/gtb/p0001/b3.webp",
+   "/assets/games/gtb/p0001/b4.webp"
+  ],
+  "credit": "Project Gutenberg #43 (public domain)"
+ },
+ "reveal_enc": "GbN6dSs3vFHz3hl8LbrY8uDSlFgwneSfeOu/9/NoTFOoCOyxuSGIigFQ5/c10j2MyfZaFDbZREaiLc29S4WyIt62RmkLTaAt0ZnGiP7d7dErfHOVSewdETV/77Ic4N5FYTco3OwtzWRM5r3ZcCWp9XQ3zjmylVy4g1NB29jLDoBlOHJX28w1VvM36OAD+HF4YGK2YfCrdNAx5o1XpzVwJqgnxE/5kgiqXclm9ndJCc4FdKo1uzWoZAxXrj8uMiDEVvtMkvXKfm4O/XH1xVUb2oiIg4BUBbM17ixbpFVlvwqbFuFzKfKGo4mbAsq2ZvY0xTEzmQSHO9aVyooIV3i1T4sEfuyJwMiVuOkYguMHVnkYcT7iO2UQ1DHtbde8IUi7+PMUE3cdgKjYajIF4JqJiVUFleYj1zNp3UStHIZf8Zv/TDswLnEaBgVpw11WnPEEVozCuAC03R76GyTLCoLSKQoXw55X9u+sFObcAQm7"
+}

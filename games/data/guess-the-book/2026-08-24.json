@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "n": 24,
+ "date": "2026-08-24",
+ "answer_hash": "0fce6168c10af83a7c18f9bc6d6ed927d1b5c6122ed43f359e6dc1899119c3c4",
+ "author_hash": "4fbdacf05c0efdbdddc24bc43022bcdf5a5452256e926129705f9d7395bc0c3a",
+ "clues": [
+  {
+   "i": 0,
+   "type": "quote",
+   "text": "It is an astounding thing to have to tell, but this man, though he knew about stocks and shares, had no real mastery of his tie.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 16,
+    "chunk": 7
+   }
+  },
+  {
+   "i": 1,
+   "type": "quote",
+   "text": "They were going round and round the island, but they did not meet because all were going at the same rate.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 16,
+    "chunk": 24
+   }
+  },
+  {
+   "i": 2,
+   "type": "fact",
+   "label": "First published",
+   "text": "1911 · originally in English",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 3,
+   "type": "fact",
+   "label": "Author",
+   "text": "J. M. B. — Scottish, 1860–1937",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 4,
+   "type": "fact",
+   "label": "A character",
+   "text": "One of them is called Wendy.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 16
+   }
+  },
+  {
+   "i": 5,
+   "type": "fact",
+   "label": "The story",
+   "text": "A boy who refuses to grow up flies three children out of a London nursery.",
+   "source": {
+    "kind": "curated"
+   }
+  }
+ ],
+ "cover": {
+  "levels": [
+   "/assets/games/gtb/p0024/b0.webp",
+   "/assets/games/gtb/p0024/b1.webp",
+   "/assets/games/gtb/p0024/b2.webp",
+   "/assets/games/gtb/p0024/b3.webp",
+   "/assets/games/gtb/p0024/b4.webp"
+  ],
+  "credit": "Project Gutenberg #16 (public domain)"
+ },
+ "reveal_enc": "5FfkfsF1nPm1MfoK3m0mzZh3HaDO1yrZPxumri2+OaB9HoXsS2DcTSkFFxIV6oMXi9mbCZyfQJKGDFWRYPbus0WHSjJ0Asm/0979LEj+9diqsDbEH/jOT8+nqkuGOgdd2b2P8zHDkEuo5djStwz7bt5LU6UXAWQ+50aZsfKwyn7O5h5yTnbYuY0beJw57/Oy7kGmaAISEY/he6yOf7oGHJkINDerc2bDIODec/0BFBGJFHi0BFEj41/QkDi8xDhA6ffBcOKRRGkjwtjLSYriWQB7Wizz1hRsdYQaAvIOnLgjfM2G5r+vqYBLNbo0WfaeQqVPSUBqcgs="
+}

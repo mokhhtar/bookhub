@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "n": 17,
+ "date": "2026-08-17",
+ "answer_hash": "0dd1697ebbf283482b56d74b64d2e0c223a58cc659338b9acc5b1ff57c87e8fa",
+ "author_hash": "9e949219e205047efc398da03f7565217675bd62b9be1e44447a6cc7dc028689",
+ "clues": [
+  {
+   "i": 0,
+   "type": "quote",
+   "text": "It’s natural and right for ’em to talk different from each other, ain’t it?",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 76,
+    "chunk": 55
+   }
+  },
+  {
+   "i": 1,
+   "type": "quote",
+   "text": "I clipped along, and all of a sudden I bounded right on to the ashes of a camp fire that was still smoking. My heart jumped up amongst my lungs.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 76,
+    "chunk": 29
+   }
+  },
+  {
+   "i": 2,
+   "type": "fact",
+   "label": "First published",
+   "text": "1884 · originally in English",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 3,
+   "type": "fact",
+   "label": "Author",
+   "text": "M. T. — American, 1835–1910",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 4,
+   "type": "fact",
+   "label": "A character",
+   "text": "One of them is called Jim.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 76
+   }
+  },
+  {
+   "i": 5,
+   "type": "fact",
+   "label": "The story",
+   "text": "A boy and an escaping slave raft down the Mississippi.",
+   "source": {
+    "kind": "curated"
+   }
+  }
+ ],
+ "cover": {
+  "levels": [
+   "/assets/games/gtb/p0017/b0.webp",
+   "/assets/games/gtb/p0017/b1.webp",
+   "/assets/games/gtb/p0017/b2.webp",
+   "/assets/games/gtb/p0017/b3.webp",
+   "/assets/games/gtb/p0017/b4.webp"
+  ],
+  "credit": "Project Gutenberg #76 (public domain)"
+ },
+ "reveal_enc": "6IdjN4Rfypi5jFmnpJtEHqADyCYlSphAmBq3VnMzBaGS/RVGgZngCDqwT+72ygWp2J4TssfkDGViJxlD5iB0eO2x2341xK4memHtJYxKLQq6465MJG0m1uqu3a+nC283u2vJYZKjAizckdUXk6cN2xMBUnb0fj+SO+Hsz2qxR15ssa69TtfF+SD0PwYzgiKvG4pHuFlNdTi4Us6D5zGattPZ3tmod2Ri0s/inwdXA2wZxsu05SzEdVXJiY65mYxeg387NT/0L/6TSZGFzb0iDgjy4avC3dbrfd7RPU68Jgw7gXS5SyxNm/PLDPpsayj1CeR2ooSuZz/8sgqXR7dFtAKb2AO85hh+87VUtmI8mUBLIYX2O8Lj4gIG7B7NekQNR5ghVUuhwNuP5UYDDGbQ5EZf9i8V"
+}

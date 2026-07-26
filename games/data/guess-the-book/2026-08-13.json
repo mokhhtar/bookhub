@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "n": 13,
+ "date": "2026-08-13",
+ "answer_hash": "e8e3815c671bf27918eda90dd3cd440ce7771440a9acae6e62f1b7eef8c97919",
+ "author_hash": "a3ff7e37b9e6387404b049933907288a6bf2989a2e1b7280789d836a5286e6fa",
+ "clues": [
+  {
+   "i": 0,
+   "type": "quote",
+   "text": "The facts of life took on a fiercer aspect; and while he faced that aspect uncowed, he faced it with all the latent cunning of his nature aroused.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 215,
+    "chunk": 5
+   }
+  },
+  {
+   "i": 1,
+   "type": "quote",
+   "text": "The domesticated generations fell from him.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 215,
+    "chunk": 13
+   }
+  },
+  {
+   "i": 2,
+   "type": "fact",
+   "label": "First published",
+   "text": "1903 · originally in English",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 3,
+   "type": "fact",
+   "label": "Author",
+   "text": "J. L. — American, 1876–1916",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 4,
+   "type": "fact",
+   "label": "A character",
+   "text": "One of them is called Buck.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 215
+   }
+  },
+  {
+   "i": 5,
+   "type": "fact",
+   "label": "The story",
+   "text": "A stolen sled dog is driven north into the Klondike gold rush.",
+   "source": {
+    "kind": "curated"
+   }
+  }
+ ],
+ "cover": {
+  "levels": [
+   "/assets/games/gtb/p0013/b0.webp",
+   "/assets/games/gtb/p0013/b1.webp",
+   "/assets/games/gtb/p0013/b2.webp",
+   "/assets/games/gtb/p0013/b3.webp",
+   "/assets/games/gtb/p0013/b4.webp"
+  ],
+  "credit": "Project Gutenberg #215 (public domain)"
+ },
+ "reveal_enc": "MRXb95YQLrplCawJrR2lUVZheDpkMJYoCYIEDCWh60hSS5fmU0fXBfZHgdI1tn9sz84xbBK5NGM0VZ7leIfEQ/uqCrXs3FbPyf/gp3LTP24dxx+cGlwBndxCoEOGZ7zqIzzUv4kFTJz0GcuqsDbKpH3Oxry2xtTwmk/HmFtJ0cbo8nLx61v/Po8lGjtlBnG8MndsIh6bkJEMBLulnxClyVv0n5r25mQgWVAtn2IiueZE+5v12r2NdO9/C8ZbFGtrrSga2A3FKeHt6eVLGwWmGmOMwUJr6qp90So4yorJVTi8z5TxJtiF4Ve47lT0R7jI8XHNUG/5KlFBRN8HZiOybDeTZGN7aqoOFRCoh9lU9UCKtc2pxGnE9WWVQKAJ"
+}

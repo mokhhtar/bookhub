@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "n": 20,
+ "date": "2026-08-20",
+ "answer_hash": "741eed94c63a9c0a93977334642bc214097f585c7276f9ac96c5c252528ae591",
+ "author_hash": "9e0f818d4545fb17951967721c31ab9e3cb8cee18f3e0ec07759852eb114c40e",
+ "clues": [
+  {
+   "i": 0,
+   "type": "quote",
+   "text": "No tear dropped over that pillow; in such straits as these, the heart has no tears to give,—it drops only blood, bleeding itself away in silence.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 203,
+    "chunk": 27
+   }
+  },
+  {
+   "i": 1,
+   "type": "quote",
+   "text": "After all, let a man take what pains he may to hush it down, a human soul is an awful ghostly, unquiet possession, for a bad man to have.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 203,
+    "chunk": 322
+   }
+  },
+  {
+   "i": 2,
+   "type": "fact",
+   "label": "First published",
+   "text": "1852 · originally in English",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 3,
+   "type": "fact",
+   "label": "Author",
+   "text": "H. B. S. — American, 1811–1896",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 4,
+   "type": "fact",
+   "label": "A character",
+   "text": "One of them is called Eliza.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 203
+   }
+  },
+  {
+   "i": 5,
+   "type": "fact",
+   "label": "The story",
+   "text": "An enslaved man is sold away from a Kentucky plantation.",
+   "source": {
+    "kind": "curated"
+   }
+  }
+ ],
+ "cover": {
+  "levels": [
+   "/assets/games/gtb/p0020/b0.webp",
+   "/assets/games/gtb/p0020/b1.webp",
+   "/assets/games/gtb/p0020/b2.webp",
+   "/assets/games/gtb/p0020/b3.webp",
+   "/assets/games/gtb/p0020/b4.webp"
+  ],
+  "credit": "Project Gutenberg #203 (public domain)"
+ },
+ "reveal_enc": "wNiMb1JUKY/9f6rUbOgvQhsTWGGZSBhTFF/67hwy+xFW5XzPMvdPxEniFDm8McCZCzzkPJQ1QxrqDfLCsEisAA6wJXyrpiBFT8HdvRFdwD9oE9SoJ+i6rolhPRTJOnDU6K4r2ZqUpjwYGN+HtG1I6w79IWPMFWintuHgo1Z5EL0JDJ1F9uIDkZPen8XFgrFN/IBBEpyUg0fLe3eZIAhzaS65uDmFCd+IHWztPZ0zSC5HB9FEKPQhEhxNi9w2gdlYjPNDOr1fKMHN7LMysTSU1WGS8Nn1Dkie2uMPvDRN5zVlz7oRx4rLTMWTB4+HDjFWhXnLmoCvXW+2i/ahzs6YMkm7KEMtdsUKdBmuLNZDIhz9NjAx8SDjBMPZ9nc6f4/fNpotr/upw32Vr50EOuGL/HD/"
+}

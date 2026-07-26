@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "n": 4,
+ "date": "2026-08-04",
+ "answer_hash": "1fd0b4adbbe578fb301a7cfcd3b89d0e05cf932d3c99d8bcd06f6d462e7d00f4",
+ "author_hash": "762cd4008aa43680d817e1b1d83a92ec1781dfa03cc9393494efc51df542f35f",
+ "clues": [
+  {
+   "i": 0,
+   "type": "quote",
+   "text": "Nothing is so painful to the human mind as a great and sudden change.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 84,
+    "chunk": 125
+   }
+  },
+  {
+   "i": 1,
+   "type": "quote",
+   "text": "I was benevolent and good; misery made me a fiend. Make me happy, and I shall again be virtuous.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 84,
+    "chunk": 58
+   }
+  },
+  {
+   "i": 2,
+   "type": "fact",
+   "label": "First published",
+   "text": "1818 · originally in English",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 3,
+   "type": "fact",
+   "label": "Author",
+   "text": "M. S. — English, 1797–1851",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 4,
+   "type": "fact",
+   "label": "A character",
+   "text": "One of them is called Victor.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 84
+   }
+  },
+  {
+   "i": 5,
+   "type": "fact",
+   "label": "The story",
+   "text": "A student's laboratory in Ingolstadt, and a pursuit across the Arctic ice.",
+   "source": {
+    "kind": "curated"
+   }
+  }
+ ],
+ "cover": {
+  "levels": [
+   "/assets/games/gtb/p0004/b0.webp",
+   "/assets/games/gtb/p0004/b1.webp",
+   "/assets/games/gtb/p0004/b2.webp",
+   "/assets/games/gtb/p0004/b3.webp",
+   "/assets/games/gtb/p0004/b4.webp"
+  ],
+  "credit": "Project Gutenberg #84 (public domain)"
+ },
+ "reveal_enc": "iK1D0Z+ZG88y8h/2nlsRRm5mAEJyaS8ygqZo2WaJVYWhH45ePmsD7jLP4eBgV93PCw7qGDl1vMqPt/srkHSxvstzAv32XAXXybDB3RZIBvn4Rgvf2c9kOcxjiqCKy4f3RBrN41mydwIqId3U6xNs4Rm7lz+Memw4ytQ2A49bEvx/t6bUgAA/sO3vVx9tzzMCAgWY8JMoqB3jNvzlai7M8NyFjIyDOXC0ZFaYfhbXyZkXFHtFka8tW8E57FxRUXmWaCOE4e1OcnJTlSAEbieGaXjjloeML0i9H52foW2Owwt+5s4BocW6rQ5h20uVzBfnRR7tdtr0yFKNwU3Z4FtetwaZyet7"
+}

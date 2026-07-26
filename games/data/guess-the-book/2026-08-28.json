@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "n": 28,
+ "date": "2026-08-28",
+ "answer_hash": "23292a9a03aa9946467f6d138fa353068fe5d45d05f2251c3498e266a1c48e22",
+ "author_hash": "b7a7b2249b39f4215baf35092f90aa6d2cc160bfad1199de48189786a983daf5",
+ "clues": [
+  {
+   "i": 0,
+   "type": "quote",
+   "text": "The reaches opened before us and closed behind, as if the forest had stepped leisurely across the water to bar the way for our return.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 219,
+    "chunk": 30
+   }
+  },
+  {
+   "i": 1,
+   "type": "quote",
+   "text": "A continuous noise of the rapids above hovered over this scene of inhabited devastation.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 219,
+    "chunk": 11
+   }
+  },
+  {
+   "i": 2,
+   "type": "fact",
+   "label": "First published",
+   "text": "1899 · originally in English",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 3,
+   "type": "fact",
+   "label": "Author",
+   "text": "J. C. — Polish-British, 1857–1924",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 4,
+   "type": "fact",
+   "label": "A character",
+   "text": "One of them is called Marlow.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 219
+   }
+  },
+  {
+   "i": 5,
+   "type": "fact",
+   "label": "The story",
+   "text": "A steamboat journey up an African river to reach an ivory agent.",
+   "source": {
+    "kind": "curated"
+   }
+  }
+ ],
+ "cover": {
+  "levels": [
+   "/assets/games/gtb/p0028/b0.webp",
+   "/assets/games/gtb/p0028/b1.webp",
+   "/assets/games/gtb/p0028/b2.webp",
+   "/assets/games/gtb/p0028/b3.webp",
+   "/assets/games/gtb/p0028/b4.webp"
+  ],
+  "credit": "Project Gutenberg #219 (public domain)"
+ },
+ "reveal_enc": "qF7wqKgj6iTLczBWVsDGAUD57rxcKMN693wj2S83ZT5uJhh98hcu1ueBbK8Rw/SgWvcwy1kReHDT+JldaTbdGkTSvLTkbXvDfi8PQaA63tm/0J3UXmNp5xYf0zUnkOzb4rNXZnb8aiZa9P2FrrB9NaDWar6PuQGTbEd/ihvDIlDoqLM3IwfLYC36uoMjPBxxyY4E/hQgNg9ySoEjcjHzgBFa822iaNBB0+MiW8H9lYmrPTOXQ1gquSTmKcgxwApaE2269Rhj/UedoFR/L/tOwcwers2VjK7zDVJQt6BLovOwXV++WZt9XQbp1vdSmq0Hhkg0Mq0wrOy5dcO/Xn3zXq+GRzIKZle72m7IbChBcytl9d7wjYTiQVrb"
+}
