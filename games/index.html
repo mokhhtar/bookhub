@@ -1,0 +1,81 @@
+---
+layout: default
+title: "Daily Book Games"
+description: "A daily book game from Litheca. One puzzle a day, the same for everyone, no account needed — and every clue verified against the original text."
+permalink: /games/
+---
+<style>
+  .games-hub, .games-hub a { font-family: var(--font-ui); }
+  .games-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; margin-top: 8px; }
+  .game-card {
+    border: 1px solid var(--border); border-radius: var(--r); background: var(--bg);
+    padding: 20px; display: flex; flex-direction: column; gap: 8px;
+  }
+  .game-card--live { border-color: var(--accent); }
+  .game-card-tag {
+    font-size: var(--ui-sm); font-weight: 600; letter-spacing: .05em; text-transform: uppercase;
+    color: var(--fg-faint);
+  }
+  .game-card--live .game-card-tag { color: var(--accent); }
+  .game-card-title { font-family: var(--font); font-size: var(--ui-title); font-weight: 600; color: var(--fg); line-height: 1.25; }
+  .game-card-desc { font-size: var(--ui-body); color: var(--fg-muted); line-height: 1.5; flex: 1 1 auto; }
+  .game-card-cta {
+    align-self: flex-start; margin-top: 6px; min-height: 44px; display: inline-flex; align-items: center;
+    padding: 0 18px; border-radius: var(--r); font-size: var(--ui-body); font-weight: 600;
+    background: var(--accent); color: var(--btn-on-accent, #F7F6F3); border: 1px solid var(--accent);
+  }
+  .game-card-cta:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
+  html[data-theme="dark"] .game-card-cta { color: #12160F; }
+  .game-card--soon { border-style: dashed; }
+  .game-card--soon .game-card-title, .game-card--soon .game-card-desc { color: var(--fg-faint); }
+
+  .games-note {
+    margin-top: 30px; padding-top: 18px; border-top: 1px solid var(--border);
+    font-size: var(--ui-body); color: var(--fg-muted); max-width: 62ch; line-height: 1.6;
+  }
+</style>
+
+<div class="tool-page games-hub">
+  <div class="container">
+
+    <div class="tool-page-header">
+      <p class="breadcrumb">
+        <a href="{{ '/' | relative_url }}">Home</a>
+        <span class="breadcrumb-sep">/</span> Games
+      </p>
+      <h1 class="tool-page-title">Daily book games</h1>
+      <p class="tool-page-desc">One puzzle a day, the same puzzle for everyone. No account, no sign-up.</p>
+    </div>
+
+    <div class="games-grid">
+      <div class="game-card game-card--live">
+        <p class="game-card-tag">Playing now · daily</p>
+        <h2 class="game-card-title">Guess the Book</h2>
+        <p class="game-card-desc">
+          Six clues, six guesses. Two lines from the book itself, then the year,
+          the author's initials, a character, and the story — while the cover
+          slowly sharpens.
+        </p>
+        <a class="game-card-cta" href="{{ '/games/guess-the-book/' | relative_url }}">Play today's puzzle</a>
+      </div>
+
+      <div class="game-card game-card--soon">
+        <p class="game-card-tag">Not yet</p>
+        <h2 class="game-card-title">More to come</h2>
+        <p class="game-card-desc">
+          Other formats join one at a time, each with its own daily puzzle —
+          once this one has earned it.
+        </p>
+      </div>
+    </div>
+
+    <p class="games-note">
+      Every clue comes from the book's real text. Quotes are matched
+      word-for-word against the original before a puzzle is ever published, and
+      a puzzle that can't be grounded that way simply doesn't run that day. The
+      books are public-domain classics, so you can read any answer in full for
+      free the moment you've solved it.
+    </p>
+
+  </div>
+</div>

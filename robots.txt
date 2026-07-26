@@ -1,0 +1,17 @@
+---
+# Processed by Jekyll (front matter present) so the sitemap URL follows
+# site.url instead of being hardcoded — same pattern as books.json.
+layout: null
+permalink: /robots.txt
+sitemap: false
+---
+User-agent: *
+Allow: /
+
+# The daily games' puzzle files carry the answers. A crawler that indexes them
+# parks a solved answer in a search cache, where it spoils the puzzle for
+# everyone — the one thing the whole design is built to prevent. The game
+# itself fetches these with JS and is unaffected by this rule.
+Disallow: /games/data/
+
+Sitemap: {{ '/sitemap.xml' | absolute_url }}

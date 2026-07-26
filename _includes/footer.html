@@ -28,6 +28,7 @@
         <a href="{{ '/tools/pdf-chat'     | relative_url }}">PDF Chat &amp; Quiz</a>
         <a href="{{ '/My-Library' | relative_url }}">My Library</a>
         <a href="{{ '/tools/search'       | relative_url }}">Advanced Search</a>
+        <a href="{{ '/games/'             | relative_url }}">Daily Games</a>
       </div>
       <div class="footer-col">
         <h2 class="footer-col-title">Site</h2>
@@ -53,7 +54,10 @@
       <p>
         {%- comment -%} Withdrawal as easy as consent (GDPR): re-opens the
         banner so a visitor can change or revoke their choice any time. {%- endcomment -%}
-        <button type="button" class="footer-link-btn" onclick="lithecaOpenConsent && lithecaOpenConsent()">Cookie preferences</button>
+        {%- comment -%} Bound by _includes/consent-banner.html via
+        [data-consent-open] — not an inline onclick, which silently no-op'd
+        whenever the handler wasn't defined yet at click time. {%- endcomment -%}
+        <button type="button" class="footer-link-btn" data-consent-open>Cookie preferences</button>
         <span aria-hidden="true"> · </span>Amazon Associates affiliate partner.
       </p>
     </div>
