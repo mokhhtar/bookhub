@@ -1,0 +1,691 @@
+---
+layout: default
+title: "Guess the Book"
+description: "One book a day, six guesses, six clues — every quote verified word-for-word against the original text. No account, no spoilers."
+permalink: /games/guess-the-book/
+---
+<style>
+  /* Product register, like /account/ and /My-Library/: UI face, the compact
+     --ui-* scale, one radius, accent rationed to the primary action and the
+     solved state. The ONE exception is quote text, which takes the reading
+     serif in italic — it is the book's own prose, not interface copy. */
+  .gtb, .gtb input, .gtb button { font-family: var(--font-ui); }
+
+  .gtb-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 4px; }
+  .gtb-no { font-size: var(--ui-sm); color: var(--fg-faint); letter-spacing: .04em; text-transform: uppercase; }
+
+  .gtb-board { display: grid; grid-template-columns: minmax(0, 1fr) 220px; gap: 26px; align-items: start; }
+  @media (max-width: 720px) { .gtb-board { grid-template-columns: 1fr; } }
+
+  /* ── clues ── */
+  .gtb-clues { display: flex; flex-direction: column; gap: 10px; }
+  .gtb-clue {
+    border: 1px solid var(--border); border-radius: var(--r);
+    background: var(--bg); padding: 14px 16px;
+  }
+  .gtb-clue.is-new { border-color: var(--border-med); }
+  .gtb-clue-label {
+    font-size: var(--ui-sm); font-weight: 600; color: var(--fg-faint);
+    text-transform: uppercase; letter-spacing: .05em; margin-bottom: 6px;
+  }
+  .gtb-clue-quote {
+    font-family: var(--font); font-style: italic; font-size: var(--t-body);
+    line-height: 1.55; color: var(--fg);
+  }
+  .gtb-clue-fact { font-size: var(--ui-body); color: var(--fg); }
+  .gtb-clue-note { font-size: var(--ui-sm); color: var(--fg-faint); margin-top: 6px; }
+  .gtb-clue-locked {
+    border-style: dashed; color: var(--fg-faint); font-size: var(--ui-sm);
+    padding: 11px 16px; background: transparent;
+  }
+
+  /* ── cover ── */
+  .gtb-cover-wrap { position: sticky; top: 84px; }
+  .gtb-cover {
+    width: 100%; border: 1px solid var(--border); border-radius: var(--r);
+    display: block; background: var(--bg-subtle); aspect-ratio: 2/3; object-fit: cover;
+    transition: filter .4s var(--ease-out);
+  }
+  .gtb-cover-cap { font-size: var(--ui-sm); color: var(--fg-faint); margin-top: 8px; text-align: center; }
+  @media (prefers-reduced-motion: reduce) { .gtb-cover { transition: none; } }
+
+  /* On a phone the board is one column, and a full-width 2:3 image ate most
+     of the screen below the clues. Cap it and centre it instead. */
+  @media (max-width: 720px) {
+    .gtb-cover-wrap { position: static; max-width: 170px; margin: 4px auto 0; }
+  }
+
+  /* ── guessing ── */
+  .gtb-guessbar { margin-top: 20px; position: relative; }
+  .gtb-input-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .gtb-input {
+    flex: 1 1 240px; min-width: 0; padding: 11px 13px;
+    /* 16px or iOS Safari zooms the whole page on focus. */
+    font-size: 16px; color: var(--fg); background: var(--bg);
+    border: 1px solid var(--border-med); border-radius: var(--r);
+  }
+  .gtb-input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .gtb-btn {
+    min-height: 44px; padding: 0 18px; border-radius: var(--r); cursor: pointer;
+    font-size: var(--ui-body); font-weight: 600; border: 1px solid var(--accent);
+    background: var(--accent); color: var(--btn-on-accent, #F7F6F3);
+  }
+  .gtb-btn:hover:not(:disabled) { background: var(--accent-hover); border-color: var(--accent-hover); }
+  .gtb-btn:disabled { opacity: .45; cursor: not-allowed; }
+  .gtb-btn-quiet { background: transparent; color: var(--fg-muted); border-color: var(--border-med); }
+  .gtb-btn-quiet:hover:not(:disabled) { background: var(--bg-subtle); color: var(--fg); border-color: var(--border-med); }
+  /* Narrow screens: the field takes its own line and the two buttons share the
+     next one, rather than Guess and Skip wrapping onto separate rows. */
+  @media (max-width: 560px) {
+    .gtb-input { flex: 1 1 100%; }
+    .gtb-btn { flex: 1 1 0; }
+  }
+  html[data-theme="dark"] .gtb-btn { color: #12160F; }
+  html[data-theme="dark"] .gtb-btn-quiet { color: var(--fg-muted); }
+
+  .gtb-ac {
+    position: absolute; z-index: 30; left: 0; right: 0; top: calc(100% + 4px);
+    background: var(--bg); border: 1px solid var(--border-med); border-radius: var(--r);
+    max-height: 260px; overflow-y: auto; box-shadow: 0 6px 20px rgba(0,0,0,.10);
+  }
+  .gtb-ac[hidden] { display: none; }
+  .gtb-ac-item {
+    display: block; width: 100%; text-align: left; border: 0; background: transparent;
+    padding: 10px 13px; min-height: 44px; cursor: pointer; color: var(--fg);
+    font-size: var(--ui-body); border-bottom: 1px solid var(--border-subtle);
+  }
+  .gtb-ac-item:last-child { border-bottom: 0; }
+  .gtb-ac-item:hover, .gtb-ac-item.is-active { background: var(--bg-subtle); }
+  .gtb-ac-item small { display: block; color: var(--fg-faint); font-size: var(--ui-sm); }
+  .gtb-ac-empty { padding: 12px 13px; color: var(--fg-faint); font-size: var(--ui-sm); }
+
+  .gtb-counter { font-size: var(--ui-sm); color: var(--fg-faint); margin-top: 10px; }
+
+  /* ── guess history ── */
+  .gtb-history { list-style: none; margin-top: 14px; display: flex; flex-direction: column; gap: 6px; }
+  .gtb-history li {
+    display: flex; align-items: center; gap: 10px; font-size: var(--ui-body);
+    border: 1px solid var(--border); border-radius: var(--r); padding: 9px 13px;
+    background: var(--bg-subtle); color: var(--fg-muted);
+  }
+  .gtb-history .gtb-x { color: var(--danger); flex: 0 0 auto; display: flex; }
+  .gtb-history .gtb-skip { color: var(--fg-faint); flex: 0 0 auto; display: flex; }
+  .gtb-history .gtb-tick { color: var(--success); flex: 0 0 auto; display: flex; }
+  .gtb-history li.is-correct { background: var(--accent-bg); border-color: var(--accent); color: var(--fg); font-weight: 600; }
+  .gtb-hint { margin-left: auto; font-size: var(--ui-sm); color: var(--brass); }
+
+  /* ── result ── */
+  .gtb-result { border: 1px solid var(--border-med); border-radius: var(--r); padding: 18px; margin-top: 20px; background: var(--bg); }
+  .gtb-result.is-win { border-color: var(--accent); background: var(--accent-bg); }
+  .gtb-result-head { font-size: var(--ui-title); font-weight: 700; color: var(--fg); margin-bottom: 4px; }
+  .gtb-result-body { display: flex; gap: 16px; margin-top: 14px; flex-wrap: wrap; }
+  .gtb-result-cover { width: 96px; border: 1px solid var(--border); border-radius: var(--r); flex: 0 0 auto; }
+  .gtb-result-meta { flex: 1 1 220px; min-width: 0; }
+  .gtb-result-title { font-family: var(--font); font-size: var(--ui-title); font-weight: 600; color: var(--fg); line-height: 1.25; }
+  .gtb-result-sub { font-size: var(--ui-body); color: var(--fg-muted); margin-top: 4px; }
+  .gtb-result-links { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 12px; }
+  .gtb-result-links a { font-size: var(--ui-body); font-weight: 600; color: var(--accent); border-bottom: 1px solid var(--accent); }
+
+  /* ── share + stats ── */
+  .gtb-share-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
+  .gtb-share-note { font-size: var(--ui-sm); color: var(--fg-faint); }
+  .gtb-grid-preview { font-size: 18px; letter-spacing: 2px; margin-top: 14px; line-height: 1; }
+  .gtb-share-fallback { width: 100%; margin-top: 10px; padding: 10px; font-family: var(--font-mono);
+                        font-size: var(--ui-sm); border: 1px solid var(--border-med); border-radius: var(--r);
+                        background: var(--bg); color: var(--fg); }
+  .gtb-share-fallback[hidden] { display: none; }
+
+  .gtb-stats { border-top: 1px solid var(--border); margin-top: 18px; padding-top: 16px; }
+  .gtb-stats-nums { display: flex; gap: 22px; flex-wrap: wrap; }
+  .gtb-stat-n { font-size: var(--ui-title); font-weight: 700; color: var(--fg); line-height: 1.1; }
+  .gtb-stat-l { font-size: var(--ui-sm); color: var(--fg-faint); }
+  .gtb-dist { margin-top: 14px; display: flex; flex-direction: column; gap: 4px; }
+  .gtb-dist-row { display: flex; align-items: center; gap: 8px; font-size: var(--ui-sm); color: var(--fg-muted); }
+  .gtb-dist-bar { height: 18px; min-width: 22px; border-radius: var(--r-sm); background: var(--border-med);
+                  color: var(--fg); display: flex; align-items: center; justify-content: flex-end;
+                  padding: 0 6px; font-size: var(--ui-sm); font-weight: 600; }
+  .gtb-dist-row.is-mine .gtb-dist-bar { background: var(--accent); color: var(--btn-on-accent, #F7F6F3); }
+  html[data-theme="dark"] .gtb-dist-row.is-mine .gtb-dist-bar { color: #12160F; }
+  .gtb-next { font-size: var(--ui-sm); color: var(--fg-faint); margin-top: 14px; }
+  .gtb-next b { font-variant-numeric: tabular-nums; color: var(--fg-muted); font-weight: 600; }
+
+  .gtb-empty { border: 1px dashed var(--border-med); border-radius: var(--r); padding: 26px; text-align: center; color: var(--fg-muted); }
+  .gtb-empty p { font-size: var(--ui-body); }
+  .gtb-empty strong { display: block; font-size: var(--ui-head); color: var(--fg); margin-bottom: 6px; }
+</style>
+
+<div class="tool-page gtb">
+  <div class="container">
+
+    <div class="tool-page-header">
+      <p class="breadcrumb">
+        <a href="{{ '/' | relative_url }}">Home</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="{{ '/games/' | relative_url }}">Games</a>
+        <span class="breadcrumb-sep">/</span> Guess the Book
+      </p>
+      <div class="gtb-head">
+        <h1 class="tool-page-title">Guess the Book</h1>
+        <span class="gtb-no" id="gtb-number"></span>
+      </div>
+      <p class="tool-page-desc">Six clues, six guesses. Every quote is checked word-for-word against the original text.</p>
+    </div>
+
+    <div id="gtb-app" aria-live="polite">
+      <div class="gtb-empty"><p>Loading today's puzzle…</p></div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  /* Every top-level const the entry point touches is declared FIRST: this page
+     boots straight from a direct link, and a mid-script declaration is exactly
+     what caused the site's "Cannot access X before initialization" bug. */
+  const GTB_DATA = "{{ '/games/data/guess-the-book' | relative_url }}";
+  const GTB_SHARE_URL = "{{ '/games/guess-the-book/' | absolute_url }}";
+  const GTB_MAX_GUESSES = 6;
+  const GTB_SCHEMA = 1;
+  /* Extends the site's existing bh_* localStorage convention rather than
+     inventing a new prefix (see the key list in CLAUDE.md). */
+  const GTB_STORE = "bh_gtb_v1";
+  const GTB_APP = document.getElementById("gtb-app");
+  const GTB_NUMBER = document.getElementById("gtb-number");
+  let gtbCountdownTimer = null;
+
+  const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => (
+    { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]
+  ));
+
+  /* One puzzle per LOCAL day, the way Wordle did it: a player's "today" is
+     their own midnight, not UTC's. Files are committed well ahead so no
+     timezone ever outruns its puzzle. */
+  function localISODate(d) {
+    const p = (n) => String(n).padStart(2, "0");
+    return d.getFullYear() + "-" + p(d.getMonth() + 1) + "-" + p(d.getDate());
+  }
+
+  /* ?date= is a development affordance only. On the live site it would let
+     anyone open tomorrow's puzzle, so it is restricted to local builds. */
+  function puzzleDate() {
+    const isLocal = ["localhost", "127.0.0.1"].includes(location.hostname);
+    const override = new URLSearchParams(location.search).get("date");
+    if (isLocal && override && /^\d{4}-\d{2}-\d{2}$/.test(override)) return override;
+    return localISODate(new Date());
+  }
+
+  /* ── the same obfuscation the generator applies, in reverse ──
+     Not encryption, and not pretending to be: the key is derived from the
+     date, which the client obviously knows. It stops the answer showing up in
+     the network tab or in view-source — the casual spoiler — and nothing more. */
+  async function sha256Bytes(bytes) {
+    return new Uint8Array(await crypto.subtle.digest("SHA-256", bytes));
+  }
+
+  async function sha256Hex(text) {
+    const digest = await sha256Bytes(new TextEncoder().encode(text));
+    return Array.from(digest).map((b) => b.toString(16).padStart(2, "0")).join("");
+  }
+
+  async function xorKey(date, length) {
+    const seed = await sha256Bytes(new TextEncoder().encode("litheca-gtb-" + date));
+    const out = new Uint8Array(length);
+    let filled = 0, counter = 0;
+    while (filled < length) {
+      const buf = new Uint8Array(seed.length + 4);
+      buf.set(seed, 0);
+      new DataView(buf.buffer).setUint32(seed.length, counter, false); // big-endian
+      const block = await sha256Bytes(buf);
+      const take = Math.min(block.length, length - filled);
+      out.set(block.subarray(0, take), filled);
+      filled += take;
+      counter += 1;
+    }
+    return out;
+  }
+
+  async function decodeReveal(blob, date) {
+    const raw = Uint8Array.from(atob(blob), (c) => c.charCodeAt(0));
+    const key = await xorKey(date, raw.length);
+    const plain = new Uint8Array(raw.length);
+    for (let i = 0; i < raw.length; i++) plain[i] = raw[i] ^ key[i];
+    return JSON.parse(new TextDecoder().decode(plain));
+  }
+
+  /* ── persistence ──
+     Everything about a player lives in their own browser: no account, no
+     Firebase, no server. That is a product decision (zero friction is one of
+     the four conditions this game had to meet), not a shortcut. */
+  function loadStore() {
+    try { return JSON.parse(localStorage.getItem(GTB_STORE)) || {}; } catch (e) { return {}; }
+  }
+
+  function saveStore(store) {
+    try { localStorage.setItem(GTB_STORE, JSON.stringify(store)); } catch (e) { /* private mode */ }
+  }
+
+  function persistDay(counted) {
+    const store = loadStore();
+    store.v = 1;
+    store.day = { date: state.date, guesses: state.guesses, status: state.status, counted: !!counted };
+    saveStore(store);
+  }
+
+  const BLANK_STATS = { played: 0, wins: 0, streak: 0, maxStreak: 0, dist: [0, 0, 0, 0, 0, 0], lastDate: null };
+
+  function readStats() {
+    const stats = loadStore().stats;
+    if (!stats || !Array.isArray(stats.dist)) return Object.assign({}, BLANK_STATS);
+    return stats;
+  }
+
+  /* Counted exactly once per day, guarded by day.counted — a reload of a
+     finished puzzle must not inflate the record. */
+  function countResult() {
+    const store = loadStore();
+    const stats = Object.assign({}, BLANK_STATS, store.stats || {});
+    stats.dist = (store.stats && Array.isArray(store.stats.dist)) ? store.stats.dist.slice() : BLANK_STATS.dist.slice();
+    stats.played += 1;
+    if (state.status === "won") {
+      stats.wins += 1;
+      stats.dist[state.guesses.length - 1] += 1;
+      const previous = stats.lastDate ? new Date(stats.lastDate + "T00:00:00") : null;
+      const today = new Date(state.date + "T00:00:00");
+      const consecutive = previous && Math.round((today - previous) / 86400000) === 1;
+      stats.streak = consecutive ? stats.streak + 1 : 1;
+      stats.maxStreak = Math.max(stats.maxStreak, stats.streak);
+    } else {
+      stats.streak = 0;
+    }
+    stats.lastDate = state.date;
+    store.stats = stats;
+    saveStore(store);
+    return stats;
+  }
+
+  /* ── state ── */
+  const state = {
+    date: null,
+    puzzle: null,
+    titles: [],
+    guesses: [],      // {id, title, author, skipped, sameAuthor}
+    status: "playing", // playing | won | lost
+    reveal: null,
+    selected: null,
+    acIndex: -1,
+    acMatches: [],
+  };
+
+  const guessesUsed = () => state.guesses.length;
+  const cluesVisible = () => Math.min(guessesUsed() + 1, GTB_MAX_GUESSES);
+
+  /* ── loading ── */
+  async function boot() {
+    state.date = puzzleDate();
+    let puzzle = null;
+    try {
+      const res = await fetch(GTB_DATA + "/" + state.date + ".json", { cache: "no-cache" });
+      if (res.ok) puzzle = await res.json();
+    } catch (e) { /* offline or missing — handled below */ }
+
+    /* No file, a schema we don't understand, or a malformed one: say so.
+       Never fall back to another day's puzzle or invent a placeholder —
+       showing nothing beats showing something wrong. */
+    if (!puzzle || puzzle.v !== GTB_SCHEMA || !Array.isArray(puzzle.clues) || !puzzle.answer_hash) {
+      renderEmpty();
+      return;
+    }
+
+    state.puzzle = puzzle;
+    GTB_NUMBER.textContent = "No. " + puzzle.n;
+
+    try {
+      const res = await fetch(GTB_DATA + "/titles.json", { cache: "no-cache" });
+      if (res.ok) state.titles = await res.json();
+    } catch (e) { /* the picker degrades to free text below */ }
+
+    // Resume today's game if this browser already started it.
+    const saved = loadStore().day;
+    if (saved && saved.date === state.date && Array.isArray(saved.guesses)) {
+      state.guesses = saved.guesses;
+      state.status = saved.status || "playing";
+      if (state.status !== "playing") {
+        await finish(saved.counted !== true);
+        return;
+      }
+    }
+
+    render();
+  }
+
+  function renderEmpty() {
+    GTB_APP.innerHTML =
+      '<div class="gtb-empty">' +
+        "<strong>No puzzle today</strong>" +
+        "<p>Today's puzzle isn't published yet. Try again tomorrow, or " +
+        '<a href="' + "{{ '/summary' | relative_url }}" + '">look up any book</a> in the meantime.</p>' +
+      "</div>";
+  }
+
+  /* ── rendering ── */
+  function clueHTML(clue, index) {
+    if (index >= cluesVisible()) {
+      return '<div class="gtb-clue gtb-clue-locked">Clue ' + (index + 1) + " — unlocks on your next guess</div>";
+    }
+    const isNew = index === cluesVisible() - 1 && guessesUsed() > 0;
+    const label = clue.type === "quote" ? "From the book" : (clue.label || "Clue");
+    const body = clue.type === "quote"
+      ? '<p class="gtb-clue-quote">“' + esc(clue.text) + "”</p>"
+      : '<p class="gtb-clue-fact">' + esc(clue.text) + "</p>";
+    const note = clue.note ? '<p class="gtb-clue-note">' + esc(clue.note) + "</p>" : "";
+    return '<div class="gtb-clue' + (isNew ? " is-new" : "") + '">' +
+             '<p class="gtb-clue-label">' + esc(label) + "</p>" + body + note +
+           "</div>";
+  }
+
+  function coverHTML() {
+    const cover = state.puzzle.cover;
+    if (!cover || !Array.isArray(cover.levels) || !cover.levels.length) return "";
+    const level = Math.min(guessesUsed(), cover.levels.length - 1);
+    return '<div class="gtb-cover-wrap">' +
+             '<img class="gtb-cover" src="' + esc(cover.levels[level]) + '" alt="" role="presentation">' +
+             '<p class="gtb-cover-cap">The cover, sharpening with each guess</p>' +
+           "</div>";
+  }
+
+  const ICON_X = '<svg class="gtb-x" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>';
+  const ICON_SKIP = '<svg class="gtb-skip" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 4 10 8-10 8zM19 5v14"/></svg>';
+  const ICON_TICK = '<svg class="gtb-tick" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
+
+  function historyHTML() {
+    if (!state.guesses.length) return "";
+    return '<ul class="gtb-history">' + state.guesses.map((g) => {
+      if (g.skipped) return "<li>" + ICON_SKIP + "<span>Skipped</span></li>";
+      // The winning guess sat here with a red ✕ like every miss — it read as a
+      // wrong answer even while the result card said "solved".
+      if (g.correct) return '<li class="is-correct">' + ICON_TICK + "<span>" + esc(g.title) + "</span></li>";
+      const hint = g.sameAuthor ? '<span class="gtb-hint">Same author — wrong book</span>' : "";
+      return "<li>" + ICON_X + "<span>" + esc(g.title) + "</span>" + hint + "</li>";
+    }).join("") + "</ul>";
+  }
+
+  function guessBarHTML() {
+    const left = GTB_MAX_GUESSES - guessesUsed();
+    return '<div class="gtb-guessbar">' +
+             '<div class="gtb-input-row">' +
+               '<input class="gtb-input" id="gtb-input" type="text" autocomplete="off" ' +
+                 'role="combobox" aria-expanded="false" aria-controls="gtb-ac" aria-autocomplete="list" ' +
+                 'placeholder="Start typing a title…">' +
+               '<button class="gtb-btn" id="gtb-submit" disabled>Guess</button>' +
+               '<button class="gtb-btn gtb-btn-quiet" id="gtb-skip">Skip</button>' +
+             "</div>" +
+             '<div class="gtb-ac" id="gtb-ac" role="listbox" hidden></div>' +
+             '<p class="gtb-counter">' + left + " guess" + (left === 1 ? "" : "es") + " left</p>" +
+           "</div>";
+  }
+
+  /* ── the share card ──
+     Numbers and squares only: no title, no author, no clue text, no image.
+     Spoiler-free BY CONSTRUCTION, because this is the thing that actually
+     travels — a result someone posts is content, a link someone posts is an ad. */
+  function shareMarks() {
+    const marks = [];
+    for (let i = 0; i < GTB_MAX_GUESSES; i++) {
+      const g = state.guesses[i];
+      marks.push(!g ? "⬜" : g.correct ? "🟩" : g.skipped ? "🟨" : "⬛");
+    }
+    return marks.join("");
+  }
+
+  function shareText() {
+    const stats = readStats();
+    const score = state.status === "won"
+      ? "📗 " + guessesUsed() + "/" + GTB_MAX_GUESSES
+      : "📕 X/" + GTB_MAX_GUESSES;
+    const streak = stats.streak >= 2 ? " · Streak " + stats.streak : "";
+    return "Litheca · Guess the Book #" + state.puzzle.n + "\n" +
+           score + streak + "\n\n" + shareMarks() + "\n\n" + GTB_SHARE_URL;
+  }
+
+  function statsHTML() {
+    const stats = readStats();
+    const winRate = stats.played ? Math.round((stats.wins / stats.played) * 100) : 0;
+    const best = Math.max(1, ...stats.dist);
+    const mine = state.status === "won" ? guessesUsed() : -1;
+    const nums = [
+      [stats.played, "Played"], [winRate + "%", "Win rate"],
+      [stats.streak, "Streak"], [stats.maxStreak, "Best"],
+    ].map(([n, l]) =>
+      '<div><p class="gtb-stat-n">' + n + '</p><p class="gtb-stat-l">' + l + "</p></div>"
+    ).join("");
+    const dist = stats.dist.map((count, i) =>
+      '<div class="gtb-dist-row' + (i + 1 === mine ? " is-mine" : "") + '"><span>' + (i + 1) + "</span>" +
+        '<span class="gtb-dist-bar" style="width:' + Math.max(8, Math.round((count / best) * 100)) + '%">' +
+          count + "</span></div>"
+    ).join("");
+    return '<div class="gtb-stats">' +
+             '<div class="gtb-stats-nums">' + nums + "</div>" +
+             '<div class="gtb-dist">' + dist + "</div>" +
+             '<p class="gtb-next">Next puzzle in <b id="gtb-countdown">—</b></p>' +
+           "</div>";
+  }
+
+  function resultHTML() {
+    const r = state.reveal;
+    if (!r) return "";
+    const won = state.status === "won";
+    const head = won
+      ? "Solved in " + guessesUsed() + "/" + GTB_MAX_GUESSES
+      : "Not this time";
+    const sub = [esc(r.author), r.year].filter(Boolean).join(" · ");
+    const trans = r.translator ? '<p class="gtb-result-sub">Quoted from the translation by ' + esc(r.translator) + "</p>" : "";
+    const cover = r.cover ? '<img class="gtb-result-cover" src="' + esc(r.cover) + '" alt="" role="presentation" loading="lazy">' : "";
+    return '<div class="gtb-result' + (won ? " is-win" : "") + '">' +
+             '<p class="gtb-result-head">' + head + "</p>" +
+             '<div class="gtb-result-body">' + cover +
+               '<div class="gtb-result-meta">' +
+                 '<p class="gtb-result-title">' + esc(r.title) + "</p>" +
+                 '<p class="gtb-result-sub">' + sub + "</p>" + trans +
+                 '<div class="gtb-result-links">' +
+                   '<a href="' + esc(r.url) + '">Read the full summary</a>' +
+                   (r.gutenberg ? '<a href="' + esc(r.gutenberg) + '" rel="noopener" target="_blank">Read it free</a>' : "") +
+                 "</div>" +
+               "</div>" +
+             "</div>" +
+             '<p class="gtb-grid-preview">' + shareMarks() + "</p>" +
+             '<div class="gtb-share-row">' +
+               '<button class="gtb-btn" id="gtb-share">Share result</button>' +
+               '<span class="gtb-share-note" id="gtb-share-note">Squares only — never spoils the answer</span>' +
+             "</div>" +
+             '<textarea class="gtb-share-fallback" id="gtb-share-fallback" rows="6" readonly hidden></textarea>' +
+             statsHTML() +
+           "</div>";
+  }
+
+  /* ── sharing + countdown wiring (re-run after every render) ── */
+  function wireResult() {
+    const button = document.getElementById("gtb-share");
+    if (button) {
+      const note = document.getElementById("gtb-share-note");
+      const fallback = document.getElementById("gtb-share-fallback");
+      button.addEventListener("click", async () => {
+        const text = shareText();
+        try {
+          if (navigator.share) {
+            await navigator.share({ text: text });
+            return;
+          }
+          await navigator.clipboard.writeText(text);
+          note.textContent = "Copied — go paste it somewhere.";
+        } catch (e) {
+          // Clipboard is blocked over plain http and in some embedded views;
+          // show the text so it can still be copied by hand.
+          fallback.value = text;
+          fallback.hidden = false;
+          fallback.focus();
+          fallback.select();
+          note.textContent = "Select and copy:";
+        }
+      });
+    }
+
+    const countdown = document.getElementById("gtb-countdown");
+    if (gtbCountdownTimer) clearInterval(gtbCountdownTimer);
+    if (!countdown) return;
+    const tick = () => {
+      const now = new Date();
+      const midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+      let left = Math.max(0, Math.floor((midnight - now) / 1000));
+      const p = (n) => String(n).padStart(2, "0");
+      const h = Math.floor(left / 3600), m = Math.floor((left % 3600) / 60), s = left % 60;
+      countdown.textContent = p(h) + ":" + p(m) + ":" + p(s);
+    };
+    tick();
+    gtbCountdownTimer = setInterval(tick, 1000);
+  }
+
+  function render() {
+    const clues = state.puzzle.clues.map(clueHTML).join("");
+    const playing = state.status === "playing";
+    GTB_APP.innerHTML =
+      '<div class="gtb-board">' +
+        '<div><div class="gtb-clues">' + clues + "</div>" +
+          (playing ? guessBarHTML() : "") + historyHTML() + resultHTML() +
+        "</div>" +
+        coverHTML() +
+      "</div>";
+    if (playing) wireGuessBar(); else wireResult();
+  }
+
+  /* ── the picker ── */
+  function matchTitles(query) {
+    const q = query.trim().toLowerCase();
+    if (q.length < 2) return [];
+    const guessed = new Set(state.guesses.map((g) => g.id));
+    return state.titles
+      .filter((t) => !guessed.has(t.id))
+      .filter((t) => t.title.toLowerCase().includes(q) || t.author.toLowerCase().includes(q))
+      .slice(0, 8);
+  }
+
+  function renderAutocomplete(matches, box, input) {
+    state.acMatches = matches;
+    state.acIndex = -1;
+    if (!matches.length) {
+      box.hidden = true;
+      input.setAttribute("aria-expanded", "false");
+      return;
+    }
+    box.innerHTML = matches.map((t, i) =>
+      '<button type="button" class="gtb-ac-item" role="option" data-i="' + i + '">' +
+        esc(t.title) + "<small>" + esc(t.author) + "</small></button>"
+    ).join("");
+    box.hidden = false;
+    input.setAttribute("aria-expanded", "true");
+  }
+
+  function wireGuessBar() {
+    const input = document.getElementById("gtb-input");
+    const box = document.getElementById("gtb-ac");
+    const submit = document.getElementById("gtb-submit");
+    const skip = document.getElementById("gtb-skip");
+
+    const choose = (item) => {
+      state.selected = item;
+      input.value = item.title;
+      box.hidden = true;
+      input.setAttribute("aria-expanded", "false");
+      submit.disabled = false;
+      input.focus();
+    };
+
+    input.addEventListener("input", () => {
+      state.selected = null;
+      submit.disabled = true;
+      renderAutocomplete(matchTitles(input.value), box, input);
+    });
+
+    input.addEventListener("keydown", (e) => {
+      if (box.hidden) {
+        if (e.key === "Enter" && !submit.disabled) { e.preventDefault(); submitGuess(); }
+        return;
+      }
+      const items = Array.from(box.querySelectorAll(".gtb-ac-item"));
+      if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+        e.preventDefault();
+        const step = e.key === "ArrowDown" ? 1 : -1;
+        state.acIndex = (state.acIndex + step + items.length) % items.length;
+        items.forEach((el, i) => el.classList.toggle("is-active", i === state.acIndex));
+        items[state.acIndex].scrollIntoView({ block: "nearest" });
+      } else if (e.key === "Enter") {
+        e.preventDefault();
+        choose(state.acMatches[state.acIndex >= 0 ? state.acIndex : 0]);
+      } else if (e.key === "Escape") {
+        box.hidden = true;
+        input.setAttribute("aria-expanded", "false");
+      }
+    });
+
+    box.addEventListener("click", (e) => {
+      const btn = e.target.closest(".gtb-ac-item");
+      if (btn) choose(state.acMatches[Number(btn.dataset.i)]);
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!e.target.closest(".gtb-guessbar")) box.hidden = true;
+    });
+
+    submit.addEventListener("click", submitGuess);
+    skip.addEventListener("click", () => recordGuess(null));
+  }
+
+  /* ── playing ── */
+  async function submitGuess() {
+    if (!state.selected) return;
+    const pick = state.selected;
+    state.selected = null;
+    await recordGuess(pick);
+  }
+
+  async function recordGuess(pick) {
+    if (state.status !== "playing") return;
+
+    if (!pick) {
+      state.guesses.push({ skipped: true });
+    } else {
+      const hash = await sha256Hex(state.date + "|" + pick.id);
+      if (hash === state.puzzle.answer_hash) {
+        state.guesses.push({ id: pick.id, title: pick.title, author: pick.author, correct: true });
+        state.status = "won";
+        await finish();
+        return;
+      }
+      const authorHash = await sha256Hex(state.date + "|" + pick.author);
+      state.guesses.push({
+        id: pick.id, title: pick.title, author: pick.author,
+        sameAuthor: !!state.puzzle.author_hash && authorHash === state.puzzle.author_hash,
+      });
+    }
+
+    if (guessesUsed() >= GTB_MAX_GUESSES) {
+      state.status = "lost";
+      await finish();
+      return;
+    }
+    persistDay(false);
+    render();
+  }
+
+  async function finish(countIt) {
+    try {
+      state.reveal = await decodeReveal(state.puzzle.reveal_enc, state.date);
+    } catch (e) {
+      state.reveal = null;
+    }
+    if (countIt !== false) countResult();
+    persistDay(true);
+    render();
+  }
+
+  boot();
+</script>
