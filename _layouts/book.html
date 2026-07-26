@@ -186,7 +186,7 @@ reach anyone who had visited before. {%- endcomment -%}
 
         {% if page.characters and page.characters.size > 0 %}
           <div class="summary-card" id="bh-characters">
-            <div class="summary-card-title">Characters</div>
+            <h2 class="summary-card-title">Characters</h2>
             <div class="char-grid">
               {% for c in page.characters %}
                 <a href="{{ '/characters/' | relative_url }}{{ c.slug }}/" class="char-item" style="text-decoration:none;">
@@ -201,7 +201,7 @@ reach anyone who had visited before. {%- endcomment -%}
 
         <div class="summary-card" id="bh-summary">
           <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:16px;">
-            <div class="summary-card-title" style="margin-bottom:0;border-bottom:0;padding-bottom:0;">AI Grounded Summary</div>
+            <h2 class="summary-card-title" style="margin-bottom:0;border-bottom:0;padding-bottom:0;">AI Grounded Summary</h2>
             <a class="btn-secondary" style="padding:8px 16px;font-size:var(--t-label);"
                href="{{ '/summary/' | relative_url }}?q={{ page.title | url_encode }}&author={{ page.author | url_encode }}{% if page.google_id and page.google_id != '' %}&google_id={{ page.google_id }}{% endif %}{% if page.isbn_13 and page.isbn_13 != '' %}&isbn={{ page.isbn_13 }}{% endif %}&direct=true">
               Open interactive summary &amp; chat →
@@ -214,7 +214,7 @@ reach anyone who had visited before. {%- endcomment -%}
 
         {% if page.quotes and page.quotes.texts %}
           <div class="summary-card" id="bh-quotes">
-            <div class="summary-card-title">Notable Quotes</div>
+            <h2 class="summary-card-title">Notable Quotes</h2>
             {% for q in page.quotes.texts %}
               {% assign sp = page.quotes.speakers[forloop.index0] %}
               <blockquote style="font-size:var(--t-body);font-style:italic;line-height:1.65;color:var(--fg);border-left:3px solid var(--accent);padding:4px 0 4px 14px;margin:0 0 12px;">"{{ q }}"{% if sp and sp != "" %}<footer style="font-size:var(--t-label);font-style:normal;font-weight:600;color:var(--fg-faint);margin-top:4px;">— {{ sp }}</footer>{% endif %}</blockquote>
@@ -225,13 +225,13 @@ reach anyone who had visited before. {%- endcomment -%}
 
         {% if page.chapters and page.chapters.size > 0 %}
           <div class="summary-card" id="bh-chapters">
-            <div class="summary-card-title" style="display:flex;align-items:center;justify-content:space-between;">
+            <h2 class="summary-card-title" style="display:flex;align-items:center;justify-content:space-between;">
               <span style="display:flex;align-items:center;gap:8px;">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
                 Chapters
               </span>
               <span style="font-size:var(--t-label);font-weight:600;color:var(--accent);background:var(--bg-subtle);border:1px solid var(--border);border-radius:var(--r);padding:2px 10px;">{{ page.chapters.size }} chapters</span>
-            </div>
+            </h2>
             <div style="position:relative;">
               <ul style="font-size:var(--t-label);color:var(--fg);line-height:1.9;list-style:none;padding-left:0;margin:0;max-height:320px;overflow-y:auto;padding-right:8px;scrollbar-width:thin;scrollbar-color:var(--accent) transparent;">
                 {% for c in page.chapters %}
@@ -249,10 +249,10 @@ reach anyone who had visited before. {%- endcomment -%}
               quote-verification pipeline as POST /quiz/book — the static
               page needs no live API call, just client-side scoring. {% endcomment %}
           <div class="summary-card" id="bh-quiz">
-            <div class="summary-card-title">
+            <h2 class="summary-card-title">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
               Test Your Knowledge
-            </div>
+            </h2>
             <p style="font-size:var(--t-label);color:var(--fg-muted);margin-bottom:12px;">Multiple-choice questions with verified supporting quotes, grounded in {% if page.quiz_source == "gutenberg_text" %}the book's original text{% else %}the story wiki's chapter summaries{% endif %}.</p>
             <button class="btn-primary" id="quiz-start-btn" onclick="bhStartQuiz()" style="padding:8px 20px;font-size:var(--t-label);">Take a quiz</button>
             <div id="quiz-area" style="margin-top:14px;"></div>
@@ -270,7 +270,7 @@ reach anyone who had visited before. {%- endcomment -%}
           {% assign sim_loop = sim_items | concat: sim_items %}
           {% assign sim_duration = sim_loop.size | times: 3 %}
           <div class="summary-card" id="bh-similar">
-            <div class="summary-card-title">Similar Books</div>
+            <h2 class="summary-card-title">Similar Books</h2>
             <div class="similar-marquee">
               <button class="similar-nav prev" onclick="bhSimilarNudge(-1)" aria-label="Scroll similar books left">‹</button>
               <div class="similar-track" style="animation-duration:{{ sim_duration }}s;">
@@ -320,7 +320,7 @@ reach anyone who had visited before. {%- endcomment -%}
           {% endcapture %}
           {% if shown > 0 %}
             <div class="summary-card">
-              <div class="summary-card-title">More in {{ cat_meta.name | default: first_cat }}</div>
+              <h2 class="summary-card-title">More in {{ cat_meta.name | default: first_cat }}</h2>
               <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:16px;">
                 {{ related_html }}
               </div>
@@ -331,7 +331,7 @@ reach anyone who had visited before. {%- endcomment -%}
         {% comment %} Readers recommend — same interactive card as the
             dynamic page (replica rule): approved list + submit form. {% endcomment %}
         <div id="bh-reader-recs" class="summary-card" style="display:none;">
-          <div class="summary-card-title">Readers recommend</div>
+          <h2 class="summary-card-title">Readers recommend</h2>
           <div id="bh-reader-recs-list"></div>
           <div id="bh-rec-form"></div>
         </div>
@@ -341,10 +341,10 @@ reach anyone who had visited before. {%- endcomment -%}
             just before Reader Comments. Hidden until populated client-side
             (no data beats wrong data). {% endcomment %}
         <div class="summary-card" id="ratings-card" style="display:none;">
-          <div class="summary-card-title">
+          <h2 class="summary-card-title">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
             Reader Ratings
-          </div>
+          </h2>
           <div id="reader-ratings"></div>
         </div>
 
@@ -352,7 +352,7 @@ reach anyone who had visited before. {%- endcomment -%}
             approved list w/ avatars + likes, post form with the verified-
             email gate, Hide/Show toggle. {% endcomment %}
         <div class="summary-card" id="bh-comments-card">
-          <div class="summary-card-title">Reader Comments</div>
+          <h2 class="summary-card-title">Reader Comments</h2>
           <button class="btn-secondary" id="comments-load-btn" onclick="bhToggleComments()" style="padding:8px 18px;font-size:var(--t-label);">Hide comments</button>
           <div id="comments-area" style="display:none;"></div>
         </div>
@@ -392,8 +392,11 @@ reach anyone who had visited before. {%- endcomment -%}
                 </a>
               {% endif %}
               <a href="{% if page.free_ebook.read_url %}{{ page.free_ebook.read_url }}{% else %}{{ page.free_ebook.page_url }}{% endif %}" target="_blank" rel="noopener" class="btn-secondary" style="padding:6px 12px;font-size:var(--t-label);">Read online</a>
-              {% if page.free_ebook.epub_url %}<a href="{{ page.free_ebook.epub_url }}" class="btn-secondary" style="padding:6px 12px;font-size:var(--t-label);">EPUB</a>{% endif %}
-              {% if page.free_ebook.txt_url %}<a href="{{ page.free_ebook.txt_url }}" class="btn-secondary" style="padding:6px 12px;font-size:var(--t-label);">TXT</a>{% endif %}
+              {% comment %} "Download" spelled out: the page links real EPUB/TXT
+                  files but the word appeared nowhere on it, so it matched no
+                  "download <book> free epub" query at all. {% endcomment %}
+              {% if page.free_ebook.epub_url %}<a href="{{ page.free_ebook.epub_url }}" class="btn-secondary" style="padding:6px 12px;font-size:var(--t-label);">Download EPUB</a>{% endif %}
+              {% if page.free_ebook.txt_url %}<a href="{{ page.free_ebook.txt_url }}" class="btn-secondary" style="padding:6px 12px;font-size:var(--t-label);">Download TXT</a>{% endif %}
             </div>
             <p style="font-size:var(--t-label);color:var(--fg-faint);margin:8px 0 0;">From <a href="{{ page.free_ebook.page_url }}" target="_blank" rel="noopener nofollow" style="color:inherit;">{% if page.free_ebook.source == "internet_archive" %}Internet Archive{% else %}Project Gutenberg{% endif %}</a></p>
           </div>
@@ -1142,10 +1145,10 @@ reach anyone who had visited before. {%- endcomment -%}
       const card = document.createElement('div');
       card.className = 'summary-card';
       card.innerHTML = `
-        <div class="summary-card-title">
+        <h2 class="summary-card-title">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
           More by ${esc(author)}
-        </div>
+        </h2>
         <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:14px;">
           ${works.map(w => {
             const url = `${SUMMARY}?q=${encodeURIComponent(w.title)}&author=${encodeURIComponent(w.author || '')}&direct=true`;

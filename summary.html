@@ -1093,10 +1093,10 @@ reach anyone who had visited before. {%- endcomment -%}
           </a>`;
         };
         similarHtml = `<div class="summary-card" id="bh-similar">
-            <div class="summary-card-title">
+            <h2 class="summary-card-title">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 3.5A2.5 2.5 0 0 1 6.5 6H20v12"/></svg>
               Similar Books
-            </div>
+            </h2>
             <div class="similar-marquee">
               <button class="similar-nav prev" onclick="similarNudge(-1)" aria-label="Scroll similar books left">‹</button>
               <div class="similar-track" style="animation-duration:${items.length * 2 * 3}s;">${items.map((b) => card(b, false)).join('') + items.map((b) => card(b, true)).join('')}</div>
@@ -1110,10 +1110,10 @@ reach anyone who had visited before. {%- endcomment -%}
       const wq = data.quotes;
       const quotesHtml = wq && wq.texts && wq.texts.length
         ? `<div class="summary-card" id="bh-quotes">
-            <div class="summary-card-title">
+            <h2 class="summary-card-title">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9.583 17.321C8.553 16.227 8 15 8 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 0 1-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z"/></svg>
               Notable Quotes
-            </div>
+            </h2>
             ${wq.texts.map((t, i) => {
               const sp = (wq.speakers || [])[i];
               return `<blockquote style="font-size:var(--t-body);font-style:italic;line-height:1.65;color:var(--fg);border-left:3px solid var(--accent);padding:4px 0 4px 14px;margin:0 0 12px;">"${escExt(t)}"${sp ? `<footer style="font-size:var(--t-label);font-style:normal;font-weight:600;color:var(--fg-faint);margin-top:4px;">— ${escExt(sp)}</footer>` : ''}</blockquote>`;
@@ -1157,10 +1157,10 @@ reach anyone who had visited before. {%- endcomment -%}
         window.__bhCharacters = data.characters;  // for the click handler
         charactersHtml = `
         <div class="summary-card" id="bh-characters">
-          <div class="summary-card-title">
+          <h2 class="summary-card-title">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             ${isSeries ? 'Series Characters' : 'Characters'}
-          </div>
+          </h2>
           ${isSeries ? `<p style="font-size:var(--t-label);color:var(--fg-faint);margin:-4px 0 12px;">From the series' wiki — some characters may appear only in later volumes.</p>` : ''}
           <div class="char-grid">
             ${data.characters.map((c, i) => `
@@ -1178,18 +1178,18 @@ reach anyone who had visited before. {%- endcomment -%}
       // Lazy: nothing is fetched until the reader opens the section.
       const commentsHtml = data.slug ? `
         <div class="summary-card" id="ratings-card" style="display:none;">
-          <div class="summary-card-title">
+          <h2 class="summary-card-title">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
             Reader Ratings
-          </div>
+          </h2>
           <div id="reader-ratings"></div>
         </div>
 
         <div class="summary-card" id="comments-card" data-book-slug="${escExt(data.canonical_id || data.slug)}">
-          <div class="summary-card-title">
+          <h2 class="summary-card-title">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
             Reader Comments
-          </div>
+          </h2>
           <button class="btn-secondary" id="comments-load-btn" onclick="toggleComments()" style="padding:8px 18px;font-size:var(--t-label);">Hide comments</button>
           <div id="comments-area" style="display:none;"></div>
         </div>` : '';
@@ -1199,10 +1199,10 @@ reach anyone who had visited before. {%- endcomment -%}
       // real catalog search (not free text).
       const readerRecsHtml = data.slug ? `
         <div class="summary-card" id="reader-recs-card" data-book-slug="${escExt(data.canonical_id || data.slug)}">
-          <div class="summary-card-title">
+          <h2 class="summary-card-title">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
             Readers recommend
-          </div>
+          </h2>
           <p style="font-size:var(--t-label);color:var(--fg-faint);margin-bottom:12px;">Books other readers say are similar — and why. Vetted before they appear.</p>
           <div id="reader-recs-list"><p style="font-size:var(--t-label);color:var(--fg-faint);">Loading…</p></div>
           <div id="reader-recs-form" style="margin-top:14px;"></div>
@@ -1215,10 +1215,10 @@ reach anyone who had visited before. {%- endcomment -%}
       const quizEligible = quizFromOriginal || (data.chapters && data.chapters.length);
       const quizHtml = quizEligible ? `
         <div class="summary-card" id="quiz-card">
-          <div class="summary-card-title">
+          <h2 class="summary-card-title">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
             Test Your Knowledge
-          </div>
+          </h2>
           <p style="font-size:var(--t-label);color:var(--fg-muted);margin-bottom:12px;">Multiple-choice questions with verified supporting quotes, grounded in ${quizFromOriginal ? "the book's original text" : "the story wiki's chapter summaries"}.</p>
           <button class="btn-primary" id="quiz-start-btn" onclick="startBookQuiz()" style="padding:8px 20px;font-size:var(--t-label);">Take a quiz</button>
           <div id="quiz-status" style="font-size:var(--t-label);color:var(--fg-faint);margin-top:8px;display:none;"></div>
@@ -1227,13 +1227,13 @@ reach anyone who had visited before. {%- endcomment -%}
 
       const chaptersHtml = data.chapters && data.chapters.length
         ? `<div class="summary-card" id="bh-chapters">
-            <div class="summary-card-title" style="display:flex;align-items:center;justify-content:space-between;">
+            <h2 class="summary-card-title" style="display:flex;align-items:center;justify-content:space-between;">
               <span style="display:flex;align-items:center;gap:8px;">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
                 Chapters
               </span>
               <span style="font-size:var(--t-label);font-weight:600;color:var(--accent);background:var(--bg-subtle);border:1px solid var(--border);border-radius:var(--r);padding:2px 10px;">${data.chapters.length} chapters</span>
-            </div>
+            </h2>
             <div style="position:relative;">
               <ul id="chapters-scroll-list" style="font-size:var(--t-label);color:var(--fg);line-height:1.9;list-style:none;padding-left:0;margin:0;max-height:320px;overflow-y:auto;padding-right:8px;scrollbar-width:thin;scrollbar-color:var(--accent) transparent;">
                 ${data.chapters.map((c, i) => {
@@ -1352,10 +1352,10 @@ reach anyone who had visited before. {%- endcomment -%}
           ${charactersHtml}
 
           <div class="summary-card" id="bh-summary">
-            <div class="summary-card-title" style="display:flex;align-items:center;gap:8px;">
+            <h2 class="summary-card-title" style="display:flex;align-items:center;gap:8px;">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
               AI Grounded Summary — Comprehensive Study Guide
-            </div>
+            </h2>
             <div class="ai-output">${sanitizeHtml(parseSummaryMarkdown(data.summary))}</div>
           </div>
 
@@ -1394,8 +1394,8 @@ reach anyone who had visited before. {%- endcomment -%}
             <div style="display:flex;flex-wrap:wrap;gap:6px;">
               ${data.free_ebook.source === 'project_gutenberg' && data.free_ebook.gutenberg_id ? `<a href="{{ '/reader/' | relative_url }}?id=${data.free_ebook.gutenberg_id}&title=${encodeURIComponent(data.title || '')}&author=${encodeURIComponent(data.author || '')}" class="btn-primary" style="padding:6px 12px;font-size:var(--t-label);"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="vertical-align:-2px;"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Read here</a>` : ''}
               <a href="${data.free_ebook.read_url || data.free_ebook.page_url}" target="_blank" rel="noopener" class="btn-secondary" style="padding:6px 12px;font-size:var(--t-label);">Read online</a>
-              ${data.free_ebook.epub_url ? `<a href="${data.free_ebook.epub_url}" class="btn-secondary" style="padding:6px 12px;font-size:var(--t-label);">EPUB</a>` : ''}
-              ${data.free_ebook.txt_url ? `<a href="${data.free_ebook.txt_url}" class="btn-secondary" style="padding:6px 12px;font-size:var(--t-label);">TXT</a>` : ''}
+              ${data.free_ebook.epub_url ? `<a href="${data.free_ebook.epub_url}" class="btn-secondary" style="padding:6px 12px;font-size:var(--t-label);">Download EPUB</a>` : ''}
+              ${data.free_ebook.txt_url ? `<a href="${data.free_ebook.txt_url}" class="btn-secondary" style="padding:6px 12px;font-size:var(--t-label);">Download TXT</a>` : ''}
             </div>
             <p style="font-size:var(--t-label);color:var(--fg-faint);margin:8px 0 0;">From <a href="${data.free_ebook.page_url}" target="_blank" rel="noopener nofollow" style="color:inherit;">${data.free_ebook.source === 'internet_archive' ? 'Internet Archive' : 'Project Gutenberg'}</a></p>
           </div>` : ''}
@@ -1595,11 +1595,11 @@ reach anyone who had visited before. {%- endcomment -%}
               shellShown = true;
               resultEl.innerHTML = `
                 <div class="summary-card">
-                  <div class="summary-card-title">
+                  <h2 class="summary-card-title">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
                     AI Grounded Summary — Comprehensive Study Guide
                     <span class="spinner" style="width:12px;height:12px;margin-left:8px;"></span>
-                  </div>
+                  </h2>
                   <div class="ai-output" id="stream-progress"></div>
                 </div>`;
               streamOut = document.getElementById("stream-progress");
@@ -1671,10 +1671,10 @@ reach anyone who had visited before. {%- endcomment -%}
       const card = document.createElement("div");
       card.className = "summary-card";
       card.innerHTML = `
-        <div class="summary-card-title">
+        <h2 class="summary-card-title">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
           More by ${escExt(data.author)}
-        </div>
+        </h2>
         <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:14px;">
           ${works.map(w => {
             const te = w.title.replace(/'/g, "\\'").replace(/"/g, "&quot;");

@@ -4,14 +4,38 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>{% if page.title %}{{ page.title }} — {{ site.title }}{% else %}{{ site.title }} — {{ site.tagline }}{% endif %}</title>
-  <meta name="description" content="{% if page.description %}{{ page.description }}{% elsif page.excerpt %}{{ page.excerpt | strip_html | truncate: 155 }}{% else %}{{ site.description }}{% endif %}">
+  {%- comment -%} Book pages get their own title/description shape. Both used
+  to fall through to the generic branch below, which produced:
+    <title>Moby Dick — Litheca</title>          ← no author, no "summary"
+    <meta description="1. Core Premise & Overview Herman Melville's Moby…">
+  The description is a raw truncation of the summary body written by
+  github_publisher, so the section number leaked straight into the search
+  snippet. Composing both here rather than in the front matter means every
+  already-published page is fixed by the next build — no republish, no
+  content_version bump. {%- endcomment -%}
+  {%- assign is_book = false -%}
+  {%- if page.layout == "book" and page.author and page.author != "" -%}
+    {%- assign is_book = true -%}
+  {%- endif -%}
+  {%- if is_book -%}
+    {%- comment -%} Kept short on purpose: "<title> — Litheca" ran to 68 chars
+    on Moby Dick and would exceed 90 on the longer titles in the catalogue,
+    well past where Google truncates. The brand suffix is the first thing to
+    go on these pages — the book and author are what people search. {%- endcomment -%}
+    {%- capture book_title -%}{{ page.title }} by {{ page.author }} — {% if page.free_ebook and page.free_ebook.page_url %}Summary &amp; Free Read{% else %}Summary &amp; Key Ideas{% endif %}{%- endcapture -%}
+    {%- capture book_desc -%}Full summary of {{ page.title }} by {{ page.author }} — key ideas, themes{% if page.characters and page.characters.size > 0 %}, characters{% endif %}{% if page.quotes and page.quotes.texts %} and quotes verified against the original text{% endif %}.{% if page.free_ebook and page.free_ebook.page_url %} Public domain: read or download it free.{% endif %}{%- endcapture -%}
+  {%- endif -%}
+
+  <title>{% if is_book %}{{ book_title }}{% elsif page.title %}{{ page.title }} — {{ site.title }}{% else %}{{ site.title }} — {{ site.tagline }}{% endif %}</title>
+  <meta name="description" content="{% if is_book %}{{ book_desc }}{% elsif page.description %}{{ page.description }}{% elsif page.excerpt %}{{ page.excerpt | strip_html | truncate: 155 }}{% else %}{{ site.description }}{% endif %}">
 
   <!-- Open Graph -->
   <meta property="og:type"        content="website">
   <meta property="og:url"         content="{{ page.url | absolute_url }}">
-  <meta property="og:title"       content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
-  <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+  {%- comment -%} Same fix for the share card: og:description carried the
+  "1. Core Premise & Overview" leak into every Reddit/WhatsApp preview. {%- endcomment -%}
+  <meta property="og:title"       content="{% if is_book %}{{ page.title }} by {{ page.author }}{% elsif page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+  <meta property="og:description" content="{% if is_book %}{{ book_desc }}{% elsif page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
   {% assign og_img = page.cover_url | default: page.photo_url %}
   {% if og_img and og_img != "" %}
   <meta property="og:image"  content="{{ og_img }}">
