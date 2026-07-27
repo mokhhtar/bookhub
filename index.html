@@ -139,7 +139,11 @@ description: "Free AI book guides that stay grounded: deep summaries, characters
      a small plate. The NYT rail stays a rail because a weekly ranking
      is the one thing on this page a rail actually suits.
 ═══════════════════════════════════════ -->
-{% assign recent_books = site.books | sort: 'date' | reverse | limit: 8 %}
+{%- comment -%} `limit` is a parameter of the `for` tag, NOT a filter. It was
+written as `| limit: 8` here, Liquid silently ignored the unknown filter, and
+this section rendered EVERY book page — 69 rows, ~6000px of scroll, once the
+catalogue grew. The cap has to live on the loop below. {%- endcomment -%}
+{% assign recent_books = site.books | sort: 'date' | reverse %}
 {% if recent_books.size > 0 %}
   <section class="tools-section" id="recent-section" aria-labelledby="recent-heading">
     <div class="container">
@@ -150,7 +154,7 @@ description: "Free AI book guides that stay grounded: deep summaries, characters
         </div>
       </div>
       <div class="index-list">
-        {% for b in recent_books %}
+        {% for b in recent_books limit: 6 %}
           {%- comment -%} No 01/02/03 markers here: impeccable flags numbered
           display markers as the editorial scaffold one tier deeper than
           tracked eyebrow chips. The rule and the cover do the separating.
@@ -381,6 +385,65 @@ description: "Free AI book guides that stay grounded: deep summaries, characters
 </section>
 
 <!-- ═══════════════════════════════════════
+     DAILY GAME
+     Server-rendered, no API call: the game is static JSON in this repo, so
+     the homepage can state what it is without waiting on anything. The date
+     line is filled client-side because "today" is the visitor's local day,
+     which is also how the game itself picks its puzzle.
+═══════════════════════════════════════ -->
+<section class="tools-section" id="game-section" aria-labelledby="game-heading"
+         style="padding:clamp(48px,6vw,72px) 0 0;">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <h2 id="game-heading" class="section-title">Guess the Book</h2>
+        <p class="section-sub">One puzzle a day, the same for everyone. No account, no spoilers.</p>
+      </div>
+    </div>
+    <div style="display:flex;align-items:flex-start;gap:clamp(20px,4vw,44px);flex-wrap:wrap;
+                margin-top:20px;padding-top:22px;border-top:1px solid var(--rule);">
+      <p style="flex:1 1 320px;min-width:0;margin:0;color:var(--fg-muted);line-height:1.6;">
+        Six clues, six guesses. Two lines from the book itself, then the year, the
+        author's initials, a character and the story — while the cover slowly
+        sharpens. Every quote is checked word for word against the original text
+        before a puzzle is published.
+      </p>
+      <div style="display:flex;flex-direction:column;gap:10px;flex:0 0 auto;">
+        <a href="{{ '/games/guess-the-book/' | relative_url }}" class="hero-search-btn"
+           style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;min-height:44px;">
+          Play today's puzzle
+        </a>
+        <span id="game-note" style="font-family:var(--font-ui);font-size:var(--t-label);color:var(--fg-faint);"></span>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  // Says "opens 1 August" before the bank starts and the puzzle number after,
+  // using the visitor's LOCAL date — the same day boundary the game uses.
+  (function () {
+    const note = document.getElementById("game-note");
+    if (!note) return;
+    fetch("{{ '/games/data/guess-the-book/manifest.json' | relative_url }}", { cache: "no-cache" })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((m) => {
+        if (!m || !m.epoch) return;
+        const p = (n) => String(n).padStart(2, "0");
+        const now = new Date();
+        const today = now.getFullYear() + "-" + p(now.getMonth() + 1) + "-" + p(now.getDate());
+        if (today < m.epoch) {
+          const opens = new Date(m.epoch + "T00:00:00");
+          note.textContent = "Opens " + opens.toLocaleDateString("en-US", { month: "long", day: "numeric" });
+        } else if (m.latest_date && today <= m.latest_date) {
+          const n = Math.round((new Date(today) - new Date(m.epoch)) / 86400000) + 1;
+          note.textContent = "Today's puzzle · No. " + n;
+        }
+      })
+      .catch(() => {});
+  })();
+</script>
+
+<!-- ═══════════════════════════════════════
      CATEGORIES
 ═══════════════════════════════════════ -->
 <section class="categories-strip" aria-labelledby="categories-heading" style="padding:clamp(48px,6vw,72px) 0 0;">
@@ -519,7 +582,13 @@ function fillSearch(title) {
     .then((r) => { if (!r.ok) throw new Error("daily " + r.status); return r.json(); })
     .then((d) => {
       clearTimeout(timer);
-      try { sessionStorage.setItem(todayKey, JSON.stringify(d)); } catch (e) {}
+      // Only memoize a COMPLETE payload. A partial one (the API rebuilds
+      // failed sections on the next request) would otherwise be pinned in
+      // this browser for the whole session, so a visitor who arrived during
+      // a blip keeps seeing the missing cards after the server has recovered.
+      if (d && d.book && d.author && d.quote) {
+        try { sessionStorage.setItem(todayKey, JSON.stringify(d)); } catch (e) {}
+      }
       render(d);
     })
     .catch(() => { clearTimeout(timer); section.style.display = "none"; });
