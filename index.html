@@ -526,8 +526,19 @@ function fillSearch(title) {
       document.getElementById("statement-quote-text").textContent = "“" + d.quote.text + "”";
       const src = document.getElementById("statement-quote-source");
       if (d.quote.book) {
-        src.innerHTML = '<a href="' + esc(bookLink(d.quote.book)) + '">' + esc(d.quote.book.title) + "</a>" +
+        // book_url is a page we actually publish — prefer it over the dynamic
+        // summarizer link, which would wake a sleeping Render instance.
+        const href = d.quote.book_url || bookLink(d.quote.book);
+        let html = '<a href="' + esc(href) + '">' + esc(d.quote.book.title) + "</a>" +
           (d.quote.book.author ? ", " + esc(d.quote.book.author) : "");
+        // Wikiquote is CC BY-SA; the link IS the attribution, worded the same
+        // way the book pages word it.
+        if (d.quote.source_url) {
+          html += ' <span style="opacity:.75">· via <a href="' + esc(d.quote.source_url) +
+            '" target="_blank" rel="noopener nofollow">Wikiquote</a> (' +
+            esc(d.quote.license || "CC BY-SA") + ")</span>";
+        }
+        src.innerHTML = html;
       } else {
         src.textContent = "";
       }
@@ -541,7 +552,7 @@ function fillSearch(title) {
         <div class="daily-card-body">
           ${d.book.cover_url ? `<img class="daily-cover" src="${esc(d.book.cover_url)}" alt="Cover of ${esc(d.book.title)}" loading="lazy">` : ""}
           <div>
-            <h3><a href="${bookLink(d.book)}">${esc(d.book.title)}</a></h3>
+            <h3><a href="${esc(d.book.book_url || bookLink(d.book))}">${esc(d.book.title)}</a></h3>
             <p class="daily-meta">${esc(d.book.author)}</p>
             ${d.book.event ? `<p style="margin-top:10px;"><strong>On this day${d.book.event.year ? " in " + esc(d.book.event.year) : ""}:</strong> ${esc(d.book.event.text)}</p>` : ""}
             ${d.book.connection ? `<p style="margin-top:8px;">${esc(d.book.connection)}</p>` : ""}
