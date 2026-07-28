@@ -188,7 +188,13 @@ sitemap: false
      boots straight from a direct link, and a mid-script declaration is exactly
      what caused the site's "Cannot access X before initialization" bug. */
   const GTB_DATA = "{{ '/games/data/guess-the-book' | relative_url }}";
-  const GTB_SHARE_URL = "{{ '/games/guess-the-book/' | absolute_url }}";
+  /* The card's whole job is to bring people back, and until now its link was
+     bare — an arrival from a shared result was indistinguishable from someone
+     typing the address. The growth engine was unmeasurable.
+     `utm_source` alone is a valid campaign source to GA4, so it needs no
+     extra tracking code, and it is short enough not to make a pasted card
+     look like spam. */
+  const GTB_SHARE_URL = "{{ '/games/guess-the-book/' | absolute_url }}?utm_source=share";
   const GTB_MAX_GUESSES = 6;
   const GTB_SCHEMA = 1;
   /* Extends the site's existing bh_* localStorage convention rather than
