@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "n": 46,
+ "date": "2026-09-15",
+ "answer_hash": "d1b3292aea199f1bf5d4805706ee4732573e26666674f28ce990caa660d8a1fe",
+ "author_hash": "748b9935d98bb61e571392a330231197c17f8ba9ef6b39facbb3e577bac1e6b8",
+ "clues": [
+  {
+   "i": 0,
+   "type": "quote",
+   "text": "I declined joining their breakfast, and, at the first gleam of dawn, took an opportunity of escaping into the free air, now clear, and still, and cold as impalpable ice.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 768,
+    "chunk": 18
+   }
+  },
+  {
+   "i": 1,
+   "type": "quote",
+   "text": "I surveyed the weapon inquisitively. A hideous notion struck me: how powerful I should be possessing such an instrument! I took it from his hand, and touched the blade.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 768,
+    "chunk": 91
+   }
+  },
+  {
+   "i": 2,
+   "type": "fact",
+   "label": "First published",
+   "text": "1847 · originally in English",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 3,
+   "type": "fact",
+   "label": "Author",
+   "text": "E. B. — English, 1818–1848",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 4,
+   "type": "fact",
+   "label": "A character",
+   "text": "One of them is called Heathcliff.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 768
+   }
+  },
+  {
+   "i": 5,
+   "type": "fact",
+   "label": "The story",
+   "text": "Two households on the Yorkshire moors, ruined across two generations.",
+   "source": {
+    "kind": "curated"
+   }
+  }
+ ],
+ "cover": {
+  "levels": [
+   "/assets/games/gtb/p0046/b0.webp",
+   "/assets/games/gtb/p0046/b1.webp",
+   "/assets/games/gtb/p0046/b2.webp",
+   "/assets/games/gtb/p0046/b3.webp",
+   "/assets/games/gtb/p0046/b4.webp"
+  ],
+  "credit": "Project Gutenberg #768 (public domain)"
+ },
+ "reveal_enc": "KS3wMzEu27dXK+KQaWO4PvrH4cKtueY/ZoTUWqrHRoEWcvq3InmOvtQiusZL/rp/ZjklbjioOsRrG3pTjLQO8n3+CCHcwjw87FQwWPNqL6Ou0BdK4dL3dpyHBchhbh1XO72nYIbiC/6B+JHVDORLVsmruzJBsZ4HYpRe3GAqXmd9m5Xs7pahPq9SVcOocTP7LC6RHSXlWdccAJ4uWSPLN1Q1o1OhroRen3+7Ek19PCMDWfZv2LKYwEIjHoOZywtbfgOxbXp/2GhcKUSCwZiN3MlsYlm8gD0RdAfhUSQ4EMti9IRiLNyU6gQ6ts4iQZglDAU/5rFplvg2hmkyag+TWz8eiKiRMPP5VA=="
+}

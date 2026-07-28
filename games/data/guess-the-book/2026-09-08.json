@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "n": 39,
+ "date": "2026-09-08",
+ "answer_hash": "c02baf0ca11a346504aadfb654a7d50a922dc3e505dc458075dfb5484514cdd6",
+ "author_hash": "4cf773607a89eec78a5017ddf36a9c17da5813c4f2ef1cb0de54c576956c64dd",
+ "clues": [
+  {
+   "i": 0,
+   "type": "quote",
+   "text": "It often seemed to her that she thought too much about herself; you could have made her colour, any day in the year, by calling her a rank egoist.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 2833,
+    "chunk": 48
+   }
+  },
+  {
+   "i": 1,
+   "type": "quote",
+   "text": "I shouldn’t be an easy victim--I’ve proved it.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 2833,
+    "chunk": 122
+   }
+  },
+  {
+   "i": 2,
+   "type": "fact",
+   "label": "First published",
+   "text": "1881 · originally in English",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 3,
+   "type": "fact",
+   "label": "Author",
+   "text": "H. J. — American, 1843–1916",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 4,
+   "type": "fact",
+   "label": "A character",
+   "text": "One of them is called Isabel Archer.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 2833
+   }
+  },
+  {
+   "i": 5,
+   "type": "fact",
+   "label": "The story",
+   "text": "A young American heiress in Europe chooses badly among her suitors.",
+   "source": {
+    "kind": "curated"
+   }
+  }
+ ],
+ "cover": {
+  "levels": [
+   "/assets/games/gtb/p0039/b0.webp",
+   "/assets/games/gtb/p0039/b1.webp",
+   "/assets/games/gtb/p0039/b2.webp",
+   "/assets/games/gtb/p0039/b3.webp",
+   "/assets/games/gtb/p0039/b4.webp"
+  ],
+  "credit": "Project Gutenberg #2833 (public domain)"
+ },
+ "reveal_enc": "R9dgQfqK7p9caC25jzYF8RcqgQNMfrkTgE4JU/30APxJ1822rZPfZ++zIIB2SCOhj5HOYB5U4CHdrMCYJLNHw28s7odmVkbG+mXWsrPKKsho4a+oNd3vh93maRs04wJ5NW//VKqq/Ifb6dxuDLwW09i7EYxA4NQmLB8jJPyxJgh4cBdMSMybvI5kYO73ghCY3v0wBMVDelyNkl5GB+SIK/u/QCsTbz6WPqWLSWjbl5AXqDaZ0CCzJdQXGAeKRyAMU+A9rjDOmWDmZxAEGrHio+mtE6gK5lq3Cx7SC/YnRr+0PuZL/uv5WxEdrHGbkKb0by2fvEu9YuWX0CXvymZzCLUmt4mWZPAtgzVKkZn0UvI2sFDom+THkw=="
+}

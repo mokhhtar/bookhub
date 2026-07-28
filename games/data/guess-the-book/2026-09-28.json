@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "n": 59,
+ "date": "2026-09-28",
+ "answer_hash": "0655a2a0c351320d1b724e8d9149d93d93196b1a3c237df26d280f620bf7dcac",
+ "author_hash": "040a39b4039801954321255d70425e9d82fb8676bc78ae9e7777bff3837181cd",
+ "clues": [
+  {
+   "i": 0,
+   "type": "quote",
+   "text": "An indescribable succession of dull blows, perplexing in their regularity, sent their sound with difficulty through the fluffy atmosphere.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 107,
+    "chunk": 56
+   }
+  },
+  {
+   "i": 1,
+   "type": "quote",
+   "text": "The step echoed with a ring unusual in a church; it was the clink of spurs.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 107,
+    "chunk": 73
+   }
+  },
+  {
+   "i": 2,
+   "type": "fact",
+   "label": "First published",
+   "text": "1874 · originally in English",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 3,
+   "type": "fact",
+   "label": "Author",
+   "text": "T. H. — English, 1840–1928",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 4,
+   "type": "fact",
+   "label": "A character",
+   "text": "One of them is called Gabriel Oak.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 107
+   }
+  },
+  {
+   "i": 5,
+   "type": "fact",
+   "label": "The story",
+   "text": "A woman inherits a farm and is courted by a shepherd, a soldier and a landowner.",
+   "source": {
+    "kind": "curated"
+   }
+  }
+ ],
+ "cover": {
+  "levels": [
+   "/assets/games/gtb/p0059/b0.webp",
+   "/assets/games/gtb/p0059/b1.webp",
+   "/assets/games/gtb/p0059/b2.webp",
+   "/assets/games/gtb/p0059/b3.webp",
+   "/assets/games/gtb/p0059/b4.webp"
+  ],
+  "credit": "Project Gutenberg #107 (public domain)"
+ },
+ "reveal_enc": "uUPnC+Ba0vbProD2m6A/kYRFdd4171QJ6lRkDN8Sp5PN1xGk1KrCe6PHm7V54qHHe3TbvEdUbUnZQfsLMaryJFXgq4JBm+Tyk1YRb7yaypaRqdy3wQr/i3TL+OIYxOroU1PUWwLf5alRXwEdtdl8MMJaqy0gNNIdr3YHHWjvn9Akwne9RfJxSfWbfzT83hHAphOYlr8rofxDh2R2j0mZ/9aJjG48vZ4kIm6x6ADQOCTdQnS226AiYfLmjLXB33urgxZRfiFkgRKWPC/H72kgqwL/CVi0OywPXD5ELz2EWHbu6IwXVv/Gu4f2rpBLN8IUWqkXKtiR5hMpKuOaUzkVLuEVEEw8AOEG0d4ZDvZk+NQnuJ2/7saarGsGr8jYGjfDVek7"
+}

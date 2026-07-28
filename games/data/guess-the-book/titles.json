@@ -195,6 +195,11 @@
 "author": "Samuel Taylor Coleridge"
 },
 {
+"id": "black-beauty-anna-sewell",
+"title": "Black Beauty",
+"author": "Anna Sewell"
+},
+{
 "id": "blow-the-man-down-holman-day",
 "title": "Blow The Man Down",
 "author": "Holman Day"
@@ -223,6 +228,11 @@
 "id": "camille-la-dame-aux-camilias-alexandre-dumas",
 "title": "Camille (La Dame aux Camilias)",
 "author": "Alexandre Dumas"
+},
+{
+"id": "candide-voltaire",
+"title": "Candide",
+"author": "Voltaire"
 },
 {
 "id": "carmen-prosper-merimee",
@@ -355,6 +365,11 @@
 "author": "Lyndon Orr"
 },
 {
+"id": "far-from-the-madding-crowd-thomas-hardy",
+"title": "Far from the Madding Crowd",
+"author": "Thomas Hardy"
+},
+{
 "id": "fifteen-thousand-useful-phrases-grenville-kleiser",
 "title": "Fifteen Thousand Useful Phrases",
 "author": "Grenville Kleiser"
@@ -463,6 +478,11 @@
 "id": "india-s-love-lyrics-laurence-hope",
 "title": "India's Love Lyrics",
 "author": "Laurence Hope"
+},
+{
+"id": "ivanhoe-walter-scott",
+"title": "Ivanhoe",
+"author": "Walter Scott"
 },
 {
 "id": "jane-eyre-charlotte-bronte",
@@ -640,6 +660,11 @@
 "author": "Sophocles"
 },
 {
+"id": "oliver-twist-charles-dickens",
+"title": "Oliver Twist",
+"author": "Charles Dickens"
+},
+{
 "id": "on-the-cross-wilhelmine-von-hillern",
 "title": "On the Cross",
 "author": "Wilhelmine von Hillern"
@@ -778,6 +803,11 @@
 "id": "she-who-sleeps-sax-rohmer",
 "title": "She who sleeps",
 "author": "Sax Rohmer"
+},
+{
+"id": "silas-marner-george-eliot",
+"title": "Silas Marner",
+"author": "George Eliot"
 },
 {
 "id": "society-as-i-have-found-it-ward-mcallister",
@@ -928,6 +958,11 @@
 "id": "the-boy-with-wings-berta-ruck",
 "title": "The Boy with Wings",
 "author": "Berta Ruck"
+},
+{
+"id": "the-brothers-karamazov-fyodor-dostoevsky",
+"title": "The Brothers Karamazov",
+"author": "Fyodor Dostoevsky"
 },
 {
 "id": "the-brothers-karamazov-fyodor-dostoyevsky",
@@ -1205,6 +1240,11 @@
 "author": "Holman Day"
 },
 {
+"id": "the-last-of-the-mohicans-james-fenimore-cooper",
+"title": "The Last of the Mohicans",
+"author": "James Fenimore Cooper"
+},
+{
 "id": "the-legend-of-sleepy-hollow-washington-irving",
 "title": "The Legend of Sleepy Hollow",
 "author": "Washington Irving"
@@ -1390,6 +1430,11 @@
 "author": "Agatha Christie"
 },
 {
+"id": "the-portrait-of-a-lady-henry-james",
+"title": "The Portrait of a Lady",
+"author": "Henry James"
+},
+{
 "id": "the-prairie-wife-arthur-stringer",
 "title": "The Prairie Wife",
 "author": "Arthur Stringer"
@@ -1418,6 +1463,11 @@
 "id": "the-real-adventure-henry-kitchell-webster",
 "title": "The Real Adventure",
 "author": "Henry Kitchell Webster"
+},
+{
+"id": "the-red-badge-of-courage-stephen-crane",
+"title": "The Red Badge of Courage",
+"author": "Stephen Crane"
 },
 {
 "id": "the-red-house-mystery-a-a-milne",
@@ -1590,6 +1640,11 @@
 "author": "Charles Dalton"
 },
 {
+"id": "the-wind-in-the-willows-kenneth-grahame",
+"title": "The Wind in the Willows",
+"author": "Kenneth Grahame"
+},
+{
 "id": "the-wisdom-of-father-brown-g-k-chesterton",
 "title": "The wisdom of Father Brown",
 "author": "G. K. Chesterton"
@@ -1623,6 +1678,11 @@
 "id": "the-zeppelin-s-passenger-e-phillips-oppenheim",
 "title": "The Zeppelin's Passenger",
 "author": "E. Phillips Oppenheim"
+},
+{
+"id": "through-the-looking-glass-lewis-carroll",
+"title": "Through the Looking-Glass",
+"author": "Lewis Carroll"
 },
 {
 "id": "thus-spake-zarathustra-friedrich-wilhelm-nietzsche",
@@ -1700,6 +1760,11 @@
 "author": "Dorothy L. Sayers"
 },
 {
+"id": "vanity-fair-william-makepeace-thackeray",
+"title": "Vanity Fair",
+"author": "William Makepeace Thackeray"
+},
+{
 "id": "walden-and-on-the-duty-of-civil-disobedience-henry-david-thoreau",
 "title": "Walden, and On The Duty Of Civil Disobedience",
 "author": "Henry David Thoreau"
@@ -1708,6 +1773,11 @@
 "id": "wanderfoot-the-dream-ship-cynthia-stockley",
 "title": "Wanderfoot (The Dream Ship)",
 "author": "Cynthia Stockley"
+},
+{
+"id": "war-and-peace-leo-tolstoy",
+"title": "War and Peace",
+"author": "Leo Tolstoy"
 },
 {
 "id": "war-and-peace-leo",

@@ -1,0 +1,79 @@
+{
+ "v": 1,
+ "n": 48,
+ "date": "2026-09-17",
+ "answer_hash": "4bb4e80bcba88a304d937fedcc600300964e5870ff8834db0cbb76cdbd376fee",
+ "author_hash": "fefd8bedf52893fc77af370b4d4150529a3bfc544f0ff864696d1948d5829fd9",
+ "clues": [
+  {
+   "i": 0,
+   "type": "quote",
+   "text": "The food was steaming, and filled the room with its smell.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 5200,
+    "chunk": 31
+   },
+   "note": "trans. David Wyllie"
+  },
+  {
+   "i": 1,
+   "type": "quote",
+   "text": "He held back the urge to move but swayed from side to side as he crouched there on the floor.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 5200,
+    "chunk": 11
+   },
+   "note": "trans. David Wyllie"
+  },
+  {
+   "i": 2,
+   "type": "fact",
+   "label": "First published",
+   "text": "1915 · originally in German",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 3,
+   "type": "fact",
+   "label": "Author",
+   "text": "F. K. — Austrian-Czech, 1883–1924",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 4,
+   "type": "fact",
+   "label": "A character",
+   "text": "One of them is called Gregor Samsa.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 5200
+   }
+  },
+  {
+   "i": 5,
+   "type": "fact",
+   "label": "The story",
+   "text": "A travelling salesman wakes transformed into an insect in his own bedroom.",
+   "source": {
+    "kind": "curated"
+   }
+  }
+ ],
+ "cover": {
+  "levels": [
+   "/assets/games/gtb/p0048/b0.webp",
+   "/assets/games/gtb/p0048/b1.webp",
+   "/assets/games/gtb/p0048/b2.webp",
+   "/assets/games/gtb/p0048/b3.webp",
+   "/assets/games/gtb/p0048/b4.webp"
+  ],
+  "credit": "Project Gutenberg #5200 (public domain)"
+ },
+ "reveal_enc": "e4VqU3Cy0emfnSDWquPkkW9zdsx52+ZisdUCtmkVRcn+w+PmofwxgIMMTxNNyz1jQ32nJCOc1Kr65ixx1Lrj5kMeptL3OzYhIqwtgBv6Ya2RSknSark9ktGNUDOyxwIWKjaRDK610nox/PsyA0KhRWD8sOnJme1MRV8K4TCZQFOJBKQVqJC265LRL53qk03CbnqMkPr9hET4690DOkSYrhgfH1lfExlJjK5LBsnE3NQodthpvG1V4MMY96hqN0kr5n85w/4WdZZyvvRa889ovqtaJhAHM8MBmEb3j/ptSz5Bw4Rb7a2bZl083ZFJPnvzWphWOnGHACCPmaj4yQigEr7GsRKwOsBfQd44uI2boQNJ6tMUyqbQ/kTTz+Z7"
+}

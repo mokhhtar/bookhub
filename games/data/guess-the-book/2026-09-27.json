@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "n": 58,
+ "date": "2026-09-27",
+ "answer_hash": "d8d0c690becb690ccaa84ff7bf6f8cd697327c51446fda7c05accd6b9bade1a6",
+ "author_hash": "e461096570cfbe75a5c0be687c4524fce24bf968a4285a3354066b79de047b1a",
+ "clues": [
+  {
+   "i": 0,
+   "type": "quote",
+   "text": "The table was laid with two bowls and two horn spoons, but the same single measure of small beer.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 421,
+    "chunk": 12
+   }
+  },
+  {
+   "i": 1,
+   "type": "quote",
+   "text": "It made my heart bleed; but the men had a great respect for the chief mate, who was, as they said, “the only seaman of the whole jing-bang, and none such a bad man when he was sober.”",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 421,
+    "chunk": 31
+   }
+  },
+  {
+   "i": 2,
+   "type": "fact",
+   "label": "First published",
+   "text": "1886 · originally in English",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 3,
+   "type": "fact",
+   "label": "Author",
+   "text": "R. L. S. — Scottish, 1850–1894",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 4,
+   "type": "fact",
+   "label": "A character",
+   "text": "One of them is called Alan Breck.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 421
+   }
+  },
+  {
+   "i": 5,
+   "type": "fact",
+   "label": "The story",
+   "text": "A boy is sold to a ship's captain and flees across the Highlands.",
+   "source": {
+    "kind": "curated"
+   }
+  }
+ ],
+ "cover": {
+  "levels": [
+   "/assets/games/gtb/p0058/b0.webp",
+   "/assets/games/gtb/p0058/b1.webp",
+   "/assets/games/gtb/p0058/b2.webp",
+   "/assets/games/gtb/p0058/b3.webp",
+   "/assets/games/gtb/p0058/b4.webp"
+  ],
+  "credit": "Project Gutenberg #421 (public domain)"
+ },
+ "reveal_enc": "q2ti7dE1z1vAvPnF2gJ/L7v51TApFnqYKNaQx9i5jvXA09fMxUIJ/PpvCik8uBdO/xfb4Ij+j5JHmKIUwt36fI2ef6cfQ3dd2vlCeZoFyxgcWWrEmIVAfCT1EjjZFmiOpGRMZSl6StACBH1+LIyeOdaCct5vOS3EtApy6k7aQCXyUvYxZIt2qA3jt8D919a/L1lRPP64tc7Kcnsv0OqBADsFIjGsR6fN9uUZ0TXp+sOVAe4P0yMFBFOzTRkz1TU7hAzk7W90WWR2mRvuKrcyUHpR+1OcVLOB/91iVSzjAXbrmKC7FeqWMKzndl1H4miDZBfU1RobsOvoPodB0LW9fG5Zz2o="
+}

@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "n": 36,
+ "date": "2026-09-05",
+ "answer_hash": "57a90c7daded9da6138b7f126c8bbcec1e3cd5a6becb262d52b765cc68e58565",
+ "author_hash": "749ba623a5b47d0e5d225efd8077d25d58311db1e3e8594239741c363201cb96",
+ "clues": [
+  {
+   "i": 0,
+   "type": "quote",
+   "text": "He would open it and look at it as if he were reading, but would remain for a whole hour without turning the leaf, and then put it down and walk to and fro in the room.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 766,
+    "chunk": 97
+   }
+  },
+  {
+   "i": 1,
+   "type": "quote",
+   "text": "And I sat there so many hours, that the shade became sunlight, and the sunlight became shade again, and still I sat there waiting for the money.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 766,
+    "chunk": 140
+   }
+  },
+  {
+   "i": 2,
+   "type": "fact",
+   "label": "First published",
+   "text": "1850 · originally in English",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 3,
+   "type": "fact",
+   "label": "Author",
+   "text": "C. D. — English, 1812–1870",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 4,
+   "type": "fact",
+   "label": "A character",
+   "text": "One of them is called Mr. Micawber.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 766
+   }
+  },
+  {
+   "i": 5,
+   "type": "fact",
+   "label": "The story",
+   "text": "A boy's life told from birth, through a cruel stepfather and a Yarmouth boathouse.",
+   "source": {
+    "kind": "curated"
+   }
+  }
+ ],
+ "cover": {
+  "levels": [
+   "/assets/games/gtb/p0036/b0.webp",
+   "/assets/games/gtb/p0036/b1.webp",
+   "/assets/games/gtb/p0036/b2.webp",
+   "/assets/games/gtb/p0036/b3.webp",
+   "/assets/games/gtb/p0036/b4.webp"
+  ],
+  "credit": "Project Gutenberg #766 (public domain)"
+ },
+ "reveal_enc": "c/RkfKp5YM/rVozEC9okzZiV1WfpVTTq4fWTwIB44Pb+YIC7KXkmQiseUWGuVJPDo4Heerm8WdPHyaNoVVRDh06FwnOI+zwawJfVmbc/w9mz70u8X8+n7vSkAij7Bf+pi6z3oqSZzP45npeAeL0ghiKhUmA5Q0vPWMrzMEfiqnL7hojFgLWjttceh68kW98tvltkg9UL+bn7q8W777cz9F9xdHvrz1FY3EjhcboydnC3KRFL0Y51hXrxg1ZVve9zBVcq4x2O93zmmHyJLG/uDi9lUbCCi3TuQ213TChZhQ+3g6TzUaYqAzxdBu/QJAW7du1u0Nio4foCa6fICD4bxKKjkKcYfgX9JA5FY0SG"
+}

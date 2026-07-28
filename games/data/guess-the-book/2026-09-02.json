@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "n": 33,
+ "date": "2026-09-02",
+ "answer_hash": "c8a2c2b3297c10e7f32cc77bb5892c4c27712ee70179d07765568918dea6879a",
+ "author_hash": "5d51bbdb8249e93ec11c698e46aabc096b9f6236a6f0fc67fd288fabb0b80fe5",
+ "clues": [
+  {
+   "i": 0,
+   "type": "quote",
+   "text": "I am deeper in death at this moment than if the weight of an earthly grave lay heavy upon me!",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 345,
+    "chunk": 251
+   }
+  },
+  {
+   "i": 1,
+   "type": "quote",
+   "text": "The mist grew thicker and thicker and I could see now how it came in, for I could see it like smoke--or with the white energy of boiling water--pouring in, not through the window, but through the joinings of the door.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 345,
+    "chunk": 194
+   }
+  },
+  {
+   "i": 2,
+   "type": "fact",
+   "label": "First published",
+   "text": "1897 · originally in English",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 3,
+   "type": "fact",
+   "label": "Author",
+   "text": "B. S. — Irish, 1847–1912",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 4,
+   "type": "fact",
+   "label": "A character",
+   "text": "One of them is called Jonathan Harker.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 345
+   }
+  },
+  {
+   "i": 5,
+   "type": "fact",
+   "label": "The story",
+   "text": "A journey from a castle in Transylvania to the English coast at Whitby.",
+   "source": {
+    "kind": "curated"
+   }
+  }
+ ],
+ "cover": {
+  "levels": [
+   "/assets/games/gtb/p0033/b0.webp",
+   "/assets/games/gtb/p0033/b1.webp",
+   "/assets/games/gtb/p0033/b2.webp",
+   "/assets/games/gtb/p0033/b3.webp",
+   "/assets/games/gtb/p0033/b4.webp"
+  ],
+  "credit": "Project Gutenberg #345 (public domain)"
+ },
+ "reveal_enc": "aWRG6C4M7YsAYgzaLLRmTWEkzvCKfSvpGONPvK86AflXD/HccLqeiwOzGybln1HyWniEQ7oSY50f6qflLEdv8SL1KWrK3ZosF5fgC4ZUI6+nZXV7hyIZIIZANUgwthGIs+I/kzv/GToKz0hbhwtOAm/FEw8sCHy33WF6ZgURXIkke+sY6+7Qp3tF5TLsKZ/G02Z3dFkGx4YUqL39QWDk2byHSlhqOyakSOQh3wvg5ulmJzSmNJVEDebjnb0Mw+yN3470iBROAbab/x8D1Y2sMRwdadMdATUW/AUsYec7jBGwEqjkjdHQUw=="
+}

@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "n": 44,
+ "date": "2026-09-13",
+ "answer_hash": "b74e37c7c28a9aa14fe6f96be43bd8c9b872e8ab635a4bd89864520229866f58",
+ "author_hash": "94473769b8e6428b6d897ac34bb976e6d02a6cb67ba873edeb1267200120e008",
+ "clues": [
+  {
+   "i": 0,
+   "type": "quote",
+   "text": "Dead men's bones, arranged in rows, like bricks, to form the first course upon which the walls of the sacristy had been built.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 175,
+    "chunk": 34
+   }
+  },
+  {
+   "i": 1,
+   "type": "quote",
+   "text": "They looked at each other. They had no inclination to laugh.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 175,
+    "chunk": 45
+   }
+  },
+  {
+   "i": 2,
+   "type": "fact",
+   "label": "First published",
+   "text": "1910 · originally in French",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 3,
+   "type": "fact",
+   "label": "Author",
+   "text": "G. L. — French, 1868–1927",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 4,
+   "type": "fact",
+   "label": "A character",
+   "text": "One of them is called Christine.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 175
+   }
+  },
+  {
+   "i": 5,
+   "type": "fact",
+   "label": "The story",
+   "text": "A masked figure in the cellars beneath a Paris opera house.",
+   "source": {
+    "kind": "curated"
+   }
+  }
+ ],
+ "cover": {
+  "levels": [
+   "/assets/games/gtb/p0044/b0.webp",
+   "/assets/games/gtb/p0044/b1.webp",
+   "/assets/games/gtb/p0044/b2.webp",
+   "/assets/games/gtb/p0044/b3.webp",
+   "/assets/games/gtb/p0044/b4.webp"
+  ],
+  "credit": "Project Gutenberg #175 (public domain)"
+ },
+ "reveal_enc": "19JI2VtRG0B896x9D+9/eHMFIWJD+KiU1CWKusvgS05u6uBNXYInpg5U/7X//hfQZFnoaCOz3VOGVVhvR6xaasaYUE6+IozW8qAz4wJbJxBKtxSzMwLqS+wO9lG+S3G2m5+uNJoaiE1FRQ8Ky+dbjEctkPtFSjTtzZikR6b8KiNPgtDFiIUbulKarPhPKjGioS9joTjlUzu08MVP27rahOKL/E5+cEkbMz63Sm2lfcE5FozSg8HQJ691fgxK6tbV534hW7t809vS29ys4zLPvRRXSI86RrnXsM/iIrxVqkVQ/3XP1CxckQII2wQ9IdRPLdASZY11W9t0opz4ZqDIEIOYa8/JxkuZimM1YFQcerIqKrwD3NiyYaV3spmuKyw="
+}

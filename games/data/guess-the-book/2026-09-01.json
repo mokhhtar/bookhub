@@ -1,0 +1,79 @@
+{
+ "v": 1,
+ "n": 32,
+ "date": "2026-09-01",
+ "answer_hash": "52cf4dfe537bf0d0c11513d29da42c9557a790a567a8747f3afeaf370ed6534b",
+ "author_hash": "ced110e6e16c6e7e3179565f0f1c532a423c1122c60451fd30e6edfbc01f48a8",
+ "clues": [
+  {
+   "i": 0,
+   "type": "quote",
+   "text": "Love is God, and to die means that I, a particle of love, shall return to the general and eternal source.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 2600,
+    "chunk": 882
+   },
+   "note": "trans. Aylmer Maude"
+  },
+  {
+   "i": 1,
+   "type": "quote",
+   "text": "To love life is to love God. Harder and more blessed than all else is to love this life in one’s sufferings, in innocent sufferings.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 2600,
+    "chunk": 955
+   },
+   "note": "trans. Aylmer Maude"
+  },
+  {
+   "i": 2,
+   "type": "fact",
+   "label": "First published",
+   "text": "1869 · originally in Russian",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 3,
+   "type": "fact",
+   "label": "Author",
+   "text": "L. T. — Russian, 1828–1910",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 4,
+   "type": "fact",
+   "label": "A character",
+   "text": "One of them is called Pierre.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 2600
+   }
+  },
+  {
+   "i": 5,
+   "type": "fact",
+   "label": "The story",
+   "text": "Five aristocratic families through Napoleon's invasion of Russia.",
+   "source": {
+    "kind": "curated"
+   }
+  }
+ ],
+ "cover": {
+  "levels": [
+   "/assets/games/gtb/p0032/b0.webp",
+   "/assets/games/gtb/p0032/b1.webp",
+   "/assets/games/gtb/p0032/b2.webp",
+   "/assets/games/gtb/p0032/b3.webp",
+   "/assets/games/gtb/p0032/b4.webp"
+  ],
+  "credit": "Project Gutenberg #2600 (public domain)"
+ },
+ "reveal_enc": "214kRfhBTX79DhTDk8VvlJER/8THGqPmdbxbMtndUgHqDAq1USOoQfHT3j/+AxhTPnXKQ8OGUxaXICjwTXwcu3/rQ5NQCMxbWXqGQLyRnWWUPjVCC9NirFA0ZGEE3eQN+lBe5qqYdgUlFJ86zPfLMHcMTYPE8hrfAWNhbZ8T42A1XgEn8nKS5QL4nyuQcrXwryNDD7sDFKmig7yukMGIV/QR9hPwK6XBPtWXqYAco7skQxKMTT87l7vwlh5lcZcjM2rJkQUR+mF2DqNXtC+iWYDHXP1MUYL5ICEkEyS4s/evlGfKMjCRByrCaxnW4jZxeQxa3jK7i9xyUVLi6ES4TZMAOnokSsosNXO2JNyP9RGaMX8qJwl67rM="
+}

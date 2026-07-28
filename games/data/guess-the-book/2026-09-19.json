@@ -1,0 +1,79 @@
+{
+ "v": 1,
+ "n": 50,
+ "date": "2026-09-19",
+ "answer_hash": "2253e180c0e6f051b76632c62252adeb9fdefc2c60ae2900ee1e4a24eb154355",
+ "author_hash": "cc2e0b01ec1dc7d4bd0558d0b893becef65f0906b5ea66be4c739d7743067452",
+ "clues": [
+  {
+   "i": 0,
+   "type": "quote",
+   "text": "The atmosphere inside the crater was filled with no sulphurous vapor. It was more than the sleep of a volcano; it was its complete extinction.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 1268,
+    "chunk": 55
+   },
+   "note": "trans. Agnes Kinloch Kingston"
+  },
+  {
+   "i": 1,
+   "type": "quote",
+   "text": "The sailor and the lad, creeping among the grass, arrived at the foot of a tree, whose lower branches were covered with little birds.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 1268,
+    "chunk": 30
+   },
+   "note": "trans. Agnes Kinloch Kingston"
+  },
+  {
+   "i": 2,
+   "type": "fact",
+   "label": "First published",
+   "text": "1875 · originally in French",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 3,
+   "type": "fact",
+   "label": "Author",
+   "text": "J. V. — French, 1828–1905",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 4,
+   "type": "fact",
+   "label": "A character",
+   "text": "One of them is called Cyrus Harding.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 1268
+   }
+  },
+  {
+   "i": 5,
+   "type": "fact",
+   "label": "The story",
+   "text": "Five escapees from a siege come down by balloon on an uncharted shore.",
+   "source": {
+    "kind": "curated"
+   }
+  }
+ ],
+ "cover": {
+  "levels": [
+   "/assets/games/gtb/p0050/b0.webp",
+   "/assets/games/gtb/p0050/b1.webp",
+   "/assets/games/gtb/p0050/b2.webp",
+   "/assets/games/gtb/p0050/b3.webp",
+   "/assets/games/gtb/p0050/b4.webp"
+  ],
+  "credit": "Project Gutenberg #1268 (public domain)"
+ },
+ "reveal_enc": "KmPrYX3RzGXQVyv5mzQcrXVqSzJTxVqkQT+4r4K2+2C6vV3uOwpfsMTM8H4lRJyE5WpDxiv3jTfTn0ZBKqThbCmCxphVKFBfQ7MJi4ZJS84WGlrmJ0VrFTMmmkVYfQgIMnbxTynrJI/drcbbBcg+YCMYY79lhRCqMXwSg9YhyZlU3qYaJLuauryO9czUR7AM+roL48H8JYEZvp30wolMZBQY5ZxYMANGSkFOf5Y6jQuPq9zP554RTwy5OTPTTXO/iGmLrZA7KF80YIFEqOh5CGxmty7BicxsfOWf430oGTakWtRS4AWcojTNGyt6cLi3qhPcPBQqOk2CL4KDRbzX4eZiHbMDbDjBUe6L8DFSLk1m2/8FC9C+zZEqbpoo3LIeW1Ah6GCDL66NxNCuyRD3qxIOjrOiFyit/wfb"
+}

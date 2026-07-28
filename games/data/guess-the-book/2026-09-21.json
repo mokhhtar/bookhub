@@ -1,0 +1,79 @@
+{
+ "v": 1,
+ "n": 52,
+ "date": "2026-09-21",
+ "answer_hash": "f385a3f72af800c48b7d97ce455e4d3c75303bd6648a3f25d5b55347d251425e",
+ "author_hash": "cd9e2f920acd152068747467bc3732bee30bfff2759f0f535c5444ac549aa1d7",
+ "clues": [
+  {
+   "i": 0,
+   "type": "quote",
+   "text": "His heart was beating violently, and his brain was in a turmoil.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 2554,
+    "chunk": 31
+   },
+   "note": "trans. Constance Garnett"
+  },
+  {
+   "i": 1,
+   "type": "quote",
+   "text": "He walked, looking about him angrily and distractedly.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 2554,
+    "chunk": 82
+   },
+   "note": "trans. Constance Garnett"
+  },
+  {
+   "i": 2,
+   "type": "fact",
+   "label": "First published",
+   "text": "1866 · originally in Russian",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 3,
+   "type": "fact",
+   "label": "Author",
+   "text": "F. D. — Russian, 1821–1881",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 4,
+   "type": "fact",
+   "label": "A character",
+   "text": "One of them is called Raskolnikov.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 2554
+   }
+  },
+  {
+   "i": 5,
+   "type": "fact",
+   "label": "The story",
+   "text": "A destitute former student murders a pawnbroker in St Petersburg.",
+   "source": {
+    "kind": "curated"
+   }
+  }
+ ],
+ "cover": {
+  "levels": [
+   "/assets/games/gtb/p0052/b0.webp",
+   "/assets/games/gtb/p0052/b1.webp",
+   "/assets/games/gtb/p0052/b2.webp",
+   "/assets/games/gtb/p0052/b3.webp",
+   "/assets/games/gtb/p0052/b4.webp"
+  ],
+  "credit": "Project Gutenberg #2554 (public domain)"
+ },
+ "reveal_enc": "OJbmKPyFoXfWbueEtIlxUQlZGQwTFHUKvv17iafJUqzmaEhLwQsdAKjJqQrFKc0rvMB0nL+Y5dfixQAkV8ohT+qW6JcZ1lwzoHx/dj7GdqeGhn0RcxwbZMIK2ZbZgYoS5kvtXMYwbqm2fGiQ0Cx4Fe0EZGs/iN4s+eIw1oCidIg6UPp/hvkmhgqgf3g/o+EVaQ1XrgV5veq4h602UBB9tcJa7TkppiAbxF9rI/vLEgG40QyVsNykGW3dKp/vW81ScW/O8hFcY+NZ7vYYEYNAXTzsKCycwKbhf9k22VInZAZ/71NFaLqtl1BK1zjOIVLypTArQsUppoTFt2ZamWOJWlwTOTyZCodo8UwGWY9nwc7fkENpTcJ8bO8Dfum3NCcdmPIqlDrmkP7Y7fSb2GaGJ1Y9uK/Zy4HJort7lmj2Vg=="
+}

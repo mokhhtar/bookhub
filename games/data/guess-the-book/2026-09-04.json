@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "n": 35,
+ "date": "2026-09-04",
+ "answer_hash": "4a1749a1380a55970e25de3900c7b3702ca8eaab2dbc5a9b9bc88473888c6e26",
+ "author_hash": "e935304da69e1f762de86457fc85f21e810d312b16231a424ebc2d5686dac8f0",
+ "clues": [
+  {
+   "i": 0,
+   "type": "quote",
+   "text": "It seems that horses have no relations; at least they never know each other after they are sold.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 271,
+    "chunk": 8
+   }
+  },
+  {
+   "i": 1,
+   "type": "quote",
+   "text": "I could have groaned, too, for I was suffering intense pain both from my foot and knees; but horses are used to bear their pain in silence.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 271,
+    "chunk": 50
+   }
+  },
+  {
+   "i": 2,
+   "type": "fact",
+   "label": "First published",
+   "text": "1877 · originally in English",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 3,
+   "type": "fact",
+   "label": "Author",
+   "text": "A. S. — English, 1820–1878",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 4,
+   "type": "fact",
+   "label": "A character",
+   "text": "One of them is called Ginger.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 271
+   }
+  },
+  {
+   "i": 5,
+   "type": "fact",
+   "label": "The story",
+   "text": "A horse tells his own life through a succession of owners.",
+   "source": {
+    "kind": "curated"
+   }
+  }
+ ],
+ "cover": {
+  "levels": [
+   "/assets/games/gtb/p0035/b0.webp",
+   "/assets/games/gtb/p0035/b1.webp",
+   "/assets/games/gtb/p0035/b2.webp",
+   "/assets/games/gtb/p0035/b3.webp",
+   "/assets/games/gtb/p0035/b4.webp"
+  ],
+  "credit": "Project Gutenberg #271 (public domain)"
+ },
+ "reveal_enc": "WiLQUYQihPoXeO/ykJ0UFfrVIQOL9g0PNfzMYY8B+ACnOqUuBjrvg4ZbbtGgwNX+yvEnsQKrkUsao3ZYkddMzMIuopWI+nz1bAiTMxJzyX4k905h4qq4ihaj+usp9IxoH2lIpooJ0m5z8aqWjZzqjvxemA/vGDfmIANnCmiBOxtNrUHhXiL4gDph0vZ1ljo6sjFTg+n8D37eQkhxntNqvTFV6NWAXFFQRyFRKCgz7HlapP4lMb3uy9Y7KiT1bu5yGdak3NiC2sjVDDvVgJS91UNva/rjgbHeqc4Q/ssYQpDkkK0yWv2qkUW/yOYZTAWA/ZPHaFLh3Q=="
+}

@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "n": 56,
+ "date": "2026-09-25",
+ "answer_hash": "703d9828b0d880e3a8db0aa8eae0b6bd063ac8ab91d298697d983bfc960e585e",
+ "author_hash": "53a7a91682d81f2f4deedea070832b7b3d21cda2e94ef125e2e01e5efafbc6dd",
+ "clues": [
+  {
+   "i": 0,
+   "type": "quote",
+   "text": "The coach drew up; there it was at the gates with its four horses and its top laden with passengers: the guard and coachman loudly urged haste; my trunk was hoisted up; I was taken from Bessie’s neck, to which I clung with kisses.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 1260,
+    "chunk": 28
+   }
+  },
+  {
+   "i": 1,
+   "type": "quote",
+   "text": "Resting my head on Helen’s shoulder, I put my arms round her waist; she drew me to her, and we reposed in silence.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 1260,
+    "chunk": 51
+   }
+  },
+  {
+   "i": 2,
+   "type": "fact",
+   "label": "First published",
+   "text": "1847 · originally in English",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 3,
+   "type": "fact",
+   "label": "Author",
+   "text": "C. B. — English, 1816–1855",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 4,
+   "type": "fact",
+   "label": "A character",
+   "text": "One of them is called Mr. Rochester.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 1260
+   }
+  },
+  {
+   "i": 5,
+   "type": "fact",
+   "label": "The story",
+   "text": "A governess arrives at a country house called Thornfield Hall.",
+   "source": {
+    "kind": "curated"
+   }
+  }
+ ],
+ "cover": {
+  "levels": [
+   "/assets/games/gtb/p0056/b0.webp",
+   "/assets/games/gtb/p0056/b1.webp",
+   "/assets/games/gtb/p0056/b2.webp",
+   "/assets/games/gtb/p0056/b3.webp",
+   "/assets/games/gtb/p0056/b4.webp"
+  ],
+  "credit": "Project Gutenberg #1260 (public domain)"
+ },
+ "reveal_enc": "LMDjK9fdIGqNGUIHU0F/UoCn0nt2trzthJz6HI0yf3E38naHXn2Wz/eu6fWbBQ0x3hv8Le+sNWVjbGqiwCqesShyfgCQII5qGTfkcfg74Yc9OF2vbjtfZXk1obKuStNjYds91QbdxesxuIAIQozlizpm9ShQlwTVuSjbLh4f/gbyqnLMro2N5f2Y2f8/5aoXoNtyewu/o9PJP6Tbf2zk/+k7sL6aI0Wi8xGrunL7Vf/VgW95BH0yJou7Xz9C9Gp74wx5eLKSbZ5VUkDRDqZmSs0yJEjhnCBCthDXDsS26x6j/o8XaHpdLswwSidsJ4wkqXPJ7TM6r3bsfldj"
+}

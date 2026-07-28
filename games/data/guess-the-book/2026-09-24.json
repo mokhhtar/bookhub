@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "n": 55,
+ "date": "2026-09-24",
+ "answer_hash": "ff5c59df3ceb449f080c9e11b54192aae1960720d72ddd47eb6e7d3217a6d719",
+ "author_hash": "d64cfa3f647ba4baeb2c16e297602a9a15f60baaa1d19374c91b9aa3726df797",
+ "clues": [
+  {
+   "i": 0,
+   "type": "quote",
+   "text": "Every trail has its end, and every calamity brings its lesson!",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 940,
+    "chunk": 215
+   }
+  },
+  {
+   "i": 1,
+   "type": "quote",
+   "text": "He was without his favorite weapon, and his arms were even bound behind him with thongs, made of the skin of a deer.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 940,
+    "chunk": 119
+   }
+  },
+  {
+   "i": 2,
+   "type": "fact",
+   "label": "First published",
+   "text": "1826 · originally in English",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 3,
+   "type": "fact",
+   "label": "Author",
+   "text": "J. F. C. — American, 1789–1851",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 4,
+   "type": "fact",
+   "label": "A character",
+   "text": "One of them is called Chingachgook.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 940
+   }
+  },
+  {
+   "i": 5,
+   "type": "fact",
+   "label": "The story",
+   "text": "A scout guides two sisters through forest and ambush during a frontier war.",
+   "source": {
+    "kind": "curated"
+   }
+  }
+ ],
+ "cover": {
+  "levels": [
+   "/assets/games/gtb/p0055/b0.webp",
+   "/assets/games/gtb/p0055/b1.webp",
+   "/assets/games/gtb/p0055/b2.webp",
+   "/assets/games/gtb/p0055/b3.webp",
+   "/assets/games/gtb/p0055/b4.webp"
+  ],
+  "credit": "Project Gutenberg #940 (public domain)"
+ },
+ "reveal_enc": "Q1sCFQefpe6fo+DGAsXG4jCA7Z+kv9SBGmMVpgwjvOOtbuKrtFyEU7/QyCyDVpefnobX/cuJUoxVDgEtswNFzex2toZvaC6hIfWq0zC7sAsuUvTubPqmjkasJPvi3MvrDncvDuidHZtpuC59jgDVy+UmqajD/W/lHBqos9S4eWIeaubqkBs4NwCakuV6rUSFXLl40PFwfixbTehoC1V5wHrlklXQI7lRtqgtnPAyEWUvrhJraM/gQZVFMKUAAa+pSlcE/ggR+QgvTw1ARVESDrsxcl723fpSI2MOiEi5ef2kWPFFW70t84D3gYK2qRlUBlgh6UVIdrAq4CCEmZ8pUdkmf8EfRWSsPf/KVWnaiJQ1gobrQ4uoec06MxXMgz/TNGDliUfApP2cWScr1/9h"
+}

@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "n": 34,
+ "date": "2026-09-03",
+ "answer_hash": "5d47bf26bfa3e5998f190fc48ede1675a57149a49a0d4232c1c7171e2da9963a",
+ "author_hash": "3f3257b6337e54d13717b6bc6cc1129b617bcdc8b526c2e0972351fae6970ea9",
+ "clues": [
+  {
+   "i": 0,
+   "type": "quote",
+   "text": "In old days there were angels who came and took men by the hand and led them away from the city of destruction. We see no white-winged angels now.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 550,
+    "chunk": 99
+   }
+  },
+  {
+   "i": 1,
+   "type": "quote",
+   "text": "He was arrested, as he had been already since his loss, by the invisible wand of catalepsy, and stood like a graven image, with wide but sightless eyes, holding open his door, powerless to resist either the good or the evil that might enter there.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 550,
+    "chunk": 82
+   }
+  },
+  {
+   "i": 2,
+   "type": "fact",
+   "label": "First published",
+   "text": "1861 · originally in English",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 3,
+   "type": "fact",
+   "label": "Author",
+   "text": "G. E. — English, 1819–1880",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 4,
+   "type": "fact",
+   "label": "A character",
+   "text": "One of them is called Eppie.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 550
+   }
+  },
+  {
+   "i": 5,
+   "type": "fact",
+   "label": "The story",
+   "text": "A miserly weaver loses his gold and raises a foundling instead.",
+   "source": {
+    "kind": "curated"
+   }
+  }
+ ],
+ "cover": {
+  "levels": [
+   "/assets/games/gtb/p0034/b0.webp",
+   "/assets/games/gtb/p0034/b1.webp",
+   "/assets/games/gtb/p0034/b2.webp",
+   "/assets/games/gtb/p0034/b3.webp",
+   "/assets/games/gtb/p0034/b4.webp"
+  ],
+  "credit": "Project Gutenberg #550 (public domain)"
+ },
+ "reveal_enc": "3kl7OaLB74spngXIpxRqZQUFLSItiq6qqCZkiXKTyNRlf/1nVmKUsQHv8blfePY9+nMCcaXBw+BQrMF/hojLgQJDWZRo4MK0YBJR3hp2hYAT3XS+Lnu/3RYq31KM+r6wKwzuqsrAgIrzXYXVyifuVr00WRNx/d6I03+QKl5Rd83Z+YqvBqteuBgEwFuSAa9ltlHwYbjuW9CALfom5RlW+554XGTM7eSRv/7bXUu1TGOnVH+zXGBrVi6X0nN0jKw+PzosikVVueJC8oueoUB4YYC4ydNXUqpnnOdyor/TsUqA/cATh1i61WOf4zlFP+z6yTAHVqPS5/iX"
+}

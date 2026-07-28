@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "n": 38,
+ "date": "2026-09-07",
+ "answer_hash": "a8033a7cf91a909a1327a008f14e4d20ce77272ae1b517916cd8843d065725d0",
+ "author_hash": "16f79e5cd27dc5d765f1036945e477c6ff90e894a08d4fcce6af58ff5b4f7cb5",
+ "clues": [
+  {
+   "i": 0,
+   "type": "quote",
+   "text": "The water’s own noises, too, were more apparent than by day, its gurglings and “cloops” more unexpected and near at hand; and constantly they started at what seemed a sudden clear call from an actual articulate voice.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 289,
+    "chunk": 53
+   }
+  },
+  {
+   "i": 1,
+   "type": "quote",
+   "text": "There was the noise of a bolt shot back, and the door opened a few inches, enough to show a long snout and a pair of sleepy blinking eyes.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 289,
+    "chunk": 24
+   }
+  },
+  {
+   "i": 2,
+   "type": "fact",
+   "label": "First published",
+   "text": "1908 · originally in English",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 3,
+   "type": "fact",
+   "label": "Author",
+   "text": "K. G. — Scottish, 1859–1932",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 4,
+   "type": "fact",
+   "label": "A character",
+   "text": "One of them is called Mr. Toad.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 289
+   }
+  },
+  {
+   "i": 5,
+   "type": "fact",
+   "label": "The story",
+   "text": "Riverbank animals, a stolen motor-car and a hall to be recaptured.",
+   "source": {
+    "kind": "curated"
+   }
+  }
+ ],
+ "cover": {
+  "levels": [
+   "/assets/games/gtb/p0038/b0.webp",
+   "/assets/games/gtb/p0038/b1.webp",
+   "/assets/games/gtb/p0038/b2.webp",
+   "/assets/games/gtb/p0038/b3.webp",
+   "/assets/games/gtb/p0038/b4.webp"
+  ],
+  "credit": "Project Gutenberg #289 (public domain)"
+ },
+ "reveal_enc": "UW1iL1r/7iKTo1zjco1Pngh98DpbBCLxk7F2wS+5T0uxMm22PJs6lS/ia4M0lBW/eJj0uYM5jKCrQU/S1pBZMQYUBsUf6bM2mBZGwfTRX9FldagyLkKlsmvYqUk4WTKNyBSSl7UQmVvfwEvKVTqbOQkLuLE8KIb0JPk6Pv6P6gJSOkM/BWQZZ40QKS9xYXpC/TeRimFEg+ECHaDl7EGzM1D6EBYusMbgdOvxHcnUfE1mLCNFdAVeDkyaEVdaLK8OeM7P5UFtamSk4tj82kwEQoCPX2PukfRgfTuqw32MT+XI0ccbWD+J0bGiArk37NrpEoAtkn02l9To6dy+l1aEbOnAqHy6WyzmDSrolY9TBdt5f6wimqN3xKvIiHj3Np9l"
+}

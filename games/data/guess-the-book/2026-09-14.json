@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "n": 45,
+ "date": "2026-09-14",
+ "answer_hash": "55d367430b54b5ea67de5d21fefca75d10b98a32e9f238ac66faa7cd83ad3fc4",
+ "author_hash": "def5dc9676ee85a34f5673d7f90578bfa3e2b6ec2a3291d14b55a5096a86dd6d",
+ "clues": [
+  {
+   "i": 0,
+   "type": "quote",
+   "text": "It is a very little world, a mote, a speck, and I marvel that men should dare to venture the sea on a contrivance so small and fragile.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 1074,
+    "chunk": 29
+   }
+  },
+  {
+   "i": 1,
+   "type": "quote",
+   "text": "There was no change in him. He did not appear even amused at the other’s antics.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 1074,
+    "chunk": 42
+   }
+  },
+  {
+   "i": 2,
+   "type": "fact",
+   "label": "First published",
+   "text": "1904 · originally in English",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 3,
+   "type": "fact",
+   "label": "Author",
+   "text": "J. L. — American, 1876–1916",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 4,
+   "type": "fact",
+   "label": "A character",
+   "text": "One of them is called Humphrey Van Weyden.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 1074
+   }
+  },
+  {
+   "i": 5,
+   "type": "fact",
+   "label": "The story",
+   "text": "A shipwrecked gentleman is pressed into the crew of a sealing schooner.",
+   "source": {
+    "kind": "curated"
+   }
+  }
+ ],
+ "cover": {
+  "levels": [
+   "/assets/games/gtb/p0045/b0.webp",
+   "/assets/games/gtb/p0045/b1.webp",
+   "/assets/games/gtb/p0045/b2.webp",
+   "/assets/games/gtb/p0045/b3.webp",
+   "/assets/games/gtb/p0045/b4.webp"
+  ],
+  "credit": "Project Gutenberg #1074 (public domain)"
+ },
+ "reveal_enc": "Wfd9ZKXlE/KZAiB/1QwzROVl8SAYEZibNpPhpTzBk0dtfTiQyMBAVSA3ozE+F9JLOgGCztKrEXk7pY3YO/fOu6NmN1nkS+83GOJtrT3AsfIGHJkobaiBXd9TPMGpogvwq2+dcDBjQNjfNR1b+Pw9kNN56UVzjsbLPYebG3Cgcz6Kl5x9nhvURJ7qZLJRM81lYQZDz36TsPbUsQbUYQhf6fS4RcxW2A0ulbGAyhDHxXDG/L7VYh5RD44k5IVzVm8o5Bb2gdiIMrLNgmCHvcK2kpxPOXggUwbPMxfJhd23z9E3moGxyhmOSk4xVHo0q7BDTxOl5ySAef9W0A=="
+}

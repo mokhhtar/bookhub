@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "n": 41,
+ "date": "2026-09-10",
+ "answer_hash": "d2e211bc327e7e3d026c5693438173777964ffccdc2c3758a81b061fc67aa85e",
+ "author_hash": "c742ae8b0a1504dadcbca6e71c5edfb1390d3eb62b4756c05547e6f78fc0911e",
+ "clues": [
+  {
+   "i": 0,
+   "type": "quote",
+   "text": "That was a memorable day to me, for it made great changes in me. But it is the same with any life. Imagine one selected day struck out of it, and think how different its course would have been.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 1400,
+    "chunk": 49
+   }
+  },
+  {
+   "i": 1,
+   "type": "quote",
+   "text": "The chisel had made three or four of these attempts at embellishment over his nose, but had given them up without an effort to smooth them off.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 1400,
+    "chunk": 117
+   }
+  },
+  {
+   "i": 2,
+   "type": "fact",
+   "label": "First published",
+   "text": "1861 · originally in English",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 3,
+   "type": "fact",
+   "label": "Author",
+   "text": "C. D. — English, 1812–1870",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 4,
+   "type": "fact",
+   "label": "A character",
+   "text": "One of them is called Pip.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 1400
+   }
+  },
+  {
+   "i": 5,
+   "type": "fact",
+   "label": "The story",
+   "text": "An orphaned blacksmith's boy comes into money from an unknown benefactor.",
+   "source": {
+    "kind": "curated"
+   }
+  }
+ ],
+ "cover": {
+  "levels": [
+   "/assets/games/gtb/p0041/b0.webp",
+   "/assets/games/gtb/p0041/b1.webp",
+   "/assets/games/gtb/p0041/b2.webp",
+   "/assets/games/gtb/p0041/b3.webp",
+   "/assets/games/gtb/p0041/b4.webp"
+  ],
+  "credit": "Project Gutenberg #1400 (public domain)"
+ },
+ "reveal_enc": "fclmOfDvdTWifGHQ7HvxS+ToclfFl6Kb//CSpGUyE3a5tY1VxcUwAVU64+7myQRKfaUQ9TO1mIYl1LF5bmxQ9Ur/VfhCNii2mSdgcOYTn7k4FSjEQYAP9nudZUjcH1Ou8tEuYr7qR/UTAZ/GdAMq3yVSFf1MSbHwiPcUnsrYklloIRTih0upAcFRq2sNiTdCYxBv8+8PF7WWTvdFaBZswt2UkWtRrDrqzsSXYi5aJU5Ult2GiaKdWROLlEohLmOPTfT62B1MGFA/4B3zEm2mW5JRujI0GE3bbJjKxD82yp31VJGks0Suj8Xw6YYOoyFfCsIJq5xlNQXu9JMIxZMxCrSk0a8lLJ8TCGWCNESvh461C+vr"
+}

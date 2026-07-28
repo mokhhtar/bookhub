@@ -1,0 +1,79 @@
+{
+ "v": 1,
+ "n": 31,
+ "date": "2026-08-31",
+ "answer_hash": "fd6a485c3a47caed85ac57e9f5753476e2e5d72831f3f38056d3b5a7f4556c83",
+ "author_hash": "f5771485aa1dab3888655c32e2a18bdb1124e411016bd94c1b6a00eb0cbc3e81",
+ "clues": [
+  {
+   "i": 0,
+   "type": "quote",
+   "text": "He certainly did not bet to win, and had only staked the twenty thousand pounds, half of his fortune, because he foresaw that he might have to expend the other half to carry out this difficult, not to say unattainable, project.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 103,
+    "chunk": 10
+   },
+   "note": "trans. George M. Towle"
+  },
+  {
+   "i": 1,
+   "type": "quote",
+   "text": "The songs gradually died away; occasionally cries were heard in the distance, until at last all was silence again.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 103,
+    "chunk": 35
+   },
+   "note": "trans. George M. Towle"
+  },
+  {
+   "i": 2,
+   "type": "fact",
+   "label": "First published",
+   "text": "1873 · originally in French",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 3,
+   "type": "fact",
+   "label": "Author",
+   "text": "J. V. — French, 1828–1905",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 4,
+   "type": "fact",
+   "label": "A character",
+   "text": "One of them is called Phileas Fogg.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 103
+   }
+  },
+  {
+   "i": 5,
+   "type": "fact",
+   "label": "The story",
+   "text": "An English gentleman bets his fortune on a race against the clock.",
+   "source": {
+    "kind": "curated"
+   }
+  }
+ ],
+ "cover": {
+  "levels": [
+   "/assets/games/gtb/p0031/b0.webp",
+   "/assets/games/gtb/p0031/b1.webp",
+   "/assets/games/gtb/p0031/b2.webp",
+   "/assets/games/gtb/p0031/b3.webp",
+   "/assets/games/gtb/p0031/b4.webp"
+  ],
+  "credit": "Project Gutenberg #103 (public domain)"
+ },
+ "reveal_enc": "4lC0Jg5rPCv2lDOovr0+57ghGfur3PEoTiuuq58DXYu1fFWyCMNzXKJw/o6OOs4yQRwgM3/cHxizHaRNPzWVHD+sDNJg2BqSVPvn2G6imPvU3yVFAxTJ8pcXqBrXkNTLLVZhj9nsxvd9i1scSzYp4jzBTgtts3w2Nwcst2pbkSDAE7BdT3kfCKd+ajoKzRS1o1vnwZIpCeK6KoqrP1AlE6sdXhZmJNHTjJUbUxzqBaDdNHmW3vTeDX1N2ojUO2Amg5c+Hk32TbY5wK/khW8osoUHDGiCQzobD5npvYkF7YnoJcKyfZPlMvCl9KfTIkrjfVx+DussuLbLVU7dVidNCdlIS4SPgDcISTea9yfDkxToPOgv0waNw1TZWFb8tiOs3oWY2zjdHihNx3Xr6q/i7UfMzzzDv95/z5OyhDowlsYzsFNSHYOK8XofWRD/sO4="
+}

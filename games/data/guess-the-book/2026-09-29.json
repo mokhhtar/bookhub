@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "n": 60,
+ "date": "2026-09-29",
+ "answer_hash": "204d2d0f4dabe57e0b57d8ce153d1ad2dcad159e62abbe7fe4d048cf2ebb7421",
+ "author_hash": "b66c1656dc265439c7a3a1b6ccfcdd0346c86ede1ffaf20b8ec589eca22dd44c",
+ "clues": [
+  {
+   "i": 0,
+   "type": "quote",
+   "text": "It shows us what a beautiful thing human nature may be made to be; and how impartially the same amiable qualities are developed in the finest lord and the dirtiest charity-boy.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 730,
+    "chunk": 24
+   }
+  },
+  {
+   "i": 1,
+   "type": "quote",
+   "text": "The beadle drank his tea to the last drop; finished a piece of toast; whisked the crumbs off his knees; wiped his lips; and deliberately kissed the matron.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 730,
+    "chunk": 125
+   }
+  },
+  {
+   "i": 2,
+   "type": "fact",
+   "label": "First published",
+   "text": "1838 · originally in English",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 3,
+   "type": "fact",
+   "label": "Author",
+   "text": "C. D. — English, 1812–1870",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 4,
+   "type": "fact",
+   "label": "A character",
+   "text": "One of them is called Fagin.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 730
+   }
+  },
+  {
+   "i": 5,
+   "type": "fact",
+   "label": "The story",
+   "text": "A workhouse orphan falls in with a gang of child thieves in London.",
+   "source": {
+    "kind": "curated"
+   }
+  }
+ ],
+ "cover": {
+  "levels": [
+   "/assets/games/gtb/p0060/b0.webp",
+   "/assets/games/gtb/p0060/b1.webp",
+   "/assets/games/gtb/p0060/b2.webp",
+   "/assets/games/gtb/p0060/b3.webp",
+   "/assets/games/gtb/p0060/b4.webp"
+  ],
+  "credit": "Project Gutenberg #730 (public domain)"
+ },
+ "reveal_enc": "3rLDd2S6qs9qC2/6ir7+njj/3kU7K5b/bEOktfNZnu3bMtV97TbeKfnXT2SNjOGQvsPhOYI7ol5QctYnM2kWoG0ONzJF5LzJxY4GsldaMkObpZju3yFPCbJ2KGr0OnqE34EPxiCkns8ewwYcXfbDBuGk0tf1ZdwFkwhWqHpfoX6hiitfFn5ABtESizxelT8G5hW436Qc3UTnE/WwKDfmpHyslIlzsk/haiZ0I3XChbnCKuBhz2JT/AUCEFeRP5sGuZt8ZMwx9I3VxcYy4p1LqYDkdWoIpkUZV53FG5TRqpOswOZUpUaIRJuBWqxHX9QKWcHIsF/8rkqPLTPH/fRL"
+}

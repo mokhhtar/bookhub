@@ -1,0 +1,79 @@
+{
+ "v": 1,
+ "n": 53,
+ "date": "2026-09-22",
+ "answer_hash": "6fb1347495868544029174c33a0161561c0b568d6753f8b9f2fdb662b706de07",
+ "author_hash": "d2a1d795839847aec6e9f1440d854a48214a5e81b7ca1cec9f740d5d682dfdf1",
+ "clues": [
+  {
+   "i": 0,
+   "type": "quote",
+   "text": "The earth is not devoid of resemblance to a jail.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 135,
+    "chunk": 742
+   },
+   "note": "trans. Isabel Florence Hapgood"
+  },
+  {
+   "i": 1,
+   "type": "quote",
+   "text": "There is no joy outside of these joys. Love is the only ecstasy. All the rest weeps.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 135,
+    "chunk": 1033
+   },
+   "note": "trans. Isabel Florence Hapgood"
+  },
+  {
+   "i": 2,
+   "type": "fact",
+   "label": "First published",
+   "text": "1862 · originally in French",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 3,
+   "type": "fact",
+   "label": "Author",
+   "text": "V. H. — French, 1802–1885",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 4,
+   "type": "fact",
+   "label": "A character",
+   "text": "One of them is called Jean Valjean.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 135
+   }
+  },
+  {
+   "i": 5,
+   "type": "fact",
+   "label": "The story",
+   "text": "An ex-convict builds a new life while a police inspector hunts him.",
+   "source": {
+    "kind": "curated"
+   }
+  }
+ ],
+ "cover": {
+  "levels": [
+   "/assets/games/gtb/p0053/b0.webp",
+   "/assets/games/gtb/p0053/b1.webp",
+   "/assets/games/gtb/p0053/b2.webp",
+   "/assets/games/gtb/p0053/b3.webp",
+   "/assets/games/gtb/p0053/b4.webp"
+  ],
+  "credit": "Project Gutenberg #135 (public domain)"
+ },
+ "reveal_enc": "ciM8iHRIYXiUm80q0IGz5nOpMYRVvwu5l2eu0OfnNg7+KyqK+AE6t2k87FzGIxGaqCQfxF3YHAEffNe7ejIxB2rSCTCgrxIIo/PLXSTKHH4T9ZVA6HkAdYk5nmM3W6XRsGGqpMamjxkw8oO3KTWNuy/oGcW9l2PMMGPOFvWZjdZGogMi1as2FN2N1dfJzPiOF2gban2UqdoQGGoolvp5FpM6vn79J5J5tpnqiNgF+3u9RefEXZdQKf2rN2K6N6l1FZ058bf28TFR/1YkXIKWzfuGHbaujNwNZi6Ov7vm3ki2qwFHdpIReVslGyApWNAV7IDSAOVbCoVpJ9M7BoXNtNs4oKxMZl2CKezNhm+8JR3FvTWQFW44MOHtLCT+T4hXPAma+YI="
+}

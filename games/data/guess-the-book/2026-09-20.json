@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "n": 51,
+ "date": "2026-09-20",
+ "answer_hash": "9672d85c6b216884d5a3d488d01d76d8f86a924b0aaac2451bd9e652cec4d878",
+ "author_hash": "d25af317b202933c737fb08924e7680d643a8ad9432c27256b71b3605b93cbcf",
+ "clues": [
+  {
+   "i": 0,
+   "type": "quote",
+   "text": "The smell of tar and salt was something new.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 120,
+    "chunk": 26
+   }
+  },
+  {
+   "i": 1,
+   "type": "quote",
+   "text": "The hills ran up clear above the vegetation in spires of naked rock.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 120,
+    "chunk": 43
+   }
+  },
+  {
+   "i": 2,
+   "type": "fact",
+   "label": "First published",
+   "text": "1883 · originally in English",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 3,
+   "type": "fact",
+   "label": "Author",
+   "text": "R. L. S. — Scottish, 1850–1894",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 4,
+   "type": "fact",
+   "label": "A character",
+   "text": "One of them is called Jim Hawkins.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 120
+   }
+  },
+  {
+   "i": 5,
+   "type": "fact",
+   "label": "The story",
+   "text": "A boy finds a map and sails with a crew of disguised pirates.",
+   "source": {
+    "kind": "curated"
+   }
+  }
+ ],
+ "cover": {
+  "levels": [
+   "/assets/games/gtb/p0051/b0.webp",
+   "/assets/games/gtb/p0051/b1.webp",
+   "/assets/games/gtb/p0051/b2.webp",
+   "/assets/games/gtb/p0051/b3.webp",
+   "/assets/games/gtb/p0051/b4.webp"
+  ],
+  "credit": "Project Gutenberg #120 (public domain)"
+ },
+ "reveal_enc": "wufoNazRkWj0C4XIRWOMDWHeVrGnHfB5VweEPiOtXmtLAQCtu+rPTOeykgfMHYEC/ixBbQHMnnl161Nxlr7i+k4MG8oBpVknr8Yk49PIRxO0ZziH6uBqAyIr3G16pizCjY22t8VbsgILeYBlHpuqBm2Crga8An/XqpP4to45uvlKZl7au9pwpTEMk9fx4gtnaWgWJJ4CCWthBHGlAasJsmzA8LLXKJ9L7e2JrbppqcKkiK0AxYWjf4h6HPjtQVsO97wkHpUF+kN24gNEtJ3ygTvb05Y1+kL9v5jW0YYjOMo2PI6JT46LZLgEFDs/yWfoclLrwXSUbrF89u/MmuGEG/ag0s5k1VuuT6et46PZ6Mm911QIM9M="
+}

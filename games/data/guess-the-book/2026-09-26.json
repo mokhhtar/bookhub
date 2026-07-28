@@ -1,0 +1,79 @@
+{
+ "v": 1,
+ "n": 57,
+ "date": "2026-09-26",
+ "answer_hash": "6521f71169e9c94d37d34d38f903c19b0ecae641feb03bc3f3d47935b15edb36",
+ "author_hash": "52abf51d1d6d6b847980f8079616024b185f5ac0ca7aacf936806cd4f8a3c59e",
+ "clues": [
+  {
+   "i": 0,
+   "type": "quote",
+   "text": "If you sin yourself and grieve even unto death for your sins or for your sudden sin, then rejoice for others, rejoice for the righteous man, rejoice that if you have sinned, he is righteous and has not",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 28054,
+    "chunk": 271
+   },
+   "note": "trans. Constance Garnett"
+  },
+  {
+   "i": 1,
+   "type": "quote",
+   "text": "The storm broke—it struck me down like the plague. I’m plague-stricken still, and I know that everything is over, that there will never be anything more for me.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 28054,
+    "chunk": 97
+   },
+   "note": "trans. Constance Garnett"
+  },
+  {
+   "i": 2,
+   "type": "fact",
+   "label": "First published",
+   "text": "1880 · originally in Russian",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 3,
+   "type": "fact",
+   "label": "Author",
+   "text": "F. D. — Russian, 1821–1881",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 4,
+   "type": "fact",
+   "label": "A character",
+   "text": "One of them is called Alyosha.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 28054
+   }
+  },
+  {
+   "i": 5,
+   "type": "fact",
+   "label": "The story",
+   "text": "Three brothers and the murder of their father in a provincial town.",
+   "source": {
+    "kind": "curated"
+   }
+  }
+ ],
+ "cover": {
+  "levels": [
+   "/assets/games/gtb/p0057/b0.webp",
+   "/assets/games/gtb/p0057/b1.webp",
+   "/assets/games/gtb/p0057/b2.webp",
+   "/assets/games/gtb/p0057/b3.webp",
+   "/assets/games/gtb/p0057/b4.webp"
+  ],
+  "credit": "Project Gutenberg #28054 (public domain)"
+ },
+ "reveal_enc": "hmuxhE7IbZeEyNYOsClm0HYWv77ZaGRyxHiL1Q2FPJU32+qFielZ1EJ6rTxr4v/fbwmlKdVndCsp6sk5LB6Rb7/c8p7dVWcVJ3K3WOY/eOYH698KHDTs3gbuwF1gJlARWf8HSe6mfdC19n8o66Tq8VlJiEhlvAyJ5tZvS9IZapfGEwVjlanG8sqQSEs1T1+m59m++j3ApFHIdw9UUZGbCv6w5ch+1v/v53jKcuLEf8zbi7O52YVYEgYFdt9A3n9aFRD8/mDJtq3kCUI+GReOkUEbC1rfJB4VL6KNga+1kkX+Omr83SHUwzw/Z6xH0BDmzGP7e0/OhOpBVGVN2XYATK6vRg4TxvGzFL5yLcwupYutkzVzGf9WDD0FlLV3AkHeadd+qKoJGFJeBSVbemJPGfI7MLwID/c+sqNU5dIvXZfa67g0h9kWQQ=="
+}

@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "n": 40,
+ "date": "2026-09-09",
+ "answer_hash": "d1dcb60fcb8946c830398513766315d34a2933cb15eeb4fa41e8824ddfbecb01",
+ "author_hash": "a8ed6d1e928a3c0ac28e228072081a8c3baa4e9a13706e1a26fb970b090d0ca8",
+ "clues": [
+  {
+   "i": 0,
+   "type": "quote",
+   "text": "The calm of evening was upon the world as I emerged from the great hall, and the scene was lit by the warm glow of the setting sun.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 35,
+    "chunk": 17
+   }
+  },
+  {
+   "i": 1,
+   "type": "quote",
+   "text": "The sea stretched away to the south-west, to rise into a sharp bright horizon against the wan sky.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 35,
+    "chunk": 54
+   }
+  },
+  {
+   "i": 2,
+   "type": "fact",
+   "label": "First published",
+   "text": "1895 · originally in English",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 3,
+   "type": "fact",
+   "label": "Author",
+   "text": "H. G. W. — English, 1866–1946",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 4,
+   "type": "fact",
+   "label": "A character",
+   "text": "One of them is called Weena.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 35
+   }
+  },
+  {
+   "i": 5,
+   "type": "fact",
+   "label": "The story",
+   "text": "An inventor travels into the far future and wakes beside a great White Sphinx.",
+   "source": {
+    "kind": "curated"
+   }
+  }
+ ],
+ "cover": {
+  "levels": [
+   "/assets/games/gtb/p0040/b0.webp",
+   "/assets/games/gtb/p0040/b1.webp",
+   "/assets/games/gtb/p0040/b2.webp",
+   "/assets/games/gtb/p0040/b3.webp",
+   "/assets/games/gtb/p0040/b4.webp"
+  ],
+  "credit": "Project Gutenberg #35 (public domain)"
+ },
+ "reveal_enc": "Kke9WWnRqINNIs6Fs92v2Mf7uTYTF3PifwgjJOa2w62VrZ9twywNbKzwBPAE4rVkRD+iQ8u2lixrVTC14opxjta+DmOdp8SEOFvODWwM6Elz3/WdAapDP9dlpsJCu0NHnIbCH17qAaAnCkcHrDbfZTQZEubUYj9x1lI4hB0fQ86QlxSFpcJziTOCeCdFbFB3mqhPhqIeKGUKtjVtyTEtvdJ7PQLBs2n3ugjWtIhagx1aD/hg+NoOBmO4zAnwb7J/dVwi0xcim5IT6M04gUI6rtsx7VvN3r9HU7WF/Wwmzj+xws1yHJoNoVT+HrmES2QWU2HKsqGTVgk435pkOUc="
+}

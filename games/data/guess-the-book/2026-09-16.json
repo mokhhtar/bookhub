@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "n": 47,
+ "date": "2026-09-16",
+ "answer_hash": "a7f1f708a38e8190ab1f871d6cd01b83d16c8eac83d38fd8007b69c81f69fed7",
+ "author_hash": "ac5123a8059fcbab11648ef180fe807d437f098caeb11c0d8fd052d0a16e2490",
+ "clues": [
+  {
+   "i": 0,
+   "type": "quote",
+   "text": "It is one of the curses of a mind with a turn like mine that I must look at everything with reference to my own special subject.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 1661,
+    "chunk": 180
+   }
+  },
+  {
+   "i": 1,
+   "type": "quote",
+   "text": "The photograph is now as safe as if it were in the fire.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 1661,
+    "chunk": 15
+   }
+  },
+  {
+   "i": 2,
+   "type": "fact",
+   "label": "First published",
+   "text": "1892 · originally in English",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 3,
+   "type": "fact",
+   "label": "Author",
+   "text": "A. C. D. — Scottish, 1859–1930",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 4,
+   "type": "fact",
+   "label": "A character",
+   "text": "One of them is called Dr. Watson.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 1661
+   }
+  },
+  {
+   "i": 5,
+   "type": "fact",
+   "label": "The story",
+   "text": "Twelve cases solved from a lodging in Baker Street, London.",
+   "source": {
+    "kind": "curated"
+   }
+  }
+ ],
+ "cover": {
+  "levels": [
+   "/assets/games/gtb/p0047/b0.webp",
+   "/assets/games/gtb/p0047/b1.webp",
+   "/assets/games/gtb/p0047/b2.webp",
+   "/assets/games/gtb/p0047/b3.webp",
+   "/assets/games/gtb/p0047/b4.webp"
+  ],
+  "credit": "Project Gutenberg #1661 (public domain)"
+ },
+ "reveal_enc": "Ft3tcLQpYUpapZ6JtFdrgRtFuSKPQR2zyjhHMEklaBD8Ur2YQx/XnkdULaUyuH/YsT9aJMAxAiwpFBBB2z5GgujEDpOP1i6hhtr29iPNHf5oBAC73dvgyyEkCWLiJB4b4cqcsqQJ+VBxa8TNRNkXDH0q0Gi/L/f96mPKIZO8I9i2ArcntQ2fibEQvN7pJ2+1bUcHHgMbqnYeQflkFJhYFU4BkCFlOM0v1+n2fGveNoM53xRmLKgBNxhFgmKsqsAA++7Seb0am9VLQPSYLLolAdyWzQAMrSR46KZP2ZFanarAIa0HqbtC3+BFNCuwCvnt9QSBym0pP//4uqXFxxQ2+2cWsj5MP6oP0wHmPRBWzvvsiQi/nC+Wcv54GDNLzZvlUQ3PgRsVk21JRBTn2SXls8Ih5U/ZLy/hScGCXokcskbIYeILJdCq"
+}

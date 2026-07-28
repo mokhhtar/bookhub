@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "n": 49,
+ "date": "2026-09-18",
+ "answer_hash": "efeb31dba1070737664dd16c378b96c545ad8f94bcf29b62db7ac1feb8069dd2",
+ "author_hash": "d46e1aa69b204486a5281a98d9bb8c15ee4ca21ef1b627bba383b3c864706012",
+ "clues": [
+  {
+   "i": 0,
+   "type": "quote",
+   "text": "The master’s pulse stood still, and he stared helplessly. The buzz of study ceased.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 74,
+    "chunk": 29
+   }
+  },
+  {
+   "i": 1,
+   "type": "quote",
+   "text": "He reached his hand in and drew it out— “Man, it’s money!”",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 74,
+    "chunk": 99
+   }
+  },
+  {
+   "i": 2,
+   "type": "fact",
+   "label": "First published",
+   "text": "1876 · originally in English",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 3,
+   "type": "fact",
+   "label": "Author",
+   "text": "M. T. — American, 1835–1910",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 4,
+   "type": "fact",
+   "label": "A character",
+   "text": "One of them is called Becky Thatcher.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 74
+   }
+  },
+  {
+   "i": 5,
+   "type": "fact",
+   "label": "The story",
+   "text": "A mischievous boy in a Missouri village on the Mississippi.",
+   "source": {
+    "kind": "curated"
+   }
+  }
+ ],
+ "cover": {
+  "levels": [
+   "/assets/games/gtb/p0049/b0.webp",
+   "/assets/games/gtb/p0049/b1.webp",
+   "/assets/games/gtb/p0049/b2.webp",
+   "/assets/games/gtb/p0049/b3.webp",
+   "/assets/games/gtb/p0049/b4.webp"
+  ],
+  "credit": "Project Gutenberg #74 (public domain)"
+ },
+ "reveal_enc": "e8c/r1RfAzMUdaw4U0KHGbwxyxMG6YSsO8xmpDraSERCn+V+nTPuP+5Zckoy6F4QJYovvzvtUSCVHDh0QP5332MpsQDRS2VHKYRZ6SsooJJU+geERYHuyhH6S6HcDltmBq65qER6ikpra50hstHuROO/5uP51lCY7KEqbTx1gMunrc1Ie9aQ8CGt6O5/qFVBNEhjEYsvV3b/4QYmM3fIdujVh4OixK6RPoqOdz2BFpdt35Q6tMVhnlNFkyBihVxSkndui1sfyKHeh6+He6fF276aW6QmVNjNDzn+Rqr1Qjeun/GTD9XsDipH2IH8AmUFRh7tQ8ZC0fygv7gZBayvngB7Dsax0ymkl2seCCCHfAh/ytnOtVO5z/Z4TiFjK39Upwk="
+}

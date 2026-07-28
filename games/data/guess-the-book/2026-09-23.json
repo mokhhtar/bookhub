@@ -1,0 +1,77 @@
+{
+ "v": 1,
+ "n": 54,
+ "date": "2026-09-23",
+ "answer_hash": "c6fbd83caae69eb936604526334ed82b28ac589b452d7a95b750c7221d1881c4",
+ "author_hash": "45dd7e192a7ac31827bc029f60645b6ef541e86873f787311542a4fb940b655a",
+ "clues": [
+  {
+   "i": 0,
+   "type": "quote",
+   "text": "It seems to show that there isn't anything you can't stand, if you are only born and bred to it.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 86,
+    "chunk": 31
+   }
+  },
+  {
+   "i": 1,
+   "type": "quote",
+   "text": "I reflected that as often as any other way, when you are expecting the worst, you get something that is not so bad, after all.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 86,
+    "chunk": 75
+   }
+  },
+  {
+   "i": 2,
+   "type": "fact",
+   "label": "First published",
+   "text": "1889 · originally in English",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 3,
+   "type": "fact",
+   "label": "Author",
+   "text": "M. T. — American, 1835–1910",
+   "source": {
+    "kind": "curated"
+   }
+  },
+  {
+   "i": 4,
+   "type": "fact",
+   "label": "A character",
+   "text": "One of them is called Merlin.",
+   "source": {
+    "kind": "gutenberg_text",
+    "gid": 86
+   }
+  },
+  {
+   "i": 5,
+   "type": "fact",
+   "label": "The story",
+   "text": "An engineer wakes in the sixth century and sets about industrialising it.",
+   "source": {
+    "kind": "curated"
+   }
+  }
+ ],
+ "cover": {
+  "levels": [
+   "/assets/games/gtb/p0054/b0.webp",
+   "/assets/games/gtb/p0054/b1.webp",
+   "/assets/games/gtb/p0054/b2.webp",
+   "/assets/games/gtb/p0054/b3.webp",
+   "/assets/games/gtb/p0054/b4.webp"
+  ],
+  "credit": "Project Gutenberg #86 (public domain)"
+ },
+ "reveal_enc": "7+HKVhaYcRIVusRA7eJACMHRID8g7NxGD+5QwwnzPTskU2XoLQB96aEafnxA2CzdpNH1/PTV1NYuLeJMlE4GQrI+OWoyti0BVHN3t56r8PGgt2BajEp2OMBNN69YlTo/j4NGFDOOlWAsi+SeyMBVALEPnYABsM3VnjQycPaLQjCta6WD0Dg7BWRPP2AZU99+lSBh4r50mZ+pEeFpS7q1L1BYzOa84w/p6aZT+UkrSD88Y0FT9F1mVgOSOc7GoZLAT6ZGdLC34W7pTc6LpHQNwzr9AUhoNb9qiwpDtvp31Jz1LEKVYyH2tGqMBVSaA03PfjV4R1AVz3K11cA03Msejs+ZNbHeykf0OyzjFoK/iU3EHqdIcIW44V9/BLGwXUgPSlatApg5ni/iexew+EcO9oUZHcSBvFKtvDOCLrVmi4MoYrm1opkNYIwLRq3ifXo="
+}
