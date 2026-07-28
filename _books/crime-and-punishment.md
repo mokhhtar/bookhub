@@ -1,6 +1,6 @@
 ---
 layout: book
-content_version: 4
+content_version: 5
 title: "Crime and Punishment"
 author: "Fyodor Dostoyevsky"
 author_slug: "fyodor-dostoyevsky"
