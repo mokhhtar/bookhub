@@ -872,12 +872,31 @@ html[data-theme="dark"] .hero-search-btn { color: #12160F; }
 }
 
 .form-input,
-.form-textarea,
+.form-textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--border-med);
+  border-radius: var(--r-sm);
+  font-family: var(--font-ui);
+  font-size: var(--ui-body);
+  color: var(--fg);
+  background-color: var(--bg-subtle);
+  outline: none;
+  transition: border-color 0.18s var(--ease-out), box-shadow 0.18s var(--ease-out);
+}
+
 /* Custom-styled select. appearance:none was already set but nothing
    replaced the native arrow, so the control read as unstyled. Now: the UI
    face, a custom ink chevron, and hover/focus matching the rest of the
    system. (Only the CLOSED control is styleable — the open option list is
-   drawn by the OS and can't be themed with CSS alone.) */
+   drawn by the OS and can't be themed with CSS alone.)
+
+   SPLIT OUT of the .form-input/.form-textarea group, which it used to share.
+   Everything below is select-specific and was landing on every text field on
+   the site: the chevron (a text box that looks like a dropdown and never
+   opens one), cursor:pointer, and 38px of right padding — which on My
+   Library's 78px-wide page-number field left 26px for the digits and clipped
+   the end of any three-digit number. */
 .form-select {
   width: 100%;
   padding: 10px 38px 10px 14px;
