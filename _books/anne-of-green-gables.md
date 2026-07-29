@@ -31,6 +31,9 @@ nyt: null
 editions: {"editions": 1299, "languages": 15}
 characters: [{"name": "Anne Shirley", "slug": "anne-shirley", "role": "Main character"}, {"name": "Diana Barry", "slug": "diana-barry", "role": "Main character"}, {"name": "Marilla Cuthbert", "slug": "marilla-cuthbert", "role": "Main character"}, {"name": "Matthew Cuthbert", "slug": "matthew-cuthbert", "role": "Main character"}, {"name": "Gilbert Blythe", "slug": "gilbert-blythe", "role": "Main character"}, {"name": "Rachel Lynde", "slug": "rachel-lynde", "role": "Main character"}, {"name": "Miss Cornelia", "slug": "miss-cornelia", "role": "Not specified"}]
 date: 2026-07-26 22:19:03 +0000
+noindex: false
+sitemap: true
+index_promoted: batch 1 2026-07-29
 ---
 
 <h2>1. Core Premise &amp; Overview</h2>

@@ -31,6 +31,9 @@ nyt: null
 editions: {"editions": 1079, "languages": 13}
 characters: [{"name": "Cunégonde", "slug": "cunegonde", "role": ""}]
 date: 2026-07-28 16:10:27 +0000
+noindex: false
+sitemap: true
+index_promoted: batch 1 2026-07-29
 ---
 
 <h2>1. Core Premise &amp; Overview</h2>

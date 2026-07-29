@@ -31,6 +31,9 @@ nyt: null
 editions: {"editions": 1489, "languages": 18}
 characters: [{"name": "Pip", "slug": "pip-great-expectations", "role": ""}, {"name": "Miss Havisham", "slug": "miss-havisham", "role": ""}, {"name": "Estella", "slug": "estella-great-expectations", "role": ""}, {"name": "Abel Magwitch", "slug": "abel-magwitch", "role": ""}, {"name": "John Wemmick", "slug": "john-wemmick", "role": ""}, {"name": "Compeyson", "slug": "compeyson", "role": ""}]
 date: 2026-07-26 21:40:12 +0000
+noindex: false
+sitemap: true
+index_promoted: batch 1 2026-07-29
 ---
 
 <h2>1. Core Premise &amp; Overview</h2>

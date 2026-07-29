@@ -31,6 +31,9 @@ nyt: null
 editions: {"editions": 3547, "languages": 51}
 characters: [{"name": "Alice", "slug": "alice-alice-s-adventures-in-wonderland", "role": ""}, {"name": "White Rabbit", "slug": "white-rabbit", "role": ""}, {"name": "Mouse", "slug": "mouse-alice-s-adventures-in-wonderland", "role": ""}, {"name": "Dodo", "slug": "dodo-alice-s-adventures-in-wonderland", "role": ""}, {"name": "Lory", "slug": "lory-alice-s-adventures-in-wonderland", "role": ""}, {"name": "Eaglet", "slug": "eaglet-alice-s-adventures-in-wonderland", "role": ""}, {"name": "Duck", "slug": "duck-alice-s-adventures-in-wonderland", "role": ""}, {"name": "Duchess", "slug": "duchess-alice-s-adventures-in-wonderland", "role": ""}, {"name": "Caterpillar", "slug": "caterpillar-alice-s-adventures-in-wonderland", "role": ""}, {"name": "Gryphon", "slug": "gryphon-alice-s-adventures-in-wonderland", "role": ""}, {"name": "Dormouse", "slug": "dormouse-alice-s-adventures-in-wonderland-character", "role": ""}, {"name": "Knave of Hearts", "slug": "knave-of-hearts-alice-s-adventures-in-wonderland", "role": ""}, {"name": "The Hatter", "slug": "mad-hatter", "role": ""}, {"name": "Bill the Lizard", "slug": "bill-the-lizard", "role": ""}, {"name": "Cheshire Cat", "slug": "cheshire-cat", "role": ""}, {"name": "March Hare", "slug": "march-hare", "role": ""}, {"name": "Queen of Hearts", "slug": "queen-of-hearts-alice-s-adventures-in-wonderland", "role": ""}, {"name": "Mock Turtle", "slug": "mock-turtle", "role": ""}, {"name": "King of Hearts", "slug": "king-of-hearts-alice-s-adventures-in-wonderland", "role": ""}]
 date: 2026-07-26 21:30:20 +0000
+noindex: false
+sitemap: true
+index_promoted: batch 1 2026-07-29
 ---
 
 <h2>1. Core Premise &amp; Overview</h2>

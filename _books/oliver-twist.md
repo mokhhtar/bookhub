@@ -31,6 +31,9 @@ nyt: null
 editions: {"editions": 2209, "languages": 21}
 characters: [{"name": "Oliver Twist", "slug": "oliver-twist", "role": "Protagonist"}, {"name": "Fagin", "slug": "fagin", "role": "Antagonist"}, {"name": "Mr. Bumble", "slug": "mr-bumble", "role": "Supporting"}, {"name": "Mr. Brownlow", "slug": "mr-brownlow", "role": "Supporting"}, {"name": "Bill Sikes", "slug": "bill-sikes", "role": "Antagonist"}, {"name": "Nancy", "slug": "nancy", "role": "Supporting"}, {"name": "Jack Dawkins (The Artful Dodger)", "slug": "jack-dawkins-the-artful-dodger", "role": "Supporting"}, {"name": "Monks", "slug": "monks", "role": "Antagonist"}, {"name": "Rose Maylie", "slug": "rose-maylie", "role": "Supporting"}, {"name": "Noah Claypole", "slug": "noah-claypole", "role": "Supporting"}, {"name": "Mr. Sowerberry", "slug": "mr-sowerberry", "role": "Supporting"}, {"name": "Mrs. Mann", "slug": "mrs-mann", "role": "Supporting"}]
 date: 2026-07-28 15:49:51 +0000
+noindex: false
+sitemap: true
+index_promoted: batch 1 2026-07-29
 ---
 
 <h2>1. Core Premise &amp; Overview</h2>

@@ -31,6 +31,9 @@ nyt: null
 editions: {"editions": 1988, "languages": 23}
 characters: [{"name": "James \"Jim\" Hawkins", "slug": "james-jim-hawkins", "role": "protagonist"}, {"name": "Long John Silver", "slug": "long-john-silver", "role": "antagonist"}, {"name": "Dr. David Livesey", "slug": "dr-david-livesey", "role": "supporting"}, {"name": "Captain Alexander Smollett", "slug": "captain-alexander-smollett", "role": "supporting"}, {"name": "Squire John Trelawney", "slug": "squire-john-trelawney", "role": "supporting"}, {"name": "Billy Bones", "slug": "billy-bones", "role": "supporting"}, {"name": "Captain Flint", "slug": "captain-flint", "role": "antagonist"}, {"name": "Job Anderson", "slug": "job-anderson", "role": "antagonist"}, {"name": "Mr. Arrow", "slug": "mr-arrow", "role": "supporting"}, {"name": "Black Dog", "slug": "black-dog", "role": "antagonist"}, {"name": "Abraham Gray", "slug": "abraham-gray", "role": "supporting"}, {"name": "Mr. Dance", "slug": "mr-dance", "role": "supporting"}]
 date: 2026-07-26 21:48:32 +0000
+noindex: false
+sitemap: true
+index_promoted: batch 1 2026-07-29
 ---
 
 <h2>1. Core Premise &amp; Overview</h2>

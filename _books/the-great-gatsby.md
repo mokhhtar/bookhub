@@ -31,6 +31,9 @@ nyt: null
 editions: {"editions": 1179, "languages": 16}
 characters: [{"name": "Jay Gatsby", "slug": "jay-gatsby", "role": "protagonist"}, {"name": "Nick Carraway", "slug": "nick-carraway", "role": "protagonist"}, {"name": "Daisy Buchanan", "slug": "daisy-buchanan", "role": "supporting"}, {"name": "Tom Buchanan", "slug": "tom-buchanan", "role": "supporting"}, {"name": "Jordan Baker", "slug": "jordan-baker", "role": "supporting"}, {"name": "Myrtle Wilson", "slug": "myrtle-wilson", "role": "supporting"}, {"name": "George Wilson", "slug": "george-wilson", "role": "supporting"}, {"name": "Meyer Wolfsheim", "slug": "meyer-wolfsheim", "role": "supporting"}, {"name": "Catherine", "slug": "catherine", "role": "supporting"}, {"name": "Mrs. McKee", "slug": "mrs-mckee", "role": "supporting"}, {"name": "Mr. McKee", "slug": "mr-mckee", "role": "supporting"}, {"name": "Charles Wolf", "slug": "charles-wolf", "role": "supporting"}]
 date: 2026-07-26 22:06:41 +0000
+noindex: false
+sitemap: true
+index_promoted: batch 1 2026-07-29
 ---
 
 <h2>1. Core Premise &amp; Overview</h2>

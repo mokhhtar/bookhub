@@ -31,6 +31,9 @@ nyt: null
 editions: {"editions": 2187, "languages": 9}
 characters: [{"name": "Frankenstein's monster", "slug": "frankenstein-s-monster", "role": ""}, {"name": "Elizabeth Lavenza", "slug": "elizabeth-lavenza", "role": ""}, {"name": "Doctor Waldman", "slug": "doctor-waldman", "role": ""}, {"name": "Victor Frankenstein", "slug": "victor-frankenstein", "role": ""}]
 date: 2026-07-26 21:27:13 +0000
+noindex: false
+sitemap: true
+index_promoted: batch 1 2026-07-29
 ---
 
 <h2>1. Core Premise &amp; Overview</h2>

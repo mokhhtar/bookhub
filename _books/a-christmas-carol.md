@@ -31,6 +31,9 @@ nyt: null
 editions: {"editions": 3198, "languages": 22}
 characters: [{"name": "Ebenezer Scrooge", "slug": "ebenezer-scrooge", "role": ""}, {"name": "Jacob Marley", "slug": "jacob-marley", "role": ""}, {"name": "Ghost of Christmas Past", "slug": "ghost-of-christmas-past", "role": ""}, {"name": "Ghost of Christmas Present", "slug": "ghost-of-christmas-present", "role": ""}, {"name": "Ghost of Christmas Yet to Come", "slug": "ghost-of-christmas-yet-to-come", "role": ""}, {"name": "Bob Cratchit", "slug": "bob-cratchit", "role": ""}, {"name": "Tiny Tim", "slug": "tiny-tim-a-christmas-carol", "role": ""}, {"name": "Mr. Fezziwig", "slug": "mr-fezziwig", "role": ""}, {"name": "Fred", "slug": "fred-name", "role": ""}]
 date: 2026-07-26 22:14:43 +0000
+noindex: false
+sitemap: true
+index_promoted: batch 1 2026-07-29
 ---
 
 <h2>1. Core Premise &amp; Overview</h2>

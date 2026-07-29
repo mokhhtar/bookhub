@@ -31,6 +31,9 @@ nyt: null
 editions: {"editions": 879, "languages": 23}
 characters: [{"name": "Tom Sawyer", "slug": "tom-sawyer", "role": ""}, {"name": "Huckleberry Finn", "slug": "huckleberry-finn", "role": ""}]
 date: 2026-07-26 21:46:50 +0000
+noindex: false
+sitemap: true
+index_promoted: batch 1 2026-07-29
 ---
 
 <h2>1. Core Premise &amp; Overview</h2>

@@ -31,6 +31,9 @@ nyt: null
 editions: {"editions": 1558, "languages": 20}
 characters: [{"name": "Charles Bovary", "slug": "charles-bovary", "role": ""}]
 date: 2026-07-26 22:24:21 +0000
+noindex: false
+sitemap: true
+index_promoted: batch 1 2026-07-29
 ---
 
 <h2>1. Core Premise &amp; Overview</h2>

@@ -31,6 +31,9 @@ nyt: null
 editions: {"editions": 526, "languages": 15}
 characters: [{"name": "Jean Valjean", "slug": "jean-valjean", "role": ""}, {"name": "Cosette", "slug": "cosette", "role": ""}, {"name": "Gavroche", "slug": "gavroche", "role": ""}, {"name": "Bishop Myriel", "slug": "bishop-myriel", "role": ""}, {"name": "Enjolras", "slug": "enjolras", "role": ""}, {"name": "Javert", "slug": "javert", "role": ""}, {"name": "Fantine", "slug": "fantine", "role": ""}, {"name": "Marius Pontmercy", "slug": "marius-pontmercy", "role": ""}, {"name": "Monsieur Thénardier", "slug": "monsieur-thenardier", "role": ""}, {"name": "Éponine", "slug": "eponine", "role": ""}, {"name": "Patron-Minette", "slug": "patron-minette", "role": ""}, {"name": "Madame Thénardier", "slug": "madame-thenardier", "role": ""}]
 date: 2026-07-26 22:00:24 +0000
+noindex: false
+sitemap: true
+index_promoted: batch 1 2026-07-29
 ---
 
 <h2>1. Core Premise &amp; Overview</h2>

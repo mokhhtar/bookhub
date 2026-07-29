@@ -31,6 +31,9 @@ nyt: null
 editions: {"editions": 2887, "languages": 27}
 characters: [{"name": "Hareton Earnshaw", "slug": "hareton-earnshaw", "role": ""}, {"name": "Heathcliff", "slug": "heathcliff-wuthering-heights", "role": ""}, {"name": "Edgar Linton", "slug": "edgar-linton", "role": ""}, {"name": "Catherine Linton", "slug": "catherine-linton", "role": ""}, {"name": "Lockwood", "slug": "mr-lockwood", "role": ""}, {"name": "Nelly Dean", "slug": "nelly-dean", "role": ""}, {"name": "Hindley Earnshaw", "slug": "hindley-earnshaw", "role": ""}, {"name": "Isabella Linton", "slug": "isabella-linton", "role": ""}, {"name": "Catherine Earnshaw", "slug": "catherine-earnshaw", "role": ""}]
 date: 2026-07-26 21:35:22 +0000
+noindex: false
+sitemap: true
+index_promoted: batch 1 2026-07-29
 ---
 
 <h2>1. Core Premise &amp; Overview</h2>

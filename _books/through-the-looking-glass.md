@@ -31,6 +31,9 @@ nyt: null
 editions: null
 characters: [{"name": "Alice", "slug": "alice-alice-s-adventures-in-wonderland", "role": ""}, {"name": "Red Queen", "slug": "red-queen-through-the-looking-glass", "role": ""}, {"name": "White Queen", "slug": "white-queen-through-the-looking-glass", "role": ""}, {"name": "Red King", "slug": "red-king-through-the-looking-glass", "role": ""}, {"name": "White King", "slug": "white-king-through-the-looking-glass", "role": ""}, {"name": "White Knight", "slug": "white-knight-through-the-looking-glass", "role": ""}, {"name": "Tweedledum and Tweedledee", "slug": "tweedledum-and-tweedledee", "role": ""}, {"name": "The Sheep", "slug": "the-sheep", "role": ""}, {"name": "March Hare", "slug": "march-hare", "role": ""}, {"name": "The Hatter", "slug": "mad-hatter", "role": ""}, {"name": "Lion and the Unicorn", "slug": "the-lion-and-the-unicorn", "role": ""}, {"name": "Bandersnatch", "slug": "bandersnatch", "role": ""}, {"name": "Jubjub bird", "slug": "jubjub-bird", "role": ""}, {"name": "Humpty Dumpty", "slug": "humpty-dumpty", "role": ""}]
 date: 2026-07-28 16:14:38 +0000
+noindex: false
+sitemap: true
+index_promoted: batch 1 2026-07-29
 ---
 
 <h2>1. Core Premise &amp; Overview</h2>

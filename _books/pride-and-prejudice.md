@@ -31,6 +31,9 @@ nyt: null
 editions: {"editions": 4038, "languages": 27}
 characters: [{"name": "Elizabeth Bennet", "slug": "elizabeth-bennet", "role": "protagonist"}, {"name": "Fitzwilliam Darcy", "slug": "fitzwilliam-darcy", "role": "protagonist"}, {"name": "Jane Bennet", "slug": "jane-bennet", "role": "supporting"}, {"name": "Charles Bingley", "slug": "charles-bingley", "role": "supporting"}, {"name": "Mr. Bennet", "slug": "mr-bennet", "role": "supporting"}, {"name": "Mrs. Bennet", "slug": "mrs-bennet", "role": "supporting"}, {"name": "George Wickham", "slug": "george-wickham", "role": "supporting"}, {"name": "Mr. Collins", "slug": "mr-collins", "role": "supporting"}, {"name": "Lydia Bennet", "slug": "lydia-bennet", "role": "supporting"}, {"name": "Charlotte Lucas", "slug": "charlotte-lucas", "role": "supporting"}, {"name": "Lady Catherine de Bourgh", "slug": "lady-catherine-de-bourgh", "role": "supporting"}, {"name": "Mr. Gardiner", "slug": "mr-gardiner", "role": "supporting"}]
 date: 2026-07-26 18:48:02 +0000
+noindex: false
+sitemap: true
+index_promoted: batch 1 2026-07-29
 ---
 
 <h2>1. Core Premise &amp; Overview</h2>

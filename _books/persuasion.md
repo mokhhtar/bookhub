@@ -31,6 +31,9 @@ nyt: null
 editions: {"editions": 1236, "languages": 13}
 characters: [{"name": "Anne Elliot", "slug": "anne-elliot", "role": ""}, {"name": "Frederick Wentworth", "slug": "frederick-wentworth-persuasion", "role": ""}]
 date: 2026-07-26 22:32:52 +0000
+noindex: false
+sitemap: true
+index_promoted: batch 1 2026-07-29
 ---
 
 <h2>1. Core Premise &amp; Overview</h2>

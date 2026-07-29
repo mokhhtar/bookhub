@@ -31,6 +31,9 @@ nyt: null
 editions: {"editions": 2090, "languages": 14}
 characters: [{"name": "Elinor Dashwood", "slug": "elinor-dashwood", "role": ""}, {"name": "Edward Ferrars", "slug": "edward-ferrars", "role": ""}, {"name": "Marianne Dashwood", "slug": "marianne-dashwood", "role": ""}, {"name": "Colonel Brandon", "slug": "colonel-brandon", "role": ""}, {"name": "John Willoughby", "slug": "john-willoughby", "role": ""}]
 date: 2026-07-28 15:48:17 +0000
+noindex: false
+sitemap: true
+index_promoted: batch 1 2026-07-29
 ---
 
 <h2>1. Core Premise &amp; Overview</h2>

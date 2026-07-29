@@ -31,6 +31,9 @@ nyt: null
 editions: {"editions": 1917, "languages": 16}
 characters: [{"name": "Dracula (Dracul)", "slug": "dracula-dracul", "role": "Antagonist/Main Character"}, {"name": "Dolingen von Gratz", "slug": "dolingen-von-gratz", "role": "Supporting"}, {"name": "Jonathan Harker", "slug": "jonathan-harker", "role": "Protagonist"}, {"name": "Bram Stoker", "slug": "bram-stoker", "role": "Supporting"}, {"name": "Abraham Van Helsing", "slug": "abraham-van-helsing", "role": "Protagonist"}, {"name": "Deaglan O'Cuiv", "slug": "deaglan-o-cuiv", "role": "Supporting"}, {"name": "Emily Stoker", "slug": "emily-stoker", "role": "Supporting"}, {"name": "Arminius Vambéry", "slug": "arminius-vambery", "role": "Supporting"}, {"name": "Mina Murray", "slug": "mina-murray", "role": "Supporting"}, {"name": "Lucy Westenra", "slug": "lucy-westenra", "role": "Supporting"}, {"name": "Renfield", "slug": "renfield", "role": "Supporting"}, {"name": "Thornley Stoker", "slug": "thornley-stoker", "role": "Supporting"}]
 date: 2026-07-26 21:28:52 +0000
+noindex: false
+sitemap: true
+index_promoted: batch 1 2026-07-29
 ---
 
 <h2>1. Core Premise &amp; Overview</h2>

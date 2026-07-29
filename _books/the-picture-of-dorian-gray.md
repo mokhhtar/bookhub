@@ -31,6 +31,9 @@ nyt: null
 editions: {"editions": 3012, "languages": 20}
 characters: [{"name": "Lord Henry Wotton", "slug": "lord-henry-wotton", "role": ""}, {"name": "Dorian Gray", "slug": "dorian-gray-character", "role": ""}]
 date: 2026-07-26 21:37:02 +0000
+noindex: false
+sitemap: true
+index_promoted: batch 1 2026-07-29
 ---
 
 <h2>1. Core Premise &amp; Overview</h2>
