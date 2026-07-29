@@ -1,0 +1,32 @@
+---
+# SITEMAP INDEX. Replaces jekyll-sitemap's single flat file (the plugin is
+# removed from _config.yml) so each content type reports separately in Search
+# Console: "12 of 30 books indexed, 0 of 290 characters" is actionable,
+# a single coverage number for everything is not.
+#
+# Google's own limits, for reference: 50,000 <loc> per index, 500 indexes per
+# site, 50,000 URLs / 50MB per child sitemap. Nothing here is close to any of
+# them, and the docs treat an index as a standard technical solution — there
+# is no penalty attached to splitting.
+#
+# A child sitemap is listed ONLY when it has entries. Submitting an empty
+# sitemap is a Search Console error, and right now authors, characters and
+# categories are all deliberately unindexed, so they get no child file at all.
+layout: null
+permalink: /sitemap.xml
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>{{ '/sitemap-pages.xml' | absolute_url }}</loc>
+    <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
+  </sitemap>
+  {%- assign indexable_books = site.books | where: "noindex", false -%}
+  {%- if indexable_books.size > 0 -%}
+  {%- assign newest_book = indexable_books | sort: "date" | last -%}
+  <sitemap>
+    <loc>{{ '/sitemap-books.xml' | absolute_url }}</loc>
+    <lastmod>{{ newest_book.date | date_to_xmlschema }}</lastmod>
+  </sitemap>
+  {%- endif -%}
+</sitemapindex>

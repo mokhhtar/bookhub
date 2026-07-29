@@ -1,0 +1,28 @@
+---
+# Core product pages only. Mirrors exactly what jekyll-sitemap used to emit:
+# every HTML page that is neither `sitemap: false` nor `noindex: true`.
+#
+# `noindex_when_empty` is evaluated too, because that gate lives in
+# _layouts/default.html and a hand-rolled sitemap would otherwise happily
+# list a hub the layout is busy telling Google to ignore.
+layout: null
+permalink: /sitemap-pages.xml
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{%- for page in site.html_pages -%}
+  {%- assign skip = false -%}
+  {%- if page.sitemap == false or page.noindex -%}{%- assign skip = true -%}{%- endif -%}
+  {%- if page.url contains "/sitemap" -%}{%- assign skip = true -%}{%- endif -%}
+  {%- if page.url contains "404" -%}{%- assign skip = true -%}{%- endif -%}
+  {%- if page.noindex_when_empty -%}
+    {%- assign gated = site[page.noindex_when_empty] -%}
+    {%- if gated == nil or gated.size == 0 -%}{%- assign skip = true -%}{%- endif -%}
+  {%- endif -%}
+  {%- unless skip %}
+  <url>
+    <loc>{{ page.url | absolute_url }}</loc>
+  </url>
+  {%- endunless -%}
+{%- endfor %}
+</urlset>

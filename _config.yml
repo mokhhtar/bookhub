@@ -30,7 +30,11 @@ collections:
 
 # Plugins
 plugins:
-  - jekyll-sitemap
+  # jekyll-sitemap removed 2026-07-29: it emits one flat sitemap.xml, and the
+  # site now hand-rolls a sitemap INDEX (sitemap.xml) plus per-type children
+  # (sitemap-pages.xml, sitemap-books.xml) so Search Console reports coverage
+  # per content type. Leaving the plugin in would fight the hand-written
+  # /sitemap.xml for the same output path.
   - jekyll-seo-tag
   - jekyll-redirect-from
 

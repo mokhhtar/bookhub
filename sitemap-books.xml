@@ -1,0 +1,24 @@
+---
+# Book pages that have EARNED indexing — `noindex: false` written into the
+# page's own front matter, either by github_publisher's free-ebook rule or by
+# a deliberate promotion. The collection default is noindex, so a page has to
+# opt in; this file can never list one that hasn't.
+#
+# Keeping books in their own sitemap is the point of the index: Search Console
+# will report their coverage separately from the core pages, which is how a
+# staged rollout gets measured instead of guessed at.
+layout: null
+permalink: /sitemap-books.xml
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{%- assign books = site.books | where: "noindex", false | sort: "date" | reverse -%}
+{%- for book in books %}
+  <url>
+    <loc>{{ book.url | absolute_url }}</loc>
+    {%- if book.date %}
+    <lastmod>{{ book.date | date_to_xmlschema }}</lastmod>
+    {%- endif %}
+  </url>
+{%- endfor %}
+</urlset>
