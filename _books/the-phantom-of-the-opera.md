@@ -1,6 +1,6 @@
 ---
 layout: book
-content_version: 5
+content_version: 6
 title: "The Phantom of the Opera"
 author: "Gaston Leroux"
 author_slug: "gaston-leroux"
@@ -24,9 +24,9 @@ ratings: {"source": "goodreads", "average": 3.96, "count": 286816, "url": "https
 themes: ["Obsession", "Beauty and deformity", "Unrequited love", "Artistic genius"]
 reading_level: "Adult / General Fiction"
 free_ebook: null
-quotes: null
-quiz: null
-quiz_source: ""
+quotes: {"v": 6, "texts": ["I am your angel of Music. Come to me, Angel of Music.", "And though you turn from me to glance behind, the Phantom of the Opera is there. Inside your mind.", "Say you'll share with me one love, one lifetime. Lead me, save me from my solitude. Say you want me with you here, beside you. Anywhere you go let me go too. Christine, that's all I ask of —", "You will curse the day you did not do all that the Phantom asked of you!", "I gave you my music, made your song take wing, and now how you've repaid me: denied me and betrayed me."], "speakers": ["", "", "reprise, following \"The Point of No Return\"", "Reprise", "Reprise"], "source": "wikiquote", "source_url": "https://en.wikiquote.org/wiki/The_Phantom_of_the_Opera_%281986_musical%29", "license": "CC BY-SA"}
+quiz: [{"question": "Who is the author of the 1910 novel 'The Phantom of the Opera'?", "options": ["Andrew Lloyd Webber", "Gaston Leroux", "Pierre Lafitte", "Charles Hart"], "answer_index": 1, "supporting_quote": "The Phantom of the Opera , titled Le Fantôme de l’Opéra in its original French, is a 1910 novel written by Gaston Leroux .", "chunk_index": 0}, {"question": "What is the name of the opera house where the story takes place?", "options": ["Royal Albert Hall", "Palais Garnier", "Opéra Populaire", "Le Gaulois"], "answer_index": 1, "supporting_quote": "The story takes place in Paris in the 1880s, at the Palais Garnier Opera House", "chunk_index": 0}, {"question": "What is the name of the 'ghost' who lives in the catacombs beneath the opera house?", "options": ["Joseph Buquet", "Raoul", "Erik", "Philippe"], "answer_index": 2, "supporting_quote": "The voice, who is the deformed, murderous 'ghost' of the opera house named Erik", "chunk_index": 0}, {"question": "Who was the original actress to play Christine Daaé in the West End and Broadway productions of the Andrew Lloyd Webber musical?", "options": ["Sarah Brightman", "Claire Moore", "Rebecca Caine", "Jill Washington"], "answer_index": 0, "supporting_quote": "Michael Crawford and Sarah Brightman, the original Phantom and Christine in the West End and Broadway productions", "chunk_index": 3}, {"question": "What is the name of the stagehand who is found dead at the beginning of the story?", "options": ["Firmin Richard", "Joseph Buquet", "Armand Moncharmin", "Philippe de Chagny"], "answer_index": 1, "supporting_quote": "a stagehand, Joseph Buquet, is found dead, having been hanged, although the noose cannot be found.", "chunk_index": 0}, {"question": "Where did the first workshop performance of Andrew Lloyd Webber’s musical take place in 1985?", "options": ["The Palais Garnier", "The West End", "The Sydmonton Festival", "The Royal Albert Hall"], "answer_index": 2, "supporting_quote": "The show had its first workshop performance in 1985 at the Sydmonton Festival , an annual private arts festival held at Lloyd Webber’s estate", "chunk_index": 1}]
+quiz_source: "fandom_summary"
 nyt: null
 editions: {"editions": 31, "languages": 1}
 characters: [{"name": "Viscount Raoul de Chagny", "slug": "viscount-raoul-de-chagny", "role": ""}, {"name": "Erik", "slug": "erik-the-phantom-of-the-opera", "role": ""}, {"name": "Christine Daaé", "slug": "christine-daae", "role": ""}, {"name": "Joseph Buquet", "slug": "joseph-buquet", "role": ""}, {"name": "Carlotta", "slug": "carlotta-the-phantom-of-the-opera", "role": ""}, {"name": "The Persian", "slug": "the-persian", "role": ""}, {"name": "Madame Giry", "slug": "madame-giry", "role": ""}, {"name": "Meg Giry", "slug": "meg-giry", "role": ""}]
