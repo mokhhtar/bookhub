@@ -1,6 +1,6 @@
 ---
 layout: book
-content_version: 4
+content_version: 6
 title: "Robinson Crusoe"
 author: "Daniel Defoe"
 author_slug: "daniel-defoe"
@@ -24,11 +24,11 @@ ratings: {"source": "goodreads", "average": 3.68, "count": 337255, "url": "https
 themes: ["Survival", "Colonialism", "Religious redemption", "Self-reliance"]
 reading_level: "Adult / General Fiction"
 free_ebook: null
-quotes: {"texts": ["We loved the doctrine for the teacher's sake.", "Alas the Church of England! What with Popery on one hand, and schismatics on the other, how has she been crucified between two thieves!", "It is better to have a lion at the head of an army of sheep than a sheep at the head of an army of lions.", "In trouble to be troubledIs to have your trouble doubled.", "A true-bred merchant is the best gentleman in the nation."], "speakers": ["", "", "1741", "1719", "1719"], "source": "wikiquote", "source_url": "https://en.wikiquote.org/wiki/Robinson_Crusoe", "license": "CC BY-SA"}
+quotes: {"v": 6, "texts": ["We loved the doctrine for the teacher's sake.", "Alas the Church of England! What with Popery on one hand, and schismatics on the other, how has she been crucified between two thieves!", "It is better to have a lion at the head of an army of sheep than a sheep at the head of an army of lions.", "In trouble to be troubledIs to have your trouble doubled.", "A true-bred merchant is the best gentleman in the nation."], "speakers": ["", "", "1741", "1719", "1719"], "source": "wikiquote", "source_url": "https://en.wikiquote.org/wiki/Robinson_Crusoe", "license": "CC BY-SA"}
 quiz: null
 quiz_source: ""
 nyt: null
-editions: null
+editions: {"editions": 2420, "languages": 26}
 characters: [{"name": "Friday", "slug": "friday-robinson-crusoe", "role": ""}]
 date: 2026-07-26 22:13:11 +0000
 ---
