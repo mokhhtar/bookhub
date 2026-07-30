@@ -1,6 +1,6 @@
 ---
 layout: book
-content_version: 5
+content_version: 6
 title: "The Brothers Karamazov"
 author: "Fyodor Dostoevsky"
 author_slug: "fyodor-dostoevsky"
