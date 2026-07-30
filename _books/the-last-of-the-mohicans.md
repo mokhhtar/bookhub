@@ -1,6 +1,6 @@
 ---
 layout: book
-content_version: 5
+content_version: 6
 title: "The Last of the Mohicans"
 author: "James Fenimore Cooper, James A. Sappenfield, E. N. Feltskog"
 author_slug: "james-fenimore-cooper"
@@ -24,7 +24,7 @@ ratings: {"source": "goodreads", "average": 3.7, "count": 103867, "url": "https:
 themes: ["Frontier survival", "Cultural conflict", "Honor and loyalty", "Nature versus civilization"]
 reading_level: "Adult / General Fiction"
 free_ebook: null
-quotes: null
+quotes: {"v": 6, "texts": ["Death and honor are thought to be the same, but today I have learned that sometimes they are not.", "When the Grey Hair is dead, Magua will eat his heart. Before he dies, Magua will put his children under the knife, so the Grey Hair will know his seed is wiped out forever.", "Huron Chief: [speaking French]The white man came and night entered our future with him. Our council has asked the question since I was a boy: What are the Huron to do?"], "speakers": ["", "", ""], "source": "wikiquote", "source_url": "https://en.wikiquote.org/wiki/The_Last_of_the_Mohicans_%281992_film%29", "license": "CC BY-SA"}
 quiz: null
 quiz_source: ""
 nyt: null
