@@ -1,6 +1,6 @@
 ---
 layout: book
-content_version: 4
+content_version: 6
 title: "The Metamorphosis"
 author: "Franz Kafka"
 author_slug: "franz-kafka"
