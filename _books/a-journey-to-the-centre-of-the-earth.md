@@ -1,6 +1,6 @@
 ---
 layout: book
-content_version: 5
+content_version: 6
 title: "A Journey to the Centre of the Earth"
 author: "Jules Verne"
 author_slug: "jules-verne"
