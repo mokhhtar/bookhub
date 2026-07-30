@@ -1,6 +1,6 @@
 ---
 layout: book
-content_version: 5
+content_version: 6
 title: "Kidnapped"
 author: "Robert Louis Stevenson"
 author_slug: "robert-louis-stevenson"
@@ -24,7 +24,7 @@ ratings: {"source": "goodreads", "average": 3.79, "count": 69048, "url": "https:
 themes: ["Coming of age", "Betrayal and loyalty", "Political conflict", "Survival"]
 reading_level: "Young Adult"
 free_ebook: null
-quotes: {"texts": ["There's not a crimeBut takes its proper change out still in crimeIf once rung on the counter of this world.", "Society already understands that the criminal is not he who washes our dirty linen in public, but he who dirties the linen.", "Nor all that heralds rake from coffin'd clay,Nor florid prose, nor honied lies of rhyme,Can blazon evil deeds, or consecrate a crime.", "There are few better measures of the concern a society has for its individual members and its own well being than the way it handles criminals.", "(1) Crimes shall never be presented in such a way as to create sympathy for the criminal, to promote distrust of the forces of law and justice, or to inspire others with a desire to imitate criminals."], "speakers": ["", "", "", "", ""], "source": "wikiquote", "source_url": "https://en.wikiquote.org/wiki/Kidnapped", "license": "CC BY-SA"}
+quotes: {"v": 6, "texts": ["There's not a crimeBut takes its proper change out still in crimeIf once rung on the counter of this world.", "Society already understands that the criminal is not he who washes our dirty linen in public, but he who dirties the linen.", "Nor all that heralds rake from coffin'd clay,Nor florid prose, nor honied lies of rhyme,Can blazon evil deeds, or consecrate a crime.", "There are few better measures of the concern a society has for its individual members and its own well being than the way it handles criminals.", "(1) Crimes shall never be presented in such a way as to create sympathy for the criminal, to promote distrust of the forces of law and justice, or to inspire others with a desire to imitate criminals."], "speakers": ["", "", "", "", ""], "source": "wikiquote", "source_url": "https://en.wikiquote.org/wiki/Kidnapped", "license": "CC BY-SA"}
 quiz: null
 quiz_source: ""
 nyt: null
