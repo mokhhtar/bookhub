@@ -1,6 +1,6 @@
 ---
 layout: book
-content_version: 4
+content_version: 6
 title: "Anna Karenina"
 author: "Leo Tolstoy"
 author_slug: "leo-tolstoy"
@@ -24,7 +24,7 @@ ratings: {"source": "goodreads", "average": 4.11, "count": 959600, "url": "https
 themes: ["Adultery and betrayal", "Social hypocrisy", "Search for meaning", "Family dynamics"]
 reading_level: "Adult / General Fiction"
 free_ebook: null
-quotes: {"texts": ["Happy families are all alike; every unhappy family is unhappy in its own way.", "Stepan Arkadyevitch was a truthful man in his relations with himself. He was incapable of deceiving himself and persuading himself that he repented of his conduct.", "Stephan Arkadievich chose neither his attitudes nor his opinions, no, the attitudes and opinions came to him on their own, just as he chose neither the style of his hat nor of his coats but got what people were wearing.", "Stepan Arkadyevitch … liked his newspaper, as he did his cigar after dinner, for the slight fog it diffused in his brain.", "Levin suddenly blushed, not as grown men blush, slightly, without being themselves aware of it, but as boys blush, feeling that they are ridiculous through their shyness, and consequently ashamed of it and blushing still more."], "speakers": ["opening sentence", "", "", "", ""], "source": "wikiquote", "source_url": "https://en.wikiquote.org/wiki/Anna_Karenina", "license": "CC BY-SA"}
+quotes: {"v": 6, "texts": ["Happy families are all alike; every unhappy family is unhappy in its own way.", "Stepan Arkadyevitch was a truthful man in his relations with himself. He was incapable of deceiving himself and persuading himself that he repented of his conduct.", "Stephan Arkadievich chose neither his attitudes nor his opinions, no, the attitudes and opinions came to him on their own, just as he chose neither the style of his hat nor of his coats but got what people were wearing.", "Stepan Arkadyevitch … liked his newspaper, as he did his cigar after dinner, for the slight fog it diffused in his brain.", "Levin suddenly blushed, not as grown men blush, slightly, without being themselves aware of it, but as boys blush, feeling that they are ridiculous through their shyness, and consequently ashamed of it and blushing still more."], "speakers": ["opening sentence", "", "", "", ""], "source": "wikiquote", "source_url": "https://en.wikiquote.org/wiki/Anna_Karenina", "license": "CC BY-SA"}
 quiz: null
 quiz_source: ""
 nyt: null
