@@ -1,6 +1,6 @@
 ---
 layout: book
-content_version: 4
+content_version: 6
 title: "Twenty Thousand Leagues Under the Sea"
 author: "Jules Verne"
 author_slug: "jules-verne"
@@ -24,7 +24,7 @@ ratings: {"source": "goodreads", "average": 3.89, "count": 282899, "url": "https
 themes: ["Scientific exploration", "Isolation and madness", "Man versus nature", "Technological advancement"]
 reading_level: "Adult / General Fiction"
 free_ebook: null
-quotes: null
+quotes: {"v": 6, "texts": ["The natives over there are cannibals. They eat liars with the same enthusiasm as they eat honest men.", "There is hope for the future. When the world is ready for a new and better life, all this will someday come to pass... in God's good time.", "There's one thing you ought to know, Professor: Nemo's cracked. I've yet to see the day you can make a deal with a mad dog. So while you're feeding him sugar, I'll be figuring a plan to muzzle him.", "A strange twilight world opened up before me, and I felt as the first man to set foot on another planet, an intruder in this mystic garden of the deep.", "Walt Disney's Mighty, Magnificent, Memorable 20,000 Leagues Under the Sea!"], "speakers": ["", "", "", "", ""], "source": "wikiquote", "source_url": "https://en.wikiquote.org/wiki/Twenty_Thousand_Leagues_Under_the_Sea_%28film%29", "license": "CC BY-SA"}
 quiz: null
 quiz_source: ""
 nyt: null
