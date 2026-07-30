@@ -1,6 +1,6 @@
 ---
 layout: book
-content_version: 4
+content_version: 6
 title: "The Invisible Man"
 author: "H. G. Wells"
 author_slug: "h-g-wells"
