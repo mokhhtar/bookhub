@@ -1,6 +1,6 @@
 ---
 layout: book
-content_version: 4
+content_version: 6
 title: "The Count of Monte Cristo"
 author: "Alexandre Dumas"
 author_slug: "alexandre-dumas"
@@ -24,7 +24,7 @@ ratings: {"source": "goodreads", "average": 4.33, "count": 1068922, "url": "http
 themes: ["Revenge and retribution", "Justice and morality", "Patience and providence", "Transformation and identity"]
 reading_level: "Adult / General Fiction"
 free_ebook: {"source": "internet_archive", "page_url": "https://archive.org/details/countofmontecris03duma", "read_url": "https://archive.org/details/countofmontecris03duma", "epub_url": null, "txt_url": null}
-quotes: {"texts": ["\"We are never quits with those who oblige us,\" was Dantes' reply; \"for when we do not owe them money, we owe them gratitude.\"", "Drunk, if you like; so much the worse for those who fear wine, for it is because they have bad thoughts which they are afraid the liquor will extract from their hearts.", "Private misfortunes must never induce us to neglect business.", "\"How strange,\" continued the king, with some asperity; \"the police think that they have disposed of the whole matter when they say, 'A murder has been committed,' and especially so when they can add, 'And we are on the track of the guilty persons.'\"", "And now, farewell to kindness, humanity and gratitude… I have substituted myself for Providence in rewarding the good; may the God of vengeance now yield me His place to punish the wicked."], "speakers": ["", "", "", "", ""], "source": "wikiquote", "source_url": "https://en.wikiquote.org/wiki/The_Count_of_Monte_Cristo", "license": "CC BY-SA"}
+quotes: {"v": 6, "texts": ["\"We are never quits with those who oblige us,\" was Dantes' reply; \"for when we do not owe them money, we owe them gratitude.\"", "Drunk, if you like; so much the worse for those who fear wine, for it is because they have bad thoughts which they are afraid the liquor will extract from their hearts.", "Private misfortunes must never induce us to neglect business.", "\"How strange,\" continued the king, with some asperity; \"the police think that they have disposed of the whole matter when they say, 'A murder has been committed,' and especially so when they can add, 'And we are on the track of the guilty persons.'\"", "And now, farewell to kindness, humanity and gratitude… I have substituted myself for Providence in rewarding the good; may the God of vengeance now yield me His place to punish the wicked."], "speakers": ["", "", "", "", ""], "source": "wikiquote", "source_url": "https://en.wikiquote.org/wiki/The_Count_of_Monte_Cristo", "license": "CC BY-SA"}
 quiz: null
 quiz_source: ""
 nyt: null
