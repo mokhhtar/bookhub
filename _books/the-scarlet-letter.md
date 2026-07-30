@@ -1,6 +1,6 @@
 ---
 layout: book
-content_version: 4
+content_version: 6
 title: "The Scarlet Letter"
 author: "Nathaniel Hawthorne, Ross C. Murfin"
 author_slug: "nathaniel-hawthorne"
@@ -24,7 +24,7 @@ ratings: {"source": "goodreads", "average": 3.44, "count": 937471, "url": "https
 themes: ["Sin and guilt", "Legalism and hypocrisy", "Identity and society", "Redemption"]
 reading_level: "Academic / Advanced Reader"
 free_ebook: null
-quotes: {"texts": ["If his inmost heart could have been laid open, there would have been discovered that dream of undying fame, which, dream as it is, is more powerful than a thousand realities.", "It is perilous to make a chasm in human affections; not that they gape so long and wide—but so quickly close again!", "Would Time but await the close of our favorite follies, we should all be young men, all of us, and until Doom's Day.", "When the Artist rises high enough to achieve the Beautiful, the symbol by which he makes it perceptible to mortal senses becomes of little value in his eyes, while his spirit possesses itself in the enjoyment of the reality.", "In a word, the heavy weight upon his spirits kept everything in order, not merely within his own system, but wheresoever the iron accents of the church clock were audible."], "speakers": ["1828", "1837, 1851", "1837, 1851", "", ""], "source": "wikiquote", "source_url": "https://en.wikiquote.org/wiki/The_Scarlet_Letter", "license": "CC BY-SA"}
+quotes: {"v": 6, "texts": ["If his inmost heart could have been laid open, there would have been discovered that dream of undying fame, which, dream as it is, is more powerful than a thousand realities.", "It is perilous to make a chasm in human affections; not that they gape so long and wide—but so quickly close again!", "Would Time but await the close of our favorite follies, we should all be young men, all of us, and until Doom's Day.", "When the Artist rises high enough to achieve the Beautiful, the symbol by which he makes it perceptible to mortal senses becomes of little value in his eyes, while his spirit possesses itself in the enjoyment of the reality.", "In a word, the heavy weight upon his spirits kept everything in order, not merely within his own system, but wheresoever the iron accents of the church clock were audible."], "speakers": ["1828", "1837, 1851", "1837, 1851", "", ""], "source": "wikiquote", "source_url": "https://en.wikiquote.org/wiki/The_Scarlet_Letter", "license": "CC BY-SA"}
 quiz: null
 quiz_source: ""
 nyt: null
