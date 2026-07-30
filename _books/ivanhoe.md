@@ -1,6 +1,6 @@
 ---
 layout: book
-content_version: 5
+content_version: 6
 title: "Ivanhoe"
 author: "Walter Scott"
 author_slug: "walter-scott"
@@ -24,7 +24,7 @@ ratings: {"source": "goodreads", "average": 3.77, "count": 100387, "url": "https
 themes: ["Chivalry and honor", "Religious conflict", "National identity", "Social justice"]
 reading_level: "Adult / General Fiction"
 free_ebook: null
-quotes: null
+quotes: {"v": 6, "texts": ["Medicine has taken a trend where we are treating disease[s] when they occur because we ignored the preventative measures in treating them before they occur.", "So, we need to include a non-medicinal approach for treating disease.", "There is no magic pill that will cure you. You only have to look at the outcomes.", "Why do people who meditate, exercise, and take care of themselves feel better?", "Health and wellness begin with your mindset. Living a healthy life starts with a healthy mindset."], "speakers": ["", "", "", "", ""], "source": "wikiquote", "source_url": "https://en.wikiquote.org/wiki/Ivan_Edwards", "license": "CC BY-SA"}
 quiz: null
 quiz_source: ""
 nyt: null
