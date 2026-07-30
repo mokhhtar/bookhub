@@ -1,6 +1,6 @@
 ---
 layout: book
-content_version: 5
+content_version: 6
 title: "The Mysterious Island"
 author: "Jules Verne"
 author_slug: "jules-verne"
@@ -24,7 +24,7 @@ ratings: {"source": "goodreads", "average": 4.14, "count": 60284, "url": "https:
 themes: ["Survival", "Human ingenuity", "Colonialism", "Scientific progress"]
 reading_level: "Adult / General Fiction"
 free_ebook: {"source": "internet_archive", "page_url": "https://archive.org/details/mysteriousisland00vern_0", "read_url": "https://archive.org/details/mysteriousisland00vern_0", "epub_url": null, "txt_url": null}
-quotes: {"texts": ["Mais aux grandes douleurs le ciel mêle incessamment les grandes joies, et il réservait au professeur Lidenbrock une satisfaction égale à ses désespérants ennuis.", "Les objets extérieurs ont une action réelle sur le cerveau. Qui s’enferme entre quatre murs finit par perdre la faculté d’associer les idées et les mots. Que de prisonniers cellulaires devenus imbéciles, sinon fous, par le défaut d’exercice des facultés pensantes.", "Je ne puis peindre mon désespoir; nul mot de la langue humaine ne rendrait mes sentiments. J’étais enterré vif, avec la perspective de mourir dans les tortures de la faim et de la soif.", "La science, mon garçon, est faite d’erreurs, mais d’erreurs qu’il est bon de commettre, car elles mènent peu à peu à la vérité.", "Le grand architecte de l'univers l'a construite on bons matériaux."], "speakers": ["", "", "", "", ""], "source": "wikiquote", "source_url": "https://en.wikiquote.org/wiki/The_Mysterious_Island", "license": "CC BY-SA"}
+quotes: {"v": 6, "texts": ["Mais aux grandes douleurs le ciel mêle incessamment les grandes joies, et il réservait au professeur Lidenbrock une satisfaction égale à ses désespérants ennuis.", "Les objets extérieurs ont une action réelle sur le cerveau. Qui s’enferme entre quatre murs finit par perdre la faculté d’associer les idées et les mots. Que de prisonniers cellulaires devenus imbéciles, sinon fous, par le défaut d’exercice des facultés pensantes.", "Je ne puis peindre mon désespoir; nul mot de la langue humaine ne rendrait mes sentiments. J’étais enterré vif, avec la perspective de mourir dans les tortures de la faim et de la soif.", "La science, mon garçon, est faite d’erreurs, mais d’erreurs qu’il est bon de commettre, car elles mènent peu à peu à la vérité.", "Le grand architecte de l'univers l'a construite on bons matériaux."], "speakers": ["", "", "", "", ""], "source": "wikiquote", "source_url": "https://en.wikiquote.org/wiki/The_Mysterious_Island", "license": "CC BY-SA"}
 quiz: null
 quiz_source: ""
 nyt: null
