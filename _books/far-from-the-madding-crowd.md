@@ -1,6 +1,6 @@
 ---
 layout: book
-content_version: 5
+content_version: 6
 title: "Far from the Madding Crowd"
 author: "Thomas Hardy"
 author_slug: "thomas-hardy"
