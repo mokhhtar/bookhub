@@ -1,6 +1,6 @@
 ---
 layout: book
-content_version: 4
+content_version: 6
 title: "The Adventures of Huckleberry Finn"
 author: "Mark Twain"
 author_slug: "mark-twain"
@@ -24,7 +24,7 @@ ratings: {"source": "goodreads", "average": 3.83, "count": 1350065, "url": "http
 themes: ["Coming of age", "Racism and slavery", "Moral growth", "Freedom and society"]
 reading_level: "Adult / General Fiction"
 free_ebook: {"source": "internet_archive", "page_url": "https://archive.org/details/adventuresofhuck0000mark_f6b5", "read_url": "https://archive.org/details/adventuresofhuck0000mark_f6b5", "epub_url": null, "txt_url": null}
-quotes: {"texts": ["I haven't a particle of confidence in a man who has no redeeming petty vices whatsoever.", "I'll risk forty dollars that he can outjump any frog in Calaveras county.", "I don't see no p'ints about that frog that's any better'n any other frog.", "He was ignorant of the commonest accomplishments of youth. He could not even lie.", "Soap and education are not as sudden as a massacre, but they are more deadly in the long run."], "speakers": ["1867", "", "1865", "", "1875"], "source": "wikiquote", "source_url": "https://en.wikiquote.org/wiki/The_Adventures_of_Huckleberry_Finn", "license": "CC BY-SA"}
+quotes: {"v": 6, "texts": ["I haven't a particle of confidence in a man who has no redeeming petty vices whatsoever.", "I'll risk forty dollars that he can outjump any frog in Calaveras county.", "I don't see no p'ints about that frog that's any better'n any other frog.", "He was ignorant of the commonest accomplishments of youth. He could not even lie.", "Soap and education are not as sudden as a massacre, but they are more deadly in the long run."], "speakers": ["1867", "", "1865", "", "1875"], "source": "wikiquote", "source_url": "https://en.wikiquote.org/wiki/The_Adventures_of_Huckleberry_Finn", "license": "CC BY-SA"}
 quiz: null
 quiz_source: ""
 nyt: null
