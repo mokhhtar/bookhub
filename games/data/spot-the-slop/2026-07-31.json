@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "n": 2,
+ "date": "2026-07-31",
+ "contains_fabricated_text": true,
+ "rounds": [
+  {
+   "i": 0,
+   "author": "Jules Verne",
+   "passages": [
+    "The sea does not belong to despots. Upon its surface men can still exercise unjust laws, fight, tear one another to pieces, and be carried away with terrestrial horrors. But at thirty feet below its level, their reign ceases, their influence is quenched, and their power disappears. Ah! sir, live—live in the bosom of the waters! There only is independence! There I recognise no masters!",
+    "The vast aerial abyss beckons to the daring soul, far removed from the petty squabbles of the solid earth below. As the vessel ascends into the thinning ether, the heavy burdens of existence evaporate amidst the clouds. Here, the laws of gravity yield to the persistent force of human invention. Behold the boundless horizon, where true liberty dwells in the silence of the infinite, starry dome."
+   ],
+   "answer_hash": "cc2da24b1eff998d9e9d465103ca832372e989e02a3f46508a0c5a219f8c8654"
+  },
+  {
+   "i": 1,
+   "author": "Walter Scott",
+   "passages": [
+    "The youngest reader of romances and romantic ballads, must recollect how often the females, during the dark ages, as they are called, were initiated into the mysteries of surgery, and how frequently the gallant knight submitted the wounds of his person to her cure, whose eyes had yet more deeply penetrated his heart.",
+    "The weary traveller, when the sun descends beneath the distant crags, often reflects upon those ancient times when the lone hermit held sway within the forest gloom, bestowing a frugal portion of pulse and spring water upon the wayfarer who sought shelter from the howling tempests of a bleak and desolate autumn night."
+   ],
+   "answer_hash": "78f7b9b4ce922d3f94f9999f5a80a12cf59f9df4b6b37d20c80b85ee873c08ef"
+  },
+  {
+   "i": 2,
+   "author": "Harriet Beecher Stowe",
+   "passages": [
+    "How heavy lies the burden of a guilty heart, when the shadows of the evening creep across the silent hearth! Can the wealth of all the earth purchase peace for the spirit that has bartered its own light? Oh, let the weary soul find its rest in the mercy which flows like a river, far beyond the reach of human pride.",
+    "After all, let a man take what pains he may to hush it down, a human soul is an awful ghostly, unquiet possession, for a bad man to have. Who knows the metes and bounds of it? Who knows all its awful perhapses,—those shudderings and tremblings, which it can no more live down than it can outlive its own eternity!"
+   ],
+   "answer_hash": "0354e02b3532a7f1e6fa36fa0fa6285a301502637cf4cab96df17d7be728d341"
+  },
+  {
+   "i": 3,
+   "author": "Mary Shelley",
+   "passages": [
+    "The melancholy which had long shadowed my spirit deepened as I contemplated the unnatural animation of the frame before me. My hands, stained by the crude instruments of my ambition, trembled with a sudden, icy dread. What had been the singular object of my fevered intellect now appeared a monstrous blight upon the world, and I recoiled in silent horror from the fruit of my own desolate industry.",
+    "The astonishment which I had at first experienced on this discovery soon gave place to delight and rapture. After so much time spent in painful labour, to arrive at once at the summit of my desires was the most gratifying consummation of my toils. But this discovery was so great and overwhelming that all the steps by which I had been progressively led to it were obliterated, and I beheld only the result."
+   ],
+   "answer_hash": "498c9340d317b6c8e95f728bc2ab29e435c5666a94e4671d073ed96b1adeca08"
+  },
+  {
+   "i": 4,
+   "author": "Robert Louis Stevenson",
+   "passages": [
+    "The wind howled about the eaves like a famished beast, and I huddled closer to the dying hearth. Every shadow seemed to stretch with a sentient malice, yet I dared not stir. The candle flickered, casting long, frantic shapes upon the walls, until at last the wick drowned in its own wax and left me to the dark.",
+    "I did not know whether to laugh or cry. The room was as cold as a well, and the bed, when I had found my way to it, as damp as a peat-hag; but by good fortune I had caught up my bundle and my plaid, and rolling myself in the latter, I lay down upon the floor under lee of the big bedstead, and fell speedily asleep."
+   ],
+   "answer_hash": "64cfc7a4c05350c8e9f268283058d63224f6ca2e012755a442b2b61c61b9d3e5"
+  }
+ ],
+ "reveal_enc": "fYAnPHcLAcZBHZlYkW3kznIJEqVccL+IozPEcmBM9Rv/vRsvpm3uiHkSwENDkchJ04JcyTV1a7eIzqn3cW0LiEx3ErxC9pujroX+X1uzkWa2PU73uC+ajnz6BPkyAIE6T+6AIcdzRddeDzy8qh2ROGO6wqcWK6pSVxkdrQJlc03N0FLKV+gswIMWhBYkCaOLRYSNm953RgzgCoouiLsOE++0XkPYfaZL+aFuREJS1/C9X76hYtEUlJDJlc/7gDfs4hV2DWBYf4bSBSywXUDm6zM46oeLBsW6fJgMXsUg4HGx50wh99OH7gt0TtItZnV93VsQTK9fPWa8iDyC2bl9GiHCc2Wyo/Ru36UCPDkKJfGhXT0t9IVKxR9RDwWoWeeF0AQaPEHMOamUCI+xl5AcJ+cvocmckybk9OUXnhrXiIsS0GM0Ki50TSUZ06QaMC96n4G9w/munYvNpreSVXDVYzLXEhEg+l0x5ZcefGmFSaBT+hhg+YG+UDiLqco60yOGlK/aj9sOqiq8To9XoPOAjLqVJ0wU9j4jHEg9gvRMGXeFzOTRmYndrDBNuaNBpXtYKxnJ09FIXL+3gZ1Os3Ycsryye3m4aEKBruSRwDahkwmwvSSxUsDGovNgwvpKEPEu3A8R+78KIm7rwBlyav65s7cllOKbLAi4fEvI7yj6oJNT61lwwe/kr9ZLBWrcPSrzYtd0dcG+mNx+2SWiOYkMoMrGxYFzSS4wEVZmYd/EXFWPPgoYw2wWeo3BSfMcd0MK9PNQHsJP6iQSCR1M7lAPTCFwDrE7Loo436NdTiw4k/jrWHdLNmTWJDlFczVK8dxgUNH0JJdyaL6lv9K8W5DgJR6fLkYv32SmtHGv4hk6E1PNuKkq3Oo9DStrGO5dEpegqJSw6Zkix0KzXwNkfFfdND+4WSa+PS5XgiEz/RRRHWjxuw3FlKgzTRSOMdUKzXPQ8Vx7Z2nUR0DPkj8zXcmh9C0zTimd/+1Xg+1OXgHzjvklQwR52MtMlAIn+Tcn24Lo7NxXOPuU5zRRlFGwPgpmWs4q/A=="
+}

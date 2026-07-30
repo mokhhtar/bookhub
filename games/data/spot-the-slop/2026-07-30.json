@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "n": 1,
+ "date": "2026-07-30",
+ "contains_fabricated_text": true,
+ "rounds": [
+  {
+   "i": 0,
+   "author": "H. G. Wells",
+   "passages": [
+    "The engine pulsed with a rhythmic, metallic heartbeat that seemed to defy the very laws of combustion. I watched the pressure gauges climb, their needles shivering against the glass, while the scent of scorched oil hung heavy in the stagnant air. Beyond the thick observation port, the horizon shimmered, distorted by a strange and unnatural heat that suggested a rift in the firmament itself.",
+    "The place was empty. They refastened the back door, examined the kitchen, pantry, and scullery thoroughly, and at last went down into the cellar. There was not a soul to be found in the house, search as they would. Daylight found the vicar and his wife, a quaintly-costumed little couple, still marvelling about on their own ground floor by the unnecessary light of a guttering candle."
+   ],
+   "answer_hash": "6b4d32a4601f900ab7b2f1a9d162c523a2dfc4d96a9f88f39582a08f56cb01dd"
+  },
+  {
+   "i": 1,
+   "author": "Charles Dickens",
+   "passages": [
+    "The night was not so pleasant as the evening, for it got chilly; and being put between two gentlemen (the rough-faced one and another) to prevent my tumbling off the coach, I was nearly smothered by their falling asleep, and completely blocking me up. They squeezed me so hard sometimes, that I could not help crying out, ‘Oh! If you please!’--which they didn’t like at all, because it woke them.",
+    "The wind howled about the eaves like a famished creature, shaking the frosted panes with a rattling persistence that defied all comfort. I sat huddled by the dying embers, clutching a threadbare shawl against the encroaching damp, while the shadows danced in mockery upon the peeling walls. Every creak of the floorboards spoke of long-forgotten miseries lingering in this hollow, silent house."
+   ],
+   "answer_hash": "633813b0b653947d388ad3c3843174e3d1757cface1537b65ca0d9ba464e38c4"
+  },
+  {
+   "i": 2,
+   "author": "Anna Sewell",
+   "passages": [
+    "When the streets were slippery with frost or snow that was the worst of all for us horses. One mile of such traveling, with a weight to draw and no firm footing, would take more out of us than four on a good road; every nerve and muscle of our bodies is on the strain to keep our balance; and, added to this, the fear of falling is more exhausting than anything else.",
+    "When the heavy rains fall upon the dusty track, the ground becomes a treacherous mire that clings to our tired hooves. To pull a load through the deep, yielding clay requires a strength that soon wanes; each step is a labor of will, for the sliding earth offers no sure purchase. It is a wearying trial to stand firm when the way beneath us is as unstable as the shifting wind itself."
+   ],
+   "answer_hash": "f34f775596cd06e0b2e2ed83e1197fcb42b2085b5b58afcfa20118a2aa0d428a"
+  },
+  {
+   "i": 3,
+   "author": "Jules Verne",
+   "passages": [
+    "The hunters then rose, and using their sticks like scythes, they mowed down whole rows of these couroucous, who never thought of flying away, and stupidly allowed themselves to be knocked off. A hundred were already heaped on the ground, before the others made up their minds to fly.",
+    "The mechanical apparatus hummed with a rhythmic fervor, its iron pistons driving the vessel forward across the glass-like surface of the deep. Great clouds of steam rose to meet the horizon, while the pressure gauge ticked steadily upward toward a perilous threshold."
+   ],
+   "answer_hash": "7c26d645fb05285b2a71318344ed42528e4848c928873058e7317211cbffb639"
+  },
+  {
+   "i": 4,
+   "author": "Oscar Wilde",
+   "passages": [
+    "The pursuit of virtue is merely a tedious performance for an audience that never applauds. To be good is to be forgotten, yet to be wicked is to be misunderstood, which is far more exhausting. We wear our morality like a heavy velvet cloak in the heat of midday, terrified of the scandal of a loosened button. True wisdom lies in knowing that every sin is a masterpiece waiting for a critic.",
+    "The mutilation of the savage has its tragic survival in the self-denial that mars our lives. We are punished for our refusals. Every impulse that we strive to strangle broods in the mind and poisons us. The body sins once, and has done with its sin, for action is a mode of purification. Nothing remains then but the recollection of a pleasure, or the luxury of a regret."
+   ],
+   "answer_hash": "71a4c84d74ca4b4a90313a314df3e4ca9d058716cd9ccb691d2ffd075411fb91"
+  }
+ ],
+ "reveal_enc": "DKP1+diA+LvllB2T2niWxN6aZJk0WFDLt94Sz0UTzklH2Jga83jpVpxbeeVVB44jANX4QB9VQkmZiX2nVfePsBbA88vNWd7rEY5pyzhHWwyTKQ1YaB4F8kLEiDGlxeSeAq8cp7dcsq74JkUvZA8OfxsRGA/E0dPxonJhtLmHzIJu0wliqWVH5J1h53CevxSAL7X+fJ/Fx3yDUdUezJ6nWou4aquf1DgWP1NKumHKL/7tdX/Bdwvj4NxAWXeDUPlJ1l8stTRRD1FzU+ZLzdJx4y6hOuwf7fr26DGABSzpV8PMg8y9pnjkK+IDfXxYrnM2zNY1EPzadRey/6xbu6kelTTnRu72oG7JgEdjgkrixBSIpLKLzWZpoARjQ2GWO/uOV1maG8TvB0kHjy1lURyqzLb10xyluaKBExNfBM6DS62m+N05S/jpMT32uHEMlfMQzGmHKVfaDW348RpuKypQ+3pbd/Y0GTF5GyJMDjL+29yCh9ASUhhLYCmBHJCAagcwRyZEB03dZx6rHRBIlP4jP6s2RVoRrRObSYxV6corAx7k/6TAz7VEwgER8fPYKAuK4FXlLzzPWoo2z5EaE4pLqpPCXH1F/+kH1ztELpMMZs+waE2SIL8ySQmcikXwaBQv1il7SRCVaFD6e+cz5wRJNy3oVC6wVBmLINwEONzmTj23Dv4WwthCbsYZP4XUH216WCbLJ7rAHq29tXzMjpTv3VovzLWXugQ1QDaCAIKkFoNPy6QWx0z14lmt397XSYI/y6NxUOGn/iislyPAX/jlDRpInDMxbijnR0a1CM8ck+5i4bWbJSTOAY7HeUPHYh2E0xIaxPKnZdqgGtv30NcFuRkOcLGlYtCIWQQ6/z4Y7gjeBgh+sO335uqvK5jjbXvDdCnPv/tZQ2JI9dim6nfWS/5tDKnKLpFwWaFY81DA8cRhwa+7Rc2UmKiL1YSlI9edRhz9Embtx1RB/V0AaooMPCZlHf1z0lZ2LTryQpbOxjvgTTldBrXyC6KzxHC6u7bvCJMRlf2E0VBg5nC2+EVoYomCAd00GIiJMUK2B2IUFBlIJSZy4xnZgaSHVwXJZw=="
+}

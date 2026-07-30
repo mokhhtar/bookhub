@@ -1,0 +1,396 @@
+---
+layout: default
+title: "Spot the Slop"
+description: "One passage is really from the book. The other was written by an AI imitating the author. Five pairs a day — can you still tell?"
+permalink: /games/spot-the-slop/
+# Unreleased. Lives on the spot-the-slop branch; this line comes off when the
+# game launches, together with the hub's.
+noindex: true
+sitemap: false
+---
+<style>
+  /* Same product register as Guess the Book — UI face, --ui-* scale, one
+     radius, accent rationed. The exception is the passages themselves, which
+     take the reading serif: the whole game is a judgement about prose, so the
+     prose has to be set as prose. */
+  .sts, .sts button { font-family: var(--font-ui); }
+
+  .sts-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 4px; }
+  .sts-no { font-size: var(--ui-sm); color: var(--fg-faint); letter-spacing: .04em; text-transform: uppercase; }
+
+  .sts-progress { display: flex; gap: 6px; margin-bottom: 22px; }
+  .sts-pip { width: 26px; height: 5px; border-radius: 999px; background: var(--border); }
+  .sts-pip.is-right { background: var(--success); }
+  .sts-pip.is-wrong { background: var(--danger); }
+  .sts-pip.is-now { background: var(--fg-faint); }
+
+  .sts-prompt { font-size: var(--ui-body); color: var(--fg-muted); margin-bottom: 16px; }
+  .sts-prompt b { color: var(--fg); }
+
+  .sts-pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 16px; }
+  .sts-card {
+    border: 1px solid var(--border-med); border-radius: var(--r); background: var(--bg);
+    padding: 20px; text-align: left; cursor: pointer; display: flex; flex-direction: column;
+    gap: 14px; transition: border-color .15s var(--ease-out);
+  }
+  .sts-card:hover:not(:disabled) { border-color: var(--fg-faint); }
+  .sts-card:disabled { cursor: default; }
+  .sts-passage {
+    font-family: var(--font); font-size: var(--t-body); line-height: 1.6; color: var(--fg); margin: 0;
+  }
+  .sts-pick {
+    font-size: var(--ui-sm); font-weight: 600; color: var(--accent); letter-spacing: .04em;
+    text-transform: uppercase; margin-top: auto;
+  }
+  .sts-card.is-real { border-color: var(--accent); background: var(--accent-bg); }
+  .sts-card.is-fake { border-color: var(--danger); background: var(--danger-bg); }
+  .sts-verdict { font-size: var(--ui-sm); font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+  .sts-card.is-real .sts-verdict { color: var(--success); }
+  .sts-card.is-fake .sts-verdict { color: var(--danger); }
+
+  .sts-after { border-top: 1px solid var(--border); margin-top: 20px; padding-top: 16px; }
+  .sts-after p { font-size: var(--ui-body); color: var(--fg-muted); }
+  .sts-after a { color: var(--accent); font-weight: 600; border-bottom: 1px solid var(--accent); }
+  .sts-next {
+    margin-top: 16px; min-height: 44px; padding: 0 20px; border-radius: var(--r); cursor: pointer;
+    font-size: var(--ui-body); font-weight: 600; border: 1px solid var(--accent);
+    background: var(--accent); color: var(--btn-on-accent, #F7F6F3);
+  }
+  html[data-theme="dark"] .sts-next { color: #12160F; }
+
+  .sts-result { border: 1px solid var(--border-med); border-radius: var(--r); padding: 20px; margin-top: 22px; background: var(--bg); }
+  .sts-result-head { font-size: var(--ui-title); font-weight: 700; color: var(--fg); }
+  .sts-result-sub { font-size: var(--ui-body); color: var(--fg-muted); margin-top: 4px; }
+  .sts-grid-preview { font-size: 18px; letter-spacing: 2px; margin-top: 14px; line-height: 1; }
+  .sts-share-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
+  .sts-share-note { font-size: var(--ui-sm); color: var(--fg-faint); }
+  .sts-fallback { width: 100%; margin-top: 10px; padding: 10px; font-family: var(--font-mono);
+                  font-size: var(--ui-sm); border: 1px solid var(--border-med); border-radius: var(--r);
+                  background: var(--bg); color: var(--fg); }
+  .sts-fallback[hidden] { display: none; }
+  .sts-books { margin-top: 16px; display: flex; flex-direction: column; gap: 6px; }
+  .sts-books a { font-size: var(--ui-body); color: var(--accent); }
+  .sts-next-in { font-size: var(--ui-sm); color: var(--fg-faint); margin-top: 14px; }
+  .sts-next-in b { font-variant-numeric: tabular-nums; color: var(--fg-muted); font-weight: 600; }
+
+  .sts-empty { border: 1px dashed var(--border-med); border-radius: var(--r); padding: 26px; text-align: center; color: var(--fg-muted); }
+  .sts-empty strong { display: block; font-size: var(--ui-head); color: var(--fg); margin-bottom: 6px; }
+</style>
+
+<div class="tool-page sts">
+  <div class="container">
+
+    <div class="tool-page-header">
+      <p class="breadcrumb">
+        <a href="{{ '/' | relative_url }}">Home</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="{{ '/games/' | relative_url }}">Games</a>
+        <span class="breadcrumb-sep">/</span> Spot the Slop
+      </p>
+      <div class="sts-head">
+        <h1 class="tool-page-title">Spot the Slop</h1>
+        <span class="sts-no" id="sts-number"></span>
+      </div>
+      <p class="tool-page-desc">
+        One passage is really from the book. The other was written by an AI
+        imitating the author. Five pairs — can you still tell?
+      </p>
+    </div>
+
+    <div id="sts-app" aria-live="polite">
+      <div class="sts-empty"><p>Loading today's pairs…</p></div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  /* Declared before anything that could run on a direct-link entry — the TDZ
+     crash documented in CLAUDE.md came from exactly this shape. */
+  const STS_DATA = "{{ '/games/data/spot-the-slop' | relative_url }}";
+  const STS_SHARE_URL = "{{ '/games/spot-the-slop/' | absolute_url }}?utm_source=share-sts";
+  const STS_SCHEMA = 1;
+  const STS_STORE = "bh_sts_v1";
+  const STS_APP = document.getElementById("sts-app");
+  const STS_NUMBER = document.getElementById("sts-number");
+  let stsTimer = null;
+
+  const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => (
+    { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]
+  ));
+
+  function localISODate(d) {
+    const p = (n) => String(n).padStart(2, "0");
+    return d.getFullYear() + "-" + p(d.getMonth() + 1) + "-" + p(d.getDate());
+  }
+
+  function puzzleDate() {
+    const isLocal = ["localhost", "127.0.0.1"].includes(location.hostname);
+    const override = new URLSearchParams(location.search).get("date");
+    if (isLocal && override && /^\d{4}-\d{2}-\d{2}$/.test(override)) return override;
+    return localISODate(new Date());
+  }
+
+  /* Identical obfuscation to Guess the Book, and identically honest about it:
+     the key derives from the date, which the client necessarily knows. It
+     keeps the answer out of the network tab, nothing more. */
+  async function sha256Bytes(bytes) {
+    return new Uint8Array(await crypto.subtle.digest("SHA-256", bytes));
+  }
+  async function sha256Hex(text) {
+    const digest = await sha256Bytes(new TextEncoder().encode(text));
+    return Array.from(digest).map((b) => b.toString(16).padStart(2, "0")).join("");
+  }
+  async function xorKey(date, length) {
+    const seed = await sha256Bytes(new TextEncoder().encode("litheca-gtb-" + date));
+    const out = new Uint8Array(length);
+    let filled = 0, counter = 0;
+    while (filled < length) {
+      const buf = new Uint8Array(seed.length + 4);
+      buf.set(seed, 0);
+      new DataView(buf.buffer).setUint32(seed.length, counter, false);
+      const block = await sha256Bytes(buf);
+      const take = Math.min(block.length, length - filled);
+      out.set(block.subarray(0, take), filled);
+      filled += take; counter += 1;
+    }
+    return out;
+  }
+  async function decodeReveal(blob, date) {
+    const raw = Uint8Array.from(atob(blob), (c) => c.charCodeAt(0));
+    const key = await xorKey(date, raw.length);
+    const plain = new Uint8Array(raw.length);
+    for (let i = 0; i < raw.length; i++) plain[i] = raw[i] ^ key[i];
+    return JSON.parse(new TextDecoder().decode(plain));
+  }
+
+  /* ── persistence: same bh_* convention, its own key ── */
+  function loadStore() {
+    try { return JSON.parse(localStorage.getItem(STS_STORE)) || {}; } catch (e) { return {}; }
+  }
+  function saveStore(s) {
+    try { localStorage.setItem(STS_STORE, JSON.stringify(s)); } catch (e) {}
+  }
+  function persistDay(counted) {
+    const store = loadStore();
+    store.v = 1;
+    store.day = { date: state.date, picks: state.picks, counted: !!counted };
+    saveStore(store);
+  }
+  const BLANK = { played: 0, correct: 0, rounds: 0, streak: 0, maxStreak: 0, lastDate: null };
+  function readStats() {
+    const s = loadStore().stats;
+    return s && typeof s.played === "number" ? s : Object.assign({}, BLANK);
+  }
+  function countResult() {
+    const store = loadStore();
+    const stats = Object.assign({}, BLANK, store.stats || {});
+    const right = state.picks.filter((p) => p.correct).length;
+    stats.played += 1;
+    stats.correct += right;
+    stats.rounds += state.picks.length;
+    // Streak here counts consecutive DAYS PLAYED, not perfect days — unlike
+    // Guess the Book, which has a real win/lose and resets on a loss. This game
+    // is scored 0-5 and is meant to be hard, so gating the streak on 5/5 would
+    // leave it reading 0 for nearly everyone, nearly always.
+    const prev = stats.lastDate ? new Date(stats.lastDate + "T00:00:00") : null;
+    const today = new Date(state.date + "T00:00:00");
+    stats.streak = (prev && Math.round((today - prev) / 86400000) === 1) ? stats.streak + 1 : 1;
+    stats.maxStreak = Math.max(stats.maxStreak, stats.streak);
+    stats.lastDate = state.date;
+    store.stats = stats;
+    saveStore(store);
+    return stats;
+  }
+
+  const state = { date: null, puzzle: null, picks: [], round: 0, reveal: null, showing: false };
+  const done = () => state.puzzle && state.round >= state.puzzle.rounds.length;
+
+  async function boot() {
+    state.date = puzzleDate();
+    let puzzle = null;
+    try {
+      const res = await fetch(STS_DATA + "/" + state.date + ".json", { cache: "no-cache" });
+      if (res.ok) puzzle = await res.json();
+    } catch (e) { /* handled below */ }
+
+    /* Missing, unknown schema, or malformed: say so. Never a fallback day —
+       the same rule the sibling game follows. */
+    if (!puzzle || puzzle.v !== STS_SCHEMA || !Array.isArray(puzzle.rounds) || !puzzle.rounds.length) {
+      STS_APP.innerHTML =
+        '<div class="sts-empty"><strong>No pairs today</strong>' +
+        "<p>Today's puzzle isn't published yet. Try again tomorrow, or " +
+        '<a href="' + "{{ '/read-free/' | relative_url }}" + '">read a whole book free</a> in the meantime.</p></div>';
+      return;
+    }
+    state.puzzle = puzzle;
+    STS_NUMBER.textContent = "No. " + puzzle.n;
+
+    const saved = loadStore().day;
+    if (saved && saved.date === state.date && Array.isArray(saved.picks)) {
+      state.picks = saved.picks;
+      state.round = saved.picks.length;
+      if (done()) { await finish(saved.counted !== true); return; }
+    }
+    render();
+  }
+
+  function pipsHTML() {
+    return '<div class="sts-progress">' + state.puzzle.rounds.map((_, i) => {
+      const p = state.picks[i];
+      const cls = p ? (p.correct ? "is-right" : "is-wrong") : (i === state.round ? "is-now" : "");
+      return '<span class="sts-pip ' + cls + '"></span>';
+    }).join("") + "</div>";
+  }
+
+  function roundHTML() {
+    const r = state.puzzle.rounds[state.round];
+    const pick = state.picks[state.round];
+    const revealed = !!pick;
+    const realIndex = revealed && state.reveal ? state.reveal[state.round].real_index : -1;
+
+    const cards = r.passages.map((text, idx) => {
+      let cls = "sts-card", verdict = "";
+      if (revealed) {
+        const isReal = idx === realIndex;
+        cls += isReal ? " is-real" : " is-fake";
+        verdict = '<span class="sts-verdict">' +
+          (isReal ? "Really " + esc(r.author) : "Written by an AI") + "</span>";
+      }
+      return '<button class="' + cls + '" data-i="' + idx + '"' + (revealed ? " disabled" : "") + '>' +
+               '<p class="sts-passage">' + esc(text) + "</p>" +
+               (revealed ? verdict : '<span class="sts-pick">Choose this one</span>') +
+             "</button>";
+    }).join("");
+
+    let after = "";
+    if (revealed && state.reveal) {
+      const info = state.reveal[state.round];
+      const last = state.round === state.puzzle.rounds.length - 1;
+      after = '<div class="sts-after">' +
+        "<p>" + (pick.correct ? "Right — " : "Not this time — ") +
+        "the real passage is from <a href=\"" + esc(info.url) + '">' + esc(info.title) + "</a>." +
+        "</p>" +
+        '<button class="sts-next" id="sts-next">' + (last ? "See your score" : "Next pair") + "</button>" +
+        "</div>";
+    }
+
+    return pipsHTML() +
+      '<p class="sts-prompt">Pair ' + (state.round + 1) + " of " + state.puzzle.rounds.length +
+      " — one of these is really <b>" + esc(r.author) + "</b>.</p>" +
+      '<div class="sts-pair">' + cards + "</div>" + after;
+  }
+
+  function shareMarks() {
+    return state.picks.map((p) => (p.correct ? "🟩" : "⬛")).join("");
+  }
+  function shareText() {
+    const stats = readStats();
+    const right = state.picks.filter((p) => p.correct).length;
+    const streak = stats.streak >= 2 ? " · Streak " + stats.streak : "";
+    return "Litheca · Spot the Slop #" + state.puzzle.n + "\n" +
+           (right === state.picks.length ? "📗 " : "📕 ") + right + "/" + state.picks.length + streak +
+           "\n\n" + shareMarks() + "\n\n" + STS_SHARE_URL;
+  }
+
+  function resultHTML() {
+    const right = state.picks.filter((p) => p.correct).length;
+    const total = state.picks.length;
+    const stats = readStats();
+    const rate = stats.rounds ? Math.round((stats.correct / stats.rounds) * 100) : 0;
+    const books = (state.reveal || []).map((r) =>
+      '<a href="' + esc(r.url) + '">' + esc(r.title) + "</a>").join("");
+    return '<div class="sts-result">' +
+      '<p class="sts-result-head">' + right + "/" + total + " spotted</p>" +
+      '<p class="sts-result-sub">' + (right === total
+        ? "Not one of them fooled you."
+        : "You can tell — it just takes looking closely.") +
+      " Lifetime: " + rate + "% of pairs across " + stats.played + " day" +
+      (stats.played === 1 ? "" : "s") +
+      (stats.streak >= 2 ? ", " + stats.streak + " in a row" : "") + ".</p>" +
+      '<p class="sts-grid-preview">' + shareMarks() + "</p>" +
+      '<div class="sts-share-row">' +
+        '<button class="sts-next" id="sts-share">Share result</button>' +
+        '<span class="sts-share-note" id="sts-share-note">Squares only — never spoils the answers</span>' +
+      "</div>" +
+      '<textarea class="sts-fallback" id="sts-fallback" rows="6" readonly hidden></textarea>' +
+      '<div class="sts-books"><p class="sts-result-sub">Today\'s books:</p>' + books + "</div>" +
+      '<p class="sts-next-in">Next pairs in <b id="sts-countdown">—</b></p>' +
+      "</div>";
+  }
+
+  function render() {
+    STS_APP.innerHTML = done() ? (pipsHTML() + resultHTML()) : roundHTML();
+    if (done()) { wireResult(); return; }
+    STS_APP.querySelectorAll(".sts-card").forEach((btn) =>
+      btn.addEventListener("click", () => choose(Number(btn.dataset.i))));
+    const next = document.getElementById("sts-next");
+    if (next) next.addEventListener("click", advance);
+  }
+
+  async function choose(index) {
+    if (state.picks[state.round]) return;
+    const r = state.puzzle.rounds[state.round];
+    const hash = await sha256Hex(state.date + "|" + state.round + "|" + index);
+    const correct = hash === r.answer_hash;
+    state.picks[state.round] = { index: index, correct: correct };
+    // The reveal payload is decoded on the FIRST pick and kept, so the rest of
+    // the day costs nothing.
+    if (!state.reveal) {
+      try { state.reveal = await decodeReveal(state.puzzle.reveal_enc, state.date); }
+      catch (e) { state.reveal = null; }
+    }
+    persistDay(false);
+    render();
+  }
+
+  async function advance() {
+    state.round += 1;
+    if (done()) { await finish(true); return; }
+    render();
+  }
+
+  async function finish(countIt) {
+    if (!state.reveal) {
+      try { state.reveal = await decodeReveal(state.puzzle.reveal_enc, state.date); }
+      catch (e) { state.reveal = null; }
+    }
+    if (countIt !== false) countResult();
+    persistDay(true);
+    render();
+  }
+
+  function wireResult() {
+    const button = document.getElementById("sts-share");
+    if (button) {
+      const note = document.getElementById("sts-share-note");
+      const fallback = document.getElementById("sts-fallback");
+      button.addEventListener("click", async () => {
+        const text = shareText();
+        try {
+          if (navigator.share) { await navigator.share({ text: text }); return; }
+          await navigator.clipboard.writeText(text);
+          note.textContent = "Copied — go paste it somewhere.";
+        } catch (e) {
+          fallback.value = text; fallback.hidden = false;
+          fallback.focus(); fallback.select();
+          note.textContent = "Select and copy:";
+        }
+      });
+    }
+    const countdown = document.getElementById("sts-countdown");
+    if (stsTimer) clearInterval(stsTimer);
+    if (!countdown) return;
+    const tick = () => {
+      const now = new Date();
+      const midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+      let left = Math.max(0, Math.floor((midnight - now) / 1000));
+      const p = (n) => String(n).padStart(2, "0");
+      countdown.textContent = p(Math.floor(left / 3600)) + ":" + p(Math.floor((left % 3600) / 60)) + ":" + p(left % 60);
+    };
+    tick();
+    stsTimer = setInterval(tick, 1000);
+  }
+
+  boot();
+</script>
