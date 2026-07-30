@@ -1,6 +1,6 @@
 ---
 layout: book
-content_version: 5
+content_version: 6
 title: "Vanity Fair"
 author: "William Makepeace Thackeray"
 author_slug: "william-makepeace-thackeray"
@@ -24,7 +24,7 @@ ratings: {"source": "goodreads", "average": 3.81, "count": 134776, "url": "https
 themes: ["Social climbing", "Materialism and greed", "Class stratification", "Gender roles"]
 reading_level: "Adult / General Fiction"
 free_ebook: {"source": "internet_archive", "page_url": "https://archive.org/details/vanityfair01thac_0", "read_url": "https://archive.org/details/vanityfair01thac_0", "epub_url": null, "txt_url": null}
-quotes: {"texts": ["Profoundly grateful, and as if I had swallowed a small baby. … Why, they are perfect beasts of oysters!", "She looks so haughty that I should have thought her a princess at the very least, with a pedigree reaching as far back as the Deluge. But this lady was no better born than many other ladies who give themselves airs; and all sensible people laughed at her absurd pretensions.", "Except for the young or very happy, I can't say I am sorry for any one who dies.", "I should like to see before I die, and think of it daily more and more, the commencement of Jesus Christ's christianism in the world, where I am sure people may be made a hundred times happier than by its present forms, Judaism, ascenticism, Bullarism.", "A lady who sets her heart upon a lad in uniform must prepare to change lovers pretty quickly, or her life will be but a sad one."], "speakers": ["", "", "", "", ""], "source": "wikiquote", "source_url": "https://en.wikiquote.org/wiki/Vanity_Fair", "license": "CC BY-SA"}
+quotes: {"v": 6, "texts": ["Profoundly grateful, and as if I had swallowed a small baby. … Why, they are perfect beasts of oysters!", "She looks so haughty that I should have thought her a princess at the very least, with a pedigree reaching as far back as the Deluge. But this lady was no better born than many other ladies who give themselves airs; and all sensible people laughed at her absurd pretensions.", "Except for the young or very happy, I can't say I am sorry for any one who dies.", "I should like to see before I die, and think of it daily more and more, the commencement of Jesus Christ's christianism in the world, where I am sure people may be made a hundred times happier than by its present forms, Judaism, ascenticism, Bullarism.", "A lady who sets her heart upon a lad in uniform must prepare to change lovers pretty quickly, or her life will be but a sad one."], "speakers": ["", "", "", "", ""], "source": "wikiquote", "source_url": "https://en.wikiquote.org/wiki/Vanity_Fair", "license": "CC BY-SA"}
 quiz: null
 quiz_source: ""
 nyt: null
