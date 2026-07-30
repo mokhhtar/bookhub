@@ -1,6 +1,6 @@
 ---
 layout: book
-content_version: 5
+content_version: 6
 title: "The Wind in the Willows"
 author: "Kenneth Grahame"
 author_slug: "kenneth-grahame"
@@ -24,7 +24,7 @@ ratings: {"source": "goodreads", "average": 4.02, "count": 246852, "url": "https
 themes: ["Friendship and loyalty", "The comforts of home", "Nature and the seasons", "Personal growth"]
 reading_level: "Middle Grade (ages 8-12)"
 free_ebook: {"source": "internet_archive", "page_url": "https://archive.org/details/bwb_P9-DZD-616", "read_url": "https://archive.org/details/bwb_P9-DZD-616", "epub_url": null, "txt_url": null}
-quotes: {"texts": ["After all, the best part of a holiday is perhaps not so much to be resting yourself, as to see all the other fellows busy working.", "'I beg your pardon,' said the Mole, pulling himself together with an effort. 'You must think me very rude; but all this is so new to me. So — this — is — a — River!' The River,' corrected the Rat.", "'Weasels — and stoats — and foxes — and so on. They're all right in a way — I'm very good friends with them — pass the time of day when we meet, and all that — but they break out sometimes, there's no denying it, and then — well, you can't really trust them, and that's the fact.'", "'Beyond the Wild Wood comes the Wide World,' said the Rat. 'And that's something that doesn't matter, either to you or me. I've never been there, and I'm never going, nor you either, if you've got any sense at all.", "All along the backwater,Through the rushes tall,Ducks are a-dabbling,Up tails all!"], "speakers": ["", "", "", "", ""], "source": "wikiquote", "source_url": "https://en.wikiquote.org/wiki/The_Wind_in_the_Willows", "license": "CC BY-SA"}
+quotes: {"v": 6, "texts": ["After all, the best part of a holiday is perhaps not so much to be resting yourself, as to see all the other fellows busy working.", "'I beg your pardon,' said the Mole, pulling himself together with an effort. 'You must think me very rude; but all this is so new to me. So — this — is — a — River!' The River,' corrected the Rat.", "'Weasels — and stoats — and foxes — and so on. They're all right in a way — I'm very good friends with them — pass the time of day when we meet, and all that — but they break out sometimes, there's no denying it, and then — well, you can't really trust them, and that's the fact.'", "'Beyond the Wild Wood comes the Wide World,' said the Rat. 'And that's something that doesn't matter, either to you or me. I've never been there, and I'm never going, nor you either, if you've got any sense at all.", "All along the backwater,Through the rushes tall,Ducks are a-dabbling,Up tails all!"], "speakers": ["", "", "", "", ""], "source": "wikiquote", "source_url": "https://en.wikiquote.org/wiki/The_Wind_in_the_Willows", "license": "CC BY-SA"}
 quiz: null
 quiz_source: ""
 nyt: null
