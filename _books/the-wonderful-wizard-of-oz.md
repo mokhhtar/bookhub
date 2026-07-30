@@ -1,6 +1,6 @@
 ---
 layout: book
-content_version: 4
+content_version: 6
 title: "The Wonderful Wizard of Oz"
 author: "L. Frank Baum"
 author_slug: "l-frank-baum"
