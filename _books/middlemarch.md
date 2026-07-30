@@ -1,6 +1,6 @@
 ---
 layout: book
-content_version: 4
+content_version: 6
 title: "Middlemarch"
 author: "George Eliot"
 author_slug: "george-eliot"
@@ -24,7 +24,7 @@ ratings: {"source": "goodreads", "average": 4.05, "count": 185556, "url": "https
 themes: ["Social reform", "Marriage and vocation", "Provincial life", "Human imperfection"]
 reading_level: "Adult / General Fiction"
 free_ebook: null
-quotes: null
+quotes: {"v": 6, "texts": ["Could you really rest for all of eternity, knowing that you had the chance to stop him but did nothing?", "I have upheld my end of the bargain! And your... champion has upheld his!"], "speakers": ["", ""], "source": "wikiquote", "source_url": "https://en.wikiquote.org/wiki/Middle-earth%3A_Shadow_of_Mordor", "license": "CC BY-SA"}
 quiz: null
 quiz_source: ""
 nyt: null
