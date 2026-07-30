@@ -1,6 +1,6 @@
 ---
 layout: book
-content_version: 5
+content_version: 6
 title: "Silas Marner"
 author: "George Eliot"
 author_slug: "george-eliot"
