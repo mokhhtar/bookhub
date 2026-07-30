@@ -1,6 +1,6 @@
 ---
 layout: book
-content_version: 5
+content_version: 6
 title: "Crime and Punishment"
 author: "Fyodor Dostoyevsky"
 author_slug: "fyodor-dostoyevsky"
@@ -24,7 +24,7 @@ ratings: {"source": "goodreads", "average": 5.0, "count": 1, "url": "https://www
 themes: ["Moral guilt", "Redemption", "Psychological alienation", "Nihilism"]
 reading_level: "Adult / General Fiction"
 free_ebook: null
-quotes: {"texts": ["All is in a man's hands and he lets it all slip from cowardice, that's an axiom. It would be interesting to know what it is men are most afraid of. Taking a new step, uttering a new word is what they fear most.", "\"I like it when people lie! Lying is man's only privilege over all other organisms. If you lie—you get to the truth! Lying is what makes me a man.\"", "\"It began with the socialist doctrine. You know their doctrine; crime is a protest against the abnormality of the social organization and nothing more, and nothing more; no other causes admitted!...\"", "Destitution, my dear sir, destitution – that is a sin.", "\"Ah, it's not picturesque, not aesthetically attractive! I fail to understand why it is more honourable to shell some besieged town than to destroy by the blows of an axe.\""], "speakers": ["", "", "", "", ""], "source": "wikiquote", "source_url": "https://en.wikiquote.org/wiki/Crime_and_Punishment", "license": "CC BY-SA"}
+quotes: {"v": 6, "texts": ["All is in a man's hands and he lets it all slip from cowardice, that's an axiom. It would be interesting to know what it is men are most afraid of. Taking a new step, uttering a new word is what they fear most.", "\"I like it when people lie! Lying is man's only privilege over all other organisms. If you lie—you get to the truth! Lying is what makes me a man.\"", "\"It began with the socialist doctrine. You know their doctrine; crime is a protest against the abnormality of the social organization and nothing more, and nothing more; no other causes admitted!...\"", "Destitution, my dear sir, destitution – that is a sin.", "\"Ah, it's not picturesque, not aesthetically attractive! I fail to understand why it is more honourable to shell some besieged town than to destroy by the blows of an axe.\""], "speakers": ["", "", "", "", ""], "source": "wikiquote", "source_url": "https://en.wikiquote.org/wiki/Crime_and_Punishment", "license": "CC BY-SA"}
 quiz: null
 quiz_source: ""
 nyt: null
