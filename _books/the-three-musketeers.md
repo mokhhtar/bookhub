@@ -1,6 +1,6 @@
 ---
 layout: book
-content_version: 4
+content_version: 6
 title: "The Three Musketeers"
 author: "Alexandre Dumas"
 author_slug: "alexandre-dumas"
@@ -24,7 +24,7 @@ ratings: {"source": "goodreads", "average": 4.1, "count": 353284, "url": "https:
 themes: ["Honor and loyalty", "Friendship and camaraderie", "Political intrigue", "Chivalry"]
 reading_level: "Adult / General Fiction"
 free_ebook: null
-quotes: {"texts": ["The Three Musketeers (novel), an 1844 novel by Alexandre Dumas", "The Three Musketeers (1948 film), starring Gene Kelly as d'Artagnan, Van Heflin as Athos, Gig Young as Porthos, Robert Coote as Aramis, Vincent Price as Richelieu, Lana Turner as Lady de Winter, June Allyson as Constance, and Angela Lansbury as Queen Anne.", "The Three Musketeers (1973 film), starring Michael York as d'Artagnan, Oliver Reed as Athos, Frank Finlay as Porthos, and Richard Chamberlain as Aramis, Charlton Heston as Richelieu, Faye Dunaway as Milady de Winter, Raquel Welch as Constance, and Geraldine Chaplin as Queen Anne.", "The Three Musketeers (1993 film), starring Charlie Sheen as Aramis, Kiefer Sutherland as Athos, Chris O'Donnell as d'Artagnan, Oliver Platt as Porthos, Tim Curry as Richelieu, Rebecca De Mornay as Lady Sabine DeWinter, Julie Delpy as Constance, and Gabriel Anwar as Queen Anne.", "The Three Musketeers (2011 film), a 3D version of the film directed by Paul W.S. Anderson starring Logan Lerman, Ray Stevenson, Luke Evans, Christoph Waltz, Mads Mikkelsen, Orlando Bloom, Milla Jovovich and Matthew Macfadyen."], "speakers": ["", "", "", "", ""], "source": "wikiquote", "source_url": "https://en.wikiquote.org/wiki/The_Three_Musketeers", "license": "CC BY-SA"}
+quotes: {"v": 6, "texts": ["[to D'Artagnan] You, boy, are arrogant, hot-tempered and entirely too bold. I like that. It reminds me of me.", "Rochefort. Isn't that a smelly kind of cheese?", "[finds Richelieu's hidden treasure chest in his carriage] Is he a man of God or a man of gold?", "[awakes after being supposedly shot and killed by the Cardinal. He sees his hidden crucifix had stopped the bullet] See? There is a God.", "[about MiLady DeWinter] A remarkable woman. The most beautiful I've ever known... and the deadliest. Which would explain my attraction."], "speakers": ["", "", "", "", ""], "source": "wikiquote", "source_url": "https://en.wikiquote.org/wiki/The_Three_Musketeers_%281993_film%29", "license": "CC BY-SA"}
 quiz: null
 quiz_source: ""
 nyt: null
