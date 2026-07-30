@@ -1,6 +1,6 @@
 ---
 layout: book
-content_version: 4
+content_version: 6
 title: "Strange Case of Dr Jekyll and Mr Hyde"
 author: "Robert Louis Stevenson"
 author_slug: "robert-louis-stevenson"
