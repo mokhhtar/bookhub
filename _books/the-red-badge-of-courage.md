@@ -1,6 +1,6 @@
 ---
 layout: book
-content_version: 5
+content_version: 6
 title: "The Red Badge of Courage"
 author: "Stephen Crane"
 author_slug: "stephen-crane"
