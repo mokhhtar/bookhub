@@ -107,5 +107,21 @@ _layouts/default.html, built to the GDPR / ePrivacy pattern:
       var firstBtn = banner.querySelector('.consent-btn');
       if (firstBtn) firstBtn.focus();
     };
+
+    // Wire every consent-opening control here, in the same script that owns
+    // the banner, so the handler is guaranteed to exist when the listener is
+    // attached. The footer button precedes this include in the DOM, so it is
+    // already parsed; bind on DOMContentLoaded too in case that ever changes.
+    function bindOpeners() {
+      var openers = document.querySelectorAll('[data-consent-open]');
+      for (var i = 0; i < openers.length; i++) {
+        openers[i].addEventListener('click', window.lithecaOpenConsent);
+      }
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', bindOpeners);
+    } else {
+      bindOpeners();
+    }
   })();
 </script>
