@@ -1,6 +1,6 @@
 ---
 layout: book
-content_version: 4
+content_version: 6
 title: "The Hound of the Baskervilles"
 author: "Arthur Conan Doyle"
 author_slug: "arthur-conan-doyle"
@@ -23,10 +23,10 @@ awards: [{"name": "Le Monde's 100 Books of the Century", "year": null, "logo_url
 ratings: {"source": "goodreads", "average": 4.13, "count": 400249, "url": "https://www.goodreads.com/book/show/8921.The_Hound_of_the_Baskervilles", "pages": 256, "distribution": {"1": 3, "2": 5, "3": 5, "4": 22, "5": 25}, "distribution_source": "open_library", "distribution_count": 60}
 themes: ["Rationalism versus superstition", "The supernatural", "Greed and inheritance", "Justice and retribution"]
 reading_level: "Adult / General Fiction"
-free_ebook: null
+free_ebook: {"source": "project_gutenberg", "gutenberg_id": "2852", "page_url": "https://www.gutenberg.org/ebooks/2852", "read_url": "https://www.gutenberg.org/ebooks/2852.html.images", "epub_url": "https://www.gutenberg.org/ebooks/2852.epub3.images", "txt_url": "https://www.gutenberg.org/ebooks/2852.txt.utf-8"}
 quotes: null
-quiz: null
-quiz_source: ""
+quiz: [{"question": "What object did Dr. Mortimer leave behind at Sherlock Holmes's residence, which Holmes used to deduce details about the doctor's life?", "options": ["A silver-plated coffee-pot", "A thick piece of wood known as a Penang lawyer", "A folded newspaper", "A black clay pipe"], "answer_index": 1, "supporting_quote": "It was a fine, thick piece of wood, bulbous-headed, of the sort which is known as a “Penang lawyer.”", "chunk_index": 0}, {"question": "According to the legend of the Baskervilles, what was the creature seen attacking Hugo Baskerville?", "options": ["A giant black hound", "A wolf-like spirit", "A spectral horse", "A wild, monstrous boar"], "answer_index": 0, "supporting_quote": "there stood a foul thing, a great, black beast, shaped like a hound, yet larger than any hound that ever mortal eye has rested upon.", "chunk_index": 8}, {"question": "What did the cabman reveal to Sherlock Holmes regarding the identity of the man who hired him to follow Sir Henry Baskerville?", "options": ["The man was a private investigator named Dr. Mortimer", "The man claimed to be Sherlock Holmes", "The man was a local resident of the moor", "The man was a disguised member of the Baskerville family"], "answer_index": 1, "supporting_quote": "“His name,” said the cabman, “was Mr. Sherlock Holmes.”", "chunk_index": 32}, {"question": "What was the true relationship between the man known as Mr. Stapleton and the woman introduced as his sister?", "options": ["They were cousins", "They were not related at all", "She was his wife", "She was a hired actress"], "answer_index": 2, "supporting_quote": "The lady who has passed here as Miss Stapleton is in reality his wife.", "chunk_index": 87}, {"question": "Who was the person hiding on the moor that Barrymore and his wife were secretly providing with food and supplies?", "options": ["Selden, the brother-in-law", "Sir Charles Baskerville", "Dr. Mortimer", "A local fugitive named Vandeleur"], "answer_index": 0, "supporting_quote": "“Barrymore considers that he has a grievance,” he said. “He thinks that it was unfair on our part to hunt his brother-in-law down when he, of his own free will, had told us the secret.”", "chunk_index": 71}, {"question": "What was the real reason Mrs. Laura Lyons had written a letter to Sir Charles Baskerville requesting a meeting?", "options": ["She wanted to warn him about the hound", "She hoped he would help her pay for divorce proceedings", "She was in love with him", "She wanted to blackmail him"], "answer_index": 1, "supporting_quote": "At the time that I wrote this letter to Sir Charles I had learned that there was a prospect of my regaining my freedom if certain expenses could be met.", "chunk_index": 79}]
+quiz_source: "gutenberg_text"
 nyt: null
 editions: {"editions": 1309, "languages": 20}
 characters: [{"name": "Dr. Watson", "slug": "dr-watson", "role": ""}, {"name": "Sherlock Holmes", "slug": "sherlock-holmes", "role": ""}, {"name": "Inspector Lestrade", "slug": "inspector-lestrade", "role": ""}]
