@@ -1,6 +1,6 @@
 ---
 layout: book
-content_version: 5
+content_version: 6
 title: "Black Beauty"
 author: "Anna Sewell"
 author_slug: "anna-sewell"
