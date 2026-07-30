@@ -1,0 +1,72 @@
+---
+layout: default
+title: "Read Free Classics"
+description: "Read complete public-domain books free, in your browser — no account, no download, no ads. Every one comes with a grounded summary, verified quotes and a quiz."
+permalink: /read-free/
+---
+{%- comment -%}
+  The listing the in-site reader never had. /reader/ takes ?id=<gutenberg id>
+  and shows "Missing book id." without one, so until now the ONLY route to the
+  reader was noticing a small button in the sidebar of one of the 33 book pages
+  that carry a free text. Nobody arrives at a feature that way.
+
+  Unlike /reader/ itself — whose text is fetched by JS, so a crawler sees an
+  empty shell — this page is rendered from the collection at build time, which
+  makes it the part of the reader that CAN be indexed.
+{%- endcomment -%}
+{%- assign readable = site.books | where_exp: "b", "b.free_ebook.source == 'project_gutenberg'" | sort: "title" -%}
+
+<section class="tool-page">
+  <div class="container">
+
+    <div class="tool-page-header">
+      <p class="breadcrumb">
+        <a href="{{ '/' | relative_url }}">Home</a>
+        <span class="breadcrumb-sep">/</span> Read free
+      </p>
+      <h1 class="tool-page-title">Read the whole book, free</h1>
+      <p class="tool-page-desc">
+        {{ readable.size }} public-domain classics you can read here in the
+        browser — no account, no download, no ads. Each one also has a grounded
+        summary, quotes checked against the original text, and a quiz.
+      </p>
+    </div>
+
+    {% if readable.size > 0 %}
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:18px;margin-top:8px;">
+        {% for b in readable %}
+          <div style="border:1px solid var(--border);border-radius:var(--r);background:var(--bg);padding:16px;display:flex;flex-direction:column;gap:10px;">
+            {% if b.cover_url and b.cover_url != "" %}
+              <img src="{{ b.cover_url }}" alt="Cover of {{ b.title }}" loading="lazy"
+                   style="width:100%;aspect-ratio:2/3;object-fit:cover;border:1px solid var(--border);border-radius:var(--r);">
+            {% else %}
+              <div style="width:100%;aspect-ratio:2/3;border:1px solid var(--border);border-radius:var(--r);background:var(--bg-subtle);display:flex;align-items:center;justify-content:center;color:var(--fg-faint);font-size:var(--ui-sm);padding:10px;text-align:center;box-sizing:border-box;">{{ b.title }}</div>
+            {% endif %}
+            <div style="flex:1 1 auto;min-width:0;">
+              <p style="font-family:var(--font);font-size:var(--ui-body);font-weight:600;line-height:1.3;color:var(--fg);">{{ b.title }}</p>
+              <p style="font-family:var(--font-ui);font-size:var(--ui-sm);color:var(--fg-faint);margin-top:2px;">{{ b.author }}</p>
+            </div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;font-family:var(--font-ui);">
+              <a href="{{ '/reader/' | relative_url }}?id={{ b.free_ebook.gutenberg_id }}&title={{ b.title | url_encode }}&author={{ b.author | url_encode }}"
+                 class="btn-primary" style="padding:7px 13px;font-size:var(--t-label);min-height:38px;display:inline-flex;align-items:center;">Read here</a>
+              <a href="{{ b.url | relative_url }}"
+                 class="btn-secondary" style="padding:7px 13px;font-size:var(--t-label);min-height:38px;display:inline-flex;align-items:center;">Summary</a>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <p style="font-family:var(--font-ui);font-size:var(--ui-sm);color:var(--fg-faint);margin-top:28px;max-width:60ch;line-height:1.6;">
+        Texts come from <a href="https://www.gutenberg.org" target="_blank" rel="noopener nofollow">Project Gutenberg</a>
+        and are in the public domain. Litheca serves them as they are — the
+        summaries and quizzes alongside them are ours, and every quote in those
+        is matched word-for-word against the text you can read here.
+      </p>
+    {% else %}
+      <div style="padding:40px;border:1px dashed var(--border-med);border-radius:var(--r);text-align:center;">
+        <p style="font-size:var(--ui-body);color:var(--fg-muted);">No free texts published yet.</p>
+      </div>
+    {% endif %}
+
+  </div>
+</section>

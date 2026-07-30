@@ -64,6 +64,34 @@ reach anyone who had visited before. {%- endcomment -%}
           <button type="submit" class="btn-primary" style="padding:8px 18px;font-size:var(--t-label);flex-shrink:0;">Search</button>
         </form>
 
+        {% comment %} The differentiator, stated where it can be seen. A summary
+            site that also hands you the book is the one thing SparkNotes and
+            its imitators structurally cannot do — and it was living as a small
+            button in the sidebar, below the fold on a laptop. The sidebar box
+            keeps the downloads and the source credit; this is the invitation.
+            Only renders for a Gutenberg text we can serve in-site. {% endcomment %}
+        {% if page.free_ebook.gutenberg_id %}
+          <div style="border:1px solid var(--accent);border-radius:var(--r);background:var(--accent-bg);
+                      padding:16px 18px;margin-bottom:24px;display:flex;align-items:center;
+                      gap:16px;flex-wrap:wrap;">
+            <div style="flex:1 1 260px;min-width:0;">
+              <p style="font-family:var(--font-ui);font-size:var(--ui-body);font-weight:700;color:var(--fg);margin:0;">
+                You can read {{ page.title }} here, free
+              </p>
+              <p style="font-family:var(--font-ui);font-size:var(--ui-sm);color:var(--fg-muted);margin:4px 0 0;">
+                The complete text, in your browser — no account, no download.
+                Every quote in this guide is matched word-for-word against it.
+              </p>
+            </div>
+            <a href="{{ '/reader/' | relative_url }}?id={{ page.free_ebook.gutenberg_id }}&title={{ page.title | url_encode }}&author={{ page.author | url_encode }}"
+               class="btn-primary" style="flex:0 0 auto;padding:10px 20px;font-size:var(--t-label);
+                      min-height:44px;display:inline-flex;align-items:center;gap:7px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+              Start reading
+            </a>
+          </div>
+        {% endif %}
+
         {% comment %} "Listen to this guide" — same widget as the dynamic page,
             driven by the shared /assets/js/bh-audio.js engine. {% endcomment %}
         <div class="audio-player-container">
@@ -384,13 +412,13 @@ reach anyone who had visited before. {%- endcomment -%}
         {% comment %} CTAs first — every decision button visible without scrolling, same order as the dynamic page. {% endcomment %}
         {% if page.free_ebook and page.free_ebook.page_url %}
           <div style="border:1px solid var(--border-med);border-radius:var(--r);padding:12px 14px;margin-bottom:12px;background:var(--bg-subtle);">
-            <p style="font-size:var(--t-label);font-weight:700;color:var(--fg);margin:0 0 8px;">Public domain. Read it free</p>
+            {% comment %} "Read here" moved to the band at the top of the main
+                column — it is the page's single most important action and was
+                buried here. What stays is the downloads and the credit, which
+                is what this box is actually for. On a book with no in-site
+                text (Internet Archive) the box still leads with reading. {% endcomment %}
+            <p style="font-size:var(--t-label);font-weight:700;color:var(--fg);margin:0 0 8px;">Public domain. Free to download</p>
             <div style="display:flex;flex-wrap:wrap;gap:6px;">
-              {% if page.free_ebook.gutenberg_id %}
-                <a href="{{ '/reader/' | relative_url }}?id={{ page.free_ebook.gutenberg_id }}&title={{ page.title | url_encode }}&author={{ page.author | url_encode }}" class="btn-primary" style="padding:6px 12px;font-size:var(--t-label);">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="vertical-align:-2px;"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Read here
-                </a>
-              {% endif %}
               <a href="{% if page.free_ebook.read_url %}{{ page.free_ebook.read_url }}{% else %}{{ page.free_ebook.page_url }}{% endif %}" target="_blank" rel="noopener" class="btn-secondary" style="padding:6px 12px;font-size:var(--t-label);">Read online</a>
               {% comment %} "Download" spelled out: the page links real EPUB/TXT
                   files but the word appeared nowhere on it, so it matched no
