@@ -1,6 +1,6 @@
 ---
 layout: book
-content_version: 5
+content_version: 6
 title: "The Portrait of a Lady"
 author: "Henry James"
 author_slug: "henry-james"
