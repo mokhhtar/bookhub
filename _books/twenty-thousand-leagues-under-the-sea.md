@@ -1,6 +1,6 @@
 ---
 layout: book
-content_version: 7
+content_version: 8
 title: "Twenty Thousand Leagues Under the Sea"
 author: "Jules Verne"
 author_slug: "jules-verne"
