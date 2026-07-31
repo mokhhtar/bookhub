@@ -1,6 +1,6 @@
 ---
 layout: book
-content_version: 7
+content_version: 8
 title: "West With The Night"
 author: "Beryl Markham"
 author_slug: "beryl-markham"
