@@ -1,6 +1,6 @@
 ---
 layout: book
-content_version: 7
+content_version: 8
 title: "The Adventures of Huckleberry Finn"
 author: "Mark Twain"
 author_slug: "mark-twain"
