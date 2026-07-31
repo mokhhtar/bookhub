@@ -1,6 +1,6 @@
 ---
 layout: book
-content_version: 7
+content_version: 8
 title: "Robinson Crusoe"
 author: "Daniel Defoe"
 author_slug: "daniel-defoe"
