@@ -1,6 +1,6 @@
 ---
 layout: book
-content_version: 7
+content_version: 8
 title: "Whistler"
 author: "Ann Patchett"
 author_slug: "ann-patchett"
