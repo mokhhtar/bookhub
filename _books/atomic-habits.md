@@ -1,6 +1,6 @@
 ---
 layout: book
-content_version: 7
+content_version: 8
 title: "Atomic Habits"
 author: "James Clear"
 author_slug: "james-clear"
