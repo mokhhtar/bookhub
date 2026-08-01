@@ -432,6 +432,11 @@ reach anyone who had visited before. {%- endcomment -%}
                   never show this and must not be made to look as if they
                   should. {% endcomment %}
               {% if page.free_ebook.pdf_url %}<a href="{{ page.free_ebook.pdf_url }}" class="btn-secondary" style="padding:6px 12px;font-size:var(--t-label);">Download PDF</a>{% endif %}
+              {% comment %} Gutenberg books have no PDF to link, so they get
+                  the print view instead: the whole book on one page, and the
+                  browser's own print engine makes the file. Labelled "Save as
+                  PDF" because it opens the print dialog. {% endcomment %}
+              {% if page.free_ebook.gutenberg_id %}<a href="{{ '/print/' | relative_url }}?id={{ page.free_ebook.gutenberg_id }}&title={{ page.title | url_encode }}&author={{ page.author | url_encode }}" class="btn-secondary" style="padding:6px 12px;font-size:var(--t-label);">Save as PDF</a>{% endif %}
             </div>
             <p style="font-size:var(--t-label);color:var(--fg-faint);margin:8px 0 0;">From <a href="{{ page.free_ebook.page_url }}" target="_blank" rel="noopener nofollow" style="color:inherit;">{% if page.free_ebook.source == "internet_archive" %}Internet Archive{% else %}Project Gutenberg{% endif %}</a></p>
           </div>

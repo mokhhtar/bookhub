@@ -1,0 +1,156 @@
+---
+layout: default
+title: "Print or Save as PDF"
+description: "The whole book on one page, typeset for printing — save it as a PDF from your browser."
+permalink: /print/
+sitemap: false
+---
+{%- comment -%}
+  Project Gutenberg publishes no PDF, and making one on our side would mean
+  carrying a rendering engine on a 512MB box with no persistent disk. So we
+  don't make one: this page is the book as a single, properly typeset
+  document, and the BROWSER's print engine makes the PDF — the best
+  typesetter available, already installed, free.
+
+  Same noindex reasoning as /reader/, only more so: this mirrors the entire
+  Gutenberg text on one URL.
+{%- endcomment -%}
+<meta name="robots" content="noindex">
+
+<style>
+  .pr-wrap { max-width: 46rem; margin: 0 auto; padding: 24px 16px 60px; }
+
+  .pr-bar {
+    display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+    padding: 14px 16px; margin-bottom: 26px;
+    border: 1px solid var(--border); border-radius: var(--r); background: var(--bg-subtle);
+    font-family: var(--font-ui);
+  }
+  .pr-bar-note { font-size: var(--ui-sm); color: var(--fg-muted); line-height: 1.55; }
+  .pr-status { font-family: var(--font-ui); font-size: var(--ui-body); color: var(--fg-muted); padding: 40px 0; text-align: center; }
+
+  /* Title page. Ours, and deliberately plain — it names the book and credits
+     Project Gutenberg, and claims nothing about the text itself. */
+  .pr-title { text-align: center; padding: 8px 0 34px; border-bottom: 1px solid var(--border); margin-bottom: 34px; }
+  .pr-title h1 { font-family: var(--font); font-size: var(--t-title); line-height: 1.15; font-weight: 700; }
+  .pr-title p { font-family: var(--font); font-size: var(--t-lead); color: var(--fg-muted); margin-top: 10px; }
+  .pr-title .pr-src { font-family: var(--font-ui); font-size: var(--ui-sm); color: var(--fg-faint); margin-top: 20px; }
+
+  /* The book. Reading serif, generous measure, the site's own typography —
+     which is the one thing a converted EPUB could never give us. */
+  .pr-book { font-family: var(--font); font-size: 17px; line-height: 1.7; color: var(--fg); }
+  .pr-book p { margin: 0 0 1em; text-align: justify; hyphens: auto; }
+  .pr-book h1, .pr-book h2, .pr-book h3, .pr-book h4 {
+    font-family: var(--font); font-weight: 700; line-height: 1.25;
+    margin: 2em 0 .8em; text-align: center;
+  }
+  .pr-book h1 { font-size: 1.6em; }
+  .pr-book h2 { font-size: 1.28em; }
+  .pr-book h3, .pr-book h4 { font-size: 1.1em; }
+  .pr-book img { max-width: 100%; height: auto; display: block; margin: 1.6em auto; }
+  .pr-book blockquote { margin: 1.2em 0 1.2em 1.6em; color: var(--fg-muted); }
+  .pr-book hr { border: 0; border-top: 1px solid var(--border); margin: 2em auto; width: 40%; }
+  .pr-book i, .pr-book em { font-style: italic; }
+
+  @media print {
+    /* Everything that is not the book goes. The header, footer, cookie
+       banner and this page's own toolbar are all chrome. */
+    header, footer, .pr-bar, #consent-banner, .auth-modal, .breadcrumb { display: none !important; }
+    .pr-wrap { max-width: none; padding: 0; }
+    .pr-book { font-size: 11.5pt; line-height: 1.55; color: #000; }
+    .pr-title { border-color: #999; page-break-after: always; }
+    /* A chapter starts on its own page, which is what makes the output read
+       as a book rather than as a long web page committed to paper. */
+    .pr-book h2 { page-break-before: always; }
+    .pr-book h1 + h2, .pr-book h2:first-child { page-break-before: auto; }
+    .pr-book h1, .pr-book h2, .pr-book h3, .pr-book h4 { page-break-after: avoid; }
+    .pr-book p { orphans: 3; widows: 3; }
+    .pr-book img { page-break-inside: avoid; }
+    a { text-decoration: none; color: #000; }
+    @page { margin: 18mm 16mm; }
+  }
+</style>
+
+<section class="pr-wrap">
+  <div class="pr-bar">
+    <button class="btn-primary" id="pr-print" style="padding:9px 18px;" disabled>Save as PDF</button>
+    <a class="btn-secondary" id="pr-back" href="{{ '/read-free/' | relative_url }}" style="padding:9px 16px;">Back</a>
+    {%- comment -%}
+      Called "Save as PDF" and not "Download PDF" because it opens the print
+      dialog — the file appears only once the reader chooses the PDF
+      destination. Promising a download would be a small lie discovered
+      one second later.
+    {%- endcomment -%}
+    <span class="pr-bar-note" id="pr-note">
+      Opens your browser&rsquo;s print dialog — choose <b>Save as PDF</b> as the destination.
+    </span>
+  </div>
+
+  <div id="pr-status" class="pr-status">Preparing the book…</div>
+
+  <div id="pr-doc" hidden>
+    <div class="pr-title">
+      <h1 id="pr-title">&nbsp;</h1>
+      <p id="pr-author"></p>
+      <p class="pr-src">Public domain &middot; text from Project Gutenberg &middot; typeset by Litheca</p>
+    </div>
+    <div class="pr-book" id="pr-book"></div>
+  </div>
+</section>
+
+<script>
+(function () {
+  const API = "{{ site.api_url }}";
+  const params = new URLSearchParams(location.search);
+  const gid = (params.get("id") || "").replace(/\D/g, "");
+  const title = params.get("title") || "";
+  const author = params.get("author") || "";
+
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s == null ? "" : s)
+    .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+  if (title) {
+    $("pr-title").textContent = title;
+    document.title = title + " — print or save as PDF";
+  }
+  if (author) $("pr-author").textContent = author;
+  if (gid) {
+    $("pr-back").href = "{{ '/reader/' | relative_url }}?id=" + encodeURIComponent(gid) +
+      "&title=" + encodeURIComponent(title) + "&author=" + encodeURIComponent(author);
+  }
+
+  function fail(message) {
+    $("pr-status").innerHTML = esc(message) +
+      (gid ? ' <a href="https://www.gutenberg.org/ebooks/' + esc(gid) +
+             '" target="_blank" rel="noopener">Read it at Project Gutenberg</a>.' : "");
+  }
+
+  if (!gid) { fail("Missing book id."); return; }
+
+  (async function load() {
+    try {
+      // A cold Render instance takes 30-60s to wake and a first ingest fetches
+      // the whole book, so this is deliberately patient rather than snappy.
+      const res = await fetch(API + "/read/" + gid + "/print", { signal: AbortSignal.timeout(180000) });
+      if (!res.ok) { fail("This book has no printable edition."); return; }
+      const data = await res.json();
+      if (!data || !data.html) { fail("This book has no printable edition."); return; }
+      $("pr-book").innerHTML = data.html;   // sanitised server-side, allow-list only
+      $("pr-status").hidden = true;
+      $("pr-doc").hidden = false;
+      const button = $("pr-print");
+      button.disabled = false;
+      button.addEventListener("click", () => window.print());
+      // Long books take a moment to lay out; printing before that gives a
+      // half-rendered document, so the button only arrives with the text.
+      if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+        $("pr-note").innerHTML =
+          "On iPhone and iPad: tap <b>Share</b>, then <b>Print</b>, then pinch out on the preview to get a PDF.";
+      }
+    } catch (e) {
+      fail("Could not load the book.");
+    }
+  })();
+})();
+</script>
