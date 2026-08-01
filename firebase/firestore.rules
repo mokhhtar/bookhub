@@ -48,6 +48,37 @@ service cloud.firestore {
       match /library/{bookSlug} {
         allow read, write: if signedIn() && request.auth.uid == uid;
       }
+
+      // ── Daily game history ────────────────────────────────
+      // users/{uid}/games/{gameId}: { days: { "2026-08-01": {...} },
+      //                               updatedAt }
+      //
+      // ONE document per game holding a map keyed by puzzle date, not one
+      // document per day. Two reasons, both load-bearing:
+      //
+      //  * Merge. A player can play signed out for a week and then sign in
+      //    on another device. Storing aggregates ("played: 12") would leave
+      //    two numbers and no correct way to combine them — "take the
+      //    larger" and "add them" are both wrong. Dates are keys, so the
+      //    merge is a set union and a day cannot be counted twice.
+      //  * Cost. A map is one read to build the whole dashboard; a
+      //    subcollection would be one read per day played.
+      //
+      // Aggregates (played, win rate, streaks, distribution) are DERIVED on
+      // read and never stored — we don't persist a number we can't
+      // re-derive from its source.
+      //
+      // Private: unlike ratings/recs there is no count anyone else needs.
+      // gameId is pinned to the games that exist so a stray client can't
+      // scatter documents under this path.
+      match /games/{gameId} {
+        allow read, delete: if signedIn() && request.auth.uid == uid;
+        allow create, update: if signedIn() && request.auth.uid == uid
+          && gameId in ["guess-the-book", "spot-the-slop"]
+          && request.resource.data.keys().hasOnly(["days", "updatedAt"])
+          && request.resource.data.days is map
+          && request.resource.data.days.size() <= 2000;
+      }
     }
 
     // ── Comments (pre-moderated) ─────────────────────────────

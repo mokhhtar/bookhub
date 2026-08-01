@@ -89,6 +89,82 @@ sitemap: false
   .acct-empty { font-size: var(--ui-sm); color: var(--fg-muted); line-height: 1.6; }
   .acct-empty a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
 
+  /* ── Games dashboard ──────────────────────────────────────
+     Learning-site dashboards are the reference for the INFORMATION here —
+     streak first, "did I show up today", compare-yourself bars — but not
+     for the look. This site is paper and ink at --r 3px with one accent
+     (the tokens say so outright: "no stray 4th hue", "the old 8px-on-
+     everything was the template tell"). So: no pills, no second hue, no
+     saturated fills. Every colour below is --accent, --brass or a neutral. */
+
+  .acct-games-today { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .acct-games-ring { position: relative; width: 76px; height: 76px; flex-shrink: 0; }
+  .acct-games-ring span {
+    position: absolute; inset: 0; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; line-height: 1.05;
+  }
+  .acct-games-ring b { font-size: var(--ui-head); font-weight: 800; color: var(--accent); }
+  .acct-games-ring i {
+    font-style: normal; font-size: 10px; letter-spacing: .06em;
+    text-transform: uppercase; color: var(--fg-faint);
+  }
+  .acct-game-line {
+    display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+    font-size: var(--ui-body); padding: 7px 0;
+  }
+  .acct-game-line + .acct-game-line { border-top: 1px solid var(--border); }
+  .acct-game-line .n { font-weight: 600; color: var(--fg); }
+  .acct-game-line .s { font-size: var(--ui-sm); color: var(--fg-faint); margin-left: auto; }
+  .acct-game-line .s.done { color: var(--success); font-weight: 600; }
+
+  /* Week strip. A 30-day grid would be one filled cell beside 29 empty ones
+     on day one — it advertises emptiness, the same reason the global solver
+     count stays hidden below a threshold. Seven cells fill within days. */
+  .acct-week { display: flex; gap: 6px; }
+  .acct-week-day { flex: 1 1 0; min-width: 0; text-align: center; }
+  .acct-week-day .d {
+    font-size: 10px; letter-spacing: .04em; text-transform: uppercase;
+    color: var(--fg-faint); margin-bottom: 5px;
+  }
+  .acct-week-cell {
+    height: 30px; border-radius: var(--r); border: 1px solid var(--border);
+    background: var(--bg); display: flex; align-items: center; justify-content: center;
+  }
+  /* Played, missed and not-yet must differ by SHAPE as well as colour — the
+     tokens carry a comment about a contrast failure that was measured, not
+     eyeballed, and colour-only state fails the same way for other reasons.
+     Every cell also carries a title + aria-label. */
+  .acct-week-cell.is-played { background: var(--accent); border-color: var(--accent); }
+  .acct-week-cell.is-played::after {
+    content: ""; width: 9px; height: 5px; border-left: 2px solid var(--bg);
+    border-bottom: 2px solid var(--bg); transform: rotate(-45deg) translate(1px, -1px);
+  }
+  .acct-week-cell.is-missed { border-style: dashed; border-color: var(--border-med); }
+  .acct-week-cell.is-future { background: var(--bg-subtle); border-color: var(--border); opacity: .55; }
+  .acct-week-cell.is-today { box-shadow: 0 0 0 2px var(--brass); }
+
+  .acct-games-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 14px; }
+  .acct-games-stats > div { min-width: 0; }
+  .acct-gs-n { font-size: var(--ui-title); font-weight: 700; color: var(--fg); line-height: 1.1; }
+  .acct-gs-l { font-size: 11px; letter-spacing: .03em; color: var(--fg-faint); margin-top: 2px; }
+
+  /* Same rows as the game page's own chart, on purpose: the account page and
+     the game show the identical distribution, not two lookalikes. Sized to
+     take a second, fainter "everyone" series later without re-laying out. */
+  .acct-dist-row { display: flex; align-items: center; gap: 8px; font-size: var(--ui-sm); color: var(--fg-muted); }
+  .acct-dist-row + .acct-dist-row { margin-top: 4px; }
+  .acct-dist-bar {
+    height: 18px; min-width: 24px; border-radius: var(--r); background: var(--border-med);
+    display: flex; align-items: center; justify-content: flex-end; padding: 0 6px;
+    font-size: 11px; font-weight: 700; color: var(--fg);
+  }
+  .acct-dist-row.is-best .acct-dist-bar { background: var(--accent); color: var(--bg); }
+  html[data-theme="dark"] .acct-dist-row.is-best .acct-dist-bar { color: #12160F; }
+
+  @media (max-width: 460px) {
+    .acct-games-stats { grid-template-columns: repeat(2, 1fr); gap: 14px 10px; }
+  }
+
   /* Favourite-character cards */
   .acct-fav-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 8px; }
   .acct-fav-card {
@@ -322,6 +398,10 @@ sitemap: false
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
           Favorites
         </button>
+        <button class="acct-tab" data-tab="games" onclick="acctTab('games')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 11h4M8 9v4M15 12h.01M18 10h.01"/><path d="M17.32 5H6.68a4 4 0 0 0-3.98 3.59L2 15.5A2.5 2.5 0 0 0 4.5 18c.82 0 1.6-.4 2.08-1.07L7.8 15.3a2 2 0 0 1 1.63-.84h5.14a2 2 0 0 1 1.63.84l1.22 1.63A2.5 2.5 0 0 0 22 15.5l-.7-6.91A4 4 0 0 0 17.32 5z"/></svg>
+          Games
+        </button>
         <button class="acct-tab" data-tab="activity" onclick="acctTab('activity')">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
           Activity
@@ -390,6 +470,18 @@ sitemap: false
             <div id="acct-favauthors" class="acct-empty">Loading…</div>
           </div>
         </div>
+      </div>
+
+      <!-- Games tab -->
+      {%- comment -%}
+        Built as one container the script fills, rather than a fixed skeleton
+        it populates. The day-zero screen is an INVITATION, not a zeroed
+        dashboard — a ring sitting at 0% and four columns of noughts reads as
+        broken, and most people opening this tab will have played once or
+        twice. That decision is the reason this markup is nearly empty.
+      {%- endcomment -%}
+      <div class="acct-panel" id="acct-panel-games">
+        <div id="acct-games" class="acct-empty">Loading…</div>
       </div>
 
       <!-- Activity tab -->
@@ -531,7 +623,209 @@ sitemap: false
   window.acctTab = function (name) {
     document.querySelectorAll(".acct-tab").forEach(t => t.classList.toggle("active", t.dataset.tab === name));
     document.querySelectorAll(".acct-panel").forEach(p => p.classList.toggle("active", p.id === "acct-panel-" + name));
+    // Loaded on first open rather than on page load: two Firestore reads
+    // that most visits to this page never need.
+    if (name === "games") loadGames();
   };
+
+  // ── Games dashboard ────────────────────────────────────────
+  // Everything shown here is DERIVED from the per-day history. Nothing
+  // aggregated is stored, so nothing aggregated can drift out of step with
+  // the days it claims to summarise.
+  // Built from the pages this site ACTUALLY has, not from a hand-kept list.
+  // Spot the Slop lives on a branch and is not launched; a hardcoded entry
+  // put a "Play today's" button on the dashboard pointing at a 404. A game
+  // the site cannot serve should not be offered.
+  const GAMES = [
+    {%- assign game_pages = site.html_pages | where_exp: "p", "p.url contains '/games/'" -%}
+    {%- for g in game_pages -%}
+      {%- unless g.url == '/games/' -%}
+    { id: {{ g.url | split: '/' | last | jsonify }},
+      name: {{ g.title | jsonify }},
+      url: {{ g.url | relative_url | jsonify }} },
+      {%- endunless -%}
+    {%- endfor -%}
+  ];
+  let gamesLoaded = false;
+
+  // The same local date the games themselves key on. Using UTC here would
+  // fill yesterday's cell for a player who did not play yesterday.
+  function gLocalISO(d) {
+    return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") +
+           "-" + String(d.getDate()).padStart(2, "0");
+  }
+  function gShiftDays(iso, n) {
+    const d = new Date(iso + "T00:00:00");
+    d.setDate(d.getDate() + n);
+    return gLocalISO(d);
+  }
+
+  // Guess the Book resets its streak on a LOSS (it has a binary win). Spot
+  // the Slop is scored 0-5 and meant to be hard, so its streak counts days
+  // played. Two different things — hence two different labels below, rather
+  // than one comfortable word that would misdescribe one of them.
+  function gDerive(gameId, days) {
+    const dates = Object.keys(days).sort();
+    const out = {
+      played: dates.length, wins: 0, dist: [0, 0, 0, 0, 0, 0],
+      correct: 0, rounds: 0, streak: 0, best: 0, last: dates[dates.length - 1] || null,
+    };
+    let run = 0, prev = null;
+    for (const date of dates) {
+      const v = days[date] || {};
+      const counts = gameId === "guess-the-book" ? v.w === true : true;
+      if (gameId === "guess-the-book") {
+        if (v.w === true) {
+          out.wins += 1;
+          if (v.g >= 1 && v.g <= 6) out.dist[v.g - 1] += 1;
+        }
+      } else {
+        out.correct += Number(v.c) || 0;
+        out.rounds += Number(v.r) || 0;
+      }
+      run = (counts && prev && gShiftDays(prev, 1) === date) ? run + 1 : (counts ? 1 : 0);
+      prev = counts ? date : null;
+      out.best = Math.max(out.best, run);
+    }
+    // A run only counts as CURRENT if it reaches today or yesterday;
+    // otherwise it is history, and showing it as live would be a small lie.
+    const today = gLocalISO(new Date());
+    out.streak = (prev === today || prev === gShiftDays(today, -1)) ? run : 0;
+    return out;
+  }
+
+  function gWeekHTML(playedSet) {
+    const today = gLocalISO(new Date());
+    const names = ["S", "M", "T", "W", "T", "F", "S"];
+    let cells = "", count = 0;
+    // Monday-first week containing today.
+    const dow = new Date(today + "T00:00:00").getDay();
+    const monday = gShiftDays(today, dow === 0 ? -6 : 1 - dow);
+    for (let i = 0; i < 7; i++) {
+      const date = gShiftDays(monday, i);
+      const played = playedSet.has(date);
+      const future = date > today;
+      if (played) count += 1;
+      const cls = played ? "is-played" : future ? "is-future" : "is-missed";
+      const label = played ? "played" : future ? "not yet" : "no puzzle played";
+      cells +=
+        '<div class="acct-week-day"><div class="d">' +
+        names[new Date(date + "T00:00:00").getDay()] + "</div>" +
+        '<div class="acct-week-cell ' + cls + (date === today ? " is-today" : "") +
+        '" role="img" title="' + date + " — " + label + '" aria-label="' +
+        date + " — " + label + '"></div></div>';
+    }
+    return { html: '<div class="acct-week">' + cells + "</div>", count: count };
+  }
+
+  function gStat(n, l) {
+    return '<div><div class="acct-gs-n">' + n + '</div><div class="acct-gs-l">' + l + "</div></div>";
+  }
+
+  function gCardHTML(game, d) {
+    let stats, extra = "";
+    if (game.id === "guess-the-book") {
+      const rate = d.played ? Math.round((d.wins / d.played) * 100) : 0;
+      stats = gStat(d.played, "Played") + gStat(rate + "%", "Win rate") +
+              gStat(d.streak, "Win streak") + gStat(d.best, "Best");
+      const peak = Math.max(1, ...d.dist);
+      if (d.wins) {
+        extra = d.dist.map((c, i) =>
+          '<div class="acct-dist-row' + (c === peak && c > 0 ? " is-best" : "") + '">' +
+          "<span>" + (i + 1) + "</span>" +
+          '<div class="acct-dist-bar" style="width:' + Math.max(8, (c / peak) * 100) + '%;">' +
+          (c || "") + "</div></div>").join("");
+        extra = '<div class="acct-gs-l" style="margin-bottom:6px;">SOLVED IN</div>' + extra;
+      }
+    } else {
+      const acc = d.rounds ? Math.round((d.correct / d.rounds) * 100) : 0;
+      stats = gStat(d.played, "Played") + gStat(acc + "%", "Accuracy") +
+              gStat(d.streak, "Day streak") + gStat(d.best, "Best");
+    }
+    return '<div class="acct-section"><h2 class="acct-h2">' + esc(game.name) + "</h2>" +
+           '<div class="acct-games-stats">' + stats + "</div>" + extra + "</div>";
+  }
+
+  async function loadGames() {
+    if (gamesLoaded) return;
+    const box = $("acct-games");
+    if (!box || !window.bhGames) return;
+    gamesLoaded = true;
+    const loaded = [];
+    for (const g of GAMES) {
+      loaded.push({ game: g, days: await window.bhGames.loadDays(g.id) });
+    }
+    const anyPlayed = loaded.some(x => Object.keys(x.days).length);
+
+    // Day zero is an INVITATION. A ring at 0% and four columns of noughts
+    // reads as a broken dashboard, and it is what most first visits would
+    // see — so it is never rendered.
+    if (!anyPlayed) {
+      box.innerHTML =
+        '<div class="acct-section acct-section-wide" style="text-align:center;padding:34px 20px;">' +
+        '<p style="font-size:var(--ui-body);color:var(--fg-muted);line-height:1.6;max-width:34rem;margin:0 auto;">' +
+        "One puzzle a day, the same one for everyone. Your streak starts the day you play." +
+        "</p>" +
+        '<p style="margin-top:16px;"><a class="btn-primary" href="' + GAMES[0].url +
+        '" style="padding:9px 20px;">Play today&rsquo;s puzzle</a></p></div>';
+      return;
+    }
+
+    const today = gLocalISO(new Date());
+    const derived = loaded.map(x => ({ ...x, d: gDerive(x.game.id, x.days) }));
+    const playedAnywhere = new Set();
+    derived.forEach(x => Object.keys(x.days).forEach(dt => playedAnywhere.add(dt)));
+    const week = gWeekHTML(playedAnywhere);
+
+    // The headline streak is the longest CURRENT run across the games, so
+    // the number can't drop because you switched which one you play.
+    const streak = Math.max(...derived.map(x => x.d.streak), 0);
+    const C = 201.06;
+    const pct = Math.min(100, (week.count / 7) * 100);
+
+    const lines = derived.map(x => {
+      const playedToday = !!x.days[today];
+      return '<div class="acct-game-line"><span class="n">' + esc(x.game.name) + "</span>" +
+        (playedToday
+          ? '<span class="s done">Done today</span>'
+          : '<a class="btn-secondary" href="' + x.game.url +
+            '" style="margin-left:auto;padding:5px 13px;font-size:var(--ui-sm);">Play today&rsquo;s</a>') +
+        "</div>";
+    }).join("");
+
+    // One panel, not two. The ring was filling to the WEEK's completion
+    // while the number inside it read the STREAK — two scales in one dial.
+    // And a separate "this week" panel repeated what the ring already said.
+    // The ring now means exactly one thing: days played out of this week.
+    // The streak, which has no ceiling and so cannot be a gauge, is text.
+    const best = Math.max(...derived.map(x => x.d.best), 0);
+    box.innerHTML =
+      '<div class="acct-section acct-section-wide" style="margin-bottom:16px;">' +
+        '<h2 class="acct-h2">This week</h2>' +
+        '<div class="acct-games-today">' +
+          '<div class="acct-games-ring">' +
+            '<svg width="76" height="76" viewBox="0 0 76 76" aria-hidden="true">' +
+              '<circle cx="38" cy="38" r="32" fill="none" stroke="var(--border)" stroke-width="7"/>' +
+              '<circle cx="38" cy="38" r="32" fill="none" stroke="var(--accent)" stroke-width="7" ' +
+                'stroke-linecap="round" stroke-dasharray="' + C + '" stroke-dashoffset="' +
+                (C * (1 - pct / 100)) + '" transform="rotate(-90 38 38)" ' +
+                'style="transition:stroke-dashoffset .5s var(--ease-out);"/>' +
+            "</svg>" +
+            "<span><b>" + week.count + "/7</b><i>days</i></span>" +
+          "</div>" +
+          '<div style="flex:1;min-width:210px;">' + lines +
+            (streak
+              ? '<p class="acct-gs-l" style="margin-top:8px;">' + streak +
+                "-day streak" + (best > streak ? " &middot; best " + best : "") + "</p>"
+              : "") +
+          "</div>" +
+        "</div>" +
+        '<div style="margin-top:16px;">' + week.html + "</div>" +
+      "</div>" +
+      '<div class="acct-grid">' +
+        derived.filter(x => x.d.played).map(x => gCardHTML(x.game, x.d)).join("") +
+      "</div>";
+  }
 
   window.acctMode = function (m) {
     mode = m;

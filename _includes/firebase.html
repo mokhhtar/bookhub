@@ -877,6 +877,102 @@
     await pushLibrary();
   }
 
+  // ── Daily game history (users/{uid}/games/{gameId}) ───────
+  // The games themselves are 100% client-side and stay playable signed out
+  // — that is a locked design decision, not an accident. localStorage is
+  // therefore the source of truth while playing, and this is a mirror that
+  // makes the history survive a new device.
+  //
+  // What is stored is one entry per PUZZLE DATE, never an aggregate. See
+  // the long comment on this path in firebase/firestore.rules for why the
+  // merge is only correct that way.
+  const GAME_LOCAL_KEYS = {
+    "guess-the-book": "bh_gtb_v1",
+    "spot-the-slop": "bh_sts_v1",
+  };
+
+  function gameDoc(gameId) {
+    return doc(db, "users", window.bhUser.uid, "games", gameId);
+  }
+
+  window.bhGames = {
+    ids: Object.keys(GAME_LOCAL_KEYS),
+
+    // Record one finished day. Fire-and-forget by design: a failed write
+    // must never break the game, and localStorage already holds the result.
+    // Merged at the field level, so this neither reads first nor can it
+    // clobber a day written by another tab.
+    async recordDay(gameId, date, result) {
+      try {
+        if (!window.bhUser || !GAME_LOCAL_KEYS[gameId] || !date) return;
+        await setDoc(
+          gameDoc(gameId),
+          { days: { [date]: result }, updatedAt: serverTimestamp() },
+          { merge: true },
+        );
+      } catch (e) {
+        console.warn("Game day sync failed:", gameId, e);
+      }
+    },
+
+    // { "2026-08-01": {...}, ... } — {} when signed out or never played.
+    async loadDays(gameId) {
+      try {
+        if (!window.bhUser || !GAME_LOCAL_KEYS[gameId]) return {};
+        const snap = await getDoc(gameDoc(gameId));
+        return (snap.exists() && snap.data().days) || {};
+      } catch (e) {
+        console.warn("Game history load failed:", gameId, e);
+        return {};
+      }
+    },
+
+    // The local store keeps aggregates plus TODAY's in-progress state, so
+    // it can only ever contribute the one day it still remembers. That is
+    // enough for the case this exists for: someone plays a few days signed
+    // out, then signs in and would otherwise start from zero.
+    localDay(gameId) {
+      try {
+        const raw = localStorage.getItem(GAME_LOCAL_KEYS[gameId]);
+        const day = raw && JSON.parse(raw).day;
+        if (!day || !day.date || !day.counted) return null;
+        if (gameId === "guess-the-book") {
+          if (day.status !== "won" && day.status !== "lost") return null;
+          return [day.date, { w: day.status === "won",
+                              g: (day.guesses || []).length }];
+        }
+        const picks = day.picks || [];
+        if (!picks.length) return null;
+        return [day.date, { c: picks.filter((p) => p && p.correct).length,
+                            r: picks.length }];
+      } catch (e) {
+        return null;
+      }
+    },
+  };
+
+  // Runs beside mergeLibraryOnLogin on every sign-in. Cheap: at most one
+  // write per game, and only when the local store holds a finished day the
+  // cloud doesn't have yet.
+  async function mergeGamesOnLogin(user) {
+    for (const gameId of window.bhGames.ids) {
+      try {
+        const entry = window.bhGames.localDay(gameId);
+        if (!entry) continue;
+        const [date, result] = entry;
+        const snap = await getDoc(doc(db, "users", user.uid, "games", gameId));
+        if (snap.exists() && (snap.data().days || {})[date]) continue;
+        await setDoc(
+          doc(db, "users", user.uid, "games", gameId),
+          { days: { [date]: result }, updatedAt: serverTimestamp() },
+          { merge: true },
+        );
+      } catch (e) {
+        console.warn("Game merge failed:", gameId, e);
+      }
+    }
+  }
+
   // ── Reader star ratings (books/{slug}/ratings/{uid}) ──────
   // Publish the signed-in user's 1-5 star rating, or remove it when stars
   // is 0/null (rating toggled off). Fire-and-forget: the local library
@@ -1040,6 +1136,8 @@
     // transient sign-up sessions that no longer happen.
     if (user) mergeLibraryOnLogin(user);
     window.bhUser = user || null;
+    // After bhUser is set — bhGames reads it to build the document path.
+    if (user) mergeGamesOnLogin(user);
 
     // On sign-out, wipe the per-account local stores so the next person on
     // this browser can't see the previous account's library / history.

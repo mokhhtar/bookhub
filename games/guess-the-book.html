@@ -306,6 +306,15 @@ permalink: /games/guess-the-book/
     stats.lastDate = state.date;
     store.stats = stats;
     saveStore(store);
+    // Mirror the day to the account, when there is one. Deliberately after
+    // saveStore and deliberately not awaited: localStorage is the source of
+    // truth while playing, and a Firestore hiccup must not touch the game.
+    if (window.bhGames) {
+      window.bhGames.recordDay("guess-the-book", state.date, {
+        w: state.status === "won",
+        g: state.guesses.length,
+      });
+    }
     return stats;
   }
 
