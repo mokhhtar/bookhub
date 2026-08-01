@@ -1396,6 +1396,7 @@ reach anyone who had visited before. {%- endcomment -%}
               <a href="${data.free_ebook.read_url || data.free_ebook.page_url}" target="_blank" rel="noopener" class="btn-secondary" style="padding:6px 12px;font-size:var(--t-label);">Read online</a>
               ${data.free_ebook.epub_url ? `<a href="${data.free_ebook.epub_url}" class="btn-secondary" style="padding:6px 12px;font-size:var(--t-label);">Download EPUB</a>` : ''}
               ${data.free_ebook.txt_url ? `<a href="${data.free_ebook.txt_url}" class="btn-secondary" style="padding:6px 12px;font-size:var(--t-label);">Download TXT</a>` : ''}
+              ${data.free_ebook.pdf_url ? `<a href="${data.free_ebook.pdf_url}" class="btn-secondary" style="padding:6px 12px;font-size:var(--t-label);">Download PDF</a>` : ''}
             </div>
             <p style="font-size:var(--t-label);color:var(--fg-faint);margin:8px 0 0;">From <a href="${data.free_ebook.page_url}" target="_blank" rel="noopener nofollow" style="color:inherit;">${data.free_ebook.source === 'internet_archive' ? 'Internet Archive' : 'Project Gutenberg'}</a></p>
           </div>` : ''}

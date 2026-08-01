@@ -425,6 +425,13 @@ reach anyone who had visited before. {%- endcomment -%}
                   "download <book> free epub" query at all. {% endcomment %}
               {% if page.free_ebook.epub_url %}<a href="{{ page.free_ebook.epub_url }}" class="btn-secondary" style="padding:6px 12px;font-size:var(--t-label);">Download EPUB</a>{% endif %}
               {% if page.free_ebook.txt_url %}<a href="{{ page.free_ebook.txt_url }}" class="btn-secondary" style="padding:6px 12px;font-size:var(--t-label);">Download TXT</a>{% endif %}
+              {% comment %} Archive scans only, and only when the file was
+                  actually fetched at resolve time. Project Gutenberg
+                  publishes no PDF whatsoever — the files 404, they are not
+                  a setting we failed to find — so the 36 Gutenberg books
+                  never show this and must not be made to look as if they
+                  should. {% endcomment %}
+              {% if page.free_ebook.pdf_url %}<a href="{{ page.free_ebook.pdf_url }}" class="btn-secondary" style="padding:6px 12px;font-size:var(--t-label);">Download PDF</a>{% endif %}
             </div>
             <p style="font-size:var(--t-label);color:var(--fg-faint);margin:8px 0 0;">From <a href="{{ page.free_ebook.page_url }}" target="_blank" rel="noopener nofollow" style="color:inherit;">{% if page.free_ebook.source == "internet_archive" %}Internet Archive{% else %}Project Gutenberg{% endif %}</a></p>
           </div>
