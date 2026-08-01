@@ -3,11 +3,6 @@ layout: default
 title: "Guess the Book"
 description: "One book a day, six guesses, six clues — every quote verified word-for-word against the original text. No account, no spoilers."
 permalink: /games/guess-the-book/
-# Until the puzzle bank opens (2026-08-01) this page renders nothing but
-# "No puzzle today" — an empty shell, exactly the thin content the indexing
-# policy exists to keep out of Google. Remove both lines at launch.
-noindex: true
-sitemap: false
 ---
 <style>
   /* Product register, like /account/ and /My-Library/: UI face, the compact
@@ -311,6 +306,15 @@ sitemap: false
     stats.lastDate = state.date;
     store.stats = stats;
     saveStore(store);
+    // Mirror the day to the account, when there is one. Deliberately after
+    // saveStore and deliberately not awaited: localStorage is the source of
+    // truth while playing, and a Firestore hiccup must not touch the game.
+    if (window.bhGames) {
+      window.bhGames.recordDay("guess-the-book", state.date, {
+        w: state.status === "won",
+        g: state.guesses.length,
+      });
+    }
     return stats;
   }
 
