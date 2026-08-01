@@ -126,21 +126,32 @@ sitemap: false
     font-size: 10px; letter-spacing: .04em; text-transform: uppercase;
     color: var(--fg-faint); margin-bottom: 5px;
   }
+  /* The first version drew an unplayed day as an ABSENCE — --bg fill on a
+     --bg-subtle panel with a --border hairline. In the light palette that is
+     #F7F6F3 on #EFEDE7 outlined in #DFDCD4: three tones inside a hair of
+     each other, so six of seven cells effectively vanished and the strip
+     read as one floating square rather than a week.
+     Every cell now carries a positive mark, and the marks — not the fills —
+     do the work, so the states survive the palette being deliberately low
+     contrast. Shape distinguishes them too, never colour alone. */
   .acct-week-cell {
-    height: 30px; border-radius: var(--r); border: 1px solid var(--border);
-    background: var(--bg); display: flex; align-items: center; justify-content: center;
+    height: 32px; border-radius: var(--r);
+    border: 1px solid var(--border-med);
+    background: var(--bg);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--fg-faint);
   }
-  /* Played, missed and not-yet must differ by SHAPE as well as colour — the
-     tokens carry a comment about a contrast failure that was measured, not
-     eyeballed, and colour-only state fails the same way for other reasons.
-     Every cell also carries a title + aria-label. */
   .acct-week-cell.is-played { background: var(--accent); border-color: var(--accent); }
-  .acct-week-cell.is-played::after {
+  .acct-week-cell.is-played::after {           /* a tick */
     content: ""; width: 9px; height: 5px; border-left: 2px solid var(--bg);
     border-bottom: 2px solid var(--bg); transform: rotate(-45deg) translate(1px, -1px);
   }
-  .acct-week-cell.is-missed { border-style: dashed; border-color: var(--border-med); }
-  .acct-week-cell.is-future { background: var(--bg-subtle); border-color: var(--border); opacity: .55; }
+  .acct-week-cell.is-missed::after {           /* a dash: it happened, you didn't */
+    content: ""; width: 11px; height: 2px; border-radius: 1px; background: currentColor;
+  }
+  .acct-week-cell.is-future {                  /* hasn't happened: dotted, empty */
+    background: transparent; border-style: dotted;
+  }
   .acct-week-cell.is-today { box-shadow: 0 0 0 2px var(--brass); }
 
   .acct-games-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 14px; }
