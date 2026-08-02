@@ -144,8 +144,14 @@ sitemap: false
   async function fetchFromCDN() {
     if (!CDN) return null;
     try {
+      // 6s, not 30. This is a static file from an edge CDN: if it has not
+      // answered in six seconds it is not doing its job, and every second
+      // spent waiting is a second added to the fallback rather than saved.
+      // Found by pointing at a host this machine cannot route to — the page
+      // sat for the full timeout before falling back, which is worse than
+      // never having tried.
       const res = await fetch(CDN + "/print/" + CDN_VERSION + "/" + gid + ".html",
-                              { signal: AbortSignal.timeout(30000) });
+                              { signal: AbortSignal.timeout(6000) });
       if (!res.ok) return null;
       const html = await res.text();
       // A truncated or wrong object is worse than a miss, because it would
