@@ -101,5 +101,19 @@ defaults:
 # Backend API (Render — update after deploy)
 api_url: "https://bookhub-api-hnv7.onrender.com"
 
+# Printable editions on Cloudflare R2.
+#
+# /print/ tries this host FIRST and falls back to api_url when it misses, so
+# leaving print_cdn empty simply keeps every print request on the old path —
+# the feature degrades to exactly what shipped yesterday rather than breaking.
+# Set it once the bucket has a custom domain (r2.dev is rate-limited and
+# explicitly not for production).
+#
+# The version must match PRINT_KEY in the API's tools/reader.py ("readprint_v3"
+# -> "v3"). A mismatch is not fatal — the object 404s and the API answers
+# instead — but every print then pays the slow path, so bump both together.
+print_cdn: ""
+print_version: "v3"
+
 # Amazon Associates tag
 amazon_tag: "oceansidehair-20"

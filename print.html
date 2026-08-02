@@ -128,15 +128,49 @@ sitemap: false
 
   if (!gid) { fail("Missing book id."); return; }
 
+  // Two sources, in order. R2 holds the same document the API produces —
+  // sanitised by the same parser, keyed by the same version — but serves it as
+  // a static file from Cloudflare's edge. The API path measured 14.5s total
+  // for a 788KB book WITH a warm cache and a warm Render instance; asleep it
+  // adds another 30-60s. R2 is not a cache in front of that, it is a
+  // replacement for it on the read path.
+  //
+  // The fallback is what makes this safe to ship before the bucket exists:
+  // no print_cdn, or a 404, or a network failure, and we are back on exactly
+  // the path that shipped yesterday.
+  const CDN = "{{ site.print_cdn }}";
+  const CDN_VERSION = "{{ site.print_version | default: 'v3' }}";
+
+  async function fetchFromCDN() {
+    if (!CDN) return null;
+    try {
+      const res = await fetch(CDN + "/print/" + CDN_VERSION + "/" + gid + ".html",
+                              { signal: AbortSignal.timeout(30000) });
+      if (!res.ok) return null;
+      const html = await res.text();
+      // A truncated or wrong object is worse than a miss, because it would
+      // print as a broken book. The API refuses anything under 2000 chars for
+      // the same reason; hold the edge copy to the same bar.
+      return html && html.length > 2000 ? html : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  async function fetchFromAPI() {
+    // A cold Render instance takes 30-60s to wake and a first ingest fetches
+    // the whole book, so this is deliberately patient rather than snappy.
+    const res = await fetch(API + "/read/" + gid + "/print", { signal: AbortSignal.timeout(180000) });
+    if (!res.ok) return null;
+    const data = await res.json();
+    return (data && data.html) ? data.html : null;
+  }
+
   (async function load() {
     try {
-      // A cold Render instance takes 30-60s to wake and a first ingest fetches
-      // the whole book, so this is deliberately patient rather than snappy.
-      const res = await fetch(API + "/read/" + gid + "/print", { signal: AbortSignal.timeout(180000) });
-      if (!res.ok) { fail("This book has no printable edition."); return; }
-      const data = await res.json();
-      if (!data || !data.html) { fail("This book has no printable edition."); return; }
-      $("pr-book").innerHTML = data.html;   // sanitised server-side, allow-list only
+      const html = (await fetchFromCDN()) || (await fetchFromAPI());
+      if (!html) { fail("This book has no printable edition."); return; }
+      $("pr-book").innerHTML = html;   // sanitised server-side, allow-list only
       $("pr-status").hidden = true;
       $("pr-doc").hidden = false;
       const button = $("pr-print");
