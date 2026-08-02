@@ -248,9 +248,21 @@ reach anyone who had visited before. {%- endcomment -%}
 
 .search-sort-bar { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .search-sort-bar label { font-size: var(--t-label); color: var(--fg-faint); }
+/* background-COLOR, never the `background` shorthand. The shorthand resets
+   background-repeat and background-position to their initial values, and
+   `html[data-theme="dark"] .form-select` is MORE specific (0,2,1) than this
+   selector (0,1,1) — so in dark mode it put the chevron image back while the
+   repeat stayed reset, tiling one arrow across the whole control. Measured:
+   repeat "repeat", position "0% 0%", image present in dark only, which is
+   why it never showed up in the light theme.
+   Everything else this rule used to redeclare — border, radius, colour,
+   cursor — already comes from .form-select on the same element. It only
+   needs to make the control compact, and leave room for the arrow. */
 .search-sort-bar select {
-    background: var(--bg-subtle); border: 1px solid var(--border); color: var(--fg);
-    border-radius: var(--r); padding: 6px 10px; font-size: 12.5px; cursor: pointer;
+    background-color: var(--bg-subtle);
+    width: auto;
+    padding: 6px 30px 6px 10px;
+    font-size: 12.5px;
   }
 .search-sort-dir-btn {
     background: var(--bg-subtle); border: 1px solid var(--border); color: var(--fg);
