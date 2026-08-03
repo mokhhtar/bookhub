@@ -112,7 +112,7 @@ api_url: "https://bookhub-api-hnv7.onrender.com"
 # The version must match PRINT_KEY in the API's tools/reader.py ("readprint_v3"
 # -> "v3"). A mismatch is not fatal — the object 404s and the API answers
 # instead — but every print then pays the slow path, so bump both together.
-print_cdn: ""
+print_cdn: "https://files.litheca.com"
 print_version: "v3"
 
 # Amazon Associates tag
