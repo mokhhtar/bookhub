@@ -485,6 +485,30 @@ permalink: /games/guess-the-book/
            "</div>";
   }
 
+  // Every pool book is a Project Gutenberg book by construction, so we can
+  // always offer OUR reader instead of sending the player to gutenberg.org.
+  // That link was the worst possible exit: someone has just solved the
+  // puzzle and wants to read the book, and we handed them off at exactly
+  // that moment — to a site with none of the summary, quotes or quiz we
+  // built for it.
+  //
+  // The id is parsed out of the reveal's existing gutenberg URL rather than
+  // added as a new field, so all 60 committed puzzles get this without being
+  // regenerated. Those puzzles were reviewed by eye; regenerating them to
+  // change a link would put verified content back through the mill for
+  // nothing. Falls back to Gutenberg if a future payload ever lacks the id.
+  function readFreeLink(r) {
+    if (!r.gutenberg) return "";
+    const gid = (String(r.gutenberg).match(/(\d+)\s*$/) || [])[1];
+    if (!gid) {
+      return '<a href="' + esc(r.gutenberg) + '" rel="noopener" target="_blank">Read it free</a>';
+    }
+    return '<a href="{{ "/reader/" | relative_url }}?id=' + encodeURIComponent(gid) +
+           "&title=" + encodeURIComponent(r.title || "") +
+           "&author=" + encodeURIComponent(r.author || "") +
+           '">Read it free</a>';
+  }
+
   function resultHTML() {
     const r = state.reveal;
     if (!r) return "";
@@ -503,7 +527,7 @@ permalink: /games/guess-the-book/
                  '<p class="gtb-result-sub">' + sub + "</p>" + trans +
                  '<div class="gtb-result-links">' +
                    '<a href="' + esc(r.url) + '">Read the full summary</a>' +
-                   (r.gutenberg ? '<a href="' + esc(r.gutenberg) + '" rel="noopener" target="_blank">Read it free</a>' : "") +
+                   readFreeLink(r) +
                  "</div>" +
                "</div>" +
              "</div>" +

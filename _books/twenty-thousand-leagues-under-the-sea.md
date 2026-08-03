@@ -1,6 +1,6 @@
 ---
 layout: book
-content_version: 8
+content_version: 10
 title: "Twenty Thousand Leagues Under the Sea"
 author: "Jules Verne"
 author_slug: "jules-verne"
@@ -23,10 +23,10 @@ awards: [{"name": "NPR Top 100 Science Fiction and Fantasy Books", "year": null,
 ratings: {"source": "goodreads", "average": 3.89, "count": 282899, "url": "https://www.goodreads.com/book/show/33507.Twenty_Thousand_Leagues_Under_the_Sea", "pages": 269}
 themes: ["Scientific exploration", "Isolation and madness", "Man versus nature", "Technological advancement"]
 reading_level: "Adult / General Fiction"
-free_ebook: null
+free_ebook: {"v": 3, "source": "project_gutenberg", "gutenberg_id": "164", "page_url": "https://www.gutenberg.org/ebooks/164", "read_url": "https://www.gutenberg.org/ebooks/164.html.images", "epub_url": "https://www.gutenberg.org/ebooks/164.epub3.images", "txt_url": "https://www.gutenberg.org/ebooks/164.txt.utf-8", "pdf_url": null}
 quotes: null
-quiz: null
-quiz_source: ""
+quiz: [{"question": "What primary power source does Captain Nemo use to operate the Nautilus?", "options": ["Coal", "Electricity", "Steam", "Compressed air"], "answer_index": 1, "supporting_quote": "There is a powerful agent, obedient, rapid, easy, which conforms to every use, and reigns supreme on board my vessel. Everything is done by means of it. It lights it, warms it, and is the soul of my mechanical apparatus. This agent is electricity.", "chunk_index": 44}, {"question": "What special ammunition does Captain Nemo use for his underwater guns?", "options": ["Glass cases filled with electricity", "Steel-tipped harpoons", "Lead pellets coated in poison", "Explosive gunpowder charges"], "answer_index": 0, "supporting_quote": "These glass cases are covered with a case of steel, and weighted with a pellet of lead; they are real Leyden bottles, into which the electricity is forced to a very high tension.", "chunk_index": 59}, {"question": "What did Ned Land accomplish during the voyage of the Abraham Lincoln that proved his skill?", "options": ["He harpooned two whales with a double blow", "He successfully navigated the ship through a storm", "He spotted the narwhal before anyone else", "He repaired the ship's engine under pressure"], "answer_index": 0, "supporting_quote": "And fate served our Canadian so well that, instead of one whale, he harpooned two with a double blow, striking one straight to the heart, and catching the other after some minutes’ pursuit.", "chunk_index": 15}, {"question": "What did the narrator discover at the bottom of the Atlantic that he initially mistook for a sea-serpent?", "options": ["A giant squid", "The ruins of a sunken city", "An electric telegraph cable", "A petrified prehistoric creature"], "answer_index": 2, "supporting_quote": "It was on the 17th of May, about 500 miles from Heart’s Content, at a depth of more than 1,400 fathoms, that I saw the electric cable lying on the bottom. Conseil, to whom I had not mentioned it, thought at first that it was a gigantic sea-serpent.", "chunk_index": 206}, {"question": "What did the narrator and Captain Nemo find when they climbed the mountain during their submarine excursion?", "options": ["A hidden base for pirates", "A dormant volcano", "Ruins of ancient castles and temples", "A forest of petrified trees"], "answer_index": 2, "supporting_quote": "Before us lay some picturesque ruins, which betrayed the hand of man and not that of the Creator. There were vast heaps of stone, amongst which might be traced the vague and shadowy forms of castles and temples", "chunk_index": 147}, {"question": "How does Captain Nemo describe the nature of his existence at the end of the narrative?", "options": ["As a prisoner of the sea", "As a man seeking revenge", "As a philosopher exploring the sea", "As a scientist studying marine life"], "answer_index": 2, "supporting_quote": "May the judge disappear, and the philosopher continue the peaceful exploration of the sea! If his destiny be strange, it is also sublime.", "chunk_index": 221}]
+quiz_source: "gutenberg_text"
 nyt: null
 editions: {"editions": 2, "languages": 1}
 characters: [{"name": "Captain Nemo", "slug": "captain-nemo", "role": ""}]

@@ -1,6 +1,6 @@
 ---
 layout: book
-content_version: 8
+content_version: 10
 title: "Robinson Crusoe"
 author: "Daniel Defoe"
 author_slug: "daniel-defoe"
@@ -23,10 +23,10 @@ awards: []
 ratings: {"source": "goodreads", "average": 3.68, "count": 337255, "url": "https://www.goodreads.com/book/show/2932.Robinson_Crusoe", "pages": 320}
 themes: ["Survival", "Colonialism", "Religious redemption", "Self-reliance"]
 reading_level: "Adult / General Fiction"
-free_ebook: null
+free_ebook: {"v": 3, "source": "project_gutenberg", "gutenberg_id": "521", "page_url": "https://www.gutenberg.org/ebooks/521", "read_url": "https://www.gutenberg.org/ebooks/521.html.images", "epub_url": "https://www.gutenberg.org/ebooks/521.epub3.images", "txt_url": "https://www.gutenberg.org/ebooks/521.txt.utf-8", "pdf_url": null}
 quotes: null
-quiz: null
-quiz_source: ""
+quiz: [{"question": "What was Robinson Crusoe's father's original occupation and nationality?", "options": ["A British merchant from London", "A foreigner from Bremen who became a merchant", "A soldier from Flanders", "A lawyer from York"], "answer_index": 1, "supporting_quote": "my father being a foreigner of Bremen, who settled first at Hull. He got a good estate by merchandise", "chunk_index": 0}, {"question": "Why did Crusoe and the boy Xury decide not to go ashore when they first reached land after escaping Sallee?", "options": ["They were afraid of the Emperor of Morocco's soldiers", "They feared the local inhabitants would capture them", "They heard terrifying noises from wild creatures", "They were waiting for a passing ship to rescue them"], "answer_index": 2, "supporting_quote": "we heard such dreadful noises of the barking, roaring, and howling of wild creatures, of we knew not what kinds, that the poor boy was ready to die with fear", "chunk_index": 17}, {"question": "How did Crusoe describe his initial reaction to being the only survivor of the shipwreck?", "options": ["He felt a deep sense of religious remorse", "He was overwhelmed by a sense of God's judgment", "He felt a common flight of joy just to be alive", "He was paralyzed by the fear of starvation"], "answer_index": 2, "supporting_quote": "it ended where it began, in a mere common flight of joy, or, as I may say, being glad I was alive, without the least reflection upon the distinguished goodness of the hand which had preserved me", "chunk_index": 68}, {"question": "What did Crusoe discover about the two sides of his island during his exploration?", "options": ["The side where he lived was the most fertile and abundant", "The opposite side was full of dangerous, man-eating beasts", "The side he initially chose was the worst part of the island", "Both sides were equally barren and difficult to survive on"], "answer_index": 2, "supporting_quote": "As soon as I came to the sea-shore, I was surprised to see that I had taken up my lot on the worst side of the island", "chunk_index": 85}, {"question": "What motivated Crusoe to eventually abandon his plan to attack the savages?", "options": ["He realized it was not his business and could lead to his own destruction", "He lacked the necessary weapons to win a battle", "He was afraid of the legal consequences in England", "He wanted to convert them to his religion instead"], "answer_index": 0, "supporting_quote": "I concluded that I ought, neither in principle nor in policy, one way or other, to concern myself in this affair: that my business was, by all possible means to conceal myself from them", "chunk_index": 136}, {"question": "Why was Friday terrified when Crusoe shot a kid goat in the woods?", "options": ["He thought Crusoe was going to kill him next", "He believed the goat was a sacred animal", "He was startled by the loud noise of the gun", "He was upset that Crusoe wasted ammunition"], "answer_index": 0, "supporting_quote": "I found presently, thought I was resolved to kill him: for he came and kneeled down to me, and embracing my knees, said a great many things I did not understand", "chunk_index": 170}]
+quiz_source: "gutenberg_text"
 nyt: null
 editions: {"editions": 2420, "languages": 26}
 characters: [{"name": "Friday", "slug": "friday-robinson-crusoe", "role": ""}]

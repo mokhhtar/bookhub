@@ -1,6 +1,6 @@
 ---
 layout: book
-content_version: 7
+content_version: 10
 title: "The Mysterious Island"
 author: "Jules Verne"
 author_slug: "jules-verne"
@@ -23,7 +23,7 @@ awards: []
 ratings: {"source": "goodreads", "average": 4.14, "count": 60284, "url": "https://www.goodreads.com/book/show/32831.The_Mysterious_Island", "pages": 723}
 themes: ["Survival", "Human ingenuity", "Colonialism", "Scientific progress"]
 reading_level: "Adult / General Fiction"
-free_ebook: {"source": "internet_archive", "page_url": "https://archive.org/details/mysteriousisland00vern_0", "read_url": "https://archive.org/details/mysteriousisland00vern_0", "epub_url": null, "txt_url": null}
+free_ebook: {"v": 2, "source": "internet_archive", "page_url": "https://archive.org/details/mysteriousisland00vern_0", "read_url": "https://archive.org/details/mysteriousisland00vern_0", "epub_url": null, "txt_url": null, "pdf_url": "https://archive.org/download/mysteriousisland00vern_0/mysteriousisland00vern_0.pdf"}
 quotes: null
 quiz: null
 quiz_source: ""

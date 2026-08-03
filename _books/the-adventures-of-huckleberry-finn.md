@@ -1,6 +1,6 @@
 ---
 layout: book
-content_version: 9
+content_version: 10
 title: "The Adventures of Huckleberry Finn"
 author: "Mark Twain"
 author_slug: "mark-twain"
@@ -23,7 +23,7 @@ awards: []
 ratings: {"source": "goodreads", "average": 3.83, "count": 1350065, "url": "https://www.goodreads.com/book/show/2956.The_Adventures_of_Huckleberry_Finn", "pages": 327}
 themes: ["Coming of age", "Racism and slavery", "Moral growth", "Freedom and society"]
 reading_level: "Adult / General Fiction"
-free_ebook: {"v": 1, "source": "internet_archive", "page_url": "https://archive.org/details/bwb_P9-CSD-845", "read_url": "https://archive.org/details/bwb_P9-CSD-845", "epub_url": null, "txt_url": null}
+free_ebook: {"v": 2, "source": "internet_archive", "page_url": "https://archive.org/details/bwb_P9-CSD-845", "read_url": "https://archive.org/details/bwb_P9-CSD-845", "epub_url": null, "txt_url": null, "pdf_url": "https://archive.org/download/bwb_P9-CSD-845/bwb_P9-CSD-845.pdf"}
 quotes: null
 quiz: null
 quiz_source: ""

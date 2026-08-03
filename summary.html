@@ -248,9 +248,21 @@ reach anyone who had visited before. {%- endcomment -%}
 
 .search-sort-bar { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .search-sort-bar label { font-size: var(--t-label); color: var(--fg-faint); }
+/* background-COLOR, never the `background` shorthand. The shorthand resets
+   background-repeat and background-position to their initial values, and
+   `html[data-theme="dark"] .form-select` is MORE specific (0,2,1) than this
+   selector (0,1,1) — so in dark mode it put the chevron image back while the
+   repeat stayed reset, tiling one arrow across the whole control. Measured:
+   repeat "repeat", position "0% 0%", image present in dark only, which is
+   why it never showed up in the light theme.
+   Everything else this rule used to redeclare — border, radius, colour,
+   cursor — already comes from .form-select on the same element. It only
+   needs to make the control compact, and leave room for the arrow. */
 .search-sort-bar select {
-    background: var(--bg-subtle); border: 1px solid var(--border); color: var(--fg);
-    border-radius: var(--r); padding: 6px 10px; font-size: 12.5px; cursor: pointer;
+    background-color: var(--bg-subtle);
+    width: auto;
+    padding: 6px 30px 6px 10px;
+    font-size: 12.5px;
   }
 .search-sort-dir-btn {
     background: var(--bg-subtle); border: 1px solid var(--border); color: var(--fg);
@@ -1396,6 +1408,8 @@ reach anyone who had visited before. {%- endcomment -%}
               <a href="${data.free_ebook.read_url || data.free_ebook.page_url}" target="_blank" rel="noopener" class="btn-secondary" style="padding:6px 12px;font-size:var(--t-label);">Read online</a>
               ${data.free_ebook.epub_url ? `<a href="${data.free_ebook.epub_url}" class="btn-secondary" style="padding:6px 12px;font-size:var(--t-label);">Download EPUB</a>` : ''}
               ${data.free_ebook.txt_url ? `<a href="${data.free_ebook.txt_url}" class="btn-secondary" style="padding:6px 12px;font-size:var(--t-label);">Download TXT</a>` : ''}
+              ${data.free_ebook.pdf_url ? `<a href="${data.free_ebook.pdf_url}" class="btn-secondary" style="padding:6px 12px;font-size:var(--t-label);">Download PDF</a>` : ''}
+              ${data.free_ebook.gutenberg_id ? `<a href="{{ '/print/' | relative_url }}?id=${data.free_ebook.gutenberg_id}&title=${encodeURIComponent(data.title || '')}&author=${encodeURIComponent(data.author || '')}" class="btn-secondary" style="padding:6px 12px;font-size:var(--t-label);">Save as PDF</a>` : ''}
             </div>
             <p style="font-size:var(--t-label);color:var(--fg-faint);margin:8px 0 0;">From <a href="${data.free_ebook.page_url}" target="_blank" rel="noopener nofollow" style="color:inherit;">${data.free_ebook.source === 'internet_archive' ? 'Internet Archive' : 'Project Gutenberg'}</a></p>
           </div>` : ''}

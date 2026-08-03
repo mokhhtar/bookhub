@@ -1,6 +1,6 @@
 ---
 layout: book
-content_version: 7
+content_version: 10
 title: "Around the World in Eighty Days"
 author: "Jules Verne"
 author_slug: "jules-verne"
@@ -23,10 +23,10 @@ awards: []
 ratings: {"source": "goodreads", "average": 3.95, "count": 290275, "url": "https://www.goodreads.com/book/show/54479.Around_the_World_in_Eighty_Days", "pages": 252}
 themes: ["Time and punctuality", "Exploration and adventure", "British imperialism", "Persistence and determination"]
 reading_level: "Adult / General Fiction"
-free_ebook: null
+free_ebook: {"v": 3, "source": "project_gutenberg", "gutenberg_id": "103", "page_url": "https://www.gutenberg.org/ebooks/103", "read_url": "https://www.gutenberg.org/ebooks/103.html.images", "epub_url": "https://www.gutenberg.org/ebooks/103.epub3.images", "txt_url": "https://www.gutenberg.org/ebooks/103.txt.utf-8", "pdf_url": null}
 quotes: null
-quiz: null
-quiz_source: ""
+quiz: [{"question": "What was the specific amount of money stolen from the Bank of England, which triggered the investigation?", "options": ["Fifty thousand pounds", "Fifty-five thousand pounds", "Sixty thousand pounds", "Sixty-five thousand pounds"], "answer_index": 1, "supporting_quote": "A package of banknotes, to the value of fifty-five thousand pounds, had been taken from the principal cashier’s table", "chunk_index": 9}, {"question": "Why did Fix, the detective, believe the bank robber was on board the steamer 'Mongolia'?", "options": ["He saw the robber steal the money", "The robber's passport description matched the one from Scotland Yard", "The robber confessed to him", "The robber was seen fleeing London"], "answer_index": 1, "supporting_quote": "An involuntary motion of surprise nearly escaped him, for the description in the passport was identical with that of the bank robber which he had received from Scotland Yard.", "chunk_index": 18}, {"question": "What animal did Phileas Fogg and his companions use to travel through the forests of Bundelcund?", "options": ["A horse", "A camel", "An elephant", "A mule"], "answer_index": 2, "supporting_quote": "The travellers several times saw bands of ferocious Indians, who, when they perceived the elephant striding across-country, made angry and threatening motions.", "chunk_index": 36}, {"question": "What is the meaning of the name 'Allahabad', the city where Passepartout purchased clothes for Aouda?", "options": ["City of Gold", "City of God", "City of Peace", "City of Rivers"], "answer_index": 1, "supporting_quote": "Passepartout started off forthwith, and found himself in the streets of Allahabad, that is, the City of God", "chunk_index": 45}, {"question": "What vice did Fix and Passepartout encounter in the smoking-house where they discussed the journey?", "options": ["Gambling", "Alcoholism", "Opium smoking", "Tobacco chewing"], "answer_index": 2, "supporting_quote": "Fix and Passepartout saw that they were in a smoking-house haunted by those wretched, cadaverous, idiotic creatures to whom the English merchants sell every year the miserable drug called opium", "chunk_index": 63}, {"question": "How did Phileas Fogg and his party travel across the snowy plains to reach Omaha?", "options": ["By train", "By horse-drawn carriage", "By a wind-powered sledge", "By walking"], "answer_index": 2, "supporting_quote": "While each of the party was absorbed in reflections so different, the sledge flew past over the vast carpet of snow.", "chunk_index": 116}]
+quiz_source: "gutenberg_text"
 nyt: null
 editions: {"editions": 23, "languages": 1}
 characters: [{"name": "Phileas Fogg", "slug": "phileas-fogg", "role": ""}, {"name": "Aouda", "slug": "aouda", "role": ""}, {"name": "Jean Passepartout", "slug": "jean-passepartout", "role": ""}]

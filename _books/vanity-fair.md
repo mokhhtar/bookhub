@@ -1,6 +1,6 @@
 ---
 layout: book
-content_version: 8
+content_version: 10
 title: "Vanity Fair"
 author: "William Makepeace Thackeray"
 author_slug: "william-makepeace-thackeray"
@@ -23,7 +23,7 @@ awards: []
 ratings: {"source": "goodreads", "average": 3.81, "count": 134776, "url": "https://www.goodreads.com/book/show/5797.Vanity_Fair", "pages": 867}
 themes: ["Social climbing", "Materialism and greed", "Class stratification", "Gender roles"]
 reading_level: "Adult / General Fiction"
-free_ebook: {"source": "internet_archive", "page_url": "https://archive.org/details/vanityfair01thac_0", "read_url": "https://archive.org/details/vanityfair01thac_0", "epub_url": null, "txt_url": null}
+free_ebook: {"v": 2, "source": "internet_archive", "page_url": "https://archive.org/details/vanityfair01thac_0", "read_url": "https://archive.org/details/vanityfair01thac_0", "epub_url": null, "txt_url": null, "pdf_url": "https://archive.org/download/vanityfair01thac_0/vanityfair01thac_0.pdf"}
 quotes: {"v": 8, "texts": ["“How can you—how dare you have such wicked, revengeful thoughts?”“Revenge may be wicked, but it’s natural,” answered Miss Rebecca. “I’m no angel.” And, to say the truth, she certainly was not.", "The world is a looking-glass, and gives back to every man the reflection of his own face. Frown at it, and it will in turn look sourly upon you; laugh at it and with it, and it is a jolly kind companion; and so let all young persons take their choice.", "And this I set down as a positive truth. A woman with fair opportunities, and without a positive hump, may marry whom she likes.", "If mere parsimony could have made a man rich, Sir Pitt Crawley might have become very wealthy."], "speakers": ["p. 12", "p. 12", "", "pp. 82-83"], "source": "wikiquote", "source_url": "https://en.wikiquote.org/wiki/Vanity_Fair_%28novel%29", "license": "CC BY-SA"}
 quiz: null
 quiz_source: ""
