@@ -70,6 +70,20 @@ sitemap: false
   .sts-fallback[hidden] { display: none; }
   .sts-books { margin-top: 16px; display: flex; flex-direction: column; gap: 6px; }
   .sts-books a { font-size: var(--ui-body); color: var(--accent); }
+  /* The crowd's distribution. Same bar shape as Guess the Book's so the two
+     games read as one product, and --brass rather than --accent because the
+     player's own result is the louder thing on this card. The axis is 0-5
+     pairs spotted, so it starts at zero — unlike Guess the Book's 1-6. */
+  .sts-global-h { font-size: var(--ui-sm); font-weight: 600; color: var(--fg-muted);
+                  margin: 18px 0 8px; padding-top: 14px; border-top: 1px solid var(--border); }
+  .sts-dist-row { display: flex; align-items: center; gap: 8px; font-size: var(--ui-sm);
+                  color: var(--fg-muted); margin-bottom: 4px; }
+  .sts-dist-bar { height: 18px; min-width: 22px; border-radius: var(--r); background: var(--border-med);
+                  display: inline-flex; align-items: center; justify-content: flex-end;
+                  padding-right: 6px; font-size: var(--ui-sm); color: var(--fg); }
+  .sts-dist-row.is-mine .sts-dist-bar { background: var(--brass); color: #F7F6F3; }
+  .sts-global-note { font-size: var(--ui-sm); color: var(--fg-faint); margin-top: 8px; line-height: 1.5; }
+
   .sts-next-in { font-size: var(--ui-sm); color: var(--fg-faint); margin-top: 14px; }
   .sts-next-in b { font-variant-numeric: tabular-nums; color: var(--fg-muted); font-weight: 600; }
 
@@ -326,6 +340,7 @@ sitemap: false
       "</div>" +
       '<textarea class="sts-fallback" id="sts-fallback" rows="6" readonly hidden></textarea>' +
       '<div class="sts-books"><p class="sts-result-sub">Today\'s books:</p>' + books + "</div>" +
+      '<div id="sts-global" hidden></div>' +
       '<p class="sts-next-in">Next pairs in <b id="sts-countdown">—</b></p>' +
       "</div>";
   }
@@ -369,6 +384,42 @@ sitemap: false
     if (countIt !== false) countResult();
     persistDay(true);
     render();
+
+    // Fire-and-forget, after render(). The result card is already on screen
+    // before either request starts, so a blocked Turnstile or a Worker
+    // outage costs this game nothing. countIt is false when the day is being
+    // restored on a reload, and a reload is not a second play.
+    //
+    // The score reported is pairs SPOTTED, and zero is a real result — the
+    // Worker knows this game's range is 0-5 rather than Guess the Book's
+    // 1-6, so a player who got none right is recorded rather than rejected.
+    if (countIt !== false && window.bhGameStats) {
+      const right = state.picks.filter((p) => p.correct).length;
+      bhGameStats.report("spot-the-slop", state.date, right);
+      bhGameStats.stats("spot-the-slop", state.date).then(renderGlobalDist);
+    }
+  }
+
+  // A second, quieter series under the player's own result — context, not a
+  // replacement. Only renders when the Worker actually sends counts; below
+  // its reporting floor it sends none, so nothing here can draw a number
+  // small enough to read as abandonment.
+  function renderGlobalDist(data) {
+    if (!data) return;
+    const host = document.getElementById("sts-global");
+    if (!host) return;
+    const best = Math.max(1, ...data.dist);
+    const mine = state.picks.filter((p) => p.correct).length;
+    host.innerHTML =
+      '<p class="sts-global-h">Everyone today · ' + data.solvers.toLocaleString() + " played</p>" +
+      data.dist.map((count, i) =>
+        '<div class="sts-dist-row' + (i === mine ? " is-mine" : "") + '">' +
+          "<span>" + i + "</span>" +
+          '<span class="sts-dist-bar" style="width:' + Math.max(8, Math.round((count / best) * 100)) + '%">' +
+            count + "</span></div>"
+      ).join("") +
+      '<p class="sts-global-note">As reported by players — we cannot verify a score.</p>';
+    host.hidden = false;
   }
 
   function wireResult() {
@@ -405,3 +456,7 @@ sitemap: false
 
   boot();
 </script>
+
+{%- comment -%} Same shared client as Guess the Book, deferred and loaded
+  last: the counter is bolted onto a game that works without it. {%- endcomment -%}
+<script src="{{ '/assets/js/game-stats.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
