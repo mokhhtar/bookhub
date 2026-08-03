@@ -146,6 +146,15 @@ permalink: /games/guess-the-book/
                   padding: 0 6px; font-size: var(--ui-sm); font-weight: 600; }
   .gtb-dist-row.is-mine .gtb-dist-bar { background: var(--accent); color: var(--btn-on-accent, #F7F6F3); }
   html[data-theme="dark"] .gtb-dist-row.is-mine .gtb-dist-bar { color: #12160F; }
+  /* The crowd's row is quieter than the player's own: same shape, --brass
+     rather than --accent, so the two read as one chart with two series and
+     the player's own history stays the louder of the two. No fourth hue —
+     brass is the palette's existing quiet secondary. */
+  .gtb-global-h { font-size: var(--ui-sm); font-weight: 600; color: var(--fg-muted);
+                  margin: 18px 0 8px; padding-top: 14px; border-top: 1px solid var(--border); }
+  .gtb-dist-global .gtb-dist-bar { background: var(--border-med); }
+  .gtb-dist-global.is-mine .gtb-dist-bar { background: var(--brass); color: #F7F6F3; }
+  .gtb-global-note { font-size: var(--ui-sm); color: var(--fg-faint); margin-top: 8px; line-height: 1.5; }
   .gtb-next { font-size: var(--ui-sm); color: var(--fg-faint); margin-top: 14px; }
   .gtb-next b { font-variant-numeric: tabular-nums; color: var(--fg-muted); font-weight: 600; }
 
@@ -481,6 +490,7 @@ permalink: /games/guess-the-book/
     return '<div class="gtb-stats">' +
              '<div class="gtb-stats-nums">' + nums + "</div>" +
              '<div class="gtb-dist">' + dist + "</div>" +
+             '<div class="gtb-dist" id="gtb-global" hidden></div>' +
              '<p class="gtb-next">Next puzzle in <b id="gtb-countdown">—</b></p>' +
            "</div>";
   }
@@ -724,7 +734,53 @@ permalink: /games/guess-the-book/
     if (countIt !== false) countResult();
     persistDay(true);
     render();
+
+    // Report to the global counter, and fetch how everyone else did. Both are
+    // fire-and-forget AFTER render() — the win screen is already on the
+    // player's display before either network call starts, so a blocked
+    // Turnstile or a Worker outage costs the game nothing.
+    //
+    // Only on the first count: countIt is false when the day is being
+    // restored from storage on a reload, and a reload is not a second play.
+    if (countIt !== false && window.bhGameStats) {
+      const score = state.status === "won" ? guessesUsed() : null;
+      if (score !== null) {
+        bhGameStats.report("guess-the-book", state.date, score);
+      }
+      bhGameStats.stats("guess-the-book", state.date).then(renderGlobalDist);
+    }
+  }
+
+  // The global distribution renders as a SECOND row under the player's own,
+  // never in place of it. Someone's own history is the thing they came back
+  // for; the crowd is context. It appears only when the Worker sends counts
+  // at all — below its reporting floor it sends none, so there is no path
+  // here that can draw "3 people solved today".
+  function renderGlobalDist(data) {
+    if (!data) return;
+    const host = document.getElementById("gtb-global");
+    if (!host) return;
+    const best = Math.max(1, ...data.dist);
+    const mine = state.status === "won" ? guessesUsed() : -1;
+    host.innerHTML =
+      '<p class="gtb-global-h">Everyone today · ' + data.solvers.toLocaleString() + " solved</p>" +
+      data.dist.map((count, i) =>
+        '<div class="gtb-dist-row gtb-dist-global' + (i + 1 === mine ? " is-mine" : "") + '">' +
+          "<span>" + (i + 1) + "</span>" +
+          '<span class="gtb-dist-bar" style="width:' + Math.max(8, Math.round((count / best) * 100)) + '%">' +
+            count + "</span></div>"
+      ).join("") +
+      '<p class="gtb-global-note">As reported by players — we cannot verify a score.</p>';
+    host.hidden = false;
   }
 
   boot();
 </script>
+
+{%- comment -%}
+  Loaded AFTER the game's own script and deferred: the counter is an addition
+  to a game that works without it, and it must never be on the critical path
+  to the first clue. window.bhGameStats is only ever read inside finish(), by
+  which time this has long since parsed.
+{%- endcomment -%}
+<script src="{{ '/assets/js/game-stats.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
