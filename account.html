@@ -384,7 +384,11 @@ sitemap: false
         </div>
         <div class="acct-hero-actions">
           <a class="btn-secondary" href="{{ '/My-Library' | relative_url }}" style="padding:9px 18px;">My Library</a>
-          <button class="btn-secondary" onclick="bhAuthOps.signOut()" style="padding:9px 18px;">Sign out</button>
+          {%- comment -%} bhAuthUI, not bhAuthOps: the UI layer reports a
+          failed flush/sign-out. The raw op throws into an inline onclick,
+          where the rejection is unhandled and the user sees nothing.
+          {%- endcomment -%}
+          <button class="btn-secondary" onclick="bhAuthUI.signOut()" style="padding:9px 18px;">Sign out</button>
         </div>
       </div>
 
@@ -530,7 +534,7 @@ sitemap: false
             </form>
             <div class="acct-meta-row"><span>Email</span><span id="acct-meta-email" style="font-weight:600;"></span></div>
             <div class="acct-meta-row"><span>Sign-in method</span><span id="acct-meta-provider" style="font-weight:600;"></span></div>
-            <button class="btn-secondary" onclick="bhAuthOps.signOut()" style="padding:8px 20px;font-size:var(--ui-sm);margin-top:14px;">Sign out</button>
+            <button class="btn-secondary" onclick="bhAuthUI.signOut()" style="padding:8px 20px;font-size:var(--ui-sm);margin-top:14px;">Sign out</button>
           </div>
 
           <!-- Change password (email/password accounts only) -->

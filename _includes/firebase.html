@@ -633,8 +633,12 @@
     reset: (email) => sendPasswordResetEmail(auth, email),
     // Flush any pending library push before signing out so a last-second
     // change survives the sign-out localStorage clear (see flushLibrary).
+    // If that flush FAILS, refuse to sign out: the local list is about to be
+    // deleted and the cloud copy is stale, so proceeding destroys the change
+    // in both stores at once. Callers that want the message shown should use
+    // bhAuthUI.signOut().
     async signOut() {
-      await flushLibrary();
+      if (!(await flushLibrary())) throw { code: "bh/library-flush-failed" };
       return signOut(auth);
     },
     // Password change for email/password accounts: reauth with the current
@@ -813,13 +817,28 @@
         if (e && e.code !== "auth/popup-closed-by-user") this.error(explain(e));
       }
     },
+    // Both failures used to be swallowed by empty catch blocks, which meant a
+    // sign-out that hadn't happened looked identical to one that had. Neither
+    // is cosmetic: a failed flush precedes the localStorage wipe, and a failed
+    // signOut() leaves the session live while the menu closes.
     async signOut() {
-      try {
-        await flushLibrary();
-      } catch (e) {}
+      const notify = (msg) =>
+        window.bhToast
+          ? window.bhToast(msg, "error", 6000)
+          : console.error(msg);
+      if (!(await flushLibrary())) {
+        notify(
+          "Your latest library change hasn't reached your account yet — check your connection and try again. Signing out now would lose it.",
+        );
+        return;
+      }
       try {
         await signOut(auth);
-      } catch (e) {}
+      } catch (e) {
+        console.error("Sign-out failed:", e);
+        notify("Sign-out failed — you're still signed in. Please try again.");
+        return;
+      }
       const menu = $("auth-user-menu");
       if (menu) menu.style.display = "none";
     },
@@ -848,16 +867,27 @@
   let pushTimer = null;
   let pushPending = false; // a debounced push is scheduled but not yet written
 
+  // Returns whether the cloud mirror is now up to date. A failure leaves
+  // `pushPending` set so the NEXT flush retries instead of returning early
+  // and declaring success. This return value is load-bearing: sign-out
+  // deletes the local list on the strength of it (see the signedOut branch
+  // in onAuthStateChanged), so "the write didn't land" has to travel back
+  // to the caller rather than stopping at a console warning.
   async function pushLibrary() {
-    pushPending = false;
-    if (!window.bhUser) return;
+    if (!window.bhUser) {
+      pushPending = false;
+      return true;
+    }
     try {
       await setDoc(doc(db, "users", window.bhUser.uid, "library", "list"), {
         items: localList().slice(0, 500),
         updatedAt: serverTimestamp(),
       });
+      pushPending = false;
+      return true;
     } catch (e) {
       console.warn("Library push failed:", e);
+      return false;
     }
   }
 
@@ -872,9 +902,9 @@
   // handler clears bookhub_rl_v1 from localStorage — the write still runs
   // while the user is authenticated (before signOut(auth)).
   async function flushLibrary() {
-    if (!pushPending) return;
+    if (!pushPending) return true; // nothing unmirrored — safe to sign out
     clearTimeout(pushTimer);
-    await pushLibrary();
+    return await pushLibrary();
   }
 
   // ── Daily game history (users/{uid}/games/{gameId}) ───────
