@@ -12,6 +12,27 @@ The strongest confirmed privacy issue is in the PDF-chat API: uploaded document 
 Fixes are worked one finding at a time, in the priority order at the bottom
 of this file. Each entry records what shipped and how it was verified.
 
+- **2026-08-04 — Auth-review follow-up (email enumeration via UI copy) —
+  CLOSED, mostly by configuration.** **Firebase's Email enumeration
+  protection is enabled on this project** (owner-confirmed), which closes the
+  reset-path leak at the platform layer: `sendPasswordResetEmail` no longer
+  returns `auth/user-not-found`, and failed sign-in returns
+  `auth/invalid-credential`, already mapped to the neutral "Wrong email or
+  password." `"auth/user-not-found"` is consequently unreachable and is now
+  annotated as such in both `ERRORS` maps so no future copy depends on it.
+  The setting left the inverse defect, which was fixed: the UI still said
+  "Reset link sent — check your inbox." although the call now resolves for
+  addresses with no account and sends nothing — asserting a delivery that
+  cannot be confirmed. Copy is now conditional ("If that email has an
+  account…"), which is both the honest and the non-leaking wording. Also
+  fixed while there: both reset paths rendered their success message in the
+  red `.auth-error` style (measured `rgb(221,51,51)` in-browser), now green
+  via `is-success` / `var(--success)` (`#2F6B4F`, verified to resolve).
+  **Still open by design:** signup continues to return `EMAIL_EXISTS`, which
+  no wording can fix; Google's mitigations are App Check or reCAPTCHA on the
+  signup flow — an owner decision, and App Check is already a prerequisite for
+  the games counter's Phase 2. Commit: bookhub `de5a8da`.
+
 - **2026-08-04 — Auth-review follow-up (sign-out error swallowing) —
   REMEDIATED.** Carried over from the auth-surface review, where it was
   logged as "(Low), cosmetic: `bhAuthUI.signOut` swallows a failed
