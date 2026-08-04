@@ -30,9 +30,13 @@ function makeEnv({ turnstile = 'ok', fetchMode = 'ok', storage = 'ok' } = {}) {
       if (fetchMode === 'throw') throw new Error('network down');
       if (fetchMode === 'down') return { ok:false, json: async()=>({}) };
       if (String(url).includes('/stats')) {
-        return { ok:true, json: async () => fetchMode === 'few'
-          ? { enough:false, min:20, source:'players' }
-          : { enough:true, solvers:57, dist:[1,2,3,4,5,6], source:'players' } };
+        return { ok:true, json: async () => {
+          if (fetchMode === 'few') return { enough:false, min:20, source:'players' };
+          // A response with counts but no denominator: an older Worker, or a
+          // half-deployed one. The page would divide by it, so refuse it.
+          if (fetchMode === 'nodenom') return { enough:true, solvers:57, dist:[1,2,3,4,5,6], source:'players' };
+          return { enough:true, players:80, solvers:57, dist:[1,2,3,4,5,6], source:'players' };
+        } };
       }
       return { ok:true, json: async()=>({ ok:true }) };
     },
@@ -70,5 +74,6 @@ results.push(await run('network throws',          { fetchMode:'throw' },     { r
 results.push(await run('worker returns 5xx',      { fetchMode:'down' },      { report:false, stats:null }));
 results.push(await run('below reporting floor',   { fetchMode:'few' },       { report:true,  stats:null }));
 results.push(await run('localStorage disabled',   { storage:'blocked' },     { report:false, stats:'data' }));
+results.push(await run('stats missing players',   { fetchMode:'nodenom' },   { report:true,  stats:null }));
 console.log('\nfailures:', results.filter(r=>!r).length);
 process.exit(results.every(Boolean) ? 0 : 1);

@@ -743,10 +743,11 @@ permalink: /games/guess-the-book/
     // Only on the first count: countIt is false when the day is being
     // restored from storage on a reload, and a reload is not a second play.
     if (countIt !== false && window.bhGameStats) {
-      const score = state.status === "won" ? guessesUsed() : null;
-      if (score !== null) {
-        bhGameStats.report("guess-the-book", state.date, score);
-      }
+      // Losses report too. Wins alone give a number with no denominator —
+      // "57 solved" quietly omits everyone who tried and failed, and tells a
+      // player who lost, by silence, that their day did not count.
+      const score = state.status === "won" ? guessesUsed() : bhGameStats.LOSS;
+      bhGameStats.report("guess-the-book", state.date, score);
       bhGameStats.stats("guess-the-book", state.date).then(renderGlobalDist);
     }
   }
@@ -762,8 +763,10 @@ permalink: /games/guess-the-book/
     if (!host) return;
     const best = Math.max(1, ...data.dist);
     const mine = state.status === "won" ? guessesUsed() : -1;
+    const rate = data.players ? Math.round((data.solvers / data.players) * 100) : 0;
     host.innerHTML =
-      '<p class="gtb-global-h">Everyone today · ' + data.solvers.toLocaleString() + " solved</p>" +
+      '<p class="gtb-global-h">Everyone today · ' + data.solvers.toLocaleString() +
+        " of " + data.players.toLocaleString() + " solved it (" + rate + "%)</p>" +
       data.dist.map((count, i) =>
         '<div class="gtb-dist-row gtb-dist-global' + (i + 1 === mine ? " is-mine" : "") + '">' +
           "<span>" + (i + 1) + "</span>" +

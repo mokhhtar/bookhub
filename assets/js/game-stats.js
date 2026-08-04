@@ -108,10 +108,18 @@
     });
   }
 
+  // A loss. Must match LOSS in the Worker, and is outside every game's own
+  // score range so it can never be mistaken for one.
+  var LOSS = -1;
+
   /**
    * Report a finished game. `score` is guesses-used for Guess the Book (1-6)
    * and pairs-spotted for Spot the Slop (0-5) — the Worker knows each game's
-   * range, so zero is a real result there rather than an error.
+   * range, so zero is a real result there rather than an error. Pass
+   * bhGameStats.LOSS when the player did not solve it.
+   *
+   * Losses are reported too, so the counter has a denominator: "57 of 80"
+   * rather than "57 solved", which silently omits everyone who tried.
    *
    * Returns a promise that NEVER rejects. Callers are not expected to await
    * it and must not branch on it.
@@ -144,11 +152,12 @@
       .then(function (res) { return res.ok ? res.json() : null; })
       .then(function (data) {
         if (!data || data.enough !== true) return null;
-        if (!Array.isArray(data.dist) || typeof data.solvers !== "number") return null;
+        if (!Array.isArray(data.dist)) return null;
+        if (typeof data.solvers !== "number" || typeof data.players !== "number") return null;
         return data;
       })
       .catch(function () { return null; });
   }
 
-  window.bhGameStats = { report: report, stats: stats };
+  window.bhGameStats = { report: report, stats: stats, LOSS: LOSS };
 })();
