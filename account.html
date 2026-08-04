@@ -572,6 +572,9 @@ sitemap: false
     span.className = "acct-book-cover-empty";
     img.replaceWith(span);
   };
+  // Duplicate of the map in _includes/firebase.html — see the note there on
+  // "auth/user-not-found" being unreachable under email enumeration
+  // protection. Keep the two in sync by hand.
   const ERRORS = {
     "auth/email-already-in-use": "An account with this email already exists.",
     "auth/invalid-email": "That email address doesn't look valid.",
@@ -898,7 +901,15 @@ sitemap: false
   window.acctReset = async function () {
     const email = $("acct-email").value.trim();
     if (!email) { err("Enter your email above first, then tap 'Forgot password?'."); return; }
-    try { await bhAuthOps.reset(email); err("Reset link sent — check your inbox."); }
+    // See the note on reset() in _includes/firebase.html: with email
+    // enumeration protection on, this resolves either way, so the copy must
+    // not claim a delivery we can't confirm. Green — err() clears the inline
+    // colour and .auth-error is red, but this is the success path.
+    try {
+      await bhAuthOps.reset(email);
+      err("If that email has an account, a reset link is on its way — check your inbox, and your spam folder.");
+      $("acct-error").style.color = "var(--success)";
+    }
     catch (e) { err(explain(e)); }
   };
 

@@ -660,6 +660,14 @@
   const $ = (id) => document.getElementById(id);
   let mode = "signin";
 
+  // NOTE: "auth/user-not-found" is unreachable while email enumeration
+  // protection is enabled on the project (it is). Sign-in returns
+  // auth/invalid-credential instead, and password reset no longer errors at
+  // all. Kept only so the map still degrades sanely if that setting is ever
+  // turned off — do NOT write new copy that depends on it firing.
+  // "auth/email-already-in-use" DOES still fire: signup enumeration is not
+  // covered by the protection, by design (Google's mitigations are App Check
+  // or reCAPTCHA on the signup flow, not error-message wording).
   const ERRORS = {
     "auth/email-already-in-use": "An account with this email already exists.",
     "auth/invalid-email": "That email address doesn't look valid.",
@@ -803,7 +811,18 @@
       }
       try {
         await sendPasswordResetEmail(auth, email);
-        this.error("Reset link sent — check your inbox.");
+        // Email enumeration protection is ENABLED on this project, so this
+        // call resolves whether or not the address has an account, and
+        // Firebase sends nothing when it doesn't. "Reset link sent" therefore
+        // asserted something we can no longer know — and stating the
+        // address's status either way is precisely the leak the protection
+        // closes. Conditional phrasing is both the honest answer and the
+        // non-leaking one. Marked success: this IS the success path, and the
+        // bare .auth-error class renders red.
+        this.error(
+          "If that email has an account, a reset link is on its way — check your inbox, and your spam folder.",
+          "success",
+        );
       } catch (e) {
         this.error(explain(e));
       }
