@@ -12,6 +12,31 @@ The strongest confirmed privacy issue is in the PDF-chat API: uploaded document 
 Fixes are worked one finding at a time, in the priority order at the bottom
 of this file. Each entry records what shipped and how it was verified.
 
+- **2026-08-04 — Auth-review follow-up (sign-out error swallowing) —
+  REMEDIATED.** Carried over from the auth-surface review, where it was
+  logged as "(Low), cosmetic: `bhAuthUI.signOut` swallows a failed
+  `signOut()`". Re-examination showed it was **a silent data-loss path, and
+  the finding named the wrong layer**. `pushLibrary()` caught its own errors
+  and only `console.warn`'d, so `flushLibrary()` could never reject and the
+  `catch (e) {}` in `signOut` was dead code. Live path: a library change made
+  inside the 2s debounce window fails to reach Firestore (offline), the
+  failure stops at the console, `signOut(auth)` succeeds, and the `signedOut`
+  branch of `onAuthStateChanged` then removes `bookhub_rl_v1` — losing the
+  change from both stores, which is precisely what `flushLibrary`'s own
+  comment says it exists to prevent. Fix: `pushLibrary` returns whether the
+  write landed and keeps `pushPending` set when it did not (otherwise the
+  next attempt returns early on `if (!pushPending)` and deletes the data
+  anyway); `bhAuthUI.signOut` refuses to sign out on a failed flush and
+  reports via `bhToast`; a failed `signOut(auth)` reports instead of closing
+  the menu on a live session; `account.html`'s two buttons moved from
+  `bhAuthOps.signOut()` (throws into an inline `onclick`, unhandled) to
+  `bhAuthUI.signOut()`. Verified: clean `jekyll build`, all 6 inline script
+  blocks pass `node --check`, the built page exposes `window.bhAuthUI.signOut`
+  and `window.bhToast`, the error toast renders in-browser, and a
+  state-machine test covers offline-blocks-sign-out / library-kept /
+  pending-retained / retry-succeeds-and-wipes. Commit: bookhub `61e54af`.
+  *Also closed since the review:* `/auth/action/` now carries `noindex: true`.
+
 - **2026-07-24 — L-09 (AI-output XSS) — REMEDIATED.** Added a sanitizer at
   the final DOM boundary in both repos. Frontend: vendored DOMPurify 3.2.4
   (self-hosted, not CDN) in `bookhub/assets/js/purify.min.js`; a fail-closed
