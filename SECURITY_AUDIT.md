@@ -30,8 +30,12 @@ of this file. Each entry records what shipped and how it was verified.
   via `is-success` / `var(--success)` (`#2F6B4F`, verified to resolve).
   **Still open by design:** signup continues to return `EMAIL_EXISTS`, which
   no wording can fix; Google's mitigations are App Check or reCAPTCHA on the
-  signup flow — an owner decision, and App Check is already a prerequisite for
-  the games counter's Phase 2. Commit: bookhub `de5a8da`.
+  signup flow — an owner decision. (Correction to the first version of this
+  entry: it claimed App Check was "already a prerequisite for the games
+  counter's Phase 2". It is not — that counter shipped as a Cloudflare Worker
+  on D1 and its client calls it with a plain `fetch`, so Firebase is not in
+  that path. App Check would be a new cost, weighed on its own merits.)
+  Commit: bookhub `de5a8da`.
 
 - **2026-08-04 — Auth-review follow-up (sign-out error swallowing) —
   REMEDIATED.** Carried over from the auth-surface review, where it was
