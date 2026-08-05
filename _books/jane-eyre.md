@@ -31,6 +31,9 @@ nyt: null
 editions: {"editions": 1170, "languages": 17}
 characters: [{"name": "Jane Eyre", "slug": "jane-eyre", "role": "protagonist"}, {"name": "Edward Fairfax Rochester", "slug": "edward-fairfax-rochester", "role": "supporting"}, {"name": "Bertha Mason", "slug": "bertha-mason", "role": "supporting"}, {"name": "St. John Rivers", "slug": "st-john-rivers", "role": "supporting"}, {"name": "Helen Burns", "slug": "helen-burns", "role": "supporting"}, {"name": "Mrs. Sarah Gibson-Reed", "slug": "mrs-sarah-gibson-reed", "role": "supporting"}, {"name": "Adèle Varens", "slug": "adele-varens", "role": "supporting"}, {"name": "Mrs. Alice Fairfax", "slug": "mrs-alice-fairfax", "role": "supporting"}, {"name": "John Reed", "slug": "john-reed", "role": "supporting"}, {"name": "Miss Temple", "slug": "miss-temple", "role": "supporting"}, {"name": "Mr. Brocklehurst", "slug": "mr-brocklehurst", "role": "supporting"}, {"name": "Blanche Ingram", "slug": "blanche-ingram", "role": "supporting"}]
 date: 2026-07-26 21:33:50 +0000
+noindex: false
+sitemap: true
+index_promoted: batch 1 2026-08-05
 ---
 
 <h2>1. Core Premise &amp; Overview</h2>

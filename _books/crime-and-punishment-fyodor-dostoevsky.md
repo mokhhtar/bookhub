@@ -31,6 +31,9 @@ nyt: null
 editions: null
 characters: [{"name": "Rodion Romanovich Raskolnikov", "slug": "rodion-raskolnikov", "role": ""}]
 date: 2026-08-02 20:18:30 +0000
+noindex: false
+sitemap: true
+index_promoted: batch 1 2026-08-05
 ---
 
 <h2>1. Core Premise &amp; Overview</h2>

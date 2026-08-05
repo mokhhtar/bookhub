@@ -31,6 +31,9 @@ nyt: null
 editions: {"editions": 38, "languages": 1}
 characters: [{"name": "Mowgli", "slug": "mowgli", "role": "Main character"}, {"name": "Shere Khan", "slug": "shere-khan", "role": "Antagonist"}, {"name": "Baloo", "slug": "baloo", "role": "Supporting"}, {"name": "Bagheera", "slug": "bagheera", "role": "Supporting"}, {"name": "Akela", "slug": "akela", "role": "Supporting"}, {"name": "Raksha", "slug": "raksha", "role": "Supporting"}, {"name": "Kaa", "slug": "kaa", "role": "Supporting"}, {"name": "Kotick", "slug": "kotick", "role": "Protagonist"}, {"name": "Rikki-Tikki-Tavi", "slug": "rikki-tikki-tavi", "role": "Protagonist"}, {"name": "Toomai", "slug": "toomai", "role": "Protagonist"}, {"name": "Messua", "slug": "messua", "role": "Supporting"}, {"name": "Hathi", "slug": "hathi", "role": "Supporting"}]
 date: 2026-07-26 23:10:53 +0000
+noindex: false
+sitemap: true
+index_promoted: batch 1 2026-08-05
 ---
 
 <h2>1. Core Premise &amp; Overview</h2>

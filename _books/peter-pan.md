@@ -31,6 +31,9 @@ nyt: null
 editions: {"editions": 441, "languages": 9}
 characters: [{"name": "Peter Pan", "slug": "peter-pan", "role": "Titular protagonist"}, {"name": "Captain Hook", "slug": "captain-hook", "role": "Antagonist"}, {"name": "Tinker Bell", "slug": "tinker-bell", "role": "Supporting"}, {"name": "Wendy Darling", "slug": "wendy-darling", "role": "Supporting"}, {"name": "John Darling", "slug": "john-darling", "role": "Supporting"}, {"name": "Michael Darling", "slug": "michael-darling", "role": "Supporting"}, {"name": "Tiger Lily", "slug": "tiger-lily", "role": "Supporting"}, {"name": "Mr. Smee", "slug": "mr-smee", "role": "Supporting"}, {"name": "David", "slug": "david", "role": "Central character"}, {"name": "Mary Darling", "slug": "mary-darling", "role": "Supporting"}, {"name": "Jane", "slug": "jane", "role": "Supporting"}]
 date: 2026-07-26 22:11:47 +0000
+noindex: false
+sitemap: true
+index_promoted: batch 1 2026-08-05
 ---
 
 <h2>1. Core Premise &amp; Overview</h2>

@@ -31,6 +31,9 @@ nyt: null
 editions: {"editions": 1146, "languages": 12}
 characters: [{"name": "The Time Traveler", "slug": "the-time-traveler", "role": "Protagonist"}, {"name": "Weena", "slug": "weena", "role": "Supporting"}, {"name": "Filby", "slug": "filby", "role": "Not specified"}, {"name": "Mrs. Watchett", "slug": "mrs-watchett", "role": "Not specified"}, {"name": "Shy, Quiet One", "slug": "shy-quiet-one", "role": "Not specified"}]
 date: 2026-07-26 21:51:47 +0000
+noindex: false
+sitemap: true
+index_promoted: batch 1 2026-08-05
 ---
 
 <h2>1. Core Premise &amp; Overview</h2>

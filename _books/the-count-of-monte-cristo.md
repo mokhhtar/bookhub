@@ -31,6 +31,9 @@ nyt: null
 editions: {"editions": 3, "languages": 1}
 characters: [{"name": "Edmond Dantès", "slug": "edmond-dantes", "role": ""}, {"name": "Ali Pasha", "slug": "ali-pasha-of-yanina", "role": ""}, {"name": "Baron Danglars", "slug": "baron-danglars", "role": ""}]
 date: 2026-07-26 21:58:40 +0000
+noindex: false
+sitemap: true
+index_promoted: batch 1 2026-08-05
 ---
 
 <h2>1. Core Premise &amp; Overview</h2>

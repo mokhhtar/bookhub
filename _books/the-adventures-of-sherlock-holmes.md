@@ -31,6 +31,9 @@ nyt: null
 editions: {"editions": 1132, "languages": 17}
 characters: [{"name": "Dr. Watson", "slug": "dr-watson", "role": ""}, {"name": "Sherlock Holmes", "slug": "sherlock-holmes", "role": ""}]
 date: 2026-07-26 21:32:03 +0000
+noindex: false
+sitemap: true
+index_promoted: batch 1 2026-08-05
 ---
 
 <h2>1. Core Premise &amp; Overview</h2>
