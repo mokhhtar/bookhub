@@ -23,10 +23,31 @@ permalink: /sitemap.xml
   </sitemap>
   {%- assign indexable_books = site.books | where: "noindex", false -%}
   {%- if indexable_books.size > 0 -%}
+  {%- comment -%}
+    lastmod must track when THIS SITEMAP'S CONTENTS changed, and a promotion
+    changes them without touching any page's `date`: promoting seven pages
+    published in July added seven <loc> entries while the newest `date` stayed
+    where it was, leaving the stamp frozen and giving Google no reason to
+    re-fetch the file the new URLs live in.
+
+    So take the LATER of the two signals — newest publication, newest
+    promotion. Both writers of `index_promoted` (this repo's
+    scripts/promote_books_batch.py, "batch N YYYY-MM-DD", and the API's
+    tools/indexing.py, "engagement YYYY-MM-DD") end the value with an ISO
+    date, so the last ten characters are the date in both cases and sort
+    chronologically as plain strings.
+  {%- endcomment -%}
   {%- assign newest_book = indexable_books | sort: "date" | last -%}
+  {%- assign stamp = newest_book.date | date: "%Y-%m-%d" -%}
+  {%- for b in indexable_books -%}
+    {%- if b.index_promoted -%}
+      {%- assign promoted_on = b.index_promoted | slice: -10, 10 -%}
+      {%- if promoted_on > stamp -%}{%- assign stamp = promoted_on -%}{%- endif -%}
+    {%- endif -%}
+  {%- endfor -%}
   <sitemap>
     <loc>{{ '/sitemap-books.xml' | absolute_url }}</loc>
-    <lastmod>{{ newest_book.date | date_to_xmlschema }}</lastmod>
+    <lastmod>{{ stamp }}</lastmod>
   </sitemap>
   {%- endif -%}
 </sitemapindex>

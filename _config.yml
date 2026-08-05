@@ -53,6 +53,11 @@ exclude:
   - PRODUCT.md
   - SECURITY_AUDIT.md
   - skills-lock.json
+  # Build/maintenance tooling, run by CI and by hand — never fetched by the
+  # served site. Same reason as the docs above: without this line Jekyll copies
+  # it into _site and litheca.com/scripts/promote_books_batch.py returns 200,
+  # publishing exactly how pages get chosen for the index.
+  - scripts
   - firebase/DATA_MODEL.md
   # firestore.rules is a Firebase deploy artefact, enforced server-side; the
   # site only mentions it in comments and never fetches it. No reason to

@@ -1,0 +1,112 @@
+name: Weekly indexing drip
+
+# Promotes a few more book pages into the sitemap each week.
+#
+# WHY A DRIP AND NOT ONE BIG SWITCH. litheca.com is a new domain with no
+# established trust. Google does not penalise publishing volume in itself, but
+# a hundred structurally similar pages appearing on a young site in one day is
+# a poor first impression, and if the batch turns out to be judged thin there
+# is no way to take it back. Five a week is slow enough that a bad signal costs
+# five pages and is caught by the next Search Console check.
+#
+# WHY IT COMMITS FROM THIS REPO. The promotion only edits this repo's
+# _books/*.md, so the built-in GITHUB_TOKEN is enough. Running it from
+# bookhub-api would have needed a cross-repo PAT that is not configured as an
+# Actions secret there.
+#
+# It is a NO-OP until `enabled: true` in _data/indexing.yml — see that file for
+# why the switch lives in the repo rather than in a console.
+
+on:
+  schedule:
+    - cron: "40 6 * * 1" # Mondays 06:40 UTC — a weekday, so a bad batch is
+                         # noticed the same day rather than sitting all weekend
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "List what would be promoted, change nothing"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: indexing-drip
+  cancel-in-progress: false
+
+jobs:
+  drip:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Read the switch and the limits
+        id: cfg
+        run: |
+          set -euo pipefail
+          CFG=_data/indexing.yml
+          enabled=$(grep -E '^enabled:'   "$CFG" | awk '{print $2}')
+          per_week=$(grep -E '^per_week:' "$CFG" | awk '{print $2}')
+          min_score=$(grep -E '^min_score:' "$CFG" | awk '{print $2}')
+          # Refuse to guess. An unreadable config must stop the run, not fall
+          # back to a default that quietly promotes pages nobody approved.
+          if [ -z "$enabled" ] || [ -z "$per_week" ] || [ -z "$min_score" ]; then
+            echo "::error::could not parse $CFG (enabled/per_week/min_score)"
+            exit 1
+          fi
+          echo "enabled=$enabled"     >> "$GITHUB_OUTPUT"
+          echo "per_week=$per_week"   >> "$GITHUB_OUTPUT"
+          echo "min_score=$min_score" >> "$GITHUB_OUTPUT"
+          echo "Drip enabled=$enabled, $per_week/week at score >= $min_score"
+
+      - name: Stop here while the drip is off
+        if: steps.cfg.outputs.enabled != 'true'
+        run: |
+          echo "### Indexing drip is OFF" >> "$GITHUB_STEP_SUMMARY"
+          echo "Set \`enabled: true\` in \`_data/indexing.yml\` to start it." \
+            >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/setup-python@v5
+        if: steps.cfg.outputs.enabled == 'true'
+        with:
+          python-version: "3.12"
+
+      # A manual run defaults to a dry run: the point of the button is usually
+      # "show me what's next", and promoting is not undoable in any tidy way.
+      - name: Promote this week's batch
+        if: steps.cfg.outputs.enabled == 'true'
+        id: promote
+        run: |
+          set -euo pipefail
+          DRY=""
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] \
+             && [ "${{ inputs.dry_run }}" = "true" ]; then
+            DRY="--dry-run"
+          fi
+          python scripts/promote_books_batch.py \
+            --min-score "${{ steps.cfg.outputs.min_score }}" \
+            --limit "${{ steps.cfg.outputs.per_week }}" \
+            --batch auto $DRY | tee /tmp/drip.txt
+          {
+            echo '### Indexing drip'
+            echo '```'
+            cat /tmp/drip.txt
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Commit the promoted pages
+        if: steps.cfg.outputs.enabled == 'true'
+        run: |
+          set -euo pipefail
+          if [ -z "$(git status --porcelain _books)" ]; then
+            echo "No changes — nothing qualified, or this was a dry run."
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add _books
+          n=$(git diff --cached --name-only | wc -l)
+          git commit -m "indexing: weekly drip promotes ${n} page(s)" \
+                     -m "$(cat /tmp/drip.txt)"
+          git push

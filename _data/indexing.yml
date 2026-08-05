@@ -1,0 +1,26 @@
+# The weekly indexing drip. Read by .github/workflows/indexing-drip.yml.
+#
+# It lives here, in the repo, and NOT in a GitHub repo variable or any other
+# console, on purpose: this project has twice been bitten by state that only
+# exists in a web console and disagrees with the code (the Firestore rules, the
+# Firebase auth settings). Enabling the drip should be a one-line commit with a
+# message explaining why, reviewable in the history like everything else.
+
+# OFF until Search Console confirms batch 1 (2026-08-05, seven pages) is
+# actually being indexed. That report IS the experiment — it tells us whether
+# these pages are considered index-worthy at all, and running batch 2 before
+# reading it destroys the only clean signal we get. Flip to true once most of
+# the seven appear as indexed.
+enabled: false
+
+# How many pages per week. Small on purpose: the domain is new and has no
+# established trust, so a steady trickle reads like a site that is growing,
+# while a hundred near-identical pages arriving at once reads like a site that
+# is being generated. Five a week clears the score>=7 tier in about seven weeks.
+per_week: 5
+
+# The quality floor. Measured tiers at the time of writing:
+#   >=9 -> 7 pages   >=8 -> 11   >=7 -> 35   >=6 -> 41   >=5 -> 54
+# Do not lower this to speed things up. Thin pages in the index cost more than
+# slow growth does; see the scoring rationale in scripts/promote_books_batch.py.
+min_score: 7
