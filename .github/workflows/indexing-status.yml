@@ -58,6 +58,30 @@ jobs:
             --limit "${{ inputs.limit || 0 }}" \
             --out /tmp/index-status.json | tee /tmp/index-status.txt
 
+      # Send the snapshot to the dashboard Worker, which is where this data
+      # lives — deliberately not committed here: the repo is public, and a
+      # weekly commit would rebuild and redeploy the whole site for an
+      # internal table. A missing secret is not a failure of the run; the
+      # summary above is still the useful output.
+      - name: Send it to the dashboard
+        if: success()
+        env:
+          SEO_INGEST_SECRET: ${{ secrets.SEO_INGEST_SECRET }}
+          SEO_STATUS_URL: ${{ vars.SEO_STATUS_URL || 'https://seo.litheca.com' }}
+        run: |
+          set -uo pipefail
+          if [ -z "${SEO_INGEST_SECRET:-}" ]; then
+            echo "SEO_INGEST_SECRET not set — skipping the dashboard push."
+            exit 0
+          fi
+          CODE=$(curl -sS -m 60 -o resp.txt -w '%{http_code}' \
+                 -X POST "$SEO_STATUS_URL/ingest" \
+                 -H "Authorization: Bearer $SEO_INGEST_SECRET" \
+                 -H "Content-Type: application/json" \
+                 --data-binary @/tmp/index-status.json)
+          echo "ingest -> $CODE $(cat resp.txt)"
+          [ "$CODE" = "200" ] || { echo "::error::dashboard rejected the snapshot"; exit 1; }
+
       - name: Write the summary
         if: always()
         run: |
