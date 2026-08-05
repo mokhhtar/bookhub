@@ -1,0 +1,81 @@
+name: Indexing status (Search Console)
+
+# Asks Search Console what it actually did with every URL in our sitemaps, and
+# prints the answer into the run summary.
+#
+# This step deliberately does NOT store or publish anything yet. The first
+# thing to establish is that the service account works and the API answers —
+# a dashboard built on an unverified credential just moves the failure
+# somewhere harder to read. Where the data ends up is the next commit.
+#
+# There is no "request indexing" step here and there will not be one: Google's
+# Indexing API is limited to JobPosting and BroadcastEvent pages, so there is
+# no supported way to ask for an ordinary page to be indexed. See the header of
+# scripts/gsc_index_status.py for why that matters less than it sounds.
+
+on:
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: "Inspect at most N URLs (0 = every URL in the sitemaps)"
+        type: string
+        default: "0"
+  schedule:
+    - cron: "20 7 * * 1" # Mondays 07:20 UTC, after the indexing drip at 06:40,
+                         # so a promotion made this morning is already visible
+
+permissions:
+  contents: read
+
+concurrency:
+  group: indexing-status
+  cancel-in-progress: false
+
+jobs:
+  status:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install --quiet google-auth requests
+
+      - name: Ask Search Console
+        env:
+          # The key never touches the repo or the logs — the script reads it
+          # from the environment and prints only per-URL states.
+          GSC_SERVICE_ACCOUNT: ${{ secrets.GSC_SERVICE_ACCOUNT }}
+        run: |
+          set -euo pipefail
+          if [ -z "${GSC_SERVICE_ACCOUNT:-}" ]; then
+            echo "::error::secret GSC_SERVICE_ACCOUNT is not set on this repository"
+            exit 1
+          fi
+          python scripts/gsc_index_status.py \
+            --limit "${{ inputs.limit || 0 }}" \
+            --out /tmp/index-status.json | tee /tmp/index-status.txt
+
+      - name: Write the summary
+        if: always()
+        run: |
+          {
+            echo '## Indexing status'
+            echo
+            echo '```'
+            sed -n '1,200p' /tmp/index-status.txt 2>/dev/null || echo "(no output — the step above failed)"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      # Kept for one day only. It is a diagnostic, not a record, and the
+      # permanent home for this data is the next step of the build.
+      - name: Keep the raw JSON for a day
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: index-status
+          path: /tmp/index-status.json
+          retention-days: 1
+          if-no-files-found: ignore
