@@ -15,7 +15,7 @@ openlibrary_id: "/works/OL30733391W"
 published_year: "1944"
 page_count: 277
 average_rating: null
-amazon_url: "https://www.amazon.com/dp/1520039018?tag=oceansidehair-20"
+amazon_url: "https://www.amazon.com/dp/1520039018?tag=litheca-20"
 description: "1. Core Premise &amp; Overview The Jungle Book, authored by Rudyard Kipling, stands as a foundational work of literature that explores the intricate relationshi"
 chapters: ["Mowgli's Brothers", "Night-Song in the Jungle", "Hunting-Song of the Seeonee Pack", "Kaa's Hunting", "Maxims of Baloo", "Road Song of the Bandar-Log", "Tiger! Tiger!", "Mowgli's Song", "The White Seal", "Lukannon", "Rikki- Tikki- Tavi", "Darzee's Chant", "Toomai of the Elephants", "Shiv and the Grasshopper", "Her Majesty's Servants", "Parade-Song of the Camp Animals"]
 similar_books: []

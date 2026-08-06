@@ -121,4 +121,8 @@ print_cdn: "https://files.litheca.com"
 print_version: "v3"
 
 # Amazon Associates tag
-amazon_tag: "oceansidehair-20"
+# Amazon Associates tracking ID. Both this and the old oceansidehair-20 sit in
+# the same account, so the switch moves no money — it separates REPORTING, and
+# per-tag reporting is the only way to see what Litheca actually earns rather
+# than reading one merged column with another site.
+amazon_tag: "litheca-20"
