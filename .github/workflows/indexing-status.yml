@@ -67,6 +67,17 @@ jobs:
         if: success()
         env:
           SEO_INGEST_SECRET: ${{ secrets.SEO_INGEST_SECRET }}
+          # Optional, and currently UNSET — /ingest is reached through a
+          # second, path-scoped Access application carrying a Bypass policy,
+          # which is what actually works today. These are here for the day that
+          # is swapped for a Service Auth policy (Access's own mechanism for
+          # machine callers), so the switch costs two secrets and no code.
+          #
+          # Either way they would not replace the bearer secret below: Access
+          # decides whether the request reaches the Worker, the Worker decides
+          # whether to accept the write. Two independent gates on purpose.
+          CF_ACCESS_CLIENT_ID: ${{ secrets.CF_ACCESS_CLIENT_ID }}
+          CF_ACCESS_CLIENT_SECRET: ${{ secrets.CF_ACCESS_CLIENT_SECRET }}
           SEO_STATUS_URL: ${{ vars.SEO_STATUS_URL || 'https://seo.litheca.com' }}
         run: |
           set -uo pipefail
@@ -74,13 +85,31 @@ jobs:
             echo "SEO_INGEST_SECRET not set — skipping the dashboard push."
             exit 0
           fi
+          ACCESS_HEADERS=()
+          if [ -n "${CF_ACCESS_CLIENT_ID:-}" ] && [ -n "${CF_ACCESS_CLIENT_SECRET:-}" ]; then
+            ACCESS_HEADERS=(-H "CF-Access-Client-Id: $CF_ACCESS_CLIENT_ID"
+                            -H "CF-Access-Client-Secret: $CF_ACCESS_CLIENT_SECRET")
+          fi
           CODE=$(curl -sS -m 60 -o resp.txt -w '%{http_code}' \
                  -X POST "$SEO_STATUS_URL/ingest" \
+                 "${ACCESS_HEADERS[@]}" \
                  -H "Authorization: Bearer $SEO_INGEST_SECRET" \
                  -H "Content-Type: application/json" \
                  --data-binary @/tmp/index-status.json)
-          echo "ingest -> $CODE $(cat resp.txt)"
-          [ "$CODE" = "200" ] || { echo "::error::dashboard rejected the snapshot"; exit 1; }
+          echo "ingest -> $CODE"
+          # A 302 is Access, not the Worker: the request never arrived. Say so,
+          # because "rejected the snapshot" sent the last reader looking at the
+          # bearer secret when the caller had not got past the front door.
+          if [ "$CODE" = "302" ] || [ "$CODE" = "301" ]; then
+            echo "::error::Cloudflare Access redirected this to a login page — the request never reached the Worker, so nothing here is wrong with the secret. Check that the path-scoped Access application for seo.litheca.com/ingest exists AND has been published; an unpublished one silently leaves the parent application in charge."
+            exit 1
+          fi
+          if [ "$CODE" != "200" ]; then
+            echo "response: $(head -c 300 resp.txt)"
+            echo "::error::the Worker refused the snapshot (HTTP $CODE) — 403 means the bearer secret does not match INGEST_SECRET, 503 means it is unset on the Worker."
+            exit 1
+          fi
+          echo "ok: $(cat resp.txt)"
 
       - name: Write the summary
         if: always()
