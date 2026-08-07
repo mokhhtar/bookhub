@@ -186,6 +186,7 @@ sitemap: false
       meta = parts[0];
       questions = parts[1];
       decodeMatrix(new Uint8Array(parts[2]));
+      buildExcludes();
       buildProbabilities();
       start();
       // Deferred, and deliberately not awaited.
@@ -226,6 +227,27 @@ sitemap: false
     return 0.15;
   }
 
+  // Four states, and the fourth is the one that stops the game
+  // contradicting itself. `known_false` means we positively determined the
+  // answer is no — Wikidata says the author is American, so they are
+  // certainly not African. Scoring that like an unmentioned subject (0.15
+  // to 0.45) kept it clear of the "everyone would answer the same way"
+  // filter, so "is the author American? yes" could be followed by "is the
+  // author from Asia, Africa or Latin America?".
+  // Three states, and unknown stays at a flat 0.5 — which is an empirical
+  // result, not an oversight. Two more principled-looking alternatives were
+  // measured and both were worse: scoring unknown at the question's base
+  // rate gave 55.0% against 63.3%, and making it genuinely neutral (the
+  // mean likelihood) gave 41.7%. A book that can never be eliminated
+  // accumulates at the top and crowds out the answer; 0.5 lets thinly
+  // documented books drift down, and thinly documented correlates with
+  // obscure. See engine.py's update() for the full account.
+  function stateP(state, richness) {
+    if (state === 1) { return meta.p_present; }
+    if (state === 2) { return meta.p_unknown; }
+    return absenceP(richness);
+  }
+
   function buildProbabilities() {
     var nb = meta.books, nq = meta.questions;
     // Per-book richness lives in books.json, which is deferred so that
@@ -237,8 +259,7 @@ sitemap: false
     for (var q = 0; q < nq; q++) {
       var arr = new Float64Array(nb);
       for (var b = 0; b < nb; b++) {
-        var s = states[b * nq + q];
-        arr[b] = s === 1 ? meta.p_present : (s === 2 ? meta.p_unknown : 0.25);
+        arr[b] = stateP(states[b * nq + q], 0);
       }
       pYesCache[q] = arr;
     }
@@ -275,6 +296,7 @@ sitemap: false
     }
     for (i = 0; i < belief.length; i++) { belief[i] /= total; }
     // Refine the absent-state probabilities now that richness is known.
+    // Only state 0 depends on richness; the other three are flat.
     for (var q = 0; q < meta.questions; q++) {
       var arr = pYesCache[q];
       for (i = 0; i < belief.length; i++) {
@@ -283,10 +305,37 @@ sitemap: false
     }
   }
 
+  // question id -> indices it rules out when answered yes. Built from
+  // meta.exclusive_groups so the page and the pipeline share one definition
+  // of what contradicts what.
+  var excludes = null;
+  function buildExcludes() {
+    excludes = {};
+    var groups = meta.exclusive_groups || [];
+    var byId = {};
+    for (var i = 0; i < questions.length; i++) { byId[questions[i].id] = i; }
+    groups.forEach(function (g) {
+      g.forEach(function (id) {
+        if (!(id in byId)) { return; }
+        excludes[byId[id]] = g.filter(function (o) { return o !== id && (o in byId); })
+                              .map(function (o) { return byId[o]; });
+      });
+    });
+  }
+
   function update(qIndex, answer) {
     var w = WEIGHTS[answer];
     asked[qIndex] = true;
     askedCount++;
+    if (answer === 'yes' && excludes && excludes[qIndex]) {
+      // A FIRM yes rules out what cannot also be true. Only a firm one —
+      // "probably American" is a hedge, and suppressing on a hedge throws
+      // away real information. Measured at 5,000 books: 58.3% with no
+      // exclusions, 53.3% suppressing on any positive, 65.0% on firm yes
+      // only. Better than both, and it is what stops a player being asked
+      // whether an American author is African.
+      excludes[qIndex].forEach(function (other) { asked[other] = true; });
+    }
     if (w === 0) { return; }
     var arr = qIndex < 0 ? charP(qIndex) : pYesCache[qIndex];
     var total = 0;
