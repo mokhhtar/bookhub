@@ -1,0 +1,565 @@
+---
+layout: default
+title: "Book Mind Reader"
+description: "Think of any book. Answer a few questions and Litheca will try to name it — no lists, no typing, no account."
+permalink: /games/mind-reader/
+noindex: true
+sitemap: false
+---
+<style>
+  /* Product register, like /account/ and /games/guess-the-book/: the UI
+     face, the compact --ui-* scale, one radius, accent rationed to the
+     primary action. The reading serif appears only on the guessed title —
+     that is a book, not interface copy. */
+  .mr, .mr input, .mr button { font-family: var(--font-ui); }
+
+  .mr-stage { max-width: 60ch; margin: 0 auto; }
+
+  .mr-meta {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: var(--ui-sm); color: var(--fg-faint);
+    text-transform: uppercase; letter-spacing: .05em; margin-bottom: 10px;
+  }
+
+  .mr-card {
+    border: 1px solid var(--border); border-radius: var(--r);
+    background: var(--bg); padding: 26px 24px;
+  }
+
+  .mr-question {
+    font-size: var(--ui-title); font-weight: 600; color: var(--fg);
+    line-height: 1.35; margin: 0 0 20px; min-height: 2.7em;
+  }
+
+  /* Five answers, widest first. On a phone they stack to full width so the
+     tap target is never smaller than the 44px floor used site-wide. */
+  .mr-answers { display: flex; flex-direction: column; gap: 8px; }
+  .mr-answer {
+    min-height: 44px; padding: 0 16px; text-align: left;
+    border: 1px solid var(--border); border-radius: var(--r);
+    background: var(--bg); color: var(--fg); font-size: var(--ui-body);
+    cursor: pointer; transition: border-color .15s var(--ease-out),
+                                 background .15s var(--ease-out);
+  }
+  .mr-answer:hover { border-color: var(--border-med); background: var(--bg-subtle); }
+  .mr-answer--yes:hover { border-color: var(--accent); }
+  @media (prefers-reduced-motion: reduce) { .mr-answer { transition: none; } }
+
+  .mr-controls {
+    display: flex; gap: 12px; align-items: center; margin-top: 16px;
+    font-size: var(--ui-sm);
+  }
+  .mr-link {
+    background: none; border: none; padding: 4px 0; cursor: pointer;
+    color: var(--fg-muted); font-size: var(--ui-sm); text-decoration: underline;
+  }
+  .mr-link:hover { color: var(--fg); }
+  .mr-link[disabled] { opacity: .4; cursor: default; text-decoration: none; }
+
+  /* ── the guess ── */
+  .mr-guess-lead { font-size: var(--ui-body); color: var(--fg-muted); margin: 0 0 6px; }
+  .mr-guess-title {
+    font-family: var(--font); font-size: var(--t-h2); font-weight: 600;
+    color: var(--fg); line-height: 1.2; margin: 0 0 4px;
+  }
+  .mr-guess-author { font-size: var(--ui-body); color: var(--fg-muted); margin: 0 0 20px; }
+  .mr-row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .mr-btn {
+    min-height: 44px; padding: 0 20px; border-radius: var(--r);
+    font-size: var(--ui-body); font-weight: 600; cursor: pointer;
+    border: 1px solid var(--border); background: var(--bg); color: var(--fg);
+  }
+  .mr-btn:hover { border-color: var(--border-med); }
+  .mr-btn--primary {
+    background: var(--accent); border-color: var(--accent);
+    color: var(--btn-on-accent, #F7F6F3);
+  }
+  .mr-btn--primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
+  html[data-theme="dark"] .mr-btn--primary { color: #12160F; }
+
+  /* ── the reveal box ── */
+  .mr-search { width: 100%; min-height: 44px; padding: 0 12px;
+    border: 1px solid var(--border); border-radius: var(--r);
+    background: var(--bg); color: var(--fg); font-size: 16px; }
+  .mr-results { list-style: none; margin: 10px 0 0; padding: 0; max-height: 240px; overflow-y: auto; }
+  .mr-result { padding: 10px 12px; border: 1px solid var(--border); border-radius: var(--r);
+    margin-bottom: 6px; font-size: var(--ui-body); }
+  .mr-result strong { font-weight: 600; }
+  .mr-result-note { color: var(--fg-faint); font-size: var(--ui-sm); }
+
+  .mr-note {
+    margin-top: 26px; padding-top: 16px; border-top: 1px solid var(--border);
+    font-size: var(--ui-sm); color: var(--fg-muted); line-height: 1.6;
+  }
+  .mr-status { font-size: var(--ui-body); color: var(--fg-muted); }
+</style>
+
+<div class="tool-page mr">
+  <div class="container">
+
+    <div class="tool-page-header">
+      <p class="breadcrumb">
+        <a href="{{ '/' | relative_url }}">Home</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="{{ '/games/' | relative_url }}">Games</a>
+        <span class="breadcrumb-sep">/</span> Mind Reader
+      </p>
+      <h1 class="tool-page-title">Book mind reader</h1>
+      <p class="tool-page-desc">Think of a book. Answer honestly — "don't know" is a real answer.</p>
+    </div>
+
+    <div class="mr-stage">
+      <div class="mr-meta">
+        <span id="mr-count"></span>
+        <span id="mr-pool"></span>
+      </div>
+
+      <div class="mr-card" id="mr-card">
+        <p class="mr-status" id="mr-status">Loading…</p>
+      </div>
+
+      <p class="mr-note">
+        Nothing is sent anywhere — the whole game runs in this page, from a
+        table of books built from Open Library and Wikidata. It knows about
+        5,000 of the most-read books, so it will not know every book, and
+        when it does not it says so rather than guessing.
+      </p>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  var BASE = '{{ "/games/data/akinator/" | relative_url }}';
+
+  // Mirrors scripts/akinator/engine.py exactly. Any change to the weights,
+  // the likelihood floor or the guess thresholds has to happen in both
+  // places or the offline measurements stop describing this game.
+  var WEIGHTS = { yes: 1.0, probably_yes: 0.65, unknown: 0.0, probably_no: -0.65, no: -1.0 };
+  var MIN_LIKELIHOOD = 0.02;
+  var GUESS_THRESHOLD = 0.85;
+  var GUESS_RATIO = 12;
+  var GUESS_RATIO_FLOOR = 0.35;
+  var ENDGAME_CANDIDATES = 30;
+  var NAMED_CHARS_GATE = 0.75;
+  var CHAR_PRESENT = 0.90, CHAR_ABSENT = 0.06, CHAR_UNKNOWN = 0.10;
+  var MAX_QUESTIONS = 30;
+  var MAX_GUESSES = 3;
+
+  var ANSWERS = [
+    { key: 'yes',          label: 'Yes',            cls: 'mr-answer--yes' },
+    { key: 'probably_yes', label: 'Probably',       cls: '' },
+    { key: 'unknown',      label: "I don't know",   cls: '' },
+    { key: 'probably_no',  label: 'Probably not',   cls: '' },
+    { key: 'no',           label: 'No',             cls: '' }
+  ];
+
+  var el = {
+    card:   document.getElementById('mr-card'),
+    status: document.getElementById('mr-status'),
+    count:  document.getElementById('mr-count'),
+    pool:   document.getElementById('mr-pool')
+  };
+
+  var meta, questions, states, books = null, chars = null;
+  var belief, asked, history, askedCount, rejected, guessesMade;
+  var pYesCache;   // question index -> Float64Array of P(yes|book)
+
+  // ── loading ────────────────────────────────────────────────────────────
+  // Only the matrix, the wording and the decoding rule are needed to ask
+  // question one. Titles and the cast are wanted at guess time, so they are
+  // fetched in the background while the player reads.
+
+  function getJSON(name) {
+    return fetch(BASE + name).then(function (r) {
+      if (!r.ok) { throw new Error(name + ' ' + r.status); }
+      return r.json();
+    });
+  }
+
+  Promise.all([getJSON('meta.json'), getJSON('questions.json'),
+               fetch(BASE + 'matrix.bin').then(function (r) { return r.arrayBuffer(); })])
+    .then(function (parts) {
+      meta = parts[0];
+      questions = parts[1];
+      decodeMatrix(new Uint8Array(parts[2]));
+      buildProbabilities();
+      start();
+      // Deferred, and deliberately not awaited.
+      getJSON('books.json').then(function (b) { books = b; }).catch(noop);
+      getJSON('characters.json').then(function (c) { chars = c; }).catch(noop);
+    })
+    .catch(function (err) {
+      el.status.textContent = 'Could not load the game data. Please reload the page.';
+      if (window.console) { console.error(err); }
+    });
+
+  function noop() {}
+
+  // Two bits a cell, four cells a byte, one row per book — the layout
+  // build_matrix.py writes and meta.json documents.
+  function decodeMatrix(bytes) {
+    var nb = meta.books, nq = meta.questions, bpr = meta.bytes_per_row;
+    states = new Uint8Array(nb * nq);
+    for (var b = 0; b < nb; b++) {
+      var off = b * bpr, base = b * nq;
+      for (var q = 0; q < nq; q++) {
+        states[base + q] = (bytes[off + (q >> 2)] >> ((q & 3) * 2)) & 3;
+      }
+    }
+  }
+
+  // A state is not a probability. `absent` means "the record does not say
+  // so", which is weak evidence for a thinly described book and strong
+  // evidence for a richly described one — the ladder lives in meta.json so
+  // the page and the pipeline cannot drift apart.
+  function absenceP(richness) {
+    var ladder = meta.p_absent_by_richness;
+    for (var i = 0; i < ladder.length; i++) {
+      if (ladder[i].max_richness === null || richness <= ladder[i].max_richness) {
+        return ladder[i].p;
+      }
+    }
+    return 0.15;
+  }
+
+  function buildProbabilities() {
+    var nb = meta.books, nq = meta.questions;
+    // Per-book richness lives in books.json, which is deferred so that
+    // question one can be asked immediately. Absent cells therefore start
+    // on a middle value and are refined the moment that file lands — see
+    // applyPriorWhenReady(), which does both the prior and this refinement
+    // before the first guess can happen.
+    pYesCache = new Array(nq);
+    for (var q = 0; q < nq; q++) {
+      var arr = new Float64Array(nb);
+      for (var b = 0; b < nb; b++) {
+        var s = states[b * nq + q];
+        arr[b] = s === 1 ? meta.p_present : (s === 2 ? meta.p_unknown : 0.25);
+      }
+      pYesCache[q] = arr;
+    }
+  }
+
+  // ── belief ─────────────────────────────────────────────────────────────
+
+  function start() {
+    var nb = meta.books;
+    belief = new Float64Array(nb);
+    // Uniform until books.json lands with the popularity prior; refined the
+    // moment it does, which is well before the first guess.
+    var total = 0;
+    for (var i = 0; i < nb; i++) { belief[i] = 1; total += 1; }
+    for (i = 0; i < nb; i++) { belief[i] /= total; }
+    asked = {};
+    history = [];
+    askedCount = 0;
+    rejected = {};
+    guessesMade = 0;
+    applyPriorWhenReady();
+    nextTurn();
+  }
+
+  function applyPriorWhenReady() {
+    if (!books) { setTimeout(applyPriorWhenReady, 120); return; }
+    if (askedCount > 0) { return; }   // too late to change the prior fairly
+    var total = 0, i;
+    for (i = 0; i < belief.length; i++) {
+      // log1p(popularity) + 1, as engine.py. Raw counts span 62,000 to
+      // single digits; used linearly the top few books would be unbeatable.
+      belief[i] = Math.log1p(books[i].p || 0) + 1;
+      total += belief[i];
+    }
+    for (i = 0; i < belief.length; i++) { belief[i] /= total; }
+    // Refine the absent-state probabilities now that richness is known.
+    for (var q = 0; q < meta.questions; q++) {
+      var arr = pYesCache[q];
+      for (i = 0; i < belief.length; i++) {
+        if (states[i * meta.questions + q] === 0) { arr[i] = absenceP(books[i].r || 0); }
+      }
+    }
+  }
+
+  function update(qIndex, answer) {
+    var w = WEIGHTS[answer];
+    asked[qIndex] = true;
+    askedCount++;
+    if (w === 0) { return; }
+    var arr = qIndex < 0 ? charP(qIndex) : pYesCache[qIndex];
+    var total = 0;
+    for (var i = 0; i < belief.length; i++) {
+      var p = arr[i], lik;
+      if (w > 0) { lik = (1 - w) * 0.5 + w * p; }
+      else       { lik = (1 + w) * 0.5 + (-w) * (1 - p); }
+      if (lik < MIN_LIKELIHOOD) { lik = MIN_LIKELIHOOD; }
+      belief[i] *= lik;
+      total += belief[i];
+    }
+    if (total > 0) { for (i = 0; i < belief.length; i++) { belief[i] /= total; } }
+  }
+
+  // ── character questions ────────────────────────────────────────────────
+  // Held back for the endgame: with thousands of candidates a name splits
+  // off a handful and wastes a turn, but with thirty left it is decisive.
+  // Negative indices address this pool so one `asked` map covers both.
+
+  var charPools = {};   // -index -> Float64Array
+
+  function charP(negIndex) { return charPools[negIndex]; }
+
+  function buildCharPool(tokenIndex, negIndex) {
+    var nb = meta.books, arr = new Float64Array(nb);
+    for (var b = 0; b < nb; b++) {
+      var list = chars.books[b];
+      if (!list || !list.length) { arr[b] = CHAR_UNKNOWN; continue; }
+      arr[b] = list.indexOf(tokenIndex) >= 0 ? CHAR_PRESENT : CHAR_ABSENT;
+    }
+    charPools[negIndex] = arr;
+  }
+
+  function effectiveCandidates() {
+    var sorted = Array.prototype.slice.call(belief).sort(function (a, b) { return b - a; });
+    var acc = 0, n = 0;
+    for (var i = 0; i < sorted.length; i++) {
+      acc += sorted[i]; n++;
+      if (acc >= 0.9) { break; }
+    }
+    return n;
+  }
+
+  function expectsNamedCharacters() {
+    var qi = -1;
+    for (var i = 0; i < questions.length; i++) {
+      if (questions[i].id === 'fact:namedchars') { qi = i; break; }
+    }
+    if (qi < 0) { return true; }
+    var arr = pYesCache[qi], s = 0;
+    for (i = 0; i < belief.length; i++) { s += belief[i] * arr[i]; }
+    return s >= NAMED_CHARS_GATE;
+  }
+
+  // ── question choice ────────────────────────────────────────────────────
+  // One pass over the books accumulating every question's belief-weighted
+  // P(yes), then whichever lands closest to half. Exact information gain
+  // needs six passes and allocations per question; measured offline the two
+  // pick equally well and this one is five times faster.
+
+  function nextQuestion() {
+    var nq = meta.questions, best = null, bestDist = 2, i, q;
+
+    var totals = new Float64Array(nq);
+    for (i = 0; i < belief.length; i++) {
+      var b = belief[i];
+      if (b <= 0) { continue; }
+      for (q = 0; q < nq; q++) { totals[q] += b * pYesCache[q][i]; }
+    }
+    for (q = 0; q < nq; q++) {
+      if (asked[q]) { continue; }
+      var p = totals[q];
+      if (p <= 0.02 || p >= 0.98) { continue; }
+      var d = Math.abs(p - 0.5);
+      if (d < bestDist) { bestDist = d; best = q; }
+    }
+
+    // Endgame: names of characters some live candidate actually has.
+    if (chars && effectiveCandidates() <= ENDGAME_CANDIDATES && expectsNamedCharacters()) {
+      var live = topIndices(ENDGAME_CANDIDATES), seen = {};
+      for (i = 0; i < live.length; i++) {
+        var list = chars.books[live[i]] || [];
+        for (var j = 0; j < list.length; j++) {
+          var t = list[j];
+          if (seen[t]) { continue; }
+          seen[t] = true;
+          var neg = -(t + 1);
+          if (asked[neg]) { continue; }
+          if (!charPools[neg]) { buildCharPool(t, neg); }
+          var arr = charPools[neg], s = 0;
+          for (var k = 0; k < belief.length; k++) { s += belief[k] * arr[k]; }
+          if (s <= 0.02 || s >= 0.98) { continue; }
+          var dd = Math.abs(s - 0.5);
+          if (dd < bestDist) { bestDist = dd; best = neg; }
+        }
+      }
+    }
+    return best;
+  }
+
+  function questionText(index) {
+    if (index >= 0) { return questions[index].text; }
+    var token = chars.tokens[-index - 1];
+    return 'Is one of the characters called ' +
+           token.charAt(0).toUpperCase() + token.slice(1) + '?';
+  }
+
+  function topIndices(n) {
+    var idx = [];
+    for (var i = 0; i < belief.length; i++) { idx.push(i); }
+    idx.sort(function (a, b) { return belief[b] - belief[a]; });
+    return idx.slice(0, n);
+  }
+
+  function shouldGuess() {
+    var top = topIndices(2);
+    if (belief[top[0]] >= GUESS_THRESHOLD) { return true; }
+    if (top.length > 1 && belief[top[1]] > 0) {
+      return belief[top[0]] / belief[top[1]] >= GUESS_RATIO &&
+             belief[top[0]] >= GUESS_RATIO_FLOOR;
+    }
+    return false;
+  }
+
+  // ── turns ──────────────────────────────────────────────────────────────
+
+  function nextTurn() {
+    if (books && shouldGuess() && guessesMade < MAX_GUESSES) { return renderGuess(); }
+    if (askedCount >= MAX_QUESTIONS) { return books ? renderGuess() : renderGiveUp(); }
+    var q = nextQuestion();
+    if (q === null) { return books ? renderGuess() : renderGiveUp(); }
+    renderQuestion(q);
+  }
+
+  function renderQuestion(qIndex) {
+    el.count.textContent = 'Question ' + (askedCount + 1);
+    el.pool.textContent = '';
+    var html = '<p class="mr-question">' + escapeHTML(questionText(qIndex)) + '</p>' +
+               '<div class="mr-answers">';
+    ANSWERS.forEach(function (a, i) {
+      html += '<button class="mr-answer ' + a.cls + '" data-answer="' + i + '">' +
+              escapeHTML(a.label) + '</button>';
+    });
+    html += '</div><div class="mr-controls">' +
+            '<button class="mr-link" id="mr-back"' + (history.length ? '' : ' disabled') +
+            '>Go back</button>' +
+            '<button class="mr-link" id="mr-restart">Start over</button>' +
+            '</div>';
+    el.card.innerHTML = html;
+
+    Array.prototype.forEach.call(el.card.querySelectorAll('[data-answer]'), function (btn) {
+      btn.addEventListener('click', function () {
+        var answer = ANSWERS[+btn.getAttribute('data-answer')].key;
+        history.push({ q: qIndex, belief: new Float64Array(belief), count: askedCount });
+        update(qIndex, answer);
+        nextTurn();
+      });
+    });
+    byId('mr-back').addEventListener('click', goBack);
+    byId('mr-restart').addEventListener('click', start);
+  }
+
+  function goBack() {
+    var prev = history.pop();
+    if (!prev) { return; }
+    belief = prev.belief;
+    askedCount = prev.count;
+    delete asked[prev.q];
+    nextTurn();
+  }
+
+  function renderGuess() {
+    var order = topIndices(10), pick = null;
+    for (var i = 0; i < order.length; i++) {
+      if (!rejected[order[i]]) { pick = order[i]; break; }
+    }
+    if (pick === null) { return renderGiveUp(); }
+    guessesMade++;
+
+    var book = books[pick];
+    el.count.textContent = 'Guess ' + guessesMade + ' of ' + MAX_GUESSES;
+    el.pool.textContent = Math.round(belief[pick] * 100) + '% sure';
+    el.card.innerHTML =
+      '<p class="mr-guess-lead">Is it…</p>' +
+      '<p class="mr-guess-title">' + escapeHTML(book.t) + '</p>' +
+      '<p class="mr-guess-author">' + escapeHTML(book.a || '') +
+      (book.y ? ' · ' + book.y : '') + '</p>' +
+      '<div class="mr-row">' +
+      '<button class="mr-btn mr-btn--primary" id="mr-yes">That\'s the one</button>' +
+      '<button class="mr-btn" id="mr-no">No, keep going</button>' +
+      '</div>';
+
+    byId('mr-yes').addEventListener('click', function () { renderWin(book); });
+    byId('mr-no').addEventListener('click', function () {
+      rejected[pick] = true;
+      // Weaken, never erase: the player may have mis-answered earlier and
+      // the book can still climb back.
+      belief[pick] *= 0.001;
+      var total = 0, k;
+      for (k = 0; k < belief.length; k++) { total += belief[k]; }
+      if (total > 0) { for (k = 0; k < belief.length; k++) { belief[k] /= total; } }
+      if (guessesMade >= MAX_GUESSES) { return renderGiveUp(); }
+      nextTurn();
+    });
+  }
+
+  function renderWin(book) {
+    el.count.textContent = 'Solved';
+    el.pool.textContent = askedCount + ' questions';
+    el.card.innerHTML =
+      '<p class="mr-guess-lead">Read your mind in ' + askedCount + ' questions.</p>' +
+      '<p class="mr-guess-title">' + escapeHTML(book.t) + '</p>' +
+      '<p class="mr-guess-author">' + escapeHTML(book.a || '') + '</p>' +
+      '<div class="mr-row"><button class="mr-btn mr-btn--primary" id="mr-again">Play again</button></div>';
+    byId('mr-again').addEventListener('click', start);
+  }
+
+  // Losing gracefully is the point, not a fallback. Promising "think of any
+  // book" obliges the game to admit when it does not know one, rather than
+  // guessing wrong with confidence.
+  function renderGiveUp() {
+    el.count.textContent = 'Beaten';
+    el.pool.textContent = '';
+    el.card.innerHTML =
+      '<p class="mr-question">You win — I don\'t know it.</p>' +
+      '<p class="mr-guess-lead">Which book were you thinking of?</p>' +
+      '<input class="mr-search" id="mr-search" type="text" autocomplete="off" ' +
+      'placeholder="Start typing a title…" aria-label="The book you were thinking of">' +
+      '<ul class="mr-results" id="mr-results"></ul>' +
+      '<div class="mr-row" style="margin-top:16px">' +
+      '<button class="mr-btn mr-btn--primary" id="mr-again">Play again</button></div>';
+    byId('mr-again').addEventListener('click', start);
+
+    var input = byId('mr-search'), out = byId('mr-results');
+    input.addEventListener('input', function () {
+      var q = normalize(input.value);
+      out.innerHTML = '';
+      if (q.length < 3 || !books) { return; }
+      var hits = [], i;
+      for (i = 0; i < books.length && hits.length < 8; i++) {
+        if (normalize(books[i].t).indexOf(q) >= 0) { hits.push(books[i]); }
+      }
+      if (!hits.length) {
+        out.innerHTML = '<li class="mr-result mr-result-note">' +
+          'Not in the 5,000 books this game knows — which is why it could not guess it.</li>';
+        return;
+      }
+      hits.forEach(function (b) {
+        var li = document.createElement('li');
+        li.className = 'mr-result';
+        li.innerHTML = '<strong>' + escapeHTML(b.t) + '</strong> ' +
+                       '<span class="mr-result-note">' + escapeHTML(b.a || '') + '</span>';
+        out.appendChild(li);
+      });
+    });
+  }
+
+  // ── helpers ────────────────────────────────────────────────────────────
+
+  function byId(id) { return document.getElementById(id); }
+
+  function escapeHTML(s) {
+    return String(s === null || s === undefined ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+
+  // The same folding the Python normalizer does, so a title typed here
+  // meets the one the pipeline stored.
+  function normalize(s) {
+    return String(s || '').toLowerCase()
+      .normalize('NFKD').replace(/[̀-ͯ]/g, '')
+      .replace(/[^a-z0-9 ]+/g, ' ').replace(/\s+/g, ' ').trim();
+  }
+})();
+</script>
