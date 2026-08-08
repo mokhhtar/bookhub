@@ -56,7 +56,17 @@ sitemap: false
   .mr-link:hover { color: var(--fg); }
   .mr-link[disabled] { opacity: .4; cursor: default; text-decoration: none; }
 
-  /* ── the guess ── */
+  /* ── the guess, with its cover ── */
+  .mr-guess { display: grid; grid-template-columns: 108px minmax(0, 1fr); gap: 18px; align-items: start; }
+  .mr-guess--nocover { grid-template-columns: minmax(0, 1fr); }
+  .mr-cover {
+    width: 100%; aspect-ratio: 2/3; object-fit: cover; display: block;
+    border: 1px solid var(--border); border-radius: var(--r);
+    background: var(--bg-subtle);
+  }
+  @media (max-width: 480px) {
+    .mr-guess { grid-template-columns: 76px minmax(0, 1fr); gap: 14px; }
+  }
   .mr-guess-lead { font-size: var(--ui-body); color: var(--fg-muted); margin: 0 0 6px; }
   .mr-guess-title {
     font-family: var(--font); font-size: var(--t-h2); font-weight: 600;
@@ -574,6 +584,27 @@ sitemap: false
     nextTurn();
   }
 
+  // The cover is the payoff — a title alone reads like a database row.
+  // `?default=false` makes a missing cover 404 rather than serve Open
+  // Library's grey placeholder, and the load failure collapses the column
+  // so the layout never shows an empty frame.
+  function coverHTML(book) {
+    if (!book || !book.c) { return ''; }
+    return '<img class="mr-cover" alt="" loading="lazy" src="' +
+      'https://covers.openlibrary.org/b/id/' + encodeURIComponent(book.c) +
+      '-M.jpg?default=false">';
+  }
+
+  function wireCover() {
+    var img = el.card.querySelector('.mr-cover');
+    if (!img) { return; }
+    img.addEventListener('error', function () {
+      var wrap = img.parentNode;
+      if (wrap) { wrap.classList.add('mr-guess--nocover'); }
+      img.remove();
+    });
+  }
+
   function renderGuess() {
     var target = guessTarget();
     if (!target) { return renderGiveUp(); }
@@ -586,19 +617,25 @@ sitemap: false
       ? (escapeHTML(book.a || '') + ' · the series')
       : (escapeHTML(book.a || '') + (book.y ? ' · ' + book.y : ''));
 
+    var cover = coverHTML(book);
     el.count.textContent = 'Guess ' + guessesMade + ' of ' + MAX_GUESSES;
     el.pool.textContent = Math.round(target.p * 100) + '% sure';
     el.card.innerHTML =
+      '<div class="mr-guess' + (cover ? '' : ' mr-guess--nocover') + '">' +
+      cover + '<div>' +
       '<p class="mr-guess-lead">Is it…</p>' +
       '<p class="mr-guess-title">' + escapeHTML(title) + '</p>' +
       '<p class="mr-guess-author">' + sub + '</p>' +
       '<div class="mr-row">' +
       '<button class="mr-btn mr-btn--primary" id="mr-yes">That\'s the one</button>' +
       '<button class="mr-btn" id="mr-no">No, keep going</button>' +
-      '</div>';
+      '</div></div></div>';
+    wireCover();
 
     byId('mr-yes').addEventListener('click', function () {
-      renderWin(isSeries ? { t: target.name, a: book.a } : book);
+      // A series keeps the representative volume's cover — it is the
+      // one a player picturing the series will recognise.
+      renderWin(isSeries ? { t: target.name, a: book.a, c: book.c } : book);
     });
     byId('mr-no').addEventListener('click', function () {
       // Weaken, never erase: the player may have mis-answered earlier and
@@ -622,11 +659,17 @@ sitemap: false
   function renderWin(book) {
     el.count.textContent = 'Solved';
     el.pool.textContent = askedCount + ' questions';
+    var cover = coverHTML(book);
     el.card.innerHTML =
+      '<div class="mr-guess' + (cover ? '' : ' mr-guess--nocover') + '">' +
+      cover +
+      '<div>' +
       '<p class="mr-guess-lead">Read your mind in ' + askedCount + ' questions.</p>' +
       '<p class="mr-guess-title">' + escapeHTML(book.t) + '</p>' +
       '<p class="mr-guess-author">' + escapeHTML(book.a || '') + '</p>' +
-      '<div class="mr-row"><button class="mr-btn mr-btn--primary" id="mr-again">Play again</button></div>';
+      '<div class="mr-row"><button class="mr-btn mr-btn--primary" id="mr-again">Play again</button></div>' +
+      '</div></div>';
+    wireCover();
     byId('mr-again').addEventListener('click', start);
   }
 
