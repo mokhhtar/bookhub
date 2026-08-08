@@ -164,8 +164,8 @@ sitemap: false
     pool:   document.getElementById('mr-pool')
   };
 
-  var meta, questions, states, books = null, chars = null;
-  var belief, asked, history, askedCount, rejected, guessesMade;
+  var meta, questions, states, books = null, chars = null, series = null;
+  var belief, asked, history, askedCount, rejected, rejectedSeries, guessesMade;
   var pYesCache;   // question index -> Float64Array of P(yes|book)
 
   // ── loading ────────────────────────────────────────────────────────────
@@ -192,6 +192,7 @@ sitemap: false
       // Deferred, and deliberately not awaited.
       getJSON('books.json').then(function (b) { books = b; }).catch(noop);
       getJSON('characters.json').then(function (c) { chars = c; }).catch(noop);
+      getJSON('series.json').then(function (s) { series = s; buildSeries(); }).catch(noop);
     })
     .catch(function (err) {
       el.status.textContent = 'Could not load the game data. Please reload the page.';
@@ -279,6 +280,7 @@ sitemap: false
     history = [];
     askedCount = 0;
     rejected = {};
+    rejectedSeries = {};
     guessesMade = 0;
     applyPriorWhenReady();
     nextTurn();
@@ -369,6 +371,65 @@ sitemap: false
     charPools[negIndex] = arr;
   }
 
+  // ── series pooling ─────────────────────────────────────────────────────
+  // Harry Potter is twelve rows in the corpus. A player thinking "Harry
+  // Potter" splits their belief twelve ways, so either nothing crosses the
+  // guess threshold or the game names a volume nobody had in mind. The
+  // volumes stay as candidates and keep their own features — only what we
+  // say out loud is decided at group level.
+  var seriesMembers = null;
+  function buildSeries() {
+    if (!series || !series.books) { return; }
+    seriesMembers = {};
+    for (var i = 0; i < series.books.length; i++) {
+      var sid = series.books[i];
+      if (!sid) { continue; }
+      (seriesMembers[sid] = seriesMembers[sid] || []).push(i);
+    }
+  }
+
+  function seriesBelief() {
+    var out = {};
+    for (var sid in seriesMembers) {
+      var t = 0, m = seriesMembers[sid];
+      for (var j = 0; j < m.length; j++) { t += belief[m[j]]; }
+      out[sid] = t;
+    }
+    return out;
+  }
+
+  // What to name: one book, or a whole series. A series is named when the
+  // group holds the belief but no volume in it does. "Harry Potter" is
+  // right for someone thinking of the series AND for someone thinking of
+  // any volume; naming one volume is right for one player in seven.
+  function guessTarget() {
+    var ranked = [], i;
+    for (i = 0; i < belief.length; i++) { if (!rejected[i]) { ranked.push(i); } }
+    if (!ranked.length) { return null; }
+    ranked.sort(function (a, b) { return belief[b] - belief[a]; });
+    var top = ranked[0];
+    if (belief[top] >= GUESS_THRESHOLD) { return { kind: 'book', index: top, p: belief[top] }; }
+
+    if (seriesMembers) {
+      var dom = (series && series.volume_dominance) || 0.85;
+      var totals = seriesBelief(), sids = Object.keys(totals);
+      sids.sort(function (a, b) { return totals[b] - totals[a]; });
+      for (i = 0; i < sids.length; i++) {
+        var sid = sids[i];
+        if (rejectedSeries[sid] || totals[sid] < GUESS_THRESHOLD) { continue; }
+        var live = seriesMembers[sid].filter(function (x) { return !rejected[x]; });
+        if (!live.length) { continue; }
+        var best = live.reduce(function (a, b) { return belief[a] >= belief[b] ? a : b; });
+        if (belief[best] / totals[sid] >= dom) {
+          return { kind: 'book', index: best, p: belief[best] };
+        }
+        return { kind: 'series', sid: sid, name: (series.names || {})[sid] || '',
+                 index: best, p: totals[sid] };
+      }
+    }
+    return { kind: 'book', index: top, p: belief[top] };
+  }
+
   function effectiveCandidates() {
     var sorted = Array.prototype.slice.call(belief).sort(function (a, b) { return b - a; });
     var acc = 0, n = 0;
@@ -453,6 +514,12 @@ sitemap: false
   function shouldGuess() {
     var top = topIndices(2);
     if (belief[top[0]] >= GUESS_THRESHOLD) { return true; }
+    if (seriesMembers) {
+      // A series holding the mass is ready to guess even when no single
+      // volume is — which is the whole point of pooling.
+      var t = seriesBelief();
+      for (var sid in t) { if (t[sid] >= GUESS_THRESHOLD) { return true; } }
+    }
     if (top.length > 1 && belief[top[1]] > 0) {
       return belief[top[0]] / belief[top[1]] >= GUESS_RATIO &&
              belief[top[0]] >= GUESS_RATIO_FLOOR;
@@ -508,32 +575,42 @@ sitemap: false
   }
 
   function renderGuess() {
-    var order = topIndices(10), pick = null;
-    for (var i = 0; i < order.length; i++) {
-      if (!rejected[order[i]]) { pick = order[i]; break; }
-    }
-    if (pick === null) { return renderGiveUp(); }
+    var target = guessTarget();
+    if (!target) { return renderGiveUp(); }
     guessesMade++;
 
-    var book = books[pick];
+    var isSeries = target.kind === 'series';
+    var book = books[target.index];
+    var title = isSeries ? target.name : book.t;
+    var sub = isSeries
+      ? (escapeHTML(book.a || '') + ' · the series')
+      : (escapeHTML(book.a || '') + (book.y ? ' · ' + book.y : ''));
+
     el.count.textContent = 'Guess ' + guessesMade + ' of ' + MAX_GUESSES;
-    el.pool.textContent = Math.round(belief[pick] * 100) + '% sure';
+    el.pool.textContent = Math.round(target.p * 100) + '% sure';
     el.card.innerHTML =
       '<p class="mr-guess-lead">Is it…</p>' +
-      '<p class="mr-guess-title">' + escapeHTML(book.t) + '</p>' +
-      '<p class="mr-guess-author">' + escapeHTML(book.a || '') +
-      (book.y ? ' · ' + book.y : '') + '</p>' +
+      '<p class="mr-guess-title">' + escapeHTML(title) + '</p>' +
+      '<p class="mr-guess-author">' + sub + '</p>' +
       '<div class="mr-row">' +
       '<button class="mr-btn mr-btn--primary" id="mr-yes">That\'s the one</button>' +
       '<button class="mr-btn" id="mr-no">No, keep going</button>' +
       '</div>';
 
-    byId('mr-yes').addEventListener('click', function () { renderWin(book); });
+    byId('mr-yes').addEventListener('click', function () {
+      renderWin(isSeries ? { t: target.name, a: book.a } : book);
+    });
     byId('mr-no').addEventListener('click', function () {
-      rejected[pick] = true;
       // Weaken, never erase: the player may have mis-answered earlier and
-      // the book can still climb back.
-      belief[pick] *= 0.001;
+      // the book can still climb back. Rejecting a SERIES rejects the whole
+      // group — a player who says no to "Harry Potter" does not want to be
+      // offered Chamber of Secrets next.
+      var hit = isSeries ? seriesMembers[target.sid] : [target.index];
+      if (isSeries) { rejectedSeries[target.sid] = true; }
+      for (var j = 0; j < hit.length; j++) {
+        rejected[hit[j]] = true;
+        belief[hit[j]] *= 0.001;
+      }
       var total = 0, k;
       for (k = 0; k < belief.length; k++) { total += belief[k]; }
       if (total > 0) { for (k = 0; k < belief.length; k++) { belief[k] /= total; } }
