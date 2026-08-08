@@ -150,7 +150,12 @@ sitemap: false
   // places or the offline measurements stop describing this game.
   var WEIGHTS = { yes: 1.0, probably_yes: 0.65, unknown: 0.0, probably_no: -0.65, no: -1.0 };
   var MIN_LIKELIHOOD = 0.02;
-  var GUESS_THRESHOLD = 0.85;
+  // 0.65, not 0.85 — measured on both axes at 5,000 books: 0.85 gives 50%
+  // success at a median of 30 questions, 0.65 gives 56% at 27. Three
+  // guesses are allowed and the high threshold spent none of them, so the
+  // game ran out of turns with the right book sitting second. Mirrors
+  // GUESS_THRESHOLD in engine.py — change both or neither.
+  var GUESS_THRESHOLD = 0.65;
   var GUESS_RATIO = 12;
   var GUESS_RATIO_FLOOR = 0.35;
   var ENDGAME_CANDIDATES = 30;
