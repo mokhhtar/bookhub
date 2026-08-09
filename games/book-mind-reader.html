@@ -146,8 +146,9 @@ sitemap: false
   var BASE = '{{ "/games/data/akinator/" | relative_url }}';
 
   // Mirrors scripts/akinator/engine.py exactly. Any change to the weights,
-  // the likelihood floor or the guess thresholds has to happen in both
-  // places or the offline measurements stop describing this game.
+  // the likelihood floor, the guess thresholds OR the question chooser has
+  // to happen in both places or the offline measurements stop describing
+  // this game.
   var WEIGHTS = { yes: 1.0, probably_yes: 0.65, unknown: 0.0, probably_no: -0.65, no: -1.0 };
   var MIN_LIKELIHOOD = 0.02;
   // 0.65, not 0.85 — measured on both axes at 5,000 books: 0.85 gives 50%
@@ -182,6 +183,10 @@ sitemap: false
   var meta, questions, states, books = null, chars = null, series = null;
   var belief, asked, history, askedCount, rejected, rejectedSeries, guessesMade;
   var pYesCache;   // question index -> Float64Array of P(yes|book)
+  // question index -> Float64Array of H_b(P(yes|book)). The chooser needs
+  // Σ belief·H_b(p) per question and H_b(p) never changes with belief, so it
+  // is computed alongside pYesCache and refreshed wherever that is.
+  var hCache;
 
   // ── loading ────────────────────────────────────────────────────────────
   // Only the matrix, the wording and the decoding rule are needed to ask
@@ -264,6 +269,13 @@ sitemap: false
     return absenceP(richness);
   }
 
+  // H_b(p), binary entropy in nats. Zero at both ends, where the answer is
+  // certain and the question therefore tells us nothing.
+  function binaryEntropy(p) {
+    if (p <= 0 || p >= 1) { return 0; }
+    return -(p * Math.log(p) + (1 - p) * Math.log(1 - p));
+  }
+
   function buildProbabilities() {
     var nb = meta.books, nq = meta.questions;
     // Per-book richness lives in books.json, which is deferred so that
@@ -272,12 +284,15 @@ sitemap: false
     // applyPriorWhenReady(), which does both the prior and this refinement
     // before the first guess can happen.
     pYesCache = new Array(nq);
+    hCache = new Array(nq);
     for (var q = 0; q < nq; q++) {
-      var arr = new Float64Array(nb);
+      var arr = new Float64Array(nb), harr = new Float64Array(nb);
       for (var b = 0; b < nb; b++) {
         arr[b] = stateP(states[b * nq + q], 0);
+        harr[b] = binaryEntropy(arr[b]);
       }
       pYesCache[q] = arr;
+      hCache[q] = harr;
     }
   }
 
@@ -315,9 +330,13 @@ sitemap: false
     // Refine the absent-state probabilities now that richness is known.
     // Only state 0 depends on richness; the other three are flat.
     for (var q = 0; q < meta.questions; q++) {
-      var arr = pYesCache[q];
+      var arr = pYesCache[q], harr = hCache[q];
       for (i = 0; i < belief.length; i++) {
-        if (states[i * meta.questions + q] === 0) { arr[i] = absenceP(books[i].r || 0); }
+        if (states[i * meta.questions + q] === 0) {
+          arr[i] = absenceP(books[i].r || 0);
+          harr[i] = binaryEntropy(arr[i]);   // must track arr, or the
+          // chooser scores refined cells with stale entropies
+        }
       }
     }
   }
@@ -373,17 +392,20 @@ sitemap: false
   // Negative indices address this pool so one `asked` map covers both.
 
   var charPools = {};   // -index -> Float64Array
+  var charH = {};       // -index -> Float64Array of H_b, as hCache is to pYesCache
 
   function charP(negIndex) { return charPools[negIndex]; }
 
   function buildCharPool(tokenIndex, negIndex) {
-    var nb = meta.books, arr = new Float64Array(nb);
+    var nb = meta.books, arr = new Float64Array(nb), harr = new Float64Array(nb);
     for (var b = 0; b < nb; b++) {
       var list = chars.books[b];
-      if (!list || !list.length) { arr[b] = CHAR_UNKNOWN; continue; }
-      arr[b] = list.indexOf(tokenIndex) >= 0 ? CHAR_PRESENT : CHAR_ABSENT;
+      if (!list || !list.length) { arr[b] = CHAR_UNKNOWN; }
+      else { arr[b] = list.indexOf(tokenIndex) >= 0 ? CHAR_PRESENT : CHAR_ABSENT; }
+      harr[b] = binaryEntropy(arr[b]);
     }
     charPools[negIndex] = arr;
+    charH[negIndex] = harr;
   }
 
   // ── series pooling ─────────────────────────────────────────────────────
@@ -467,29 +489,47 @@ sitemap: false
   }
 
   // ── question choice ────────────────────────────────────────────────────
-  // One pass over the books accumulating every question's belief-weighted
-  // P(yes), then whichever lands closest to half. Exact information gain
-  // needs six passes and allocations per question; measured offline the two
-  // pick equally well and this one is five times faster.
+  // Exact expected information gain. Mirrors Engine.next_question in
+  // scripts/akinator/engine.py — the identity, the constants and the
+  // iteration order all have to match or the offline measurements stop
+  // describing this game.
+  //
+  //     EIG(q) = H_b(P_yes) − Σ_i belief_i · H_b(p_i)
+  //
+  // This replaced "whichever P(yes) lands closest to half", which is only a
+  // proxy for informativeness and fails exactly where a cell is `unknown`:
+  // unknown contributes 0.5 to P(yes) and then multiplies its book by 0.5 on
+  // the update, so it cannot move belief at all — yet it pulled the total to
+  // within a hair of half, making the most useless questions look like the
+  // best ones. Measured: switching on eight mostly-unknown trait questions
+  // took 31% of all turns and dropped success from 55.5% to 36.0%.
+  //
+  // H_b(p_i) does not depend on belief, so it lives in hCache/charH and this
+  // stays one allocation-free pass accumulating two numbers per question.
 
   function nextQuestion() {
-    var nq = meta.questions, best = null, bestDist = 2, i, q;
+    var nq = meta.questions, best = null, bestGain = -1, i, q;
 
-    var totals = new Float64Array(nq);
+    var totals = new Float64Array(nq), condH = new Float64Array(nq);
     for (i = 0; i < belief.length; i++) {
       var b = belief[i];
       if (b <= 0) { continue; }
-      for (q = 0; q < nq; q++) { totals[q] += b * pYesCache[q][i]; }
+      for (q = 0; q < nq; q++) {
+        totals[q] += b * pYesCache[q][i];
+        condH[q] += b * hCache[q][i];
+      }
     }
     for (q = 0; q < nq; q++) {
       if (asked[q]) { continue; }
       var p = totals[q];
       if (p <= 0.02 || p >= 0.98) { continue; }
-      var d = Math.abs(p - 0.5);
-      if (d < bestDist) { bestDist = d; best = q; }
+      var gain = binaryEntropy(p) - condH[q];
+      if (gain > bestGain) { bestGain = gain; best = q; }
     }
 
-    // Endgame: names of characters some live candidate actually has.
+    // Endgame: names of characters some live candidate actually has. Scored
+    // the same way — a name question on books with no recorded cast is the
+    // same "mostly unknown" trap the main pool just stopped falling into.
     if (chars && effectiveCandidates() <= ENDGAME_CANDIDATES && expectsNamedCharacters()) {
       var live = topIndices(ENDGAME_CANDIDATES), seen = {};
       for (i = 0; i < live.length; i++) {
@@ -501,11 +541,14 @@ sitemap: false
           var neg = -(t + 1);
           if (asked[neg]) { continue; }
           if (!charPools[neg]) { buildCharPool(t, neg); }
-          var arr = charPools[neg], s = 0;
-          for (var k = 0; k < belief.length; k++) { s += belief[k] * arr[k]; }
+          var arr = charPools[neg], harr = charH[neg], s = 0, ch = 0;
+          for (var k = 0; k < belief.length; k++) {
+            s += belief[k] * arr[k];
+            ch += belief[k] * harr[k];
+          }
           if (s <= 0.02 || s >= 0.98) { continue; }
-          var dd = Math.abs(s - 0.5);
-          if (dd < bestDist) { bestDist = dd; best = neg; }
+          var cgain = binaryEntropy(s) - ch;
+          if (cgain > bestGain) { bestGain = cgain; best = neg; }
         }
       }
     }
@@ -734,6 +777,36 @@ sitemap: false
     return String(s || '').toLowerCase()
       .normalize('NFKD').replace(/[̀-ͯ]/g, '')
       .replace(/[^a-z0-9 ]+/g, ' ').replace(/\s+/g, ' ').trim();
+  }
+
+  // ── test hook ──────────────────────────────────────────────────────────
+  // The engine must stay byte-for-byte equivalent to engine.py, and the only
+  // way to check that mechanically is to drive it directly. Everything above
+  // is closure-private, so a parity harness would otherwise have to click
+  // buttons and scrape rendered text — which tests the rendering, not the
+  // arithmetic.
+  //
+  // Inert unless __MR_TEST__ is set before this script runs, so real players
+  // load exactly what they loaded before.
+  if (window.__MR_TEST__) {
+    window.__mindReaderEngine = {
+      // A harness must wait for this before answering: the popularity prior
+      // arrives with books.json, and a game begun on the uniform prior is a
+      // different game. Same reason a human never hits it — they are still
+      // reading question one.
+      ready: function () { return !!books; },
+      start: start,
+      nextQuestion: nextQuestion,
+      update: update,
+      questionId: function (i) {
+        return i >= 0 ? questions[i].id : 'char:' + chars.tokens[-i - 1];
+      },
+      belief: function () { return Array.prototype.slice.call(belief); },
+      topIndices: topIndices,
+      bookKey: function (i) { return books[i].k; },
+      shouldGuess: shouldGuess,
+      guessTarget: guessTarget
+    };
   }
 })();
 </script>
