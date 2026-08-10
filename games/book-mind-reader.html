@@ -95,6 +95,9 @@ sitemap: false
   .mr-result { padding: 10px 12px; border: 1px solid var(--border); border-radius: var(--r);
     margin-bottom: 6px; font-size: var(--ui-body); }
   .mr-result strong { font-weight: 600; }
+  .mr-result--pick { cursor: pointer; }
+  .mr-result--pick:hover, .mr-result--pick:focus-visible {
+    border-color: var(--accent); background: var(--bg-subtle); }
   .mr-result-note { color: var(--fg-faint); font-size: var(--ui-sm); }
 
   .mr-note {
@@ -161,6 +164,53 @@ sitemap: false
   var GUESS_RATIO_FLOOR = 0.35;
   var ENDGAME_CANDIDATES = 30;
   var NAMED_CHARS_GATE = 0.75;
+
+  // Ordered ladders — several questions that are really one number.
+  // Mirrors LADDERS in scripts/akinator/features.py; the golden-trace
+  // parity test fails if the two drift.
+  //
+  // Without this the game asked, in one real session: "published in the
+  // last 25 years?" yes, "in the last 10?" no, and then "written before
+  // 2000?" — whose answer had been settled two turns earlier. To the matrix
+  // those are three unrelated columns, and because the belief update is
+  // deliberately soft the pre-2000 books kept enough mass to leave the
+  // third question a positive information gain. The engine was reasoning
+  // correctly from a model missing a fact.
+  var LADDERS = {
+    year: [['fact:veryold', '<', 1900], ['fact:old', '<', 1950],
+           ['fact:pre1970', '<', 1970], ['fact:pre2000', '<', 2000],
+           ['fact:recent', '>=', 2001], ['fact:verrecent', '>=', 2016]],
+    pages: [['fact:short', '<', 200], ['fact:midshort', '<', 300],
+            ['fact:long', '>', 400], ['fact:verylong', '>', 600]]
+  };
+  // "Don't know" about a page count is rarely about THAT threshold — it is
+  // a reader who does not think about books in pages. Two is the allowance:
+  // someone who cannot say "under 300" may still know a brick on sight, so
+  // one more is fair; a third is what produced three idk page questions in
+  // one game.
+  var DK_BEFORE_DIMENSION_DROPPED = 2;
+
+  var LADDER_OF = {};
+  Object.keys(LADDERS).forEach(function (dim) {
+    LADDERS[dim].forEach(function (r) { LADDER_OF[r[0]] = [dim, r[1], r[2]]; });
+  });
+
+  function ladderNarrow(lo, hi, op, thr, isYes) {
+    if (op === '<') {
+      return isYes ? [lo, Math.min(hi, thr - 1)] : [Math.max(lo, thr), hi];
+    }
+    if (op === '>') {
+      return isYes ? [Math.max(lo, thr + 1), hi] : [lo, Math.min(hi, thr)];
+    }
+    return isYes ? [Math.max(lo, thr), hi] : [lo, Math.min(hi, thr - 1)];
+  }
+
+  function ladderDetermined(op, thr, lo, hi) {
+    if (lo > hi) { return true; }
+    if (op === '<') { return hi < thr || lo >= thr; }
+    if (op === '>') { return lo > thr || hi <= thr; }
+    return lo >= thr || hi < thr;
+  }
   var CHAR_PRESENT = 0.90, CHAR_ABSENT = 0.06, CHAR_UNKNOWN = 0.10;
   var MAX_QUESTIONS = 30;
   var MAX_GUESSES = 3;
@@ -182,6 +232,9 @@ sitemap: false
 
   var meta, questions, states, books = null, chars = null, series = null;
   var belief, asked, history, askedCount, rejected, rejectedSeries, guessesMade;
+  // Per-dimension interval implied by firm ladder answers, and how often
+  // the player has said "don't know" about that dimension.
+  var bounds, dkCount;
   var pYesCache;   // question index -> Float64Array of P(yes|book)
   // question index -> Float64Array of H_b(P(yes|book)). The chooser needs
   // Σ belief·H_b(p) per question and H_b(p) never changes with belief, so it
@@ -307,6 +360,8 @@ sitemap: false
     for (var i = 0; i < nb; i++) { belief[i] = 1; total += 1; }
     for (i = 0; i < nb; i++) { belief[i] /= total; }
     asked = {};
+    bounds = { year: [-1e9, 1e9], pages: [-1e9, 1e9] };
+    dkCount = { year: 0, pages: 0 };
     history = [];
     askedCount = 0;
     rejected = {};
@@ -359,10 +414,49 @@ sitemap: false
     });
   }
 
+  // question id -> index, for suppressing ladder rungs by id.
+  var indexOfQuestion = null;
+  function questionIndex(id) {
+    if (!indexOfQuestion) {
+      indexOfQuestion = {};
+      for (var i = 0; i < questions.length; i++) {
+        indexOfQuestion[questions[i].id] = i;
+      }
+    }
+    return indexOfQuestion[id];
+  }
+
+  function applyLadder(qIndex, answer) {
+    if (qIndex < 0) { return; }
+    var rung = LADDER_OF[questions[qIndex].id];
+    if (!rung) { return; }
+    var dim = rung[0], op = rung[1], thr = rung[2];
+    var b = bounds[dim];
+    if (answer === 'yes' || answer === 'no') {
+      b = ladderNarrow(b[0], b[1], op, thr, answer === 'yes');
+      bounds[dim] = b;
+    } else if (WEIGHTS[answer] === 0) {
+      dkCount[dim] = (dkCount[dim] || 0) + 1;
+      if (dkCount[dim] >= DK_BEFORE_DIMENSION_DROPPED) {
+        LADDERS[dim].forEach(function (r) {
+          var i = questionIndex(r[0]);
+          if (i !== undefined) { asked[i] = true; }
+        });
+      }
+    }
+    LADDERS[dim].forEach(function (r) {
+      var i = questionIndex(r[0]);
+      if (i !== undefined && !asked[i] && ladderDetermined(r[1], r[2], b[0], b[1])) {
+        asked[i] = true;
+      }
+    });
+  }
+
   function update(qIndex, answer) {
     var w = WEIGHTS[answer];
     asked[qIndex] = true;
     askedCount++;
+    applyLadder(qIndex, answer);
     if (answer === 'yes' && excludes && excludes[qIndex]) {
       // A FIRM yes rules out what cannot also be true. Only a firm one —
       // "probably American" is a hedge, and suppressing on a hedge throws
@@ -614,7 +708,19 @@ sitemap: false
     Array.prototype.forEach.call(el.card.querySelectorAll('[data-answer]'), function (btn) {
       btn.addEventListener('click', function () {
         var answer = ANSWERS[+btn.getAttribute('data-answer')].key;
-        history.push({ q: qIndex, belief: new Float64Array(belief), count: askedCount });
+        // `answer` is kept so the give-up screen can explain a miss: which
+        // answers disagreed with what the table holds about the book the
+        // player actually meant.
+        // A full snapshot, because one answer can mark SEVERAL questions
+        // asked — a firm yes suppresses its exclusive siblings, and a
+        // ladder answer suppresses every rung it settles. Deleting just
+        // this question on "go back" left those suppressed forever.
+        // `answer` is also kept so the give-up screen can explain a miss.
+        history.push({ q: qIndex, answer: answer,
+                       asked: JSON.parse(JSON.stringify(asked)),
+                       bounds: JSON.parse(JSON.stringify(bounds)),
+                       dkCount: JSON.parse(JSON.stringify(dkCount)),
+                       belief: new Float64Array(belief), count: askedCount });
         update(qIndex, answer);
         nextTurn();
       });
@@ -628,7 +734,13 @@ sitemap: false
     if (!prev) { return; }
     belief = prev.belief;
     askedCount = prev.count;
-    delete asked[prev.q];
+    // Restore the whole suppression state, not just this question. The
+    // snapshot was taken BEFORE the answer, so it holds exactly what was
+    // asked at that point — including questions a later exclusion or
+    // ladder would go on to retire.
+    asked = prev.asked;
+    bounds = prev.bounds;
+    dkCount = prev.dkCount;
     nextTurn();
   }
 
@@ -744,21 +856,91 @@ sitemap: false
       if (q.length < 3 || !books) { return; }
       var hits = [], i;
       for (i = 0; i < books.length && hits.length < 8; i++) {
-        if (normalize(books[i].t).indexOf(q) >= 0) { hits.push(books[i]); }
+        // Push the INDEX, not the object: explainMiss needs it to read the
+        // book's column out of pYesCache.
+        if (normalize(books[i].t).indexOf(q) >= 0) { hits.push(i); }
       }
       if (!hits.length) {
         out.innerHTML = '<li class="mr-result mr-result-note">' +
           'Not in the 5,000 books this game knows — which is why it could not guess it.</li>';
         return;
       }
-      hits.forEach(function (b) {
+      hits.forEach(function (h) {
+        var b = books[h];
         var li = document.createElement('li');
-        li.className = 'mr-result';
+        li.className = 'mr-result mr-result--pick';
+        li.setAttribute('tabindex', '0');
+        li.setAttribute('role', 'button');
         li.innerHTML = '<strong>' + escapeHTML(b.t) + '</strong> ' +
-                       '<span class="mr-result-note">' + escapeHTML(b.a || '') + '</span>';
+                       '<span class="mr-result-note">' + escapeHTML(b.a || '') +
+                       (b.y ? ' · ' + b.y : '') + '</span>';
+        function pick() { explainMiss(h); }
+        li.addEventListener('click', pick);
+        li.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(); }
+        });
         out.appendChild(li);
       });
     });
+  }
+
+  // Why did it miss THIS book? Answered from the game that just happened,
+  // entirely in the page — nothing is sent anywhere.
+  //
+  // The list is the answers that disagreed with what the table holds. That
+  // is the fastest way to find a bad row: the owner played The Road, said
+  // "no" to "does it have well-known named characters?" — correctly, its
+  // two characters are "the man" and "the boy" — and the table said yes,
+  // because Open Library files those strings under `person`. One glance at
+  // this list would have shown it.
+  function explainMiss(bookIndex) {
+    var b = books[bookIndex];
+    var rows = [], i;
+    for (i = 0; i < history.length; i++) {
+      var h = history[i];
+      if (h.q < 0) { continue; }              // character questions
+      var w = WEIGHTS[h.answer];
+      if (w === 0) { continue; }              // "don't know" contradicts nothing
+      var p = pYesCache[h.q][bookIndex];
+      // The table says yes for this book if p is high, no if it is low;
+      // 0.5 means it has no record either way and cannot disagree.
+      if (p === meta.p_unknown) { continue; }
+      var tableSaysYes = p > 0.5;
+      var playerSaidYes = w > 0;
+      if (tableSaysYes !== playerSaidYes) {
+        rows.push({ q: questions[h.q].text, said: h.answer,
+                    table: tableSaysYes ? 'yes' : 'no' });
+      }
+    }
+
+    var rank = bookIndex + 1;
+    var html = '<p class="mr-guess-lead">' + escapeHTML(b.t) +
+      ' <span class="mr-result-note">is in the list (#' + rank +
+      ' by readers)</span></p>';
+
+    if (!rows.length) {
+      html += '<p class="mr-result-note">None of your answers contradicted ' +
+        'what the table holds about it — it simply never gathered enough ' +
+        'belief to be guessed inside the question limit.</p>';
+    } else {
+      html += '<p class="mr-result-note">' + rows.length + ' of your answers ' +
+        'disagreed with what the table holds about it. Each one pushed it ' +
+        'down:</p><ul class="mr-results">';
+      rows.forEach(function (r) {
+        html += '<li class="mr-result"><strong>' + escapeHTML(r.q) +
+          '</strong><br><span class="mr-result-note">you said ' +
+          escapeHTML(r.said.replace('_', ' ')) + ' · the table says ' +
+          escapeHTML(r.table) + '</span></li>';
+      });
+      html += '</ul>';
+    }
+    html += '<div class="mr-row" style="margin-top:16px">' +
+      '<button class="mr-btn mr-btn--primary" id="mr-again">Play again</button>' +
+      '<button class="mr-btn" id="mr-back-list">Back</button></div>';
+
+    el.card.innerHTML = html;
+    byId('mr-again').addEventListener('click', start);
+    byId('mr-back-list').addEventListener('click', renderGiveUp);
   }
 
   // ── helpers ────────────────────────────────────────────────────────────
