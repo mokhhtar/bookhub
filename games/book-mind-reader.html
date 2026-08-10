@@ -235,6 +235,147 @@ sitemap: false
   // Per-dimension interval implied by firm ladder answers, and how often
   // the player has said "don't know" about that dimension.
   var bounds, dkCount;
+
+  // ── transcript (owner debugging, hidden from players) ──────────────────
+  // A readable log of one game — every question with its answer, the ladder
+  // interval after it, every guess offered and what happened to it — with a
+  // copy/download button on the end screen.
+  //
+  // It exists because the fastest bugs to find have been the ones visible in
+  // a sequence: "last 25 years? yes / last 10? no / before 2000?" is only
+  // obviously wrong when you can see the three lines together. Reading them
+  // off a screenshot is how the last round went.
+  //
+  // OFF unless asked for. `?debug=1` turns it on and remembers it in
+  // localStorage; `?debug=0` turns it off again. Not a security boundary —
+  // nothing here is sensitive — just a switch so the page stays clean for
+  // everyone who did not ask.
+  var transcript = [];
+  var debugMode = (function () {
+    // Guarded because this file is also run headless by the parity harness,
+    // which stubs only what the engine needs.
+    if (typeof location === 'undefined') { return false; }
+    var m = /[?&]debug=([01])/.exec(location.search);
+    try {
+      if (m) {
+        if (m[1] === '1') { localStorage.setItem('mr_debug', '1'); return true; }
+        localStorage.removeItem('mr_debug');
+        return false;
+      }
+      return localStorage.getItem('mr_debug') === '1';
+    } catch (e) {
+      return !!m && m[1] === '1';       // private mode: honour the URL only
+    }
+  })();
+
+  function logTurn(qIndex, answer) {
+    var rung = qIndex >= 0 ? LADDER_OF[questions[qIndex].id] : null;
+    transcript.push({
+      kind: 'q',
+      n: transcript.filter(function (e) { return e.kind === 'q'; }).length + 1,
+      id: qIndex >= 0 ? questions[qIndex].id : 'char:' + chars.tokens[-qIndex - 1],
+      text: questionText(qIndex),
+      answer: answer,
+      dim: rung ? rung[0] : null,
+      range: rung ? bounds[rung[0]].slice() : null
+    });
+  }
+
+  function logGuess(target, book) {
+    transcript.push({
+      kind: 'guess',
+      n: guessesMade,
+      what: target.kind,
+      title: target.kind === 'series' ? target.name : book.t,
+      author: book.a || '',
+      year: book.y || '',
+      p: target.p,
+      rank: target.index + 1,
+      verdict: 'offered'
+    });
+  }
+
+  function logVerdict(v) {
+    for (var i = transcript.length - 1; i >= 0; i--) {
+      if (transcript[i].kind === 'guess') { transcript[i].verdict = v; return; }
+    }
+  }
+
+  function transcriptText() {
+    var lines = ['Book Mind Reader — transcript',
+                 new Date().toISOString(),
+                 'artifacts: ' + meta.books + ' books, ' + meta.questions +
+                   ' questions, hash ' + meta.question_hash,
+                 ''];
+    transcript.forEach(function (e) {
+      if (e.kind === 'q') {
+        var range = '';
+        if (e.range) {
+          var lo = e.range[0] <= -1e8 ? '-inf' : e.range[0];
+          var hi = e.range[1] >= 1e8 ? '+inf' : e.range[1];
+          range = '   [' + e.dim + ' ' + lo + '..' + hi + ']';
+        }
+        lines.push('Q' + e.n + '  ' + e.text);
+        lines.push('    -> ' + e.answer.replace('_', ' ') +
+                   '   (' + e.id + ')' + range);
+      } else {
+        lines.push('GUESS ' + e.n + ' (' + e.what + ', #' + e.rank +
+                   ' by readers, ' + Math.round(e.p * 100) + '% sure): ' +
+                   e.title + ' — ' + e.author + (e.year ? ' (' + e.year + ')' : ''));
+        lines.push('    -> ' + e.verdict);
+      }
+    });
+    return lines.join('\n');
+  }
+
+  function debugPanelHTML() {
+    if (!debugMode) { return ''; }
+    return '<div class="mr-note" style="margin-top:20px">' +
+      '<strong>Transcript</strong> ' +
+      '<span class="mr-result-note">(only you see this — ?debug=0 to hide)</span>' +
+      '<div class="mr-row" style="margin-top:10px">' +
+      '<button class="mr-btn" id="mr-copy">Copy</button>' +
+      '<button class="mr-btn" id="mr-download">Download</button>' +
+      '</div><pre id="mr-transcript" style="white-space:pre-wrap;font-size:12px;' +
+      'max-height:300px;overflow:auto;margin-top:10px">' +
+      escapeHTML(transcriptText()) + '</pre></div>';
+  }
+
+  function wireDebugPanel() {
+    if (!debugMode) { return; }
+    var copy = byId('mr-copy'), dl = byId('mr-download');
+    if (copy) {
+      copy.addEventListener('click', function () {
+        var text = transcriptText();
+        function done() { copy.textContent = 'Copied'; }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(done, fallback);
+        } else { fallback(); }
+        function fallback() {
+          // execCommand is deprecated but still the only thing that works
+          // without clipboard permission on some browsers.
+          var ta = document.createElement('textarea');
+          ta.value = text;
+          document.body.appendChild(ta);
+          ta.select();
+          try { document.execCommand('copy'); done(); } catch (e) {}
+          document.body.removeChild(ta);
+        }
+      });
+    }
+    if (dl) {
+      dl.addEventListener('click', function () {
+        var blob = new Blob([transcriptText()], { type: 'text/plain' });
+        var a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'mind-reader-transcript.txt';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+      });
+    }
+  }
   var pYesCache;   // question index -> Float64Array of P(yes|book)
   // question index -> Float64Array of H_b(P(yes|book)). The chooser needs
   // Σ belief·H_b(p) per question and H_b(p) never changes with belief, so it
@@ -362,6 +503,7 @@ sitemap: false
     asked = {};
     bounds = { year: [-1e9, 1e9], pages: [-1e9, 1e9] };
     dkCount = { year: 0, pages: 0 };
+    transcript = [];
     history = [];
     askedCount = 0;
     rejected = {};
@@ -466,7 +608,7 @@ sitemap: false
       // whether an American author is African.
       excludes[qIndex].forEach(function (other) { asked[other] = true; });
     }
-    if (w === 0) { return; }
+    if (w === 0) { logTurn(qIndex, answer); return; }
     var arr = qIndex < 0 ? charP(qIndex) : pYesCache[qIndex];
     var total = 0;
     for (var i = 0; i < belief.length; i++) {
@@ -478,6 +620,7 @@ sitemap: false
       total += belief[i];
     }
     if (total > 0) { for (i = 0; i < belief.length; i++) { belief[i] /= total; } }
+    logTurn(qIndex, answer);
   }
 
   // ── character questions ────────────────────────────────────────────────
@@ -741,6 +884,9 @@ sitemap: false
     asked = prev.asked;
     bounds = prev.bounds;
     dkCount = prev.dkCount;
+    for (var t = transcript.length - 1; t >= 0; t--) {
+      if (transcript[t].kind === 'q') { transcript.splice(t, 1); break; }
+    }
     nextTurn();
   }
 
@@ -777,6 +923,7 @@ sitemap: false
       ? (escapeHTML(book.a || '') + ' · the series')
       : (escapeHTML(book.a || '') + (book.y ? ' · ' + book.y : ''));
 
+    logGuess(target, book);
     var cover = coverHTML(book);
     el.count.textContent = 'Guess ' + guessesMade + ' of ' + MAX_GUESSES;
     el.pool.textContent = Math.round(target.p * 100) + '% sure';
@@ -795,6 +942,7 @@ sitemap: false
     byId('mr-yes').addEventListener('click', function () {
       // A series keeps the representative volume's cover — it is the
       // one a player picturing the series will recognise.
+      logVerdict('CORRECT');
       renderWin(isSeries ? { t: target.name, a: book.a, c: book.c } : book);
     });
     byId('mr-no').addEventListener('click', function () {
@@ -802,6 +950,7 @@ sitemap: false
       // the book can still climb back. Rejecting a SERIES rejects the whole
       // group — a player who says no to "Harry Potter" does not want to be
       // offered Chamber of Secrets next.
+      logVerdict('rejected');
       var hit = isSeries ? seriesMembers[target.sid] : [target.index];
       if (isSeries) { rejectedSeries[target.sid] = true; }
       for (var j = 0; j < hit.length; j++) {
@@ -828,9 +977,10 @@ sitemap: false
       '<p class="mr-guess-title">' + escapeHTML(book.t) + '</p>' +
       '<p class="mr-guess-author">' + escapeHTML(book.a || '') + '</p>' +
       '<div class="mr-row"><button class="mr-btn mr-btn--primary" id="mr-again">Play again</button></div>' +
-      '</div></div>';
+      '</div></div>' + debugPanelHTML();
     wireCover();
     byId('mr-again').addEventListener('click', start);
+    wireDebugPanel();
   }
 
   // Losing gracefully is the point, not a fallback. Promising "think of any
@@ -846,8 +996,10 @@ sitemap: false
       'placeholder="Start typing a title…" aria-label="The book you were thinking of">' +
       '<ul class="mr-results" id="mr-results"></ul>' +
       '<div class="mr-row" style="margin-top:16px">' +
-      '<button class="mr-btn mr-btn--primary" id="mr-again">Play again</button></div>';
+      '<button class="mr-btn mr-btn--primary" id="mr-again">Play again</button></div>' +
+      debugPanelHTML();
     byId('mr-again').addEventListener('click', start);
+    wireDebugPanel();
 
     var input = byId('mr-search'), out = byId('mr-results');
     input.addEventListener('input', function () {
@@ -987,7 +1139,8 @@ sitemap: false
       topIndices: topIndices,
       bookKey: function (i) { return books[i].k; },
       shouldGuess: shouldGuess,
-      guessTarget: guessTarget
+      guessTarget: guessTarget,
+      transcriptText: function () { return transcriptText(); }
     };
   }
 })();

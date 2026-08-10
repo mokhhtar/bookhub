@@ -63,9 +63,23 @@ function makeSandbox() {
   const sandbox = {
     console,
     setTimeout,
+    // The page reads these for the owner-only transcript switch. Stubbed
+    // rather than left undefined so this harness keeps simulating a browser
+    // accurately as the page grows — an under-stubbed sandbox fails in a way
+    // that looks like an engine bug.
+    location: { search: '' },
+    localStorage: {
+      _v: {},
+      getItem(k) { return Object.prototype.hasOwnProperty.call(this._v, k) ? this._v[k] : null; },
+      setItem(k, v) { this._v[k] = String(v); },
+      removeItem(k) { delete this._v[k]; }
+    },
+    navigator: {},
+    URL: { createObjectURL() { return ''; }, revokeObjectURL() {} },
     document: {
       getElementById: el,
-      createElement: el
+      createElement: el,
+      body: { appendChild() {}, removeChild() {} }
     },
     fetch(url) {
       // BASE is a Jekyll expression ({{ "/games/data/akinator/" |
