@@ -108,6 +108,25 @@ async function main() {
   }
   const trace = JSON.parse(fs.readFileSync(TRACE, 'utf8'));
 
+  // A STALE FIXTURE IS NOT A DIVERGENCE. The nightly /akinator/sync appends
+  // newly published books to matrix.bin and meta.json, which changes the
+  // prior, the belief vector and therefore every checksum in the trace —
+  // through no fault of either engine. Reporting that as "the engines have
+  // drifted" would be the same conflation this project keeps having to fix
+  // (a 429 is not a measurement; an unharvested description is not "no
+  // magic"). So it is its own state, with its own instruction.
+  const meta = JSON.parse(fs.readFileSync(path.join(DATA, 'meta.json'), 'utf8'));
+  const from = trace.generated_from || {};
+  if (meta.books !== from.books || meta.question_hash !== from.question_hash) {
+    console.error('STALE FIXTURE — the artifacts changed since the trace was recorded.');
+    console.error(`  trace: ${from.books} books, question_hash ${from.question_hash}`);
+    console.error(`  now:   ${meta.books} books, question_hash ${meta.question_hash}`);
+    console.error('This is expected after a nightly sync or a rebuild. Regenerate:');
+    console.error('  python scripts/akinator/parity_trace.py --out ' + TRACE);
+    console.error('It does NOT mean the engines disagree — that check has not run.');
+    process.exit(2);   // 2, not 1: "could not test", not "test failed"
+  }
+
   const sandbox = makeSandbox();
   vm.createContext(sandbox);
   vm.runInContext(extractScript(fs.readFileSync(PAGE, 'utf8')), sandbox);
