@@ -898,7 +898,15 @@ reach anyone who had visited before. {%- endcomment -%}
         fs.where('approved', '==', true), fs.limit(30)));
       snap.forEach(d => items.push(d.data()));
       items.sort((a, b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0));
-    } catch (e) { return; }
+    } catch (e) {
+      // The card is display:none until there is something to put in it, so a
+      // denied read is indistinguishable from a book nobody has recommended —
+      // the section simply is not there. That is exactly how a reader
+      // described it ("recommendations don't show when I'm not signed in"),
+      // and there was nothing in the console to tell the two apart.
+      console.warn('Reader recommendations failed to load:', e.code || '', e);
+      return;
+    }
     const box = document.getElementById('bh-reader-recs');
     const listEl = document.getElementById('bh-reader-recs-list');
     if (!box || !listEl) return;
