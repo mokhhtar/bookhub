@@ -165,6 +165,20 @@ sitemap: false
   var ENDGAME_CANDIDATES = 30;
   var NAMED_CHARS_GATE = 0.75;
 
+  // Below this the guess is introduced as a long shot rather than a claim.
+  //
+  // COPY ONLY — it changes no belief and skips no guess. The owner watched
+  // the game spend three guesses at 26%, 17% and 15% and it read as the
+  // game not knowing what it was doing. Refusing those guesses was tried
+  // and measured first: a 0.30 floor cost **20 points of success and won
+  // exactly zero games**, because the only guess a floor can block is the
+  // one made when the questions have run out, and there is nothing after
+  // it. 26% over 5,000 books is 1,300x the prior — a real belief wearing a
+  // small number.
+  //
+  // So the honest fix is to say so. Same guess, same odds, accurate tone.
+  var LOW_CONFIDENCE_COPY = 0.40;
+
   // Ordered ladders — several questions that are really one number.
   // Mirrors LADDERS in scripts/akinator/features.py; the golden-trace
   // parity test fails if the two drift.
@@ -930,7 +944,9 @@ sitemap: false
     el.card.innerHTML =
       '<div class="mr-guess' + (cover ? '' : ' mr-guess--nocover') + '">' +
       cover + '<div>' +
-      '<p class="mr-guess-lead">Is it…</p>' +
+      '<p class="mr-guess-lead">' +
+        (target.p < LOW_CONFIDENCE_COPY ? 'I&rsquo;m not certain, but is it…'
+                                        : 'Is it…') + '</p>' +
       '<p class="mr-guess-title">' + escapeHTML(title) + '</p>' +
       '<p class="mr-guess-author">' + sub + '</p>' +
       '<div class="mr-row">' +
