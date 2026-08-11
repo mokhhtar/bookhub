@@ -912,7 +912,18 @@ reach anyone who had visited before. {%- endcomment -%}
     if (!box || !listEl) return;
     const SUMMARY = {{ '/summary/' | relative_url | jsonify }};
     bhRenderRecForm();
-    if (!items.length) { if (window.bhUser) box.style.display = 'block'; return; }
+    // The card used to be revealed on an empty list ONLY for a signed-in
+    // reader, so on the 138 books nobody has recommended anything for yet, a
+    // signed-out visitor got no "Readers recommend" section at all — while the
+    // jump-nav above still offered a link to it. The dynamic page has always
+    // shown the empty state to everyone; these two templates are meant to be
+    // replicas and this is one of the places they had quietly diverged.
+    if (!items.length) {
+      listEl.innerHTML = '<p style="font-size:var(--t-label);color:var(--fg-muted);">' +
+        'No recommendations yet. Be the first to suggest a similar book.</p>';
+      box.style.display = 'block';
+      return;
+    }
     listEl.innerHTML = '<div style="display:flex;flex-direction:column;gap:12px;">' + items.map(r => {
       const link = SUMMARY + '?q=' + encodeURIComponent(r.rec_title) +
         (r.rec_author ? '&author=' + encodeURIComponent(r.rec_author) : '') + '&direct=true';
@@ -937,7 +948,16 @@ reach anyone who had visited before. {%- endcomment -%}
   window.bhRenderRecForm = function () {
     const el = document.getElementById('bh-rec-form');
     if (!el) return;
-    if (!window.bhUser) { el.innerHTML = ''; return; }
+    // Signed out, this used to render nothing at all — the comments card two
+    // sections down has offered a "Sign in to comment" button all along, and
+    // the dynamic page offers this exact one. Same invitation, same wording.
+    if (!window.bhUser) {
+      el.innerHTML =
+        '<div style="border-top:1px solid var(--border);padding-top:14px;margin-top:14px;">' +
+        '<button class="btn-secondary" onclick="bhAuthUI.open(\'signin\')" ' +
+        'style="padding:8px 18px;font-size:var(--t-label);">Sign in to recommend</button></div>';
+      return;
+    }
     el.innerHTML =
       '<div style="border-top:1px solid var(--border);padding-top:14px;margin-top:14px;">' +
       '<p style="font-size:var(--t-label);font-weight:600;margin-bottom:8px;">Recommend a similar book</p>' +
