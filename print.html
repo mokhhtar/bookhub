@@ -83,6 +83,17 @@ sitemap: false
     {%- endcomment -%}
     <span class="pr-bar-note" id="pr-note">
       Opens your browser&rsquo;s print dialog — choose <b>Save as PDF</b> as the destination.
+      {%- comment -%}
+        The page number and the page's own URL that browsers stamp into every
+        printed sheet are the browser's, not ours: no CSS removes them, and
+        the one trick that works in Chrome (@page margin 0) buys it by
+        printing the text against the paper edge on all 785 pages. So the
+        checkbox gets named instead. What we CAN control is what those two
+        lines SAY, and both were embarrassing — see the script below.
+      {%- endcomment -%}
+      For a clean file, open <b>More settings</b> there and untick
+      <b>Headers and footers</b> — that removes the page numbers and the web
+      address browsers print at the edge of every page.
     </span>
   </div>
 
@@ -103,24 +114,65 @@ sitemap: false
   const API = "{{ site.api_url }}";
   const params = new URLSearchParams(location.search);
   const gid = (params.get("id") || "").replace(/\D/g, "");
-  const title = params.get("title") || "";
-  const author = params.get("author") || "";
+  let title = params.get("title") || "";
+  let author = params.get("author") || "";
 
   const $ = (id) => document.getElementById(id);
   const esc = (s) => String(s == null ? "" : s)
     .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
+  // Browsers print the page's URL into the footer of every sheet, so the
+  // reader's saved PDF carried "https://litheca.com/print/?id=1399&title=Anna
+  // +Karenina&author=Leo+Tolstoy" 785 times. The title and author are only
+  // needed to letter our own title page, and they are needed exactly once —
+  // so they are read, stashed for a reload, and then taken out of the URL.
+  const STASH = "bh_print_" + gid;
+  if (!title && gid) {
+    try {
+      const saved = JSON.parse(sessionStorage.getItem(STASH) || "null");
+      if (saved) { title = saved.t || ""; author = saved.a || ""; }
+    } catch (e) {}
+  }
+
   if (title) {
     $("pr-title").textContent = title;
-    document.title = title + " — print or save as PDF";
+    // And browsers print document.title into the HEADER of every sheet, which
+    // is how "Anna Karenina — print or save as PDF" ended up at the top of a
+    // 785-page book. A running head names the book and the publisher; it does
+    // not narrate the button the reader already pressed.
+    document.title = title + " — Litheca";
   }
   if (author) $("pr-author").textContent = author;
   if (gid) {
     $("pr-back").href = "{{ '/reader/' | relative_url }}?id=" + encodeURIComponent(gid) +
       "&title=" + encodeURIComponent(title) + "&author=" + encodeURIComponent(author);
+    try { sessionStorage.setItem(STASH, JSON.stringify({ t: title, a: author })); } catch (e) {}
+    // Same document, same page — only the address the browser is about to
+    // print 785 times gets shorter.
+    try { history.replaceState(null, "", "?id=" + gid); } catch (e) {}
   }
 
+  // A long book arriving through the API is a minute-long wait, and
+  // "Preparing the book…" held still for all sixty seconds of it is
+  // indistinguishable from a page that has hung — which is how it was
+  // reported. Say what is happening instead.
+  let patience = [];
+  const say = (msg) => { $("pr-status").textContent = msg; };
+  function startPatience() {
+    patience = [
+      setTimeout(() => say("Fetching the full text…"), 4000),
+      setTimeout(() => say("This is a long book — still fetching. It is only slow the first time."), 15000),
+      setTimeout(() => say("Still working. A very long book can take a minute to arrive."), 40000),
+    ];
+  }
+  const stopPatience = () => { patience.forEach(clearTimeout); patience = []; };
+  // Let the browser actually paint a message before the next step blocks the
+  // main thread. Without it every one of these lines is written and covered
+  // over in the same frame, and the reader sees none of them.
+  const paint = () => new Promise((r) => requestAnimationFrame(() => setTimeout(r, 0)));
+
   function fail(message) {
+    stopPatience();
     $("pr-status").innerHTML = esc(message) +
       (gid ? ' <a href="https://www.gutenberg.org/ebooks/' + esc(gid) +
              '" target="_blank" rel="noopener">Read it at Project Gutenberg</a>.' : "");
@@ -166,24 +218,70 @@ sitemap: false
   async function fetchFromAPI() {
     // A cold Render instance takes 30-60s to wake and a first ingest fetches
     // the whole book, so this is deliberately patient rather than snappy.
-    const res = await fetch(API + "/read/" + gid + "/print", { signal: AbortSignal.timeout(180000) });
-    if (!res.ok) return null;
-    const data = await res.json();
-    return (data && data.html) ? data.html : null;
+    try {
+      const res = await fetch(API + "/read/" + gid + "/print", { signal: AbortSignal.timeout(180000) });
+      if (!res.ok) return null;
+      const data = await res.json();
+      return (data && data.html) ? data.html : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  // Resolves with the first source to produce a document, or null once every
+  // source has come back empty-handed. `Promise.race` is the wrong tool: it
+  // resolves on the first SETTLED promise, so a fast null would beat a slow
+  // document.
+  function firstDocument(sources) {
+    return new Promise((resolve) => {
+      let pending = sources.length;
+      const settle = (html) => {
+        if (html) resolve(html);
+        else if (--pending === 0) resolve(null);
+      };
+      sources.forEach((p) => p.then(settle, () => settle(null)));
+    });
   }
 
   (async function load() {
+    startPatience();
     try {
-      const html = (await fetchFromCDN()) || (await fetchFromAPI());
+      // The two sources used to run strictly one after the other, so a CDN
+      // miss spent its entire timeout BEFORE the API request was even sent:
+      // the slowest case paid, in full, for a fast path it never received.
+      // Now the edge gets a short head start — long enough for a static file
+      // from a CDN, which is the only thing it is being asked for — and then
+      // both requests are in flight and the first real document wins.
+      const cdn = fetchFromCDN();
+      const HEAD_START = Symbol("head-start");
+      let html = await Promise.race([
+        cdn, new Promise((r) => setTimeout(() => r(HEAD_START), 1500)),
+      ]);
+      if (html === HEAD_START || !html) html = await firstDocument([cdn, fetchFromAPI()]);
       if (!html) { fail("This book has no printable edition."); return; }
+
+      stopPatience();
+      say("Laying out the book…");
+      await paint();
       $("pr-book").innerHTML = html;   // sanitised server-side, allow-list only
       $("pr-status").hidden = true;
       $("pr-doc").hidden = false;
       const button = $("pr-print");
       button.disabled = false;
-      button.addEventListener("click", () => window.print());
       // Long books take a moment to lay out; printing before that gives a
       // half-rendered document, so the button only arrives with the text.
+      button.addEventListener("click", async () => {
+        // window.print() blocks the main thread while the browser paginates
+        // the whole book — 785 pages of Anna Karenina is a long, silent
+        // freeze, and a button that does nothing for ten seconds reads as a
+        // broken button rather than a working one.
+        const label = button.textContent;
+        button.disabled = true;
+        button.textContent = "Preparing the PDF…";
+        await paint();
+        try { window.print(); }
+        finally { button.textContent = label; button.disabled = false; }
+      });
       if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
         $("pr-note").innerHTML =
           "On iPhone and iPad: tap <b>Share</b>, then <b>Print</b>, then pinch out on the preview to get a PDF.";
