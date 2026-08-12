@@ -24,7 +24,7 @@ ratings: {"source": "goodreads", "average": 4.22, "count": 860319, "url": "https
 themes: ["Redemption", "Social injustice", "Human dignity", "Law and morality"]
 reading_level: "Adult / General Fiction"
 free_ebook: {"v": 3, "source": "project_gutenberg", "gutenberg_id": "135", "page_url": "https://www.gutenberg.org/ebooks/135", "read_url": "https://www.gutenberg.org/ebooks/135.html.images", "epub_url": "https://www.gutenberg.org/ebooks/135.epub3.images", "txt_url": "https://www.gutenberg.org/ebooks/135.txt.utf-8", "pdf_url": null}
-quotes: {"v": 10, "texts": ["Be it true or false, what is said about men often has as much influence upon their lives, and especially upon their destinies, as what they do.", "Sire, said M. Myriel, you behold a good man, and I a great man. May each of us profit by it.", "There are many tongues to talk, and but few heads to think.", "See Monsieur Geborand, buying a pennyworth of paradise.", "How frightened hypocrisy hastens to defend itself."], "speakers": ["", "", "", "", ""], "source": "wikiquote", "source_url": "https://en.wikiquote.org/wiki/Les_Mis%C3%A9rables", "license": "CC BY-SA"}
+quotes: {"v": 11, "texts": ["Be it true or false, what is said about men often has as much influence upon their lives, and especially upon their destinies, as what they do.", "Sire, said M. Myriel, you behold a good man, and I a great man. May each of us profit by it.", "There are many tongues to talk, and but few heads to think.", "See Monsieur Geborand, buying a pennyworth of paradise.", "How frightened hypocrisy hastens to defend itself."], "speakers": ["", "", "", "", ""], "source": "wikiquote", "source_url": "https://en.wikiquote.org/wiki/Les_Mis%C3%A9rables", "license": "CC BY-SA"}
 quiz: null
 quiz_source: ""
 nyt: null
