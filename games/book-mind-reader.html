@@ -132,10 +132,13 @@ sitemap: false
       </div>
 
       <p class="mr-note">
-        Nothing is sent anywhere — the whole game runs in this page, from a
-        table of books built from Open Library and Wikidata. It knows about
-        5,000 of the most-read books, so it will not know every book, and
-        when it does not it says so rather than guessing.
+        The whole game runs in this page, from a table of books built from
+        Open Library and Wikidata. It knows about 5,000 of the most-read
+        books, so it will not know every book, and when it does not it says
+        so rather than guessing. <strong>Playing sends nothing.</strong> If
+        it fails and you choose to tell it which book you meant, that one
+        answer — the book, and what you answered about it — is shared so
+        the game can learn. Nothing else, and only if you tap it.
       </p>
     </div>
 
@@ -418,7 +421,14 @@ sitemap: false
       buildProbabilities();
       start();
       // Deferred, and deliberately not awaited.
-      getJSON('books.json').then(function (b) { books = b; }).catch(noop);
+      getJSON('books.json').then(function (b) {
+        books = b;
+        // Overrides are keyed by WORK KEY and need books.json to resolve a
+        // key to a row, so they are chained here rather than fetched in
+        // parallel. A missing file is the normal case until the first
+        // drain has run.
+        getJSON('overrides.json').then(applyOverrides).catch(noop);
+      }).catch(noop);
       getJSON('characters.json').then(function (c) { chars = c; }).catch(noop);
       getJSON('series.json').then(function (s) { series = s; buildSeries(); }).catch(noop);
     })
@@ -549,6 +559,50 @@ sitemap: false
           // chooser scores refined cells with stale entropies
         }
       }
+    }
+  }
+
+  // What the game has learned from play, replacing what the packed matrix
+  // would have said for a given (book, question).
+  //
+  // PATCHES pYesCache, DOES NOT patch stateP. After buildProbabilities()
+  // the engine reads only the precomputed arrays and never calls stateP
+  // again, so an override written into the state-decoding path would be
+  // silently ignored — the same trap the popularity prior had to avoid.
+  //
+  // Keyed by work key, matched through books.json, never by row index: the
+  // monthly rebuild re-sorts every index, and an override keyed by
+  // position would quietly reattach itself to a different book.
+  //
+  // Landing mid-game is safe and deliberate. It affects only questions not
+  // yet asked; belief already accumulated is left alone, exactly as the
+  // deferred popularity prior behaves.
+  function applyOverrides(data) {
+    if (!data || !books) { return; }
+    var byKey = {}, i;
+    for (i = 0; i < books.length; i++) {
+      if (books[i].k) { byKey[books[i].k] = i; }
+    }
+    var qIndex = {};
+    for (i = 0; i < questions.length; i++) { qIndex[questions[i].id] = i; }
+
+    var applied = 0;
+    Object.keys(data).forEach(function (key) {
+      var row = byKey[key];
+      if (row === undefined) { return; }      // book no longer shipped
+      var cells = data[key] || {};
+      Object.keys(cells).forEach(function (qid) {
+        var q = qIndex[qid];
+        var p = cells[qid];
+        if (q === undefined || typeof p !== 'number') { return; }
+        if (p < 0 || p > 1) { return; }        // refuse a malformed value
+        pYesCache[q][row] = p;
+        hCache[q][row] = binaryEntropy(p);
+        applied++;
+      });
+    });
+    if (window.console && applied) {
+      console.info('mind reader: ' + applied + ' learned cell(s) applied');
     }
   }
 
@@ -1102,13 +1156,61 @@ sitemap: false
       });
       html += '</ul>';
     }
+    // The one place anything leaves this page, and only on a tap. The
+    // button says what it does before it does it — a player who does not
+    // want to share simply does not press it, and nothing is sent.
     html += '<div class="mr-row" style="margin-top:16px">' +
-      '<button class="mr-btn mr-btn--primary" id="mr-again">Play again</button>' +
-      '<button class="mr-btn" id="mr-back-list">Back</button></div>';
+      '<button class="mr-btn mr-btn--primary" id="mr-teach">Teach it this book</button>' +
+      '<button class="mr-btn" id="mr-again">Play again</button>' +
+      '<button class="mr-btn" id="mr-back-list">Back</button></div>' +
+      '<p class="mr-result-note" id="mr-teach-note" style="margin-top:10px">' +
+      'Sends this book and your answers about it, so the game learns. ' +
+      'Nothing else, and nothing unless you tap it.</p>';
 
     el.card.innerHTML = html;
     byId('mr-again').addEventListener('click', start);
     byId('mr-back-list').addEventListener('click', renderGiveUp);
+    byId('mr-teach').addEventListener('click', function () {
+      teach(bookIndex, byId('mr-teach'), byId('mr-teach-note'));
+    });
+  }
+
+  // ── the learning loop ──────────────────────────────────────────────────
+  // Everything the player answered, filed against the book they say they
+  // meant. Character questions are dropped: they are per-token and not part
+  // of the shipped question list the server counts against.
+  //
+  // Fire-and-forget by design. The submission is a courtesy, its result
+  // changes nothing for this player, and a failed one must never surface as
+  // an error — so the button reports "thanks" either way and the reason is
+  // left to the server's logs.
+  var API = 'https://bookhub-api-hnv7.onrender.com';
+
+  function teach(bookIndex, button, note) {
+    button.disabled = true;
+    button.textContent = 'Thanks — noted';
+    if (note) {
+      note.textContent = 'Sent. It takes a few games on the same book ' +
+        'before the game changes its mind, on purpose.';
+    }
+    var answers = [];
+    for (var i = 0; i < history.length; i++) {
+      var h = history[i];
+      if (h.q < 0) { continue; }
+      answers.push([questions[h.q].id, h.answer]);
+    }
+    if (!answers.length || !books || !books[bookIndex]) { return; }
+    try {
+      fetch(API + '/akinator/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          book: books[bookIndex].k,
+          question_hash: meta.question_hash,
+          answers: answers
+        })
+      }).catch(function () {});
+    } catch (e) { /* nothing here is worth interrupting the player for */ }
   }
 
   // ── helpers ────────────────────────────────────────────────────────────
