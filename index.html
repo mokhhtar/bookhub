@@ -615,7 +615,7 @@ function fillSearch(title) {
             <h3>${a.wikipedia_url ? `<a href="${esc(a.wikipedia_url)}" target="_blank" rel="noopener">${esc(a.name)}</a>` : esc(a.name)}</h3>
             ${a.born_year ? `<p class="daily-meta">Born on this day, ${esc(a.born_year)}</p>` : ""}
             ${a.blurb ? `<p style="margin-top:10px;">${esc(a.blurb)}</p>` : ""}
-            ${a.notable_book ? `<p style="margin-top:8px;">Best known for <a href="${bookLink(a.notable_book)}" style="color:var(--accent);font-weight:600;">${esc(a.notable_book.title)}</a></p>` : ""}
+            ${a.notable_book ? `<p style="margin-top:8px;">Best known for <a href="${esc(a.notable_book.book_url || bookLink(a.notable_book))}" style="color:var(--accent);font-weight:600;">${esc(a.notable_book.title)}</a></p>` : ""}
           </div>
         </div>
       </article>`);
