@@ -24,7 +24,7 @@ ratings: {"source": "goodreads", "average": 4.17, "count": 375452, "url": "https
 themes: ["Fate and free will", "The nature of history", "Family life", "War and peace"]
 reading_level: "Adult / General Fiction"
 free_ebook: {"v": 3, "source": "project_gutenberg", "gutenberg_id": "2600", "page_url": "https://www.gutenberg.org/ebooks/2600", "read_url": "https://www.gutenberg.org/ebooks/2600.html.images", "epub_url": "https://www.gutenberg.org/ebooks/2600.epub3.images", "txt_url": "https://www.gutenberg.org/ebooks/2600.txt.utf-8", "pdf_url": null}
-quotes: {"v": 10, "texts": ["Croesus said to Cambyses; That peace was better than war; because in peace the sons did bury their fathers, but in wars the fathers did bury their sons.", "If we are serious about peace, then we must work for it as ardently, seriously, continuously, carefully, and bravely as we have ever prepared for war.", "He who did well in war just earns the rightTo begin doing well in peace.", "In peace the cry is for mobility, in war for weight of shell.", "Peace without Justice is a low estate,—A coward cringing to an iron Fate!But Peace through Justice is the great ideal,—We'll pay the price of war to make it real."], "speakers": ["", "2003", "", "1925", "28 December 2013"], "source": "wikiquote", "source_url": "https://en.wikiquote.org/wiki/War_and_peace", "license": "CC BY-SA"}
+quotes: null
 quiz: null
 quiz_source: ""
 nyt: null
