@@ -84,7 +84,7 @@ description: "Free AI book guides that stay grounded: deep summaries, characters
   <div class="container">
     <ul class="hero-facts">
       <li><b>20M+</b> books searchable</li>
-      <li><b>Four</b> free tools</li>
+      <li><b>Six</b> free tools</li>
       <li><b>Every</b> quiz quote verified</li>
       <li><b>No account</b> needed</li>
     </ul>
@@ -383,7 +383,7 @@ catalogue grew. The cap has to live on the loop below. {%- endcomment -%}
     <div class="section-header">
       <div>
         <h2 id="tools-heading" class="section-title">All tools</h2>
-        <p class="section-sub">Four of them, all free, none behind an account.</p>
+        <p class="section-sub">Six of them, all free, none behind an account.</p>
       </div>
     </div>
 
@@ -428,6 +428,35 @@ catalogue grew. The cap has to live on the loop below. {%- endcomment -%}
         </div>
         <h3 class="tool-card-title">Advanced Search</h3>
         <p class="tool-card-desc">Filter the catalog by genre, year, language, and rating.</p>
+        <span class="tool-card-arrow" aria-hidden="true">↗</span>
+      </a>
+
+      {%- comment -%} Games and the reader were missing from this index long
+      after both shipped and long after the footer started listing them — the
+      grid claimed to be "all tools" while being the only place on the site
+      that had not heard of them. They are added as a pair rather than one at
+      a time because .tools-grid is two columns: a fifth card alone would
+      leave the last row half-ruled. Both link to the hub, not to today's
+      puzzle or one book — the bands below and above make those pitches; this
+      grid is the index. {%- endcomment -%}
+      {%- comment -%} "Daily", not a second "New": PDF Chat already carries the
+      one New badge, and two of them in a six-card grid means neither reads as
+      one. The game's own band below is where it gets its pitch. {%- endcomment -%}
+      <a href="{{ '/games/' | relative_url }}" class="tool-card" role="listitem">
+        <div class="tool-card-top">
+          <span class="tool-badge">Daily</span>
+        </div>
+        <h3 class="tool-card-title">Daily Games</h3>
+        <p class="tool-card-desc">One book puzzle a day, the same for everyone, every clue taken from the real text.</p>
+        <span class="tool-card-arrow" aria-hidden="true">↗</span>
+      </a>
+
+      <a href="{{ '/read-free/' | relative_url }}" class="tool-card" role="listitem">
+        <div class="tool-card-top">
+          <span class="tool-badge">Public domain</span>
+        </div>
+        <h3 class="tool-card-title">Read Free Classics</h3>
+        <p class="tool-card-desc">Read the full text of the classics in the browser. No account, no download.</p>
         <span class="tool-card-arrow" aria-hidden="true">↗</span>
       </a>
 
