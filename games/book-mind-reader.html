@@ -69,17 +69,57 @@ sitemap: false
   }
   .mr-guess-lead { font-size: var(--ui-body); color: var(--fg-muted); margin: 0 0 6px; }
   .mr-guess-title {
-    font-family: var(--font); font-size: var(--t-h2); font-weight: 600;
+    /* Was var(--t-h2), which this design system has never defined — the
+       scale is --t-label/body/lead/title/hero on the brand side and
+       --ui-sm/body/head/title on the product side, and the game is a
+       product surface. An undefined custom property with no fallback
+       makes the whole declaration invalid, so the guessed title was
+       silently inheriting the card's 15px body size. It read as the game
+       mumbling the one thing it exists to say. */
+    font-family: var(--font); font-size: var(--ui-title); font-weight: 600;
     color: var(--fg); line-height: 1.2; margin: 0 0 4px;
   }
   .mr-guess-author { font-size: var(--ui-body); color: var(--fg-muted); margin: 0 0 20px; }
   .mr-row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .mr-row--center { justify-content: center; }
+
+  /* ── the win ───────────────────────────────────────────────────────
+     The payoff used to render through .mr-guess above: the same grid,
+     the same 108px cover, as the screen that ASKS "is it…?". Winning
+     looked exactly like being questioned. So it gets its own shape —
+     the cover at the size of a cover rather than a thumbnail in a row,
+     centred, and the title in the reading serif, because by this point
+     it is a book and not a row in a table. */
+  .mr-win { text-align: center; padding: 4px 0; }
+  .mr-win-cover {
+    width: 100%; max-width: 240px; margin: 0 auto 24px;
+    box-shadow: 0 18px 38px -20px rgba(24, 28, 26, .5);
+  }
+  .mr-win-lead {
+    font-family: var(--font-ui); font-size: var(--ui-sm); color: var(--fg-faint);
+    text-transform: uppercase; letter-spacing: .05em; margin: 0 0 10px;
+  }
+  .mr-win-title {
+    font-family: var(--font); font-size: var(--t-title); font-weight: 600;
+    color: var(--fg); line-height: 1.15; margin: 0 0 6px;
+  }
+  .mr-win-author { font-size: var(--ui-body); color: var(--fg-muted); margin: 0 0 24px; }
+  @media (max-width: 480px) {
+    .mr-win-cover { max-width: 180px; }
+    .mr-win-title { font-size: var(--t-lead); }
+  }
   .mr-btn {
     min-height: 44px; padding: 0 20px; border-radius: var(--r);
     font-size: var(--ui-body); font-weight: 600; cursor: pointer;
     border: 1px solid var(--border); background: var(--bg); color: var(--fg);
   }
   .mr-btn:hover { border-color: var(--border-med); }
+  /* The win screen's guide link is the one .mr-btn that is an anchor, and
+     an anchor ignores the min-height a button honours. */
+  a.mr-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    text-decoration: none;
+  }
   .mr-btn--primary {
     background: var(--accent); border-color: var(--accent);
     color: var(--btn-on-accent, #F7F6F3);
@@ -962,13 +1002,37 @@ sitemap: false
   // `?default=false` makes a missing cover 404 rather than serve Open
   // Library's grey placeholder, and the load failure collapses the column
   // so the layout never shows an empty frame.
-  function coverHTML(book) {
+  //
+  // `-M` is Open Library's medium, about 180px wide. That is right for the
+  // 108px column the mid-game guess uses and visibly upscaled the moment a
+  // cover is shown at the size the win screen shows it, so the win asks for
+  // `-L` — the same cover, enough pixels. Only where it is needed: `-L` is
+  // several times the bytes, and the guess screen may render three of them
+  // in one game.
+  function coverHTML(book, opts) {
     if (!book || !book.c) { return ''; }
-    return '<img class="mr-cover" alt="" loading="lazy" src="' +
+    opts = opts || {};
+    return '<img class="mr-cover' + (opts.cls ? ' ' + opts.cls : '') +
+      '" alt="" loading="lazy" src="' +
       'https://covers.openlibrary.org/b/id/' + encodeURIComponent(book.c) +
-      '-M.jpg?default=false">';
+      (opts.large ? '-L' : '-M') + '.jpg?default=false">';
   }
 
+  // The game ends at a book, on a site made of guides to books, and the win
+  // screen used to dead-end at "Play again". ?q=&author= is the same pair
+  // the homepage search posts, so this lands on a real lookup rather than a
+  // slug that may never have been published.
+  var SUMMARY = '{{ "/summary" | relative_url }}';
+
+  function guideHref(book) {
+    var href = SUMMARY + '?q=' + encodeURIComponent(book.t || '');
+    if (book.a) { href += '&author=' + encodeURIComponent(book.a); }
+    return href;
+  }
+
+  // On the guess screen the class collapses the two-column grid; on the win
+  // screen the parent is .mr-win, where it does nothing and needs to — that
+  // layout is centred, so losing the image leaves nothing to close up.
   function wireCover() {
     var img = el.card.querySelector('.mr-cover');
     if (!img) { return; }
@@ -1013,7 +1077,7 @@ sitemap: false
       // A series keeps the representative volume's cover — it is the
       // one a player picturing the series will recognise.
       logVerdict('CORRECT');
-      renderWin(isSeries ? { t: target.name, a: book.a, c: book.c } : book);
+      renderWin(isSeries ? { t: target.name, a: book.a, c: book.c } : book, book);
     });
     byId('mr-no').addEventListener('click', function () {
       // Weaken, never erase: the player may have mis-answered earlier and
@@ -1035,18 +1099,24 @@ sitemap: false
     });
   }
 
-  function renderWin(book) {
+  // `display` is what the player recognises: for a series that is the series
+  // name, not whichever volume the engine happens to be holding. `real` is
+  // that volume, and the guide link uses it — handing the summarizer "Harry
+  // Potter" as a title is a worse question than handing it the book.
+  function renderWin(display, real) {
     el.count.textContent = 'Solved';
     el.pool.textContent = askedCount + ' questions';
-    var cover = coverHTML(book);
+    var cover = coverHTML(display, { large: true, cls: 'mr-win-cover' });
     el.card.innerHTML =
-      '<div class="mr-guess' + (cover ? '' : ' mr-guess--nocover') + '">' +
-      cover +
-      '<div>' +
-      '<p class="mr-guess-lead">Read your mind in ' + askedCount + ' questions.</p>' +
-      '<p class="mr-guess-title">' + escapeHTML(book.t) + '</p>' +
-      '<p class="mr-guess-author">' + escapeHTML(book.a || '') + '</p>' +
-      '<div class="mr-row"><button class="mr-btn mr-btn--primary" id="mr-again">Play again</button></div>' +
+      '<div class="mr-win">' + cover +
+      '<p class="mr-win-lead">Read your mind in ' + askedCount +
+        ' question' + (askedCount === 1 ? '' : 's') + '</p>' +
+      '<p class="mr-win-title">' + escapeHTML(display.t) + '</p>' +
+      '<p class="mr-win-author">' + escapeHTML(display.a || '') + '</p>' +
+      '<div class="mr-row mr-row--center">' +
+      '<a class="mr-btn mr-btn--primary" href="' +
+        escapeHTML(guideHref(real || display)) + '">Read the guide</a>' +
+      '<button class="mr-btn" id="mr-again">Play again</button>' +
       '</div></div>' + debugPanelHTML();
     wireCover();
     byId('mr-again').addEventListener('click', start);
