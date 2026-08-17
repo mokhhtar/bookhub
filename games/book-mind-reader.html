@@ -36,6 +36,7 @@ sitemap: false
   .mr-answers { display: flex; flex-direction: column; gap: 8px; }
   .mr-answer {
     min-height: 44px; padding: 0 16px; text-align: left;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
     border: 1px solid var(--border); border-radius: var(--r);
     background: var(--bg); color: var(--fg); font-size: var(--ui-body);
     cursor: pointer; transition: border-color .15s var(--ease-out),
@@ -43,7 +44,21 @@ sitemap: false
   }
   .mr-answer:hover { border-color: var(--border-med); background: var(--bg-subtle); }
   .mr-answer--yes:hover { border-color: var(--accent); }
+  /* All five were the same rectangle, so the two answers a player actually
+     reaches for sat at the same weight as the three hedges between them —
+     which exist for honesty, not for traffic. One step of presence, spent
+     on weight rather than colour, since colour here is the accent's job. */
+  .mr-answer--firm { border-color: var(--border-med); font-weight: 600; }
   @media (prefers-reduced-motion: reduce) { .mr-answer { transition: none; } }
+
+  .mr-key {
+    font-family: var(--font-mono); font-size: var(--ui-sm); color: var(--fg-faint);
+    border: 1px solid var(--border); border-radius: 4px; padding: 1px 6px;
+    flex: 0 0 auto;
+  }
+  /* On a touch screen this is a label for a key the player has no way to
+     press. */
+  @media (hover: none), (pointer: coarse) { .mr-key { display: none; } }
 
   .mr-controls {
     display: flex; gap: 12px; align-items: center; margin-top: 16px;
@@ -272,12 +287,15 @@ sitemap: false
   var MAX_QUESTIONS = 30;
   var MAX_GUESSES = 3;
 
+  // `hint` is the key shown on the button and is also its position: the
+  // keyboard handler maps 1-5 straight onto this array, so reordering the
+  // answers reorders the shortcuts with them and nothing has to agree twice.
   var ANSWERS = [
-    { key: 'yes',          label: 'Yes',            cls: 'mr-answer--yes' },
-    { key: 'probably_yes', label: 'Probably',       cls: '' },
-    { key: 'unknown',      label: "I don't know",   cls: '' },
-    { key: 'probably_no',  label: 'Probably not',   cls: '' },
-    { key: 'no',           label: 'No',             cls: '' }
+    { key: 'yes',          label: 'Yes',            cls: 'mr-answer--yes mr-answer--firm', hint: '1' },
+    { key: 'probably_yes', label: 'Probably',       cls: '',                               hint: '2' },
+    { key: 'unknown',      label: "I don't know",   cls: '',                               hint: '3' },
+    { key: 'probably_no',  label: 'Probably not',   cls: '',                               hint: '4' },
+    { key: 'no',           label: 'No',             cls: 'mr-answer--firm',                hint: '5' }
   ];
 
   var el = {
@@ -438,6 +456,33 @@ sitemap: false
   // Σ belief·H_b(p) per question and H_b(p) never changes with belief, so it
   // is computed alongside pYesCache and refreshed wherever that is.
   var hCache;
+
+  // ── keyboard ───────────────────────────────────────────────────────────
+  // A game whose whole interface is "pick one of five" and whose median run
+  // is 27 questions should not need 27 trips to the mouse.
+  //
+  // Registered once, on the document, rather than per render: renderQuestion
+  // runs every turn, and a listener added there would stack up and answer
+  // several questions on one press by the end of a game.
+  document.addEventListener('keydown', function (e) {
+    if (e.ctrlKey || e.metaKey || e.altKey) { return; }
+    var t = e.target;
+    // The give-up screen is a text box. "n" is a letter there.
+    if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) {
+      return;
+    }
+    // The only screen with these is a question, so a guess or a win ignores
+    // every key without needing to know it is a guess or a win.
+    var buttons = el.card.querySelectorAll('[data-answer]');
+    if (!buttons.length) { return; }
+    var idx = -1;
+    if (e.key >= '1' && e.key <= '5') { idx = +e.key - 1; }
+    else if (e.key === 'y' || e.key === 'Y') { idx = 0; }
+    else if (e.key === 'n' || e.key === 'N') { idx = ANSWERS.length - 1; }
+    if (idx < 0 || !buttons[idx]) { return; }
+    e.preventDefault();
+    buttons[idx].click();
+  });
 
   // ── loading ────────────────────────────────────────────────────────────
   // Only the matrix, the wording and the decoding rule are needed to ask
@@ -947,7 +992,11 @@ sitemap: false
                '<div class="mr-answers">';
     ANSWERS.forEach(function (a, i) {
       html += '<button class="mr-answer ' + a.cls + '" data-answer="' + i + '">' +
-              escapeHTML(a.label) + '</button>';
+              '<span>' + escapeHTML(a.label) + '</span>' +
+              // aria-hidden: the button's accessible name is the answer, not
+              // "Yes 1" — a screen reader user is not pressing this key.
+              '<span class="mr-key" aria-hidden="true">' + a.hint + '</span>' +
+              '</button>';
     });
     html += '</div><div class="mr-controls">' +
             '<button class="mr-link" id="mr-back"' + (history.length ? '' : ' disabled') +

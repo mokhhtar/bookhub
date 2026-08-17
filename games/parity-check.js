@@ -79,6 +79,12 @@ function makeSandbox() {
     document: {
       getElementById: el,
       createElement: el,
+      // The page binds its keyboard shortcuts on the document at load, so
+      // this is reached before a single question is asked. A no-op is the
+      // whole truth here: the harness drives the engine through its test
+      // hook and never presses a key, and the shortcut only forwards a
+      // click to a button that would have been clicked anyway.
+      addEventListener() {},
       body: { appendChild() {}, removeChild() {} }
     },
     fetch(url) {
