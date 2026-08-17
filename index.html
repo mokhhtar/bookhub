@@ -324,7 +324,58 @@ catalogue grew. The cap has to live on the loop below. {%- endcomment -%}
 </section>
 
 <!-- ═══════════════════════════════════════
+     READ FREE
+     The one thing a summary site normally can't offer: the book itself.
+     Server-rendered from the collection, so the count is always true and
+     there is nothing to load. Until now the reader was reachable only by
+     noticing a small sidebar button on one of these 33 pages.
+═══════════════════════════════════════ -->
+{%- assign readable_home = site.books | where_exp: "b", "b.free_ebook.source == 'project_gutenberg'" -%}
+{%- if readable_home.size > 0 -%}
+<section class="tools-section" aria-labelledby="readfree-heading"
+         style="padding:clamp(48px,6vw,72px) 0 0;">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <h2 id="readfree-heading" class="section-title">Read the whole book, free</h2>
+        <p class="section-sub">{{ readable_home.size }} public-domain classics you can read right here — no account, no download.</p>
+      </div>
+    </div>
+    <div style="display:flex;align-items:flex-start;gap:clamp(20px,4vw,44px);flex-wrap:wrap;
+                margin-top:20px;padding-top:22px;border-top:1px solid var(--rule);">
+      <p style="flex:1 1 320px;min-width:0;margin:0;color:var(--fg-muted);line-height:1.6;">
+        Every summary here sits beside the text it summarises. Read a chapter,
+        check a quote against the original, then come back — the quotes in our
+        guides are matched word-for-word against the very pages you can open.
+      </p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;flex:0 0 auto;">
+        {%- assign shelf = readable_home | sample: 4 -%}
+        {%- for b in shelf -%}
+          {%- if b.cover_url and b.cover_url != "" -%}
+          <a href="{{ b.url | relative_url }}" title="{{ b.title }}">
+            <img src="{{ b.cover_url }}" alt="Cover of {{ b.title }}" loading="lazy" width="62" height="93"
+                 style="width:62px;height:93px;object-fit:cover;border:1px solid var(--border);border-radius:var(--r);display:block;">
+          </a>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+    <a href="{{ '/read-free/' | relative_url }}" class="hero-search-btn"
+       style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;min-height:44px;margin-top:18px;">
+      Browse all {{ readable_home.size }} free books
+    </a>
+  </div>
+</section>
+{%- endif -%}
+
+<!-- ═══════════════════════════════════════
      TOOLS — ruled index, not a card grid
+     Sits here, after the content run (just summarized → today → NYT →
+     read free) rather than in the middle of it. The page used to go
+     content → tools → content → game, so a reader passed the product
+     shelf, went back to books, then hit the game as a third register.
+     Now the page reads in three blocks: what we have, what you can do
+     with it, and how to browse.
 ═══════════════════════════════════════ -->
 <section class="tools-section" aria-labelledby="tools-heading">
   <div class="container">
@@ -383,51 +434,6 @@ catalogue grew. The cap has to live on the loop below. {%- endcomment -%}
     </div>
   </div>
 </section>
-
-<!-- ═══════════════════════════════════════
-     READ FREE
-     The one thing a summary site normally can't offer: the book itself.
-     Server-rendered from the collection, so the count is always true and
-     there is nothing to load. Until now the reader was reachable only by
-     noticing a small sidebar button on one of these 33 pages.
-═══════════════════════════════════════ -->
-{%- assign readable_home = site.books | where_exp: "b", "b.free_ebook.source == 'project_gutenberg'" -%}
-{%- if readable_home.size > 0 -%}
-<section class="tools-section" aria-labelledby="readfree-heading"
-         style="padding:clamp(48px,6vw,72px) 0 0;">
-  <div class="container">
-    <div class="section-header">
-      <div>
-        <h2 id="readfree-heading" class="section-title">Read the whole book, free</h2>
-        <p class="section-sub">{{ readable_home.size }} public-domain classics you can read right here — no account, no download.</p>
-      </div>
-    </div>
-    <div style="display:flex;align-items:flex-start;gap:clamp(20px,4vw,44px);flex-wrap:wrap;
-                margin-top:20px;padding-top:22px;border-top:1px solid var(--rule);">
-      <p style="flex:1 1 320px;min-width:0;margin:0;color:var(--fg-muted);line-height:1.6;">
-        Every summary here sits beside the text it summarises. Read a chapter,
-        check a quote against the original, then come back — the quotes in our
-        guides are matched word-for-word against the very pages you can open.
-      </p>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;flex:0 0 auto;">
-        {%- assign shelf = readable_home | sample: 4 -%}
-        {%- for b in shelf -%}
-          {%- if b.cover_url and b.cover_url != "" -%}
-          <a href="{{ b.url | relative_url }}" title="{{ b.title }}">
-            <img src="{{ b.cover_url }}" alt="Cover of {{ b.title }}" loading="lazy" width="62" height="93"
-                 style="width:62px;height:93px;object-fit:cover;border:1px solid var(--border);border-radius:var(--r);display:block;">
-          </a>
-          {%- endif -%}
-        {%- endfor -%}
-      </div>
-    </div>
-    <a href="{{ '/read-free/' | relative_url }}" class="hero-search-btn"
-       style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;min-height:44px;margin-top:18px;">
-      Browse all {{ readable_home.size }} free books
-    </a>
-  </div>
-</section>
-{%- endif -%}
 
 <!-- ═══════════════════════════════════════
      DAILY GAME
