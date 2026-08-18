@@ -696,6 +696,14 @@ sitemap: false
       // Deferred, and deliberately not awaited.
       getJSON('books.json').then(function (b) {
         books = b;
+        // Renames the admin page has made, applied to the rows we just
+        // loaded so every later reader — the guess, the reveal, the series
+        // list — prints the corrected text without knowing this file
+        // exists. Chained behind books.json because it is keyed by work
+        // key, and applied BEFORE overrides.json for no reason other than
+        // arrival order: the two touch different fields and cannot
+        // conflict. A missing file is the normal case.
+        getJSON('display_overrides.json').then(applyDisplayNames).catch(noop);
         // Overrides are keyed by WORK KEY and need books.json to resolve a
         // key to a row, so they are chained here rather than fetched in
         // parallel. A missing file is the normal case until the first
@@ -869,6 +877,49 @@ sitemap: false
           // chooser scores refined cells with stale entropies
         }
       }
+    }
+  }
+
+  // What the reveal PRINTS, when the catalogue's own string is not what a
+  // player would recognise.
+  //
+  // 33 shipped rows carry a title in a script most of our readers cannot
+  // read, and some carry the author's name likewise — so the payoff line
+  // could read "you were thinking of 人間失格" to someone who was thinking
+  // of "No Longer Human". Nothing was wrong with the data; the wrong thing
+  // was showing the catalogue's spelling at the one moment that has to
+  // land.
+  //
+  // TOUCHES `t` AND `a` ONLY, and that is the whole safety argument. No
+  // question, no answer, no probability and no matrix column reads either
+  // field — they are strings the page prints. Patching them on the loaded
+  // rows means the guess screen, the win screen and the series list all
+  // pick the change up with no further code, exactly as if books.json had
+  // shipped that way. An override that could reach a scored field would be
+  // a correction in disguise, and corrections go through a rebuild.
+  //
+  // Keyed by work key, never by row index — the monthly rebuild re-sorts
+  // every index, and a rename keyed by position would eventually retitle
+  // some other book. Same rule as applyOverrides.
+  function applyDisplayNames(data) {
+    if (!data || !books) { return; }
+    var byKey = {}, i;
+    for (i = 0; i < books.length; i++) {
+      if (books[i].k) { byKey[books[i].k] = i; }
+    }
+    var applied = 0;
+    for (var key in data) {
+      if (!Object.prototype.hasOwnProperty.call(data, key)) { continue; }
+      var row = byKey[key];
+      if (row === undefined) { continue; }
+      var fix = data[key] || {};
+      // A blank override must never erase a real title into an empty
+      // reveal; only a non-empty string replaces anything.
+      if (typeof fix.t === 'string' && fix.t) { books[row].t = fix.t; applied++; }
+      if (typeof fix.a === 'string' && fix.a) { books[row].a = fix.a; applied++; }
+    }
+    if (applied && window.console && console.debug) {
+      console.debug('mind reader: ' + applied + ' display name(s) applied');
     }
   }
 
