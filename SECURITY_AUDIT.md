@@ -12,6 +12,52 @@ The strongest confirmed privacy issue is in the PDF-chat API: uploaded document 
 Fixes are worked one finding at a time, in the priority order at the bottom
 of this file. Each entry records what shipped and how it was verified.
 
+- **2026-08-18 — Mind-reader admin secret disclosed in a public CI log —
+  ROTATED AND CLOSED; no unauthorised writes occurred.** The shared secret
+  for the Worker→Render hop (`ADMIN_SECRET` / `AKINATOR_ADMIN_SECRET`) was
+  added in the Cloudflare dashboard as a plain **Variable** instead of a
+  **Secret**. Wrangler prints a config diff of local-vs-remote on every
+  deploy and that diff includes variable *values*; a Secret contributes
+  only its name. The value was therefore printed in full into
+  `bookhub-api`'s GitHub Actions log — a **public** repository, whose
+  Actions logs anyone can read.
+  **Why this was severe rather than cosmetic:** the secret does not only
+  guard the Access-protected admin page. `bookhub-api`'s
+  `/akinator/admin/*` endpoints live on the public Render URL and are
+  protected by that secret *alone* — Cloudflare Access is not in front of
+  Render. Anyone holding the leaked value could exclude books, append
+  rows to `matrix.bin`, and reword live questions while bypassing Access
+  entirely. Confirmed live during triage with a deliberately malformed
+  `work_key`, which returns `400` once the secret check has passed and
+  `403` when it has not: the leaked value returned **400**, proving it was
+  accepted. No write was performed by the probe.
+  **Remediated:** a new value was generated and set on Render, and the
+  Worker's Variable was deleted and re-added as a Secret. Re-probed after
+  the redeploy — old value **403**, new value **400**. Exposure window was
+  roughly 22 minutes.
+  **Damage assessment:** none. `mokhhtar/bookhub`'s commit history contains
+  no `mind reader admin:` commit, which is the only shape a write through
+  these endpoints can take; every artifact change in the window is
+  attributable.
+  **Two hardening changes shipped with the rotation** (`bookhub-api`
+  `6d50cca`). `preview_urls = false` is now stated explicitly in
+  `worker/akinator-admin/wrangler.toml`: the same deploy log showed the
+  setting flipping to `true`, and a preview URL
+  (`<version>-<worker>.<subdomain>.workers.dev`) is exactly the
+  unauthenticated route into the same script that `workers_dev = false`
+  exists to prevent — its default has changed three times across Wrangler
+  versions, so it must not be inferred. And the post-deploy guard no
+  longer accepts "any status that is not 200", which a Worker erroring on
+  every request would satisfy while guarding nothing; it now requires
+  either a redirect to `*.cloudflareaccess.com` or a `403` from the
+  Worker's own backstop, and fails on everything else including a redirect
+  pointing somewhere that is not Access. Nine cases unit-tested.
+  **The generalisable lesson**, recorded because the dropdown will be seen
+  again: on Cloudflare Workers a Variable is not a weaker Secret, it is a
+  different thing. It is printed in deploy logs, and it does **not**
+  survive deploys — the same wrong choice produced both a disclosure and,
+  on the following push, a silent outage.
+
 - **2026-08-04 — Auth-review follow-up (email enumeration via UI copy) —
   CLOSED, mostly by configuration.** **Firebase's Email enumeration
   protection is enabled on this project** (owner-confirmed), which closes the
