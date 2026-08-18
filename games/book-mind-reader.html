@@ -24,6 +24,82 @@ sitemap: false
   .mr-card {
     border: 1px solid var(--border); border-radius: var(--r);
     background: var(--bg); padding: 26px 24px;
+    flex: 1 1 auto; min-width: 0;
+  }
+
+  /* ── the character ────────────────────────────────────────────────────
+     A first-pass mascot, and built to be replaced: swapping it means
+     replacing the <svg> below and nothing else, as long as the new one
+     keeps the contract — a .mrc-face group holding five sibling groups
+     named .f-thinking / .f-closing / .f-guessing / .f-won / .f-lost. The
+     script only ever sets a class on the wrapper; it knows no geometry.
+
+     It lives OUTSIDE #mr-card on purpose. renderQuestion rewrites that
+     card's innerHTML every turn, and a character inside it would be a new
+     element each time — the idle animation would restart on every answer
+     and the move between poses would never animate, because a transition
+     needs an element that was already there. */
+  .mr-scene { display: flex; gap: 18px; align-items: flex-start; }
+  .mrc { width: 88px; height: 88px; flex: 0 0 auto; }
+  .mrc svg { width: 100%; height: 100%; display: block; overflow: visible; }
+  @media (max-width: 560px) { .mr-scene { gap: 12px; } .mrc { width: 56px; height: 56px; } }
+
+  .mrc-bob { animation: mrc-bob 4.2s ease-in-out infinite; }
+  .mrc-nod { transform-origin: 50px 78px; }
+  .mrc--nod .mrc-nod { animation: mrc-nod .5s cubic-bezier(.3, .8, .4, 1); }
+  .mrc-body {
+    transform-origin: 50px 62px;
+    transition: transform .45s cubic-bezier(.2, .7, .3, 1);
+  }
+  @keyframes mrc-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2px); } }
+  @keyframes mrc-nod {
+    0% { transform: rotate(0deg); } 35% { transform: rotate(5deg); }
+    70% { transform: rotate(-2deg); } 100% { transform: rotate(0deg); }
+  }
+
+  .mrc-line {
+    fill: none; stroke: currentColor; stroke-width: 2.6;
+    stroke-linecap: round; stroke-linejoin: round;
+  }
+  .mrc-cover { fill: var(--bg); }
+  .mrc-pagefill { fill: var(--bg-subtle); }
+  .mrc-spineFill { fill: var(--accent); opacity: .14; }
+  .mrc-ribbon {
+    fill: var(--accent); transform-origin: 64px 16px;
+    transition: transform .45s cubic-bezier(.2, .7, .3, 1);
+  }
+  .mrc-ink { fill: currentColor; }
+  .mrc-stroke {
+    fill: none; stroke: currentColor; stroke-width: 3;
+    stroke-linecap: round; stroke-linejoin: round;
+  }
+
+  /* Every face ships in the markup and is hidden; the state class reveals
+     its own. Opacity rather than morphing `d`: it keeps the five poses the
+     same character by construction, and Firefox does not animate `d`. */
+  .mrc-face > * { opacity: 0; }
+  .mrc--thinking .f-thinking, .mrc--closing .f-closing,
+  .mrc--guessing .f-guessing, .mrc--won .f-won, .mrc--lost .f-lost { opacity: 1; }
+
+  .mrc--thinking .mrc-body { transform: rotate(-3deg); }
+  .mrc--closing  .mrc-body { transform: rotate(2.5deg) translateX(1px); }
+  .mrc--guessing .mrc-body { transform: scale(1.05) translateY(-2px); }
+  .mrc--won      .mrc-body { transform: translateY(-3px); }
+  .mrc--lost     .mrc-body { transform: rotate(7deg) translateY(3px); }
+  .mrc--closing  .mrc-ribbon { transform: rotate(-7deg); }
+  .mrc--guessing .mrc-ribbon { transform: rotate(5deg); }
+  .mrc--lost     .mrc-ribbon { transform: rotate(-12deg); }
+
+  /* A blink is what stops a still drawing reading as an icon — and only on
+     the two states a player sits in long enough to see one. */
+  .mrc-eyes { transform-origin: 53px 49px; }
+  .mrc--thinking .f-thinking .mrc-eyes,
+  .mrc--closing  .f-closing  .mrc-eyes { animation: mrc-blink 6.5s infinite; }
+  @keyframes mrc-blink { 0%, 95%, 100% { transform: scaleY(1); } 97.5% { transform: scaleY(.08); } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mrc-bob, .mrc-eyes, .mrc--nod .mrc-nod { animation: none; }
+    .mrc-body, .mrc-ribbon { transition: none; }
   }
 
   .mr-question {
@@ -182,8 +258,59 @@ sitemap: false
         <span id="mr-pool"></span>
       </div>
 
-      <div class="mr-card" id="mr-card">
-        <p class="mr-status" id="mr-status">Loading…</p>
+      <div class="mr-scene">
+        {%- comment -%} Decorative: every state it shows is already stated in
+        words beside it ("Question 4", "Guess 1 of 3", "Solved"), so a screen
+        reader gains nothing from the drawing and loses nothing without it.
+        {%- endcomment -%}
+        <div class="mrc mrc--thinking" id="mr-char" aria-hidden="true">
+          <svg viewBox="0 0 96 96">
+            <g class="mrc-bob"><g class="mrc-nod"><g class="mrc-body">
+              <path class="mrc-pagefill mrc-line" d="M70 19 h6 a3 3 0 0 1 3 3 v52 a3 3 0 0 1 -3 3 h-6 z"/>
+              <rect class="mrc-cover mrc-line" x="22" y="15" width="52" height="66" rx="5"/>
+              <path class="mrc-spineFill" d="M25 15 h7 v66 h-7 a3 3 0 0 1 -3 -3 v-60 a3 3 0 0 1 3 -3 z"/>
+              <path class="mrc-line" d="M32 15 v66"/>
+              <path class="mrc-ribbon" d="M59 15 v16 l4.5 -3.5 l4.5 3.5 v-16 z"/>
+              <g class="mrc-face">
+                <g class="f-thinking">
+                  <g class="mrc-eyes">
+                    <circle class="mrc-ink" cx="45" cy="49" r="3.7"/>
+                    <circle class="mrc-ink" cx="61" cy="49" r="3.7"/>
+                  </g>
+                  <path class="mrc-stroke" d="M49 63 h8"/>
+                </g>
+                <g class="f-closing">
+                  <g class="mrc-eyes">
+                    <rect class="mrc-ink" x="41.2" y="47.2" width="7.6" height="4" rx="2"/>
+                    <rect class="mrc-ink" x="57.2" y="47.2" width="7.6" height="4" rx="2"/>
+                  </g>
+                  <path class="mrc-stroke" d="M48.5 63 q4.5 2.6 9 -1"/>
+                </g>
+                <g class="f-guessing">
+                  <g class="mrc-eyes">
+                    <circle class="mrc-ink" cx="45" cy="48.5" r="4.7"/>
+                    <circle class="mrc-ink" cx="61" cy="48.5" r="4.7"/>
+                  </g>
+                  <circle class="mrc-stroke" cx="53" cy="63.5" r="2.6"/>
+                </g>
+                <g class="f-won">
+                  <path class="mrc-stroke" d="M40.5 50.5 q4.5 -6 9 0"/>
+                  <path class="mrc-stroke" d="M56.5 50.5 q4.5 -6 9 0"/>
+                  <path class="mrc-stroke" d="M48 62 q5 5.5 10 0"/>
+                </g>
+                <g class="f-lost">
+                  <path class="mrc-stroke" d="M41 49 h8"/>
+                  <path class="mrc-stroke" d="M57 49 h8"/>
+                  <path class="mrc-stroke" d="M48.5 65 q4.5 -4 9 0"/>
+                </g>
+              </g>
+            </g></g></g>
+          </svg>
+        </div>
+
+        <div class="mr-card" id="mr-card">
+          <p class="mr-status" id="mr-status">Loading…</p>
+        </div>
       </div>
 
       <p class="mr-note">
@@ -302,8 +429,66 @@ sitemap: false
     card:   document.getElementById('mr-card'),
     status: document.getElementById('mr-status'),
     count:  document.getElementById('mr-count'),
-    pool:   document.getElementById('mr-pool')
+    pool:   document.getElementById('mr-pool'),
+    char:   document.getElementById('mr-char')
   };
+
+  // ── the character ──────────────────────────────────────────────────────
+  // DISPLAY ONLY. Nothing below is read by the engine: it changes no belief,
+  // skips no question and moves no threshold. It reads the belief the engine
+  // already holds and picks a face.
+  //
+  // The pose is bound to what the game believes rather than to the question
+  // number on purpose. A pose that advances every turn is a slideshow; a
+  // pose that tightens as the field tightens is the player's only view into
+  // an engine that otherwise says nothing until it guesses.
+  //
+  // These are display lines, not decisions: the engine never eliminates a
+  // book, it reweights, so "closing in" is an honest reading of the belief
+  // and not a promise. It is also why the character leans in instead of the
+  // page printing "412 books left" — that number would be a claim the engine
+  // cannot back.
+  //
+  // MEASURED, not guessed. The first number tried here was 0.25, and running
+  // the recorded parity trace through the real engine showed the leading book
+  // peaking at 0.2302 across twenty turns and never reaching it: the second
+  // face would have been a drawing nobody ever saw. On that trace the belief
+  // sits under 0.03 for twelve turns and then climbs — 0.076, 0.18, 0.23 —
+  // so 0.08 puts the change in the last third of the game, which is where it
+  // means something.
+  //
+  // ENTER and LEAVE differ because belief genuinely falls back: the same
+  // trace drops to 0.09 and 0.06 on turns 19 and 20 as later answers
+  // disagree. Leaning back out is honest, but a face that flips every turn
+  // reads as a glitch rather than as feedback, so it takes a real retreat to
+  // undo the lean.
+  var FACE_CLOSING_ENTER = 0.08;
+  var FACE_CLOSING_LEAVE = 0.04;
+  var face = 'thinking';
+
+  function setFace(next) {
+    face = next;
+    if (el.char) { el.char.className = 'mrc mrc--' + next; }
+  }
+
+  // Every answer gets a nod, so the turn the player just took is
+  // acknowledged even when the face itself does not change.
+  function nod() {
+    if (!el.char) { return; }
+    el.char.className = 'mrc mrc--' + face;
+    void el.char.offsetWidth;            // restart the animation
+    el.char.className = 'mrc mrc--' + face + ' mrc--nod';
+  }
+
+  function askingFace() {
+    if (!belief) { return 'thinking'; }
+    var top = 0;
+    for (var i = 0; i < belief.length; i++) {
+      if (belief[i] > top) { top = belief[i]; }
+    }
+    if (face === 'closing') { return top >= FACE_CLOSING_LEAVE ? 'closing' : 'thinking'; }
+    return top >= FACE_CLOSING_ENTER ? 'closing' : 'thinking';
+  }
 
   var meta, questions, states, books = null, chars = null, series = null;
   var belief, asked, history, askedCount, rejected, rejectedSeries, guessesMade;
@@ -986,6 +1171,7 @@ sitemap: false
   }
 
   function renderQuestion(qIndex) {
+    setFace(askingFace());
     el.count.textContent = 'Question ' + (askedCount + 1);
     el.pool.textContent = '';
     var html = '<p class="mr-question">' + escapeHTML(questionText(qIndex)) + '</p>' +
@@ -1007,6 +1193,7 @@ sitemap: false
 
     Array.prototype.forEach.call(el.card.querySelectorAll('[data-answer]'), function (btn) {
       btn.addEventListener('click', function () {
+        nod();
         var answer = ANSWERS[+btn.getAttribute('data-answer')].key;
         // `answer` is kept so the give-up screen can explain a miss: which
         // answers disagreed with what the table holds about the book the
@@ -1097,6 +1284,7 @@ sitemap: false
     if (!target) { return renderGiveUp(); }
     guessesMade++;
 
+    setFace('guessing');
     var isSeries = target.kind === 'series';
     var book = books[target.index];
     var title = isSeries ? target.name : book.t;
@@ -1153,6 +1341,7 @@ sitemap: false
   // that volume, and the guide link uses it — handing the summarizer "Harry
   // Potter" as a title is a worse question than handing it the book.
   function renderWin(display, real) {
+    setFace('won');
     el.count.textContent = 'Solved';
     el.pool.textContent = askedCount + ' questions';
     var cover = coverHTML(display, { large: true, cls: 'mr-win-cover' });
@@ -1176,6 +1365,7 @@ sitemap: false
   // book" obliges the game to admit when it does not know one, rather than
   // guessing wrong with confidence.
   function renderGiveUp() {
+    setFace('lost');
     el.count.textContent = 'Beaten';
     el.pool.textContent = '';
     el.card.innerHTML =
