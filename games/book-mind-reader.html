@@ -491,6 +491,9 @@ sitemap: false
   }
 
   var meta, questions, states, books = null, chars = null, series = null;
+  // Work keys the admin page has excluded, and whether that fetch has
+  // settled either way. Both start as "nothing, not yet decided".
+  var excluded = [], excludedReady = false;
   var belief, asked, history, askedCount, rejected, rejectedSeries, guessesMade;
   // Per-dimension interval implied by firm ladder answers, and how often
   // the player has said "don't know" about that dimension.
@@ -699,6 +702,19 @@ sitemap: false
         // drain has run.
         getJSON('overrides.json').then(applyOverrides).catch(noop);
       }).catch(noop);
+      // Books the owner has removed from the game by hand, from the admin
+      // page. Fetched in parallel rather than chained behind books.json,
+      // because the prior cannot be applied until BOTH have landed and
+      // waiting on them in series would delay the first guess for no reason.
+      //
+      // FAILING OPEN IS THE POINT of settling to an empty list on any error:
+      // a 404 is the normal case (nothing excluded yet), and a game that
+      // refused to start because one optional file was missing would be a
+      // far worse outcome than a game that briefly still knows a bad book.
+      getJSON('excluded.json')
+        .then(function (x) { excluded = Array.isArray(x) ? x : []; })
+        .catch(function () { excluded = []; })
+        .then(function () { excludedReady = true; });
       getJSON('characters.json').then(function (c) { chars = c; }).catch(noop);
       getJSON('series.json').then(function (s) { series = s; buildSeries(); }).catch(noop);
     })
@@ -808,14 +824,38 @@ sitemap: false
   }
 
   function applyPriorWhenReady() {
-    if (!books) { setTimeout(applyPriorWhenReady, 120); return; }
+    // `excludedReady`, not `excluded.length`: an empty list is the normal
+    // answer and must not be mistaken for "still loading", or the prior
+    // would be deferred forever on the overwhelmingly common path.
+    if (!books || !excludedReady) { setTimeout(applyPriorWhenReady, 120); return; }
     if (askedCount > 0) { return; }   // too late to change the prior fairly
     var total = 0, i;
+    // The admin page's exclusions, applied HERE and only here. A zero prior
+    // is permanent under a multiplicative update — nothing later can lift a
+    // book back off zero — so an excluded book cannot be guessed, cannot be
+    // named in a series reveal, and cannot absorb belief that belongs to a
+    // real answer. It stays in books.json and in the matrix, so every row
+    // index and every packed column keeps meaning exactly what it meant:
+    // this removes a book from the GAME without touching the artifact
+    // layout that akinator_sync.py's guards exist to protect.
+    var off = {};
+    for (i = 0; i < excluded.length; i++) { off[excluded[i]] = 1; }
     for (i = 0; i < belief.length; i++) {
       // log1p(popularity) + 1, as engine.py. Raw counts span 62,000 to
       // single digits; used linearly the top few books would be unbeatable.
-      belief[i] = Math.log1p(books[i].p || 0) + 1;
+      belief[i] = off[books[i].k] ? 0 : Math.log1p(books[i].p || 0) + 1;
       total += belief[i];
+    }
+    // Every book excluded would divide by zero and hand the engine a belief
+    // array of NaN, which fails as a game that guesses nothing rather than
+    // as an error anyone could read. Refuse the exclusions instead: an
+    // unplayable game is worse than a game with one bad book left in it.
+    if (total <= 0) {
+      total = 0;
+      for (i = 0; i < belief.length; i++) {
+        belief[i] = Math.log1p(books[i].p || 0) + 1;
+        total += belief[i];
+      }
     }
     for (i = 0; i < belief.length; i++) { belief[i] /= total; }
     // Refine the absent-state probabilities now that richness is known.
