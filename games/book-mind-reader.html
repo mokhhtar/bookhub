@@ -15,6 +15,40 @@ sitemap: false
 
   .mr-stage { max-width: 60ch; margin: 0 auto; }
 
+  /* The x-ray. Deliberately plain and slightly cramped: it is an instrument,
+     not part of the game's face, and it should never be mistaken for one. */
+  .mr-xray {
+    margin-top: var(--ui-lg, 20px); padding: 10px 12px;
+    border: 1px dashed var(--border, #d9d5cc); border-radius: 4px;
+    background: var(--bg-subtle, #faf9f6);
+    font: 12px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    color: var(--fg-muted, #5b625c);
+  }
+  .mr-xhead {
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 8px; font-weight: 600; color: var(--fg, #1d211e); margin-bottom: 7px;
+  }
+  .mr-xhead button {
+    font: inherit; font-weight: 500; background: none; cursor: pointer;
+    border: 1px solid var(--border, #d9d5cc); border-radius: 3px;
+    padding: 1px 7px; color: var(--fg-muted, #5b625c);
+  }
+  .mr-xq { padding: 1px 0; }
+  .mr-xq.on { color: var(--fg, #1d211e); font-weight: 600; }
+  .mr-xq span { font-weight: 400; color: var(--fg-faint, #8b918a); }
+  .mr-xnote { margin: 3px 0 7px; color: var(--fg-faint, #8b918a); }
+  .mr-xtable { width: 100%; border-collapse: collapse; }
+  .mr-xtable td { padding: 1px 5px 1px 0; vertical-align: top; }
+  .mr-xtable td.t {
+    width: 99%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    max-width: 0; color: var(--fg, #1d211e);
+  }
+  .mr-xtable td.p { text-align: right; font-variant-numeric: tabular-nums; }
+  .mr-xtable td.d { text-align: right; font-variant-numeric: tabular-nums; }
+  .mr-xtable .up { color: #2f6b4f; }
+  .mr-xtable .down { color: #a3342a; }
+  .mr-xtable .flat { color: var(--fg-faint, #8b918a); }
+
   .mr-meta {
     display: flex; justify-content: space-between; align-items: baseline;
     font-size: var(--ui-sm); color: var(--fg-faint);
@@ -880,6 +914,129 @@ sitemap: false
     }
   }
 
+  // ── the x-ray ──────────────────────────────────────────────────────────
+  // What the game is thinking, while it thinks it. Off unless asked for.
+  //
+  // WHY IT EXISTS. Every real defect in this game was found by the owner
+  // playing it and noticing something wrong AFTERWARDS — a duplicate
+  // question, a maintenance category claiming magic, a book that could not
+  // be beaten. Each one then cost a session of command-line archaeology to
+  // reproduce. The belief is right here in the browser, recomputed every
+  // turn; not showing it was the only reason those diagnoses were slow.
+  //
+  // IT SENDS NOTHING AND IT IS NOT A SECURITY BOUNDARY, and those are two
+  // different statements that both matter. Nothing here is a secret: the
+  // whole engine, the matrix and every belief are already in the page for
+  // anyone who opens the console — this only formats what is there. So the
+  // switch is a URL parameter, and it is honest to say it protects nothing.
+  // What it does protect is the GAME: a player who saw the running
+  // candidate list would never experience being read, so it must be off by
+  // default and stay off for anyone who did not deliberately turn it on.
+  // It is remembered in localStorage so "play again" does not lose it, and
+  // ?x-ray=0 turns it back off.
+  var xray = false;
+  try {
+    var xq = /[?&]x-ray=([01])/.exec(location.search);
+    if (xq) { localStorage.setItem('mr-xray', xq[1]); }
+    xray = localStorage.getItem('mr-xray') === '1';
+  } catch (e) { xray = false; }   // private mode: simply stays off
+
+  var xrayEl = null;
+
+  function xrayPanel() {
+    if (xrayEl) { return xrayEl; }
+    xrayEl = document.createElement('div');
+    xrayEl.className = 'mr-xray';
+    var stage = el.card && el.card.parentNode;
+    if (!stage) { return null; }
+    stage.appendChild(xrayEl);
+    return xrayEl;
+  }
+
+  // Shannon entropy of the belief itself, in bits — one number for "how far
+  // from knowing" the game is. It falls monotonically as answers land, so a
+  // turn where it does NOT fall is a question that bought nothing, which is
+  // the thing worth seeing live.
+  function beliefEntropy() {
+    var h = 0;
+    for (var i = 0; i < belief.length; i++) {
+      var b = belief[i];
+      if (b > 0) { h -= b * Math.log(b); }
+    }
+    return h / Math.LN2;
+  }
+
+  function renderXray(qIndex) {
+    if (!xray) { return; }
+    var host = xrayPanel();
+    if (!host || !books) { return; }
+
+    var prev = history.length ? history[history.length - 1].belief : null;
+    var order = [], i;
+    for (i = 0; i < belief.length; i++) { order.push(i); }
+    order.sort(function (a, b) { return belief[b] - belief[a]; });
+
+    var alive = 0;
+    for (i = 0; i < belief.length; i++) { if (belief[i] > 1e-6) { alive++; } }
+
+    // What the chooser saw. Recomputed through the same function it uses,
+    // so this cannot claim a gain the engine did not act on.
+    var lines = '';
+    if (qIndex !== null && qIndex !== undefined && pYesCache) {
+      var s = scoreQuestions(), nq = meta.questions, ranked = [];
+      for (var q = 0; q < nq; q++) {
+        if (asked[q]) { continue; }
+        var p = s.totals[q];
+        if (p <= 0.02 || p >= 0.98) { continue; }
+        ranked.push({ q: q, p: p, gain: binaryEntropy(p) - s.condH[q] });
+      }
+      ranked.sort(function (a, b) { return b.gain - a.gain; });
+      lines = ranked.slice(0, 3).map(function (r, n) {
+        return '<div class="mr-xq' + (n === 0 ? ' on' : '') + '">' +
+          escapeHTML(questions[r.q].id) + ' <span>gain ' + r.gain.toFixed(4) +
+          ' · splits ' + (r.p * 100).toFixed(1) + '%</span></div>';
+      }).join('');
+      if (ranked.length > 1) {
+        var margin = ranked[0].gain - ranked[1].gain;
+        // A near-tie means the choice was arbitrary, so a bad question here
+        // is a wording or data problem, not a chooser problem.
+        lines += '<div class="mr-xnote">margin over runner-up: ' +
+          margin.toFixed(5) + (margin < 1e-4 ? ' — effectively a tie' : '') + '</div>';
+      }
+    }
+
+    var rows = order.slice(0, 8).map(function (idx) {
+      var b = books[idx], p = belief[idx];
+      var delta = prev ? p - prev[idx] : 0;
+      var arrow = !prev ? '' : delta > 1e-9
+        ? '<span class="up">+' + (delta * 100).toFixed(2) + '</span>'
+        : delta < -1e-9
+          ? '<span class="down">' + (delta * 100).toFixed(2) + '</span>'
+          : '<span class="flat">·</span>';
+      return '<tr><td>' + (idx + 1) + '</td>' +
+        '<td class="t">' + escapeHTML(b.t || '') + '</td>' +
+        '<td>r' + (b.r || 0) + '</td>' +
+        '<td class="p">' + (p * 100).toFixed(2) + '%</td>' +
+        '<td class="d">' + arrow + '</td></tr>';
+    }).join('');
+
+    host.innerHTML =
+      '<div class="mr-xhead">x-ray · turn ' + (askedCount + 1) +
+      ' · ' + alive + ' alive · entropy ' + beliefEntropy().toFixed(2) + ' bits' +
+      '<button type="button" id="mr-xoff">turn off</button></div>' +
+      lines +
+      '<table class="mr-xtable"><tbody>' + rows + '</tbody></table>';
+    var off = byId('mr-xoff');
+    if (off) {
+      off.addEventListener('click', function () {
+        xray = false;
+        try { localStorage.setItem('mr-xray', '0'); } catch (e) {}
+        host.remove();
+        xrayEl = null;
+      });
+    }
+  }
+
   // What the reveal PRINTS, when the catalogue's own string is not what a
   // player would recognise.
   //
@@ -1173,18 +1330,31 @@ sitemap: false
   // H_b(p_i) does not depend on belief, so it lives in hCache/charH and this
   // stays one allocation-free pass accumulating two numbers per question.
 
-  function nextQuestion() {
-    var nq = meta.questions, best = null, bestGain = -1, i, q;
-
+  // The two sums the chooser needs, in one allocation-free pass: Σ b·p per
+  // question and Σ b·H_b(p) per question. Extracted so the x-ray panel can
+  // show what the chooser saw without keeping a second copy of this
+  // arithmetic that could drift from it. A pure extraction — the caller
+  // below does exactly what it did inline, which parity-check.js re-proves
+  // against engine.py on every run.
+  function scoreQuestions() {
+    var nq = meta.questions;
     var totals = new Float64Array(nq), condH = new Float64Array(nq);
-    for (i = 0; i < belief.length; i++) {
+    for (var i = 0; i < belief.length; i++) {
       var b = belief[i];
       if (b <= 0) { continue; }
-      for (q = 0; q < nq; q++) {
+      for (var q = 0; q < nq; q++) {
         totals[q] += b * pYesCache[q][i];
         condH[q] += b * hCache[q][i];
       }
     }
+    return { totals: totals, condH: condH };
+  }
+
+  function nextQuestion() {
+    var nq = meta.questions, best = null, bestGain = -1, i, q;
+
+    var scored = scoreQuestions();
+    var totals = scored.totals, condH = scored.condH;
     for (q = 0; q < nq; q++) {
       if (asked[q]) { continue; }
       var p = totals[q];
@@ -1281,6 +1451,7 @@ sitemap: false
             '<button class="mr-link" id="mr-restart">Start over</button>' +
             '</div>';
     el.card.innerHTML = html;
+    renderXray(qIndex);
 
     Array.prototype.forEach.call(el.card.querySelectorAll('[data-answer]'), function (btn) {
       btn.addEventListener('click', function () {
