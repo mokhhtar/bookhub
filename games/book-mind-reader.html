@@ -351,10 +351,11 @@ sitemap: false
         The whole game runs in this page, from a table of books built from
         Open Library and Wikidata. It knows about 5,000 of the most-read
         books, so it will not know every book, and when it does not it says
-        so rather than guessing. <strong>Playing sends nothing.</strong> If
-        it fails and you choose to tell it which book you meant, that one
-        answer — the book, and what you answered about it — is shared so
-        the game can learn. Nothing else, and only if you tap it.
+        so rather than guessing. <strong>Playing sends nothing.</strong> When
+        it fails, there are buttons that let you tell it what it got wrong —
+        which book you meant, or that a year or a title is wrong. Each one
+        says exactly what it sends before you tap it, and nothing goes
+        anywhere unless you do. No account, and nothing about you.
       </p>
     </div>
 
@@ -1636,6 +1637,7 @@ sitemap: false
       '<input class="mr-search" id="mr-search" type="text" autocomplete="off" ' +
       'placeholder="Start typing a title…" aria-label="The book you were thinking of">' +
       '<ul class="mr-results" id="mr-results"></ul>' +
+      '<div id="mr-suggest-box"></div>' +
       '<div class="mr-row" style="margin-top:16px">' +
       '<button class="mr-btn mr-btn--primary" id="mr-again">Play again</button></div>' +
       debugPanelHTML();
@@ -1643,9 +1645,20 @@ sitemap: false
     wireDebugPanel();
 
     var input = byId('mr-search'), out = byId('mr-results');
+    var box = byId('mr-suggest-box');
+
+    // Delegated, because the "no matches" note is rebuilt on every keystroke
+    // and a listener bound to it would be thrown away with it.
+    out.addEventListener('click', function (e) {
+      if (e.target && e.target.id === 'mr-offer-missing') {
+        renderMissingBookForm(box, input.value.trim());
+      }
+    });
+
     input.addEventListener('input', function () {
       var q = normalize(input.value);
       out.innerHTML = '';
+      box.innerHTML = '';
       if (q.length < 3 || !books) { return; }
       var hits = [], i;
       for (i = 0; i < books.length && hits.length < 8; i++) {
@@ -1654,8 +1667,12 @@ sitemap: false
         if (normalize(books[i].t).indexOf(q) >= 0) { hits.push(i); }
       }
       if (!hits.length) {
+        // The most valuable thing a reader can tell us, and until now there
+        // was nowhere to say it: the shipped list simply does not have it.
         out.innerHTML = '<li class="mr-result mr-result-note">' +
-          'Not in the 5,000 books this game knows — which is why it could not guess it.</li>';
+          'Not in the 5,000 books this game knows — which is why it could not ' +
+          'guess it. <button class="mr-btn" id="mr-offer-missing" ' +
+          'style="margin-top:10px">Tell it about this book</button></li>';
         return;
       }
       hits.forEach(function (h) {
@@ -1732,17 +1749,25 @@ sitemap: false
     // want to share simply does not press it, and nothing is sent.
     html += '<div class="mr-row" style="margin-top:16px">' +
       '<button class="mr-btn mr-btn--primary" id="mr-teach">Teach it this book</button>' +
+      '<button class="mr-btn" id="mr-wrong">Something about it is wrong</button>' +
       '<button class="mr-btn" id="mr-again">Play again</button>' +
       '<button class="mr-btn" id="mr-back-list">Back</button></div>' +
       '<p class="mr-result-note" id="mr-teach-note" style="margin-top:10px">' +
       'Sends this book and your answers about it, so the game learns. ' +
-      'Nothing else, and nothing unless you tap it.</p>';
+      'Nothing else, and nothing unless you tap it.</p>' +
+      '<div id="mr-suggest-box"></div>';
 
     el.card.innerHTML = html;
     byId('mr-again').addEventListener('click', start);
     byId('mr-back-list').addEventListener('click', renderGiveUp);
     byId('mr-teach').addEventListener('click', function () {
       teach(bookIndex, byId('mr-teach'), byId('mr-teach-note'));
+    });
+    // The counts "Teach it this book" files cannot express a wrong FACT —
+    // no number of answers about a question can say "1948, not 2024". This
+    // is the other door, and it opens onto a queue a person reads.
+    byId('mr-wrong').addEventListener('click', function () {
+      renderRowProblemForm(byId('mr-suggest-box'), b);
     });
   }
 
@@ -1782,6 +1807,156 @@ sitemap: false
         })
       }).catch(function () {});
     } catch (e) { /* nothing here is worth interrupting the player for */ }
+  }
+
+  // ── the other half: what "Teach it this book" structurally cannot say ──
+  //
+  // `teach()` above sends books[bookIndex].k — a key picked from the list
+  // this page shipped. It carries "the table is wrong about a book that is
+  // in the game" perfectly, and it cannot carry the most valuable thing a
+  // reader has: the book was never in the game at all. Same for a year that
+  // is wrong and a title in a script they cannot read.
+  //
+  // UNLIKE teach(), THIS REPORTS BACK. A submission is a courtesy whose
+  // result changes nothing for the player, so teach() says "thanks" either
+  // way and swallows the outcome. This is a form they filled in and are
+  // waiting on — "we could not find that book" is the most useful thing we
+  // can say, and hiding it would leave them believing a typo was recorded.
+  // The server answers a real status for exactly this reason.
+  function sendSuggestion(payload, button, note, okText) {
+    button.disabled = true;
+    var was = button.textContent;
+    button.textContent = 'Sending…';
+    note.textContent = '';
+    fetch(API + '/akinator/suggest', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).then(function (r) {
+      return r.json().catch(function () { return {}; }).then(function (d) {
+        return { ok: r.ok, data: d };
+      });
+    }).then(function (res) {
+      if (res.ok) {
+        button.textContent = 'Thank you — noted';
+        note.textContent = okText;
+        return;
+      }
+      // The server's own words. It distinguishes "we looked and it isn't
+      // there" from "we could not look", and telling a reader their real
+      // book does not exist when the catalogue was merely down is the one
+      // thing this must never do — so the message is passed through rather
+      // than flattened into a generic failure.
+      button.disabled = false;
+      button.textContent = was;
+      note.textContent = (res.data && res.data.detail)
+        ? res.data.detail
+        : 'That did not go through. You can try again in a moment.';
+    }).catch(function () {
+      button.disabled = false;
+      button.textContent = was;
+      note.textContent = 'That did not go through — you may be offline. ' +
+        'Nothing was sent.';
+    });
+  }
+
+  // The book the reader was thinking of is not in the game at all. Offered
+  // only after the search has come up empty, with what they typed carried
+  // over so they are not asked for it twice.
+  function renderMissingBookForm(host, typedTitle) {
+    host.innerHTML =
+      '<p class="mr-guess-lead" style="margin-top:18px">Tell it about this book</p>' +
+      '<p class="mr-result-note">It is checked against Google Books and Open ' +
+      'Library before anyone sees it, so the spelling matters more than usual.</p>' +
+      '<input class="mr-search" id="mr-sg-title" type="text" ' +
+        'style="margin-top:10px" placeholder="Title" aria-label="Title" value="' +
+        escapeHTML(typedTitle) + '">' +
+      '<input class="mr-search" id="mr-sg-author" type="text" ' +
+        'style="margin-top:8px" placeholder="Author (helps it find the right one)" ' +
+        'aria-label="Author">' +
+      '<div class="mr-row" style="margin-top:12px">' +
+      '<button class="mr-btn mr-btn--primary" id="mr-sg-send">Send this title and author</button>' +
+      '</div>' +
+      '<p class="mr-result-note" id="mr-sg-note" style="margin-top:10px">' +
+      'Sends only the title and author you typed. Not your answers, and ' +
+      'nothing about you.</p>';
+    byId('mr-sg-send').addEventListener('click', function () {
+      var title = byId('mr-sg-title').value.trim();
+      var note = byId('mr-sg-note');
+      if (!title) { note.textContent = 'A title is needed.'; return; }
+      sendSuggestion({
+        reason: 'missing',
+        title: title,
+        author: byId('mr-sg-author').value.trim()
+      }, byId('mr-sg-send'), note,
+        'Queued for review. A person checks every one of these before the ' +
+        'game changes, so it will not appear today.');
+    });
+  }
+
+  // Something is wrong with a row that IS in the game. Two shapes, because
+  // these are the two the game can actually act on: a year feeds six era
+  // questions, and a title in a script the reader cannot read makes the
+  // reveal meaningless even when the guess was right.
+  function renderRowProblemForm(host, book) {
+    host.innerHTML =
+      '<p class="mr-guess-lead" style="margin-top:18px">What is wrong with it?</p>' +
+      '<div class="mr-row">' +
+      '<button class="mr-btn" id="mr-sg-year">The year is wrong</button>' +
+      '<button class="mr-btn" id="mr-sg-title-btn">The title is hard to read</button>' +
+      '</div><div id="mr-sg-form"></div>';
+
+    var form = byId('mr-sg-form');
+    byId('mr-sg-year').addEventListener('click', function () {
+      form.innerHTML =
+        '<p class="mr-result-note" style="margin-top:12px">It is listed as ' +
+        (book.y ? 'first published in ' + escapeHTML(String(book.y)) + '.'
+                : 'having no known year.') +
+        ' The year the book first appeared, not the edition you own — six of ' +
+        'the game\'s questions are about when it was written.</p>' +
+        '<input class="mr-search" id="mr-sg-y" type="text" inputmode="numeric" ' +
+          'style="margin-top:8px;max-width:160px" placeholder="Year" aria-label="Year">' +
+        '<div class="mr-row" style="margin-top:12px">' +
+        '<button class="mr-btn mr-btn--primary" id="mr-sg-ysend">Send this year</button></div>' +
+        '<p class="mr-result-note" id="mr-sg-note" style="margin-top:10px">' +
+        'Sends this book and that year. Nothing else.</p>';
+      byId('mr-sg-ysend').addEventListener('click', function () {
+        var note = byId('mr-sg-note');
+        var raw = byId('mr-sg-y').value.trim();
+        if (!/^\d{1,4}$/.test(raw)) {
+          note.textContent = 'A year, digits only.'; return;
+        }
+        sendSuggestion({ reason: 'wrong_year', work_key: book.k,
+                         year: parseInt(raw, 10) },
+          byId('mr-sg-ysend'), note,
+          'Queued for review. A person checks it against the catalogue first.');
+      });
+    });
+    byId('mr-sg-title-btn').addEventListener('click', function () {
+      form.innerHTML =
+        '<p class="mr-result-note" style="margin-top:12px">The game prints the ' +
+        'title the catalogue holds, and for some books that is a script you ' +
+        'may not read. What do you call it?</p>' +
+        '<input class="mr-search" id="mr-sg-t" type="text" style="margin-top:8px" ' +
+          'placeholder="Title you would recognise" aria-label="Readable title">' +
+        '<input class="mr-search" id="mr-sg-a" type="text" style="margin-top:8px" ' +
+          'placeholder="Author (optional)" aria-label="Author">' +
+        '<div class="mr-row" style="margin-top:12px">' +
+        '<button class="mr-btn mr-btn--primary" id="mr-sg-tsend">Send this title</button></div>' +
+        '<p class="mr-result-note" id="mr-sg-note" style="margin-top:10px">' +
+        'Sends this book and that title. It is looked up in a catalogue ' +
+        'before anyone sees it.</p>';
+      byId('mr-sg-tsend').addEventListener('click', function () {
+        var note = byId('mr-sg-note');
+        var t = byId('mr-sg-t').value.trim();
+        if (!t) { note.textContent = 'A title is needed.'; return; }
+        sendSuggestion({ reason: 'unreadable', work_key: book.k, title: t,
+                         author: byId('mr-sg-a').value.trim() },
+          byId('mr-sg-tsend'), note,
+          'Queued for review. A person compares it with the row before ' +
+          'anything changes.');
+      });
+    });
   }
 
   // ── helpers ────────────────────────────────────────────────────────────
