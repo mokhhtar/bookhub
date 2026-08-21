@@ -1969,6 +1969,13 @@ sitemap: false
       'What is it about? Tick anything that fits — optional, and it is what ' +
       'lets the game ask the right questions about it later.</p>' +
       '<div class="mr-chips" id="mr-sg-chips">' + chips + '</div>' +
+      // The one typed field about content, and it is still not a text box in
+      // the dangerous sense: it is looked up in Open Library's subject index
+      // and only the subject NAME it matches is kept. A word no library
+      // catalogues books under is refused, with the reason.
+      '<input class="mr-search" id="mr-sg-newtheme" type="text" ' +
+        'style="margin-top:10px" aria-label="Another subject" ' +
+        'placeholder="Something else it is about? (one subject, optional)">' +
       '<div class="mr-row" style="margin-top:14px">' +
       '<button class="mr-btn mr-btn--primary" id="mr-sg-send">Send this book</button>' +
       '</div>' +
@@ -1987,7 +1994,8 @@ sitemap: false
         reason: 'missing',
         title: title,
         author: byId('mr-sg-author').value.trim(),
-        themes: ticked
+        themes: ticked,
+        new_theme: byId('mr-sg-newtheme').value.trim()
       }, byId('mr-sg-send'), note,
         'Queued for review. A person checks every one of these before the ' +
         'game changes, so it will not appear today.');
