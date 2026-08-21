@@ -269,6 +269,36 @@ sitemap: false
     margin-top: 26px; padding-top: 16px; border-top: 1px solid var(--border);
     font-size: var(--ui-sm); color: var(--fg-muted); line-height: 1.6;
   }
+
+  /* A secondary action that must not look like one more button in a row of
+     buttons — used for the two rare fact reports on the miss screen. */
+  .mr-linkbtn {
+    background: none; border: 0; padding: 0; font: inherit; color: var(--accent);
+    text-decoration: underline; cursor: pointer;
+  }
+  .mr-linkbtn:hover { text-decoration: none; }
+
+  /* Tick-boxes for "what is this book about?". Styled as chips because a
+     column of 22 checkboxes is a form nobody finishes, and they wrap into a
+     block a reader can scan. Each chip keeps a 44px target on touch. */
+  .mr-chips { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 9px; }
+  .mr-chip {
+    display: inline-flex; align-items: center; gap: 6px; cursor: pointer;
+    border: 1px solid var(--border); border-radius: var(--r);
+    padding: 8px 12px; min-height: 40px; font-size: var(--ui-sm);
+    background: var(--bg); user-select: none;
+  }
+  .mr-chip:hover { border-color: var(--border-med); }
+  .mr-chip input { margin: 0; cursor: pointer; }
+  .mr-chip:has(input:checked) {
+    border-color: var(--accent); background: var(--bg-subtle); font-weight: 600;
+  }
+
+  /* Always reachable, not only after losing: the game is missing far more
+     books than it holds, so the likeliest reason a reader is here at all is
+     a book we do not have. Making them lose a game first to say so was the
+     wrong shape. */
+  .mr-anytime { margin-top: 18px; font-size: var(--ui-sm); }
   .mr-status { font-size: var(--ui-body); color: var(--fg-muted); }
 </style>
 
@@ -357,6 +387,13 @@ sitemap: false
         says exactly what it sends before you tap it, and nothing goes
         anywhere unless you do. No account, and nothing about you.
       </p>
+
+      <p class="mr-anytime">
+        Know a book it does not have?
+        <button class="mr-linkbtn" id="mr-suggest-anytime">Tell it about a book</button>
+        — you do not have to play a game first.
+      </p>
+      <div id="mr-anytime-box"></div>
     </div>
 
   </div>
@@ -1666,19 +1703,6 @@ sitemap: false
         // book's column out of pYesCache.
         if (normalize(books[i].t).indexOf(q) >= 0) { hits.push(i); }
       }
-      if (!hits.length) {
-        // The most valuable thing a reader can tell us, and until now there
-        // was nowhere to say it: the shipped list simply does not have it.
-        // `display:block` matters: inline, the button lands mid-sentence and
-        // the note wraps around it ("…could not guess it. [Tell it about
-        // this book]"), which reads as a typo rather than an offer.
-        out.innerHTML = '<li class="mr-result mr-result-note">' +
-          'Not in the 5,000 books this game knows — which is why it could not ' +
-          'guess it. <button class="mr-btn" id="mr-offer-missing" ' +
-          'style="display:block;margin-top:10px">Tell it about this book' +
-          '</button></li>';
-        return;
-      }
       hits.forEach(function (h) {
         var b = books[h];
         var li = document.createElement('li');
@@ -1695,6 +1719,24 @@ sitemap: false
         });
         out.appendChild(li);
       });
+
+      // THE ESCAPE HATCH IS ALWAYS THE LAST OPTION, and it used to appear
+      // only when the list came back empty. That was the bug: the search is
+      // a plain substring match capped at eight rows, so a reader thinking
+      // of a book we do not have still gets a list whenever a few words
+      // overlap — and the list was the only thing on screen. It read as
+      // "pick one of these", with no way to say none of them is the book.
+      // Someone whose book we lack is exactly who this feature is for, and
+      // they were the ones it hid from.
+      var last = document.createElement('li');
+      last.className = 'mr-result mr-result-note';
+      last.innerHTML = (hits.length
+          ? 'None of these is the book I mean.'
+          : 'Not in the 5,000 books this game knows — which is why it could ' +
+            'not guess it.') +
+        '<button class="mr-btn" id="mr-offer-missing" ' +
+        'style="display:block;margin-top:10px">Tell it about this book</button>';
+      out.appendChild(last);
     });
   }
 
@@ -1751,14 +1793,23 @@ sitemap: false
     // The one place anything leaves this page, and only on a tap. The
     // button says what it does before it does it — a player who does not
     // want to share simply does not press it, and nothing is sent.
+    // THREE BUTTONS, NOT FIVE. The two fact reports used to hide behind a
+    // "Something about it is wrong" button that only revealed another pair
+    // of buttons that only then revealed a form — three taps to say one
+    // thing. They are now plain links on one line: still secondary, since
+    // teaching is the common act and a wrong year is the rare one, but one
+    // tap from the form instead of three.
     html += '<div class="mr-row" style="margin-top:16px">' +
       '<button class="mr-btn mr-btn--primary" id="mr-teach">Teach it this book</button>' +
-      '<button class="mr-btn" id="mr-wrong">Something about it is wrong</button>' +
       '<button class="mr-btn" id="mr-again">Play again</button>' +
       '<button class="mr-btn" id="mr-back-list">Back</button></div>' +
       '<p class="mr-result-note" id="mr-teach-note" style="margin-top:10px">' +
       'Sends this book and your answers about it, so the game learns. ' +
       'Nothing else, and nothing unless you tap it.</p>' +
+      '<p class="mr-result-note" style="margin-top:12px">Something about this ' +
+      'entry itself is wrong? <button class="mr-linkbtn" id="mr-wrong-year">the ' +
+      'year</button> · <button class="mr-linkbtn" id="mr-wrong-title">the title ' +
+      'is hard to read</button></p>' +
       '<div id="mr-suggest-box"></div>';
 
     el.card.innerHTML = html;
@@ -1770,8 +1821,11 @@ sitemap: false
     // The counts "Teach it this book" files cannot express a wrong FACT —
     // no number of answers about a question can say "1948, not 2024". This
     // is the other door, and it opens onto a queue a person reads.
-    byId('mr-wrong').addEventListener('click', function () {
-      renderRowProblemForm(byId('mr-suggest-box'), b);
+    byId('mr-wrong-year').addEventListener('click', function () {
+      renderRowProblemForm(byId('mr-suggest-box'), b, 'year');
+    });
+    byId('mr-wrong-title').addEventListener('click', function () {
+      renderRowProblemForm(byId('mr-suggest-box'), b, 'title');
     });
   }
 
@@ -1864,34 +1918,76 @@ sitemap: false
     });
   }
 
-  // The book the reader was thinking of is not in the game at all. Offered
-  // only after the search has come up empty, with what they typed carried
-  // over so they are not asked for it twice.
+  // WHAT A READER MAY SAY A BOOK IS ABOUT — a fixed list, never a text box.
+  //
+  // Each entry is a real question the game already asks, and the server maps
+  // the id back to the subject word `features.py` reads (theme:magic ->
+  // "magic") against its own rule table. So a tick can only ever produce a
+  // word the pipeline already understands, and "no free text is stored"
+  // survives a feature that is, from the reader's side, exactly the "tell us
+  // more about it" box they wanted.
+  //
+  // Only questions the shipped game actually asks are listed: ticking a
+  // retired one would change nothing and imply otherwise.
+  var SUGGEST_THEMES = [
+    ['form:fiction', 'Fiction'], ['form:nonfiction', 'Non-fiction'],
+    ['form:series', 'Part of a series'], ['form:classic', 'A classic'],
+    ['form:webnovel', 'Web or light novel'],
+    ['genre:fantasy', 'Fantasy'], ['genre:scifi', 'Science fiction'],
+    ['genre:romance', 'Romance'], ['genre:adventure', 'Adventure'],
+    ['genre:history', 'History'], ['genre:drama', 'A play'],
+    ['genre:psychology', 'Psychology'], ['genre:science', 'Science'],
+    ['theme:magic', 'Magic'], ['theme:family', 'Family'],
+    ['theme:friendship', 'Friendship'], ['setting:school', 'Set at a school'],
+    ['place:britain', 'Set in Britain'], ['place:usa', 'Set in the USA'],
+    ['place:europe_other', 'Set in Europe'],
+    ['audience:children', "For children"], ['audience:ya', 'For teenagers']
+  ];
+
+  // The book the reader was thinking of is not in the game at all.
+  //
+  // ONE SCREEN, ONE BUTTON. It was three steps before — a button that
+  // revealed a question that revealed a form — and the owner's verdict on
+  // that was the right one: a reader doing us a favour should not have to
+  // navigate to do it.
   function renderMissingBookForm(host, typedTitle) {
+    var chips = SUGGEST_THEMES.map(function (t) {
+      return '<label class="mr-chip"><input type="checkbox" value="' +
+        escapeHTML(t[0]) + '"><span>' + escapeHTML(t[1]) + '</span></label>';
+    }).join('');
+
     host.innerHTML =
       '<p class="mr-guess-lead" style="margin-top:18px">Tell it about this book</p>' +
-      '<p class="mr-result-note">It is checked against Google Books and Open ' +
-      'Library before anyone sees it, so the spelling matters more than usual.</p>' +
+      '<p class="mr-result-note">Checked against Google Books and Open Library ' +
+      'before anyone sees it, so spelling matters more than usual.</p>' +
       '<input class="mr-search" id="mr-sg-title" type="text" ' +
         'style="margin-top:10px" placeholder="Title" aria-label="Title" value="' +
         escapeHTML(typedTitle) + '">' +
       '<input class="mr-search" id="mr-sg-author" type="text" ' +
-        'style="margin-top:8px" placeholder="Author (helps it find the right one)" ' +
-        'aria-label="Author">' +
-      '<div class="mr-row" style="margin-top:12px">' +
-      '<button class="mr-btn mr-btn--primary" id="mr-sg-send">Send this title and author</button>' +
+        'style="margin-top:8px" placeholder="Author" aria-label="Author">' +
+      '<p class="mr-result-note" style="margin-top:14px">' +
+      'What is it about? Tick anything that fits — optional, and it is what ' +
+      'lets the game ask the right questions about it later.</p>' +
+      '<div class="mr-chips" id="mr-sg-chips">' + chips + '</div>' +
+      '<div class="mr-row" style="margin-top:14px">' +
+      '<button class="mr-btn mr-btn--primary" id="mr-sg-send">Send this book</button>' +
       '</div>' +
       '<p class="mr-result-note" id="mr-sg-note" style="margin-top:10px">' +
-      'Sends only the title and author you typed. Not your answers, and ' +
-      'nothing about you.</p>';
+      'Sends only what you see here. Not your answers, and nothing about you.</p>';
+
     byId('mr-sg-send').addEventListener('click', function () {
       var title = byId('mr-sg-title').value.trim();
       var note = byId('mr-sg-note');
       if (!title) { note.textContent = 'A title is needed.'; return; }
+      var ticked = [];
+      Array.prototype.forEach.call(
+        byId('mr-sg-chips').querySelectorAll('input:checked'),
+        function (c) { ticked.push(c.value); });
       sendSuggestion({
         reason: 'missing',
         title: title,
-        author: byId('mr-sg-author').value.trim()
+        author: byId('mr-sg-author').value.trim(),
+        themes: ticked
       }, byId('mr-sg-send'), note,
         'Queued for review. A person checks every one of these before the ' +
         'game changes, so it will not appear today.');
@@ -1902,16 +1998,10 @@ sitemap: false
   // these are the two the game can actually act on: a year feeds six era
   // questions, and a title in a script the reader cannot read makes the
   // reveal meaningless even when the guess was right.
-  function renderRowProblemForm(host, book) {
-    host.innerHTML =
-      '<p class="mr-guess-lead" style="margin-top:18px">What is wrong with it?</p>' +
-      '<div class="mr-row">' +
-      '<button class="mr-btn" id="mr-sg-year">The year is wrong</button>' +
-      '<button class="mr-btn" id="mr-sg-title-btn">The title is hard to read</button>' +
-      '</div><div id="mr-sg-form"></div>';
-
+  function renderRowProblemForm(host, book, which) {
+    host.innerHTML = '<div id="mr-sg-form"></div>';
     var form = byId('mr-sg-form');
-    byId('mr-sg-year').addEventListener('click', function () {
+    var openYear = function () {
       form.innerHTML =
         '<p class="mr-result-note" style="margin-top:12px">It is listed as ' +
         (book.y ? 'first published in ' + escapeHTML(String(book.y)) + '.'
@@ -1935,8 +2025,8 @@ sitemap: false
           byId('mr-sg-ysend'), note,
           'Queued for review. A person checks it against the catalogue first.');
       });
-    });
-    byId('mr-sg-title-btn').addEventListener('click', function () {
+    };
+    var openTitle = function () {
       form.innerHTML =
         '<p class="mr-result-note" style="margin-top:12px">The game prints the ' +
         'title the catalogue holds, and for some books that is a script you ' +
@@ -1960,7 +2050,8 @@ sitemap: false
           'Queued for review. A person compares it with the row before ' +
           'anything changes.');
       });
-    });
+    };
+    (which === 'year' ? openYear : openTitle)();
   }
 
   // ── helpers ────────────────────────────────────────────────────────────
@@ -2011,5 +2102,26 @@ sitemap: false
       transcriptText: function () { return transcriptText(); }
     };
   }
+
+  // ── the always-available door ──────────────────────────────────────────
+  // Wired here, at the very end, and never at parse time. The page's own
+  // CLAUDE.md records a production crash from exactly the opposite: entry
+  // logic that ran during script parsing and touched a declaration further
+  // down the file. Everything this closure needs is defined above by now.
+  //
+  // `?suggest=1` opens it directly, so the link can be handed to someone
+  // rather than described.
+  (function wireAnytime() {
+    var link = byId('mr-suggest-anytime'), box = byId('mr-anytime-box');
+    if (!link || !box) { return; }
+    function open() {
+      renderMissingBookForm(box, '');
+      byId('mr-sg-title').focus();
+    }
+    link.addEventListener('click', open);
+    try {
+      if (/[?&]suggest=1/.test(window.location.search)) { open(); }
+    } catch (e) { /* a query string is not worth breaking the page over */ }
+  })();
 })();
 </script>
