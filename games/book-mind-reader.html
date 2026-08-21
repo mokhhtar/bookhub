@@ -1669,10 +1669,14 @@ sitemap: false
       if (!hits.length) {
         // The most valuable thing a reader can tell us, and until now there
         // was nowhere to say it: the shipped list simply does not have it.
+        // `display:block` matters: inline, the button lands mid-sentence and
+        // the note wraps around it ("…could not guess it. [Tell it about
+        // this book]"), which reads as a typo rather than an offer.
         out.innerHTML = '<li class="mr-result mr-result-note">' +
           'Not in the 5,000 books this game knows — which is why it could not ' +
           'guess it. <button class="mr-btn" id="mr-offer-missing" ' +
-          'style="margin-top:10px">Tell it about this book</button></li>';
+          'style="display:block;margin-top:10px">Tell it about this book' +
+          '</button></li>';
         return;
       }
       hits.forEach(function (h) {
