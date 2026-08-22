@@ -6,6 +6,7 @@
   "book:film",
   "fact:pre2000",
   "fact:veryold",
-  "form:series"
+  "form:series",
+  "t:family"
  ]
 }
