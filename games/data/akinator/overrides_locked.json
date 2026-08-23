@@ -10,5 +10,8 @@
   "t:family",
   "t:romance",
   "fact:verrecent"
+ ],
+ "/fandom/lordofthemysteries": [
+  "author:alive"
  ]
 }
