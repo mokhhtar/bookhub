@@ -950,6 +950,24 @@ sitemap: false
         }
       }
     }
+    // AND THEN THE TAUGHT CELLS GO BACK ON TOP, because the loop above has
+    // just wiped them. Both this and applyOverrides() are chained behind
+    // books.json, and this one runs second — so every override written to a
+    // cell the matrix calls ABSENT was being silently replaced by
+    // absenceP(richness). Overrides on `present` and `unknown` cells
+    // survived, and so did absent ones whose taught value happened to equal
+    // absenceP for that row: /fandom/rezero's `author:american -> 0.15`
+    // matched and looked fine, while its `theme:family -> 0.9` came back as
+    // 0.25 and the book was 2.25x less likely than the owner had said.
+    //
+    // Absent is precisely the state most worth teaching — the Taught tab
+    // renders "no record" distinctly from "no" for that reason — so this bug
+    // hit the cells the feature exists for and spared the ones it does not.
+    //
+    // Found on 2026-08-23 by parity-check.js, once engine.py had been taught
+    // to read overrides.json at all. The Python side was right and needed no
+    // change; this is the browser catching up to it.
+    if (pendingOverrides) { applyOverrides(pendingOverrides); }
   }
 
   // ── the x-ray ──────────────────────────────────────────────────────────
@@ -1133,8 +1151,15 @@ sitemap: false
   // Landing mid-game is safe and deliberate. It affects only questions not
   // yet asked; belief already accumulated is left alone, exactly as the
   // deferred popularity prior behaves.
+  // Kept so applyPriorWhenReady() can put them back after its richness pass
+  // wipes them. Either order of arrival is now safe: whichever runs last,
+  // the taught values are the ones left standing.
+  var pendingOverrides = null;
+  var overridesLogged = false;
+
   function applyOverrides(data) {
     if (!data || !books) { return; }
+    pendingOverrides = data;
     var byKey = {}, i;
     for (i = 0; i < books.length; i++) {
       if (books[i].k) { byKey[books[i].k] = i; }
@@ -1158,7 +1183,13 @@ sitemap: false
       });
     });
     if (window.console && applied) {
-      console.info('mind reader: ' + applied + ' learned cell(s) applied');
+      // Once, however many times this runs. It is now re-applied after the
+      // richness pass, and a line repeating in the console reads like a bug
+      // to whoever opens it next.
+      if (!overridesLogged) {
+        overridesLogged = true;
+        console.info('mind reader: ' + applied + ' learned cell(s) applied');
+      }
     }
   }
 

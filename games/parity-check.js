@@ -25,6 +25,7 @@
  */
 'use strict';
 
+const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
 const vm = require('vm');
@@ -113,6 +114,24 @@ function makeSandbox() {
   return sandbox;
 }
 
+// Byte-for-byte mirror of parity_trace.overrides_fingerprint(). NOT
+// JSON.stringify: it and json.dumps disagree about numbers (a float 1.0 is
+// "1" here and "1.0" there), so a fingerprint built on either one would
+// report a stale fixture on every single run. Six fixed decimals is the one
+// format both languages are guaranteed to agree on. Edit the two together.
+function overridesFingerprint(overrides) {
+  const parts = [];
+  for (const key of Object.keys(overrides).sort()) {
+    const cells = overrides[key] || {};
+    for (const q of Object.keys(cells).sort()) {
+      const p = cells[q];
+      const value = (typeof p === 'number' && isFinite(p)) ? p.toFixed(6) : '?';
+      parts.push(key + '|' + q + '|' + value);
+    }
+  }
+  return parts.join('\n');
+}
+
 function beliefChecksum(belief) {
   // Must match parity_trace.py's: sum(b * log1p(i + 1)).
   let s = 0;
@@ -145,6 +164,41 @@ async function main() {
     console.error('  python scripts/akinator/parity_trace.py --out ' + TRACE);
     console.error('It does NOT mean the engines disagree — that check has not run.');
     process.exit(2);   // 2, not 1: "could not test", not "test failed"
+  }
+
+  // THE THIRD INPUT THAT MOVES UNDERNEATH THE FIXTURE, and the one that moves
+  // most often. The page applies overrides.json to pYesCache on every load,
+  // and since 2026-08-23 so does parity_trace.py — before that it did not,
+  // and the mismatch was reported here as 19 belief divergences and then a
+  // QUESTION MISMATCH, on engines that agreed perfectly once both were given
+  // the same file. Now that the trace is recorded WITH those cells, every
+  // cell the owner teaches from the admin page invalidates it, so the digest
+  // has to be compared or the same lie comes back by the other door.
+  const OVERRIDES = path.join(DATA, 'overrides.json');
+  let liveOverrides = {};
+  if (fs.existsSync(OVERRIDES)) {
+    try {
+      const parsed = JSON.parse(fs.readFileSync(OVERRIDES, 'utf8'));
+      if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) {
+        for (const k of Object.keys(parsed)) {
+          const v = parsed[k];
+          if (v && typeof v === 'object' && !Array.isArray(v)) { liveOverrides[k] = v; }
+        }
+      }
+    } catch (e) { liveOverrides = {}; }
+  }
+  const liveDigest = crypto.createHash('sha256')
+    .update(overridesFingerprint(liveOverrides), 'utf8').digest('hex').slice(0, 16);
+  if (from.overrides_digest !== undefined && from.overrides_digest !== liveDigest) {
+    const liveCells = Object.keys(liveOverrides)
+      .reduce((n, k) => n + Object.keys(liveOverrides[k]).length, 0);
+    console.error('STALE FIXTURE — overrides.json changed since the trace was recorded.');
+    console.error(`  trace: ${from.overrides_cells} taught cell(s), digest ${from.overrides_digest}`);
+    console.error(`  now:   ${liveCells} taught cell(s), digest ${liveDigest}`);
+    console.error('Expected after the nightly drain or any Taught-tab verdict. Regenerate:');
+    console.error('  python scripts/akinator/parity_trace.py --out ' + TRACE);
+    console.error('It does NOT mean the engines disagree — that check has not run.');
+    process.exit(2);
   }
 
   const sandbox = makeSandbox();
