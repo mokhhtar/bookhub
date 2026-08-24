@@ -9,7 +9,8 @@
   "facts": {
    "author:american": false,
    "author:alive": true,
-   "author:british": false
+   "author:british": false,
+   "author:european": false
   },
   "aliases": []
  }
