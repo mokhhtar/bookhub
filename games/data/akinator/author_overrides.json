@@ -12,7 +12,8 @@
    "author:british": false,
    "author:european": false,
    "author:nonwestern": true,
-   "author:female": false
+   "author:female": false,
+   "author:prolific": true
   },
   "aliases": []
  }
