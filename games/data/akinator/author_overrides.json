@@ -10,7 +10,8 @@
    "author:american": false,
    "author:alive": true,
    "author:british": false,
-   "author:european": false
+   "author:european": false,
+   "author:female": false
   },
   "aliases": []
  }
