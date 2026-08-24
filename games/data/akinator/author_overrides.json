@@ -11,7 +11,8 @@
    "author:alive": true,
    "author:british": false,
    "author:european": false,
-   "author:nonwestern": true
+   "author:nonwestern": true,
+   "author:female": false
   },
   "aliases": []
  }
