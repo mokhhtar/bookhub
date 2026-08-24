@@ -35,5 +35,13 @@
   "theme:family",
   "book:film",
   "author:british"
+ ],
+ "/site/admin-lord-of-mysteries-2-circle-of-inevitability": [
+  "author:american",
+  "author:alive",
+  "author:british",
+  "author:european",
+  "author:nonwestern",
+  "author:female"
  ]
 }
