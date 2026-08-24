@@ -8,7 +8,8 @@
  "name:cuttlefish that loves diving": {
   "facts": {
    "author:american": false,
-   "author:alive": true
+   "author:alive": true,
+   "author:british": false
   },
   "aliases": []
  }
