@@ -1,0 +1,149 @@
+{
+ "azarinth-healer": {
+  "aliases": [
+   "azarinth healer",
+   "azarinth"
+  ],
+  "subdomain": "azarinth-healer"
+ },
+ "bestspellever": {
+  "aliases": [
+   "delve"
+  ],
+  "subdomain": "bestspellever"
+ },
+ "hpmor": {
+  "aliases": [
+   "hpmor",
+   "harry potter and the methods of rationality",
+   "methods of rationality"
+  ],
+  "subdomain": "hpmor"
+ },
+ "library-of-heavens-path": {
+  "aliases": [
+   "library of heaven's path"
+  ],
+  "subdomain": "library-of-heavens-path"
+ },
+ "lordofthemysteries": {
+  "aliases": [
+   "lord of the mysteries"
+  ],
+  "author": "Cuttlefish That Loves Diving",
+  "cover_url": "https://static.wikia.nocookie.net/lord-of-the-mystery/images/c/cd/LOM_Manhua_cover.png/revision/latest?cb=20200113124228",
+  "subdomain": "lordofthemysteries"
+ },
+ "mother-of-learning": {
+  "aliases": [
+   "mother of learning"
+  ],
+  "author": "nobody103 (Domagoj Kurmaic)",
+  "cover_url": "https://covers.openlibrary.org/b/id/12836262-M.jpg",
+  "subdomain": "mother-of-learning"
+ },
+ "mysranks": {
+  "aliases": [
+   "the s-classes that i raised",
+   "the s-ranks that i raised"
+  ],
+  "subdomain": "mysranks"
+ },
+ "omniscient-readers-viewpoint": {
+  "aliases": [
+   "omniscient reader",
+   "omniscient reader's viewpoint",
+   "orvp",
+   "orv"
+  ],
+  "cover_url": "https://covers.openlibrary.org/b/id/14321241-M.jpg",
+  "subdomain": "omniscient-readers-viewpoint"
+ },
+ "reverend-insanity": {
+  "aliases": [
+   "reverend insanity"
+  ],
+  "author": "Gu Zhen Ren",
+  "cover_url": "https://static.wikia.nocookie.net/reverend-insanity/images/2/23/Fang_Yuan_2.png/revision/latest?cb=20260630200735",
+  "subdomain": "reverend-insanity"
+ },
+ "rezero": {
+  "aliases": [
+   "re:zero kara hajimeru isekai seikatsu",
+   "re:zero",
+   "rezero"
+  ],
+  "subdomain": "rezero"
+ },
+ "shadowslave": {
+  "aliases": [
+   "shadow slave"
+  ],
+  "author": "Guiltythree",
+  "cover_url": "https://covers.openlibrary.org/b/id/15173101-M.jpg",
+  "subdomain": "shadowslave"
+ },
+ "solo-leveling": {
+  "aliases": [
+   "solo leveling"
+  ],
+  "author": "Chugong",
+  "cover_url": "https://covers.openlibrary.org/b/id/10582298-M.jpg",
+  "subdomain": "solo-leveling"
+ },
+ "tbate": {
+  "aliases": [
+   "beginning after the end",
+   "the beginning after the end",
+   "tbate"
+  ],
+  "author": "TurtleMe",
+  "cover_url": "https://covers.openlibrary.org/b/id/14815307-M.jpg",
+  "subdomain": "tbate"
+ },
+ "the-kings-avatar": {
+  "aliases": [
+   "the king's avatar",
+   "quan zhi gao shou",
+   "full-time master",
+   "tka"
+  ],
+  "subdomain": "the-kings-avatar"
+ },
+ "the-novels-extra": {
+  "aliases": [
+   "the novel extra",
+   "the novel's extra",
+   "novel extra"
+  ],
+  "subdomain": "the-novels-extra"
+ },
+ "the-perfect-run": {
+  "aliases": [
+   "the perfect run",
+   "perfect run"
+  ],
+  "subdomain": "the-perfect-run"
+ },
+ "thewanderinginn": {
+  "aliases": [
+   "the wandering inn",
+   "wandering inn"
+  ],
+  "subdomain": "thewanderinginn"
+ },
+ "worm": {
+  "aliases": [
+   "worm"
+  ],
+  "subdomain": "worm"
+ },
+ "you-zitsu": {
+  "aliases": [
+   "classroom of the elite"
+  ],
+  "author": "Shōgo Kinugasa",
+  "cover_url": "https://covers.openlibrary.org/b/id/10166148-M.jpg",
+  "subdomain": "you-zitsu"
+ }
+}
