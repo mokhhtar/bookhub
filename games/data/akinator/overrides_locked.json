@@ -48,5 +48,13 @@
   "t:child",
   "t:realevents",
   "theme:magic"
+ ],
+ "/works/OL16833236W": [
+  "author:alive",
+  "author:american",
+  "author:british",
+  "author:european",
+  "author:female",
+  "author:nonwestern"
  ]
 }
