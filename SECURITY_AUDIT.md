@@ -12,6 +12,66 @@ The strongest confirmed privacy issue is in the PDF-chat API: uploaded document 
 Fixes are worked one finding at a time, in the priority order at the bottom
 of this file. Each entry records what shipped and how it was verified.
 
+- **2026-08-27 — H-04 (unauthenticated GitHub publishing) — INTERIM
+  MITIGATION, NOT REMEDIATED; known-weak by design.** A single non-rotating
+  IP can no longer cheaply spam GitHub publish tasks from public `/summary`
+  and `/summary/stream` requests: `tools/summary.py` gates every
+  `background_tasks.add_task(github_publisher.publish_*, …)` call behind a
+  new `_publish_quota_ok(request)`, built on the H-03 shared limiter
+  (`quiz_core._rate_limit` + `_client_ip`, same rightmost-X-Forwarded-For
+  identity). Default cap: `SUMMARY_PUBLISH_DAILY` (default 8) new-publish
+  schedulings per IP per day — a conservative starting guess, not measured
+  against real traffic; adjust via the Render env var if it turns out too
+  tight or too loose. **This explicitly does NOT solve H-04.** An attacker
+  rotating IPs (trivial, e.g. via any proxy pool) sails straight past a
+  per-IP cap — the required fix direction below (queue + moderation/
+  allow-list, or an authenticated internal trigger) is still fully open.
+  Treat this as raising the cost of the *laziest* version of the attack
+  only, nothing more.
+  All four call sites are gated, not just the obvious two — `/summary`'s
+  cache-hit static-page-refresh path and its new-book path, and the same
+  two shapes duplicated inside `/summary/stream`'s SSE generator. The gate
+  never affects the reader: it only decides whether publish tasks get
+  scheduled, and `_publish_quota_ok` swallows `_rate_limit`'s
+  `HTTPException` internally (logs and returns `False`) rather than letting
+  a 429 reach the summary response. Verified with a real ASGI `TestClient`
+  test (mocking only `github_publisher.publish_*`, `gemini_client.generate`,
+  and `book_data.resolve_book` — the limiter itself was exercised for
+  real): 4 new-book requests from one IP with the limit set to 3 all
+  returned `200` with a genuine assembled summary, but only 3 scheduled a
+  publish task; a different IP had its own independent budget. Commit:
+  bookhub-api (this commit).
+
+- **2026-08-27 — H-02 research: can Firestore rules allow `count()` while
+  denying individual-document reads? — RULED OUT, no code/rules change.**
+  Investigated whether a security rule could permit the `count()`
+  aggregation on a collection like `books/{bookSlug}/likes` while denying
+  `get`/`list` of the underlying documents — this would narrow H-02's UID
+  exposure without needing Blaze/Cloud Functions. **Not possible, confirmed
+  from official docs, not assumed.** Firestore's Aggregation-queries doc
+  states aggregation queries are governed by exactly the same rule as the
+  document-returning query they aggregate over: "The same rules apply to
+  both normal queries that return documents and aggregation queries... 
+  security rules control what conditions are allowed, not how data is
+  returned." A read rule only distinguishes `get` (single document) from
+  `list` (queries/collection reads) — `count()` is authorized under `list`,
+  the identical rule that authorizes returning the full documents. The
+  "Securely query data" doc's `request.query` reference — the only rule-side
+  variable for inspecting an incoming query — exposes just `limit`,
+  `offset`, and `orderBy`; no field marks a request as an aggregation, so a
+  rule condition has no signal to write "allow only if this is a `count()`"
+  even in principle. Consequence: any rule change that lets `count()`
+  succeed on a reaction collection equally lets a client `list` it and read
+  every UID directly — there is no rules-only middle ground. No emulator
+  test was built, because no theoretical mechanism existed to test (per the
+  session's own instructions: build a test only if a theoretical distinction
+  is found first). **This path is ruled out for H-02 — do not re-propose
+  it.** The real fix remains trusted server-side aggregation via Cloud
+  Functions, still blocked on Blaze (see H-02 status below). No code or
+  `firebase/firestore.rules` change was made. Sources:
+  [Aggregation queries](https://firebase.google.com/docs/firestore/query-data/aggregation-queries),
+  [Securely query data](https://firebase.google.com/docs/firestore/security/rules-query).
+
 - **2026-08-18 — Mind-reader admin secret disclosed in a public CI log —
   ROTATED AND CLOSED; no unauthorised writes occurred.** The shared secret
   for the Worker→Render hop (`ADMIN_SECRET` / `AKINATOR_ADMIN_SECRET`) was
@@ -282,6 +342,16 @@ The document identifier is the SHA-256 hash of the extracted PDF text. Storage k
 > non-Blaze path is the client-maintained denormalized-counter design (raw docs
 > owner-only + public aggregate docs), accepting its count-integrity weakness —
 > revisit that tradeoff then. Until then the risk remains accepted.
+>
+> **Update 2026-08-27:** investigated and ruled out a narrower non-Blaze path
+> — a rule permitting `count()` aggregation while denying individual-document
+> reads on the same collection. Firestore has no mechanism for this: `count()`
+> is authorized under the same `allow list` rule as a full document-returning
+> query, and `request.query` (the only rule-side query inspector) carries no
+> field that marks a request as an aggregation. See the dated Remediation log
+> entry above for the full sourced argument. No non-Blaze mitigation exists
+> for H-02 beyond what is already accepted; do not re-propose the count()-
+> separation idea.
 
 **Affected:** `bookhub/firebase/firestore.rules`  
 **Class:** Privacy exposure / identifier enumeration  
@@ -310,13 +380,19 @@ Most expensive routes are public. PDF and book quiz limits use a caller-controll
 
 **Required fix direction:** enforce limits at an infrastructure boundary using IP and/or authenticated identity, limit request body and history sizes in Pydantic, add concurrency/time budgets, and fail closed or degrade expensive operations when the quota store is unavailable.
 
-### H-04 — Public summary requests can trigger GitHub publishing (confirmed when publishing is enabled)
+### H-04 — Public summary requests can trigger GitHub publishing (confirmed when publishing is enabled) — INTERIM MITIGATION 2026-08-27 (per-IP cap; NOT the fix direction below)
 
 **Affected:** `bookhub-api/tools/summary.py`, `github_publisher.py`  
 **Class:** Unauthenticated side-effect / content and quota abuse  
 **Impact:** An anonymous caller can cause background GitHub writes and additional AI/external calls when `GITHUB_PUBLISH_ENABLED` is true.
 
 Successful public English `/summary` requests enqueue publishing of a book, author, and characters. This can create repository noise, consume GitHub/API quotas, or publish undesired generated content.
+
+> **Status (2026-08-27): interim mitigation only, known-weak.** A per-real-
+> client-IP daily cap (`SUMMARY_PUBLISH_DAILY`, default 8) now limits how
+> many publish tasks a single non-rotating IP can schedule; see the
+> Remediation log entry above for detail and verification. An attacker who
+> rotates IPs is unaffected. The real fix (below) remains open.
 
 **Required fix direction:** separate publishing from public read/generation requests. Queue only allow-listed or moderator-approved records, require an internal authenticated job trigger, and apply strict per-origin quotas.
 
