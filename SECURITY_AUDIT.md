@@ -12,6 +12,49 @@ The strongest confirmed privacy issue is in the PDF-chat API: uploaded document 
 Fixes are worked one finding at a time, in the priority order at the bottom
 of this file. Each entry records what shipped and how it was verified.
 
+- **2026-08-27 — H-05 (teaching endpoint accepted non-existent books) —
+  REMEDIATED.** `/akinator/submit` checked only that `body.book` matched a
+  regex, never that it was a book the game ships, so any well-formed key was
+  stored and later written into `overrides.json` by the drain. Fixed at both
+  ends: `submit()` now answers `unknown_book` (failing open during an artifact
+  outage), `drain()` skips unshipped keys entirely (failing closed, free there
+  because it already refuses to run without artifacts) and reports them as
+  `unknown` in its result. Verified against the live deploy: a fake but
+  well-formed key that previously stored counts now answers `unknown_book`,
+  while a real key still passes and dies later at the `question_hash` guard.
+  `overrides.json` was clean at fix time (5 books, 41 cells, 0 orphans), so
+  nothing needed pruning. Commit `5b25964`.
+
+- **2026-08-27 — H-06 (single-IP training-data poisoning) — INTERIM
+  MITIGATION, NOT REMEDIATED; known-weak by design.** One submission carries
+  ~47 cells of one book, so against the 40/IP/day cap a single IP could drive
+  every cell of a chosen book to 0.90 — equal to `PRESENCE_CONFIDENCE`, the
+  value reserved for verified facts — in one day, for free. A per-client,
+  per-book daily cap (`MAX_PER_BOOK_DAILY`, 2) now makes that cost 20 distinct
+  IPs in a day or one IP for 20 days, and is charged only for submissions
+  about to be stored. **This does NOT solve H-06:** an attacker rotating IPs
+  is unaffected, exactly as with H-04. Verified: a third submission of one
+  book from one client is refused while the same client on another book, and
+  another client on the same book, both proceed. Commit `0ac5292`.
+
+- **2026-08-27 — hardening alongside H-05/H-06 (no finding of its own).**
+  Three items found in the same audit. (a) `_artifacts()` and
+  `_shipped_titles()` were cached for the life of the process with no TTL —
+  after a question-list rebuild the server kept the stale `question_hash` and
+  silently rejected *every* submission as `stale_client` until Render
+  restarted; both now expire after an hour and serve stale rather than empty
+  on a failed refresh, mirroring `tools/fandom.py`. (b) The admin, drain and
+  sync secret gates compared with `!=`; now `secrets.compare_digest` over
+  UTF-8 *bytes*, because `compare_digest` rejects non-ASCII `str` with a
+  TypeError and headers decode as latin-1, so `X-Admin-Secret: café` would
+  have turned a 403 into a 500. Verified live: wrong, empty, non-ASCII and
+  prefix secrets all still answer 403, and an unset secret still closes the
+  endpoint. (c) A comment in `tools/summary.py` claimed the true client was
+  the *first* X-Forwarded-For hop while `_client_ip` has always taken the
+  rightmost — corrected in place, since "fixing" the code to match would have
+  made every rate limit in the project bypassable with one header. Commit
+  `294c018`.
+
 - **2026-08-27 — H-04 (unauthenticated GitHub publishing) — INTERIM
   MITIGATION, NOT REMEDIATED; known-weak by design.** A single non-rotating
   IP can no longer cheaply spam GitHub publish tasks from public `/summary`
@@ -396,6 +439,35 @@ Successful public English `/summary` requests enqueue publishing of a book, auth
 
 **Required fix direction:** separate publishing from public read/generation requests. Queue only allow-listed or moderator-approved records, require an internal authenticated job trigger, and apply strict per-origin quotas.
 
+### H-05 — Mind-reader teaching endpoint accepted counts for books that do not exist (confirmed) — REMEDIATED 2026-08-27
+
+**Affected:** `bookhub-api/tools/akinator_learn.py`, `tools/akinator_drain.py`
+**Class:** Missing authorization/validation on a write path / persistent data pollution
+**Impact:** An anonymous caller could write arbitrary (regex-valid) book keys into `games/data/akinator/overrides.json`, a file every player downloads and nothing prunes.
+
+`POST /akinator/submit` validated the *shape* of `body.book` and nothing else. `_book_states()` answers `{}` both for "no such book" and "artifacts unreachable", so the contradiction check skipped rather than rejected, the counts were stored, and the nightly drain then wrote `overrides.setdefault(work_key, …)` for a book that does not exist. Reachable with no account at 40 keys/IP/day; each key needed 8 submissions to cross `MIN_PLAYS` and could then carry ~47 cells.
+
+**Remediated:** index-membership checks at both ends — `submit()` rejects an unshipped key with `unknown_book` (failing *open* during an artifact outage, since a silent end-of-game courtesy must not lose a whole outage's worth of real submissions), and `drain()` skips them entirely (failing *closed*, which is free there because it already refuses to run without artifacts). `akinator_suggest.py` has always done this check correctly; this is the same check in the two modules that were missing it. `overrides.json` was clean at the time of the fix (5 books, 41 cells, 0 orphan keys), so there was nothing to prune.
+
+### H-06 — A single IP could decide any book's answers outright (confirmed) — INTERIM MITIGATION 2026-08-27 (per-book cap; economic, not an identity control)
+
+**Affected:** `bookhub-api/tools/akinator_learn.py`, `tools/akinator_drain.py`
+**Class:** Insufficient rate limiting / training-data poisoning
+**Impact:** An anonymous caller could push any (book, question) cell to the maximum confidence the system allows, making the game confidently wrong about chosen books.
+
+One submission carries a whole game — ~47 cells of one book at once — against a 40/IP/day cap and a `MIN_PLAYS` floor of 8. So a single IP, in a single day: 8 submissions put every cell of a book over the floor, and 40 drove every cell to `p = (40 + 10×0.5)/(40 + 10) = 0.90`, which equals `CLAMP_HIGH`/`PRESENCE_CONFIDENCE` — what the engine says about a *verified* fact, and precisely what `akinator_drain.py`'s docstring says play data must never reach. The existing contradiction guard does not cover the surgical case: answering honestly on 46 of 47 questions and lying on the 47th is a 2% contradiction rate against a 75% threshold.
+
+> **Status (2026-08-27): interim mitigation, known-weak — same shape and same
+> caveat as H-04.** A per-client, per-*book* daily cap (`MAX_PER_BOOK_DAILY`,
+> 2) now makes those 40 plays cost 20 distinct IPs in a day, or one IP for 20
+> days, instead of one IP for free. It is charged only for a submission about
+> to be stored, so a stale tab or an incoherent game does not consume the
+> quota real plays need. **An attacker rotating IPs is unaffected.**
+
+Chosen over a distinct-client set, which would mean storing a per-book fingerprint of every player and would contradict the module's "no identity, no session" promise, and over Turnstile, which stays available as a later layer (already deployed in `bookhub-api/worker/games-stats/` for a lower-stakes counter).
+
+**Required fix direction:** proof-of-humanity (Turnstile) or an authenticated identity on the teaching path, so that agreement is counted per *person* rather than per request; and/or a distinct-client threshold before any cell is written.
+
 ### M-05 — Firestore rule source has no active administrator UID — REMEDIATED 2026-07-24 (source set; confirm Console matches)
 
 **Affected:** `bookhub/firebase/firestore.rules`  
@@ -460,6 +532,10 @@ The backend places untrusted external or user-provided text into model prompts. 
 4. Remove anonymous GitHub publishing side effects from `/summary`.
 5. Reconcile and deploy Firestore/Storage rules from a controlled source; validate the administrator UID.
 6. Reduce diagnostic endpoint exposure and lock down production CORS.
+7. Put a proof-of-humanity or authenticated identity on the mind-reader
+   teaching path (H-06), so agreement is counted per person rather than per
+   request. The per-book cap shipped 2026-08-27 raises the cost of the lazy
+   version only; like H-04's per-IP cap, it does nothing against rotation.
 
 ## Evidence and scope notes
 
