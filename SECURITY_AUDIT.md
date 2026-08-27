@@ -37,6 +37,25 @@ of this file. Each entry records what shipped and how it was verified.
   book from one client is refused while the same client on another book, and
   another client on the same book, both proceed. Commit `0ac5292`.
 
+- **2026-08-27 — H-06 detection (companion to the mitigation above).** Since
+  the per-book cap cannot prevent a rotating attacker, the other half is
+  making sure such a run cannot pass unnoticed. No new storage was needed:
+  every drain already commits `overrides.json` publicly with its counts, so
+  git history is a permanent, ordered, per-run, revertible record that the
+  expiring Redis counters are not. The drain's commit message now also carries
+  the number of BOOKS written, because cell count alone cannot distinguish a
+  busy night across the catalogue from one book being pushed by one person.
+  `POST /akinator/admin/drain/history` reads the log back, labels each write
+  drain-vs-manual (manual admin edits are never flagged — flagging them would
+  train the owner to dismiss the banner), and flags on volume and on
+  concentration. The admin page renders a banner above the tabs only when
+  something is flagged. Verified live: the route answers 403 unauthenticated
+  while a bogus sibling path answers 404 (the discriminator that catches a
+  mis-pointed relay), the parser reads both the old and new message formats,
+  and the real history reads back correctly as 30 manual writes and 0 drains —
+  the loop has never met its 8-play floor on current traffic. Commits
+  `92a28e0`, `38e5749`.
+
 - **2026-08-27 — hardening alongside H-05/H-06 (no finding of its own).**
   Three items found in the same audit. (a) `_artifacts()` and
   `_shipped_titles()` were cached for the life of the process with no TTL —
@@ -465,6 +484,10 @@ One submission carries a whole game — ~47 cells of one book at once — agains
 > quota real plays need. **An attacker rotating IPs is unaffected.**
 
 Chosen over a distinct-client set, which would mean storing a per-book fingerprint of every player and would contradict the module's "no identity, no session" promise, and over Turnstile, which stays available as a later layer (already deployed in `bookhub-api/worker/games-stats/` for a lower-stakes counter).
+
+**Detection (added 2026-08-27), since prevention is only partial.** Every drain commits `overrides.json` to a public repo with its counts in the message, which makes git history a permanent, ordered, per-run, revertible record — none of which the expiring Redis counters are. `POST /akinator/admin/drain/history` reads that log back and flags runs by volume (`DRAIN_ALERT_CELLS`, 50) and by concentration on few books (`DRAIN_ALERT_CELLS_PER_BOOK`, 25); the admin page shows a banner above the tabs when anything is flagged, and stays invisible otherwise. Manual admin edits to the same file are labelled and never flagged. This prevents nothing — it means an attack cannot pass *unnoticed*, and `git revert` undoes any run. Note also that learned values remain clamped to `[0.15, 0.90]`, so poisoning can make the game confidently wrong about a chosen book but can never outrank a verified fact, and no user data is exposed by this class of attack.
+
+**A Turnstile-specific caveat for whoever picks this up.** The game page currently loads no third-party script at all, and prints an explicit promise above the teach button: *"Sends this book and your answers about it, so the game learns. Nothing else, and nothing unless you tap it."* Turnstile would break both halves of that sentence (it sends browser signals to a third party, before the tap). That is a product/consent decision, not only a security one, and it should be made deliberately rather than as a side effect of closing this finding — especially as Turnstile is itself a cost-raiser rather than a fix.
 
 **Required fix direction:** proof-of-humanity (Turnstile) or an authenticated identity on the teaching path, so that agreement is counted per *person* rather than per request; and/or a distinct-client threshold before any cell is written.
 
