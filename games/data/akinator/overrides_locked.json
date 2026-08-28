@@ -49,5 +49,22 @@
  ],
  "/works/OL20676292W": [
   "author:alive"
+ ],
+ "/fandom/dune": [
+  "audience:children",
+  "form:fiction",
+  "genre:scifi",
+  "genre:adventure",
+  "form:classic",
+  "book:film",
+  "form:series",
+  "t:child",
+  "t:family",
+  "t:survival",
+  "t:powersystem",
+  "t:detective",
+  "t:funny",
+  "t:realevents",
+  "t:romance"
  ]
 }
