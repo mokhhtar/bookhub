@@ -149,15 +149,47 @@ permalink: /games/mind-reader/
     background: var(--bg); color: var(--fg); font-size: var(--ui-body);
     cursor: pointer; transition: border-color .15s var(--ease-out),
                                  background .15s var(--ease-out);
+    -webkit-tap-highlight-color: transparent;
   }
-  .mr-answer:hover { border-color: var(--border-med); background: var(--bg-subtle); }
-  .mr-answer--yes:hover { border-color: var(--accent); }
+  /* `hover: hover`, not a bare `:hover` — a touch browser applies :hover on
+     tap and LEAVES it applied until something else is tapped, so on a phone
+     the answer just chosen stayed lit under the next question's button in
+     the same slot. Hover is for a pointer that can rest on a thing without
+     committing to it; a finger cannot. The press effect below is what
+     acknowledges a tap. */
+  @media (hover: hover) {
+    .mr-answer:hover { border-color: var(--border-med); background: var(--bg-subtle); }
+    .mr-answer--yes:hover { border-color: var(--accent); }
+  }
+  /* Acknowledge the answer on the button itself, not only through the
+     mascot's nod. Without it the sole evidence a tap registered is the whole
+     card changing, which reads as the page moving on its own — and on a
+     phone there is no cursor to show where the tap even landed.
+     A class, not :active: :active ends when the touch does, and a tap can be
+     over inside one frame. The turn advance is deferred by PRESS_MS so the
+     button survives in the DOM long enough to play this — renderQuestion
+     replaces the card's innerHTML outright. */
+  .mr-answer--pressed {
+    border-color: var(--accent); background: var(--bg-subtle);
+    animation: mr-press .19s var(--ease-out);
+  }
+  @keyframes mr-press {
+    0%   { transform: scale(1); }
+    45%  { transform: scale(.975); }
+    100% { transform: scale(1); }
+  }
   /* All five were the same rectangle, so the two answers a player actually
      reaches for sat at the same weight as the three hedges between them —
      which exist for honesty, not for traffic. One step of presence, spent
      on weight rather than colour, since colour here is the accent's job. */
   .mr-answer--firm { border-color: var(--border-med); font-weight: 600; }
-  @media (prefers-reduced-motion: reduce) { .mr-answer { transition: none; } }
+  /* The scale is motion and goes; the colour is not, and stays — it is the
+     whole acknowledgement, and dropping it would leave a reduced-motion
+     player with no feedback at all. */
+  @media (prefers-reduced-motion: reduce) {
+    .mr-answer { transition: none; }
+    .mr-answer--pressed { animation: none; }
+  }
 
   .mr-key {
     font-family: var(--font-mono); font-size: var(--ui-sm); color: var(--fg-faint);
@@ -902,6 +934,9 @@ permalink: /games/mind-reader/
     rejected = {};
     rejectedSeries = {};
     guessesMade = 0;
+    // A new game can begin from an end screen while a press window is still
+    // open, and a stuck flag would deaden every answer in it.
+    answering = false;
     applyPriorWhenReady();
     nextTurn();
   }
@@ -1515,6 +1550,18 @@ permalink: /games/mind-reader/
     renderQuestion(q);
   }
 
+  // How long the pressed answer stays on screen before the next question
+  // replaces it: long enough for mr-press to finish and for the player to
+  // see WHICH answer took, short enough not to be read as latency.
+  var PRESS_MS = 190;
+
+  // True only inside that window. The old buttons are still live in it —
+  // and so is the document-level keydown handler, which reaches them with
+  // .click() — so without this a second press answers the same question
+  // twice, and "go back" could run against a belief that has not been
+  // updated yet.
+  var answering = false;
+
   function renderQuestion(qIndex) {
     setFace(askingFace());
     el.count.textContent = 'Question ' + (askedCount + 1);
@@ -1539,7 +1586,10 @@ permalink: /games/mind-reader/
 
     Array.prototype.forEach.call(el.card.querySelectorAll('[data-answer]'), function (btn) {
       btn.addEventListener('click', function () {
+        if (answering) { return; }
+        answering = true;
         nod();
+        btn.className += ' mr-answer--pressed';
         var answer = ANSWERS[+btn.getAttribute('data-answer')].key;
         // `answer` is kept so the give-up screen can explain a miss: which
         // answers disagreed with what the table holds about the book the
@@ -1554,12 +1604,22 @@ permalink: /games/mind-reader/
                        bounds: JSON.parse(JSON.stringify(bounds)),
                        dkCount: JSON.parse(JSON.stringify(dkCount)),
                        belief: new Float64Array(belief), count: askedCount });
-        update(qIndex, answer);
-        nextTurn();
+        // Deferred together, so belief and what is on screen never disagree
+        // — updating now and rendering later would leave the x-ray and the
+        // pool count describing a turn the card has not moved to yet.
+        setTimeout(function () {
+          answering = false;
+          update(qIndex, answer);
+          nextTurn();
+        }, PRESS_MS);
       });
     });
-    byId('mr-back').addEventListener('click', goBack);
-    byId('mr-restart').addEventListener('click', start);
+    byId('mr-back').addEventListener('click', function () {
+      if (!answering) { goBack(); }
+    });
+    byId('mr-restart').addEventListener('click', function () {
+      if (!answering) { start(); }
+    });
   }
 
   function goBack() {
