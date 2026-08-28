@@ -1178,7 +1178,16 @@ permalink: /games/mind-reader/
       var fix = data[key] || {};
       // A blank override must never erase a real title into an empty
       // reveal; only a non-empty string replaces anything.
-      if (typeof fix.t === 'string' && fix.t) { books[row].t = fix.t; applied++; }
+      if (typeof fix.t === 'string' && fix.t && fix.t !== books[row].t) {
+        // The title being replaced stays reachable under `o` -- a reader
+        // who types the original-language title must still find the
+        // book, so a display rename must not make the source title
+        // unsearchable. See the give-up screen's search, which checks
+        // both `t` and `o`.
+        books[row].o = books[row].t;
+        books[row].t = fix.t;
+        applied++;
+      }
       if (typeof fix.a === 'string' && fix.a) { books[row].a = fix.a; applied++; }
     }
     if (applied && window.console && console.debug) {
@@ -1831,8 +1840,14 @@ permalink: /games/mind-reader/
       var hits = [], i;
       for (i = 0; i < books.length && hits.length < 8; i++) {
         // Push the INDEX, not the object: explainMiss needs it to read the
-        // book's column out of pYesCache.
-        if (normalize(books[i].t).indexOf(q) >= 0) { hits.push(i); }
+        // book's column out of pYesCache. `o` is the title a display
+        // rename replaced (see applyDisplayNames) -- a reader who types
+        // the original-language title must still find the row, so a
+        // match on either `t` or `o` counts.
+        if (normalize(books[i].t).indexOf(q) >= 0 ||
+            (books[i].o && normalize(books[i].o).indexOf(q) >= 0)) {
+          hits.push(i);
+        }
       }
       hits.forEach(function (h) {
         var b = books[h];
