@@ -1,10 +1,10 @@
 {
  "generated_from": {
   "question_hash": "ce1a976804ed0b9e",
-  "books": 5000,
+  "books": 5020,
   "questions": 48,
-  "overrides_digest": "927bd2d5f8098e25",
-  "overrides_cells": 29
+  "overrides_digest": "28b98f174eead6c2",
+  "overrides_cells": 41
  },
  "answer_script": [
   "yes",
@@ -35,19 +35,19 @@
    "top": [
     {
      "key": "/works/OL17930368W",
-     "p": 0.000600590663
+     "p": 0.000598056549
     },
     {
      "key": "/works/OL18020194W",
-     "p": 0.000583763953
+     "p": 0.000581300837
     },
     {
      "key": "/works/OL17590212W",
-     "p": 0.000571187935
+     "p": 0.000568777882
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.391536545047
+   "belief_checksum": 7.396296824765
   },
   {
    "question": "fact:verrecent",
@@ -55,379 +55,379 @@
    "top": [
     {
      "key": "/works/OL18020194W",
-     "p": 0.00082500029
+     "p": 0.000822260476
     },
     {
      "key": "/works/OL17860744W",
-     "p": 0.000810339549
+     "p": 0.000807648423
     },
     {
      "key": "/works/OL16014245W",
-     "p": 0.000805961759
+     "p": 0.000803285172
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.417715517873
+   "belief_checksum": 7.421373894789
   },
   {
-   "question": "author:prolific",
+   "question": "form:fiction",
    "answer": "probably_yes",
    "top": [
     {
      "key": "/works/OL18020194W",
-     "p": 0.001316242905
+     "p": 0.0010522269
     },
     {
      "key": "/works/OL17860744W",
-     "p": 0.001292852493
+     "p": 0.001033528209
     },
     {
      "key": "/works/OL16014245W",
-     "p": 0.001285867969
+     "p": 0.001027944661
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.357759708922
+   "belief_checksum": 7.380466304188
   },
   {
-   "question": "audience:children",
+   "question": "author:prolific",
    "answer": "unknown",
    "top": [
     {
      "key": "/works/OL18020194W",
-     "p": 0.001316242905
+     "p": 0.0010522269
     },
     {
      "key": "/works/OL17860744W",
-     "p": 0.001292852493
+     "p": 0.001033528209
     },
     {
      "key": "/works/OL16014245W",
-     "p": 0.001285867969
+     "p": 0.001027944661
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.357759708922
+   "belief_checksum": 7.380466304188
   },
   {
-   "question": "author:female",
+   "question": "audience:children",
    "answer": "no",
    "top": [
     {
-     "key": "/works/OL8483260W",
-     "p": 0.002099086962
+     "key": "/works/OL17075811W",
+     "p": 0.00174540685
     },
     {
-     "key": "/works/OL492658W",
-     "p": 0.00207709499
+     "key": "/works/OL17370186W",
+     "p": 0.00169388921
     },
     {
-     "key": "/works/OL16444438W",
-     "p": 0.001988765439
+     "key": "/works/OL16509148W",
+     "p": 0.001660024656
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.364320338885
+   "belief_checksum": 7.425934584548
   },
   {
-   "question": "form:fiction",
+   "question": "author:female",
    "answer": "yes",
    "top": [
     {
-     "key": "/works/OL8483260W",
-     "p": 0.00282535727
+     "key": "/works/OL17370186W",
+     "p": 0.003258609945
     },
     {
-     "key": "/works/OL492658W",
-     "p": 0.002795756221
+     "key": "/works/OL16509148W",
+     "p": 0.003193463199
     },
     {
-     "key": "/works/OL16444438W",
-     "p": 0.002676865225
+     "key": "/works/OL18020194W",
+     "p": 0.003157975047
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.315123998496
+   "belief_checksum": 7.41628570324
   },
   {
    "question": "author:american",
    "answer": "probably_no",
    "top": [
     {
-     "key": "/works/OL679358W",
-     "p": 0.004740253386
+     "key": "/works/OL17606111W",
+     "p": 0.005214166343
     },
     {
-     "key": "/works/OL2625431W",
-     "p": 0.004185507047
+     "key": "/works/OL15728986W",
+     "p": 0.004723415679
     },
     {
-     "key": "/works/OL679360W",
-     "p": 0.004074124188
+     "key": "/works/OL16550681W",
+     "p": 0.004699162294
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.344420055219
+   "belief_checksum": 7.457970842818
   },
   {
    "question": "author:alive",
    "answer": "yes",
    "top": [
     {
-     "key": "/works/OL679358W",
-     "p": 0.006731849491
+     "key": "/works/OL17606111W",
+     "p": 0.007249515364
     },
     {
-     "key": "/works/OL2625431W",
-     "p": 0.005944028976
+     "key": "/works/OL16550681W",
+     "p": 0.006533479564
     },
     {
-     "key": "/works/OL679360W",
-     "p": 0.005785849112
+     "key": "/works/OL17112428W",
+     "p": 0.006372779086
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.337609388344
-  },
-  {
-   "question": "theme:magic",
-   "answer": "unknown",
-   "top": [
-    {
-     "key": "/works/OL679358W",
-     "p": 0.006731849491
-    },
-    {
-     "key": "/works/OL2625431W",
-     "p": 0.005944028976
-    },
-    {
-     "key": "/works/OL679360W",
-     "p": 0.005785849112
-    }
-   ],
-   "belief_sum": 1.0,
-   "belief_checksum": 7.337609388344
+   "belief_checksum": 7.383408090928
   },
   {
    "question": "author:british",
-   "answer": "no",
-   "top": [
-    {
-     "key": "/works/OL2625431W",
-     "p": 0.008288095645
-    },
-    {
-     "key": "/works/OL15029001W",
-     "p": 0.00739587104
-    },
-    {
-     "key": "/works/OL16810121W",
-     "p": 0.006407402417
-    }
-   ],
-   "belief_sum": 1.0,
-   "belief_checksum": 7.277914104138
-  },
-  {
-   "question": "theme:family",
-   "answer": "probably_yes",
-   "top": [
-    {
-     "key": "/works/OL2625431W",
-     "p": 0.015135125033
-    },
-    {
-     "key": "/works/OL15029319W",
-     "p": 0.008181466364
-    },
-    {
-     "key": "/works/OL2625402W",
-     "p": 0.007455981493
-    }
-   ],
-   "belief_sum": 1.0,
-   "belief_checksum": 7.27261437924
-  },
-  {
-   "question": "theme:friendship",
-   "answer": "yes",
-   "top": [
-    {
-     "key": "/works/OL8483260W",
-     "p": 0.015701670015
-    },
-    {
-     "key": "/works/OL5682519W",
-     "p": 0.013958544186
-    },
-    {
-     "key": "/works/OL15110516W",
-     "p": 0.013286715569
-    }
-   ],
-   "belief_sum": 1.0,
-   "belief_checksum": 7.074283843323
-  },
-  {
-   "question": "audience:ya",
-   "answer": "no",
-   "top": [
-    {
-     "key": "/works/OL8483260W",
-     "p": 0.020916869089
-    },
-    {
-     "key": "/works/OL5682519W",
-     "p": 0.018594776296
-    },
-    {
-     "key": "/works/OL15110516W",
-     "p": 0.017699804537
-    }
-   ],
-   "belief_sum": 1.0,
-   "belief_checksum": 7.203750927927
-  },
-  {
-   "question": "author:nonwestern",
-   "answer": "no",
-   "top": [
-    {
-     "key": "/works/OL8483260W",
-     "p": 0.026834196526
-    },
-    {
-     "key": "/works/OL5682519W",
-     "p": 0.023855189769
-    },
-    {
-     "key": "/works/OL15110516W",
-     "p": 0.022707032846
-    }
-   ],
-   "belief_sum": 1.0,
-   "belief_checksum": 7.081074134565
-  },
-  {
-   "question": "form:series",
-   "answer": "probably_no",
-   "top": [
-    {
-     "key": "/works/OL5682519W",
-     "p": 0.024747983172
-    },
-    {
-     "key": "/works/OL15110516W",
-     "p": 0.023556855853
-    },
-    {
-     "key": "/works/OL16224122W",
-     "p": 0.023480768376
-    }
-   ],
-   "belief_sum": 1.0,
-   "belief_checksum": 7.120522925202
-  },
-  {
-   "question": "place:usa",
-   "answer": "yes",
-   "top": [
-    {
-     "key": "/works/OL81598W",
-     "p": 0.029289605952
-    },
-    {
-     "key": "/works/OL15374110W",
-     "p": 0.014413504214
-    },
-    {
-     "key": "/works/OL81589W",
-     "p": 0.013777181831
-    }
-   ],
-   "belief_sum": 1.0,
-   "belief_checksum": 7.237858536641
-  },
-  {
-   "question": "book:film",
    "answer": "unknown",
    "top": [
     {
-     "key": "/works/OL81598W",
-     "p": 0.029289605952
+     "key": "/works/OL17606111W",
+     "p": 0.007249515364
     },
     {
-     "key": "/works/OL15374110W",
-     "p": 0.014413504214
+     "key": "/works/OL16550681W",
+     "p": 0.006533479564
     },
     {
-     "key": "/works/OL81589W",
-     "p": 0.013777181831
+     "key": "/works/OL17112428W",
+     "p": 0.006372779086
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.237858536641
+   "belief_checksum": 7.383408090928
   },
   {
-   "question": "form:classic",
+   "question": "theme:family",
    "answer": "no",
    "top": [
     {
-     "key": "/works/OL15374110W",
-     "p": 0.018264009816
+     "key": "/works/OL17606111W",
+     "p": 0.009893085185
     },
     {
-     "key": "/works/OL17200413W",
-     "p": 0.015913782758
+     "key": "/works/OL16550681W",
+     "p": 0.008915943568
     },
     {
-     "key": "/works/OL15110516W",
-     "p": 0.014192959829
+     "key": "/works/OL17112428W",
+     "p": 0.008696642906
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.318671915298
+   "belief_checksum": 7.363786031092
   },
   {
-   "question": "setting:school",
-   "answer": "yes",
-   "top": [
-    {
-     "key": "/works/OL15110516W",
-     "p": 0.045732235728
-    },
-    {
-     "key": "/works/OL16797312W",
-     "p": 0.042570738083
-    },
-    {
-     "key": "/works/OL8483260W",
-     "p": 0.025941308516
-    }
-   ],
-   "belief_sum": 1.0,
-   "belief_checksum": 7.179486078753
-  },
-  {
-   "question": "fact:namedchars",
+   "question": "genre:romance",
    "answer": "probably_yes",
    "top": [
     {
-     "key": "/works/OL15110516W",
-     "p": 0.055554312081
+     "key": "/works/OL17606111W",
+     "p": 0.018176537203
     },
     {
-     "key": "/works/OL16797312W",
-     "p": 0.051713808244
+     "key": "/works/OL16550681W",
+     "p": 0.016381237696
     },
     {
-     "key": "/works/OL8483260W",
-     "p": 0.031512816423
+     "key": "/works/OL16550682W",
+     "p": 0.015816251931
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.057664228346
+   "belief_checksum": 7.261311860724
+  },
+  {
+   "question": "form:series",
+   "answer": "yes",
+   "top": [
+    {
+     "key": "/works/OL16550681W",
+     "p": 0.029503693838
+    },
+    {
+     "key": "/works/OL16550682W",
+     "p": 0.028486117062
+    },
+    {
+     "key": "/works/OL21679956W",
+     "p": 0.027899989313
+    }
+   ],
+   "belief_sum": 1.0,
+   "belief_checksum": 7.277953420697
+  },
+  {
+   "question": "setting:school",
+   "answer": "no",
+   "top": [
+    {
+     "key": "/works/OL675722W",
+     "p": 0.035027952536
+    },
+    {
+     "key": "/works/OL23535656W",
+     "p": 0.013962384273
+    },
+    {
+     "key": "/works/OL24341413W",
+     "p": 0.012327591693
+    }
+   ],
+   "belief_sum": 1.0,
+   "belief_checksum": 7.389248542635
+  },
+  {
+   "question": "genre:fantasy",
+   "answer": "no",
+   "top": [
+    {
+     "key": "/works/OL23535656W",
+     "p": 0.016405247752
+    },
+    {
+     "key": "/works/OL16806416W",
+     "p": 0.015113521006
+    },
+    {
+     "key": "/works/OL24341413W",
+     "p": 0.014484431309
+    }
+   ],
+   "belief_sum": 1.0,
+   "belief_checksum": 7.358856744315
+  },
+  {
+   "question": "author:nonwestern",
+   "answer": "probably_no",
+   "top": [
+    {
+     "key": "/works/OL16806416W",
+     "p": 0.018818748761
+    },
+    {
+     "key": "/works/OL23535656W",
+     "p": 0.018602048346
+    },
+    {
+     "key": "/works/OL24341413W",
+     "p": 0.016424018432
+    }
+   ],
+   "belief_sum": 1.0,
+   "belief_checksum": 7.337677273848
+  },
+  {
+   "question": "place:britain",
+   "answer": "yes",
+   "top": [
+    {
+     "key": "/works/OL16806416W",
+     "p": 0.050165422918
+    },
+    {
+     "key": "/works/OL3773934W",
+     "p": 0.03444434512
+    },
+    {
+     "key": "/works/OL554615W",
+     "p": 0.016670575005
+    }
+   ],
+   "belief_sum": 1.0,
+   "belief_checksum": 7.464338152193
+  },
+  {
+   "question": "form:classic",
+   "answer": "unknown",
+   "top": [
+    {
+     "key": "/works/OL16806416W",
+     "p": 0.050165422918
+    },
+    {
+     "key": "/works/OL3773934W",
+     "p": 0.03444434512
+    },
+    {
+     "key": "/works/OL554615W",
+     "p": 0.016670575005
+    }
+   ],
+   "belief_sum": 1.0,
+   "belief_checksum": 7.464338152193
+  },
+  {
+   "question": "book:film",
+   "answer": "no",
+   "top": [
+    {
+     "key": "/works/OL16806416W",
+     "p": 0.082338664257
+    },
+    {
+     "key": "/works/OL3773934W",
+     "p": 0.033255872782
+    },
+    {
+     "key": "/works/OL3261155W",
+     "p": 0.01647336591
+    }
+   ],
+   "belief_sum": 1.0,
+   "belief_checksum": 7.538111485684
+  },
+  {
+   "question": "fact:namedchars",
+   "answer": "yes",
+   "top": [
+    {
+     "key": "/works/OL16806416W",
+     "p": 0.106357430171
+    },
+    {
+     "key": "/works/OL3773934W",
+     "p": 0.04295684414
+    },
+    {
+     "key": "/works/OL3261155W",
+     "p": 0.021278762296
+    }
+   ],
+   "belief_sum": 1.0,
+   "belief_checksum": 7.542891599379
+  },
+  {
+   "question": "t:romance",
+   "answer": "probably_yes",
+   "top": [
+    {
+     "key": "/works/OL16806416W",
+     "p": 0.08753415465
+    },
+    {
+     "key": "/works/OL3773934W",
+     "p": 0.053738515202
+    },
+    {
+     "key": "/works/OL3261155W",
+     "p": 0.026619485532
+    }
+   ],
+   "belief_sum": 1.0,
+   "belief_checksum": 7.491057306353
   }
  ]
 }
