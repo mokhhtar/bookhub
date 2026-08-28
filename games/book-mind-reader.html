@@ -1651,6 +1651,29 @@ permalink: /games/mind-reader/
   // `-L` — the same cover, enough pixels. Only where it is needed: `-L` is
   // several times the bytes, and the guess screen may render three of them
   // in one game.
+  // WHICH VOLUME'S FACE DOES A SERIES WEAR. guessTarget returns the member
+  // with the highest belief, which is right for the guess and wrong for the
+  // picture: it once offered "Harry Potter" over the cover of Chamber of
+  // Secrets, because after thirteen questions the belief happened to top out
+  // on volume two. A player told the answer is the series pictures the volume
+  // everyone pictures, and that is the most-read one — Philosopher's Stone
+  // outsells every other Harry Potter in this table by more than three to one.
+  //
+  // Display only. The engine still guesses, rejects and scores on
+  // target.index; nothing here is read back into belief, so parity is
+  // untouched.
+  function seriesFace(sid, fallback) {
+    var m = seriesMembers[sid];
+    if (!m || !m.length) { return fallback; }
+    var best = fallback;
+    var top = -1;
+    for (var i = 0; i < m.length; i++) {
+      var p = books[m[i]] && books[m[i]].p;
+      if (typeof p === 'number' && p > top) { top = p; best = m[i]; }
+    }
+    return best;
+  }
+
   function coverHTML(book, opts) {
     if (!book || !book.c) { return ''; }
     opts = opts || {};
@@ -1699,7 +1722,7 @@ permalink: /games/mind-reader/
       : (escapeHTML(book.a || '') + (book.y ? ' · ' + book.y : ''));
 
     logGuess(target, book);
-    var cover = coverHTML(book);
+    var cover = coverHTML(isSeries ? books[seriesFace(target.sid, target.index)] : book);
     el.count.textContent = 'Guess ' + guessesMade + ' of ' + MAX_GUESSES;
     el.pool.textContent = Math.round(target.p * 100) + '% sure';
     el.card.innerHTML =
@@ -1720,7 +1743,9 @@ permalink: /games/mind-reader/
       // A series keeps the representative volume's cover — it is the
       // one a player picturing the series will recognise.
       logVerdict('CORRECT');
-      renderWin(isSeries ? { t: target.name, a: book.a, c: book.c } : book, book);
+      renderWin(isSeries
+        ? { t: target.name, a: book.a, c: books[seriesFace(target.sid, target.index)].c }
+        : book, book);
     });
     byId('mr-no').addEventListener('click', function () {
       // Weaken, never erase: the player may have mis-answered earlier and
