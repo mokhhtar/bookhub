@@ -579,26 +579,28 @@ permalink: /games/mind-reader/
   // obviously wrong when you can see the three lines together. Reading them
   // off a screenshot is how the last round went.
   //
-  // OFF unless asked for. `?debug=1` turns it on and remembers it in
-  // localStorage; `?debug=0` turns it off again. Not a security boundary —
-  // nothing here is sensitive — just a switch so the page stays clean for
-  // everyone who did not ask.
+  // OFF UNLESS THE URL SAYS SO, AND REMEMBERED NOWHERE. `?debug=1` turns it
+  // on for that page load and for nothing after it. It used to be mirrored
+  // into localStorage so the switch would survive a visit — which quietly
+  // made one trip to ?debug=1 a permanent property of the ORIGIN, and dealt
+  // this panel to every later arrival from an ordinary link. Found in
+  // production 2026-08-28, the same mistake as the x-ray's a few hundred
+  // lines below; both switches now live in the URL and only there, and
+  // ?debug=0 is gone because leaving the param off is the whole of "off".
+  // Not a security boundary — nothing here is sensitive — just a switch so
+  // the page stays clean for everyone who did not ask.
   var transcript = [];
   var debugMode = (function () {
     // Guarded because this file is also run headless by the parity harness,
     // which stubs only what the engine needs.
     if (typeof location === 'undefined') { return false; }
-    var m = /[?&]debug=([01])/.exec(location.search);
+    var on = /[?&]debug=1(?:&|$)/.test(location.search);
     try {
-      if (m) {
-        if (m[1] === '1') { localStorage.setItem('mr_debug', '1'); return true; }
-        localStorage.removeItem('mr_debug');
-        return false;
-      }
-      return localStorage.getItem('mr_debug') === '1';
-    } catch (e) {
-      return !!m && m[1] === '1';       // private mode: honour the URL only
-    }
+      // Clear what the old build wrote, so a browser that turned this on
+      // once before the fix is not still carrying it.
+      localStorage.removeItem('mr_debug');
+    } catch (e) {}                      // private mode: nothing was stored
+    return on;
   })();
 
   function logTurn(qIndex, answer) {
@@ -665,7 +667,10 @@ permalink: /games/mind-reader/
     if (!debugMode) { return ''; }
     return '<div class="mr-note" style="margin-top:20px">' +
       '<strong>Transcript</strong> ' +
-      '<span class="mr-result-note">(only you see this — ?debug=0 to hide)</span>' +
+      // "drop ?debug=1", not "?debug=0": there is no stored state left for a
+      // 0 to clear, so the honest instruction is to leave the param off.
+      '<span class="mr-result-note">(only you see this — drop ?debug=1 to hide)' +
+      '</span>' +
       '<div class="mr-row" style="margin-top:10px">' +
       '<button class="mr-btn" id="mr-copy">Copy</button>' +
       '<button class="mr-btn" id="mr-download">Download</button>' +
@@ -986,13 +991,23 @@ permalink: /games/mind-reader/
   // What it does protect is the GAME: a player who saw the running
   // candidate list would never experience being read, so it must be off by
   // default and stay off for anyone who did not deliberately turn it on.
-  // It is remembered in localStorage so "play again" does not lose it, and
-  // ?x-ray=0 turns it back off.
+  //
+  // THE SWITCH IS THE URL AND NOTHING ELSE. It used to be mirrored into
+  // localStorage so "play again" would not lose it — which it never needed:
+  // every restart path (mr-restart, and mr-again on all three end screens)
+  // calls start() directly and nothing in this page reloads, so the query
+  // string already outlives them. What the mirror did instead was turn one
+  // visit to ?x-ray=1 into a permanent property of the ORIGIN, and every
+  // later arrival from an ordinary link read it back and dealt the panel to
+  // a real player — the one thing the paragraph above says must never
+  // happen. Found in production 2026-08-28. Leaving the param off is now
+  // the only "off" there is, which is why ?x-ray=0 no longer means anything.
   var xray = false;
   try {
-    var xq = /[?&]x-ray=([01])/.exec(location.search);
-    if (xq) { localStorage.setItem('mr-xray', xq[1]); }
-    xray = localStorage.getItem('mr-xray') === '1';
+    xray = /[?&]x-ray=1(?:&|$)/.test(location.search);
+    // Drop the key the old build wrote, so a browser that turned the x-ray
+    // on once before this fix is not still carrying it.
+    localStorage.removeItem('mr-xray');
   } catch (e) { xray = false; }   // private mode: simply stays off
 
   var xrayEl = null;
@@ -1083,8 +1098,10 @@ permalink: /games/mind-reader/
     var off = byId('mr-xoff');
     if (off) {
       off.addEventListener('click', function () {
+        // Off for this game only. Nothing is written down: the switch lives
+        // in the URL, and a reload with ?x-ray=1 still on it is a deliberate
+        // act, not a leak.
         xray = false;
-        try { localStorage.setItem('mr-xray', '0'); } catch (e) {}
         host.remove();
         xrayEl = null;
       });
