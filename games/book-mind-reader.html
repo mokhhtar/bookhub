@@ -451,6 +451,14 @@ permalink: /games/mind-reader/
   var GUESS_RATIO_FLOOR = 0.35;
   var ENDGAME_CANDIDATES = 30;
   var NAMED_CHARS_GATE = 0.75;
+  // How many character-name questions in a row before the engine is forced
+  // to spend a turn on something else, if anything else still qualifies.
+  // Uncapped, a name that keeps winning on raw information gain keeps
+  // winning turn after turn — measured: one real game asked seven straight
+  // "is one of the characters called X?" questions, all from one
+  // candidate's cast. Mirrors CHAR_STREAK_CAP in engine.py — change both or
+  // neither, and see nextQuestion() for where this is enforced.
+  var CHAR_STREAK_CAP = 2;
 
   // Below this the guess is introduced as a long shot rather than a claim.
   //
@@ -600,6 +608,9 @@ permalink: /games/mind-reader/
   // Per-dimension interval implied by firm ladder answers, and how often
   // the player has said "don't know" about that dimension.
   var bounds, dkCount;
+  // Consecutive character questions just asked, reset by any non-character
+  // question. See CHAR_STREAK_CAP.
+  var charStreak;
 
   // ── transcript (owner debugging, hidden from players) ──────────────────
   // A readable log of one game — every question with its answer, the ladder
@@ -928,6 +939,7 @@ permalink: /games/mind-reader/
     asked = {};
     bounds = { year: [-1e9, 1e9], pages: [-1e9, 1e9] };
     dkCount = { year: 0, pages: 0 };
+    charStreak = 0;
     transcript = [];
     history = [];
     askedCount = 0;
@@ -1312,6 +1324,7 @@ permalink: /games/mind-reader/
     var w = WEIGHTS[answer];
     asked[qIndex] = true;
     askedCount++;
+    charStreak = qIndex < 0 ? charStreak + 1 : 0;
     applyLadder(qIndex, answer);
     if (answer === 'yes' && excludes && excludes[qIndex]) {
       // A FIRM yes rules out what cannot also be true. Only a firm one —
@@ -1483,8 +1496,10 @@ permalink: /games/mind-reader/
 
     var scored = scoreQuestions();
     var totals = scored.totals, condH = scored.condH;
+    var anyUnaskedSubject = false;
     for (q = 0; q < nq; q++) {
       if (asked[q]) { continue; }
+      anyUnaskedSubject = true;
       var p = totals[q];
       if (p <= 0.02 || p >= 0.98) { continue; }
       var gain = binaryEntropy(p) - condH[q];
@@ -1494,7 +1509,15 @@ permalink: /games/mind-reader/
     // Endgame: names of characters some live candidate actually has. Scored
     // the same way — a name question on books with no recorded cast is the
     // same "mostly unknown" trap the main pool just stopped falling into.
-    if (chars && effectiveCandidates() <= ENDGAME_CANDIDATES && expectsNamedCharacters()) {
+    //
+    // CHAR_STREAK_CAP: withhold names for this one turn if the streak is
+    // already at the cap AND a subject question is still unasked — the
+    // ordinary case, where continuing the streak was a choice, not a
+    // necessity. If every subject question is already asked, a capped turn
+    // would just return null a turn early for no reason, so the cap is
+    // skipped rather than enforced. Mirrors _pool() in engine.py.
+    var charsCapped = charStreak >= CHAR_STREAK_CAP && anyUnaskedSubject;
+    if (chars && !charsCapped && effectiveCandidates() <= ENDGAME_CANDIDATES && expectsNamedCharacters()) {
       var live = topIndices(ENDGAME_CANDIDATES), seen = {};
       for (i = 0; i < live.length; i++) {
         var list = chars.books[live[i]] || [];
@@ -1612,7 +1635,8 @@ permalink: /games/mind-reader/
                        asked: JSON.parse(JSON.stringify(asked)),
                        bounds: JSON.parse(JSON.stringify(bounds)),
                        dkCount: JSON.parse(JSON.stringify(dkCount)),
-                       belief: new Float64Array(belief), count: askedCount });
+                       belief: new Float64Array(belief), count: askedCount,
+                       charStreak: charStreak });
         // Deferred together, so belief and what is on screen never disagree
         // — updating now and rendering later would leave the x-ray and the
         // pool count describing a turn the card has not moved to yet.
@@ -1643,6 +1667,7 @@ permalink: /games/mind-reader/
     asked = prev.asked;
     bounds = prev.bounds;
     dkCount = prev.dkCount;
+    charStreak = prev.charStreak;
     for (var t = transcript.length - 1; t >= 0; t--) {
       if (transcript[t].kind === 'q') { transcript.splice(t, 1); break; }
     }
