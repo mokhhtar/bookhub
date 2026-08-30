@@ -1624,7 +1624,7 @@ permalink: /games/mind-reader/
         btn.className += ' mr-answer--pressed';
         var answer = ANSWERS[+btn.getAttribute('data-answer')].key;
         // `answer` is kept so the give-up screen can explain a miss: which
-        // answers disagreed with what the table holds about the book the
+        // answers disagreed with what my notes hold about the book the
         // player actually meant.
         // A full snapshot, because one answer can mark SEVERAL questions
         // asked — a firm yes suppresses its exclusive siblings, and a
@@ -1914,12 +1914,20 @@ permalink: /games/mind-reader/
   // Why did it miss THIS book? Answered from the game that just happened,
   // entirely in the page — nothing is sent anywhere.
   //
-  // The list is the answers that disagreed with what the table holds. That
-  // is the fastest way to find a bad row: the owner played The Road, said
-  // "no" to "does it have well-known named characters?" — correctly, its
-  // two characters are "the man" and "the boy" — and the table said yes,
-  // because Open Library files those strings under `person`. One glance at
-  // this list would have shown it.
+  // The list is the answers that disagreed with what my notes hold. That is
+  // the fastest way to find a bad row: the owner played The Road, said "no"
+  // to "does it have well-known named characters?" — correctly, its two
+  // characters are "the man" and "the boy" — and my notes said yes, because
+  // Open Library files those strings under `person`. One glance at this
+  // list would have shown it.
+  //
+  // NEITHER THE RANK NOR THE WORD "TABLE" REACHES THIS SCREEN. Both did
+  // once — "#4927 by readers" next to the title, "the table says yes" next
+  // to an answer — and both read as the game showing a player its own
+  // database instead of talking to them. The rank is still there for
+  // whoever needs it: the owner-only transcript (?debug=1) logs it on every
+  // guess already, which is the actual diagnostic tool this screen was
+  // never meant to double as.
   function explainMiss(bookIndex) {
     var b = books[bookIndex];
     var rows = [], i;
@@ -1929,35 +1937,33 @@ permalink: /games/mind-reader/
       var w = WEIGHTS[h.answer];
       if (w === 0) { continue; }              // "don't know" contradicts nothing
       var p = pYesCache[h.q][bookIndex];
-      // The table says yes for this book if p is high, no if it is low;
-      // 0.5 means it has no record either way and cannot disagree.
+      // My notes say yes for this book if p is high, no if it is low; 0.5
+      // means there is no record either way and cannot disagree.
       if (p === meta.p_unknown) { continue; }
-      var tableSaysYes = p > 0.5;
+      var notesSayYes = p > 0.5;
       var playerSaidYes = w > 0;
-      if (tableSaysYes !== playerSaidYes) {
+      if (notesSayYes !== playerSaidYes) {
         rows.push({ q: questions[h.q].text, said: h.answer,
-                    table: tableSaysYes ? 'yes' : 'no' });
+                    notes: notesSayYes ? 'yes' : 'no' });
       }
     }
 
-    var rank = bookIndex + 1;
     var html = '<p class="mr-guess-lead">' + escapeHTML(b.t) +
-      ' <span class="mr-result-note">is in the list (#' + rank +
-      ' by readers)</span></p>';
+      ' <span class="mr-result-note">is one I know</span></p>';
 
     if (!rows.length) {
       html += '<p class="mr-result-note">None of your answers contradicted ' +
-        'what the table holds about it — it simply never gathered enough ' +
+        'what my notes say about it — it simply never gathered enough ' +
         'belief to be guessed inside the question limit.</p>';
     } else {
       html += '<p class="mr-result-note">' + rows.length + ' of your answers ' +
-        'disagreed with what the table holds about it. Each one pushed it ' +
+        'disagreed with what my notes say about it. Each one pushed it ' +
         'down:</p><ul class="mr-results">';
       rows.forEach(function (r) {
         html += '<li class="mr-result"><strong>' + escapeHTML(r.q) +
           '</strong><br><span class="mr-result-note">you said ' +
-          escapeHTML(r.said.replace('_', ' ')) + ' · the table says ' +
-          escapeHTML(r.table) + '</span></li>';
+          escapeHTML(r.said.replace('_', ' ')) + ' · my notes say ' +
+          escapeHTML(r.notes) + '</span></li>';
       });
       html += '</ul>';
     }
