@@ -100,6 +100,14 @@
   "form:classic",
   "fact:veryold",
   "fact:verrecent",
-  "fact:recent"
+  "fact:recent",
+  "audience:ya",
+  "book:film",
+  "fact:old",
+  "fact:pre1970",
+  "fact:pre2000",
+  "theme:family",
+  "theme:friendship",
+  "theme:magic"
  ]
 }
