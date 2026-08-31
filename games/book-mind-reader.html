@@ -524,6 +524,22 @@ permalink: /games/mind-reader/
   var MAX_QUESTIONS = 30;
   var MAX_GUESSES = 3;
 
+  // COLD QUESTIONS — the third pool, asked to GET data rather than to use
+  // it. Mirrors COLD_UNKNOWN_CONFIDENCE / COLD_TURNS in engine.py, where the
+  // full argument lives. The short version: a dimension our catalogue does
+  // not record can never clear the frequency floor, so it can never become a
+  // question; Akinator has no such limit because its table is filled in by
+  // play. These columns start at 0.5 for every book — which makes answering
+  // one arithmetically inert, since a constant factor cancels in the
+  // normalisation — and overrides.json fills them in from what players
+  // teach, at which point the ordinary update starts using them for free.
+  //
+  // The chooser can never pick one (gain is exactly zero at a flat 0.5), so
+  // the schedule hands them a turn from outside it. Turn numbers rather than
+  // a gain threshold so both engines agree on integers, not floats.
+  var COLD_UNKNOWN = 0.5;
+  var COLD_TURNS = [14, 22];
+
   // `hint` is the key shown on the button and is also its position: the
   // keyboard handler maps 1-5 straight onto this array, so reordering the
   // answers reorders the shortcuts with them and nothing has to agree twice.
@@ -611,6 +627,9 @@ permalink: /games/mind-reader/
   // Consecutive character questions just asked, reset by any non-character
   // question. See CHAR_STREAK_CAP.
   var charStreak;
+  // First index in `questions` that is a cold question. Everything at or
+  // after it has no column in matrix.bin. Always === meta.questions.
+  var coldStart = 0;
 
   // ── transcript (owner debugging, hidden from players) ──────────────────
   // A readable log of one game — every question with its answer, the ladder
@@ -803,11 +822,21 @@ permalink: /games/mind-reader/
   }
 
   Promise.all([getJSON('meta.json'), getJSON('questions.json'),
-               fetch(BASE + 'matrix.bin').then(function (r) { return r.arrayBuffer(); })])
+               fetch(BASE + 'matrix.bin').then(function (r) { return r.arrayBuffer(); }),
+               // AWAITED, unlike every other optional file on this page, and
+               // that is deliberate. The rest are refinements a game can
+               // start without; this one changes WHICH QUESTION turn 15 is,
+               // so a late arrival would make the same game play differently
+               // depending on the network — and parity_trace.py, which reads
+               // it off disk, would be comparing against a browser that had
+               // not got it yet. ~200 bytes, and a missing file settles to an
+               // empty list rather than failing the load.
+               getJSON('cold_questions.json').catch(function () { return []; })])
     .then(function (parts) {
       meta = parts[0];
       questions = parts[1];
       decodeMatrix(new Uint8Array(parts[2]));
+      addColdQuestions(parts[3]);
       buildExcludes();
       buildProbabilities();
       start();
@@ -906,6 +935,36 @@ permalink: /games/mind-reader/
     return -(p * Math.log(p) + (1 - p) * Math.log(1 - p));
   }
 
+  // Append the cold questions to `questions`, AFTER the packed ones and
+  // never among them. Everything that walks `questions` by id — questionText,
+  // questionIndex, applyOverrides, the transcript, teach() — then picks them
+  // up with no change at all, while everything that walks COLUMNS bounds
+  // itself by meta.questions and cannot see them: decodeMatrix, the richness
+  // refinement in applyPriorWhenReady, and scoreQuestions, which is the one
+  // that must not see them.
+  //
+  // Position is load-bearing, as it is everywhere in this file. `states` and
+  // matrix.bin are indexed by column, so a cold entry inserted before index
+  // meta.questions would shift every packed cell by one — the same
+  // column-positional error question_hash exists to catch.
+  function addColdQuestions(list) {
+    coldStart = meta.questions;
+    if (!Array.isArray(list)) { return; }
+    var seen = {};
+    for (var i = 0; i < questions.length; i++) { seen[questions[i].id] = true; }
+    for (i = 0; i < list.length; i++) {
+      var c = list[i];
+      // A cold id that has since been promoted into the packed matrix is
+      // dropped, not duplicated — the promoted column is the real one. See
+      // the same guard in engine.py's Matrix for why this is the graduation
+      // path rather than defensive tidiness.
+      if (!c || typeof c.id !== 'string' || typeof c.text !== 'string') { continue; }
+      if (seen[c.id]) { continue; }
+      seen[c.id] = true;
+      questions.push({ id: c.id, text: c.text, base: 0, cold: true });
+    }
+  }
+
   function buildProbabilities() {
     var nb = meta.books, nq = meta.questions;
     // Per-book richness lives in books.json, which is deferred so that
@@ -913,8 +972,10 @@ permalink: /games/mind-reader/
     // on a middle value and are refined the moment that file lands — see
     // applyPriorWhenReady(), which does both the prior and this refinement
     // before the first guess can happen.
-    pYesCache = new Array(nq);
-    hCache = new Array(nq);
+    // Sized to the FULL question list, not nq: the cold columns need cells
+    // for update() to read and for applyOverrides() to write into.
+    pYesCache = new Array(questions.length);
+    hCache = new Array(questions.length);
     for (var q = 0; q < nq; q++) {
       var arr = new Float64Array(nb), harr = new Float64Array(nb);
       for (var b = 0; b < nb; b++) {
@@ -923,6 +984,17 @@ permalink: /games/mind-reader/
       }
       pYesCache[q] = arr;
       hCache[q] = harr;
+    }
+    // Flat, because nothing is known about any book here — that is what
+    // makes the column cold. A constant factor across every candidate
+    // cancels in update()'s normalisation, so until the drain writes real
+    // values these cells cannot move belief in either direction.
+    for (q = nq; q < questions.length; q++) {
+      var cold = new Float64Array(nb), coldH = new Float64Array(nb);
+      cold.fill(COLD_UNKNOWN);
+      coldH.fill(binaryEntropy(COLD_UNKNOWN));
+      pYesCache[q] = cold;
+      hCache[q] = coldH;
     }
   }
 
@@ -1491,8 +1563,23 @@ permalink: /games/mind-reader/
     return { totals: totals, condH: condH };
   }
 
+  // The cold question this turn owes, if this is one of its turns. Ahead of
+  // the ranking rather than inside it, because a flat column's information
+  // gain is exactly zero and no ranking will ever return it. Mirrors
+  // _due_cold_question() in engine.py.
+  function dueColdQuestion() {
+    if (COLD_TURNS.indexOf(askedCount) < 0) { return null; }
+    for (var i = coldStart; i < questions.length; i++) {
+      if (!asked[i]) { return i; }
+    }
+    return null;
+  }
+
   function nextQuestion() {
     var nq = meta.questions, best = null, bestGain = -1, i, q;
+
+    var cold = dueColdQuestion();
+    if (cold !== null) { return cold; }
 
     var scored = scoreQuestions();
     var totals = scored.totals, condH = scored.condH;
