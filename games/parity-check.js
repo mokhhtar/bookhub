@@ -256,6 +256,37 @@ async function main() {
                 `diff ${diff.toExponential(2)}`);
   }
 
+  // The re-check, as its own comparison after the scripted game. Both halves
+  // are checked even when Python found nothing to re-check: agreeing that no
+  // answer is contradicted is a real result, and it is the one that would go
+  // silently untested if this only ran when the feature fired.
+  const rc = trace.recheck;
+  if (rc && !failures) {
+    if (typeof engine.contradictedQuestion !== 'function') {
+      console.log('recheck  FAIL  the page exposes no contradictedQuestion() — ' +
+                  'is the __MR_TEST__ hook still in step with engine.py?');
+      failures++;
+    } else {
+      const jsQ = engine.contradictedQuestion();
+      if (jsQ !== rc.question) {
+        console.log(`recheck  FAIL  CONTRADICTION MISMATCH\n` +
+                    `    python: ${rc.question}\n    js:     ${jsQ}`);
+        failures++;
+      } else if (rc.question === null) {
+        console.log('recheck  ok    both engines found nothing contradicted');
+      } else {
+        engine.revise(rc.question, rc.answer);
+        const got = beliefChecksum(engine.belief());
+        const diff = Math.abs(got - rc.belief_checksum);
+        const ok = diff <= TOLERANCE;
+        if (!ok) { failures++; }
+        console.log(`recheck  ${ok ? 'ok  ' : 'FAIL'}  ` +
+                    `${rc.question.padEnd(24)} ${String(rc.answer).padEnd(13)} ` +
+                    `diff ${diff.toExponential(2)}`);
+      }
+    }
+  }
+
   console.log();
   if (failures) {
     console.log(`PARITY FAILED — ${failures} divergence(s).`);

@@ -1,4 +1,25 @@
 {
+ "recheck": {
+  "question": "theme:magic",
+  "answer": "yes",
+  "wants": true,
+  "top": [
+   {
+    "key": "/works/OL17864836W",
+    "p": 0.04336654116
+   },
+   {
+    "key": "/works/OL8514692W",
+    "p": 0.0172434026
+   },
+   {
+    "key": "/works/OL16117275W",
+    "p": 0.009847923332
+   }
+  ],
+  "belief_sum": 1.0,
+  "belief_checksum": 7.588042307746
+ },
  "generated_from": {
   "question_hash": "ce1a976804ed0b9e",
   "books": 5029,
@@ -26,7 +47,16 @@
   "unknown",
   "no",
   "yes",
-  "probably_yes"
+  "probably_yes",
+  "no",
+  "yes",
+  "probably_no",
+  "unknown",
+  "yes",
+  "no",
+  "probably_yes",
+  "no",
+  "yes"
  ],
  "turns": [
   {
@@ -428,6 +458,186 @@
    ],
    "belief_sum": 1.0,
    "belief_checksum": 7.501248807619
+  },
+  {
+   "question": "t:romance",
+   "answer": "no",
+   "top": [
+    {
+     "key": "/works/OL16806416W",
+     "p": 0.019865819083
+    },
+    {
+     "key": "/works/OL17864836W",
+     "p": 0.016137912695
+    },
+    {
+     "key": "/works/OL675737W",
+     "p": 0.013555532419
+    }
+   ],
+   "belief_sum": 1.0,
+   "belief_checksum": 7.614956174594
+  },
+  {
+   "question": "genre:scifi",
+   "answer": "yes",
+   "top": [
+    {
+     "key": "/works/OL17864836W",
+     "p": 0.042521992899
+    },
+    {
+     "key": "/works/OL675737W",
+     "p": 0.009921568341
+    },
+    {
+     "key": "/works/OL16314245W",
+     "p": 0.009661260651
+    }
+   ],
+   "belief_sum": 1.0,
+   "belief_checksum": 7.586726932192
+  },
+  {
+   "question": "form:firstperson",
+   "answer": "probably_no",
+   "top": [
+    {
+     "key": "/works/OL17864836W",
+     "p": 0.042521992899
+    },
+    {
+     "key": "/works/OL675737W",
+     "p": 0.009921568341
+    },
+    {
+     "key": "/works/OL16314245W",
+     "p": 0.009661260651
+    }
+   ],
+   "belief_sum": 1.0,
+   "belief_checksum": 7.586726932192
+  },
+  {
+   "question": "book:film",
+   "answer": "unknown",
+   "top": [
+    {
+     "key": "/works/OL17864836W",
+     "p": 0.042521992899
+    },
+    {
+     "key": "/works/OL675737W",
+     "p": 0.009921568341
+    },
+    {
+     "key": "/works/OL16314245W",
+     "p": 0.009661260651
+    }
+   ],
+   "belief_sum": 1.0,
+   "belief_checksum": 7.586726932192
+  },
+  {
+   "question": "theme:magic",
+   "answer": "yes",
+   "top": [
+    {
+     "key": "/works/OL17864836W",
+     "p": 0.030121471293
+    },
+    {
+     "key": "/works/OL8514692W",
+     "p": 0.011976898376
+    },
+    {
+     "key": "/works/OL20058930W",
+     "p": 0.010210881131
+    }
+   ],
+   "belief_sum": 1.0,
+   "belief_checksum": 7.674298218268
+  },
+  {
+   "question": "form:webnovel",
+   "answer": "no",
+   "top": [
+    {
+     "key": "/works/OL17864836W",
+     "p": 0.035727924624
+    },
+    {
+     "key": "/works/OL8514692W",
+     "p": 0.014206136156
+    },
+    {
+     "key": "/works/OL20058930W",
+     "p": 0.012111413411
+    }
+   ],
+   "belief_sum": 1.0,
+   "belief_checksum": 7.636065541304
+  },
+  {
+   "question": "t:survival",
+   "answer": "probably_yes",
+   "top": [
+    {
+     "key": "/works/OL17864836W",
+     "p": 0.050836910818
+    },
+    {
+     "key": "/works/OL8514692W",
+     "p": 0.020213770725
+    },
+    {
+     "key": "/works/OL17610507W",
+     "p": 0.011463247143
+    }
+   ],
+   "belief_sum": 1.0,
+   "belief_checksum": 7.599107731969
+  },
+  {
+   "question": "genre:adventure",
+   "answer": "no",
+   "top": [
+    {
+     "key": "/works/OL17864836W",
+     "p": 0.058822329744
+    },
+    {
+     "key": "/works/OL8514692W",
+     "p": 0.023388932723
+    },
+    {
+     "key": "/works/OL20058930W",
+     "p": 0.013118545095
+    }
+   ],
+   "belief_sum": 1.0,
+   "belief_checksum": 7.574415131266
+  },
+  {
+   "question": "audience:ya",
+   "answer": "yes",
+   "top": [
+    {
+     "key": "/works/OL17864836W",
+     "p": 0.04336654116
+    },
+    {
+     "key": "/works/OL8514692W",
+     "p": 0.0172434026
+    },
+    {
+     "key": "/works/OL16117275W",
+     "p": 0.009847923332
+    }
+   ],
+   "belief_sum": 1.0,
+   "belief_checksum": 7.588042307746
   }
  ]
 }
