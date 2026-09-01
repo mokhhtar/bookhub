@@ -1,4 +1,12 @@
 {
+ "openings": {
+  "1": "fact:pre2000",
+  "2": "author:alive",
+  "3": "author:alive",
+  "7": "fact:recent",
+  "42": "fact:pre2000",
+  "12345": "author:alive"
+ },
  "recheck": {
   "question": "theme:friendship",
   "answer": "yes",

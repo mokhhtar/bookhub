@@ -222,7 +222,11 @@ async function main() {
     console.error('books.json never arrived in the sandbox');
     process.exit(1);
   }
-  engine.start();
+  // SEED 0 = strict argmax. A real game seeds the opening question from the
+  // clock, which is the point of the feature and the enemy of a fixture:
+  // parity_trace.py records one specific game, so both sides must play the
+  // deterministic one.
+  engine.start(0);
   await new Promise(r => setTimeout(r, 50));   // let applyPriorWhenReady run
 
   let failures = 0;
@@ -284,6 +288,29 @@ async function main() {
                     `${rc.question.padEnd(24)} ${String(rc.answer).padEnd(13)} ` +
                     `diff ${diff.toExponential(2)}`);
       }
+    }
+  }
+
+  // THE SEEDED OPENING. The scripted game above runs on seed 0 -- strict
+  // argmax -- so it never touches the randomised branch. Without this, a
+  // chooser whose whole point is variety would ship with its varying path
+  // unexecuted by any check, and the two mulberry32 implementations could
+  // drift by a bit with nothing noticing.
+  const openings = trace.openings || {};
+  if (Object.keys(openings).length && !failures) {
+    let bad = 0;
+    for (const seed of Object.keys(openings)) {
+      engine.start(Number(seed));
+      const qi = engine.nextQuestion();
+      const got = qi === null ? null : engine.questionId(qi);
+      if (got !== openings[seed]) {
+        console.log(`opening seed ${seed}  FAIL  python: ${openings[seed]}  js: ${got}`);
+        bad++; failures++;
+      }
+    }
+    if (!bad) {
+      console.log(`opening  ok    ${Object.keys(openings).length} seed(s) agree ` +
+                  `(the two PRNGs match)`);
     }
   }
 
