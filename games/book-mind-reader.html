@@ -633,6 +633,9 @@ permalink: /games/mind-reader/
   // Set once an answer has been revised, which retires "go back" for the
   // rest of the game. See revise() for why.
   var revised = false;
+  // Mutually-exclusive groups declared from the admin page, on top of the
+  // ones meta.json was built with. See buildExcludes().
+  var exclusiveExtra = [];
 
   // ── transcript (owner debugging, hidden from players) ──────────────────
   // A readable log of one game — every question with its answer, the ladder
@@ -834,12 +837,19 @@ permalink: /games/mind-reader/
                // it off disk, would be comparing against a browser that had
                // not got it yet. ~200 bytes, and a missing file settles to an
                // empty list rather than failing the load.
-               getJSON('cold_questions.json').catch(function () { return []; })])
+               getJSON('cold_questions.json').catch(function () { return []; }),
+               // AWAITED for the same reason cold_questions.json is: it
+               // decides which questions are suppressed by a firm yes, so a
+               // late arrival would make the same game play differently
+               // depending on the network, and parity_trace.py reads it off
+               // disk. Tiny, and a missing file settles to an empty list.
+               getJSON('exclusive_overrides.json').catch(function () { return []; })])
     .then(function (parts) {
       meta = parts[0];
       questions = parts[1];
       decodeMatrix(new Uint8Array(parts[2]));
       addColdQuestions(parts[3]);
+      exclusiveExtra = Array.isArray(parts[4]) ? parts[4] : [];
       buildExcludes();
       buildProbabilities();
       start();
@@ -1346,7 +1356,13 @@ permalink: /games/mind-reader/
   var excludes = null;
   function buildExcludes() {
     excludes = {};
-    var groups = meta.exclusive_groups || [];
+    // The build's own groups PLUS whatever the admin page has declared
+    // since. meta.json is baked by build_matrix.py, so without the second
+    // list declaring two questions mutually exclusive would mean editing
+    // features.py and rebuilding the matrix to change a fact about two ids.
+    // Merged, never replaced: the hand-authored groups are the ones the
+    // corpus cannot justify by itself and must not be dropped.
+    var groups = (meta.exclusive_groups || []).concat(exclusiveExtra || []);
     var byId = {};
     for (var i = 0; i < questions.length; i++) { byId[questions[i].id] = i; }
     groups.forEach(function (g) {
