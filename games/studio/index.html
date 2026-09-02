@@ -1,0 +1,728 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mind Reader — recording desk</title>
+<style>
+  :root {
+    --bg: #faf9f7; --panel: #fff; --fg: #1a1a1a; --muted: #6b6b6b;
+    --line: #e3e0da; --accent: #1f4d3a; --warn: #8a4b16; --bad: #8c2f2f;
+    --mono: ui-monospace, "Cascadia Mono", Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#15171a; --panel:#1d2024; --fg:#e8e6e3; --muted:#9a9a9a;
+            --line:#2f343a; --accent:#5fb08a; --warn:#d8a05a; --bad:#e07a7a; }
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg);
+         font:15px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 28px 20px 80px; }
+  h1 { font-size: 22px; margin: 0 0 4px; }
+  .sub { color: var(--muted); margin: 0 0 26px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  @media (max-width: 860px) { .grid { grid-template-columns: 1fr; } }
+  /* `display:grid` on the class beats the UA stylesheet's `[hidden]{display:none}`,
+     so without this the two game tabs render on top of each other. */
+  [hidden] { display: none !important; }
+  section { background: var(--panel); border: 1px solid var(--line);
+            border-radius: 10px; padding: 18px; }
+  section h2 { font-size: 13px; letter-spacing:.08em; text-transform: uppercase;
+               color: var(--muted); margin: 0 0 14px; font-weight: 600; }
+  label { display:block; font-size:13px; color:var(--muted); margin:12px 0 4px; }
+  label:first-of-type { margin-top: 0; }
+  input[type=text], input[type=number], select, textarea {
+    width:100%; padding:9px 11px; background:var(--bg); color:var(--fg);
+    border:1px solid var(--line); border-radius:7px; font:inherit;
+  }
+  textarea { font-family: var(--mono); font-size: 12.5px; min-height: 190px; resize: vertical; }
+  .row { display:flex; gap:10px; }
+  .row > * { flex:1; min-width:0; }
+  button { padding:9px 15px; border-radius:7px; border:1px solid var(--line);
+           background:var(--bg); color:var(--fg); font:inherit; cursor:pointer; }
+  button:hover:not(:disabled) { border-color: var(--muted); }
+  button.primary { background:var(--accent); border-color:var(--accent); color:#fff; font-weight:600; }
+  button:disabled { opacity:.5; cursor:not-allowed; }
+  .buttons { display:flex; gap:9px; flex-wrap:wrap; margin-top:16px; }
+  button.preset { padding:6px 11px; font-size:12.5px; color:var(--muted); }
+  button.preset.active { color:var(--accent); border-color:var(--accent); }
+  .note { font-size:12.5px; color:var(--muted); margin-top:10px; }
+  .note.warn { color: var(--warn); }
+  .note.bad { color: var(--bad); }
+  pre#log { background:var(--bg); border:1px solid var(--line); border-radius:8px;
+            padding:12px; font-family:var(--mono); font-size:12px; line-height:1.5;
+            max-height:340px; overflow:auto; white-space:pre-wrap; margin:0; }
+  .full { grid-column: 1 / -1; }
+  .pill { display:inline-block; font-size:11.5px; padding:2px 8px; border-radius:20px;
+          border:1px solid var(--line); color:var(--muted); margin-left:6px; }
+  fieldset { border:1px solid var(--line); border-radius:8px; padding:12px 14px; margin:14px 0 0; }
+  legend { font-size:12px; color:var(--muted); padding:0 6px; }
+  .radio { display:flex; align-items:flex-start; gap:8px; margin:7px 0; font-size:13.5px; }
+  .radio input { margin-top:3px; }
+  .radio span small { display:block; color:var(--muted); font-size:12px; }
+
+  /* Two games, one camera. The tabs swap only what differs — a book and a
+     sheet, or a day — and the recording panel below them stays put. */
+  .tabs { display:flex; gap:4px; margin-bottom:18px; border-bottom:1px solid var(--line); }
+  .tab { border:1px solid transparent; border-bottom:none; border-radius:8px 8px 0 0;
+         padding:9px 16px; background:none; color:var(--muted); font-weight:600;
+         margin-bottom:-1px; }
+  .tab.active { background:var(--panel); border-color:var(--line); color:var(--fg); }
+  .tab:hover:not(.active) { color:var(--fg); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Recording desk</h1>
+  <p class="sub">Test the game, record the take. Everything runs on this machine.</p>
+
+  <div class="row" style="align-items:center; gap:10px; margin-bottom:20px;">
+    <button id="btn-backend" style="flex:0 0 auto;">Start backend</button>
+    <span class="pill" id="backend-pill" style="flex:0 0 auto; margin:0;">idle</span>
+    <p class="note" id="backend-note" style="margin:0;">
+      uvicorn main:app --reload --port 8000, with .env loaded first.
+    </p>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" data-game="mind-reader">Mind Reader</button>
+    <button class="tab" data-game="spot-the-slop">Spot the Slop</button>
+  </div>
+
+  <div class="grid" id="tab-mind-reader">
+
+    <section>
+      <h2>1 · The book</h2>
+      <label for="title">Title</label>
+      <input type="text" id="title" placeholder="as you would say it to a person">
+      <label for="author">Author <span class="pill">optional</span></label>
+      <input type="text" id="author">
+      <div class="buttons">
+        <button id="btn-prompt">Copy the Gemini prompt</button>
+        <button id="btn-prompt-blank">Prompt that picks the book too</button>
+      </div>
+      <p class="note" id="prompt-note">
+        Paste it into the Gemini web app — not the API. The web app can search
+        the web before answering; the free API key cannot.
+      </p>
+      <p class="note" id="locate-note"></p>
+    </section>
+
+    <section>
+      <h2>2 · The answer sheet</h2>
+      <label for="sheet">JSON from Gemini</label>
+      <textarea id="sheet" placeholder='{ "title": "...", "author": "...", "answers": { "form:fiction": "yes", ... } }'></textarea>
+      <div class="buttons">
+        <button class="primary" id="btn-save">Check and save</button>
+        <button id="btn-sheets">Saved sheets</button>
+      </div>
+      <p class="note" id="save-note">
+        Saved twice: merged into the bot's cache so it can play, and kept as its
+        own dated file with its source — that copy is the one worth reviewing if
+        these answers ever go into the game.
+      </p>
+    </section>
+  </div>
+
+  <div class="grid" id="tab-spot-the-slop" hidden>
+    <section class="full">
+      <h2>The day</h2>
+      <p class="note" style="margin:0 0 14px">
+        <b>The bot answers nothing.</b> It shows the pair, waits long enough for
+        whoever is watching to make up their own mind, and then turns the card
+        over. A bot picking correctly five times is a video about a bot; a bot
+        picking wrong is an advertisement for the machine having written the
+        better passage. Neither is the video. The viewer plays this one.
+      </p>
+
+      <fieldset>
+        <legend>Which day</legend>
+        <label class="radio">
+          <input type="radio" name="stsday" value="showcase" checked>
+          <span>The showcase day <span class="pill" id="sts-showcase-pill">checking…</span>
+            <small>A real generated puzzle on a date no calendar reaches, kept out of the
+              published bank. The video reveals all five answers, and every date in the real
+              bank is a date somebody is going to play.</small></span>
+        </label>
+        <label class="radio">
+          <input type="radio" name="stsday" value="published">
+          <span>A published day
+            <small>Records a day from the live bank. Fine for checking a real puzzle looks
+              right on camera &mdash; but do not post it before that date has passed.</small></span>
+        </label>
+        <div class="row" style="margin-top:10px">
+          <div>
+            <label for="stsdate">Date</label>
+            <select id="stsdate"></select>
+          </div>
+          <div style="flex:2; display:flex; align-items:flex-end;">
+            <button id="btn-showcase" style="flex:0 0 auto">Build the showcase day</button>
+          </div>
+        </div>
+        <p class="note" id="sts-day-note"></p>
+      </fieldset>
+
+      <fieldset>
+        <legend>Pacing</legend>
+        <div class="row">
+          <div>
+            <label for="stspairs">Pairs to show</label>
+            <input type="number" id="stspairs" value="2" min="1" max="5">
+          </div>
+          <div>
+            <label for="stsread">Reading beat <span class="pill">seconds</span></label>
+            <input type="number" id="stsread" placeholder="auto" min="3" max="60">
+          </div>
+          <div>
+            <label for="stshold">Hold the reveal <span class="pill">seconds</span></label>
+            <input type="number" id="stshold" value="5" min="1" max="30">
+          </div>
+        </div>
+        <p class="note">
+          Leave the reading beat blank and it is worked out from how long the two
+          passages actually are &mdash; 180 characters and 420 characters are not
+          the same wait &mdash; clamped to 8&ndash;20&nbsp;seconds. This is the number
+          that decides whether the video works: too short and the viewer has not
+          finished the second passage when the answer lands, so they never played
+          and the reveal means nothing.
+        </p>
+        <p class="note">
+          Five pairs runs about three minutes. Two is the shape of a feed clip, and
+          it ends on a reveal, which is a better place to stop than a score.
+          Showing all five is the only setting that plays the closing card.
+        </p>
+      </fieldset>
+
+      <p class="note">
+        Demo mode writes no localStorage and reports no score to the games Worker,
+        so a morning of takes cannot turn up in the &ldquo;how many people solved
+        this&rdquo; the video is advertising.
+      </p>
+    </section>
+  </div>
+
+  <div class="grid">
+    <section class="full">
+      <h2>Recording</h2>
+      <fieldset>
+        <legend>How</legend>
+        <label class="radio">
+          <input type="radio" name="mode" value="test" checked>
+          <span>Test run only
+            <small>Headless, no window, no file &mdash; just the log. For the mind reader that is
+              whether it wins and in how many questions; for Spot the Slop it is which book was
+              behind each pair.</small></span>
+        </label>
+        <label class="radio">
+          <input type="radio" name="mode" value="video">
+          <span>Record to a file &mdash; <b>preview quality</b>
+            <small>Playwright writes the viewport straight to .webm: no browser chrome, no cursor,
+              nothing else on your screen can get in. But its encoder is fixed at VP8, 25&nbsp;fps and
+              about 250&ndash;600&nbsp;kbps, with no setting anywhere that raises any of the three.
+              Good enough to judge a take by. Not what you publish, unless you accept that ceiling.</small></span>
+        </label>
+        <label class="radio">
+          <input type="radio" name="mode" value="obs">
+          <span>Open a window for OBS &mdash; <b>publish quality</b>
+            <small>A real Chrome window you capture yourself, so the bitrate and the frame rate are
+              OBS's to set and Playwright's ceiling does not apply. The cost is that the tab strip and
+              the address bar are in frame &mdash; crop them in OBS. Six second countdown before it opens.</small></span>
+        </label>
+      </fieldset>
+
+      <label style="margin-top:14px">Size presets</label>
+      <div class="buttons" id="size-presets" style="margin-top:0">
+        <button type="button" class="preset" data-w="540" data-h="960">9:16, narrow (540&times;960)</button>
+        <button type="button" class="preset" data-w="608" data-h="1080">9:16, wide (608&times;1080)</button>
+        <button type="button" class="preset" data-w="720" data-h="1280">9:16, large (720&times;1280)</button>
+        <button type="button" class="preset" data-w="574" data-h="844">Phone, wide (574&times;844)</button>
+        <button type="button" class="preset" data-w="1280" data-h="800">Desktop (1280&times;800)</button>
+      </div>
+
+      <div class="row" style="margin-top:14px">
+        <div>
+          <label for="width">Width</label>
+          <input type="number" id="width" value="540" min="320" max="2000">
+        </div>
+        <div>
+          <label for="height">Height</label>
+          <input type="number" id="height" value="960" min="480" max="2400">
+        </div>
+        <div style="flex:2">
+          <label for="outdir">Save recordings to</label>
+          <input type="text" id="outdir" placeholder="takes">
+        </div>
+      </div>
+      <p class="note" id="ratio-note"></p>
+      <p class="note">
+        This is the size of the <b>page</b>, and for the file mode it is also the
+        size of the video &mdash; the recorder captures the viewport in CSS pixels
+        and no scale factor raises that. Widening it does not enlarge the game
+        either: the stage is capped at 60ch, so past about 700 you get the whole
+        desktop page, nav bar and footer and all, with the card as a small box in
+        the top third. Record narrow and scale up below.
+        Above 560 the page uses its wider layout; below 480 it changes again.
+      </p>
+
+      <fieldset>
+        <legend>On the way out</legend>
+        <label class="radio">
+          <input type="checkbox" id="mp4">
+          <span>Also write an MP4 for TikTok / Reels
+            <small>H.264 in MP4 at the size below, which is the format they take &mdash; .webm is not.
+              It cannot add detail the recorder never captured; what it fixes is the container, the
+              aspect ratio, and the second helping of compression the platform would otherwise
+              apply to a 250&nbsp;kbps upload.</small></span>
+        </label>
+        <div class="row" style="margin-top:12px">
+          <div>
+            <label for="mp4w">MP4 width</label>
+            <input type="number" id="mp4w" value="1080" min="360" max="2160">
+          </div>
+          <div>
+            <label for="mp4h">MP4 height</label>
+            <input type="number" id="mp4h" value="1920" min="640" max="3840">
+          </div>
+          <div>
+            <label for="mp4bitrate">Bitrate</label>
+            <input type="text" id="mp4bitrate" value="8M">
+          </div>
+          <div style="flex:1.6">
+            <label for="mp4fit">Fit</label>
+            <select id="mp4fit">
+              <option value="frame">Fill the frame</option>
+              <option value="safe">Fit inside the safe zone</option>
+            </select>
+          </div>
+        </div>
+        <p class="note">
+          The bitrate is a ceiling, not a quota &mdash; a page that sits still
+          between taps does not need it, and a 116&nbsp;second take asking for 8M
+          came out at 1.9. &ldquo;Fit inside the safe zone&rdquo; shrinks the whole
+          picture until nothing in it can land under TikTok&rsquo;s buttons; it is
+          smaller, and the check below is how you decide whether you need it.
+        </p>
+      </fieldset>
+
+      <div class="buttons">
+        <button class="primary" id="btn-run">Run</button>
+        <button id="btn-safezone" disabled>Check the safe zone</button>
+        <button id="btn-clear">Clear log</button>
+      </div>
+      <p class="note bad" id="run-note"></p>
+    </section>
+
+    <section class="full" id="safezone-panel" hidden>
+      <h2>Safe zone</h2>
+      <p class="note" id="safezone-note" style="margin-top:0"></p>
+      <img id="safezone-img" alt="Three frames from the take with TikTok's overlay areas washed red and the safe rectangle outlined."
+           style="width:100%; border:1px solid var(--line); border-radius:8px; display:block">
+      <p class="note">
+        Drawn on frames taken back out of the finished file, so it shows where the
+        safe zone falls <b>after</b> the scaling and padding &mdash; not where it
+        would fall in the browser, which is a different rectangle. Red is what
+        TikTok covers with its own interface: the header at the top, the caption
+        and sound bar at the bottom, the like/comment/share rail on the right.
+        Anything inside the green outline is yours.
+      </p>
+      <p class="note warn">
+        These margins are a starting point and nothing more. Published figures for
+        the same year disagree by as much as 150px on the bottom bar alone, and
+        TikTok moves its interface several times a year. The only authority is a
+        real upload looked at on a real phone &mdash; check one before trusting
+        this on anything that matters.
+      </p>
+    </section>
+
+    <section class="full">
+      <h2>Output</h2>
+      <pre id="log">nothing yet.</pre>
+    </section>
+
+  </div>
+</div>
+
+<script>
+'use strict';
+const $ = id => document.getElementById(id);
+const log = $('log');
+
+function say(text, replace) {
+  if (replace || log.textContent === 'nothing yet.') { log.textContent = ''; }
+  log.textContent += text + '\n';
+  log.scrollTop = log.scrollHeight;
+}
+
+// ── the backend ───────────────────────────────────────────────────────────
+const PILL_COLOR = { idle: '', running: 'var(--accent)', stopping: 'var(--warn)', error: 'var(--bad)' };
+function paintBackend(s) {
+  const pill = $('backend-pill');
+  pill.textContent = s.status;
+  pill.style.color = PILL_COLOR[s.status] || '';
+  pill.style.borderColor = PILL_COLOR[s.status] || 'var(--line)';
+  $('btn-backend').textContent = (s.status === 'running' || s.status === 'stopping') ? 'Stop backend' : 'Start backend';
+  $('btn-backend').disabled = s.status === 'stopping';
+}
+let backendPolling = null;
+async function pollBackend() {
+  const s = await (await fetch('/api/backend/status')).json();
+  paintBackend(s);
+  return s;
+}
+$('btn-backend').onclick = async () => {
+  const s = await (await fetch('/api/backend/status')).json();
+  const running = s.status === 'running' || s.status === 'stopping';
+  const r = await (await fetch('/api/backend/' + (running ? 'stop' : 'start'),
+    { method: 'POST' })).json();
+  await pollBackend();
+};
+backendPolling = setInterval(pollBackend, 1500);
+pollBackend();
+
+// ── which game ────────────────────────────────────────────────────────────
+// The tab is a setting like any other, so the desk reopens on the game you
+// were last recording rather than always on the first one.
+let game = 'mind-reader';
+function showTab(which) {
+  game = which;
+  document.querySelectorAll('.tab').forEach(t =>
+    t.classList.toggle('active', t.dataset.game === which));
+  $('tab-mind-reader').hidden = which !== 'mind-reader';
+  $('tab-spot-the-slop').hidden = which !== 'spot-the-slop';
+  $('run-note').textContent = '';
+}
+document.querySelectorAll('.tab').forEach(t => {
+  t.addEventListener('click', () => { showTab(t.dataset.game); saveSettings(); });
+});
+
+// ── settings, remembered ──────────────────────────────────────────────────
+const FIELDS = ['title', 'author', 'width', 'height', 'outdir',
+                'mp4w', 'mp4h', 'mp4bitrate', 'mp4fit',
+                'stsdate', 'stspairs', 'stsread', 'stshold'];
+async function loadSettings() {
+  const s = await (await fetch('/api/settings')).json();
+  for (const f of FIELDS) { if (s[f] !== undefined) { $(f).value = s[f]; } }
+  if (s.mp4 !== undefined) { $('mp4').checked = !!s.mp4; }
+  if (s.mode) {
+    const el = document.querySelector('input[name=mode][value="' + s.mode + '"]');
+    if (el) { el.checked = true; }
+  }
+  if (s.stsday) {
+    const el = document.querySelector('input[name=stsday][value="' + s.stsday + '"]');
+    if (el) { el.checked = true; }
+  }
+  showTab(s.game === 'spot-the-slop' ? 'spot-the-slop' : 'mind-reader');
+}
+function saveSettings() {
+  const s = { game };
+  for (const f of FIELDS) { s[f] = $(f).value; }
+  s.mp4 = $('mp4').checked;
+  s.mode = document.querySelector('input[name=mode]:checked').value;
+  s.stsday = document.querySelector('input[name=stsday]:checked').value;
+  fetch('/api/settings', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+                           body: JSON.stringify(s) });
+}
+FIELDS.forEach(f => $(f).addEventListener('change', saveSettings));
+$('mp4').addEventListener('change', saveSettings);
+document.querySelectorAll('input[name=mode]').forEach(r => r.addEventListener('change', saveSettings));
+document.querySelectorAll('input[name=stsday]').forEach(r =>
+  r.addEventListener('change', () => { paintStsDay(); saveSettings(); }));
+
+// ── the Spot the Slop day ─────────────────────────────────────────────────
+// The showcase day is a file this desk builds, not something the site ships, so
+// whether it exists is a question only the disk can answer.
+let stsInfo = { days: [], showcase: false, showcaseDate: '' };
+async function loadSts() {
+  stsInfo = await (await fetch('/api/sts')).json();
+  const sel = $('stsdate');
+  const keep = sel.value;
+  sel.innerHTML = stsInfo.days.length
+    ? stsInfo.days.map(d => '<option value="' + d + '">' + d + '</option>').join('')
+    : '<option value="">(no published days)</option>';
+  if (stsInfo.days.includes(keep)) { sel.value = keep; }
+  const pill = $('sts-showcase-pill');
+  pill.textContent = stsInfo.showcase ? stsInfo.showcaseDate : 'not built yet';
+  pill.style.color = stsInfo.showcase ? 'var(--accent)' : 'var(--warn)';
+  pill.style.borderColor = stsInfo.showcase ? 'var(--accent)' : 'var(--warn)';
+  $('btn-showcase').textContent = stsInfo.showcase
+    ? 'Rebuild the showcase day' : 'Build the showcase day';
+  paintStsDay();
+}
+function stsUsesShowcase() {
+  return document.querySelector('input[name=stsday]:checked').value === 'showcase';
+}
+function paintStsDay() {
+  const note = $('sts-day-note');
+  $('stsdate').disabled = stsUsesShowcase();
+  if (stsUsesShowcase()) {
+    note.textContent = stsInfo.showcase
+      ? 'Nothing in the published bank is readable during a showcase take, so nothing live can be spoilt.'
+      : 'Not built yet. It costs about fifteen Gemini calls and a couple of minutes — and it needs reading before it goes in a video, same as any other day.';
+    note.className = stsInfo.showcase ? 'note' : 'note warn';
+  } else {
+    note.textContent = 'This is a real puzzle. Anyone who watches the video has had that ' +
+      'day spoilt for them, so hold the post until the date has passed.';
+    note.className = 'note warn';
+  }
+}
+$('btn-showcase').onclick = async () => {
+  const r = await (await fetch('/api/sts/showcase', { method: 'POST' })).json();
+  say('$ python ' + r.args.join(' '), true);
+  $('btn-showcase').disabled = true;
+  follow(r.id, async () => { $('btn-showcase').disabled = false; await loadSts(); });
+};
+
+// ── what this machine can actually do ─────────────────────────────────────
+// Asked once, and said before a run rather than after: without an ffmpeg that
+// has libx264 there is no MP4 and no safe-zone check, and finding that out at
+// the end of a two-minute take is finding it out too late. (Playwright ships an
+// ffmpeg, but it is a VP8-only build and cannot do either job.)
+async function checkCapabilities() {
+  const c = await (await fetch('/api/capabilities')).json();
+  if (c.ffmpeg) { return; }
+  $('mp4').checked = false;
+  $('mp4').disabled = true;
+  $('btn-safezone').title = 'needs ffmpeg';
+  const note = $('run-note');
+  note.textContent = 'No ffmpeg with libx264 on this machine, so no MP4 and no ' +
+    'safe-zone check. Recording to .webm still works.';
+  note.className = 'note warn';
+}
+
+// ── is the frame the shape the feed wants ─────────────────────────────────
+// A take at 574x844 is 1:1.47. Handed to a 9:16 feed it is letterboxed by the
+// app's own scaler — a second re-encode, and a smaller picture inside it. Said
+// here rather than discovered after the upload.
+function paintRatio() {
+  const w = Number($('width').value), h = Number($('height').value);
+  const note = $('ratio-note');
+  if (!w || !h) { note.textContent = ''; return; }
+  const r = h / w;
+  const nine = 16 / 9;
+  if (Math.abs(r - nine) < 0.02) {
+    note.textContent = 'Exactly 9:16 — it scales to 1080x1920 with no bars.';
+    note.className = 'note';
+  } else {
+    note.textContent = 'That is 1:' + r.toFixed(2) + ', not 9:16 (1:1.78). A vertical ' +
+      'feed will bar it on ' + (r > nine ? 'the sides' : 'the top and bottom') +
+      ' — the MP4 step pads it with the page\'s own background rather than black, ' +
+      'but a 9:16 preset avoids the bars altogether.';
+    note.className = 'note warn';
+  }
+}
+
+// ── size presets ──────────────────────────────────────────────────────────
+function markActivePreset() {
+  const w = $('width').value, h = $('height').value;
+  document.querySelectorAll('#size-presets .preset').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.w === w && btn.dataset.h === h);
+  });
+}
+document.querySelectorAll('#size-presets .preset').forEach(btn => {
+  btn.addEventListener('click', () => {
+    $('width').value = btn.dataset.w;
+    $('height').value = btn.dataset.h;
+    $('width').dispatchEvent(new Event('change'));
+    $('height').dispatchEvent(new Event('change'));
+    markActivePreset();
+    paintRatio();
+  });
+});
+$('width').addEventListener('input', () => { markActivePreset(); paintRatio(); });
+$('height').addEventListener('input', () => { markActivePreset(); paintRatio(); });
+
+// ── the prompt ────────────────────────────────────────────────────────────
+async function copyPrompt(withBook) {
+  const q = new URLSearchParams();
+  if (withBook) { q.set('title', $('title').value); q.set('author', $('author').value); }
+  const r = await (await fetch('/api/prompt?' + q)).json();
+  try {
+    await navigator.clipboard.writeText(r.prompt);
+    $('prompt-note').textContent = 'Copied — ' + r.questionCount +
+      ' questions. Paste it into the Gemini web app, then bring the JSON back here.';
+    $('prompt-note').className = 'note';
+  } catch (e) {
+    // Clipboard needs a secure context or permission; showing the text is a
+    // working fallback, not a failure worth stopping for.
+    say(r.prompt, true);
+    $('prompt-note').textContent = 'Could not reach the clipboard — the prompt is in the output box below.';
+    $('prompt-note').className = 'note warn';
+  }
+}
+$('btn-prompt').onclick = () => {
+  if (!$('title').value.trim()) {
+    $('prompt-note').textContent = 'Give a title first, or use the other button to let Gemini pick.';
+    $('prompt-note').className = 'note warn';
+    return;
+  }
+  copyPrompt(true);
+};
+$('btn-prompt-blank').onclick = () => copyPrompt(false);
+
+// ── the sheet ─────────────────────────────────────────────────────────────
+$('btn-save').onclick = async () => {
+  const raw = $('sheet').value.trim();
+  const note = $('save-note');
+  if (!raw) { note.textContent = 'Paste the JSON first.'; note.className = 'note warn'; return; }
+
+  let parsed;
+  try {
+    // Gemini sometimes wraps it in a fence despite being asked not to.
+    const m = raw.match(/\{[\s\S]*\}/);
+    parsed = JSON.parse(m ? m[0] : raw);
+  } catch (e) {
+    note.textContent = 'That is not valid JSON: ' + e.message;
+    note.className = 'note bad';
+    return;
+  }
+
+  // The sheet may carry the title itself — that is the point of letting Gemini
+  // pick the book. Take it, and put it in the field so the run uses it.
+  if (parsed.title && !$('title').value.trim()) { $('title').value = parsed.title; }
+  if (parsed.author && !$('author').value.trim()) { $('author').value = parsed.author; }
+
+  const body = { title: $('title').value.trim(), author: $('author').value.trim(),
+                 answers: parsed.answers || parsed };
+  const r = await (await fetch('/api/sheet', { method: 'POST',
+    headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })).json();
+
+  if (r.error) { note.textContent = r.error; note.className = 'note bad'; return; }
+
+  let msg = 'Saved ' + r.kept + ' of ' + r.total + ' answers.';
+  if (r.missing.length) {
+    msg += ' Missing ' + r.missing.length + ' — the bot will answer those "I don\'t know", ' +
+           'which is a real answer but not the one Gemini would have given: ' +
+           r.missing.slice(0, 6).join(', ') + (r.missing.length > 6 ? '…' : '');
+  }
+  if (r.badValues.length) { msg += ' Rejected unusable values: ' + r.badValues.join(', ') + '.'; }
+  note.textContent = msg;
+  note.className = r.missing.length || r.badValues.length ? 'note warn' : 'note';
+  say('sheet -> ' + r.file);
+  saveSettings();
+  locate();
+};
+
+$('btn-sheets').onclick = async () => {
+  const r = await (await fetch('/api/sheets')).json();
+  say('saved sheets in ' + r.dir + ':', true);
+  (r.files.length ? r.files : ['(none yet)']).forEach(f => say('  ' + f));
+};
+
+// ── is it in the catalogue ────────────────────────────────────────────────
+async function locate() {
+  const t = $('title').value.trim();
+  const note = $('locate-note');
+  if (!t) { note.textContent = ''; return; }
+  const r = await (await fetch('/api/locate?title=' + encodeURIComponent(t))).json();
+  if (!r.found) {
+    note.textContent = 'No catalogue row with this title. It may still be there ' +
+      'under a translated or original-language title, so this is not proof the game cannot know it.';
+    note.className = 'note warn';
+  } else {
+    note.textContent = 'In the catalogue: row ' + r.found.row + ' of ' + r.found.of +
+      ' (p=' + r.found.p + ') as "' + r.found.title + '".';
+    note.className = 'note';
+  }
+}
+$('title').addEventListener('change', locate);
+
+// ── running ───────────────────────────────────────────────────────────────
+let polling = null;
+let lastRunId = null;
+
+// Both buttons spawn something and both want its output in the same box, so
+// the polling lives here once rather than in each of them.
+function follow(id, onDone) {
+  let shown = 0;
+  clearInterval(polling);
+  polling = setInterval(async () => {
+    const s = await (await fetch('/api/run?id=' + id)).json();
+    for (; shown < s.lines.length; shown++) { say(s.lines[shown]); }
+    if (s.done) {
+      clearInterval(polling);
+      say(s.code === 0 ? '— finished —' : '— exited with code ' + s.code + ' —');
+      if (onDone) { onDone(s); }
+    }
+  }, 600);
+}
+
+$('btn-run').onclick = async () => {
+  const mode = document.querySelector('input[name=mode]:checked').value;
+  const body = {
+    game,
+    width: Number($('width').value), height: Number($('height').value),
+    outDir: $('outdir').value.trim(), mode,
+    mp4: $('mp4').checked && !$('mp4').disabled,
+    mp4Width: Number($('mp4w').value), mp4Height: Number($('mp4h').value),
+    mp4Bitrate: $('mp4bitrate').value.trim(), mp4Fit: $('mp4fit').value
+  };
+
+  if (game === 'spot-the-slop') {
+    const showcase = stsUsesShowcase();
+    if (showcase && !stsInfo.showcase) {
+      $('run-note').textContent = 'Build the showcase day first, or record a published one.';
+      return;
+    }
+    if (!showcase && !$('stsdate').value) {
+      $('run-note').textContent = 'No published day to record. Generate a bank first.';
+      return;
+    }
+    body.stsShowcase = showcase;
+    body.stsDate = showcase ? '' : $('stsdate').value;
+    body.stsPairs = Number($('stspairs').value) || 0;
+    body.stsRead = Number($('stsread').value) || 0;
+    body.stsHold = Number($('stshold').value) || 0;
+  } else {
+    body.title = $('title').value.trim();
+    body.author = $('author').value.trim();
+    if (!body.title) { $('run-note').textContent = 'Give a title first.'; return; }
+  }
+
+  if (mode === 'video' && !body.outDir) { $('run-note').textContent = 'Say where to save the recording.'; return; }
+  $('run-note').textContent = '';
+  saveSettings();
+
+  const r = await (await fetch('/api/run', { method: 'POST',
+    headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })).json();
+  if (r.error) { $('run-note').textContent = r.error; return; }
+
+  say('$ node ' + r.args.join(' '), true);
+  $('btn-run').disabled = true;
+  $('btn-safezone').disabled = true;
+  follow(r.id, () => {
+    $('btn-run').disabled = false;
+    // Only a run that wrote a file can be checked; a test run has nothing to
+    // look at and offering the button anyway would only ever produce an error.
+    lastRunId = mode === 'video' ? r.id : null;
+    $('btn-safezone').disabled = !lastRunId || $('mp4').disabled;
+  });
+};
+
+$('btn-safezone').onclick = async () => {
+  if (!lastRunId) { return; }
+  const note = $('safezone-note');
+  $('safezone-panel').hidden = false;
+  note.textContent = 'Reading the take…';
+  note.className = 'note';
+  const r = await (await fetch('/api/safezone', { method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ id: lastRunId }) })).json();
+  if (r.error) { note.textContent = r.error; note.className = 'note bad'; return; }
+  // Cache-busted: the same run checked twice writes to the same filename, and a
+  // stale image here would be a picture of the previous decision.
+  $('safezone-img').src = r.url + '&t=' + Date.now();
+  note.textContent = r.width + '×' + r.height + ' — ' +
+    (r.checkedMp4 ? 'the MP4, which is the file you would upload.'
+                  : 'the .webm; no MP4 was written, so this is the raw recording ' +
+                    'and not the geometry an upload would have.');
+  note.className = r.checkedMp4 ? 'note' : 'note warn';
+};
+
+$('btn-clear').onclick = () => { log.textContent = 'nothing yet.'; };
+
+loadSettings().then(() => {
+  locate(); markActivePreset(); paintRatio(); checkCapabilities(); loadSts();
+});
+</script>
+</body>
+</html>

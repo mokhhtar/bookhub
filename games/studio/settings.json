@@ -1,0 +1,19 @@
+{
+ "game": "spot-the-slop",
+ "title": "A Game of Thrones",
+ "author": "George R. R. Martin",
+ "width": "540",
+ "height": "960",
+ "outdir": "G:\\Litheca\\records",
+ "mp4w": "1080",
+ "mp4h": "1920",
+ "mp4bitrate": "6M",
+ "mp4fit": "safe",
+ "stsdate": "2026-09-02",
+ "stspairs": "2",
+ "stsread": "",
+ "stshold": "5",
+ "mp4": true,
+ "mode": "video",
+ "stsday": "showcase"
+}

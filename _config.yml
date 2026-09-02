@@ -58,6 +58,16 @@ exclude:
   # it into _site and litheca.com/scripts/promote_books_batch.py returns 200,
   # publishing exactly how pages get chosen for the index.
   - scripts
+  # The recording desk. Local-only tooling that drives a browser and spawns
+  # processes; the served site never fetches any of it. Same reason as
+  # `scripts` above — committed so it is not lost, excluded so it is not
+  # published. (games/parity-check.js predates this block and is still served;
+  # it is harmless but has no reason to be there either.)
+  - games/studio
+  - games/play-bot.js
+  - games/slop-bot.js
+  - games/record-kit.js
+  - games/video-tools.js
   - firebase/DATA_MODEL.md
   # firestore.rules is a Firebase deploy artefact, enforced server-side; the
   # site only mentions it in comments and never fetches it. No reason to
