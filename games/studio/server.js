@@ -287,6 +287,17 @@ function startShowcaseBuild() {
   return track(spawn('python', args, { cwd: API_REPO, env }), args, 'python');
 }
 
+// Both bots refuse to record against a build older than the page source, and
+// they are right to — a take of a stale build is a take of the wrong game. But
+// the check is on mtime, and git rewrites mtimes on every pull whether or not a
+// byte changed, which in this repo is routine: the admin worker commits
+// straight to GitHub all day. So the fix is one button rather than a trip to
+// another terminal for a command that is usually a no-op.
+function startSiteBuild() {
+  const args = ['exec', 'jekyll', 'build'];
+  return track(spawn('bundle', args, { cwd: ROOT, shell: true }), args, 'bundle');
+}
+
 function stsState() {
   const days = fs.existsSync(STS_DATA_DIR)
     ? fs.readdirSync(STS_DATA_DIR).filter(n => /^\d{4}-\d{2}-\d{2}\.json$/.test(n))
@@ -466,7 +477,13 @@ const server = http.createServer(async (req, res) => {
         return json(res, 400, { error: 'no day to record' });
       }
       const run = startRun(body);
-      return json(res, 200, { id: run.id, cmd: run.cmd, args: run.args.slice(1) });
+      // The script path is kept, not sliced off. The log line is meant to be
+      // copy-pasteable into a terminal, and `node --showcase --pairs 2` is not
+      // a command anyone can run — it just looks like one, which is worse.
+      // basename, because both bots live in games/ and that is this process's
+      // cwd — so `node slop-bot.js --showcase …` is the real command, verbatim.
+      return json(res, 200, { id: run.id, cmd: run.cmd,
+                              args: [path.basename(run.args[0]), ...run.args.slice(1)] });
     }
     if (url.pathname === '/api/run') {
       const run = runs.get(url.searchParams.get('id'));
@@ -478,6 +495,10 @@ const server = http.createServer(async (req, res) => {
     }
     if (url.pathname === '/api/sts/showcase' && req.method === 'POST') {
       const run = startShowcaseBuild();
+      return json(res, 200, { id: run.id, cmd: run.cmd, args: run.args });
+    }
+    if (url.pathname === '/api/site/build' && req.method === 'POST') {
+      const run = startSiteBuild();
       return json(res, 200, { id: run.id, cmd: run.cmd, args: run.args });
     }
     // What this desk can and cannot do, asked of the machine rather than

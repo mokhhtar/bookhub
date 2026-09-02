@@ -306,10 +306,19 @@
 
       <div class="buttons">
         <button class="primary" id="btn-run">Run</button>
+        <button id="btn-build">Rebuild the site</button>
         <button id="btn-safezone" disabled>Check the safe zone</button>
         <button id="btn-clear">Clear log</button>
       </div>
       <p class="note bad" id="run-note"></p>
+      <p class="note">
+        Both bots refuse to record against a build older than the page source &mdash;
+        a take of a stale build is a take of the wrong game. That check is on the
+        file timestamp, and <b>git rewrites timestamps on every pull</b> whether or
+        not a byte changed, which here is routine. So &ldquo;the built page is older
+        than&hellip;&rdquo; often means nothing was edited at all. Rebuild and run again;
+        it takes about thirty seconds and is usually a no-op.
+      </p>
     </section>
 
     <section class="full" id="safezone-panel" hidden>
@@ -465,6 +474,14 @@ function paintStsDay() {
     note.className = 'note warn';
   }
 }
+$('btn-build').onclick = async () => {
+  const r = await (await fetch('/api/site/build', { method: 'POST' })).json();
+  say('$ bundle ' + r.args.join(' '), true);
+  $('btn-build').disabled = true;
+  $('btn-run').disabled = true;
+  follow(r.id, () => { $('btn-build').disabled = false; $('btn-run').disabled = false; });
+};
+
 $('btn-showcase').onclick = async () => {
   const r = await (await fetch('/api/sts/showcase', { method: 'POST' })).json();
   say('$ python ' + r.args.join(' '), true);

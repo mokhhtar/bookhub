@@ -80,7 +80,16 @@ function requireFreshBuild(builtFile, sourceFile, repoRoot) {
   }
   if (fs.statSync(builtFile).mtimeMs < fs.statSync(sourceFile).mtimeMs) {
     console.error('the built page is older than ' + path.basename(sourceFile) + '.\n' +
-                  '  A take recorded now would be of the wrong game.\n  ' + rebuild);
+                  '  A take recorded now would be of the wrong game.\n  ' + rebuild + '\n' +
+                  // This fires on mtime, and git rewrites mtimes whether or not
+                  // it changes a byte. In this repo that is routine rather than
+                  // rare: the admin worker and the nightly sync commit straight
+                  // to GitHub, so pulling is a normal part of a day and every
+                  // pull can trip this. Said here so a spurious hit reads as
+                  // "rebuild, it is cheap" rather than "what did I break?".
+                  '\n  (A pull, merge or checkout also updates the timestamp\n' +
+                  '   without changing the file, so this can fire when nothing\n' +
+                  '   was edited. The rebuild is still the fix, and is a no-op.)');
     process.exit(1);
   }
 }
