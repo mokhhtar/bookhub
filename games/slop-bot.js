@@ -90,10 +90,27 @@ function readingTime(texts) {
 // which jumps instantly — correct for a test, unwatchable in a video. Resolves
 // when the page has stopped moving rather than after a guessed delay, because
 // a scroll still running when the reveal lands looks like a mis-tap.
+//
+// CLAMPED TO THE GAME, not to the document. scrollIntoView scrolls whatever is
+// needed to satisfy the alignment, and when the second card sits near the foot
+// of a short page that means the site footer — nav links, the Amazon
+// disclosure, a copyright line — slides into frame under the passage the
+// viewer is being asked to judge. Caught in the first real take. So the target
+// is worked out here and capped at the bottom of #sts-app.
 async function glideTo(page, selector, block) {
   await page.evaluate(([sel, blk]) => {
     const el = document.querySelector(sel);
-    if (el) { el.scrollIntoView({ behavior: 'smooth', block: blk }); }
+    const app = document.getElementById('sts-app');
+    if (!el || !app) { return; }
+    const pageY = r => r + window.scrollY;
+    const box = el.getBoundingClientRect();
+    const margin = 16;
+    const floor = Math.max(0, pageY(app.getBoundingClientRect().bottom)
+                              - window.innerHeight + margin);
+    const want = blk === 'start'
+      ? pageY(box.top) - margin
+      : pageY(box.bottom) - window.innerHeight + margin;
+    window.scrollTo({ top: Math.max(0, Math.min(want, floor)), behavior: 'smooth' });
   }, [selector, block || 'center']);
 
   let last = -1;
