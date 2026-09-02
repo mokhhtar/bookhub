@@ -18,6 +18,27 @@
   ],
   "subdomain": "bestspellever"
  },
+ "coiling-dragon": {
+  "aliases": [
+   "Coiling Dragon"
+  ],
+  "author": "i eat tomatoes",
+  "subdomain": "coiling-dragon"
+ },
+ "desolate-era": {
+  "aliases": [
+   "Desolate Era"
+  ],
+  "author": "i eat tomatoes",
+  "subdomain": "desolate-era"
+ },
+ "dragonschef": {
+  "aliases": [
+   "The Greatest Estate Developer"
+  ],
+  "author": "BK_Moon",
+  "subdomain": "dragonschef"
+ },
  "hpmor": {
   "aliases": [
    "hpmor",
@@ -25,6 +46,20 @@
    "methods of rationality"
   ],
   "subdomain": "hpmor"
+ },
+ "i-shall-seal-the-heavens": {
+  "aliases": [
+   "I Shall Seal the Heavens"
+  ],
+  "author": "Er Gen",
+  "subdomain": "i-shall-seal-the-heavens"
+ },
+ "let-me-game-in-peace": {
+  "aliases": [
+   "Let Me Game in Peace"
+  ],
+  "author": "Twelve-Winged Dark Seraphim",
+  "subdomain": "let-me-game-in-peace"
  },
  "library-of-heavens-path": {
   "aliases": [

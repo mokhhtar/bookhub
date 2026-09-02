@@ -7,30 +7,6 @@
   "subdomain": "apotheosis",
   "why": "[direct] Apotheosis Wiki (5 articles)"
  },
- "coiling-dragon": {
-  "aliases": [],
-  "author": null,
-  "cover_url": null,
-  "seed_title": "Coiling Dragon",
-  "subdomain": "coiling-dragon",
-  "why": "Coiling Dragon Wiki (399 articles)"
- },
- "desolate-era": {
-  "aliases": [],
-  "author": null,
-  "cover_url": null,
-  "seed_title": "Desolate Era",
-  "subdomain": "desolate-era",
-  "why": "[direct] Desolate Era Wiki (552 articles)"
- },
- "dragonschef": {
-  "aliases": [],
-  "author": null,
-  "cover_url": null,
-  "seed_title": "The Greatest Estate Developer",
-  "subdomain": "dragonschef",
-  "why": "The Greatest Estate Developer Wiki (1433 articles)"
- },
  "he-who-fights-with-monsters": {
   "aliases": [],
   "author": null,
@@ -38,22 +14,6 @@
   "seed_title": "He Who Fights with Monsters",
   "subdomain": "he-who-fights-with-monsters",
   "why": "[direct] He Who Fights with Monsters Wiki (1399 articles)"
- },
- "i-shall-seal-the-heavens": {
-  "aliases": [],
-  "author": null,
-  "cover_url": null,
-  "seed_title": "I Shall Seal the Heavens",
-  "subdomain": "i-shall-seal-the-heavens",
-  "why": "[direct] I Shall Seal the Heavens Wikia (765 articles)"
- },
- "let-me-game-in-peace": {
-  "aliases": [],
-  "author": null,
-  "cover_url": null,
-  "seed_title": "Let Me Game in Peace",
-  "subdomain": "let-me-game-in-peace",
-  "why": "[direct] Let Me Game in Peace Wiki (875 articles)"
  },
  "lord-of-all-realms": {
   "aliases": [],
