@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "n": 10,
+ "date": "2026-09-11",
+ "contains_fabricated_text": true,
+ "rounds": [
+  {
+   "i": 0,
+   "author": "Nathaniel Hawthorne",
+   "passages": [
+    "There were human beings enough, and enough of highly wrought and symphonious feeling, to produce that more impressive sound than the organ tones of the blast, or the thunder, or the roar of the sea; even that mighty swell of many voices, blended into one great voice by the universal impulse which makes likewise one vast heart out of the many.",
+    "A solitary spirit, burdened by the silent weight of unconfessed shadows, wandered amidst the autumnal decay of the orchard, where the withered leaves spoke of time’s remorseless passage. He felt the cold breath of the past upon his brow, as if some long-buried transgression stirred beneath the dark, unyielding earth, demanding a penance that no mortal hand could bestow."
+   ],
+   "answer_hash": "c85a576701ac7888643a12c27d4cff72ac7d009bb88a9b864f2e59cd6e8e255f"
+  },
+  {
+   "i": 1,
+   "author": "Voltaire",
+   "passages": [
+    "Nothing is so sublime as a dispute between two theologians concerning the weight of a soul. They burn cities to demonstrate that grace flows like wine, and they break men upon the wheel to prove that charity is the first of virtues. Thus, while the dust of these pious massacres rises to the heavens, we are left to conclude that the folly of the learned is the most exquisite jest of nature.",
+    "There was never anything so gallant, so spruce, so brilliant, and so well disposed as the two armies. Trumpets, fifes, hautboys, drums, and cannon made music such as Hell itself had never heard. The cannons first of all laid flat about six thousand men on each side; the muskets swept away from this best of worlds nine or ten thousand ruffians who infested its surface."
+   ],
+   "answer_hash": "4bb1d8e3e20dcbb2a7287c01c6d249766d8af9934f4b7c6065b9c8c425d3d97d"
+  },
+  {
+   "i": 2,
+   "author": "Charles Dickens",
+   "passages": [
+    "The fog clung to the river like a damp shroud, thick with the soot of a thousand hearths. Within the counting-house, the clerk sat hunched, his quill scratching a rhythm against the ledger. Life was but a ledger of sighs and shadows, a ledger where every debit of human kindness was buried deep beneath the crushing, relentless weight of golden, gleaming indifference.",
+    "The manner of both was imperious, and they both moved, as these words were spoken, so as to place me between themselves and the carriage door. They were armed. I was not.\n\n“‘Gentlemen,’ said I, ‘pardon me; but I usually inquire who does me the honour to seek my assistance, and what is the nature of the case to which I am summoned.’"
+   ],
+   "answer_hash": "b15ac1a851683e4c7804009c378bb4e44012f07e4207916fc8302a470019324c"
+  },
+  {
+   "i": 3,
+   "author": "Charlotte Brontë",
+   "passages": [
+    "I stopped: I could not trust myself to entertain, much less to express, the thought that rushed upon me—that embodied itself,—that, in a second, stood out a strong, solid probability. Circumstances knit themselves, fitted themselves, shot into order: the chain that had been lying hitherto a formless lump of links was drawn out straight,—every ring was perfect, the connection complete.",
+    "A sudden conviction seized me; it was as if a veil had been rent asunder, revealing a landscape of duty I had long refused to contemplate. The future, once a dim and shifting fog, now solidified into a stern, unyielding reality. I stood motionless, feeling the cold weight of a resolve that would henceforth dictate my every step, binding my wayward heart to the iron mandate of self-denial."
+   ],
+   "answer_hash": "e6e5bfcabdfc06cc86325637018e1af8393f3d1b53c9ebe91b373858445f531d"
+  },
+  {
+   "i": 4,
+   "author": "Mark Twain",
+   "passages": [
+    "The river lay stretched out like a strip of lazy, molten glass, and the heat was so thick you could almost slice it with a jackknife. Everything was hushed and heavy, save for the occasional splash of a turtle tumbling off a log. It gives a fellow a peculiar, hollow feeling in his middle to sit there in the weeds, watching the shadows lengthen and wondering if the world has gone to sleep.",
+    "When I got there it was all still and Sunday-like, and hot and sunshiny; the hands was gone to the fields; and there was them kind of faint dronings of bugs and flies in the air that makes it seem so lonesome and like everybody’s dead and gone; and if a breeze fans along and quivers the leaves it makes you feel mournful, because you feel like it’s spirits whispering—spirits that’s been dead ever so many years"
+   ],
+   "answer_hash": "e20dec8b0b601104e8b2e54ab580a5e137455ff7ec0e4dc80841e9efdffec597"
+  }
+ ],
+ "reveal_enc": "O2oWYo3VoV1OEN2oxXfLImXJq8GIHqz9JHUFDdfnlpbcDo1TxkVheUEprKVDeoOgGOVueEzuepWMiMEx0JcJywxgbsSdzBDdFZyzFHzbNtqSSUCqnb8AOYIhrX1hQ6Y72e1sSca6DnCQYUK56MV+z/NCsnKgRrqsZQVH/13H17DPEJG3s8xK2bcLFXLzLuWLarSMJ46cdlnddrvfGR5KfcbQ3RkwOEiCtEUDnZbKbznFMyCOhU6qXs4dtKDMg6jZlB0ejAa/bPSdgqvOSZHMl+BwzaJ9rXUmTlMTQucnMEZY0k1xtArx9LA9IKrEKgBQGonaKCZlr3ya3YXjGCnJqrTTG2tqz3JszWG9asepX1Q2EGeZ2dqSpXmLcO4/PBVlaFTiqt4Akj2gl6MUcI8p+Or32YqZD1806yhcRp4pGKkZiqf1ZhANO/isElRMSilUgwjUjV8vTm9RAVoU8mAC9PCgKXoSDegZoj3WjqmCyVRwBuuxC1LQOTGxMl4G6qJ7pRlHybs3ybD5fUcWIjI/qsRcAY0eJ5yopFrThocJXI4jRB/W3JO9VDzzrsqwawhVLlusQY+lyP0l/vVCh5YTLCMQIc+YPUn6b0dVarWfS2LredxmLqIzb1JLN/v7cqNqtlwSqri24Pj/A7IozXzTgH3QxofUsgobnn1zYCZQjX6p6MR4Evw8SPKE8hDg8sk/UHxZ7QQ4+p7FdafSXOAnZKZTXyfjI0LMJtSWXx/8Hxi8yrP5TwIYKp6LOxpG6tlJtfQV/kCC+j956LiaKJK8sZ8Po6zbhcQXS4bbVBZfnaVLwwTyeT7Wp3nG5C1Fw0L/xEO1mh/bd+5IAElHTANANDiiYx2PNRvLNc5Z6JqkpP/WV4IL/9dP1Lu5uTo2yIfhClTQnrBdWxzg87Uzoa17nPgjHCUgGARsl5wBV5blgJ8m5ZimJicml/1LQAZYucOg8ho87gBii8zHsQ4ReSihMO+v6RcEsMAOIzZUu8E8dkErm4Iok+Jp9bRuY9QW5Aipd9Fd9SygWbq1bWmnfdADU3rEnedvja+Qe1Y7oMnDF6E6"
+}

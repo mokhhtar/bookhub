@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "n": 1,
+ "date": "2026-01-01",
+ "contains_fabricated_text": true,
+ "rounds": [
+  {
+   "i": 0,
+   "author": "Mark Twain",
+   "passages": [
+    "It would get so dark that it looked all blue-black outside, and lovely; and the rain would thrash along by so thick that the trees off a little ways looked dim and spider-webby; and here would come a blast of wind that would bend the trees down and turn up the pale underside of the leaves; and then a perfect ripper of a gust would follow along and set the branches to tossing their arms as if they was just wild;",
+    "The sun went down behind the ridge, all fire and bruised purple, and the woods stood still as a held breath. A lonesome owl started up a holler that shivered the very marrow, and the crickets commenced their endless, scratchy fiddling in the tall, damp weeds. It was the sort of quiet that makes a body feel small and mean, like a stray pebble lost in a vast and darkling bottomless pit."
+   ],
+   "answer_hash": "747ffc1b2690d51e3525f21ded335e5697aa76dd7299e1f80d3191421898ba64"
+  },
+  {
+   "i": 1,
+   "author": "Harriet Beecher Stowe",
+   "passages": [
+    "A mother’s heart, when pressed by the heavy weight of inevitable parting, knows a silent agony that no earthly tongue can fully utter. How mysterious are those deep, trembling chords of affection, vibrating with a sorrow so profound that even the cold stars seem to witness the sacred struggle of a soul clinging to its own vanishing light.",
+    "After all, let a man take what pains he may to hush it down, a human soul is an awful ghostly, unquiet possession, for a bad man to have. Who knows the metes and bounds of it? Who knows all its awful perhapses,—those shudderings and tremblings, which it can no more live down than it can outlive its own eternity!"
+   ],
+   "answer_hash": "2252ffc862bcb091a3204c644c2f3e28a79a23440813f4963cc89e81ef3e601c"
+  },
+  {
+   "i": 2,
+   "author": "Stephen Crane",
+   "passages": [
+    "He thought that he must break from the ranks and harangue his comrades. They must not all be killed like pigs; and he was sure it would come to pass unless they were informed of these dangers. The generals were idiots to send them marching into a regular pen. There was but one pair of eyes in the corps. He would step forth and make a speech. Shrill and passionate words came to his lips.",
+    "The smoke clung to the trees like a shroud, gray and suffocating. He gripped his rifle with white knuckles, feeling the iron bite of the cold metal. To his left, a youth stumbled and fell, his face suddenly pale as marble. The roar of the conflict was a vast, indifferent ocean. He wondered if he would simply vanish into the dark earth, leaving nothing but a stain upon the trampled, broken grass."
+   ],
+   "answer_hash": "545cf4fed8ab34fd581915f3b05cab0b612e692dea3dce4fb92d7ba8f6912736"
+  },
+  {
+   "i": 3,
+   "author": "Joseph Conrad",
+   "passages": [
+    "The vast, grey vacancy of the horizon seemed to mock the singular persistence of our small craft. Silence hung heavy, an oppressive shroud draped over the stagnant deep, where not a ripple stirred to disturb the leaden glass of the abyss. We drifted through a hollow eternity, suspended between the furnace of the sky and the cold, unyielding indifference of a world devoid of any human meaning.",
+    "The dusk came gliding into it long before the sun had set. The current ran smooth and swift, but a dumb immobility sat on the banks. The living trees, lashed together by the creepers and every living bush of the undergrowth, might have been changed into stone, even to the slenderest twig, to the lightest leaf. It was not sleep—it seemed unnatural, like a state of trance."
+   ],
+   "answer_hash": "ce739642bee37099ef9742a16fac280463727d348c9bcd4ce1c7a09477b6afe2"
+  },
+  {
+   "i": 4,
+   "author": "Rudyard Kipling",
+   "passages": [
+    "They have no law. They are outcasts. They have no speech of their own, but use the stolen words which they overhear when they listen, and peep, and wait up above in the branches. Their way is not our way. They are without leaders. They have no remembrance.",
+    "He has no pack. He hunts alone by night. His teeth are sharp for the red meat, and his heart is cold within his ribs. He knows not the law of the rock, nor the voice of the assembly. He trusts only his own bound through the dark brush."
+   ],
+   "answer_hash": "cf8a1ef995a5fda5d914652b98fdf64b1001c7c85be286a920425eab6af4bac2"
+  }
+ ],
+ "reveal_enc": "cIrDGn3ZyRQMOtmgM97MZwufj+4IUv1k/JtyJclgNf0Uu9OLTU5jXQzq08z8Dp/6xNv8Hcpz6w0vVPekS9NK6OYX5wUl4Zbj0oMBG7loQX6q9o3AAFN1BmZL4CXHty48lDO6n+ePrT7ImI+LWOmwm0SEklG9fV8SanAUpKG9TOgnSUof35i1xgwUfx8PV84GXKnISHrfe+2IYuchtV5Zij45OrZTVzxfW6TGq5jt9MQDBDvW1aelySY5/7XbaqNlnXAFs0+VlVYTe+LF0iblKo5nbWWGu2MMrc5hBtQp6HZcsRzufmMms1mtRzwYdDGOnOMZ6lkk0htbvKzek3YvHqb7HGPnrPJFHB6Mrbb32px60dUnPywg4Tp69o0LnU4P4Bc2L1Fw0J9q/PJTSUpncnE0HULO8AX8cHk5vQmle/tVdpq2pTwG+zbfdw0NvVdKRKXqOSvRa+6D87QWSGhTCCMFCQ+0AtK9QkJzI7CqH6QsppRk4ZVkkEc6hXcGsMe7c0l/v8+3JdM+fDmOgT6iTysBiFCxktyHuNWaxK4QemI4iR3BVX+ksLJojeUWpWGVESmn5gffhlXnnOGvyoVimEItwQTOxewNpYfr0k/F0O8G7Npga+p5DE2rGLOQcGT1Om88R5VWIK6j0wHSdwA9i9aJA9hfvL1ZZMSni1RLYp0SkGiEnD9ew50dLIB7Fduim1rwPSRYgicYRB1CxE/ZSJOmzeAkgIsL5B0L13wgpxuVsYI47fff4rut36tY0Z3AxyGKODoe9JJG3yYMt3pVWGs4+liKEYI3Yyrd4RujfM+Ft6ZRt1UsY4Scu1s+ohQhss0JPmyb7zav2kHxddQ+jRraEJ+CWuuXxyhA+FX4Pd+Xn1Jl2lldAfQCFBVlPbkGi5aY/hkBxS9aV0yZKacfowxCiFfLlPlIGsLmdzJULM2PzurZEYjyJXtJJ9BrOc1zWOIgf31ifV3zctVIZxsPdCDDmkCViuJGlGJae2OV+FfdZ69fh/pmqdKTZt7AYgj2T79LA9h+d3O21yhKmsu0vn/lFtA4TKqDD8Q+PPiHJWXjYPl8sphckNR+3IFrrQB1zF/CRvnNJ3sPBXbH4A=="
+}

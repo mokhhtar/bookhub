@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "n": 3,
+ "date": "2026-09-04",
+ "contains_fabricated_text": true,
+ "rounds": [
+  {
+   "i": 0,
+   "author": "Jack London",
+   "passages": [
+    "The iron frost bit deep into the marrow, and he felt the primal stir of ancient hungers waking within his breast. Every shadow held a threat, and every gust of wind whispered of the struggle for survival. He watched the white expanse, his muscles coiled for the sudden strike, knowing that only the swift and the ruthless would endure the long darkness of the coming winter nights.",
+    "The facts of life took on a fiercer aspect; and while he faced that aspect uncowed, he faced it with all the latent cunning of his nature aroused. As the days went by, other dogs came, in crates and at the ends of ropes, some docilely, and some raging and roaring as he had come; and, one and all, he watched them pass under the dominion of the man in the red sweater."
+   ],
+   "answer_hash": "54181c666040dc01fcbbf5edc196a781e679968f201a7298cac6397b25672816"
+  },
+  {
+   "i": 1,
+   "author": "Robert Louis Stevenson",
+   "passages": [
+    "The fellow moved with a queer, rolling gait, his heavy coat flapping in the salt gale like a tattered sail. He kept his weather eye upon the horizon, clutching a rusted knife at his belt as if he feared the very air might turn traitor before the moon had set behind the black surge.",
+    "Aboard ship he carried his crutch by a lanyard round his neck, to have both hands as free as possible. It was something to see him wedge the foot of the crutch against a bulkhead, and propped against it, yielding to every movement of the ship, get on with his cooking like someone safe ashore."
+   ],
+   "answer_hash": "d9f4b5e4a79f98b9cf4c85ff4182eb54eaba506ba3cc2bdf3f5eb198223c50da"
+  },
+  {
+   "i": 2,
+   "author": "Louisa May Alcott",
+   "passages": [
+    "Lessons in patience were so sweetly taught her that she could not fail to learn them, charity for all, the lovely spirit that can forgive and truly forget unkindness, the loyalty to duty that makes the hardest easy, and the sincere faith that fears nothing, but trusts undoubtingly.",
+    "True grace is found in the quiet labor of the day, where simple acts of kindness bloom like wildflowers. To mend a rent in a garment or soothe a troubled heart with a gentle word is to weave a golden thread into the tapestry of a life well and humbly lived."
+   ],
+   "answer_hash": "26ec425016f74483aefe9b437d3f5c5bd171f50ca3febb26023b9fc868ae36b2"
+  },
+  {
+   "i": 3,
+   "author": "Victor Hugo",
+   "passages": [
+    "The trot of the horse, the bells on the harness, the wheels on the road, produced a gentle, monotonous noise. These things are charming when one is joyous, and lugubrious when one is sad.",
+    "The wind howls through the stone crannies, a cold breath upon the soul. Such echoes bring dread to the solitary, yet to the dreamer, they are but the sighs of a world burdened by shadows."
+   ],
+   "answer_hash": "63459f227cf3872d43d476d5c4a453ad4d30ee1d95dee954fdb7aed175a4737a"
+  },
+  {
+   "i": 4,
+   "author": "Fyodor Dostoevsky",
+   "passages": [
+    "Perhaps a man is never so wretched as when he finally perceives the abyss of his own duplicity. He trembles, yet he lingers, clutching at the tattered remnants of a conscience he long ago discarded for the sake of a miserable vanity. Oh, how we suffer to maintain the mask! We weep in the dark corners of our souls, craving a single drop of genuine truth while we simultaneously dread its arrival.",
+    "From the house of my childhood I have brought nothing but precious memories, for there are no memories more precious than those of early childhood in one’s first home. And that is almost always so if there is any love and harmony in the family at all. Indeed, precious memories may remain even of a bad home, if only the heart knows how to find what is precious."
+   ],
+   "answer_hash": "3fcfc0f8820d6f985df2f0da014622ca2a820a356819a1a8a921b00afec4b9ef"
+  }
+ ],
+ "reveal_enc": "enubXIQilrRZa+n40aAYGuvEIAzQqU9MfezBebUL+EPsf7QjUGzswNAKSZHj19eq5PFk/lSG2wIYgWJAlZhRiNh4i57GzDXKbV3afQsjiX5nsABgtf3k01Pt+b00480pRCcL+JACkntp7aiDiJHtyvMQ3wnvGCunYEo3DiXNfAEb4xP6EHmnhHc50+Z3lXEzpSBEiqX2D37fSFh53tt48WsB8pKNBUhdHDRaNnR2rCsK5sIjKbz5nZlkf2GiZqNwBu7gnJuCyNnUQGPWk5/sik0la+fnnu7TvJsz+4AeRJHzm+8eW/blkFP6y6EOUQbJtJ7aLBauzQovZBa9JzMduQWMiICOrav42MDrxjY61PqmIYIfG0+IfcKoOL4dwlBP8gjBJc0YCfrdBFri8s2Y0HEXyeve/kwRd3vG0SMenpzvsWqr9IOk7nqPUnXm1K8/MqAExW4NObBB38quaaJzjgcAV0+NiUd6XBhIjKPL0ZpO+GgDzCyogLhbI5ylyi7gKR3VUGW74mQbSjDTGQKoCyX8KYmlLB8/9kyxqelcV+KIeqPjrIsLtfP0tm3An2RD8VjrqXauSBhweMr+QfrDZrQk6+4+noRs+cNvJm1h3gnlRla5QmTcjCRC2ag8VuuF7PIt45r3pl2kPXQoVxgs5+9Mkit/X0WW9ZgrRCDEqCia9YXJbF5h1PZ217cAgtVfblkXPtItJO8rNvCE0yE2Vq5sJBRtV5wIJIzq6ZenhEnqkhCYWPOdvXa8tL+gu5/D/rCtc+Ub5caFHStTmXtZjctMvjBpjiD0EVk6qKqRSZDRf2AhGWQ8D+8n7UmDeiPkRy+B6PbGaAvTiwdy/ls8z6ljFzTxtiYEbg4SoQWJB8lZQ+TbKjCsqxIWgt715xdaGJBiuacxoS1yAOJPMxkJyFy1fh72qzi4jIAeHu38Hynh4m+kqHtDnMUmyaF3EMAb9UJUXOTkZC1QgqvMqYfg1lOdi2VCrwi/DMr8nnABd8y+r20Zi0ZbiYTWPkRLaJ6FWcVWz/4JAi1eo/tMqYnvQ4VrQWsRa16tGfJ3"
+}

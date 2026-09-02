@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "n": 4,
+ "date": "2026-09-05",
+ "contains_fabricated_text": true,
+ "rounds": [
+  {
+   "i": 0,
+   "author": "Robert Louis Stevenson",
+   "passages": [
+    "A cold sweat stood upon my brow as the shadows lengthened across the floorboards. The flickering flame cast a grotesque silhouette that danced with a life of its own, mocking my stillness. I felt a singular, sharp impulse to flee, yet my limbs remained rooted, heavy as leaden weights. There is a dark fascination in the brink of madness, a precipice where the soul longs to cast itself away.",
+    "The most racking pangs succeeded: a grinding in the bones, deadly nausea, and a horror of the spirit that cannot be exceeded at the hour of birth or death. Then these agonies began swiftly to subside, and I came to myself as if out of a great sickness. There was something strange in my sensations, something indescribably new and, from its very novelty, incredibly sweet."
+   ],
+   "answer_hash": "c09d9491de294cb84aa2f7928fbf7ea36e16b3c4cee6290b570ac0e78c1a3605"
+  },
+  {
+   "i": 1,
+   "author": "Herman Melville",
+   "passages": [
+    "The vast, heaving abyss; the dark, salt-crusted swells; as upon these there descends the gale, the roar; you almost swear that buried titans stir beneath these depths, in some grim, sunless epoch, when the anchors of the world are severed. And all this merges with your most somber soul; so that dread and destiny, silently conspiring, coalesce, and forge one hollow, iron-bound eternity.",
+    "The long-drawn virgin vales; the mild blue hill-sides; as over these there steals the hush, the hum; you almost swear that play-wearied children lie sleeping in these solitudes, in some glad May-time, when the flowers of the woods are plucked. And all this mixes with your most mystic mood; so that fact and fancy, half-way meeting, interpenetrate, and form one seamless whole."
+   ],
+   "answer_hash": "ea444d16254ef936aec723b4e24a4fcfd1f8f4cac2247dfe6ff74944d23b14be"
+  },
+  {
+   "i": 2,
+   "author": "Bram Stoker",
+   "passages": [
+    "It is really wonderful how much resilience there is in human nature. Let any obstructing cause, no matter what, be removed in any way--even by death--and we fly back to first principles of hope and enjoyment. More than once as we sat around the table, my eyes opened in wonder whether the whole of the past days had not been a dream.",
+    "The shadows lengthen upon the floor, creeping like silent, elongated fingers that seek to grasp the very soul of the chamber. I am struck by a singular dread, for the wind moans with a cadence not of this earth. Each pulse of my heart beat seems a rhythmic tolling, marking the slow advance of a darkness that defies the pale comfort of my flickering lamp."
+   ],
+   "answer_hash": "51730dadb1ff22adf4a340194eaf5ee3171e8c772d4df8e537cefc312d483f6b"
+  },
+  {
+   "i": 3,
+   "author": "Walter Scott",
+   "passages": [
+    "The weary traveler, upon finding refuge within the ancient walls of a crumbling keep, must surely marvel at how the rugged hand of necessity taught the humble rustic to master arts of healing, which, in a softer age, would be left to the learned leech or the sequestered monk who dwells in solitude.",
+    "The youngest reader of romances and romantic ballads, must recollect how often the females, during the dark ages, as they are called, were initiated into the mysteries of surgery, and how frequently the gallant knight submitted the wounds of his person to her cure, whose eyes had yet more deeply penetrated his heart."
+   ],
+   "answer_hash": "7eeb51a6ba46c455a4fd3a10e0bac06059afc225b37e81bcf217ae789d6c5bec"
+  },
+  {
+   "i": 4,
+   "author": "Jules Verne",
+   "passages": [
+    "The whole singular history of the coal period was written on those dark and gloomy walls. A geologist would have been able easily to follow the different phases of its formation. The seams of coal were separated by strata of sandstone, a compact clay, which appeared to be crushed down by the weight from above.",
+    "The immense mechanism of the engine pulsed with a rhythmic fervor, its steel limbs driving the great brass pistons through a viscous sea of oil. Each stroke propelled the vessel forward, defying the crushing pressure of the deep abyss, while the needle on the barometer remained fixed amidst the profound silence of this submerged, eternal, and liquid world."
+   ],
+   "answer_hash": "38fcc46053c9cfa99b14ff3897e9898f56817e369669a9f973dfbacf4763d79a"
+  }
+ ],
+ "reveal_enc": "U60vcap5coeoUoDBSuYi04yV3yO6AXSsqfWTzq1y6eS0Y4y8YCYuUGVBFjnlVJbS7d7eBPqZRMWG5Kt9BXJQkkLAwXGKk2xb/4bWj6lx2Zqe4wqDQYqct9SoQ2+8Hv7nhbSs6Laeg6lp1NufJ+snlSDkDW91UU3HGMTnZAz05m73idzKg+iyvcFVg7hlV4lr91YlwIEJ/u+k58+q6aBi9FI2d3jskgwCh1r4ZPEnZCq9NRQBwIg4gm25yUNCsK8vQE4xoFjE7THqkjHFeDHiES9gVJqGy3r7XG1hX2MOlAmxjp7nWuV3RjFNUKXFf0bnZLY7itap+fpOM+D3AHINm4Hllq5VPUz7eVVRb0TU1no386uHTTAvB0bEMKYiRDNHjS52IOiKJ2GeyqtC//yhNd8rjQtOb07YrBY88oLKFjJW7oQeGSAdIEa85o3uWwIlUgIkyAk5HdOcL8HcmzYRzpSxFXcMyXzBx86lz3TCd+0OZmGNQDlTOCrHX7++fNM6dgb9IFT3ogM3l6MpX6wDlJCrNhoa41VZbXQGCczh+VTwmlU+MJkEMR2tMJU7rS8+t2YoOWA2a6kCm2YePhdVl+jXLfBE4HJyat2zvRAwyiT/IPb4xukm/s2wHBBxC9Nld1uF9s4g0w0iVqg/HsVNvQUn5NV7JnhZFj3qudHmvWq8LAUWFPF3eaOC8ILNS5umIR6tZLHB7ElG/UYhdV0zZaTAxZrogkLgZtEKZriiLOm5cdw0oR+eTLajw4F7HQKmPOeLgji4hQjZ+dqzGIQ47bnuUuN0nRJJsZ7N9A4WVobjEw1werMtIDWYOPgN3kjPdzq3JuXpdIxMiTLxakD1//dX6GGsvU3eQVc7bgSNdwmgZnu7bdZlHSFe/DVS2CmhqQXX2C7MVM5EYL6B1TKfAyqjJO0OuMn8PKeo+RXykdF6B+faePCNCXtuOXAlIZNkLZKn+Wvt3Goj+GmqFrc+Jw2nYrrqFatnXl5mLGKbsSxlhLzKjTmGpy4uBZh3ZVdBW2CO2/4IJfvy7k3FFwo7qdEgPAxlsYqQuGCrAwrp5ybPyNz6bBc5fs/X0aLYMsMvPEay"
+}

@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "n": 13,
+ "date": "2026-09-14",
+ "contains_fabricated_text": true,
+ "rounds": [
+  {
+   "i": 0,
+   "author": "Leo Tolstoy",
+   "passages": [
+    "A man cannot force his soul to feel a joy that is not yet ready to bloom. Like the fruit on a tree, the heart requires the slow, invisible work of seasons. To demand a sudden change is only to bruise the branch and lose the harvest.",
+    "A lump of snow cannot be melted instantaneously. There is a certain limit of time in less than which no amount of heat can melt the snow. On the contrary the greater the heat the more solidified the remaining snow becomes."
+   ],
+   "answer_hash": "f6143b59401b4c37a3f640ce85c380769b41ac2e4445cccb0cc345a51760ff80"
+  },
+  {
+   "i": 1,
+   "author": "Jack London",
+   "passages": [
+    "The iron frost bit deep into the marrow, turning the breath to stinging needles of ice. He padded across the frozen crust with a rhythmic, tireless stride, his senses sharpened by the gnawing ache of the void within. Every shadow held a secret, and every howl that tore the silence spoke of the ancient, savage law. He did not question the hunger; he merely obeyed the pulse of the wild blood.",
+    "For a day at a time he would lie in the underbrush where he could watch the partridges drumming and strutting up and down. But especially he loved to run in the dim twilight of the summer midnights, listening to the subdued and sleepy murmurs of the forest, reading signs and sounds as man may read a book, and seeking for the mysterious something that called—called, waking or sleeping, at all times, for him to come."
+   ],
+   "answer_hash": "6d7549c28a5f8020712ee97280341eb7d4a6f7c4fcdd420e86925e996abc39ca"
+  },
+  {
+   "i": 2,
+   "author": "Victor Hugo",
+   "passages": [
+    "With grand and lofty natures, the revolts of the flesh and the senses when subjected to physical suffering cause the soul to spring forth, and make it appear on the brow, just as rebellions among the soldiery force the captain to show himself.",
+    "The shadows of an immense misery weigh upon the spirit like leaden clouds upon the sea. In this darkness, the conscience awakens, a solitary lamp cast against the vast, indifferent night, seeking a truth that only suffering can reveal."
+   ],
+   "answer_hash": "60fccddc8a3da3a69b9889ca9fe3c7cf675997aca370559a9b545a56f3e4e739"
+  },
+  {
+   "i": 3,
+   "author": "Herman Melville",
+   "passages": [
+    "Amidst the vast and hollow chambers of the deep, where the restless spirit of the spray forever wanders in search of some silent shore, there dwells a gloom more profound than any dungeon wrought by mortal hands. We sail upon a liquid graveyard, oblivious to the monstrous leviathans that glide in the sunless abyss, their cold eyes fixed upon our fragile hulls as if awaiting the inevitable surrender.",
+    "At such times, under an abated sun; afloat all day upon smooth, slow heaving swells; seated in his boat, light as a birch canoe; and so sociably mixing with the soft waves themselves, that like hearth-stone cats they purr against the gunwale; these are the times of dreamy quietude, when beholding the tranquil beauty and brilliancy of the ocean's skin, one forgets the tiger heart that pants beneath it;"
+   ],
+   "answer_hash": "583ecee155ae3c10d625c1ce02b36238e4cd8d4d435bb1da2d76311375383def"
+  },
+  {
+   "i": 4,
+   "author": "Bram Stoker",
+   "passages": [
+    "It is a wild adventure we are on. Here, as we are rushing along through the darkness, with the cold from the river seeming to rise up and strike us; with all the mysterious voices of the night around us, it all comes home. We seem to be drifting into unknown places and unknown ways; into a whole world of dark and dreadful things.",
+    "The fog creeps across the moor like a shroud, chilling the very marrow of my bones. I am beset by a nameless dread, for the silence of this desolate place carries a weight that presses upon the soul. Shadows lengthen into grotesque shapes that mock the feeble light of my lantern, and I feel as though an unseen presence watches from the gloom, waiting to claim my weary spirit."
+   ],
+   "answer_hash": "9c62640162483776377d2a89ed009e67980e38aae6a27b963536bc946a57f6af"
+  }
+ ],
+ "reveal_enc": "ea42aaXlAarTFWht3DJ3Xe5s7y9IQdfSfpzmpAfIkQQmOCmdnpZDFnZmknV5Q+haN0n3m5yaUic5pZbIc8jZ+PohXxSlVb0XVbYr7SCX8L0eC4F1OPPCSY4JdM6stQax9GKQL2dpWM3IIlBK4v4y2ZRwsEZskZrLMNzODzGxYzjNw9xwmAiKWNaiZKBEK4xpZ10UlyzG4OzWpVbabFEPpr6vD8hK8gZvwOTP3AWGjmOTqOKUXhdLC5tt7IQ1BXwkpg/jytjQeaHUkyfT/fOskJ42enw4BxnaKUyOl4qXiNomzMj93Q6QD1p8CW5uo79NUgH5vH3VY6gVwXARhuBjsbNYBJ1IHSBcjG4beXVwBa/SBcEEusL+PDxAEYVfXW8/O9Ipxs9zgV0vQ1UlBBJ2O74/QPV9wvpOEPPOPd2mC5uLBCFVfhVwzQFQzSJ+3O7PWOuowDVfBo2nNT26oHRY6//r6RxYmjFBw/GWxkwXDMPCEVkHewQsN/90dlOvhoCsTtuEL0Ypaf/YD/QBsMw23trL6zcR8SezWJ7QNmgVTPulGaJSpvc/W91dFGC49DSpkZUZZX0jfY62z6MRWjb+DQ+Ph1hqZqu0zj2y+a1mmQ0/T5CH97NTtMItomm96AcT5fqccRAXsy+rxPjPhE1FDU06wGjGRfB8aYGQf/YIsA1101pN2ErTq4UiR8NlFrAzugYgsWoKDYcURrEcST+PgV7njPHTnjPGULra9JXw1DYbQK37jlaAwGFL9W3BpXzy0Q6oj1X3sUiqsyEq/SUVu3l6/rcZgYXtfwQZy2fNXeZ+FPSm91WfdCseBrJe8Lmp+DjHzDU3RVoVPE9cCjsUXSpTcrqhSTmIIXOcpcCfCpIXfZuGgTiFZsviwbKLIgUJAMvbicqyrxWgN4VD02yBeXHgO45FOTnpxgc8uH9ft5gEMgfBpxA732MW1hdJ4ybpckBay39gt/jo6B83Ag1ePZ6jG0AuQcFUtgSR7DKyC0sKQ6Q="
+}

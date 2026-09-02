@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "n": 12,
+ "date": "2026-09-13",
+ "contains_fabricated_text": true,
+ "rounds": [
+  {
+   "i": 0,
+   "author": "Charles Dickens",
+   "passages": [
+    "The fog clung to the river like a damp shroud, obscuring the weary faces of those who sought only a morsel of warmth. I watched them pass, these spectral shadows of industry, each burdened by a history that no ledger could ever contain. To exist in such gloom is to find that even the heart grows cold, numbing the very impulse to seek a better light.",
+    "In a word, I was too cowardly to do what I knew to be right, as I had been too cowardly to avoid doing what I knew to be wrong. I had had no intercourse with the world at that time, and I imitated none of its many inhabitants who act in this manner. Quite an untaught genius, I made the discovery of the line of action for myself."
+   ],
+   "answer_hash": "f8d9bf292b1e384151a4aef99aa6df21d88429be683b4af9e106d9d2406c65c6"
+  },
+  {
+   "i": 1,
+   "author": "Arthur Conan Doyle",
+   "passages": [
+    "The fog clung to the damp cobblestones like a shroud, muffling the rhythmic clip of iron shoes against the mire. A singular, pale glow flickered from a window high above the narrow passage, casting elongated shadows that danced in rhythmic desperation. We paused, breath misting in the frigid air, as the distant tolling of a bell marked the hour, chilling our spirits to the very marrow.",
+    "We stumbled slowly along in the darkness, with the black loom of the craggy hills around us, and the yellow speck of light burning steadily in front. There is nothing so deceptive as the distance of a light upon a pitch-dark night, and sometimes the glimmer seemed to be far away upon the horizon and sometimes it might have been within a few yards of us."
+   ],
+   "answer_hash": "a93c8ab0075dc56c3dbab5e1c30b4418190f838b57b23270ead4a81fe8497bfa"
+  },
+  {
+   "i": 2,
+   "author": "Gaston Leroux",
+   "passages": [
+    "The shadows deepened within the hollow arches, and my lantern flickered against the damp stone. I felt a sudden, icy breath upon my neck, as if a spectral hand had brushed the very marrow of my bones. Was it mere draft, or had the unseen dweller of these catacombs finally emerged to claim his tribute? I stood frozen, my heart a frantic bird beating against the cage of my ribs.",
+    "I had been working like this for half an hour and had finished three panels, when, as ill-luck would have it, I turned round on hearing a muttered exclamation from the viscount. \"I am stifling,\" he said. \"All those mirrors are sending out an infernal heat! Do you think you will find that spring soon? If you are much longer about it, we shall be roasted alive!\""
+   ],
+   "answer_hash": "4242ae148e1e81c03191487f44f005997718822923d644a53f0a6f81bcc7b0d0"
+  },
+  {
+   "i": 3,
+   "author": "Stephen Crane",
+   "passages": [
+    "For days he made ceaseless calculations, but they were all wondrously unsatisfactory. He found that he could establish nothing. He finally concluded that the only way to prove himself was to go into the blaze, and then figuratively to watch his legs to discover their merits and faults. He reluctantly admitted that he could not sit still and with a mental slate and pencil derive an answer.",
+    "The infantryman watched the horizon with a dull, heavy stare. He felt a sudden coldness in his marrow as the shells began their rhythmic, iron thunder. He had long pondered the nature of bravery, yet it remained a phantom that eluded his grasp. He knew now that he must simply endure the metal rain, for no philosophy could explain the terror of a man who waits for the storm to break his spirit."
+   ],
+   "answer_hash": "ecd6729069dfc41a3f00d3253c217aca7bd3b9ec4d4486cbefa6ea92c05a0610"
+  },
+  {
+   "i": 4,
+   "author": "Daniel Defoe",
+   "passages": [
+    "I set my mind to secure the entrance of my dwelling, for the fear of being surprised in my sleep was a constant weight upon my spirits. It cost me many days to pile the heavy stones, yet I found that industry supplied the defect of strength. Thus I lived, solitary and vigilant, providing for my own preservation with such simple instruments as my own invention had shaped from the hard wood.",
+    "Any one may judge the labour of my hands in such a piece of work; but labour and patience carried me through that, and many other things. I only observe this in particular, to show the reason why so much of my time went away with so little work—viz. that what might be a little to be done with help and tools, was a vast labour and required a prodigious time to do alone, and by hand."
+   ],
+   "answer_hash": "18dd7e36e0c5c87c11d690151f8bc241a1ccf6e973af18675c364e35efb4b9d2"
+  }
+ ],
+ "reveal_enc": "94sD1FtRCRg24ORsC9F4YngNdC8f5PDe1GuNpfH0RgJu7PZdENZsqwdV9eylqFKGfFW+PmTWlRSzSR0Kb7ReZ8aWSQe+Kt+Atudm3h4cb1NH6EO/KxfwXbFLvhaYXi+njIHrG4sJk1FSCVAHkK4YmRBjxKwWH2qomtDqDeiqdSMAwJLTjYsaqU+L5OZFLi2x4C08qXGtRTy+ttkQj/yLm+La8lYzbw5TICi3UHywYe1qV8fAjJTEcfYjfgFA4PvUpXA0W/F7kILc35+69muP5kwUEcVoG6q07YShBaVFtg8d9XeG1SkX2zAOikN6NNdSJNIVc90+W5Qkpsq2NPyBSsGCfcqejkqFiiA/alMVMPA3K74S1tLwaLcr6Mvpfziy8+ZmpDkmlG6HXfDRXQfC2FYF2xROBI35ekI+fLUzeJ3czMN/rKZn+tt82hn/NrAu5BKpoXZZII9KE3a0fAqET0yGTus1b4n3QRuf0ILvKCzxjNAOe601QPoq6p16Oc9qknjpfFzdAEus/Wcemxj+eVv3KkvTf4W3QvrgvR25GjrcDNAADvrjAxP4GqYEoil+puqHQ6MrXOT2AYOD67FkU/VUCi1mY3Y3zYVGGk5EpPfmiNJR0IyDzZytGMMgasObhQW16PNXTT6NoE1QARotPhx4Wuzwj/aAUhB5vFSwcpDFspxxpBDsywIyLJAQRrItO6XCL9J7JYfko+LdnlLZA1bMTtQeN4yju2Pm81Go0G9mq9VwD0pwASbH1oRgnllK1NRkRXLVqJZUEsuEY6rTAoVpAZMZXzBXW8zxQcSp5D7n1BlE7Bzz/XrOzoKwKkrBijVek9+6fIxR7HD6yivcWo1EMJiNJd0KkYQh1UpWOw46nxAKbLbkbZEq/HbSthzjaes4bef86l+RVxKviafJAv4pWgGPs6+snTTFujHULf82RYYHQG9hKnZjQogHo8YMSX6ytf23XgyCIlJH3loFbgKvHqWtUFVyUbHyuIp56jHXWGkLX4YSUC/kUNmnes0XxFoB7EvE34QDXh8lYJhs6m4swfYFYARtu87Xrhby2MnoR4YL/i+XJ6/x42cgTRCpUcrCqBffS5o1NaXNOxljfghYAtRcfSNvx4bvNfOFrA=="
+}

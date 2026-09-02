@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "n": 7,
+ "date": "2026-09-08",
+ "contains_fabricated_text": true,
+ "rounds": [
+  {
+   "i": 0,
+   "author": "Alexandre Dumas",
+   "passages": [
+    "There fermented in that sublimated brain plans so vast, projects so tumultuous, that there remained no room for any capricious or material love—that sentiment which is fed by leisure and grows with corruption.",
+    "Upon his brow gathered the dark storm of an ambition so cold, so singular, that every softer impulse perished, like a desert flower withered by the relentless breath of an encroaching sirocco wind."
+   ],
+   "answer_hash": "351c23c17e5441241ccdc52a682972f36e8a05645df1b406925d4e5230494cb6"
+  },
+  {
+   "i": 1,
+   "author": "Henry James",
+   "passages": [
+    "They’re seen only across, as it were, and beyond—in strange places and on high places, the top of towers, the roof of houses, the outside of windows, the further edge of pools; but there’s a deep design, on either side, to shorten the distance and overcome the obstacle; and the success of the tempters is only a question of time. They’ve only to keep to their suggestions of danger.",
+    "It was, in truth, the impression of a silent gathering, a pressure of unspoken requirements that seemed to thicken the very air of the chamber. She felt the gravity of the choice as one might perceive the hidden weight of a pendulum, oscillating between the desire to retain her composure and the inevitable collapse of those fragile barriers she had so carefully, so laboriously, erected."
+   ],
+   "answer_hash": "4e663f194cd158b782f55b57beeaae7e8383de1b3c311afac5d1cca2381cc341"
+  },
+  {
+   "i": 2,
+   "author": "Arthur Conan Doyle",
+   "passages": [
+    "The pressure of public opinion can do in the town what the law cannot accomplish. There is no lane so vile that the scream of a tortured child, or the thud of a drunkard’s blow, does not beget sympathy and indignation among the neighbours, and then the whole machinery of justice is ever so close that a word of complaint can set it going, and there is but a step between the crime and the dock.",
+    "The quietude of a winter evening often conceals the most desperate of human struggles. Where the shadows lengthen across the cobblestones, the desperate find a sanctuary for their dark designs. It is a peculiar facet of our nature that we ignore the silent agony of a neighbor, choosing instead the comfort of our own hearths, until the inevitable toll of a tragedy forces the truth into the light."
+   ],
+   "answer_hash": "345bd966e6a270e3c14cb9bdeee8b89f6753c27bd122d847525aa542cc712683"
+  },
+  {
+   "i": 3,
+   "author": "H. G. Wells",
+   "passages": [
+    "The metal cylinders hummed with a singular, rhythmic vibration that suggested a profound intelligence imprisoned within the casing. As the outer plates peeled away, a pale, viscous light bled into the dark, casting long, distorted shadows upon the soil.",
+    "The vapour did not diffuse as a true gas would do. It hung together in banks, flowing sluggishly down the slope of the land and driving reluctantly before the wind, and very slowly it combined with the mist and moisture of the air, and sank to the earth in the form of dust."
+   ],
+   "answer_hash": "0185fc35a91fb6add38a5fed91a3679a4db293550d4747c4ab7d05e08d4fc65e"
+  },
+  {
+   "i": 4,
+   "author": "Joseph Conrad",
+   "passages": [
+    "The vast, grey expanse of the flood seemed to hold its breath under the weight of a stagnant noon. No ripple disturbed the glassy surface, and the jungle stood mirrored in the depths—a dense, impenetrable wall of verdant gloom that defied the very notion of time. It was an oppressive silence, profound and ancient, as if the pulse of the world had faltered amidst the decay of a forgotten age.",
+    "The dusk came gliding into it long before the sun had set. The current ran smooth and swift, but a dumb immobility sat on the banks. The living trees, lashed together by the creepers and every living bush of the undergrowth, might have been changed into stone, even to the slenderest twig, to the lightest leaf. It was not sleep—it seemed unnatural, like a state of trance."
+   ],
+   "answer_hash": "7611d2474cd3cc9e49cc85765f09beb1cc82aec5c0a79881f45e8b8993494efe"
+  }
+ ],
+ "reveal_enc": "Z44rTPqK/McWf2WojBsY7RImjQwZKLhQyEEAWNu/BPhAwtH/5cjUY/DiaY4gVT65htbWeGho7WStl9qeM7cO+jow48JzE2/V7T7YvOTZM546rPL5epLKg8HtP08W50JoLj+2E/6i6IaStpkzUf9J3o/lX8kPtp47Oxc8IqzyKxRkYUpPHZHAuZh6OqTtkFiXkfQjB5IDKheAlFNfDf3ZPujlAWhBYSjCM7veBHeQwJYXpzijyyn5L95SDVTHBi0KFOoSvT6AzD+wMB1OG+K247+vUrMV90T8REGUNusvSIGxK6pHs+qsWxwW7keKheG5b2nJvUmievCaiCHtiWxnDqlnoYSBLqo3gzxIm522SfEgshGz2rKSwQn4q+HiVKxZq8J/izWLaG0/qP87Dv+CRYNF+i1pHpU3TjU2TxQ0YPBKeEVC7ymKoUhmUNrekHXF0CibNU3KxdRZie/jh3Ju5hgJG0OEWuC/tx/9qz5ZQuLltlSHZCrwyKEvHM5D1BhSQohBkCJWxzQr29qDxh/0AoJnR09qQoyWEPb+0XDAkWgVA9jQR2F/vxSasr1qEn/tcki0zASBHqx/T+xuA+UTaB3wVpLsib6b9pvkwfngd2DBpKqfcclx4urcSnjqYEr09oEaES9GTvlLPv5FpZ3heHDcOnCk2vqiHZ10dcwjB7vCuDh3mB3uHsInuAlXk+4nXKIinWU940fV0Q3B2XVVdhq8B193rDLYOT6oXFDHMkNZWUbBYHhvDtgdp5ALyOrdJ9Uv2UbLDggN5rAfq3GyK1J/1te5jfypL79awAwzZ+uQ6Vgh3oF4oFObyN85BoRa5RdactDyienp4OHOmewPoEIJ07LkduWc6OsEIYbuPgCziEQO20F7Ta8K6kgBZqE/w8hy+k/Fb0/fdJVJeUbXPOUwWqDqJe8U9lprJ3C824ipDt0J6s/WxnbS361+D3vFt/Ffba4bSzdAOxK0sPaVTV9K+FuAkwNUC2Q4W0KkRRUvfvbpiZpH0ny1lm/oyeLz3TO4YDDQO3iGxs53j5tgv619Vj08oF3J3mIEOFEVrsWfqdsgc175h1krtJEwwnBuLPIYYfLgYNyP5W5Q9q+roOkCUU9nLoiLSs3PuADSREOGww=="
+}

@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "n": 2,
+ "date": "2026-09-03",
+ "contains_fabricated_text": true,
+ "rounds": [
+  {
+   "i": 0,
+   "author": "Robert Louis Stevenson",
+   "passages": [
+    "The room was as cold as a well, and the bed, when I had found my way to it, as damp as a peat-hag; but by good fortune I had caught up my bundle and my plaid, and rolling myself in the latter, I lay down upon the floor under lee of the big bedstead, and fell speedily asleep.",
+    "The wind howled about the eaves like a lost soul, and the candle guttered in the draught, casting long, spectral shadows across the floorboards. I drew my heavy coat tighter about my shivering frame, listening to the dark pulse of the rising tide."
+   ],
+   "answer_hash": "f4a1be328bef1f0a39a14b119871067f618b52372ffb0dabda15ef68b73dbc48"
+  },
+  {
+   "i": 1,
+   "author": "William Makepeace Thackeray",
+   "passages": [
+    "Is it not a curious spectacle to observe how these creatures of fashion flutter, masking every selfish ambition behind a fan, whilst assuring us with a soft smile that the evening air is indeed quite pleasant for a turn about the garden?",
+    "But who has not beheld these among women, and recognised the presence of all sorts of qualities in them, even though they say no more to you than that they are engaged to dance the next quadrille, or that it is very hot weather?"
+   ],
+   "answer_hash": "c24ba8852c489c20f905248b95841b85c66dffff8950855f9f4ba08746a941e8"
+  },
+  {
+   "i": 2,
+   "author": "Jules Verne",
+   "passages": [
+    "The discordant tones of the voices and instruments drew nearer, and now droning songs mingled with the sound of the tambourines and cymbals. The head of the procession soon appeared beneath the trees, a hundred paces away; and the strange figures who performed the religious ceremony were easily distinguished through the branches.",
+    "The massive iron lever creaked under the immense pressure of the hydraulic pistons, releasing a cloud of scalding vapor into the subterranean chamber. Riveted plates shuddered as the central boiler expanded with a metallic groan, yet the rhythmic pulse of the machinery remained constant, driving the brass gears forward against the crushing weight of the deep ocean currents."
+   ],
+   "answer_hash": "1fe9d8d2cccaa466ea53cc56b8dc42bb83f564508d9e8460eee451ca330bbe18"
+  },
+  {
+   "i": 3,
+   "author": "H. G. Wells",
+   "passages": [
+    "The place was empty. They refastened the back door, examined the kitchen, pantry, and scullery thoroughly, and at last went down into the cellar. There was not a soul to be found in the house, search as they would. Daylight found the vicar and his wife, a quaintly-costumed little couple, still marvelling about on their own ground floor by the unnecessary light of a guttering candle.",
+    "The mechanism hummed with a low, pulsating vibration that seemed to agitate the very marrow of my bones. I peered through the thick glass, watching the landscape dissolve into a blurred smear of grey shadow and fractured light. It was as if the fabric of the world had been unstitched, leaving only an aching void where the firm reality of the horizon had once held its steady, comforting command."
+   ],
+   "answer_hash": "f63df59de64e1e153bcddadf1f86067bf130eec0b252413b4e44c35b2a3cae4c"
+  },
+  {
+   "i": 4,
+   "author": "F. Scott Fitzgerald",
+   "passages": [
+    "For a moment the last sunshine fell with romantic affection upon her glowing face; her voice compelled me forward breathlessly as I listened—then the glow faded, each light deserting her with lingering regret, like children leaving a pleasant street at dusk.",
+    "The jazz pulsed through the velvet dark, a frantic heartbeat of brass and yearning that promised everything and delivered nothing. We stood on the terrace, suspended in the hollow glamour of the night, waiting for a dawn that never arrived."
+   ],
+   "answer_hash": "00300a2fc9bab7fe64964cdbf8f05becb04bcc6dde1ef7187c76409211f045f9"
+  }
+ ],
+ "reveal_enc": "/hAwNKLB/dRigAHa5iZieQ8FJy1w3+36qiAhg0Gcy8EgNLp3HSyetU+mtsYUYP46tltBOenv2KYS79B6l4SG3wIMCb8vtZL8dkd53xJriI1Ulmm1LnntgkM9y0+Cv762IkC27ZfU1928VIPYlSe9FfMwAwk+6MWZxD7QYw5VNtTO7IfwRqxFpxtYzkaMVKU+4xTsN+exFZeAL7UlyBcX/JpjFjvSpLaBvrmBNx32XWP1BCu/BWl8Xy/ckzRkjK0/dHJmzzEY9exD/862okx4JI6gnslPBOA2ibsouKXF7VTa/8QTjEmxnyuR+CxFeKK3wS4AHPiFsqiNQrQnbIAqa+mLaGduWOS8dJN5Lxh8VQ4DcMJqaiYMubszAy58x4eY1+WtjdCQVXTzFGvkznMiPMSmkxsdfPRNF5StT+1k50TRhpdGPCYkpRT2xwhcLzFFkb5I4PsU/SlBmYffoJpSUCjDRkjE6fqNS5ifCv2jUQjQfoYY6ox5BjfLXfVIgk2Au/SYz3ETQdo/JJ2i5NysFq6xM9+0jlEMKzFiWGhxEvajks64wafBz7FUhU1v4+cbkrpoHH8WlfFwuDHYEa3PyQi+H31/gcwIjZzS9hW25K8tnLXpExJY74p/6f587Q/g4vpEjjerfKkz7K/w/hKOe6lP9uVdrRjskdb/XLyC5DqGDAhA+x3rjGizzf2oBeF7fsxqPFc8ltG/TZFuK0Ya6sMhmbEzkvGc+oWsxcDnWPUaqHpeSZcUGZNeCbWm3VtIFPSuOzCfY0ivE8uI0fpCWsYj3+XjK/jefj+zTlNmJi0ez/T1lCVR3ZDFMV9PiN3TJ36tPO0AKW94YcyJnVrF5shzlGNQ5YB/p1BJQ9njFv4VdYo5U4WkQr6jAWZozqJt5UVCeV8n1b9Xe1Va+P/AMYUtDG/KvfCiuhJx5CRuHHAvVehTXKBXcScIWbYTJcdDRuduW4UOViJxuvM49EXpYV6dTjlGiu78Ha1nZcFH0FKvTHiobDQnZG5HAZwWYPqt/Q3tuP637QyIbe87iF8ahZb45qUs/3Lcu88Zy3Y/rtyf84/rmhEBVPFCneyR05sjx54Y4Szc"
+}

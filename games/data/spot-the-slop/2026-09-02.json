@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "n": 1,
+ "date": "2026-09-02",
+ "contains_fabricated_text": true,
+ "rounds": [
+  {
+   "i": 0,
+   "author": "Jack London",
+   "passages": [
+    "What was I to do? To be brutally beaten, to be killed perhaps, would not help my case. I looked steadily into the cruel grey eyes. They might have been granite for all the light and warmth of a human soul they contained. One may see the soul stir in some men’s eyes, but his were bleak, and cold, and grey as the sea itself.",
+    "The wind howled with a primeval hunger, tearing at the tattered wool of my coat. I stood against the gale, my limbs stiffened by the biting frost. Death lurked in the white expanse, a patient shadow waiting for the fire to die. Nature knows no mercy for the weak, demanding only the raw strength of the blood to stave off the final, freezing silence of the vast and lonely dark."
+   ],
+   "answer_hash": "730804ce1aa33cd653b2558bb092ac3d89c28c87ae9d573f5f96f239362144c4"
+  },
+  {
+   "i": 1,
+   "author": "Mark Twain",
+   "passages": [
+    "When I got there it was all still and Sunday-like, and hot and sunshiny; the hands was gone to the fields; and there was them kind of faint dronings of bugs and flies in the air that makes it seem so lonesome and like everybody’s dead and gone; and if a breeze fans along and quivers the leaves it makes you feel mournful, because you feel like it’s spirits whispering",
+    "The river lay stretched out like a long piece of polished glass under the hot glare, and not a soul was stirring anywhere. A lone crow sat atop a dead branch, watching the slow water slide by without so much as a blink. It was the sort of quiet that settles deep in your bones, making the mind drift off to places where the shadows grow long and the world feels forgotten by its maker."
+   ],
+   "answer_hash": "63e1f2c8bb74e7061ea9ed90199d6d2e6b897ae33998b80dc24156a2057e0664"
+  },
+  {
+   "i": 2,
+   "author": "Oscar Wilde",
+   "passages": [
+    "The body sins once, and has done with its sin, for action is a mode of purification. Nothing remains then but the recollection of a pleasure, or the luxury of a regret. The only way to get rid of a temptation is to yield to it. Resist it, and your soul grows sick with longing for the things it has forbidden to itself, with desire for what its monstrous laws have made monstrous and unlawful.",
+    "To be understood is to be found out, which is the ultimate vulgarity of existence. One should always maintain a certain mystery, for the moment a secret is revealed, it ceases to possess any charm. We are all masks worn by vanity, seeking to decorate our emptiness with the jewels of artifice. It is better to be a brilliant failure than a tedious success, for boredom is the only true sin."
+   ],
+   "answer_hash": "40099e13170822768cc6b64057e7d782b9a5d68e99be86d171204ca22d15c137"
+  },
+  {
+   "i": 3,
+   "author": "Mary Shelley",
+   "passages": [
+    "The melancholy that had long haunted my spirit began to dissipate as the pale moon ascended the heavens. I gazed upon the vast, silent expanse, feeling the icy breath of the ether upon my brow. A profound solitude enveloped my weary frame, yet in this desolation I perceived a singular beauty. I had sought to pierce the veil of existence, and now, trembling, I awaited the final, awful revelation.",
+    "The astonishment which I had at first experienced on this discovery soon gave place to delight and rapture. After so much time spent in painful labour, to arrive at once at the summit of my desires was the most gratifying consummation of my toils. But this discovery was so great and overwhelming that all the steps by which I had been progressively led to it were obliterated, and I beheld only the result."
+   ],
+   "answer_hash": "d18e4dba0cd9e778dc2d0c185d4426980ed0e11326cc3f31ce88bcc5dac8f1ac"
+  },
+  {
+   "i": 4,
+   "author": "Leo Tolstoy",
+   "passages": [
+    "As the flames of the fire hidden within come more and more vividly and rapidly from an approaching thundercloud, so, as if in opposition to what was taking place, the lightning of hidden fire growing more and more intense glowed in the faces of these men.",
+    "As the heavy carriage wheels cut into the softening earth, so did the persistent anxiety of the traveler sink into his soul, leaving him to contemplate the vanity of human purpose amidst the vast, indifferent silence of the frozen fields."
+   ],
+   "answer_hash": "8629e93c2a5c7082d3b5bed90bf2e11cdfec883c95c5dbe3d269f1df64780a94"
+  }
+ ],
+ "reveal_enc": "ST0N5S4M/8NQcQrOLIoiQXcg2//DOWigGPIF/9IoBOxcDbaCcMSKiwy1EmvlxxrnQ2nOFupkMdp9y6PpIUN08i+yd2qTjY9rTMftQsIBd/n5Pi99g2UOccxSbVIyuwXevqpvlS3+EDVHiBYexl4aD2mTWV5+Uyew2Sx7LgcSTskha+0aq+PHsjMO6C/kbY+IgT4lbx4Lnp8Z8qvyXzyhmO3TCGRsIyezHqt+i0637qRkOAzidNZEH/fi0eUP0OfcgIC+iAlKHumW6ko1xtWuKhwNddQLUz1esz8+Lek1hhy+E/WumaKbQMeV7EBgHdm2oZOvEdbImdMRmVGn/7OGs3QGvsX/u5TaSGkHP0uf/LDukrb0jbspswHN3J9QBpNfuJZuyWBrk+Y/7Ji8JQi69aT5O2p+8Tynq43CsolyZceilb0nx1ja7DllSA0bhNSmDSDjefEvOXNQDA0GnXLIYpo4uFIY4vxAqXRNN6avlFhhzPiJQ4twKM1H4HXFnUSi3g6yb70R4Imu0JSOLJrm9MOYSCf9FcMkuDXUUfm9Pn9GwXJRRnBLLjWu1FPR7vw46AbPvytvTKAAf3RlugDBC23ifxvebaYeOyKTL82xYWhG9KPrHbDCDHTgbjFre9xESmGpD6E5hTajKs4m+8hfYA6sKHZ12nI18wA1NM6TCrlUhPXKNCys2srNeQjzYkCV4KDhE8HMckqLXdmJAra8XrF7gOhlAcK6XYQ4wGDjpHEK/nYlENkqM7C+hIJd2fXnmWS2wbjt4HiILhpArOPFH9b+7nPx31Ko4HqtVndfQBlT0tyXzsr3sKZlGOMA3bQPcstclgMRuwxyzybPc80NU0d9C9F+XeyCOQM9QTmQzwChTJ78Cpi8vS3Svx0/GPBLrxzoK4lCkV+t+hRNYDpAjzCXkdKL3xyieoOIOhsz/BGCKSrQR7XShiDGGQP33T6vBWljMhr2P3cH2nRd3MUqgY+Kqh/JIy70yg9D8Ijb0GpCdKqtB7Ww+h8y1uAQf/BJfPLJwcgXm1VSIGrEqs+cxGgfS6TmChcNHCtguIl8rJyhXhyqGNlipvgbYo+JIGI="
+}

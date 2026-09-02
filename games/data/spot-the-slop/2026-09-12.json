@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "n": 11,
+ "date": "2026-09-12",
+ "contains_fabricated_text": true,
+ "rounds": [
+  {
+   "i": 0,
+   "author": "Charles Dickens",
+   "passages": [
+    "The candle sputtered with a weary, yellow light, as if it too felt the crushing weight of the midnight hour. He stirred his thin broth, watching the grey steam curl into the gloom, quite indifferent to the gnawing hunger that sat heavy in his chest.",
+    "Shaving was not an easy task, for his hand continued to shake very much; and shaving requires attention, even when you don't dance while you are at it. But if he had cut the end of his nose off, he would have put a piece of sticking-plaister over it, and been quite satisfied."
+   ],
+   "answer_hash": "9519738af96ff07ac35aa73acbc10696f655e072994dcf6f08f66e1bc1fc34b3"
+  },
+  {
+   "i": 1,
+   "author": "Oscar Wilde",
+   "passages": [
+    "Words! Mere words! How terrible they were! How clear, and vivid, and cruel! One could not escape from them. And yet what a subtle magic there was in them! They seemed to be able to give a plastic form to formless things, and to have a music of their own as sweet as that of viol or of lute. Mere words! Was there anything so real as words?",
+    "Art! Pure art! How exquisite it is! How pale, and static, and absolute! One cannot hide from it. And yet what a decadent charm resides within its frame! It seems to possess the power to lend a golden hue to hollow souls, and to possess a rhythm of its own as languid as that of velvet or of silk. Pure art! Is there anything so false as the beauty of a canvas?"
+   ],
+   "answer_hash": "f2d7c750fdf23a39c3cd2bb75f61df1222a9ed3ef0e0627f4c742b06e3cd8c6e"
+  },
+  {
+   "i": 2,
+   "author": "Mary Shelley",
+   "passages": [
+    "A desolate chill crept through my veins, mirroring the frost that encased the jagged peaks above. I wandered amidst the ruins of my own aspirations, haunted by the spectres of a vanished joy. Each breath became a heavy burden, a testament to the solitude that consumed my soul, while the vast, indifferent heavens gazed down upon a wretch forsaken by all human sympathy.",
+    "The tranquillity which I now enjoyed did not endure. Memory brought madness with it, and when I thought of what had passed, a real insanity possessed me; sometimes I was furious and burnt with rage, sometimes low and despondent. I neither spoke nor looked at anyone, but sat motionless, bewildered by the multitude of miseries that overcame me."
+   ],
+   "answer_hash": "83be598b3de1301cd92d03094939be548a490617c748a4c6668001bf6d6d840d"
+  },
+  {
+   "i": 3,
+   "author": "H. G. Wells",
+   "passages": [
+    "The shop was old-fashioned and low and dark, and the house rose above it for four storeys, dark and dismal. I peered through the window and, seeing no one within, entered. The opening of the door set a clanking bell ringing. I left it open, and walked round a bare costume stand, into a corner behind a cheval glass. For a minute or so no one came.",
+    "The laboratory was a cavern of cold iron and glass, smelling of ozone and singed wire. I adjusted the brass dials, feeling the tremor of a vast, unseen engine pulsing deep within the floorboards. Beyond the skylight, the sky had turned a bruised, sickly violet, and the wind began to howl with a strange, metallic cadence that suggested things not of this world were drawing near."
+   ],
+   "answer_hash": "e872ade148677dc8022fc541d3dacfde44ad490e01dd96e2ec746feb4c1006a3"
+  },
+  {
+   "i": 4,
+   "author": "F. Scott Fitzgerald",
+   "passages": [
+    "This was untrue. I am not even faintly like a rose. She was only extemporizing, but a stirring warmth flowed from her, as if her heart was trying to come out to you concealed in one of those breathless, thrilling words. Then suddenly she threw her napkin on the table and excused herself and went into the house.",
+    "The moon hung over the terrace like a pale, discarded trinket, indifferent to the jazz that pulsed against the velvet night. She stood poised, a shimmer of silver lace, her laughter a fragile glass bell shattered by the restless wind. Everything was merely a rehearsal for a joy that never quite arrived."
+   ],
+   "answer_hash": "3ffaf5b982b0dc739a3b787af4297c7838d04d4d574aeedeee2b6734bc7055c2"
+  }
+ ],
+ "reveal_enc": "OY58beG90su4u26rBkiCI6EEsNluIdyeJRGIzcyc6ToTijvTEjFK0pp9tWjENMfnLZNzGeqbflNiOz4ddRu2dYyC/b+hwe3lQIJsC5KK/C/qJEUR9dGvj8/GwbbbNJkR1Kn9hGpgNzsGD49Ew5W4Fd5bm6iPXTMZtlt2PH2c/6geSCyiDseobhNzQD3UcKcGRc93IuKqdRhqHegKeaEDcg21nx9g2I0gYRWn1Hzit1ULuHm++Tnc09L+5etjBJo0gxLIz7EjDjZgoexhZgza92zqhmcDp4PIth0SLVzRRRc4CU41NskLjhEKiBtMVc16wkFqjl8Waci/JcWl/2KUdfUDs9EEhtjKIcRgFEuTbLhmNYT3klh8t4fo2bCQaTg1efQXS5SmTK2HY2vIA3a4GsAKmn8hpLLNa5NmPO6/A9wDFvrMntapcoyS4QT0ZGZS96bko2iXCE7M0ep+4TgddJKgKwtP67o81Qax6cYHNiV7Y7qny4TIRPZWWQm2KUIoQbs6+F4927aKnJmnvMXwGIR82dG8Jllq8Brl/KjZ9noXTI3T91fgjA1aKN2+Z0xwHcnUuHkBG8D6LVtVOWewJE9KIs9nLiMhuPLBLw7yFwTRxyA5exGM/OlXd1U9abKrRx2UJHZRnLcNyQklrOR3Npng9mY0iC3ESTJDTPTGwfv5ePdH7b0JFmJFCvHcOXkBMMG4OK/BDw0eULYa7tZKpj6Ot8ReEneEtURlfMryynDSa+q2d6CP7+UbHxtIhuDQTeBJrT3SX6eu1a1SGbwCV2rJMglChYSW0XJQmyeGNx4f3ALImM4uHiGF6I9iqq4PBwwh3AsdW623NB4NmaIFvDqRSKSpzDiEp/NqoTxvUPdjrgdAAJS08yRre+nZe3BgPrbghRiJP+GypPiO5aD70030AqLCZD0LMipLaFWbS1fOnZBfsbzjVevdCoELP/IOIHTNUQYGjRwMAd/1fd0ZLzxK8JiJmQwNc5YF9wNQdoQh2GJMjYxga9m8Mth0lWQbZ/vHD4JKmIW2ildF1YafvYK/5VQ+Vd6nPAIP7yBQbNZzGs7q9QIP2VeczISeYohBbnpvCRAC9RPixs0J6poXYfG9+6YC887CiUbt"
+}

@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "n": 6,
+ "date": "2026-09-07",
+ "contains_fabricated_text": true,
+ "rounds": [
+  {
+   "i": 0,
+   "author": "Henry James",
+   "passages": [
+    "It’s very true; there are many more iron pots certainly than porcelain. But you may depend on it that every one bears some mark; even the hardest iron pots have a little bruise, a little hole somewhere. I flatter myself that I’m rather stout, but if I must tell you the truth I’ve been shockingly chipped and cracked.",
+    "It is quite possible to maintain that one’s own obscure reflections, however much they may seem to wander, possess a certain peculiar gravity. One finds, in the silent agitation of a drawing-room, that to be understood is a danger, yet to remain entirely unperceived is a grievance for which the spirit, in its modest vanity, discovers no real remedy."
+   ],
+   "answer_hash": "f72f60d9950a075dd12cd0a4116eb085b1205e4b4e539b8d5614c13a41ae33ee"
+  },
+  {
+   "i": 1,
+   "author": "Anna Sewell",
+   "passages": [
+    "The iron bit is a cold companion on a bitter morning, yet we must bear it with what grace we can muster. My master is a man of sense, who knows that a tired beast cannot thrive, so he grants me a steady pace and a gentle hand upon the reins. We journeyed long through the biting wind, our hooves ringing sharp against the frozen earth, but the promise of a warm stall kept my spirits high.",
+    "When the streets were slippery with frost or snow that was the worst of all for us horses. One mile of such traveling, with a weight to draw and no firm footing, would take more out of us than four on a good road; every nerve and muscle of our bodies is on the strain to keep our balance; and, added to this, the fear of falling is more exhausting than anything else."
+   ],
+   "answer_hash": "ebe124ff9fc496c053b8a018237a8f114db11e9a15fb32e146f7248076113a0c"
+  },
+  {
+   "i": 2,
+   "author": "Jules Verne",
+   "passages": [
+    "The explorers climbed the basalt ridge, employing their iron pikes to dislodge the shifting scree. A cascade of stones tumbled into the abyss, echoing against the humid walls of the cavernous throat. Silence returned, profound and heavy, beneath the subterranean vault.",
+    "The hunters then rose, and using their sticks like scythes, they mowed down whole rows of these couroucous, who never thought of flying away, and stupidly allowed themselves to be knocked off. A hundred were already heaped on the ground, before the others made up their minds to fly."
+   ],
+   "answer_hash": "74e89ca57d5e99eb82725cc585ace7da2723380603f1967954a201765f796270"
+  },
+  {
+   "i": 3,
+   "author": "Charles Dickens",
+   "passages": [
+    "In truth, the wind, though it was low, had a solemn sound, and crept around the deserted house with a whispered wailing that was very mournful. Everything was gone, down to the little mirror with the oyster-shell frame. I thought of myself, lying here, when that first great change was being wrought at home. I thought of the blue-eyed child who had enchanted me.",
+    "The fog clung to the cobblestones like a shroud, dampening the echoes of the weary stragglers who hurried toward their hearths. A solitary lamp flickered against the encroaching gloom, casting long, distorted shadows that seemed to mock the poverty of the street. Time dragged its heavy feet through the mire, indifferent to the silent prayers of those left to wither in the winter chill."
+   ],
+   "answer_hash": "00a5b2e914faee8f98ff4a7e9f5dc61a9b76f982e20766f30964d32c19e94702"
+  },
+  {
+   "i": 4,
+   "author": "Thomas Hardy",
+   "passages": [
+    "The dull sky soon began to tell its meaning by sending down herald-drops of rain, and the stagnant air of the day changed into a fitful breeze which played about their faces. The quick-silvery glaze on the rivers and pools vanished; from broad mirrors of light they changed to lustreless sheets of lead, with a surface like a rasp. But that spectacle did not affect her preoccupation.",
+    "The lowering clouds grew heavy with a sullen intent, casting a premature shroud over the fallow fields where the frost had begun to bite the stubborn earth. A solitary bird circled the leafless copse, its cry a thin filament of sound against the encroaching gloom. She stood motionless, watching the light fade from the horizon, indifferent to the winter chill that settled upon her weary soul."
+   ],
+   "answer_hash": "7f586f48a4c24d44ed5ca65ecaa1c7aa928a6ecfeb8b2a625cfdd4f9980914d6"
+  }
+ ],
+ "reveal_enc": "cTQpIlr//HrZtBT1d7xC3QV2pWwJUSOkn75ywQesDkGzO2a3aslxkzHwZs57hV7nNom/980Ixv+pRUjFgrVRNhYUAM0f/Psf2SVWj7ScXdAre7BxdEW4sHSb4RJcSDSGgBCVxYYQmVrKgEGOVHnPMAkd46QvPZSrfa8qIvDIokdfcxQ6HHEbbZhLbj0rYT1L7G6dii5VmeMBBbvur0umLxCzTxt/54O2JLTnRIPJKgckOi4YZhNFf0KBAVdMbPBNM8LF9E4tVmOr69q02lhTGsncCymkzbEmLHboxTDACNWK3cEUEQiBnq6mHLk37MjuCsd50jc3hZu/qsazzESbN6WE8mmoFD7nAGCk28hGF4FzY6lojaY6keLT0z6/fIc32Om9tlAviuD+27mhMEKeiEjjxO94aIP/HbzExhwLtgjV5jwb5gw6DMMlZx/zLPD9ICkQ4OUo6uVHSc+rwJlLm1Zzphria1BmQTW2O4PAdPTj+iofdStIKIFqQ6DREjdkT6tCfUmC3LZkf33qBHDAWQDw/0tE+UKK/VXcudz8sMZWtFZva+Q8M77gov8/vCgZmkVuksYZxjdHv8CVVMX1gHzEz2PQ090aHrLUKiJThNhcifMtbaAmpaHhBQrJe1/GKjQ082oN6jFrhvoBgchJE2tncS6O9wpSlybvP7xgRPaVMcAmOaZXgZ0yLvsY51TeUoSypS3Moq4ogWJpP5LIoLB/N6rf4UlspH2fv68s6cWY0Xg4D/+o01MYfq5V8/Nmq3LPnBpEuM1ZK3LunjOK14efJc0CsDahWUXDo7fhP9fJsYjwIXkkre7jxub6qVfT31+b10yxZvXVh701l6jRkA3DUepn89HX4VA+dLueTqQssLsHyZjr3fZYQjU3IQEvU9pfLhoBkOtMlLmZvnybFRKnDZobSu9utsSboA4yP2Nl3dhyjA6IdEqN0MgHq5Nsf6hAmHye/DwgCJa2kjzjFnH8wDieS5bLOyPjLLAT0hFn76syXQavlc9Y6975WD1tXNGvn65fYRXG0VExHiILF2aIzGw25AX7/Xkj9lh+GS6rX77TO5l6XMuiTQQ+DtkerxQ7K4wF"
+}

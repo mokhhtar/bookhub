@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "n": 14,
+ "date": "2026-09-15",
+ "contains_fabricated_text": true,
+ "rounds": [
+  {
+   "i": 0,
+   "author": "Kenneth Grahame",
+   "passages": [
+    "The afternoon deepened its golden hue as he lounged beneath the gnarled roots of a sentinel oak. Above, the sky stretched in an endless, tranquil wash of pale cerulean, while the drowsy hum of hidden insects wove a tapestry of sound through the tall, seeding grasses. It was a time for idle dreaming, for watching the lazy currents of the stream mirror the slow, majestic drift of passing, feathery clouds.",
+    "He rose and descended river-wards once more; then changed his mind and sought the side of the dusty lane. There, lying half-buried in the thick, cool under-hedge tangle that bordered it, he could muse on the metalled road and all the wondrous world that it led to; on all the wayfarers, too, that might have trodden it, and the fortunes and adventures they had gone to seek or found unseeking—out there, beyond—beyond!"
+   ],
+   "answer_hash": "bfaec4d1d5a7a8bf62f4e6875f5121f88d6b2782ed778040b29851c97cfe046e"
+  },
+  {
+   "i": 1,
+   "author": "Jack London",
+   "passages": [
+    "The iron laws of existence demanded a toll which the weak could never pay. Through the stinging frost, the pack moved with a silent, primal hunger that defied the soul. Every muscle strained against the cruel indifference of the waste, where life was but a flicker in the vast, devouring dark. In that bleak theater, strength reigned supreme, and mercy was a phantom of the forgotten sun.",
+    "The callousness of these men, to whom industrial organization gave control of the lives of other men, was appalling. I, who had lived out of the whirl of the world, had never dreamed that its work was carried on in such fashion. Life had always seemed a peculiarly sacred thing, but here it counted for nothing, was a cipher in the arithmetic of commerce."
+   ],
+   "answer_hash": "8f0957b63d6f3abdcc288f4acadba0d48092a4df52061d23194514a0eedb0bbe"
+  },
+  {
+   "i": 2,
+   "author": "Jules Verne",
+   "passages": [
+    "It was, in essence, a vessel of iron designed for the crushing of ice. During the polar seasons, when the seas solidify into vast fields of crystal, these machines perform a singular task by shattering the frozen expanse. Equipped with engines of immense power and reinforced bows of forged steel, they glide across the frigid depths with a force that defies the very stability of the desolate north.",
+    "It was, in short, a sledge rigged like a sloop. During the winter, when the trains are blocked up by the snow, these sledges make extremely rapid journeys across the frozen plains from one station to another. Provided with more sails than a cutter, and with the wind behind them, they slip over the surface of the prairies with a speed equal if not superior to that of the express trains."
+   ],
+   "answer_hash": "743097c5723f4cf5bfbd70e8e229a30f27e7dea52cf758612124b4032e2eb971"
+  },
+  {
+   "i": 3,
+   "author": "Robert Louis Stevenson",
+   "passages": [
+    "The wind had fallen to a hollow sigh, and the great deep lay before us like a sheet of hammered lead, save where the oily swell would heave and sink in slow, measured pulsations. I stood by the rail, watching the dark water curl against the timber, and felt the heavy solitude of the night settle upon my spirit. Every timber groaned with a weary voice, as if the craft itself grew tired of the endless, pathless waste.",
+    "I found each wave, instead of the big, smooth glossy mountain it looks from shore or from a vessel’s deck, was for all the world like any range of hills on dry land, full of peaks and smooth places and valleys. The coracle, left to herself, turning from side to side, threaded, so to speak, her way through these lower parts and avoided the steep slopes and higher, toppling summits of the wave."
+   ],
+   "answer_hash": "5d2da15ffcd36021351bda63b52f6402d6351a73f601b67ef41d9e173bec0417"
+  },
+  {
+   "i": 4,
+   "author": "Charles Dickens",
+   "passages": [
+    "The night was not so pleasant as the evening, for it got chilly; and being put between two gentlemen (the rough-faced one and another) to prevent my tumbling off the coach, I was nearly smothered by their falling asleep, and completely blocking me up. They squeezed me so hard sometimes, that I could not help crying out, ‘Oh! If you please!’--which they didn’t like at all, because it woke them.",
+    "The fog clung to the river like a damp shroud, thick and yellow, obscuring the flickering lamps that stood like sentinels upon the quay. I navigated the slippery stones with a heavy heart, my boots echoing against the cobblestones in the hollow silence. A wretched creature huddled in the shadows, shivering beneath a tattered shawl, her eyes fixed upon the void where hope had long since perished."
+   ],
+   "answer_hash": "cf25f8429b4d7ae92b8e91f7d090d1fe0c4042710b33c41d10af3149dc1fd50b"
+  }
+ ],
+ "reveal_enc": "CXS7PjEuyewALe+Ud1W/N7PK/Inw4L5uLoLRXJnYB4IDevGnZWHE/cw4q4YMqOkpXSlzPH+OO88sbFtYgfMP6C6oTGad4CE470llEfMDYL+wxRUysZLqdzJBRpY6OAxeLLLqONCyEbvNoJfRS/MeENayuShT7MUEN4ZfwGA2VWxo0d+zpZm9PqwOTcClZSv6ZzvGU2LjT8YeFIpuBDOTJRg9uUy379QD1DroUUQ4emJYC7IohbKJ2X9lR9HEnFkGeBmrJnp4wVJIa0iAwpSck91gc1LtyTNUdRrwUyN/WI4UpsMqC82FtGl69d93GpQ3Cx14svEjl+p1hHonPEWFXDVYiOLHK7y0Rcgz0yxYB6/0a7IId/u2hG0IP7ovGZ5+Lp6+rXPTm7f1PZKd6kEWoELDVd3cDv3C3rdBWsyTHaEfPGGjkSVlBGRHOta7/j1+TYTtVsCBTf8DdOgu3sIxDcKXj/RhUFHEOy/wXJze/8Xp5TEs+/dt+GQ9fznIPJq1mgAwX4B0rTwX0juoTimc+TiRZDrRXOR+PKJwsxRY94A1QTBiwYlT6Z7ajg3F78ovVOTpJOBcMkITMipCY0w28ceYuWkE+X/Zbg3YPrjIuFCqAPEt3ebr4WGj/YHNSoa6A0miZNEpMRNasigA7rJ3eM/jCYsJ0MwL9r+STAE1q+tRMMVd16Br0uOVYicjwXCDdjfXJFks0FOUtpEAbotv7jUrDvRXxGZJtlqiLMvWeOQ3XuWNuimDUTqEErNoqfaRn03yahsP9dBAMwR4zO4dYiWfkQl8MwHlicu8uDTbbbhyEHqenOCBpIvNuk5H9iJfabllZv4dAyUQnR7MWhulzI5e4keZYJRvVw8jTgReLJQkNwgWlJAsxPt9AH+a0+Py69Atk0iIPuxpNKBTAhL/jBhSkBUs4hI5CfF9LxKhSadmb++CJce3Gn6I6v7sY3dd3tpv4kMNSUY9m1Q9bKofCrdtdYyvkF1sCegFV7DpU1BfQzgeSDajPdEOBxY7Gb+cyff8f4yaAcV7vNzJc06iwKHKcQxinl01qQTXCzERGV+ik4K9mYF74l+WPkF3zcx3DKg5dQpbIA=="
+}

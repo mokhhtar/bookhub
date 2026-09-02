@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "n": 8,
+ "date": "2026-09-09",
+ "contains_fabricated_text": true,
+ "rounds": [
+  {
+   "i": 0,
+   "author": "Jane Austen",
+   "passages": [
+    "I am a very selfish creature, and for the sake of giving relief to my own feelings care not how much I may be wounding yours. I can no longer help thanking you for your unexampled kindness to my poor sister. Ever since I have known it I have been most anxious to acknowledge to you how gratefully I feel it. Were it known to the rest of my family I should not have merely my own gratitude to express.",
+    "It is a truth little acknowledged that a mind burdened by the necessity of decorum finds no greater solace than in the silent contemplation of its own follies. To be perpetually subject to the opinions of those who possess neither discernment nor kindness is a trial which requires the utmost fortitude to endure with grace, yet one must always endeavour to maintain a countenance of perfect serenity."
+   ],
+   "answer_hash": "72e95ba12946a17b7624d3b70f28d4a474bc0200c1db9080755072bbd475e967"
+  },
+  {
+   "i": 1,
+   "author": "Jack London",
+   "passages": [
+    "The things not alive remained always in one place, but the live things moved about, and there was no telling what they might do. The thing to expect of them was the unexpected, and for this he must be prepared.",
+    "The wind howled with a hunger that knew no satiation, clawing at the frozen waste. Life was but a fleeting spark against the crushing dark, a desperate struggle to endure until the dawn broke the iron grip of night."
+   ],
+   "answer_hash": "ea2b5357b2bdb8cdd5fed49ad6bb368e56509bca4c264e6a5790eec4d5d967ce"
+  },
+  {
+   "i": 2,
+   "author": "Gustave Flaubert",
+   "passages": [
+    "The sunlight faded, casting long shadows across the velvet drapes. She stood by the window, watching the rain blur the distant horizon. Her heart felt hollow, a vessel emptied of desire. She toyed with a golden trinket, waiting for a clock to strike the hour. Silence reigned, heavy and thick, punctuated only by the faint, rhythmic ticking that measured out her listless life.",
+    "In the evening he had some visitors. He rose, pressed their hands, unable to speak. Then they sat down near one another, and formed a large semicircle in front of the fire. With lowered faces, and swinging one leg crossed over the other knee, they uttered deep sighs at intervals; each one was inordinately bored, and yet none would be the first to go."
+   ],
+   "answer_hash": "49645ed8dd0e87e445ce0b1027750bd6b4f916dd3b1354909d281a780be2fcbf"
+  },
+  {
+   "i": 3,
+   "author": "Mark Twain",
+   "passages": [
+    "The old man sat by the river bank, whittling a stick with a dull blade and watching the muddy current crawl along like a tired snake. He reckoned the world was a lonesome place for a body without a copper to his name, yet he spit into the foam with a sort of weary dignity that defied the cruel sting of poverty.",
+    "The discourse was resumed presently, but it went lame and halting, all possibility of impressiveness being at an end; for even the gravest sentiments were constantly being received with a smothered burst of unholy mirth, under cover of some remote pew-back, as if the poor parson had said a rarely facetious thing."
+   ],
+   "answer_hash": "3fb34f0ade28018d1a25a0b312c381f4262a3dcf470d5d746eb9701a2c9ce97a"
+  },
+  {
+   "i": 4,
+   "author": "George Eliot",
+   "passages": [
+    "A woman dictates before marriage in order that she may have an appetite for submission afterwards. And certainly, the mistakes that we male and female mortals make when we have our own way might fairly raise some wonder that we are so fond of it.",
+    "The quiet growth of a secret discontent is often mistaken for a mere shift in temper, yet it is the slow erosion of trust that hollows out the soul, leaving only the brittle shell of a duty which no longer holds any warmth of conviction."
+   ],
+   "answer_hash": "f6d39daaf41d896cfca9f77bb50715f8047df4785f4b53cfebb6dddadd860c1e"
+  }
+ ],
+ "reveal_enc": "Ch72VGnRutsHNYaQtu+jm87/onxASTrtckYsZs61w6CB6NYrlX8fYaWhW/5y/rkwfDPtHMmrhSZnWX6xrsJzv9GvDHmL7J3DUlnMPzBAnRY9nPXKQOVbKM849Ioa5x9f0crTQEK6Xuh9HVsJpHiPMDkKD/eceDR5wRh331wfXtSFywyGqNZriHiXL2kCakZmmLxbxv8OcHdGvi9y33B+65QuMRCfr2T9+VGP/YVNlglUf6I7s88RF2ymg0Tjaag+R18q2wUo0JxBtYl1z1Yq9pwr5krT3L9HU4qZ4Ggw1Fb/290nHt8Np12yRv7ZXz8UTGeXruyLUQs/lYQ3elTjIP34X9gUa86FmSefoDUa67sWIpq4m+cQNJziYh/addmdFqf3Yn41Sv8ljFGo9LDKECR5k//cwnzD5l8NJpUNHVimbaOEP4H+eSEQ1KKaUERHo8ZQMKRWxPeOP1XOKD+tvljbtWuR11ZD6bi+ZLpHx4o90mXo7f+jnYCD/LaEbYtsKxjLTfXbZee0gr0OzQ0zT1dowSD3V5uGIp3hyvzmpdSsAIxCU0pvXOsR3KOg2UUXKPDX3b5Eagkc+JUYo7k1oxEwK8TdHuijxkpx4HyscGIUxFAjJjMqUc4nbmuyDa6xaSEEMjQzmy/SRWhoVBefry/ouPQTPYZ9jVjLGufhKgaoJBLyIwDY56VrtM4q3aDDCkuHf4kMYMDSX0RHMGLQhpUTsxxBoK1BfwgvdYFeXRxES2Cx7Mt0lby7FKtIAuF4e3pczCUofbUVs0831iaYPgiK3hWhiAAq0TV2qV3wwiGZEjhwBF8Nro3I0DxyZLsDz2o6Ut2FjZQtdkCizrWX0bwuWjTg206DeMCwr7lJY5pO8o5by5z5pyq44inwRTjukJxm0W7tjUbbX4xcqJcJYjePbg9MXKd6BkPVfpqF9epoZbLJq4t5rLeivf9Igkz2/4qB6n/XOOE2zBcTlKOD2KWfdyU5kV8xI6echmoF9Utf5XZhvHDuIvb9iYSlrBnlFPu6JvQS+YZCpotHmbSfZo50UH/l"
+}

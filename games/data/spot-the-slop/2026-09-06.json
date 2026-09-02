@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "n": 5,
+ "date": "2026-09-06",
+ "contains_fabricated_text": true,
+ "rounds": [
+  {
+   "i": 0,
+   "author": "Rudyard Kipling",
+   "passages": [
+    "The long steel snake hums upon the iron path, drinking smoke and spitting fire into the night. It knows the weight of the world, yet it never tires of the heavy toil beneath the cold, unblinking moon.",
+    "I know there’s a great deal of me to take care of, and I know that nobody knows how to cure me when I’m sick. All they can do is to stop my driver’s pay till I get well, and I can’t trust my driver."
+   ],
+   "answer_hash": "90d1179150985fdfa0b2e7bec238c4a868513b044778052784c96dc785488708"
+  },
+  {
+   "i": 1,
+   "author": "Alexandre Dumas",
+   "passages": [
+    "Inured as men may be to danger, forewarned as they may be of peril, they understand, by the fluttering of the heart and the shuddering of the frame, the enormous difference between a dream and a reality, between the project and the execution.",
+    "Though a man may arm his soul with cold disdain and steel his nerves against the coming storm, the first chilling breath of fortune reveals how vast a gulf divides the bold ambition of the mind from the cruel certainty of the final act."
+   ],
+   "answer_hash": "51000a2013a0727842846d1cad21aa1a262ddf1227eda2f859d3b7a4fc0f5a51"
+  },
+  {
+   "i": 2,
+   "author": "Harriet Beecher Stowe",
+   "passages": [
+    "How heavy lies the burden of a heart that must conceal its deepest woe from the cold eyes of the world! There are silent sorrows which ache within the breast, stirring like leaves before a coming tempest. Oh, that the light of mercy might yet pierce the dark veil of this mortal struggle and bring a sweet, celestial peace to the weary.",
+    "After all, let a man take what pains he may to hush it down, a human soul is an awful ghostly, unquiet possession, for a bad man to have. Who knows the metes and bounds of it? Who knows all its awful perhapses,—those shudderings and tremblings, which it can no more live down than it can outlive its own eternity!"
+   ],
+   "answer_hash": "3b00be37fb56684d100226a74057681a6b77c4aaea1d16a9cfd928eabcad800b"
+  },
+  {
+   "i": 3,
+   "author": "Lucy Maud Montgomery",
+   "passages": [
+    "The orchard was a sea of pale blossoms, stirred by a gentle breeze that whispered secrets to the drowsy bees. Above, the sky deepened into a soft, tranquil violet, while the first shy star flickered like a silver lamp in the vast quiet.",
+    "It was delightful to rattle along over the moist roads in the early red sunlight that was creeping across the shorn harvest fields. The air was fresh and crisp, and little smoke-blue mists curled through the valleys and floated off from the hills."
+   ],
+   "answer_hash": "c88cf0dd5d374c855dd731c528575fdeda9aef4f1865b8819a4d4be28f151e0f"
+  },
+  {
+   "i": 4,
+   "author": "Mark Twain",
+   "passages": [
+    "The river had been a wild, unruly thing, full of secrets and shifting mud, but now we had tethered it with stone and iron. Where once a lonely skiff might drift for days in silence, there was now a frantic pulse of steam and commerce. The wilderness was folding up its tents, retreating before the steady, relentless march of progress that demanded every acre for the hungry engine.",
+    "My schools and churches were children four years before; they were grown-up now; my shops of that day were vast factories now; where I had a dozen trained men then, I had a thousand now; where I had one brilliant expert then, I had fifty now. I stood with my hand on the cock, so to speak, ready to turn it on and flood the midnight world with light at any moment."
+   ],
+   "answer_hash": "ba7737690b0b7ea13118086122b71cfa4b0d5980e08c8857d0bdbb219c679d77"
+  }
+ ],
+ "reveal_enc": "OPMHwo92wZzjGsib+XWDN5mRE+I19wCgdQzc63rFdknyKi9uQ9AlJvMwC25pWnl80xJ0mM6JCYe933R6UU+fv6hT9ikP4lu8uw5sZFr1tCPiShSPczTZsp0A1zor6OVOA/5E/pz8grRpmYfIGXc0G6zmqQiUSIpFWYol0pZUysGPzHQ2fFMTTe7jHYfQS3rbSFVVEh3qcaPkjbIx0Kikfus/2ES8q6TSjUG3tp1v8slYvuhvY5qnTyB++qbL4Z6f0imi7dFEkkfT3G2sfbkd4gDQUxTQiGe3M43HoW5tfI+QEpSvb6XveSAEjMKTZQt1MxZtX3uew9a7V4RJnltWOxIfnPUrq2gIrGjmZm/daxpwu1YGgDlBu8tP9f+1pCWLvTZdjyiYOon/Zn1S7b/k+otAEKM4kM3KTDrjoX8CRqbi+y1JBeLSepK/hCyBwMU8JA9xI2Olco7zyzkAXSbDZJIPEWPzVrbkhwzYcsSYKXpWVFVjNAx5+v624bcW63u9W5tSCVTuQRo7TCAZjRRoGfsi0m4cI5UYYEzDwWoSU3qTBxkolMM0xZhz4rO3GH00TU8GPQnp8RBz1fOtLZ7q3hgZgwd1qQgsJozbttz+SMElHxi73kjaWOj1ZDOKSGStYv3vKl7P38qHNOYSuHvfWgLXubwc81Ih/ruKpKTSDcy2mVuhS7Ji08PeYVtfFHRFuciMD2XYMDPiKEVs1qNYhsbCOXy0yxkVjZEEIUHppD2HMvm/s+4/h4q9ayetb9laAIJcwCAVhAk6dllrvPs45VaDetXdqqsZvHoTeucEJuAkcZhjglF7C2i2oUpvQvF5elDV/Eq0LNR4LHdRc37DfOT9RqYMnK+FzlKx5e9YkgmLj6bIUPbLm9UEPKCD/9lcjTeDGl9sPNCN6XaZlM3Jb9Ms6tgFKFlZ0YGoUH9diphPh6BvhWpAApNL7use6nlNhf3rkIGwhTfVlo/t5lfG5+WXIngtBqKlWX3eKsKf8hv+mTyv1xebs3nyAQXsf65OZOI3ncJakpq8Gn6dvraouBgsuvqv38ltra6Sq0l4T7JSt9Vr7ubT9BdQs+A3FZlGBlA0rAca7/iJXNrIzzfdaJ2brIlc4RfTfOLaj7R+j3lpBAxF075vJjkKMFb9"
+}

@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "n": 9,
+ "date": "2026-09-10",
+ "contains_fabricated_text": true,
+ "rounds": [
+  {
+   "i": 0,
+   "author": "Fyodor Dostoevsky",
+   "passages": [
+    "The frayed rags he had cut off his trousers were actually lying on the floor in the middle of the room, where anyone coming in would see them! “What is the matter with me!” he cried again, like one distraught. Then a strange idea entered his head; that, perhaps, all his clothes were covered with blood, that, perhaps, there were a great many stains, but that he did not see them, did not notice them because",
+    "His feverish agitation had reached a peak, yet he remained motionless, pinned to the threshold by a sudden, irrational terror. The room seemed to contract, its walls breathing with the weight of a thousand unspoken sins. Why did he tremble? He could not articulate the impulse that bade him cast his soul into the abyss, yet he stood paralyzed, watching the shadows dance like specters upon the dust."
+   ],
+   "answer_hash": "e2a97689e73019a58f5647b90bcb99af3a80c2a5b5728b6ff4ecd2095711aabd"
+  },
+  {
+   "i": 1,
+   "author": "H. G. Wells",
+   "passages": [
+    "The great engine of progress grinds slowly, yet its momentum is absolute. We perceive the shifting currents of existence as mere accidents of circumstance, failing to grasp that the struggle for survival is the crucible of all consciousness. Where stability reigns, the mind grows dormant; only the encroaching shadow of catastrophe compels the intellect to forge new tools for our salvation.",
+    "It is a law of nature we overlook, that intellectual versatility is the compensation for change, danger, and trouble. An animal perfectly in harmony with its environment is a perfect mechanism. Nature never appeals to intelligence until habit and instinct are useless. There is no intelligence where there is no change and no need of change."
+   ],
+   "answer_hash": "2398cf158cd894f416599702a127b7e3d8b9b7e0c94645128f1955cdab591c14"
+  },
+  {
+   "i": 2,
+   "author": "Jules Verne",
+   "passages": [
+    "The mechanical apparatus hummed with a singular intensity, its polished pistons driving the iron shaft through the viscous element. Above, the refracted beams of the solar orb penetrated the translucent depths, illuminating the crystalline formations that adorned the abyssal floor. I observed the intricate gears turning in perfect harmony, a testament to the inexorable progress of human ingenuity.",
+    "The light produced a thousand charming varieties, playing in the midst of the branches that were so vividly coloured. I seemed to see the membraneous and cylindrical tubes tremble beneath the undulation of the waters. I was tempted to gather their fresh petals, ornamented with delicate tentacles, some just blown, the others budding, while a small fish, swimming swiftly, touched them slightly, like flights of birds."
+   ],
+   "answer_hash": "658256f2fd0de949d4213efc6286ec5d8a0140b8ced20680d43b7403935dac69"
+  },
+  {
+   "i": 3,
+   "author": "George Eliot",
+   "passages": [
+    "The bitterness of a long-nursed grievance is like a slow-growing lichen upon the soul, dulling the vibrant hues of sympathy until the heart becomes a mere stone in the path of life. We often imagine our secret burdens are hidden from the common eye, yet they betray themselves in the tight tension of a mouth or the weary shadow upon a brow, proving that no man truly dwells in isolation from his fellows.",
+    "She was perfectly quiet now, but not asleep—only soothed by sweet porridge and warmth into that wide-gazing calm which makes us older human beings, with our inward turmoil, feel a certain awe in the presence of a little child, such as we feel before some quiet majesty or beauty in the earth or sky—before a steady glowing planet, or a full-flowered eglantine, or the bending trees over a silent pathway."
+   ],
+   "answer_hash": "810bef375e48b7a52e887c2fcb8a34853dc4a682a60c86b8d97754bba52b9483"
+  },
+  {
+   "i": 4,
+   "author": "Leo Tolstoy",
+   "passages": [
+    "The very same thing, don’t you see, may be looked at tragically, and turned into a misery, or it may be looked at simply and even humorously. Possibly you are inclined to look at things too tragically.",
+    "Every soul carries a secret weight, yet in the quiet movement of the fields, one finds a truth that defies all human sorrow. To seek peace in the labor is to accept the grace of a life simply lived."
+   ],
+   "answer_hash": "56db7d8ede731cc49c99e444cd3a559e71e5c2997d924ed47a67a5391da1d52e"
+  }
+ ],
+ "reveal_enc": "XZAtNPDvZ37ya2XFrUHgVeXufhSLzuHX6b6Zo1smE3Kt/4xYhJQzDkprquCw1BlSdOII7VaEj448kdRgcG0T0V7lVeREKG/0z2Q5JvsOgbk4FUTfVZ8O8nrEDkLNHVulrJJsJOr/U+lYSMaTJ1xy0DZZFrsZGbPnkukNkN3XzlVja1e6iEmkBcFcvW8Lh3oWMlc5q70fQuzcS6IIZBltwsiJySEMvGPyksTNcylbKEBV3sHczvGQR16T3kYscSLWDamujUEjXk48tFHhGHLpFoFXoHMGG0XTfpKBym1rjtC7QIH89F6lntvy6YYOnz1OWuVa6dYyDxOj+48Sxd9/TbOxk+JtaZ8FH2eAPkX5mc7tXuTiZDF0nJG8QrED3ZLtc+kHIUd5c5acrppn9XFyvhGlbw2NjZ94D+SwFvHZgS7K6DNNUQ8Vn3vLI3M5Qh5/ImpetX9bjYHVehFAhjFiGUYOtp7FCIme4749x/05KhMNst12rIzeSu+vVYWka30Twh3W3EBlV8vPncd4xonKdTzz3LFdAhUsW6UDWRaC6jS2KRBkDmaCtJeLwFJU9jw7wjoF+J+Wc8qJlAwqiJXlWWJeJFSdP7J9umegJPIr8u0nylNwQHg02CSlZqIyzb46POBy40pGRtBSLho5iX/8w4CTxb8KjUVF9XMSauWwf/s4pkIIc4jBlCKCEqAooy5RI+D2VHxO3133b/NA3kWvLgyJO3YUZsDUyTT1XXLGhfijlLm7NClp5aIMESZetHkg2QZ+8xHgSwlRupOBH6EzkvMLBmk2Hi0MsZkylTc1TctiV9DAZ0c57UU5c85QCbSU5PaL+m+qyF4w4/M6DSqiqOqfs4jsA5zMdxxD+3uhctSqM9wrvhFeaTBET02BZ21ND5MbsGUelkh0YWl5eFvZ3H8S9bKGA3STyJJi+Y0tj2BDDzVMkSukB2ewJRH1ji5PhG1ixiHBnB8BynQwquthWbyQKHT3bM8NkhPlfTWxkDh84cmCspLQNjikA4lTvlzPhP1KUuhg/OMPonqu+kgITDbHi34K+AbfYsA7550QhLmlCK5mxNPNM8wFvE+ndp3Ue1+fC9gTeC/UNZxK980aV58g4/urBgpAHw=="
+}
