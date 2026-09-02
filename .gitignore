@@ -12,3 +12,8 @@
 # Local preview override pointing the front end at the CORS proxy.
 # Must never ship: it would send production traffic to localhost.
 /_config.local.yml
+
+# The recording desk remembers per-machine state here: an absolute output
+# path, the last title recorded. Local to whoever is at the desk, and this
+# repo is public.
+games/studio/settings.json
