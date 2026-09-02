@@ -651,13 +651,22 @@ sitemap: false
   // aggregated is stored, so nothing aggregated can drift out of step with
   // the days it claims to summarise.
   // Built from the pages this site ACTUALLY has, not from a hand-kept list.
-  // Spot the Slop lives on a branch and is not launched; a hardcoded entry
+  // Spot the Slop lived on a branch and was not launched; a hardcoded entry
   // put a "Play today's" button on the dashboard pointing at a 404. A game
   // the site cannot serve should not be offered.
+  //
+  // "Has a page" turned out not to be the same question as "is launched".
+  // That page is now on main and still switched off — reachable by URL, linked
+  // from nowhere — and it walked straight back onto this dashboard, which is
+  // the same wrong offer by a different route. noindex is what this site
+  // already uses to mean not-yet-launched (see the deferred-indexing defaults
+  // in _config.yml), so it is the gate here too. Dropping that line at launch
+  // adds the game to this list on its own, which is the whole point of
+  // generating it from the pages rather than keeping a list by hand.
   const GAMES = [
     {%- assign game_pages = site.html_pages | where_exp: "p", "p.url contains '/games/'" -%}
     {%- for g in game_pages -%}
-      {%- unless g.url == '/games/' -%}
+      {%- unless g.url == '/games/' or g.noindex -%}
     { id: {{ g.url | split: '/' | last | jsonify }},
       name: {{ g.title | jsonify }},
       url: {{ g.url | relative_url | jsonify }} },
