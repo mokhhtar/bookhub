@@ -686,13 +686,21 @@ async function play(page, player, base, pressMs, adjudicator, human, maxTurns = 
                   player.title + '" and no offered row matched it, so the ' +
                   'explanation screen never opened and this take ends on the ' +
                   'search box. Not publishable. **');
-      if (diagnosis.candidatesOffered) {
+      if (diagnosis.searchFoundNothing) {
+        console.log('     The catalogue has no row for it, so there was nothing to ' +
+                    'pick and the bot is right not to have picked. The only button ' +
+                    'on that screen is "Tell it about this book", which posts to the ' +
+                    'suggestion queue — never pressed, by design.');
+        console.log('     For a VIDEO, record a book the game holds: this take can ' +
+                    'only ever end on "not in the 5,000 books".');
+      } else if (diagnosis.candidatesOffered) {
         console.log('     ' + diagnosis.candidatesOffered + ' row(s) were offered — ' +
                     'the catalogue may hold this book under another title.');
       } else {
-        console.log('     No rows at all. Titles under 3 characters and titles in ' +
-                    'non-Latin scripts cannot be searched: normalize() keeps only ' +
-                    '[a-z0-9], so the query is empty before it is used.');
+        console.log('     No rows and no "not in the list" note. Titles under 3 ' +
+                    'characters and titles in non-Latin scripts cannot be searched ' +
+                    'at all: normalize() keeps only [a-z0-9], so the query is empty ' +
+                    'before it is used.');
       }
     }
 
@@ -995,6 +1003,22 @@ async function main() {
       // --pick drew from the catalogue, so membership there is a given, not a
       // finding. Every other route has to discover it.
       const row = args.pick ? books[i] : locate(title);
+
+      // SAID BEFORE THE CAMERA RUNS, NOT AFTER. A book with no catalogue row
+      // cannot be guessed and cannot be picked on the give-up screen either —
+      // the search returns nothing, so the take necessarily ends on "not in the
+      // 5,000 books this game knows" with a typed title sitting in the box.
+      // That is the game being honest, and it is a fine thing to record on
+      // purpose; it is a poor thing to discover after two minutes of recording
+      // when what you wanted was a game. locate() already knows, so it should
+      // say so first rather than the loss handler saying it last.
+      if ((args.video || args.record) && !row) {
+        console.log('\n  ** "' + title + '" HAS NO CATALOGUE ROW. The game cannot ' +
+                    'guess it and\n     cannot be told about it without posting to ' +
+                    'the suggestion queue, so this\n     take will end on the ' +
+                    '"I don\'t know it" screen. Record it only if that\n     ending ' +
+                    'is the one you want. **\n');
+      }
       const player = new Player(title, author, args.model, args.offline);
 
       if (args.sheet && !args.offline) {
