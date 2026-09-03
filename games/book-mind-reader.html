@@ -2202,18 +2202,36 @@ permalink: /games/mind-reader/
       out.innerHTML = '';
       box.innerHTML = '';
       if (q.length < 3 || !books) { return; }
-      var hits = [], i;
-      for (i = 0; i < books.length && hits.length < 8; i++) {
+
+      // RANK BEFORE CAPPING, or the exact title can be cut off by longer ones
+      // that merely contain it. Typing "Harry Potter" used to return the eight
+      // individual volumes and NOT the row called "Harry Potter", which sits
+      // at position 10 of 12 in catalogue order — so the one book the reader
+      // actually named was the one book they could not pick. Same for "You",
+      // "Bone", "Four", "Room", "Think", "The Power": 14 rows in the
+      // catalogue were unreachable from their own exact title.
+      //
+      // Scanning all 5,036 rows rather than stopping at eight costs nothing
+      // measurable and is the only way to know the exact match was there.
+      var hits = [], i, nt, no, rank;
+      for (i = 0; i < books.length; i++) {
+        // `o` is the title a display rename replaced (see applyDisplayNames) --
+        // a reader who types the original-language title must still find the
+        // row, so a match on either `t` or `o` counts.
+        nt = normalize(books[i].t);
+        no = books[i].o ? normalize(books[i].o) : '';
+        if (nt === q || no === q) { rank = 0; }              // the exact book
+        else if (nt.indexOf(q) === 0 || no.indexOf(q) === 0) { rank = 1; }  // starts with
+        else if (nt.indexOf(q) >= 0 || no.indexOf(q) >= 0) { rank = 2; }    // contains
+        else { continue; }
         // Push the INDEX, not the object: explainMiss needs it to read the
-        // book's column out of pYesCache. `o` is the title a display
-        // rename replaced (see applyDisplayNames) -- a reader who types
-        // the original-language title must still find the row, so a
-        // match on either `t` or `o` counts.
-        if (normalize(books[i].t).indexOf(q) >= 0 ||
-            (books[i].o && normalize(books[i].o).indexOf(q) >= 0)) {
-          hits.push(i);
-        }
+        // book's column out of pYesCache.
+        hits.push([rank, i]);
       }
+      // Ties keep catalogue order, which is the popularity order the rest of
+      // the game runs on -- this reorders only across match quality.
+      hits.sort(function (a, b) { return a[0] - b[0] || a[1] - b[1]; });
+      hits = hits.slice(0, 8).map(function (h) { return h[1]; });
       hits.forEach(function (h) {
         var b = books[h];
         var li = document.createElement('li');

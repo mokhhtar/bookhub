@@ -670,6 +670,32 @@ async function play(page, player, base, pressMs, adjudicator, human, maxTurns = 
     });
     diagnosis.matched = clicked;
 
+    // NOTHING WAS CLICKED, so the take ends on a search box with a dropdown
+    // hanging under it and the explanation screen never arrives. Said as loudly
+    // as the missing-cover warning, and for the same reason: the run "succeeds"
+    // and the file is unusable.
+    //
+    // This used to be reachable with a correct title. The page's give-up search
+    // capped at eight rows BEFORE ranking them, so typing "Harry Potter"
+    // offered the eight volumes and not the row called "Harry Potter" — 14
+    // catalogue rows were unreachable from their own exact title. Fixed in
+    // book-mind-reader.html; if this fires now, the cause is a different one
+    // and worth reading rather than re-running.
+    if (!clicked && human) {
+      console.log('  ** NOTHING WAS PICKED on the give-up screen. The bot typed "' +
+                  player.title + '" and no offered row matched it, so the ' +
+                  'explanation screen never opened and this take ends on the ' +
+                  'search box. Not publishable. **');
+      if (diagnosis.candidatesOffered) {
+        console.log('     ' + diagnosis.candidatesOffered + ' row(s) were offered — ' +
+                    'the catalogue may hold this book under another title.');
+      } else {
+        console.log('     No rows at all. Titles under 3 characters and titles in ' +
+                    'non-Latin scripts cannot be searched: normalize() keeps only ' +
+                    '[a-z0-9], so the query is empty before it is used.');
+      }
+    }
+
     if (diagnosis.explained) {
       console.log('  why: ' + diagnosis.lead);
       if (!diagnosis.contradictions.length) {
@@ -709,16 +735,32 @@ async function play(page, player, base, pressMs, adjudicator, human, maxTurns = 
     // -L cover (about 50 KB) is the one request most likely to fail, and it
     // fails at the exact moment the take is supposed to pay off. Silence here
     // means publishing a take with a hole in it.
+    // Only on a WIN. The give-up explanation carries a line drawing, not a
+    // cover, so on every loss this fired and said the take had a hole in it —
+    // and a warning that cries wolf on half the runs is a warning nobody reads
+    // by the time it is true.
     const cover = await page.evaluate(() => {
+      const won = /solved/i.test((document.querySelector('#mr-count') || {}).textContent || '');
       const img = document.querySelector('#mr-card img');
-      return { present: !!img, width: img ? img.naturalWidth : 0 };
+      return { won: won, present: !!img, width: img ? img.naturalWidth : 0 };
     });
-    if (!cover.present) {
+    if (cover.won && !cover.present) {
       console.log('  ** NO COVER on the end screen. Either this book has none, ' +
                   'or the request failed — wireCover() removes the image on error, ' +
                   'so the page cannot tell you which. Re-run before using this take. **');
     }
-    await page.waitForTimeout(4000);
+    // HOLD FOR AS LONG AS THE SCREEN TAKES TO READ, not a flat four seconds.
+    // Four was measured against the WIN screen, which is a title, an author and
+    // a cover. The loss screen is a different shape: a lead sentence plus a
+    // list of every answer that disagreed with the catalogue, which is the most
+    // text the game ever puts up at once — and it was getting the pause sized
+    // for a book cover. The whole take is paced at reading speed; the one
+    // screen that carries the explanation should not be the exception.
+    const ending = await page.evaluate(() => {
+      const card = document.querySelector('#mr-card');
+      return card ? card.innerText.replace(/\s+/g, ' ').trim() : '';
+    });
+    await page.waitForTimeout(Math.min(14000, Math.max(4000, readingTime(ending))));
   }
 
   const status = ((await page.locator('#mr-count').textContent()) || '').trim();
