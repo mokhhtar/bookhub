@@ -84,6 +84,10 @@ const BOOKS_JSON = path.join(__dirname, 'data', 'akinator', 'books.json');
 const FRESH_DATA_REPO = 'mokhhtar/bookhub';
 const FRESH_DATA_BRANCH = 'main';
 const QUESTIONS_JSON = path.join(__dirname, 'data', 'akinator', 'questions.json');
+// The page's display renames, applied by locate() for the same reason the
+// page applies them: a row's catalogue title is not always the one a reader
+// would type.
+const DISPLAY_OVERRIDES_JSON = path.join(__dirname, 'data', 'akinator', 'display_overrides.json');
 const GAME_PATH = '/games/mind-reader/';
 
 // The player's memory lives with the other akinator build data in the API repo,
@@ -863,14 +867,39 @@ function pickBooks(n, pool, seed) {
 // line that reads as an engine failure, which it is not.
 function locate(title) {
   const rows = JSON.parse(fs.readFileSync(BOOKS_JSON, 'utf8'));
+
+  // THE SAME RENAME THE PAGE APPLIES, or this reports a book missing that the
+  // game will happily find. A catalogue row can carry a title the reader would
+  // never type — "Map That Changed the World" was added without its leading
+  // "The", and a display rename is the sanctioned repair. The page overlays
+  // display_overrides.json onto books.json at load (applyDisplayNames) and
+  // keeps the replaced title searchable under `o`; reading only books.json
+  // here would contradict the page about the very question this answers.
+  //
+  // Both titles are kept, not just the new one, for the same reason the page
+  // keeps both: whichever the owner types should locate the row.
+  try {
+    const fixes = JSON.parse(fs.readFileSync(DISPLAY_OVERRIDES_JSON, 'utf8'));
+    for (const row of rows) {
+      const fix = row.k && fixes[row.k];
+      if (fix && typeof fix.t === 'string' && fix.t && fix.t !== row.t) {
+        row.o = row.t;
+        row.t = fix.t;
+      }
+    }
+  } catch (e) { /* absent or unreadable: books.json alone is still the truth */ }
+
   const want = normalize(title);
   const core = coreTitle(title);
   // Core titles too, or "Sapiens: A Brief History of Humankind" is reported
   // missing from a table that holds it as "Sapiens". Still an EXACT match on
   // one of the two forms — nothing fuzzy, because a false "we have it" is the
   // worse error and this repo already learned that at the suggestion gate.
-  let i = rows.findIndex(r => normalize(r.t) === want);
-  if (i < 0) { i = rows.findIndex(r => coreTitle(r.t) === core); }
+  // `o` as well as `t`, because a display rename leaves the catalogue's own
+  // title there and the page's search checks both. Whichever of the two the
+  // owner types should find the row.
+  let i = rows.findIndex(r => normalize(r.t) === want || (r.o && normalize(r.o) === want));
+  if (i < 0) { i = rows.findIndex(r => coreTitle(r.t) === core || (r.o && coreTitle(r.o) === core)); }
   if (i < 0) {
     // NOT FOUND IS NOT ABSENT, and saying otherwise printed a flat lie: this
     // reported "The Girl with the Dragon Tattoo" missing from a table that
