@@ -44,6 +44,13 @@ const API_REPO = path.join(ROOT, '..', 'bookhub-api');
 const ENV_PATH = path.join(API_REPO, '.env');
 
 const QUESTIONS_JSON = path.join(GAMES, 'data', 'akinator', 'questions.json');
+// A question the game asks that has no column in matrix.bin yet. The page keeps
+// these in their own file precisely BECAUSE position is load-bearing there —
+// matrix.bin is indexed by column, so a new entry cannot be inserted before
+// meta.questions without shifting every packed cell. Nothing about that
+// constraint applies to a prompt, but the split is easy to read as "the real
+// questions and some other thing", which is how this desk came to ignore them.
+const COLD_QUESTIONS_JSON = path.join(GAMES, 'data', 'akinator', 'cold_questions.json');
 const BOOKS_JSON = path.join(GAMES, 'data', 'akinator', 'books.json');
 const PLAY_BOT = path.join(GAMES, 'play-bot.js');
 const CACHE_PATH = path.join(API_REPO, 'data', 'akinator_player_cache.json');
@@ -82,8 +89,40 @@ function normalize(s) {
     .replace(/[^a-z0-9 ]+/g, ' ').replace(/\s+/g, ' ').trim();
 }
 
+/*
+ * EVERY question the game asks, packed and cold, in the page's own order.
+ *
+ * This used to read questions.json alone, and the header above promised that a
+ * question added to the game reaches the prompt with it. It did not: two
+ * questions were added — "Is it set in the Victorian era?" and "Is it narrated
+ * in the first person?" — and lived in cold_questions.json, so the prompt kept
+ * saying 48 and Gemini was never asked them. The sheet then had no answer for
+ * them, the cache had nothing to serve, and the bot answered "I don't know" to
+ * both in every recorded game. A NEW question is exactly the one most worth
+ * having a sheet for, and it was the only kind that could not get one.
+ *
+ * Worse than the missing answers: saveSheet validates ids against this list,
+ * so a sheet that DID carry them would have had them thrown away as ids the
+ * game never asks.
+ *
+ * Merge rules copied from addColdQuestions() in book-mind-reader.html, dedup
+ * included: a cold id already promoted into the packed matrix is dropped
+ * rather than asked twice, because the promoted column is the real one.
+ */
 function questions() {
-  return JSON.parse(fs.readFileSync(QUESTIONS_JSON, 'utf8'));
+  const packed = JSON.parse(fs.readFileSync(QUESTIONS_JSON, 'utf8'));
+  let cold = [];
+  try { cold = JSON.parse(fs.readFileSync(COLD_QUESTIONS_JSON, 'utf8')); } catch (e) { cold = []; }
+  if (!Array.isArray(cold)) { return packed; }
+
+  const seen = new Set(packed.map(q => q.id));
+  for (const c of cold) {
+    if (!c || typeof c.id !== 'string' || typeof c.text !== 'string') { continue; }
+    if (seen.has(c.id)) { continue; }
+    seen.add(c.id);
+    packed.push({ id: c.id, text: c.text, cold: true });
+  }
+  return packed;
 }
 
 // ── the prompt ─────────────────────────────────────────────────────────────
