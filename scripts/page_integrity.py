@@ -38,6 +38,12 @@ _NOT_A_TITLE = re.compile(
 _FIELDS = ("title", "author", "content_version", "chapters", "characters",
            "cover_url", "quotes", "free_ebook")
 
+# Cloudflare's browser integrity check refuses urllib's default
+# "Python-urllib/3.x" at the edge with 403 error code 1010, so the Worker
+# never sees the request and the token is never read. Any ordinary agent
+# string passes; this one names the caller.
+UA = {"User-Agent": "Litheca-page-integrity/1.0"}
+
 
 def _field(md: str, name: str) -> str:
     m = re.search(rf"^{name}:\s*(.*)$", md, re.MULTILINE)
@@ -147,20 +153,36 @@ def main() -> int:
     req = urllib.request.Request(
         f"{args.url.rstrip('/')}/ingest?feed=pages",
         data=json.dumps(snap, ensure_ascii=False).encode("utf-8"),
-        headers={"Content-Type": "application/json",
+        # **UA IS LOAD-BEARING** — see the constant. The first run of this
+        # workflow died here with "HTTP 403 error code 1010", which reads like
+        # a rejected secret and is not: Cloudflare blocked urllib's default
+        # agent at the edge and the Worker never saw the request. Measured
+        # against the live hostname: the default gets 1010, while curl/8.5.0,
+        # this agent and a Mozilla string all reach the Worker and draw its
+        # own 403 for a bad token.
+        headers={**UA,
+                 "Content-Type": "application/json",
                  "Authorization": f"Bearer {secret}"},
         method="POST")
     try:
         with urllib.request.urlopen(req, timeout=30) as r:
             print(f"ingest -> {r.status} {r.read().decode()[:120]}")
     except urllib.error.HTTPError as e:
-        body = e.read().decode(errors="replace")[:200]
-        # Access in front of the Worker answers a login page, not the Worker.
-        if "text/html" in (e.headers.get("Content-Type") or ""):
+        body = e.read().decode(errors="replace")
+        # Three different things answer on this hostname, and each failure
+        # looks like a bad secret until you read who sent it.
+        if "1010" in body:
+            print("::error::Cloudflare blocked this at the edge (code 1010) — a "
+                  "User-Agent it refuses. The Worker never saw the request and "
+                  "the secret was never read. See the UA note above.")
+        elif "text/html" in (e.headers.get("Content-Type") or ""):
             print("::error::Cloudflare Access answered instead of the Worker — "
                   "the request never arrived. Check the path-scoped Access "
-                  "application for /ingest; nothing here is wrong with the secret.")
-        print(f"::error::ingest failed: HTTP {e.code} {body}")
+                  "application for /ingest; nothing is wrong with the secret.")
+        elif e.code == 403:
+            print("::error::The Worker refused the token — SEO_INGEST_SECRET "
+                  "does not match the Worker's INGEST_SECRET.")
+        print(f"::error::ingest failed: HTTP {e.code} {body[:200]}")
         return 1
     except Exception as e:                                        # noqa: BLE001
         print(f"::error::ingest failed: {type(e).__name__}: {e}")
