@@ -1,0 +1,53 @@
+name: Page integrity
+
+# Reads the committed _books/*.md and _characters/*.md and reports what is
+# actually on the published pages to the dashboard's Pages and Errors tabs.
+#
+# The indexing feed next to this one answers "what did Google do with this
+# URL". It cannot answer "is the page any good", and that was the question
+# behind every bug worth catching lately: a book page linking nine character
+# pages that were never published, three pages offering "5, 28, 47, 68…"
+# under a heading that says Chapters, pages frozen at an old format with
+# nothing able to rewrite them. None of it is visible from outside; all of it
+# is visible from the files.
+#
+# Runs after the API repo's page-refresh sweep (03:40 UTC) so the morning
+# snapshot already includes the night's repairs, and the missing-data count on
+# the dashboard falls a batch at a time instead of lagging a day behind.
+
+on:
+  schedule:
+    - cron: "30 4 * * *"
+  workflow_dispatch:
+    inputs:
+      current_version:
+        description: "github_publisher.PUBLISH_CONTENT_VERSION (pages below this are flagged stale)"
+        required: false
+        default: "11"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: page-integrity
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Scan the published pages and send the snapshot
+        env:
+          SEO_INGEST_SECRET: ${{ secrets.SEO_INGEST_SECRET }}
+          SEO_STATUS_URL: ${{ vars.SEO_STATUS_URL || 'https://seo.litheca.com' }}
+        run: |
+          python scripts/page_integrity.py \
+            --root . \
+            --current-version "${{ github.event.inputs.current_version || '11' }}" \
+            | tee "$GITHUB_STEP_SUMMARY"
