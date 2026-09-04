@@ -354,6 +354,15 @@ function startRun(opts) {
 
   const args = [PLAY_BOT, '--title', opts.title, '--offline'];
   if (opts.author) { args.push('--author', opts.author); }
+  // THE ONE FLAG THAT DECIDES WHETHER AN ADMIN EDIT IS IN THE TAKE. The admin
+  // commits straight to GitHub; this machine plays whatever the last `git pull`
+  // and `jekyll build` left in _site. Measured again 2026-09-04: a book's
+  // answers were corrected by hand, the bot then disagreed with the catalogue
+  // on three questions, and _site's overrides.json turned out to be four days
+  // old and to hold no entry for that book at all. The edit was perfect; the
+  // build was not. --fresh-data serves games/data/akinator/* live from GitHub
+  // and skips both staleness at once.
+  if (opts.freshData) { args.push('--fresh-data'); }
   if (opts.width) { args.push('--width', String(opts.width)); }
   if (opts.height) { args.push('--height', String(opts.height)); }
 

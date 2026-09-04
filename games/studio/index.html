@@ -121,6 +121,25 @@
         own dated file with its source — that copy is the one worth reviewing if
         these answers ever go into the game.
       </p>
+
+      <fieldset>
+        <legend>The catalogue the take plays against</legend>
+        <label class="radio">
+          <input type="checkbox" id="freshdata">
+          <span>Take the game's data straight from GitHub
+            <small>The admin page commits to GitHub; this machine plays whatever the last
+              <code>git pull</code> and rebuild left behind. Two edits stand between them, and
+              missing either makes a correct edit look like it never landed &mdash; the bot
+              disagrees with the catalogue and neither side is wrong, the build is just old.
+              This skips both and reads <code>games/data/akinator/*</code> live. <b>Tick it
+              after any admin edit.</b></small></span>
+        </label>
+        <p class="note">
+          Only the data. The game PAGE still comes from this checkout, because an
+          in-progress edit to it is what the staleness check exists to protect &mdash;
+          the two are different kinds of stale.
+        </p>
+      </fieldset>
     </section>
   </div>
 
@@ -412,6 +431,7 @@ async function loadSettings() {
   const s = await (await fetch('/api/settings')).json();
   for (const f of FIELDS) { if (s[f] !== undefined) { $(f).value = s[f]; } }
   if (s.mp4 !== undefined) { $('mp4').checked = !!s.mp4; }
+  if (s.freshData !== undefined) { $('freshdata').checked = !!s.freshData; }
   if (s.mode) {
     const el = document.querySelector('input[name=mode][value="' + s.mode + '"]');
     if (el) { el.checked = true; }
@@ -426,6 +446,7 @@ function saveSettings() {
   const s = { game };
   for (const f of FIELDS) { s[f] = $(f).value; }
   s.mp4 = $('mp4').checked;
+  s.freshData = $('freshdata').checked;
   s.mode = document.querySelector('input[name=mode]:checked').value;
   s.stsday = document.querySelector('input[name=stsday]:checked').value;
   fetch('/api/settings', { method: 'POST', headers: { 'Content-Type': 'application/json' },
@@ -433,6 +454,7 @@ function saveSettings() {
 }
 FIELDS.forEach(f => $(f).addEventListener('change', saveSettings));
 $('mp4').addEventListener('change', saveSettings);
+$('freshdata').addEventListener('change', saveSettings);
 document.querySelectorAll('input[name=mode]').forEach(r => r.addEventListener('change', saveSettings));
 document.querySelectorAll('input[name=stsday]').forEach(r =>
   r.addEventListener('change', () => { paintStsDay(); saveSettings(); }));
@@ -692,6 +714,7 @@ $('btn-run').onclick = async () => {
   } else {
     body.title = $('title').value.trim();
     body.author = $('author').value.trim();
+    body.freshData = $('freshdata').checked;
     if (!body.title) { $('run-note').textContent = 'Give a title first.'; return; }
   }
 
