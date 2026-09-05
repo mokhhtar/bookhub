@@ -542,6 +542,8 @@ The backend places untrusted external or user-provided text into model prompts. 
 ## Controls that currently look sound in the reviewed Firestore source
 
 - `users/{uid}` and `users/{uid}/library/*` require `request.auth.uid == uid`; no cross-user library read/write path was found.
+- `users/{uid}/games/*` and `users/{uid}/mindreader/log` (added 2026-09-05) are owner-only on the same check, are never publicly readable, pin the document id, and cap their maps, so a client cannot scatter documents or grow one past the document limit. One write per finished game, not per answer, keeps them off the shared Spark write quota that H-03 is about.
+- Note for whoever reads this next to H-06: the mind-reader dashboard's "taught it N books" is a client-written count of what the player's own browser sent. It is a display figure on private data, deliberately self-reported, and is **not** an identity control on the teaching path — it neither strengthens nor weakens H-06.
 - Comments and reader recommendations require an authenticated, email-verified token; creation fixes `approved` to `false`, fixes the UID to the caller, enforces field allow-lists, sizes, and server timestamp.
 - Only `isAdmin()` can approve or edit text content.
 - Unapproved comments/recommendations are not publicly readable; owners can read their own and admin can moderate them.
