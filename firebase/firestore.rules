@@ -79,6 +79,55 @@ service cloud.firestore {
           && request.resource.data.days is map
           && request.resource.data.days.size() <= 2000;
       }
+
+      // ── Book Mind Reader history ──────────────────────────
+      // users/{uid}/mindreader/log: { plays, contrib, updatedAt }
+      //
+      // NOT under /games/ above, because it is not shaped like it. That
+      // path keys on the PUZZLE DATE, which is only an identifier while a
+      // game is daily; the mind reader is played any number of times a
+      // day, so a date key would overwrite every game but the last.
+      //
+      // The load-bearing half of that design does carry over: an entry is
+      // one EVENT, keyed by an id the client mints once (local timestamp +
+      // four random characters). So merging a device that played signed
+      // out is a set union, a play cannot be counted twice, and the
+      // aggregates — played, hit rate, average questions, streak — are
+      // DERIVED on read and never stored.
+      //
+      //   plays.{id}    {w, q, g, k?, t?} — won, questions asked, guesses
+      //                 made, and the work key + title of the book WHEN
+      //                 the player identified it (the reveal on a hit, the
+      //                 search on a miss). Absent when they never said.
+      //   contrib.{id}  "taught" | "missing" | "wrong_year" | "unreadable"
+      //                 — what this player sent the learning loop. It is
+      //                 recorded here because the endpoints those go to
+      //                 are anonymous by design (see the API repo's
+      //                 tools/akinator_suggest.py) and cannot count per
+      //                 person. Self-reported by definition: fine for a
+      //                 private dashboard, never for a public badge.
+      //
+      // One document, not a subcollection: one read builds the whole
+      // dashboard. `docId` is pinned so a stray client cannot scatter
+      // documents here, and both maps are capped — at ~80 bytes an entry,
+      // 2000 of each sits far inside the 1MB document limit. Hitting the
+      // cap stops the MIRROR, never the game: the page plays out of
+      // localStorage and every write here is fire-and-forget.
+      //
+      // Private, like the games above: nobody else needs a count of it.
+      match /mindreader/{docId} {
+        allow read, delete: if signedIn() && request.auth.uid == uid;
+        allow create, update: if signedIn() && request.auth.uid == uid
+          && docId == "log"
+          && request.resource.data.keys()
+               .hasOnly(["plays", "contrib", "updatedAt"])
+          && (!("plays" in request.resource.data)
+              || (request.resource.data.plays is map
+                  && request.resource.data.plays.size() <= 2000))
+          && (!("contrib" in request.resource.data)
+              || (request.resource.data.contrib is map
+                  && request.resource.data.contrib.size() <= 2000));
+      }
     }
 
     // ── Comments (pre-moderated) ─────────────────────────────
