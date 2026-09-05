@@ -1040,6 +1040,7 @@ permalink: /games/mind-reader/
     rejected = {};
     rejectedSeries = {};
     guessesMade = 0;
+    playId = null;              // a new game is a new entry, once it ends
     // A new game can begin from an end screen while a press window is still
     // open, and a stuck flag would deaden every answer in it.
     answering = false;
@@ -2141,12 +2142,64 @@ permalink: /games/mind-reader/
     });
   }
 
+  // ── the player's own record ────────────────────────────────────────────
+  // Signed-in players get their history on /account/: games played, how
+  // often it read them, how many questions it took. THIS PAGE'S PROMISE IS
+  // "no account", so all of it is optional in the strongest sense — the
+  // helpers below no-op when the sync layer is absent, wrap everything, and
+  // are never awaited. A player who never signs in cannot tell they exist.
+  //
+  // One entry per finished game, written once. What it holds is what the
+  // dashboard's numbers are derived from and nothing else: won, questions
+  // asked, guesses made, and the book only once the player has named it.
+  // The ANSWERS never come here — they go to the learning loop below, on a
+  // tap, or nowhere.
+  var playId = null;
+
+  function recordPlay(won, book, displayTitle) {
+    try {
+      // No sync layer, no record — which is also what makes the parity
+      // harness silent here: its sandbox never defines one, so this needs
+      // no test-mode special case to stay out of its way.
+      if (!window.bhMindReader) { return; }
+      if (playId) { return; }   // already filed: "Back" re-renders this screen
+      playId = window.bhMindReader.newId();
+      var entry = { w: !!won, q: askedCount, g: guessesMade };
+      if (book && book.k) { entry.k = String(book.k).slice(0, 60); }
+      if (displayTitle) { entry.t = String(displayTitle).slice(0, 200); }
+      window.bhMindReader.recordPlay(playId, entry);
+    } catch (e) { /* never worth interrupting a game for */ }
+  }
+
+  // The give-up screen is drawn before the player says which book they
+  // meant — naming it is a separate act, and often not taken at all. This
+  // fills in the one field that screen could not know, on the same play.
+  function recordPlayBook(book) {
+    try {
+      if (!playId || !book || !window.bhMindReader) { return; }
+      window.bhMindReader.updatePlay(playId, {
+        k: String(book.k || '').slice(0, 60),
+        t: String(book.t || '').slice(0, 200)
+      });
+    } catch (e) {}
+  }
+
+  function recordContrib(kind) {
+    try {
+      if (!window.bhMindReader) { return; }
+      window.bhMindReader.recordContrib(kind);
+    } catch (e) {}
+  }
+
   // `display` is what the player recognises: for a series that is the series
   // name, not whichever volume the engine happens to be holding. `real` is
   // that volume, and the guide link uses it — handing the summarizer "Harry
   // Potter" as a title is a worse question than handing it the book.
   function renderWin(display, real) {
     setFace('won');
+    // The series name, not the volume: it is the book the player was
+    // thinking of, and the one they will recognise on their own dashboard.
+    recordPlay(true, real || display, display.t);
     el.count.textContent = 'Solved';
     el.pool.textContent = askedCount + ' questions';
     var cover = coverHTML(display, { large: true, cls: 'mr-win-cover' });
@@ -2171,6 +2224,10 @@ permalink: /games/mind-reader/
   // guessing wrong with confidence.
   function renderGiveUp() {
     setFace('lost');
+    // Guarded inside recordPlay, and it has to be: "Back" from the miss
+    // explanation returns to this exact screen, and the same lost game must
+    // not be filed twice.
+    recordPlay(false, null, null);
     el.count.textContent = 'Beaten';
     el.pool.textContent = '';
     el.card.innerHTML =
@@ -2288,6 +2345,10 @@ permalink: /games/mind-reader/
   // never meant to double as.
   function explainMiss(bookIndex) {
     var b = books[bookIndex];
+    // The player just told us what the game failed to guess — the one fact
+    // the give-up screen was missing. Only what they picked from the list,
+    // so it is a row we shipped, never anything they typed.
+    recordPlayBook(b);
     var rows = [], i;
     for (i = 0; i < history.length; i++) {
       var h = history[i];
@@ -2378,6 +2439,10 @@ permalink: /games/mind-reader/
   function teach(bookIndex, button, note) {
     button.disabled = true;
     button.textContent = 'Thanks — noted';
+    // Counted where the button says "noted", not where the server says so:
+    // this call deliberately ignores its own outcome, so the player's tally
+    // can only honestly mean "what I sent".
+    recordContrib('taught');
     if (note) {
       note.textContent = 'Sent. It takes a few games on the same book ' +
         'before the game changes its mind, on purpose.';
@@ -2433,6 +2498,9 @@ permalink: /games/mind-reader/
       if (res.ok) {
         button.textContent = 'Thank you — noted';
         note.textContent = okText;
+        // Unlike teach(), this half knows whether it landed — so it counts
+        // only the ones that did. A refused suggestion was not a report.
+        recordContrib(payload.reason);
         return;
       }
       // The server's own words. It distinguishes "we looked and it isn't
