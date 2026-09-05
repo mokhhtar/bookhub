@@ -1022,6 +1022,176 @@
     }
   }
 
+  // ── Book Mind Reader history (users/{uid}/mindreader/log) ─
+  // Same promise as the daily games — the game is 100% client-side and
+  // stays playable signed out, which its own page says out loud ("no
+  // lists, no typing, no account"). This is a mirror on top of that, not
+  // a gate in front of it, so every call below is fire-and-forget and the
+  // local store is written FIRST and unconditionally.
+  //
+  // It cannot reuse bhGames: that stores one entry per puzzle date, and
+  // this game is played any number of times a day. Entries are keyed by
+  // an event id instead — see firebase/firestore.rules for the full shape
+  // and why nothing here is an aggregate.
+  const MR_KEY = "bh_mr_v1";
+  // The local store exists to carry a signed-out player's history into
+  // their account on first sign-in, and to be the whole story for someone
+  // who never signs in. Neither needs more than the recent past, and
+  // localStorage is a few MB shared with the library and every game.
+  const MR_LOCAL_CAP = 200;
+
+  function mrRead() {
+    try {
+      const v = JSON.parse(localStorage.getItem(MR_KEY)) || {};
+      return { plays: v.plays || {}, contrib: v.contrib || {} };
+    } catch (e) {
+      return { plays: {}, contrib: {} };
+    }
+  }
+
+  // Ids are timestamp-prefixed, so "the newest N" is the tail of a plain
+  // string sort — no dates to parse and nothing to compare.
+  function mrTrim(map) {
+    const keys = Object.keys(map).sort();
+    if (keys.length <= MR_LOCAL_CAP) return map;
+    const out = {};
+    for (const k of keys.slice(-MR_LOCAL_CAP)) out[k] = map[k];
+    return out;
+  }
+
+  function mrWrite(store) {
+    try {
+      localStorage.setItem(
+        MR_KEY,
+        JSON.stringify({
+          plays: mrTrim(store.plays),
+          contrib: mrTrim(store.contrib),
+        }),
+      );
+    } catch (e) {} // private mode / quota: the cloud copy may still land
+  }
+
+  // Field-level merge, so this neither reads first nor can it clobber an
+  // entry written by another tab — and a play recorded while signed out is
+  // simply a local-only play until the next sign-in merges it.
+  async function mrPush(patch) {
+    try {
+      if (!window.bhUser) return;
+      await setDoc(
+        doc(db, "users", window.bhUser.uid, "mindreader", "log"),
+        { ...patch, updatedAt: serverTimestamp() },
+        { merge: true },
+      );
+    } catch (e) {
+      console.warn("Mind reader sync failed:", e);
+    }
+  }
+
+  window.bhMindReader = {
+    // One id per event. The local date and time make a plain key sort
+    // chronological and give the day-streak its dates for free; the four
+    // random characters mean two games finished in the same second — or on
+    // two devices — cannot collide into one entry.
+    newId() {
+      const d = new Date();
+      const p = (n) => String(n).padStart(2, "0");
+      return (
+        d.getFullYear() +
+        "-" +
+        p(d.getMonth() + 1) +
+        "-" +
+        p(d.getDate()) +
+        "T" +
+        p(d.getHours()) +
+        p(d.getMinutes()) +
+        p(d.getSeconds()) +
+        "-" +
+        Math.random().toString(36).slice(2, 6)
+      );
+    },
+
+    // One finished game: {w, q, g} and, only if the player named the book,
+    // {k, t}. Never the answers — those go to the learning loop or nowhere.
+    async recordPlay(id, play) {
+      if (!id || !play) return;
+      const store = mrRead();
+      store.plays[id] = play;
+      mrWrite(store);
+      await mrPush({ plays: { [id]: play } });
+    },
+
+    // The give-up screen records the play before the player has said which
+    // book they meant; naming it is a separate act, sometimes minutes
+    // later. This patches that one play rather than filing a second.
+    async updatePlay(id, patch) {
+      if (!id || !patch) return;
+      const store = mrRead();
+      if (!store.plays[id]) return; // trimmed away, or never recorded
+      Object.assign(store.plays[id], patch);
+      mrWrite(store);
+      await mrPush({ plays: { [id]: patch } });
+    },
+
+    // Something the player sent the learning loop. Counted at the tap,
+    // which is the honest reading of it: those endpoints are anonymous and
+    // the game's own buttons say "thanks" without waiting for a verdict,
+    // so this counts what was SENT, never what was accepted.
+    async recordContrib(kind) {
+      if (!kind) return;
+      const id = this.newId();
+      const store = mrRead();
+      store.contrib[id] = kind;
+      mrWrite(store);
+      await mrPush({ contrib: { [id]: kind } });
+    },
+
+    // {plays, contrib} — the account's copy when signed in (sign-in has
+    // already merged the local one into it), the local store otherwise.
+    async load() {
+      if (!window.bhUser) return mrRead();
+      try {
+        const snap = await getDoc(
+          doc(db, "users", window.bhUser.uid, "mindreader", "log"),
+        );
+        const d = (snap.exists() && snap.data()) || {};
+        return { plays: d.plays || {}, contrib: d.contrib || {} };
+      } catch (e) {
+        console.warn("Mind reader history load failed:", e);
+        return mrRead();
+      }
+    },
+  };
+
+  // Runs beside mergeGamesOnLogin. Unlike that one — which can only ever
+  // contribute the single day its local store still remembers — this pushes
+  // the whole local history, because event ids make the merge a union: a
+  // play already in the cloud is skipped by key, so nothing is duplicated
+  // and nothing has to be reconciled.
+  async function mergeMindReaderOnLogin(user) {
+    try {
+      const local = mrRead();
+      const ref = doc(db, "users", user.uid, "mindreader", "log");
+      const snap = await getDoc(ref);
+      const cloud = (snap.exists() && snap.data()) || {};
+      const plays = {},
+        contrib = {};
+      for (const k of Object.keys(local.plays)) {
+        if (!(cloud.plays || {})[k]) plays[k] = local.plays[k];
+      }
+      for (const k of Object.keys(local.contrib)) {
+        if (!(cloud.contrib || {})[k]) contrib[k] = local.contrib[k];
+      }
+      if (!Object.keys(plays).length && !Object.keys(contrib).length) return;
+      await setDoc(
+        ref,
+        { plays, contrib, updatedAt: serverTimestamp() },
+        { merge: true },
+      );
+    } catch (e) {
+      console.warn("Mind reader merge failed:", e);
+    }
+  }
+
   // ── Reader star ratings (books/{slug}/ratings/{uid}) ──────
   // Publish the signed-in user's 1-5 star rating, or remove it when stars
   // is 0/null (rating toggled off). Fire-and-forget: the local library
@@ -1187,6 +1357,7 @@
     window.bhUser = user || null;
     // After bhUser is set — bhGames reads it to build the document path.
     if (user) mergeGamesOnLogin(user);
+    if (user) mergeMindReaderOnLogin(user);
 
     // On sign-out, wipe the per-account local stores so the next person on
     // this browser can't see the previous account's library / history.
@@ -1198,6 +1369,13 @@
         localStorage.removeItem(RL_KEY);
         localStorage.removeItem("bookhub_recent_v1");
         localStorage.removeItem("bh_acct_cache_v1"); // account-page snapshot
+        // The mind reader's history is cleared here for a second reason
+        // beyond the one above: mergeMindReaderOnLogin pushes whatever is
+        // local into whichever account signs in next, so leaving it would
+        // file one person's games under another person's name. The cost of
+        // being wrong the other way is at most the last game or two, if a
+        // write was still in flight when the session ended.
+        localStorage.removeItem(MR_KEY);
       } catch (e) {}
     }
 
