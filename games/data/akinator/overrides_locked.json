@@ -466,5 +466,13 @@
   "theme:magic",
   "setting:victorian",
   "form:firstperson"
+ ],
+ "/site/admin-the-social-contract": [
+  "author:alive",
+  "author:american",
+  "author:british",
+  "author:european",
+  "author:female",
+  "author:nonwestern"
  ]
 }
