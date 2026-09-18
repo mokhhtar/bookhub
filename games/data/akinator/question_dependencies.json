@@ -1,0 +1,172 @@
+[
+ {
+  "parent": "form:fiction",
+  "answer": "no",
+  "child": "fact:namedchars"
+ },
+ {
+  "parent": "form:fiction",
+  "answer": "no",
+  "child": "form:firstperson"
+ },
+ {
+  "parent": "form:fiction",
+  "answer": "no",
+  "child": "form:webnovel"
+ },
+ {
+  "parent": "form:fiction",
+  "answer": "no",
+  "child": "genre:adventure"
+ },
+ {
+  "parent": "form:fiction",
+  "answer": "no",
+  "child": "genre:drama"
+ },
+ {
+  "parent": "form:fiction",
+  "answer": "no",
+  "child": "genre:fantasy"
+ },
+ {
+  "parent": "form:fiction",
+  "answer": "no",
+  "child": "genre:romance"
+ },
+ {
+  "parent": "form:fiction",
+  "answer": "no",
+  "child": "genre:scifi"
+ },
+ {
+  "parent": "form:fiction",
+  "answer": "no",
+  "child": "t:child"
+ },
+ {
+  "parent": "form:fiction",
+  "answer": "no",
+  "child": "t:detective"
+ },
+ {
+  "parent": "form:fiction",
+  "answer": "no",
+  "child": "t:otherworld"
+ },
+ {
+  "parent": "form:fiction",
+  "answer": "no",
+  "child": "t:powersystem"
+ },
+ {
+  "parent": "form:fiction",
+  "answer": "no",
+  "child": "t:romance"
+ },
+ {
+  "parent": "form:fiction",
+  "answer": "no",
+  "child": "t:survival"
+ },
+ {
+  "parent": "form:fiction",
+  "answer": "no",
+  "child": "t:travel"
+ },
+ {
+  "parent": "form:fiction",
+  "answer": "no",
+  "child": "t:war"
+ },
+ {
+  "parent": "form:fiction",
+  "answer": "no",
+  "child": "theme:magic"
+ },
+ {
+  "parent": "form:nonfiction",
+  "answer": "yes",
+  "child": "fact:namedchars"
+ },
+ {
+  "parent": "form:nonfiction",
+  "answer": "yes",
+  "child": "form:firstperson"
+ },
+ {
+  "parent": "form:nonfiction",
+  "answer": "yes",
+  "child": "form:webnovel"
+ },
+ {
+  "parent": "form:nonfiction",
+  "answer": "yes",
+  "child": "genre:adventure"
+ },
+ {
+  "parent": "form:nonfiction",
+  "answer": "yes",
+  "child": "genre:drama"
+ },
+ {
+  "parent": "form:nonfiction",
+  "answer": "yes",
+  "child": "genre:fantasy"
+ },
+ {
+  "parent": "form:nonfiction",
+  "answer": "yes",
+  "child": "genre:romance"
+ },
+ {
+  "parent": "form:nonfiction",
+  "answer": "yes",
+  "child": "genre:scifi"
+ },
+ {
+  "parent": "form:nonfiction",
+  "answer": "yes",
+  "child": "t:child"
+ },
+ {
+  "parent": "form:nonfiction",
+  "answer": "yes",
+  "child": "t:detective"
+ },
+ {
+  "parent": "form:nonfiction",
+  "answer": "yes",
+  "child": "t:otherworld"
+ },
+ {
+  "parent": "form:nonfiction",
+  "answer": "yes",
+  "child": "t:powersystem"
+ },
+ {
+  "parent": "form:nonfiction",
+  "answer": "yes",
+  "child": "t:romance"
+ },
+ {
+  "parent": "form:nonfiction",
+  "answer": "yes",
+  "child": "t:survival"
+ },
+ {
+  "parent": "form:nonfiction",
+  "answer": "yes",
+  "child": "t:travel"
+ },
+ {
+  "parent": "form:nonfiction",
+  "answer": "yes",
+  "child": "t:war"
+ },
+ {
+  "parent": "form:nonfiction",
+  "answer": "yes",
+  "child": "theme:magic"
+ }
+]

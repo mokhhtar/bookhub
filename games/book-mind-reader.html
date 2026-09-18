@@ -636,6 +636,9 @@ permalink: /games/mind-reader/
   // Mutually-exclusive groups declared from the admin page, on top of the
   // ones meta.json was built with. See buildExcludes().
   var exclusiveExtra = [];
+  // Directional parent-answer -> child suppressions declared in the admin.
+  // Unlike exclusive groups these are not symmetric.
+  var questionDependencies = [];
 
   // ── transcript (owner debugging, hidden from players) ──────────────────
   // A readable log of one game — every question with its answer, the ladder
@@ -843,13 +846,17 @@ permalink: /games/mind-reader/
                // late arrival would make the same game play differently
                // depending on the network, and parity_trace.py reads it off
                // disk. Tiny, and a missing file settles to an empty list.
-               getJSON('exclusive_overrides.json').catch(function () { return []; })])
+               getJSON('exclusive_overrides.json').catch(function () { return []; }),
+               // Also awaited: these rules decide whether a question exists
+               // in this game after a firm parent answer.
+               getJSON('question_dependencies.json').catch(function () { return []; })])
     .then(function (parts) {
       meta = parts[0];
       questions = parts[1];
       decodeMatrix(new Uint8Array(parts[2]));
       addColdQuestions(parts[3]);
       exclusiveExtra = Array.isArray(parts[4]) ? parts[4] : [];
+      questionDependencies = Array.isArray(parts[5]) ? parts[5] : [];
       buildExcludes();
       buildProbabilities();
       start();
@@ -1421,25 +1428,12 @@ permalink: /games/mind-reader/
     });
   }
 
-  // Questions that presuppose a fictional narrative. This is directional,
-  // unlike an exclusive group: a firm NO to fiction or a firm YES to
-  // non-fiction closes the branch. Keep in lockstep with ANSWER_EXCLUDES in
-  // scripts/akinator/engine.py.
-  var NARRATIVE_DEPENDENT_QUESTIONS = [
-    'fact:namedchars', 'form:firstperson', 'form:webnovel',
-    'genre:adventure', 'genre:drama', 'genre:fantasy', 'genre:romance',
-    'genre:scifi', 't:child',
-    't:detective', 't:otherworld', 't:powersystem', 't:romance',
-    't:survival', 't:travel', 't:war', 'theme:magic'
-  ];
-
   function applyAnswerExclusions(qIndex, answer) {
     if (qIndex < 0) { return; }
     var id = questions[qIndex].id;
-    if (!((id === 'form:fiction' && answer === 'no') ||
-          (id === 'form:nonfiction' && answer === 'yes'))) { return; }
-    NARRATIVE_DEPENDENT_QUESTIONS.forEach(function (qid) {
-      var i = questionIndex(qid);
+    questionDependencies.forEach(function (rule) {
+      if (!rule || rule.parent !== id || rule.answer !== answer) { return; }
+      var i = questionIndex(rule.child);
       if (i !== undefined) { asked[i] = true; }
     });
   }
@@ -1575,9 +1569,11 @@ permalink: /games/mind-reader/
       // the answers no longer imply, and an exclusive-group member marked
       // its siblings asked on a firm yes. Neither is worth unwinding for a
       // turn that nothing follows -- ~35 of 48 questions remain eligible.
-      if (LADDER_OF[questions[h.q].id] || excludes[h.q] ||
-          questions[h.q].id === 'form:fiction' ||
-          questions[h.q].id === 'form:nonfiction') { continue; }
+      var hId = questions[h.q].id;
+      var dependencyParent = questionDependencies.some(function (r) {
+        return r && r.parent === hId;
+      });
+      if (LADDER_OF[hId] || excludes[h.q] || dependencyParent) { continue; }
       var p = pYesCache[h.q][top];
       if (p === meta.p_unknown) { continue; }         // asserts nothing
       var notesSayYes = p > 0.5;
