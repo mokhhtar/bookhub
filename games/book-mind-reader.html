@@ -1421,6 +1421,29 @@ permalink: /games/mind-reader/
     });
   }
 
+  // Questions that presuppose a fictional narrative. This is directional,
+  // unlike an exclusive group: a firm NO to fiction or a firm YES to
+  // non-fiction closes the branch. Keep in lockstep with ANSWER_EXCLUDES in
+  // scripts/akinator/engine.py.
+  var NARRATIVE_DEPENDENT_QUESTIONS = [
+    'fact:namedchars', 'form:firstperson', 'form:webnovel',
+    'genre:adventure', 'genre:drama', 'genre:fantasy', 'genre:romance',
+    'genre:scifi', 't:child',
+    't:detective', 't:otherworld', 't:powersystem', 't:romance',
+    't:survival', 't:travel', 't:war', 'theme:magic'
+  ];
+
+  function applyAnswerExclusions(qIndex, answer) {
+    if (qIndex < 0) { return; }
+    var id = questions[qIndex].id;
+    if (!((id === 'form:fiction' && answer === 'no') ||
+          (id === 'form:nonfiction' && answer === 'yes'))) { return; }
+    NARRATIVE_DEPENDENT_QUESTIONS.forEach(function (qid) {
+      var i = questionIndex(qid);
+      if (i !== undefined) { asked[i] = true; }
+    });
+  }
+
   function update(qIndex, answer) {
     // THE SNAPSHOT LIVES HERE, not in the button handler that used to take
     // it. It has to be a property of answering a question rather than of
@@ -1450,6 +1473,7 @@ permalink: /games/mind-reader/
     askedCount++;
     charStreak = qIndex < 0 ? charStreak + 1 : 0;
     applyLadder(qIndex, answer);
+    applyAnswerExclusions(qIndex, answer);
     if (answer === 'yes' && excludes && excludes[qIndex]) {
       // A FIRM yes rules out what cannot also be true. Only a firm one —
       // "probably American" is a hedge, and suppressing on a hedge throws
@@ -1551,7 +1575,9 @@ permalink: /games/mind-reader/
       // the answers no longer imply, and an exclusive-group member marked
       // its siblings asked on a firm yes. Neither is worth unwinding for a
       // turn that nothing follows -- ~35 of 48 questions remain eligible.
-      if (LADDER_OF[questions[h.q].id] || excludes[h.q]) { continue; }
+      if (LADDER_OF[questions[h.q].id] || excludes[h.q] ||
+          questions[h.q].id === 'form:fiction' ||
+          questions[h.q].id === 'form:nonfiction') { continue; }
       var p = pYesCache[h.q][top];
       if (p === meta.p_unknown) { continue; }         // asserts nothing
       var notesSayYes = p > 0.5;
