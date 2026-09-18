@@ -2072,12 +2072,12 @@ permalink: /games/mind-reader/
   }
 
   function coverHTML(book, opts) {
-    if (!book || !book.c) { return ''; }
+    if (!book || (!book.c && !book.u)) { return ''; }
     opts = opts || {};
+    var src = book.u || ('https://covers.openlibrary.org/b/id/' +
+      encodeURIComponent(book.c) + (opts.large ? '-L' : '-M') + '.jpg?default=false');
     return '<img class="mr-cover' + (opts.cls ? ' ' + opts.cls : '') +
-      '" alt="" loading="lazy" src="' +
-      'https://covers.openlibrary.org/b/id/' + encodeURIComponent(book.c) +
-      (opts.large ? '-L' : '-M') + '.jpg?default=false">';
+      '" alt="" loading="lazy" src="' + escapeHTML(src) + '">';
   }
 
   // The game ends at a book, on a site made of guides to books, and the win
