@@ -51,5 +51,20 @@
    "simon winchester"
   ],
   "author_key": []
+ },
+ "/site/admin-the-city-of-dreaming-books": {
+  "author_name": [
+   "walter moers"
+  ],
+  "author_key": [],
+  "first_publish_year": 2004
+ },
+ "/site/admin-the-social-contract": {
+  "author_name": [
+   "Jean-Jacques Rousseau"
+  ],
+  "author_key": [
+   "OL29048A"
+  ]
  }
 }
