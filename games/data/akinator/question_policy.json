@@ -105,6 +105,14 @@
    "answerability_cost":0.15,
    "applies_if":{"any":[{"question":"form:fiction","answer":"yes"},{"question":"form:nonfiction","answer":"no"}]}
   },
-  "form:firstperson": {"level":"experimental","domain":"narrative","answerability_cost":0.15}
+  "form:firstperson": {"level":"experimental","domain":"narrative","answerability_cost":0.15},
+  "form:memoir": {
+   "level":"experimental",
+   "domain":"form",
+   "answerability_cost":0.04,
+   "applies_if":{"any":[{"question":"form:nonfiction","answer":"yes"},{"question":"form:fiction","answer":"no"}]},
+   "skip_if":{"any":[{"question":"form:fiction","answer":"yes"},{"question":"form:nonfiction","answer":"no"},{"question":"genre:fantasy","answer":"yes"},{"question":"genre:scifi","answer":"yes"}]},
+   "priority_if":{"any":[{"question":"form:nonfiction","answer":"yes"},{"question":"form:fiction","answer":"no"}]}
+  }
  }
 }

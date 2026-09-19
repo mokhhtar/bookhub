@@ -1,2 +1,3 @@
 [{"id":"setting:victorian","text":"Is it set in the Victorian era (1800s Britain)?"},
- {"id":"form:firstperson","text":"Is the book written in the first person, using I or we?"}]
+ {"id":"form:firstperson","text":"Is the book written in the first person, using I or we?"},
+ {"id":"form:memoir","text":"Is it a memoir or autobiography?"}]

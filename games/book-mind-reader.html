@@ -630,7 +630,7 @@ permalink: /games/mind-reader/
   var charStreak;
   // First index in `questions` that is a cold question. Everything at or
   // after it has no column in matrix.bin. Always === meta.questions.
-  var coldStart = 0;
+  var coldStart = 0, coldOrder = [];
   // Set once an answer has been revised, which retires "go back" for the
   // rest of the game. See revise() for why.
   var revised = false;
@@ -1048,6 +1048,17 @@ permalink: /games/mind-reader/
     openingPick = rnd
       ? Math.min(Math.floor(rnd() * OPENING_CHOICES), OPENING_CHOICES - 1)
       : null;
+    coldOrder = [];
+    for (var c = coldStart; c < questions.length; c++) { coldOrder.push(c); }
+    if (rnd) {
+      // Same Fisher-Yates draws as Engine.__init__. Cold questions begin
+      // flat, so information gain cannot choose which new dimension gets
+      // player data; rotating them prevents file order from owning it.
+      for (c = coldOrder.length - 1; c > 0; c--) {
+        var j = Math.min(Math.floor(rnd() * (c + 1)), c);
+        var swap = coldOrder[c]; coldOrder[c] = coldOrder[j]; coldOrder[j] = swap;
+      }
+    }
     belief = new Float64Array(nb);
     // Uniform until books.json lands with the popularity prior; refined the
     // moment it does, which is well before the first guess.
@@ -1884,10 +1895,18 @@ permalink: /games/mind-reader/
   // _due_cold_question() in engine.py.
   function dueColdQuestion() {
     if (COLD_TURNS.indexOf(askedCount) < 0) { return null; }
-    for (var i = coldStart; i < questions.length; i++) {
-      if (!asked[i] && !dependencyBlocked(i)) { return i; }
+    var eligible = [], i, q, policy;
+    for (i = 0; i < coldOrder.length; i++) {
+      q = coldOrder[i];
+      if (!asked[q] && !dependencyBlocked(q)) { eligible.push(q); }
     }
-    return null;
+    for (i = 0; i < eligible.length; i++) {
+      q = eligible[i];
+      policy = questionPolicy.questions && questionPolicy.questions[questions[q].id];
+      if (policy && policy.priority_if &&
+          conditionSatisfied(policy.priority_if, false)) { return q; }
+    }
+    return eligible.length ? eligible[0] : null;
   }
 
   function nextQuestion() {
@@ -2861,6 +2880,9 @@ permalink: /games/mind-reader/
       dependencyBlocked: function (id) {
         var i = questionIndex(id);
         return i !== undefined && dependencyBlocked(i);
+      },
+      coldQuestionOrder: function () {
+        return coldOrder.map(function (i) { return questions[i].id; });
       },
       belief: function () { return Array.prototype.slice.call(belief); },
       topIndices: topIndices,

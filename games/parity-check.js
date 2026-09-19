@@ -248,6 +248,32 @@ async function main() {
     console.error('skip_if FAILED — a probable answer hid author:alive');
     process.exit(1);
   }
+  engine.start(0);
+  engine.update(engine.questionIndex('form:fiction'), 'yes');
+  if (!engine.dependencyBlocked('form:memoir')) {
+    console.error('memoir gate FAILED — fiction=yes did not hide form:memoir');
+    process.exit(1);
+  }
+  engine.start(0);
+  engine.update(engine.questionIndex('form:nonfiction'), 'yes');
+  if (engine.dependencyBlocked('form:memoir')) {
+    console.error('memoir gate FAILED — nonfiction=yes did not open form:memoir');
+    process.exit(1);
+  }
+  engine.update(engine.questionIndex('genre:fantasy'), 'yes');
+  if (!engine.dependencyBlocked('form:memoir')) {
+    console.error('memoir gate FAILED — fantasy=yes did not hide form:memoir');
+    process.exit(1);
+  }
+  const coldOrders = new Set();
+  for (let seed = 1; seed <= 8; seed++) {
+    engine.start(seed);
+    coldOrders.add(engine.coldQuestionOrder().join('|'));
+  }
+  if (coldOrders.size < 2) {
+    console.error('cold rotation FAILED — eight seeds produced one order');
+    process.exit(1);
+  }
   // SEED 0 = strict argmax. A real game seeds the opening question from the
   // clock, which is the point of the feature and the enemy of a fixture:
   // parity_trace.py records one specific game, so both sides must play the
