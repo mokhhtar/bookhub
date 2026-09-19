@@ -939,15 +939,13 @@ permalink: /games/mind-reader/
     return 0.15;
   }
 
-  // Four states, and the fourth is the one that stops the game
-  // contradicting itself. `known_false` means we positively determined the
-  // answer is no — Wikidata says the author is American, so they are
-  // certainly not African. Scoring that like an unmentioned subject (0.15
-  // to 0.45) kept it clear of the "everyone would answer the same way"
-  // filter, so "is the author American? yes" could be followed by "is the
-  // author from Asia, Africa or Latin America?".
-  // Three states, and unknown stays at a flat 0.5 — which is an empirical
-  // result, not an oversight. Two more principled-looking alternatives were
+  // Four states. Unknown and not-applicable are both neutral numerically,
+  // but remain distinct in the artifact so audits can tell missing evidence
+  // from a question that has no truth value for this candidate. In
+  // particular, not-applicable must never fall through to absenceP(): that
+  // would turn "does not apply" into evidence for "no".
+  // Unknown stays at a flat 0.5 — which is an empirical result, not an
+  // oversight. Two more principled-looking alternatives were
   // measured and both were worse: scoring unknown at the question's base
   // rate gave 55.0% against 63.3%, and making it genuinely neutral (the
   // mean likelihood) gave 41.7%. A book that can never be eliminated
@@ -957,6 +955,9 @@ permalink: /games/mind-reader/
   function stateP(state, richness) {
     if (state === 1) { return meta.p_present; }
     if (state === 2) { return meta.p_unknown; }
+    if (state === 3) {
+      return typeof meta.p_not_applicable === 'number' ? meta.p_not_applicable : 0.5;
+    }
     return absenceP(richness);
   }
 
