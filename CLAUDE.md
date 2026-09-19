@@ -3,6 +3,14 @@
 Persistent instructions for AI coding agents working in this repo. Read
 this before making changes.
 
+## Read the vault before Mind Reader work
+
+Before analysing, changing, or measuring the Book Mind Reader/Akinator,
+read `E:\GitHub\litheca vault\handoff\START-HERE.md` and the relevant
+Mind Reader notes/memories in that vault. Measurements must be paired, use
+the shipped artifacts, and run one heavy job at a time with explicit resource
+limits. This is an owner requirement.
+
 ## What this is
 
 The **BookHub** static site — Jekyll, hosted on **GitHub Pages**

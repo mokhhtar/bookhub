@@ -539,6 +539,7 @@ permalink: /games/mind-reader/
   // a gain threshold so both engines agree on integers, not floats.
   var COLD_UNKNOWN = 0.5;
   var COLD_TURNS = [14, 22];
+  var CORE_QUESTION_TURN = 2;
 
   // `hint` is the key shown on the button and is also its position: the
   // keyboard handler maps 1-5 straight onto this array, so reordering the
@@ -643,6 +644,10 @@ permalink: /games/mind-reader/
   // evaluated before information gain, so an informative but meaningless
   // question never enters the chooser.
   var questionPolicy = { version: 1, questions: {} };
+  // Test-only A/B switch. Real play never changes it; the measurement
+  // harness uses it to reproduce the historical "ask first, suppress later"
+  // ordering without loading a second multi-gigabyte Python Matrix.
+  var legacyOrderingForTest = false;
 
   // ── transcript (owner debugging, hidden from players) ──────────────────
   // A readable log of one game — every question with its answer, the ladder
@@ -1447,7 +1452,7 @@ permalink: /games/mind-reader/
     questionDependencies.forEach(function (rule) {
       if (!rule || rule.parent !== id || rule.answer !== answer) { return; }
       var policy = questionPolicy.questions && questionPolicy.questions[rule.child];
-      if (policy && policy.applies_if) { return; }
+      if (policy && policy.applies_if && !legacyOrderingForTest) { return; }
       var i = questionIndex(rule.child);
       if (i !== undefined) { asked[i] = true; }
     });
@@ -1476,13 +1481,15 @@ permalink: /games/mind-reader/
     for (j = history.length - 1; j >= 0; j--) {
       h = history[j];
       if (h.q >= 0 && questions[h.q].id === condition.question) {
-        return h.answer === condition.answer;
+        return h.answer === condition.answer ||
+               h.answer === 'probably_' + condition.answer;
       }
     }
     return false;
   }
 
   function dependencyBlocked(qIndex) {
+    if (legacyOrderingForTest) { return false; }
     var childId = questions[qIndex].id, rules = [];
     var policy = questionPolicy.questions && questionPolicy.questions[childId];
     if (policy && policy.applies_if) {
@@ -1782,6 +1789,26 @@ permalink: /games/mind-reader/
     return { kind: 'book', index: top, p: belief[top] };
   }
 
+  function guessMatches(target, bookIndex) {
+    if (!target) { return false; }
+    if (target.kind === 'book') { return target.index === bookIndex; }
+    var members = seriesMembers && seriesMembers[target.sid];
+    return !!members && members.indexOf(bookIndex) >= 0;
+  }
+
+  function rejectTarget(target) {
+    var isSeries = target.kind === 'series';
+    var hit = isSeries ? seriesMembers[target.sid] : [target.index];
+    if (isSeries) { rejectedSeries[target.sid] = true; }
+    for (var j = 0; j < hit.length; j++) {
+      rejected[hit[j]] = true;
+      belief[hit[j]] *= 0.001;
+    }
+    var total = 0, k;
+    for (k = 0; k < belief.length; k++) { total += belief[k]; }
+    if (total > 0) { for (k = 0; k < belief.length; k++) { belief[k] /= total; } }
+  }
+
   function effectiveCandidates() {
     var sorted = Array.prototype.slice.call(belief).sort(function (a, b) { return b - a; });
     var acc = 0, n = 0;
@@ -1872,6 +1899,37 @@ permalink: /games/mind-reader/
       var gain = binaryEntropy(p) - condH[q];
       ranked.push({ q: q, gain: gain });
       if (gain > bestGain) { bestGain = gain; best = q; }
+    }
+
+    // Hiding dependent questions is not enough: without this promotion the
+    // chooser can replace an entire useful branch with weaker general
+    // questions and postpone its parent indefinitely. From turn three, ask
+    // the highest-gain unresolved CORE question. A probable answer resolves
+    // it; only "unknown" leaves the other core eligible.
+    if (!legacyOrderingForTest && askedCount >= CORE_QUESTION_TURN) {
+      var coreResolved = false, coreRanked = [];
+      for (i = 0; i < history.length; i++) {
+        if (history[i].q < 0) { continue; }
+        var answeredPolicy = questionPolicy.questions &&
+                             questionPolicy.questions[questions[history[i].q].id];
+        if (answeredPolicy && answeredPolicy.level === 'core' &&
+            history[i].answer !== 'unknown') {
+          coreResolved = true; break;
+        }
+      }
+      if (!coreResolved) {
+        for (i = 0; i < ranked.length; i++) {
+          var corePolicy = questionPolicy.questions &&
+                           questionPolicy.questions[questions[ranked[i].q].id];
+          if (corePolicy && corePolicy.level === 'core') { coreRanked.push(ranked[i]); }
+        }
+        if (coreRanked.length) {
+          coreRanked.sort(function (a, b) {
+            return b.gain - a.gain || (questions[a.q].id < questions[b.q].id ? -1 : 1);
+          });
+          return coreRanked[0].q;
+        }
+      }
     }
 
     // Turn one only, and only when a seed was given. Sorted by
@@ -2221,15 +2279,7 @@ permalink: /games/mind-reader/
       // group — a player who says no to "Harry Potter" does not want to be
       // offered Chamber of Secrets next.
       logVerdict('rejected');
-      var hit = isSeries ? seriesMembers[target.sid] : [target.index];
-      if (isSeries) { rejectedSeries[target.sid] = true; }
-      for (var j = 0; j < hit.length; j++) {
-        rejected[hit[j]] = true;
-        belief[hit[j]] *= 0.001;
-      }
-      var total = 0, k;
-      for (k = 0; k < belief.length; k++) { total += belief[k]; }
-      if (total > 0) { for (k = 0; k < belief.length; k++) { belief[k] /= total; } }
+      rejectTarget(target);
       if (guessesMade >= MAX_GUESSES) { return renderGiveUp(); }
       nextTurn();
     });
@@ -2803,6 +2853,11 @@ permalink: /games/mind-reader/
       bookKey: function (i) { return books[i].k; },
       shouldGuess: shouldGuess,
       guessTarget: guessTarget,
+      guessMatches: guessMatches,
+      rejectTarget: rejectTarget,
+      setLegacyOrdering: function (enabled) {
+        legacyOrderingForTest = !!enabled;
+      },
       // The re-check, as the two halves engine.py splits it into: which
       // answer is contradicted (returned as a question id, so the harness
       // never has to know that this side indexes `history` and Python
