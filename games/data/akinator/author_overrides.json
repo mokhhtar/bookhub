@@ -85,5 +85,17 @@
  "name:walter moers": {
   "facts": {},
   "aliases": []
+ },
+ "OL23135A": {
+  "facts": {
+   "author:american": false,
+   "author:alive": false,
+   "author:british": false,
+   "author:european": true,
+   "author:nonwestern": false,
+   "author:female": false,
+   "author:prolific": true
+  },
+  "aliases": []
  }
 }

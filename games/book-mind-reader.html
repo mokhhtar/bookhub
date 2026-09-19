@@ -1452,20 +1452,25 @@ permalink: /games/mind-reader/
     questionDependencies.forEach(function (rule) {
       if (!rule || rule.parent !== id || rule.answer !== answer) { return; }
       var policy = questionPolicy.questions && questionPolicy.questions[rule.child];
-      if (policy && policy.applies_if && !legacyOrderingForTest) { return; }
+      // A complete policy entry is authoritative. question_dependencies.json
+      // is only the deployment fallback for older policy files; applying it
+      // as well would permanently suppress a question whose applies_if was
+      // deliberately removed (for example first-person nonfiction).
+      if (policy && !legacyOrderingForTest) { return; }
       var i = questionIndex(rule.child);
       if (i !== undefined) { asked[i] = true; }
     });
   }
 
-  function conditionSatisfied(condition) {
+  function conditionSatisfied(condition, allowProbable) {
     if (!condition || typeof condition !== 'object') { return false; }
+    if (allowProbable === undefined) { allowProbable = true; }
     var list, i, j, h;
     if (Object.prototype.hasOwnProperty.call(condition, 'any')) {
       list = condition.any;
       if (!Array.isArray(list) || !list.length) { return false; }
       for (i = 0; i < list.length; i++) {
-        if (conditionSatisfied(list[i])) { return true; }
+        if (conditionSatisfied(list[i], allowProbable)) { return true; }
       }
       return false;
     }
@@ -1473,7 +1478,7 @@ permalink: /games/mind-reader/
       list = condition.all;
       if (!Array.isArray(list) || !list.length) { return false; }
       for (i = 0; i < list.length; i++) {
-        if (!conditionSatisfied(list[i])) { return false; }
+        if (!conditionSatisfied(list[i], allowProbable)) { return false; }
       }
       return true;
     }
@@ -1482,7 +1487,7 @@ permalink: /games/mind-reader/
       h = history[j];
       if (h.q >= 0 && questions[h.q].id === condition.question) {
         return h.answer === condition.answer ||
-               h.answer === 'probably_' + condition.answer;
+               (allowProbable && h.answer === 'probably_' + condition.answer);
       }
     }
     return false;
@@ -1492,9 +1497,13 @@ permalink: /games/mind-reader/
     if (legacyOrderingForTest) { return false; }
     var childId = questions[qIndex].id, rules = [];
     var policy = questionPolicy.questions && questionPolicy.questions[childId];
+    if (policy && policy.skip_if && conditionSatisfied(policy.skip_if, false)) {
+      return true;
+    }
     if (policy && policy.applies_if) {
       return !conditionSatisfied(policy.applies_if);
     }
+    if (policy) { return false; }
     questionDependencies.forEach(function (rule) {
       if (rule && rule.child === childId) { rules.push(rule); }
     });
@@ -2847,6 +2856,11 @@ permalink: /games/mind-reader/
       update: update,
       questionId: function (i) {
         return i >= 0 ? questions[i].id : 'char:' + chars.tokens[-i - 1];
+      },
+      questionIndex: questionIndex,
+      dependencyBlocked: function (id) {
+        var i = questionIndex(id);
+        return i !== undefined && dependencyBlocked(i);
       },
       belief: function () { return Array.prototype.slice.call(belief); },
       topIndices: topIndices,

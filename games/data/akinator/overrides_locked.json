@@ -566,6 +566,13 @@
  "/works/OL1089297W": [
   "audience:children",
   "audience:ya",
+  "author:alive",
+  "author:american",
+  "author:british",
+  "author:european",
+  "author:female",
+  "author:nonwestern",
+  "author:prolific",
   "book:film",
   "fact:namedchars",
   "fact:old",
@@ -576,6 +583,7 @@
   "fact:veryold",
   "form:classic",
   "form:fiction",
+  "form:firstperson",
   "form:nonfiction",
   "form:series",
   "form:webnovel",
@@ -591,6 +599,7 @@
   "place:europe_other",
   "place:usa",
   "setting:school",
+  "setting:victorian",
   "t:child",
   "t:detective",
   "t:family",
@@ -604,8 +613,6 @@
   "t:war",
   "theme:family",
   "theme:friendship",
-  "theme:magic",
-  "setting:victorian",
-  "form:firstperson"
+  "theme:magic"
  ]
 }
