@@ -1438,6 +1438,29 @@ permalink: /games/mind-reader/
     });
   }
 
+  function dependencyBlocked(qIndex) {
+    var childId = questions[qIndex].id, rules = [];
+    questionDependencies.forEach(function (rule) {
+      if (rule && rule.child === childId) { rules.push(rule); }
+    });
+    if (!rules.length) { return false; }
+
+    // A rule names the firm answer that closes a child. The opposite firm
+    // answer opens it. Multiple parents are alternatives, so fiction=yes OR
+    // nonfiction=no can open narrative questions. Hedges and "don't know"
+    // intentionally leave the child behind its parent gate.
+    for (var i = 0; i < rules.length; i++) {
+      for (var j = history.length - 1; j >= 0; j--) {
+        var h = history[j];
+        if (h.q < 0 || questions[h.q].id !== rules[i].parent) { continue; }
+        if ((h.answer === 'yes' || h.answer === 'no') &&
+            h.answer !== rules[i].answer) { return false; }
+        break;
+      }
+    }
+    return true;
+  }
+
   function update(qIndex, answer) {
     // THE SNAPSHOT LIVES HERE, not in the button handler that used to take
     // it. It has to be a property of answering a question rather than of
@@ -1778,7 +1801,7 @@ permalink: /games/mind-reader/
   function dueColdQuestion() {
     if (COLD_TURNS.indexOf(askedCount) < 0) { return null; }
     for (var i = coldStart; i < questions.length; i++) {
-      if (!asked[i]) { return i; }
+      if (!asked[i] && !dependencyBlocked(i)) { return i; }
     }
     return null;
   }
@@ -1794,7 +1817,7 @@ permalink: /games/mind-reader/
     var anyUnaskedSubject = false;
     var ranked = [];
     for (q = 0; q < nq; q++) {
-      if (asked[q]) { continue; }
+      if (asked[q] || dependencyBlocked(q)) { continue; }
       anyUnaskedSubject = true;
       var p = totals[q];
       if (p <= 0.02 || p >= 0.98) { continue; }

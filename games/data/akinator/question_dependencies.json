@@ -52,6 +52,11 @@
  {
   "parent": "form:fiction",
   "answer": "no",
+  "child": "t:family"
+ },
+ {
+  "parent": "form:fiction",
+  "answer": "no",
   "child": "t:otherworld"
  },
  {
@@ -78,6 +83,16 @@
   "parent": "form:fiction",
   "answer": "no",
   "child": "t:war"
+ },
+ {
+  "parent": "form:fiction",
+  "answer": "no",
+  "child": "theme:family"
+ },
+ {
+  "parent": "form:fiction",
+  "answer": "no",
+  "child": "theme:friendship"
  },
  {
   "parent": "form:fiction",
@@ -137,6 +152,11 @@
  {
   "parent": "form:nonfiction",
   "answer": "yes",
+  "child": "t:family"
+ },
+ {
+  "parent": "form:nonfiction",
+  "answer": "yes",
   "child": "t:otherworld"
  },
  {
@@ -163,6 +183,16 @@
   "parent": "form:nonfiction",
   "answer": "yes",
   "child": "t:war"
+ },
+ {
+  "parent": "form:nonfiction",
+  "answer": "yes",
+  "child": "theme:family"
+ },
+ {
+  "parent": "form:nonfiction",
+  "answer": "yes",
+  "child": "theme:friendship"
  },
  {
   "parent": "form:nonfiction",
