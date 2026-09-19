@@ -201,6 +201,17 @@ async function main() {
     process.exit(2);
   }
 
+  const POLICY = path.join(DATA, 'question_policy.json');
+  const policyBytes = fs.existsSync(POLICY) ? fs.readFileSync(POLICY) : Buffer.alloc(0);
+  const policyDigest = crypto.createHash('sha256').update(policyBytes).digest('hex').slice(0, 16);
+  if (from.policy_digest !== undefined && from.policy_digest !== policyDigest) {
+    console.error('STALE FIXTURE — question_policy.json changed since the trace was recorded.');
+    console.error(`  trace: ${from.policy_digest}`);
+    console.error(`  now:   ${policyDigest}`);
+    console.error('Regenerate parity_trace.json before testing the engines.');
+    process.exit(2);
+  }
+
   const sandbox = makeSandbox();
   vm.createContext(sandbox);
   vm.runInContext(extractScript(fs.readFileSync(PAGE, 'utf8')), sandbox);

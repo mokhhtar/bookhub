@@ -639,6 +639,10 @@ permalink: /games/mind-reader/
   // Directional parent-answer -> child suppressions declared in the admin.
   // Unlike exclusive groups these are not symmetric.
   var questionDependencies = [];
+  // Complete semantic metadata for every live question. Applicability is
+  // evaluated before information gain, so an informative but meaningless
+  // question never enters the chooser.
+  var questionPolicy = { version: 1, questions: {} };
 
   // ── transcript (owner debugging, hidden from players) ──────────────────
   // A readable log of one game — every question with its answer, the ladder
@@ -849,7 +853,13 @@ permalink: /games/mind-reader/
                getJSON('exclusive_overrides.json').catch(function () { return []; }),
                // Also awaited: these rules decide whether a question exists
                // in this game after a firm parent answer.
-               getJSON('question_dependencies.json').catch(function () { return []; })])
+               getJSON('question_dependencies.json').catch(function () { return []; }),
+               // The policy supersedes dependency edges for questions that
+               // carry applies_if. The old file remains a deployment-safe
+               // fallback while admin tooling migrates to the registry.
+               getJSON('question_policy.json').catch(function () {
+                 return { version: 1, questions: {} };
+               })])
     .then(function (parts) {
       meta = parts[0];
       questions = parts[1];
@@ -857,6 +867,8 @@ permalink: /games/mind-reader/
       addColdQuestions(parts[3]);
       exclusiveExtra = Array.isArray(parts[4]) ? parts[4] : [];
       questionDependencies = Array.isArray(parts[5]) ? parts[5] : [];
+      questionPolicy = parts[6] && typeof parts[6] === 'object' ? parts[6]
+                                                                : { questions: {} };
       buildExcludes();
       buildProbabilities();
       start();
@@ -1433,13 +1445,48 @@ permalink: /games/mind-reader/
     var id = questions[qIndex].id;
     questionDependencies.forEach(function (rule) {
       if (!rule || rule.parent !== id || rule.answer !== answer) { return; }
+      var policy = questionPolicy.questions && questionPolicy.questions[rule.child];
+      if (policy && policy.applies_if) { return; }
       var i = questionIndex(rule.child);
       if (i !== undefined) { asked[i] = true; }
     });
   }
 
+  function conditionSatisfied(condition) {
+    if (!condition || typeof condition !== 'object') { return false; }
+    var list, i, j, h;
+    if (Object.prototype.hasOwnProperty.call(condition, 'any')) {
+      list = condition.any;
+      if (!Array.isArray(list) || !list.length) { return false; }
+      for (i = 0; i < list.length; i++) {
+        if (conditionSatisfied(list[i])) { return true; }
+      }
+      return false;
+    }
+    if (Object.prototype.hasOwnProperty.call(condition, 'all')) {
+      list = condition.all;
+      if (!Array.isArray(list) || !list.length) { return false; }
+      for (i = 0; i < list.length; i++) {
+        if (!conditionSatisfied(list[i])) { return false; }
+      }
+      return true;
+    }
+    if (condition.answer !== 'yes' && condition.answer !== 'no') { return false; }
+    for (j = history.length - 1; j >= 0; j--) {
+      h = history[j];
+      if (h.q >= 0 && questions[h.q].id === condition.question) {
+        return h.answer === condition.answer;
+      }
+    }
+    return false;
+  }
+
   function dependencyBlocked(qIndex) {
     var childId = questions[qIndex].id, rules = [];
+    var policy = questionPolicy.questions && questionPolicy.questions[childId];
+    if (policy && policy.applies_if) {
+      return !conditionSatisfied(policy.applies_if);
+    }
     questionDependencies.forEach(function (rule) {
       if (rule && rule.child === childId) { rules.push(rule); }
     });
