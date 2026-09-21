@@ -564,9 +564,17 @@ async function play(page, player, base, pressMs, adjudicator, human, maxTurns = 
     const q = page.locator('.mr-question');
     if (!(await q.count())) { break; }
     const text = (await q.first().innerText()).trim();
+    const countLabel = ((await page.locator('#mr-count').textContent()) || '').trim();
+    const recheck = /^one more thing$/i.test(countLabel);
+    const earlier = recheck ? turns.findIndex(t => t.question === text) : -1;
     const answer = await player.answer(text);
-    turns.push({ question: text, answer });
-    console.log('  ' + String(turns.length).padStart(2) + '. ' + text + '  ->  ' + answer);
+    turns.push({ question: text, answer, recheck,
+                 rechecksTurn: earlier >= 0 ? earlier + 1 : null });
+    const label = recheck
+      ? ' [re-check' + (earlier >= 0 ? ' of #' + (earlier + 1) : '') + ']'
+      : '';
+    console.log('  ' + String(turns.length).padStart(2) + '.' + label + ' ' +
+                text + '  ->  ' + answer);
 
     const target = '.mr-answer[data-answer="' + ANSWER_KEYS.indexOf(answer) + '"]';
     if (human) {
@@ -783,6 +791,8 @@ async function play(page, player, base, pressMs, adjudicator, human, maxTurns = 
     result: state === 'solved' ? 'won' : (state ? 'lost' : 'unfinished'),
     status,
     questions: turns.length,
+    uniqueQuestions: new Set(turns.map(t => t.question)).size,
+    rechecks: turns.filter(t => t.recheck).length,
     turns,
     guesses,
     // Present only on a loss, and the reason the loss is interpretable at all.
@@ -1084,7 +1094,9 @@ async function main() {
       take.catalogueRank = row && row.p !== undefined ? row.p : null;
       takes.push(take);
       console.log('  => ' + take.result + ' in ' + take.questions + ' questions (' +
-                  take.cacheHits + ' cached, ' + take.groqCalls + ' asked)' +
+                  (take.rechecks ? take.rechecks + ' re-check, ' : '') +
+                  take.uniqueQuestions + ' unique; ' + take.cacheHits + ' cached, ' +
+                  take.groqCalls + ' asked)' +
                   (take.failedCalls
                     ? '  ** ' + take.failedCalls + ' CALLS FAILED — this take is '
                       + 'not a reader\'s answers **'
