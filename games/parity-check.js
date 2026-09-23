@@ -132,6 +132,16 @@ function overridesFingerprint(overrides) {
   return parts.join('\n');
 }
 
+// Match question_policy.py's canonical JSON: object keys sorted recursively,
+// arrays kept in order, and no insignificant whitespace. This semantic digest
+// is stored in meta.json and guards the live append path.
+function stableStringify(value) {
+  if (value === null || typeof value !== 'object') { return JSON.stringify(value); }
+  if (Array.isArray(value)) { return '[' + value.map(stableStringify).join(',') + ']'; }
+  return '{' + Object.keys(value).sort().map(
+    key => JSON.stringify(key) + ':' + stableStringify(value[key])).join(',') + '}';
+}
+
 function beliefChecksum(belief) {
   // Must match parity_trace.py's: sum(b * log1p(i + 1)).
   let s = 0;
@@ -203,6 +213,20 @@ async function main() {
 
   const POLICY = path.join(DATA, 'question_policy.json');
   const policyBytes = fs.existsSync(POLICY) ? fs.readFileSync(POLICY) : Buffer.alloc(0);
+  let parsedPolicy = {};
+  try { parsedPolicy = JSON.parse(policyBytes.toString('utf8')); } catch (e) {
+    console.error('INVALID ARTIFACT — question_policy.json is not valid JSON.');
+    process.exit(1);
+  }
+  const semanticPolicyDigest = crypto.createHash('sha256')
+    .update(stableStringify(parsedPolicy), 'utf8').digest('hex').slice(0, 16);
+  if (meta.question_policy_digest !== semanticPolicyDigest) {
+    console.error('INVALID ARTIFACT — question policy digest does not match meta.json.');
+    console.error(`  meta:   ${meta.question_policy_digest}`);
+    console.error(`  actual: ${semanticPolicyDigest}`);
+    console.error('Run migrate_not_applicable.py with an explicit --max-books bound.');
+    process.exit(1);
+  }
   const policyDigest = crypto.createHash('sha256').update(policyBytes).digest('hex').slice(0, 16);
   if (from.policy_digest !== undefined && from.policy_digest !== policyDigest) {
     console.error('STALE FIXTURE — question_policy.json changed since the trace was recorded.');
