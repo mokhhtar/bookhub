@@ -45,6 +45,31 @@
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }} — new book guides" href="{{ '/feed.xml' | relative_url }}">
 
   <link rel="canonical" href="{{ page.url | absolute_url }}">
+
+  {%- comment -%} Site/entity JSON-LD. This is intentionally separate from
+  page-specific Book/Person schema and gives search engines one stable
+  description of the site and its publisher. {%- endcomment -%}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": {{ site.url | append: '/#organization' | jsonify }},
+        "name": {{ site.title | jsonify }},
+        "url": {{ site.url | jsonify }}
+      },
+      {
+        "@type": "WebSite",
+        "@id": {{ site.url | append: '/#website' | jsonify }},
+        "name": {{ site.title | jsonify }},
+        "url": {{ site.url | jsonify }},
+        "description": {{ site.description | jsonify }},
+        "publisher": {"@id": {{ site.url | append: '/#organization' | jsonify }}}
+      }
+    ]
+  }
+  </script>
   {%- comment -%} Deferred-indexing strategy: generated content pages
   (books/authors/characters collections — set via _config defaults) and
   personal pages carry noindex until they earn engagement / launch.
