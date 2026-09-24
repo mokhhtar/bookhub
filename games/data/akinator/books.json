@@ -22615,7 +22615,7 @@
     "a": "",
     "y": 2004,
     "p": 279,
-    "r": 0,
+    "r": 48,
     "w": null,
     "c": 15099760
   },
@@ -22735,7 +22735,7 @@
     "a": "Lynn Painter",
     "y": 2024,
     "p": 278,
-    "r": 0,
+    "r": 48,
     "w": null,
     "c": 15150672
   },
@@ -22835,7 +22835,7 @@
     "a": "Wren",
     "y": 2017,
     "p": 277,
-    "r": 0,
+    "r": 48,
     "w": null,
     "c": 12194060
   },
@@ -22875,7 +22875,7 @@
     "a": "English Grammar",
     "y": 2018,
     "p": 276,
-    "r": 0,
+    "r": 48,
     "w": null,
     "c": 8590703
   },
@@ -22935,7 +22935,7 @@
     "a": "Munshi Premchand",
     "y": 1979,
     "p": 276,
-    "r": 0,
+    "r": 48,
     "w": null,
     "c": 6931630
   },
@@ -50342,18 +50342,6 @@
     "r": 7,
     "w": null,
     "c": null
-  },
-  {
-    "k": "/site/admin-the-girls-at-17-swann-street",
-    "t": "The Girls at 17 Swann Street",
-    "a": "Yara Zgheib",
-    "y": 2019,
-    "p": 150,
-    "r": 3,
-    "w": null,
-    "c": null,
-    "addedAt": 1788342420,
-    "origin": "suggestion"
   },
   {
     "k": "/site/admin-the-girls-at-17-swann-street",
