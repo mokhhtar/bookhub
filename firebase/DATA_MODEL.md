@@ -34,7 +34,9 @@ users/{uid}/mindreader/log              ← سجل لعبة قارئ الأفك�
   plays         map: معرّف حدث → {w, q, g, k?, t?}
                 (فوز التخمين، عدد الأسئلة، عدد التخمينات، ومفتاح الكتاب
                  وعنوانه حين يسمّيه اللاعب فقط)
-  contrib       map: معرّف حدث → "taught|missing|wrong_year|unreadable"
+  contrib       map: معرّف حدث → "taught" (السجل القديم)، أو
+                {kind, id, status, action?, resolved_at?} لبلاغات المراجعة
+                status = pending|accepted|rejected|unknown
   updatedAt     timestamp
 ```
 

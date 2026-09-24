@@ -1136,13 +1136,53 @@
     // which is the honest reading of it: those endpoints are anonymous and
     // the game's own buttons say "thanks" without waiting for a verdict,
     // so this counts what was SENT, never what was accepted.
-    async recordContrib(kind) {
+    async recordContrib(kind, reportId) {
       if (!kind) return;
       const id = this.newId();
       const store = mrRead();
-      store.contrib[id] = kind;
+      // Old entries are strings and stay readable forever. Suggestions that
+      // return an id carry a small structured value so the account page can
+      // later ask the API whether the reviewer accepted or rejected them.
+      store.contrib[id] = reportId
+        ? { kind, id: reportId, status: "pending" }
+        : kind;
       mrWrite(store);
-      await mrPush({ contrib: { [id]: kind } });
+      await mrPush({ contrib: { [id]: store.contrib[id] } });
+    },
+
+    // Refresh at most fifty tracked reports in one request. Redis is a
+    // temporary queue, so "unknown" is a real state (expired or unavailable),
+    // never silently translated into rejection.
+    async refreshContrib(apiBase) {
+      const store = mrRead();
+      const tracked = Object.entries(store.contrib).filter(([, value]) =>
+        value && typeof value === "object" && value.id &&
+        value.status !== "accepted" && value.status !== "rejected");
+      const ids = Array.from(new Set(tracked.map(([, value]) => value.id))).slice(0, 50);
+      if (!apiBase || !ids.length) return store;
+      try {
+        const res = await fetch(apiBase + "/akinator/suggest/status", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ ids }),
+        });
+        if (!res.ok) return store;
+        const statuses = ((await res.json()) || {}).statuses || {};
+        const patch = {};
+        for (const [eventId, value] of tracked) {
+          const next = statuses[value.id];
+          if (!next || !next.status || next.status === value.status) continue;
+          store.contrib[eventId] = { ...value, ...next };
+          patch[eventId] = store.contrib[eventId];
+        }
+        if (Object.keys(patch).length) {
+          mrWrite(store);
+          await mrPush({ contrib: patch });
+        }
+      } catch (e) {
+        console.warn("Mind reader contribution status refresh failed:", e);
+      }
+      return store;
     },
 
     // {plays, contrib} — the account's copy when signed in (sign-in has

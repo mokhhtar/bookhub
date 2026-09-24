@@ -99,8 +99,9 @@ service cloud.firestore {
       //                 made, and the work key + title of the book WHEN
       //                 the player identified it (the reveal on a hit, the
       //                 search on a miss). Absent when they never said.
-      //   contrib.{id}  "taught" | "missing" | "wrong_year" | "unreadable"
-      //                 — what this player sent the learning loop. It is
+      //   contrib.{id}  Legacy string, or {kind, id, status, action?,
+      //                 resolved_at?} for reviewable reports. It records
+      //                 what this player sent the learning loop. It is
       //                 recorded here because the endpoints those go to
       //                 are anonymous by design (see the API repo's
       //                 tools/akinator_suggest.py) and cannot count per

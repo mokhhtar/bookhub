@@ -2355,10 +2355,10 @@ permalink: /games/mind-reader/
     } catch (e) {}
   }
 
-  function recordContrib(kind) {
+  function recordContrib(kind, reportId) {
     try {
       if (!window.bhMindReader) { return; }
-      window.bhMindReader.recordContrib(kind);
+      window.bhMindReader.recordContrib(kind, reportId);
     } catch (e) {}
   }
 
@@ -2671,7 +2671,7 @@ permalink: /games/mind-reader/
         note.textContent = okText;
         // Unlike teach(), this half knows whether it landed — so it counts
         // only the ones that did. A refused suggestion was not a report.
-        recordContrib(payload.reason);
+        recordContrib(payload.reason, res.data && res.data.id);
         return;
       }
       // The server's own words. It distinguishes "we looked and it isn't
