@@ -1,0 +1,203 @@
+[
+ {
+  "id": "cand-2026-08-23-01",
+  "generated": "2026-08-23",
+  "status": "pending",
+  "type": "subject",
+  "key": "form:epistolary",
+  "question": "Is the story told through letters, diary entries, or documents?",
+  "measured": {
+   "measured_on": "full_shipped_corpus",
+   "sample_size": 5000,
+   "frequency": 0.0182,
+   "passes_band": false,
+   "example_present": [
+    "Nineteen Eighty-Four",
+    "... Trotzdem Ja zum Leben sagen",
+    "Carrie",
+    "The Perks of Being a Wallflower"
+   ],
+   "example_absent": [
+    "Atomic Habits",
+    "The 48 Laws of Power",
+    "It Ends With Us",
+    "Rich Dad, Poor Dad"
+   ]
+  },
+  "collision": {
+   "exact_wording_collision": null,
+   "near_duplicate": [
+    {
+     "id": "form:webnovel",
+     "agreement": 0.97,
+     "n": 4999
+    },
+    {
+     "id": "genre:drama",
+     "agreement": 0.96,
+     "n": 4999
+    },
+    {
+     "id": "setting:school",
+     "agreement": 0.94,
+     "n": 4999
+    }
+   ]
+  },
+  "byte_cost": "would be question #49 of 48 -> bytes_per_row 12->13 (+4.9 KB first paint)",
+  "rationale": "Distinguishes books written in a specific format from standard narrative prose.",
+  "keywords": [
+   "epistolary",
+   "diary",
+   "letters",
+   "journal",
+   "correspondence",
+   "document*"
+  ],
+  "draft_rule": "    (\"form:epistolary\", \"Is the story told through letters, diary entries, or documents?\",\n     ['epistolary', 'diary', 'letters', 'journal', 'correspondence', 'document*']),"
+ },
+ {
+  "id": "cand-2026-08-23-02",
+  "generated": "2026-08-23",
+  "status": "pending",
+  "type": "prose",
+  "key": "t:dystopian",
+  "question": "Is it set in a repressive, post-apocalyptic, or totalitarian society?",
+  "measured": {
+   "measured_on": "sample",
+   "sample_size": 100,
+   "frequency": 0.09,
+   "passes_band": true,
+   "example_present": [
+    "Starship Troopers",
+    "Snow Crash",
+    "From Blood and Ash",
+    "The Bronze Bow"
+   ],
+   "example_absent": []
+  },
+  "collision": {
+   "exact_wording_collision": null,
+   "near_duplicate": []
+  },
+  "byte_cost": "would be question #49 of 48 -> bytes_per_row 12->13 (+4.9 KB first paint)",
+  "rationale": "Separates speculative fiction focused on societal collapse from general fantasy or sci-fi.",
+  "definition": "The story takes place in a world where the government, environmental collapse, or societal structure has severely restricted human freedom or survival.",
+  "draft_entry": "    \"t:dystopian\": (\n        \"Is it set in a repressive, post-apocalyptic, or totalitarian society?\",\n        \"The story takes place in a world where the government, environmental collapse, or societal structure has severely restricted human freedom or survival.\"),"
+ },
+ {
+  "id": "cand-2026-08-23-03",
+  "generated": "2026-08-23",
+  "status": "pending",
+  "type": "prose",
+  "key": "t:workplace",
+  "question": "Is the plot primarily driven by the characters' professional lives or workplace dynamics?",
+  "measured": {
+   "measured_on": "sample",
+   "sample_size": 48,
+   "frequency": 0.2083,
+   "passes_band": true,
+   "example_present": [
+    "色彩を持たない多崎つくると、彼の巡礼の年",
+    "Black Wind",
+    "Fallen angels",
+    "Margin of safety"
+   ],
+   "example_absent": []
+  },
+  "collision": {
+   "exact_wording_collision": null,
+   "near_duplicate": []
+  },
+  "byte_cost": "would be question #49 of 48 -> bytes_per_row 12->13 (+4.9 KB first paint)",
+  "rationale": "Helps filter out books where the narrative is anchored in a career or office setting.",
+  "definition": "The central conflict or setting revolves around the characters' jobs, career ambitions, or interactions with colleagues in a professional environment.",
+  "draft_entry": "    \"t:workplace\": (\n        \"Is the plot primarily driven by the characters' professional lives or workplace dynamics?\",\n        \"The central conflict or setting revolves around the characters' jobs, career ambitions, or interactions with colleagues in a professional environment.\"),"
+ },
+ {
+  "id": "cand-2026-08-23-04",
+  "generated": "2026-08-23",
+  "status": "pending",
+  "type": "prose",
+  "key": "t:mentalhealth",
+  "question": "Does the book focus on the treatment or experience of a specific mental health condition?",
+  "measured": {
+   "measured_on": "sample",
+   "sample_size": 84,
+   "frequency": 0.1548,
+   "passes_band": true,
+   "example_present": [
+    "You'd Be Home Now",
+    "The Kiss Quotient",
+    "Wide Sargasso Sea",
+    "Heartstopper, Volume 4"
+   ],
+   "example_absent": []
+  },
+  "collision": {
+   "exact_wording_collision": null,
+   "near_duplicate": []
+  },
+  "byte_cost": "would be question #49 of 48 -> bytes_per_row 12->13 (+4.9 KB first paint)",
+  "rationale": "Distinguishes psychological/self-help/memoir content from general fiction.",
+  "definition": "The narrative or instructional content explicitly addresses the diagnosis, therapy, or personal struggle with conditions like depression, anxiety, or addiction.",
+  "draft_entry": "    \"t:mentalhealth\": (\n        \"Does the book focus on the treatment or experience of a specific mental health condition?\",\n        \"The narrative or instructional content explicitly addresses the diagnosis, therapy, or personal struggle with conditions like depression, anxiety, or addiction.\"),"
+ },
+ {
+  "id": "cand-2026-08-23-05",
+  "generated": "2026-08-23",
+  "status": "pending",
+  "type": "subject",
+  "key": "t:mythology",
+  "question": "Is it based on or heavily inspired by ancient mythology?",
+  "measured": {
+   "measured_on": "full_shipped_corpus",
+   "sample_size": 5000,
+   "frequency": 0.039,
+   "passes_band": false,
+   "example_present": [
+    "The Lightning Thief",
+    "The Hobbit",
+    "Le petit prince",
+    "The Song of Achilles"
+   ],
+   "example_absent": [
+    "Atomic Habits",
+    "The 48 Laws of Power",
+    "It Ends With Us",
+    "Rich Dad, Poor Dad"
+   ]
+  },
+  "collision": {
+   "exact_wording_collision": null,
+   "near_duplicate": [
+    {
+     "id": "form:webnovel",
+     "agreement": 0.95,
+     "n": 4999
+    },
+    {
+     "id": "genre:drama",
+     "agreement": 0.95,
+     "n": 4999
+    },
+    {
+     "id": "fact:veryold",
+     "agreement": 0.92,
+     "n": 4944
+    }
+   ]
+  },
+  "byte_cost": "would be question #49 of 48 -> bytes_per_row 12->13 (+4.9 KB first paint)",
+  "rationale": "Separates fantasy rooted in specific cultural myths from generic high fantasy.",
+  "keywords": [
+   "mythology",
+   "myth*",
+   "greek",
+   "gods",
+   "deities",
+   "legend*"
+  ],
+  "draft_rule": "    (\"t:mythology\", \"Is it based on or heavily inspired by ancient mythology?\",\n     ['mythology', 'myth*', 'greek', 'gods', 'deities', 'legend*']),"
+ }
+]
