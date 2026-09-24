@@ -181,8 +181,31 @@ sitemap: false
   .acct-gs-note { font-size: var(--ui-sm); color: var(--fg-muted); line-height: 1.6; }
   .acct-gs-note + .acct-gs-note { margin-top: 2px; }
 
+  /* The mind reader has two kinds of history: play and contribution. Keep
+     the second block visually subordinate to the result block, instead of
+     making every number compete for the same four-column row. */
+  .acct-mr-divider { border-top: 1px solid var(--border); margin: 18px 0 14px; }
+  .acct-mr-subhead {
+    font-size: 11px; letter-spacing: .05em; text-transform: uppercase;
+    color: var(--fg-faint); margin-bottom: 10px;
+  }
+  .acct-contrib-grid {
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 16px;
+  }
+  .acct-contrib-item {
+    display: flex; align-items: baseline; justify-content: space-between; gap: 10px;
+    padding: 6px 0; border-bottom: 1px solid var(--border-subtle);
+    font-size: var(--ui-sm); color: var(--fg-muted);
+  }
+  .acct-contrib-item:nth-last-child(-n + 2) { border-bottom: 0; }
+  .acct-contrib-item b { color: var(--fg); font-size: var(--ui-body); }
+  .acct-mr-note { margin-top: 10px; }
+
   @media (max-width: 460px) {
     .acct-games-stats { grid-template-columns: repeat(2, 1fr); gap: 14px 10px; }
+    .acct-contrib-grid { grid-template-columns: 1fr; }
+    .acct-contrib-item:nth-last-child(-n + 2) { border-bottom: 1px solid var(--border-subtle); }
+    .acct-contrib-item:last-child { border-bottom: 0; }
   }
 
   /* Favourite-character cards */
@@ -774,7 +797,8 @@ sitemap: false
     const today = gLocalISO(new Date());
     const out = {
       played: 0, guessed: 0, stumped: 0, qTotal: 0, best: null, today: 0,
-      dist: [0, 0, 0, 0, 0, 0], lastStumped: null, taught: 0, reports: 0,
+      dist: [0, 0, 0, 0, 0, 0], lastStumped: null,
+      taught: 0, missing: 0, wrongYear: 0, unreadable: 0, reports: 0,
       streak: 0, bestStreak: 0, dates: new Set(),
     };
     // Ids are timestamp-prefixed, so a plain sort is chronological — which
@@ -800,8 +824,11 @@ sitemap: false
     }
     for (const v of Object.values(contrib)) {
       if (v === "taught") out.taught += 1;
-      else out.reports += 1;
+      else if (v === "missing") out.missing += 1;
+      else if (v === "wrong_year") out.wrongYear += 1;
+      else if (v === "unreadable") out.unreadable += 1;
     }
+    out.reports = out.missing + out.wrongYear + out.unreadable;
     // Days played in a row. Same "must reach today or yesterday to count as
     // current" rule as the daily games, for the same reason: a finished run
     // shown as live is a small lie.
@@ -819,14 +846,16 @@ sitemap: false
   // screen says "You win — I don't know it" — so a column headed "win rate"
   // would read backwards. Every label here names who did what.
   function mrCardHTML(game, d) {
-    const rate = d.played ? Math.round((d.guessed / d.played) * 100) : 0;
+    const rate = d.played ? Math.round((d.stumped / d.played) * 100) : 0;
     const avg = d.guessed ? Math.round((d.qTotal / d.guessed) * 10) / 10 : "—";
     let html =
       '<div class="acct-games-stats">' +
-      gStat(d.played, "Played") + gStat(rate + "%", "It read you") +
-      gStat(avg, "Avg questions") +
-      gStat(d.best === null ? "—" : d.best, "Fewest") +
+      gStat(d.played, "Played") + gStat(d.stumped, "You stumped it") +
+      gStat(d.guessed, "It guessed") + gStat(rate + "%", "Your success") +
       "</div>";
+    html += '<p class="acct-gs-note acct-mr-note">Your success means the game could not identify your book. ' +
+      'Average questions when it guessed: <b>' + avg + '</b> · Fewest: <b>' +
+      (d.best === null ? "—" : d.best) + '</b></p>';
     if (d.guessed) {
       const peak = Math.max(1, ...d.dist);
       html += '<div class="acct-gs-l" style="margin-bottom:6px;">GUESSED IN</div>' +
@@ -844,10 +873,18 @@ sitemap: false
     }
     // Sent, not accepted — the game's own buttons say "noted" without
     // waiting for a verdict, and this counts exactly what they counted.
-    const bits = [];
-    if (d.taught) bits.push("taught it " + d.taught + (d.taught === 1 ? " book" : " books"));
-    if (d.reports) bits.push("sent " + d.reports + (d.reports === 1 ? " report" : " reports"));
-    if (bits.length) notes.push("You " + bits.join(" and "));
+    if (d.taught || d.reports) {
+      html += '<div class="acct-mr-divider"></div>' +
+        '<div class="acct-mr-subhead">Your contributions</div>' +
+        '<div class="acct-contrib-grid">' +
+        '<div class="acct-contrib-item"><span>Books taught</span><b>' + d.taught + '</b></div>' +
+        '<div class="acct-contrib-item"><span>New books reported</span><b>' + d.missing + '</b></div>' +
+        '<div class="acct-contrib-item"><span>Year corrections</span><b>' + d.wrongYear + '</b></div>' +
+        '<div class="acct-contrib-item"><span>Unreadable titles</span><b>' + d.unreadable + '</b></div>' +
+        '</div>' +
+        '<p class="acct-gs-note acct-mr-note">' + d.reports +
+        (d.reports === 1 ? ' report' : ' reports') + ' sent for review.</p>';
+    }
     html += notes.map(n => '<p class="acct-gs-note">' + n + "</p>").join("");
     return '<div class="acct-section"><h2 class="acct-h2">' + esc(game.name) + "</h2>" +
            html + "</div>";
