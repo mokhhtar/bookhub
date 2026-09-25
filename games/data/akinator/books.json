@@ -49116,11 +49116,18 @@
     "k": "/works/OL27023502W",
     "t": "Discipline is Destiny",
     "a": "Ryan Holiday",
-    "y": 2022,
+    "y": null,
     "p": 639,
     "r": 1,
     "w": null,
-    "c": 13153179
+    "c": 13153179,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Discipline%20is%20Destiny%22%20au%3A%22Ryan%20Holiday%22",
+        "https://books.google.com/books?q=intitle%3A%22Discipline%20is%20Destiny%22%20inauthor%3A%22Ryan%20Holiday%22"
+      ]
+    }
   },
   {
     "k": "/works/OL17357353W",
@@ -49780,11 +49787,18 @@
     "k": "/works/OL20640195W",
     "t": "Into the Pit (Five Nights at Freddy’s",
     "a": "Scott Cawthon",
-    "y": 2019,
+    "y": null,
     "p": 598,
     "r": 1,
     "w": null,
-    "c": 9256631
+    "c": 9256631,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Into%20the%20Pit%20%28Five%20Nights%20at%20Freddy%E2%80%99s%22%20au%3A%22Scott%20Cawthon%22",
+        "https://books.google.com/books?q=intitle%3A%22Into%20the%20Pit%20%28Five%20Nights%20at%20Freddy%E2%80%99s%22%20inauthor%3A%22Scott%20Cawthon%22"
+      ]
+    }
   },
   {
     "k": "/works/OL15456729W",
@@ -49986,11 +50000,18 @@
     "k": "/works/OL20640195M",
     "t": "Die Irrthümer des Romanismus, auf ihren Ursprung in der menschlichen Natur zurückgeführt",
     "a": "Richard Whately",
-    "y": 1833,
+    "y": null,
     "p": 589,
     "r": 1,
     "w": null,
-    "c": null
+    "c": null,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Die%20Irrth%C3%BCmer%20des%20Romanismus%2C%20auf%20ihren%20Ursprung%20in%20der%20menschlichen%20Natur%20zur%C3%BCckgef%C3%BChrt%22%20au%3A%22Richard%20Whately%22",
+        "https://books.google.com/books?q=intitle%3A%22Die%20Irrth%C3%BCmer%20des%20Romanismus%2C%20auf%20ihren%20Ursprung%20in%20der%20menschlichen%20Natur%20zur%C3%BCckgef%C3%BChrt%22%20inauthor%3A%22Richard%20Whately%22"
+      ]
+    }
   },
   {
     "k": "/works/OL45866W",
@@ -50166,11 +50187,18 @@
     "k": "/works/OL34026744W",
     "t": "If Only I Had Told Her",
     "a": "Laura Nowlin",
-    "y": 2023,
+    "y": null,
     "p": 581,
     "r": 1,
     "w": null,
-    "c": 13314497
+    "c": 13314497,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22If%20Only%20I%20Had%20Told%20Her%22%20au%3A%22Laura%20Nowlin%22",
+        "https://books.google.com/books?q=intitle%3A%22If%20Only%20I%20Had%20Told%20Her%22%20inauthor%3A%22Laura%20Nowlin%22"
+      ]
+    }
   },
   {
     "k": "/works/OL3171087W",
@@ -50321,11 +50349,18 @@
     "k": "/works/OL25957469W",
     "t": "Heaven Official's Blessing -- Tian Guan Ci Fu Vol. 1",
     "a": "Mo Xiang Tong Xiu",
-    "y": 2021,
+    "y": null,
     "p": 573,
     "r": 1,
     "w": null,
-    "c": 15127291
+    "c": 15127291,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Heaven%20Official%27s%20Blessing%20--%20Tian%20Guan%20Ci%20Fu%20Vol.%201%22%20au%3A%22Mo%20Xiang%20Tong%20Xiu%22",
+        "https://books.google.com/books?q=intitle%3A%22Heaven%20Official%27s%20Blessing%20--%20Tian%20Guan%20Ci%20Fu%20Vol.%201%22%20inauthor%3A%22Mo%20Xiang%20Tong%20Xiu%22"
+      ]
+    }
   },
   {
     "k": "/works/OL62979W",
@@ -50361,11 +50396,18 @@
     "k": "/works/OL24611849W",
     "t": "Court of Thorns and Roses / A Court of Mist and Fury / A Court of Wings and Ruin / A Court of Frost and Starlight",
     "a": "Sarah J. Maas",
-    "y": 2020,
+    "y": null,
     "p": 571,
     "r": 1,
     "w": null,
-    "c": 11279902
+    "c": 11279902,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Court%20of%20Thorns%20and%20Roses%20/%20A%20Court%20of%20Mist%20and%20Fury%20/%20A%20Court%20of%20Wings%20and%20Ruin%20/%20A%20Court%20of%20Frost%20and%20Starlight%22%20au%3A%22Sarah%20J.%20Maas%22",
+        "https://books.google.com/books?q=intitle%3A%22Court%20of%20Thorns%20and%20Roses%20/%20A%20Court%20of%20Mist%20and%20Fury%20/%20A%20Court%20of%20Wings%20and%20Ruin%20/%20A%20Court%20of%20Frost%20and%20Starlight%22%20inauthor%3A%22Sarah%20J.%20Maas%22"
+      ]
+    }
   },
   {
     "k": "/works/OL1835073W",
@@ -51546,11 +51588,18 @@
     "k": "/works/OL27838518W",
     "t": "From Blood and Ash",
     "a": "Jennifer L. Armentrout",
-    "y": 2020,
+    "y": null,
     "p": 514,
     "r": 1,
     "w": null,
-    "c": 14105538
+    "c": 14105538,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22From%20Blood%20and%20Ash%22%20au%3A%22Jennifer%20L.%20Armentrout%22",
+        "https://books.google.com/books?q=intitle%3A%22From%20Blood%20and%20Ash%22%20inauthor%3A%22Jennifer%20L.%20Armentrout%22"
+      ]
+    }
   },
   {
     "k": "/works/OL5098994W",
@@ -51616,11 +51665,18 @@
     "k": "/works/OL29328354W",
     "t": "Heart Bones",
     "a": "Colleen Hoover",
-    "y": 2020,
+    "y": null,
     "p": 512,
     "r": 1,
     "w": null,
-    "c": 13170122
+    "c": 13170122,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Heart%20Bones%22%20au%3A%22Colleen%20Hoover%22",
+        "https://books.google.com/books?q=intitle%3A%22Heart%20Bones%22%20inauthor%3A%22Colleen%20Hoover%22"
+      ]
+    }
   },
   {
     "k": "/works/OL20882185W",
@@ -52129,11 +52185,18 @@
     "k": "/works/OL25197303W",
     "t": "Love and Other Words",
     "a": "Christina Lauren",
-    "y": 2018,
+    "y": null,
     "p": 494,
     "r": 1,
     "w": null,
-    "c": 15100497
+    "c": 15100497,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Love%20and%20Other%20Words%22%20au%3A%22Christina%20Lauren%22",
+        "https://books.google.com/books?q=intitle%3A%22Love%20and%20Other%20Words%22%20inauthor%3A%22Christina%20Lauren%22"
+      ]
+    }
   },
   {
     "k": "/works/OL3295030W",
@@ -52349,11 +52412,18 @@
     "k": "/works/OL37624474W",
     "t": "I Hope This Doesn't Find You",
     "a": "Ann Liang",
-    "y": 2024,
+    "y": null,
     "p": 485,
     "r": 1,
     "w": null,
-    "c": 14576187
+    "c": 14576187,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22I%20Hope%20This%20Doesn%27t%20Find%20You%22%20au%3A%22Ann%20Liang%22",
+        "https://books.google.com/books?q=intitle%3A%22I%20Hope%20This%20Doesn%27t%20Find%20You%22%20inauthor%3A%22Ann%20Liang%22"
+      ]
+    }
   },
   {
     "k": "/works/OL17342469M",
@@ -53187,11 +53257,18 @@
     "k": "/works/OL23563282W",
     "t": "It Happened One Summer",
     "a": "Tessa Bailey",
-    "y": 2021,
+    "y": null,
     "p": 463,
     "r": 1,
     "w": null,
-    "c": 10514448
+    "c": 10514448,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22It%20Happened%20One%20Summer%22%20au%3A%22Tessa%20Bailey%22",
+        "https://books.google.com/books?q=intitle%3A%22It%20Happened%20One%20Summer%22%20inauthor%3A%22Tessa%20Bailey%22"
+      ]
+    }
   },
   {
     "k": "/works/OL15854658W",
@@ -53347,11 +53424,18 @@
     "k": "/works/OL42393184W",
     "t": "King of Envy",
     "a": "Ana Huang",
-    "y": 2025,
+    "y": null,
     "p": 459,
     "r": 1,
     "w": null,
-    "c": 15129532
+    "c": 15129532,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22King%20of%20Envy%22%20au%3A%22Ana%20Huang%22",
+        "https://books.google.com/books?q=intitle%3A%22King%20of%20Envy%22%20inauthor%3A%22Ana%20Huang%22"
+      ]
+    }
   },
   {
     "k": "/works/OL20885951W",
@@ -54821,11 +54905,18 @@
     "k": "/works/OL22316936W",
     "t": "Before we were strangers",
     "a": "Renée Carlino",
-    "y": 2015,
+    "y": null,
     "p": 421,
     "r": 1,
     "w": null,
-    "c": 13775303
+    "c": 13775303,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Before%20we%20were%20strangers%22%20au%3A%22Ren%C3%A9e%20Carlino%22",
+        "https://books.google.com/books?q=intitle%3A%22Before%20we%20were%20strangers%22%20inauthor%3A%22Ren%C3%A9e%20Carlino%22"
+      ]
+    }
   },
   {
     "k": "/works/OL36494600W",
@@ -55399,11 +55490,18 @@
     "k": "/works/OL37510789W",
     "t": "Once You’re Mine",
     "a": "Morgan Bridges",
-    "y": 2023,
+    "y": null,
     "p": 412,
     "r": 1,
     "w": null,
-    "c": 15134606
+    "c": 15134606,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Once%20You%E2%80%99re%20Mine%22%20au%3A%22Morgan%20Bridges%22",
+        "https://books.google.com/books?q=intitle%3A%22Once%20You%E2%80%99re%20Mine%22%20inauthor%3A%22Morgan%20Bridges%22"
+      ]
+    }
   },
   {
     "k": "/works/OL45865W",
@@ -57052,11 +57150,18 @@
     "k": "/works/OL2330507W",
     "t": "Mga gunita ng himagsikan",
     "a": "Emilio Aguinaldo",
-    "y": 1998,
+    "y": null,
     "p": 377,
     "r": 1,
     "w": null,
-    "c": null
+    "c": null,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Mga%20gunita%20ng%20himagsikan%22%20au%3A%22Emilio%20Aguinaldo%22",
+        "https://books.google.com/books?q=intitle%3A%22Mga%20gunita%20ng%20himagsikan%22%20inauthor%3A%22Emilio%20Aguinaldo%22"
+      ]
+    }
   },
   {
     "k": "/works/OL20006178W",
@@ -57455,11 +57560,18 @@
     "k": "/works/OL22150464W",
     "t": "Crave",
     "a": "Tracy Wolff",
-    "y": 2020,
+    "y": null,
     "p": 371,
     "r": 1,
     "w": null,
-    "c": 12989260
+    "c": 12989260,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Crave%22%20au%3A%22Tracy%20Wolff%22",
+        "https://books.google.com/books?q=intitle%3A%22Crave%22%20inauthor%3A%22Tracy%20Wolff%22"
+      ]
+    }
   },
   {
     "k": "/works/OL1981909W",
@@ -57520,11 +57632,18 @@
     "k": "/works/OL24520616W",
     "t": "How to Kill Your Family",
     "a": "Bella Mackie",
-    "y": 2021,
+    "y": null,
     "p": 369,
     "r": 1,
     "w": null,
-    "c": 11150500
+    "c": 11150500,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22How%20to%20Kill%20Your%20Family%22%20au%3A%22Bella%20Mackie%22",
+        "https://books.google.com/books?q=intitle%3A%22How%20to%20Kill%20Your%20Family%22%20inauthor%3A%22Bella%20Mackie%22"
+      ]
+    }
   },
   {
     "k": "/works/OL8502474W",
@@ -59029,11 +59148,18 @@
     "k": "/works/OL38035515W",
     "t": "Inside Job",
     "a": "Alexis Knightly",
-    "y": 2023,
+    "y": null,
     "p": 343,
     "r": 1,
     "w": null,
-    "c": 14848016
+    "c": 14848016,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Inside%20Job%22%20au%3A%22Alexis%20Knightly%22",
+        "https://books.google.com/books?q=intitle%3A%22Inside%20Job%22%20inauthor%3A%22Alexis%20Knightly%22"
+      ]
+    }
   },
   {
     "k": "/works/OL17190366W",
@@ -59179,11 +59305,18 @@
     "k": "/works/OL24643025W",
     "t": "Mathematics for Class 10",
     "a": "R. D. Sharma",
-    "y": 2017,
+    "y": null,
     "p": 341,
     "r": 1,
     "w": null,
-    "c": 11326611
+    "c": 11326611,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Mathematics%20for%20Class%2010%22%20au%3A%22R.%20D.%20Sharma%22",
+        "https://books.google.com/books?q=intitle%3A%22Mathematics%20for%20Class%2010%22%20inauthor%3A%22R.%20D.%20Sharma%22"
+      ]
+    }
   },
   {
     "k": "/works/OL31341461W",
@@ -59399,11 +59532,18 @@
     "k": "/works/OL21234092W",
     "t": "Cruel King",
     "a": "Rina Kent",
-    "y": 2019,
+    "y": null,
     "p": 339,
     "r": 1,
     "w": null,
-    "c": 10355107
+    "c": 10355107,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Cruel%20King%22%20au%3A%22Rina%20Kent%22",
+        "https://books.google.com/books?q=intitle%3A%22Cruel%20King%22%20inauthor%3A%22Rina%20Kent%22"
+      ]
+    }
   },
   {
     "k": "/works/OL19542272W",
@@ -59524,11 +59664,18 @@
     "k": "/works/OL28607665W",
     "t": "Happy Place",
     "a": "Emily Henry",
-    "y": 2023,
+    "y": null,
     "p": 337,
     "r": 1,
     "w": null,
-    "c": 13233403
+    "c": 13233403,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Happy%20Place%22%20au%3A%22Emily%20Henry%22",
+        "https://books.google.com/books?q=intitle%3A%22Happy%20Place%22%20inauthor%3A%22Emily%20Henry%22"
+      ]
+    }
   },
   {
     "k": "/works/OL3348658W",
@@ -59694,11 +59841,18 @@
     "k": "/works/OL20644916W",
     "t": "Jujutsu Kaisen, Vol. 1",
     "a": "Gege Akutami",
-    "y": 2019,
+    "y": null,
     "p": 335,
     "r": 1,
     "w": null,
-    "c": 9270022
+    "c": 9270022,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Jujutsu%20Kaisen%2C%20Vol.%201%22%20au%3A%22Gege%20Akutami%22",
+        "https://books.google.com/books?q=intitle%3A%22Jujutsu%20Kaisen%2C%20Vol.%201%22%20inauthor%3A%22Gege%20Akutami%22"
+      ]
+    }
   },
   {
     "k": "/works/OL42481402W",
@@ -60238,11 +60392,18 @@
     "k": "/works/OL21234089W",
     "t": "Deviant King",
     "a": "Rina Kent",
-    "y": 2019,
+    "y": null,
     "p": 329,
     "r": 1,
     "w": null,
-    "c": 10355106
+    "c": 10355106,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Deviant%20King%22%20au%3A%22Rina%20Kent%22",
+        "https://books.google.com/books?q=intitle%3A%22Deviant%20King%22%20inauthor%3A%22Rina%20Kent%22"
+      ]
+    }
   },
   {
     "k": "/works/OL1821254W",
@@ -60613,11 +60774,18 @@
     "k": "/works/OL25959739W",
     "t": "All That You Deserve",
     "a": "Whitney",
-    "y": 2021,
+    "y": null,
     "p": 323,
     "r": 1,
     "w": null,
-    "c": null
+    "c": null,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22All%20That%20You%20Deserve%22%20au%3A%22Whitney%22",
+        "https://books.google.com/books?q=intitle%3A%22All%20That%20You%20Deserve%22%20inauthor%3A%22Whitney%22"
+      ]
+    }
   },
   {
     "k": "/works/OL43271781W",
@@ -61332,11 +61500,18 @@
     "k": "/works/OL34357614W",
     "t": "Big Nate",
     "a": "Lincoln Pierce",
-    "y": 2012,
+    "y": null,
     "p": 315,
     "r": 1,
     "w": null,
-    "c": 13840903
+    "c": 13840903,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Big%20Nate%22%20au%3A%22Lincoln%20Pierce%22",
+        "https://books.google.com/books?q=intitle%3A%22Big%20Nate%22%20inauthor%3A%22Lincoln%20Pierce%22"
+      ]
+    }
   },
   {
     "k": "/works/OL4658246W",
@@ -61432,11 +61607,18 @@
     "k": "/works/OL28852929W",
     "t": "Flawless",
     "a": "Elsie Silver",
-    "y": 2022,
+    "y": null,
     "p": 314,
     "r": 1,
     "w": null,
-    "c": 13735432
+    "c": 13735432,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Flawless%22%20au%3A%22Elsie%20Silver%22",
+        "https://books.google.com/books?q=intitle%3A%22Flawless%22%20inauthor%3A%22Elsie%20Silver%22"
+      ]
+    }
   },
   {
     "k": "/works/OL362698W",
@@ -63084,11 +63266,18 @@
     "k": "/works/OL26239302W",
     "t": "400 Days",
     "a": "Chetan Bhagat",
-    "y": 2021,
+    "y": null,
     "p": 296,
     "r": 1,
     "w": null,
-    "c": 12239364
+    "c": 12239364,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22400%20Days%22%20au%3A%22Chetan%20Bhagat%22",
+        "https://books.google.com/books?q=intitle%3A%22400%20Days%22%20inauthor%3A%22Chetan%20Bhagat%22"
+      ]
+    }
   },
   {
     "k": "/works/OL1992167W",
@@ -64645,11 +64834,18 @@
     "k": "/works/OL26416429W",
     "t": "Addicted To You",
     "a": "Krista Ritchie",
-    "y": 2013,
+    "y": null,
     "p": 282,
     "r": 1,
     "w": null,
-    "c": 12371242
+    "c": 12371242,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Addicted%20To%20You%22%20au%3A%22Krista%20Ritchie%22",
+        "https://books.google.com/books?q=intitle%3A%22Addicted%20To%20You%22%20inauthor%3A%22Krista%20Ritchie%22"
+      ]
+    }
   },
   {
     "k": "/works/OL17762235W",
@@ -64705,11 +64901,18 @@
     "k": "/works/OL20689526W",
     "t": "Imagine Me",
     "a": "Tahereh Mafi",
-    "y": 2020,
+    "y": null,
     "p": 282,
     "r": 1,
     "w": null,
-    "c": 9363194
+    "c": 9363194,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Imagine%20Me%22%20au%3A%22Tahereh%20Mafi%22",
+        "https://books.google.com/books?q=intitle%3A%22Imagine%20Me%22%20inauthor%3A%22Tahereh%20Mafi%22"
+      ]
+    }
   },
   {
     "k": "/works/OL52953W",
@@ -65125,11 +65328,18 @@
     "k": "/works/OL9305390M",
     "t": "Cardboard Boxes (Creative Fun with)",
     "a": "Nikki Connor",
-    "y": 1997,
+    "y": null,
     "p": 278,
     "r": 1,
     "w": null,
-    "c": null
+    "c": null,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Cardboard%20Boxes%20%28Creative%20Fun%20with%29%22%20au%3A%22Nikki%20Connor%22",
+        "https://books.google.com/books?q=intitle%3A%22Cardboard%20Boxes%20%28Creative%20Fun%20with%29%22%20inauthor%3A%22Nikki%20Connor%22"
+      ]
+    }
   },
   {
     "k": "/works/OL17874268W",
@@ -65445,11 +65655,18 @@
     "k": "/works/OL26301720W",
     "t": "I Have No Mouth and I Must Scream",
     "a": "Harlan Ellison",
-    "y": 2012,
+    "y": null,
     "p": 275,
     "r": 1,
     "w": null,
-    "c": 14625389
+    "c": 14625389,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22I%20Have%20No%20Mouth%20and%20I%20Must%20Scream%22%20au%3A%22Harlan%20Ellison%22",
+        "https://books.google.com/books?q=intitle%3A%22I%20Have%20No%20Mouth%20and%20I%20Must%20Scream%22%20inauthor%3A%22Harlan%20Ellison%22"
+      ]
+    }
   },
   {
     "k": "/works/OL20004815M",
@@ -66469,11 +66686,18 @@
     "k": "/works/OL8952297W",
     "t": "Hooked on Phonics",
     "a": "Hooked on Phonics",
-    "y": 2005,
+    "y": null,
     "p": 268,
     "r": 1,
     "w": null,
-    "c": 2120066
+    "c": 2120066,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Hooked%20on%20Phonics%22%20au%3A%22Hooked%20on%20Phonics%22",
+        "https://books.google.com/books?q=intitle%3A%22Hooked%20on%20Phonics%22%20inauthor%3A%22Hooked%20on%20Phonics%22"
+      ]
+    }
   },
   {
     "k": "/works/OL17104741W",
@@ -66869,11 +67093,18 @@
     "k": "/works/OL6834774W",
     "t": "Other people's money",
     "a": "Donald Ray Cressey",
-    "y": 1953,
+    "y": null,
     "p": 265,
     "r": 1,
     "w": null,
-    "c": 7922093
+    "c": 7922093,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Other%20people%27s%20money%22%20au%3A%22Donald%20Ray%20Cressey%22",
+        "https://books.google.com/books?q=intitle%3A%22Other%20people%27s%20money%22%20inauthor%3A%22Donald%20Ray%20Cressey%22"
+      ]
+    }
   },
   {
     "k": "/works/OL9200964W",
@@ -67613,11 +67844,18 @@
     "k": "/works/OL25957460W",
     "t": "Grandmaster of Demonic Cultivation",
     "a": "Mo Xiang Tong Xiu",
-    "y": 2022,
+    "y": null,
     "p": 260,
     "r": 1,
     "w": null,
-    "c": 13305989
+    "c": 13305989,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Grandmaster%20of%20Demonic%20Cultivation%22%20au%3A%22Mo%20Xiang%20Tong%20Xiu%22",
+        "https://books.google.com/books?q=intitle%3A%22Grandmaster%20of%20Demonic%20Cultivation%22%20inauthor%3A%22Mo%20Xiang%20Tong%20Xiu%22"
+      ]
+    }
   },
   {
     "k": "/works/OL19552275W",
@@ -67843,11 +68081,18 @@
     "k": "/works/OL21950557W",
     "t": "How to Not Die Alone",
     "a": "Logan Ury",
-    "y": 2021,
+    "y": null,
     "p": 258,
     "r": 1,
     "w": null,
-    "c": 10827652
+    "c": 10827652,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22How%20to%20Not%20Die%20Alone%22%20au%3A%22Logan%20Ury%22",
+        "https://books.google.com/books?q=intitle%3A%22How%20to%20Not%20Die%20Alone%22%20inauthor%3A%22Logan%20Ury%22"
+      ]
+    }
   },
   {
     "k": "/works/OL52982W",
@@ -68377,11 +68622,18 @@
     "k": "/works/OL28801103W",
     "t": "Dog Man",
     "a": "Dav Pilkey",
-    "y": 2023,
+    "y": null,
     "p": 255,
     "r": 1,
     "w": null,
-    "c": 13126378
+    "c": 13126378,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Dog%20Man%22%20au%3A%22Dav%20Pilkey%22",
+        "https://books.google.com/books?q=intitle%3A%22Dog%20Man%22%20inauthor%3A%22Dav%20Pilkey%22"
+      ]
+    }
   },
   {
     "k": "/works/OL20795862W",
@@ -69251,11 +69503,18 @@
     "k": "/works/OL9330611W",
     "t": "Buzani Kubawo",
     "a": "W.K. Tamsanqa",
-    "y": 1991,
+    "y": null,
     "p": 248,
     "r": 1,
     "w": null,
-    "c": 2330545
+    "c": 2330545,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Buzani%20Kubawo%22%20au%3A%22W.K.%20Tamsanqa%22",
+        "https://books.google.com/books?q=intitle%3A%22Buzani%20Kubawo%22%20inauthor%3A%22W.K.%20Tamsanqa%22"
+      ]
+    }
   },
   {
     "k": "/works/OL12388W",
@@ -69550,11 +69809,18 @@
     "k": "/works/OL4926069W",
     "t": "Dizzy angel",
     "a": "Gracy Nma Osifo",
-    "y": 1985,
+    "y": null,
     "p": 247,
     "r": 1,
     "w": null,
-    "c": 12726374
+    "c": 12726374,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Dizzy%20angel%22%20au%3A%22Gracy%20Nma%20Osifo%22",
+        "https://books.google.com/books?q=intitle%3A%22Dizzy%20angel%22%20inauthor%3A%22Gracy%20Nma%20Osifo%22"
+      ]
+    }
   },
   {
     "k": "/works/OL20024798W",
@@ -69665,11 +69931,18 @@
     "k": "/works/OL28351716W",
     "t": "Nearly All the Men in Lagos Are Mad",
     "a": "Damilare Kuku",
-    "y": 2021,
+    "y": null,
     "p": 246,
     "r": 1,
     "w": null,
-    "c": 15164626
+    "c": 15164626,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Nearly%20All%20the%20Men%20in%20Lagos%20Are%20Mad%22%20au%3A%22Damilare%20Kuku%22",
+        "https://books.google.com/books?q=intitle%3A%22Nearly%20All%20the%20Men%20in%20Lagos%20Are%20Mad%22%20inauthor%3A%22Damilare%20Kuku%22"
+      ]
+    }
   },
   {
     "k": "/works/OL1948425W",
@@ -69904,12 +70177,36 @@
   {
     "k": "/works/OL21097163M",
     "t": "Parthenia in-violata or Mayden-musicke for the Virginall and Bass-viol",
-    "a": "",
-    "y": 1961,
+    "a": "Unknown author",
+    "y": null,
     "p": 244,
     "r": 1,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": null,
+      "earliest": 1614,
+      "latest": 1624,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Parthenia_Inviolata"
+      ]
+    },
+    "authorship": {
+      "status": "anonymous",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Parthenia_Inviolata"
+      ]
+    },
+    "protected_questions": [
+      "author:alive",
+      "author:american",
+      "author:british",
+      "author:european",
+      "author:female",
+      "author:nonwestern",
+      "author:prolific"
+    ]
   },
   {
     "k": "/works/OL5714310W",
@@ -70413,11 +70710,18 @@
     "k": "/works/OL3759285W",
     "t": "Bought with His Name",
     "a": "Penny Jordan",
-    "y": 1982,
+    "y": null,
     "p": 241,
     "r": 1,
     "w": null,
-    "c": 7248501
+    "c": 7248501,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Bought%20with%20His%20Name%22%20au%3A%22Penny%20Jordan%22",
+        "https://books.google.com/books?q=intitle%3A%22Bought%20with%20His%20Name%22%20inauthor%3A%22Penny%20Jordan%22"
+      ]
+    }
   },
   {
     "k": "/works/OL16249343W",
@@ -70673,11 +70977,18 @@
     "k": "/works/OL5881662W",
     "t": "Cantik itu luka",
     "a": "Eka Kurniawan",
-    "y": 2002,
+    "y": null,
     "p": 240,
     "r": 1,
     "w": null,
-    "c": 14846592
+    "c": 14846592,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Cantik%20itu%20luka%22%20au%3A%22Eka%20Kurniawan%22",
+        "https://books.google.com/books?q=intitle%3A%22Cantik%20itu%20luka%22%20inauthor%3A%22Eka%20Kurniawan%22"
+      ]
+    }
   },
   {
     "k": "/works/OL21911019W",
@@ -71263,11 +71574,18 @@
     "k": "/works/OL27893158W",
     "t": "Divine Rivals",
     "a": "Rebecca Ross",
-    "y": 2023,
+    "y": null,
     "p": 237,
     "r": 1,
     "w": null,
-    "c": 13268161
+    "c": 13268161,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Divine%20Rivals%22%20au%3A%22Rebecca%20Ross%22",
+        "https://books.google.com/books?q=intitle%3A%22Divine%20Rivals%22%20inauthor%3A%22Rebecca%20Ross%22"
+      ]
+    }
   },
   {
     "k": "/works/OL46913W",
@@ -71307,7 +71625,14 @@
     "p": 236,
     "r": 1,
     "w": null,
-    "c": 11271394
+    "c": 11271394,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Heaven%22%20au%3A%22%E5%B7%9D%E4%B8%8A%E6%9C%AA%E6%98%A0%E5%AD%90%22",
+        "https://books.google.com/books?q=intitle%3A%22Heaven%22%20inauthor%3A%22%E5%B7%9D%E4%B8%8A%E6%9C%AA%E6%98%A0%E5%AD%90%22"
+      ]
+    }
   },
   {
     "k": "/works/OL20112808W",
@@ -71437,11 +71762,18 @@
     "k": "/works/OL27640264W",
     "t": "Praise",
     "a": "Sara Cate",
-    "y": 2022,
+    "y": null,
     "p": 235,
     "r": 1,
     "w": null,
-    "c": 13239247
+    "c": 13239247,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Praise%22%20au%3A%22Sara%20Cate%22",
+        "https://books.google.com/books?q=intitle%3A%22Praise%22%20inauthor%3A%22Sara%20Cate%22"
+      ]
+    }
   },
   {
     "k": "/works/OL167179W",
@@ -71471,7 +71803,22 @@
     "p": 235,
     "r": 1,
     "w": null,
-    "c": 10489426
+    "c": 10489426,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2017,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://archive.org/details/365dayswithselfd0000mart"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://archive.org/details/365dayswithselfd0000mart"
+      ]
+    }
   },
   {
     "k": "/works/OL3338193W",
@@ -72665,11 +73012,18 @@
     "k": "/works/OL35857113W",
     "t": "Hyper Focus",
     "a": "Autum Wind",
-    "y": 2023,
+    "y": null,
     "p": 229,
     "r": 1,
     "w": null,
-    "c": 14417990
+    "c": 14417990,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Hyper%20Focus%22%20au%3A%22Autum%20Wind%22",
+        "https://books.google.com/books?q=intitle%3A%22Hyper%20Focus%22%20inauthor%3A%22Autum%20Wind%22"
+      ]
+    }
   },
   {
     "k": "/works/OL25442316W",
@@ -72959,11 +73313,18 @@
     "k": "/works/OL25957118W",
     "t": "Dopamine Detox",
     "a": "Blake Rabizadeh",
-    "y": 2021,
+    "y": null,
     "p": 228,
     "r": 1,
     "w": null,
-    "c": 15126894
+    "c": 15126894,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Dopamine%20Detox%22%20au%3A%22Blake%20Rabizadeh%22",
+        "https://books.google.com/books?q=intitle%3A%22Dopamine%20Detox%22%20inauthor%3A%22Blake%20Rabizadeh%22"
+      ]
+    }
   },
   {
     "k": "/works/OL85714W",
@@ -73063,7 +73424,22 @@
     "p": 227,
     "r": 1,
     "w": null,
-    "c": 14373768
+    "c": 14373768,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2023,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://us.macmillan.com/books/9781250326768/beyondthestory/"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://us.macmillan.com/books/9781250326768/beyondthestory/"
+      ]
+    }
   },
   {
     "k": "/works/OL1980586W",
@@ -73273,11 +73649,18 @@
     "k": "/works/OL22535730W",
     "t": "From Blood and Ash",
     "a": "Jennifer L. Armentrout",
-    "y": 2020,
+    "y": null,
     "p": 226,
     "r": 1,
     "w": null,
-    "c": 10474893
+    "c": 10474893,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22From%20Blood%20and%20Ash%22%20au%3A%22Jennifer%20L.%20Armentrout%22",
+        "https://books.google.com/books?q=intitle%3A%22From%20Blood%20and%20Ash%22%20inauthor%3A%22Jennifer%20L.%20Armentrout%22"
+      ]
+    }
   },
   {
     "k": "/works/OL28775228W",
@@ -73383,11 +73766,18 @@
     "k": "/works/OL24776665W",
     "t": "A Dictionary Of Color Combinations",
     "a": "Various",
-    "y": 2011,
+    "y": null,
     "p": 226,
     "r": 1,
     "w": null,
-    "c": 11531788
+    "c": 11531788,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22A%20Dictionary%20Of%20Color%20Combinations%22%20au%3A%22Various%22",
+        "https://books.google.com/books?q=intitle%3A%22A%20Dictionary%20Of%20Color%20Combinations%22%20inauthor%3A%22Various%22"
+      ]
+    }
   },
   {
     "k": "/works/OL52966W",
@@ -73403,11 +73793,18 @@
     "k": "/works/OL25884573W",
     "t": "It's All Love",
     "a": "Jenna Ortega",
-    "y": 2021,
+    "y": null,
     "p": 225,
     "r": 1,
     "w": null,
-    "c": 13257900
+    "c": 13257900,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22It%27s%20All%20Love%22%20au%3A%22Jenna%20Ortega%22",
+        "https://books.google.com/books?q=intitle%3A%22It%27s%20All%20Love%22%20inauthor%3A%22Jenna%20Ortega%22"
+      ]
+    }
   },
   {
     "k": "/works/OL35675846W",
@@ -73423,21 +73820,35 @@
     "k": "/works/OL28056389W",
     "t": "Everything You'll Ever Need  : (You Can Find Within Yourself)",
     "a": "Charlotte Freeman",
-    "y": 2020,
+    "y": null,
     "p": 225,
     "r": 1,
     "w": null,
-    "c": 14856064
+    "c": 14856064,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Everything%20You%27ll%20Ever%20Need%20%20%3A%20%28You%20Can%20Find%20Within%20Yourself%29%22%20au%3A%22Charlotte%20Freeman%22",
+        "https://books.google.com/books?q=intitle%3A%22Everything%20You%27ll%20Ever%20Need%20%20%3A%20%28You%20Can%20Find%20Within%20Yourself%29%22%20inauthor%3A%22Charlotte%20Freeman%22"
+      ]
+    }
   },
   {
     "k": "/works/OL3891392W",
     "t": "Psikologi remaja",
     "a": "Muhamad Mansur Abdullah",
-    "y": 1988,
+    "y": null,
     "p": 225,
     "r": 1,
     "w": null,
-    "c": 4053880
+    "c": 4053880,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Psikologi%20remaja%22%20au%3A%22Muhamad%20Mansur%20Abdullah%22",
+        "https://books.google.com/books?q=intitle%3A%22Psikologi%20remaja%22%20inauthor%3A%22Muhamad%20Mansur%20Abdullah%22"
+      ]
+    }
   },
   {
     "k": "/works/OL1949942W",
@@ -75189,11 +75600,18 @@
     "k": "/works/OL5988225W",
     "t": "Hukum administrasi negara",
     "a": "H. R. Ridwan",
-    "y": 2002,
+    "y": null,
     "p": 210,
     "r": 1,
     "w": null,
-    "c": null
+    "c": null,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Hukum%20administrasi%20negara%22%20au%3A%22H.%20R.%20Ridwan%22",
+        "https://books.google.com/books?q=intitle%3A%22Hukum%20administrasi%20negara%22%20inauthor%3A%22H.%20R.%20Ridwan%22"
+      ]
+    }
   },
   {
     "k": "/works/OL16943205W",
@@ -75562,11 +75980,18 @@
     "k": "/works/OL24319985W",
     "t": "Lallan Sweets",
     "a": "Srishti Chaudhary",
-    "y": 2020,
+    "y": null,
     "p": 209,
     "r": 1,
     "w": null,
-    "c": 10838451
+    "c": 10838451,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Lallan%20Sweets%22%20au%3A%22Srishti%20Chaudhary%22",
+        "https://books.google.com/books?q=intitle%3A%22Lallan%20Sweets%22%20inauthor%3A%22Srishti%20Chaudhary%22"
+      ]
+    }
   },
   {
     "k": "/works/OL17867019W",
@@ -76088,11 +76513,18 @@
     "k": "/works/OL6814714W",
     "t": "A Textbook of quantum mechanics",
     "a": "Piravonu Mathews Mathews",
-    "y": 1976,
+    "y": null,
     "p": 207,
     "r": 1,
     "w": null,
-    "c": 1075614
+    "c": 1075614,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22A%20Textbook%20of%20quantum%20mechanics%22%20au%3A%22Piravonu%20Mathews%20Mathews%22",
+        "https://books.google.com/books?q=intitle%3A%22A%20Textbook%20of%20quantum%20mechanics%22%20inauthor%3A%22Piravonu%20Mathews%20Mathews%22"
+      ]
+    }
   },
   {
     "k": "/works/OL44927W",
@@ -76229,11 +76661,18 @@
     "k": "/works/OL21694181W",
     "t": "Heartstopper Colouring Book",
     "a": "Alice Oseman",
-    "y": 2020,
+    "y": null,
     "p": 206,
     "r": 1,
     "w": null,
-    "c": 12881465
+    "c": 12881465,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Heartstopper%20Colouring%20Book%22%20au%3A%22Alice%20Oseman%22",
+        "https://books.google.com/books?q=intitle%3A%22Heartstopper%20Colouring%20Book%22%20inauthor%3A%22Alice%20Oseman%22"
+      ]
+    }
   },
   {
     "k": "/works/OL15094808W",
@@ -76514,11 +76953,18 @@
     "k": "/works/OL3509579W",
     "t": "Mathematics for Computer Technology",
     "a": "Robert McCullough",
-    "y": 2006,
+    "y": null,
     "p": 205,
     "r": 1,
     "w": null,
-    "c": 6016165
+    "c": 6016165,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Mathematics%20for%20Computer%20Technology%22%20au%3A%22Robert%20McCullough%22",
+        "https://books.google.com/books?q=intitle%3A%22Mathematics%20for%20Computer%20Technology%22%20inauthor%3A%22Robert%20McCullough%22"
+      ]
+    }
   },
   {
     "k": "/works/OL77748W",
@@ -77114,11 +77560,18 @@
     "k": "/works/OL27244347W",
     "t": "Forever after All",
     "a": "Catharina Maura",
-    "y": 2021,
+    "y": null,
     "p": 202,
     "r": 1,
     "w": null,
-    "c": 13127419
+    "c": 13127419,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Forever%20after%20All%22%20au%3A%22Catharina%20Maura%22",
+        "https://books.google.com/books?q=intitle%3A%22Forever%20after%20All%22%20inauthor%3A%22Catharina%20Maura%22"
+      ]
+    }
   },
   {
     "k": "/works/OL20799721W",
@@ -77561,11 +78014,18 @@
     "k": "/works/OL8315359W",
     "t": "Impossible Bargain",
     "a": "Patricia Wilson",
-    "y": 1987,
+    "y": null,
     "p": 201,
     "r": 1,
     "w": null,
-    "c": 6628857
+    "c": 6628857,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Impossible%20Bargain%22%20au%3A%22Patricia%20Wilson%22",
+        "https://books.google.com/books?q=intitle%3A%22Impossible%20Bargain%22%20inauthor%3A%22Patricia%20Wilson%22"
+      ]
+    }
   },
   {
     "k": "/works/OL274509W",
@@ -77752,11 +78212,18 @@
     "k": "/works/OL21913102W",
     "t": "I Used to Have a Plan",
     "a": "Alessandra Olanow",
-    "y": 2020,
+    "y": null,
     "p": 200,
     "r": 1,
     "w": null,
-    "c": 12873095
+    "c": 12873095,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22I%20Used%20to%20Have%20a%20Plan%22%20au%3A%22Alessandra%20Olanow%22",
+        "https://books.google.com/books?q=intitle%3A%22I%20Used%20to%20Have%20a%20Plan%22%20inauthor%3A%22Alessandra%20Olanow%22"
+      ]
+    }
   },
   {
     "k": "/works/OL17274040W",
@@ -78992,11 +79459,18 @@
     "k": "/works/OL3770466W",
     "t": "Betrayal in Bali",
     "a": "Sally Wentworth",
-    "y": 1980,
+    "y": null,
     "p": 198,
     "r": 1,
     "w": null,
-    "c": 7304574
+    "c": 7304574,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Betrayal%20in%20Bali%22%20au%3A%22Sally%20Wentworth%22",
+        "https://books.google.com/books?q=intitle%3A%22Betrayal%20in%20Bali%22%20inauthor%3A%22Sally%20Wentworth%22"
+      ]
+    }
   },
   {
     "k": "/works/OL15659750W",
@@ -80477,11 +80951,18 @@
     "k": "/works/OL38376217W",
     "t": "Buy Yourself the Damn Flowers",
     "a": "Tam Kaur",
-    "y": 2024,
+    "y": null,
     "p": 194,
     "r": 1,
     "w": null,
-    "c": 14651388
+    "c": 14651388,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Buy%20Yourself%20the%20Damn%20Flowers%22%20au%3A%22Tam%20Kaur%22",
+        "https://books.google.com/books?q=intitle%3A%22Buy%20Yourself%20the%20Damn%20Flowers%22%20inauthor%3A%22Tam%20Kaur%22"
+      ]
+    }
   },
   {
     "k": "/works/OL1818563W",
@@ -80637,11 +81118,18 @@
     "k": "/works/OL28148070W",
     "t": "Outlive",
     "a": "Peter Attia",
-    "y": 2023,
+    "y": null,
     "p": 193,
     "r": 1,
     "w": "Q125943427",
-    "c": 13191259
+    "c": 13191259,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Outlive%22%20au%3A%22Peter%20Attia%22",
+        "https://books.google.com/books?q=intitle%3A%22Outlive%22%20inauthor%3A%22Peter%20Attia%22"
+      ]
+    }
   },
   {
     "k": "/works/OL22235242W",
@@ -81303,11 +81791,18 @@
     "k": "/works/OL20655813W",
     "t": "If You Tell",
     "a": "Gregg Olsen",
-    "y": 2019,
+    "y": null,
     "p": 192,
     "r": 1,
     "w": null,
-    "c": 10101535
+    "c": 10101535,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22If%20You%20Tell%22%20au%3A%22Gregg%20Olsen%22",
+        "https://books.google.com/books?q=intitle%3A%22If%20You%20Tell%22%20inauthor%3A%22Gregg%20Olsen%22"
+      ]
+    }
   },
   {
     "k": "/works/OL28067455W",
@@ -83816,11 +84311,18 @@
     "k": "/works/OL35923530W",
     "t": "Between Commitment and Betrayal",
     "a": "Shain Rose",
-    "y": 2023,
+    "y": null,
     "p": 187,
     "r": 1,
     "w": null,
-    "c": 14801514
+    "c": 14801514,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Between%20Commitment%20and%20Betrayal%22%20au%3A%22Shain%20Rose%22",
+        "https://books.google.com/books?q=intitle%3A%22Between%20Commitment%20and%20Betrayal%22%20inauthor%3A%22Shain%20Rose%22"
+      ]
+    }
   },
   {
     "k": "/works/OL62918W",
@@ -84666,11 +85168,18 @@
     "k": "/works/OL8377463W",
     "t": "Lucy and the Sea Monster",
     "a": "Karen Dolby",
-    "y": 1994,
+    "y": null,
     "p": 184,
     "r": 1,
     "w": null,
-    "c": 560411
+    "c": 560411,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Lucy%20and%20the%20Sea%20Monster%22%20au%3A%22Karen%20Dolby%22",
+        "https://books.google.com/books?q=intitle%3A%22Lucy%20and%20the%20Sea%20Monster%22%20inauthor%3A%22Karen%20Dolby%22"
+      ]
+    }
   },
   {
     "k": "/works/OL16806416W",
@@ -88074,11 +88583,18 @@
     "k": "/works/OL24141388W",
     "t": "From Lukov with Love",
     "a": "Mariana Zapata",
-    "y": 2018,
+    "y": null,
     "p": 177,
     "r": 1,
     "w": null,
-    "c": 10538876
+    "c": 10538876,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22From%20Lukov%20with%20Love%22%20au%3A%22Mariana%20Zapata%22",
+        "https://books.google.com/books?q=intitle%3A%22From%20Lukov%20with%20Love%22%20inauthor%3A%22Mariana%20Zapata%22"
+      ]
+    }
   },
   {
     "k": "/works/OL14873921W",
@@ -88104,11 +88620,18 @@
     "k": "/works/OL36775731W",
     "t": "Butcher & Blackbird",
     "a": "Brynne Weaver",
-    "y": 2023,
+    "y": null,
     "p": 177,
     "r": 1,
     "w": null,
-    "c": 15133634
+    "c": 15133634,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Butcher%20%26%20Blackbird%22%20au%3A%22Brynne%20Weaver%22",
+        "https://books.google.com/books?q=intitle%3A%22Butcher%20%26%20Blackbird%22%20inauthor%3A%22Brynne%20Weaver%22"
+      ]
+    }
   },
   {
     "k": "/works/OL20033319W",
@@ -88663,11 +89186,18 @@
     "k": "/works/OL3759116W",
     "t": "Lover's Touch",
     "a": "Penny Jordan",
-    "y": 1989,
+    "y": null,
     "p": 177,
     "r": 1,
     "w": null,
-    "c": 12394501
+    "c": 12394501,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Lover%27s%20Touch%22%20au%3A%22Penny%20Jordan%22",
+        "https://books.google.com/books?q=intitle%3A%22Lover%27s%20Touch%22%20inauthor%3A%22Penny%20Jordan%22"
+      ]
+    }
   },
   {
     "k": "/works/OL8966593W",
@@ -89130,11 +89660,17 @@
     "k": "/works/OL20683139M",
     "t": "Kleine Geschichten aus Thüringen",
     "a": "",
-    "y": 1991,
+    "y": null,
     "p": 176,
     "r": 1,
     "w": null,
-    "c": null
+    "c": null,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://diebuchsuche.ch/buch-isbn-9783872031044.html"
+      ]
+    }
   },
   {
     "k": "/works/OL3285806W",
@@ -89774,11 +90310,18 @@
     "k": "/works/OL24244816W",
     "t": "Allergic",
     "a": "Megan Wagner Lloyd",
-    "y": 2021,
+    "y": null,
     "p": 175,
     "r": 1,
     "w": null,
-    "c": 10724638
+    "c": 10724638,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Allergic%22%20au%3A%22Megan%20Wagner%20Lloyd%22",
+        "https://books.google.com/books?q=intitle%3A%22Allergic%22%20inauthor%3A%22Megan%20Wagner%20Lloyd%22"
+      ]
+    }
   },
   {
     "k": "/works/OL17897191W",
@@ -90232,11 +90775,18 @@
     "k": "/works/OL8229933W",
     "t": "Alternative Cures",
     "a": "Bill Gottlieb",
-    "y": 2000,
+    "y": null,
     "p": 174,
     "r": 1,
     "w": null,
-    "c": 837053
+    "c": 837053,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Alternative%20Cures%22%20au%3A%22Bill%20Gottlieb%22",
+        "https://books.google.com/books?q=intitle%3A%22Alternative%20Cures%22%20inauthor%3A%22Bill%20Gottlieb%22"
+      ]
+    }
   },
   {
     "k": "/works/OL1933112W",
@@ -90678,11 +91228,18 @@
     "k": "/works/OL25809537W",
     "t": "House Across the Lake",
     "a": "Riley Sager",
-    "y": 2022,
+    "y": null,
     "p": 173,
     "r": 1,
     "w": null,
-    "c": 12802833
+    "c": 12802833,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22House%20Across%20the%20Lake%22%20au%3A%22Riley%20Sager%22",
+        "https://books.google.com/books?q=intitle%3A%22House%20Across%20the%20Lake%22%20inauthor%3A%22Riley%20Sager%22"
+      ]
+    }
   },
   {
     "k": "/works/OL3743769W",
@@ -92260,11 +92817,18 @@
     "k": "/works/OL27954238W",
     "t": "A Not So Meet Cute",
     "a": "Meghan Quinn",
-    "y": 2021,
+    "y": null,
     "p": 170,
     "r": 1,
     "w": null,
-    "c": 13240821
+    "c": 13240821,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22A%20Not%20So%20Meet%20Cute%22%20au%3A%22Meghan%20Quinn%22",
+        "https://books.google.com/books?q=intitle%3A%22A%20Not%20So%20Meet%20Cute%22%20inauthor%3A%22Meghan%20Quinn%22"
+      ]
+    }
   },
   {
     "k": "/works/OL3467489W",
@@ -92310,11 +92874,18 @@
     "k": "/works/OL3770495W",
     "t": "Jilted",
     "a": "Sally Wentworth",
-    "y": 1983,
+    "y": null,
     "p": 170,
     "r": 1,
     "w": null,
-    "c": 8081481
+    "c": 8081481,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Jilted%22%20au%3A%22Sally%20Wentworth%22",
+        "https://books.google.com/books?q=intitle%3A%22Jilted%22%20inauthor%3A%22Sally%20Wentworth%22"
+      ]
+    }
   },
   {
     "k": "/works/OL1867086W",
@@ -92440,11 +93011,18 @@
     "k": "/works/OL20238397W",
     "t": "Finding Cinderella",
     "a": "Colleen Hoover",
-    "y": 2013,
+    "y": null,
     "p": 170,
     "r": 1,
     "w": null,
-    "c": 8892868
+    "c": 8892868,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Finding%20Cinderella%22%20au%3A%22Colleen%20Hoover%22",
+        "https://books.google.com/books?q=intitle%3A%22Finding%20Cinderella%22%20inauthor%3A%22Colleen%20Hoover%22"
+      ]
+    }
   },
   {
     "k": "/works/OL72233W",
@@ -93578,11 +94156,18 @@
     "k": "/works/OL24161844W",
     "t": "Local Woman Missing",
     "a": "Mary Kubica",
-    "y": 2021,
+    "y": null,
     "p": 167,
     "r": 1,
     "w": null,
-    "c": 10677491
+    "c": 10677491,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Local%20Woman%20Missing%22%20au%3A%22Mary%20Kubica%22",
+        "https://books.google.com/books?q=intitle%3A%22Local%20Woman%20Missing%22%20inauthor%3A%22Mary%20Kubica%22"
+      ]
+    }
   },
   {
     "k": "/works/OL10233687M",
@@ -96196,11 +96781,18 @@
     "k": "/works/OL3749279W",
     "t": "Awaken the Giant Within",
     "a": "Tony Robbins",
-    "y": 1991,
+    "y": null,
     "p": 164,
     "r": 1,
     "w": null,
-    "c": 406852
+    "c": 406852,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Awaken%20the%20Giant%20Within%22%20au%3A%22Tony%20Robbins%22",
+        "https://books.google.com/books?q=intitle%3A%22Awaken%20the%20Giant%20Within%22%20inauthor%3A%22Tony%20Robbins%22"
+      ]
+    }
   },
   {
     "k": "/works/OL468676W",
@@ -96466,11 +97058,18 @@
     "k": "/works/OL25774700W",
     "t": "Please Love Me at My Worst",
     "a": "Michaela Angemeer",
-    "y": 2021,
+    "y": null,
     "p": 163,
     "r": 1,
     "w": null,
-    "c": 12765562
+    "c": 12765562,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Please%20Love%20Me%20at%20My%20Worst%22%20au%3A%22Michaela%20Angemeer%22",
+        "https://books.google.com/books?q=intitle%3A%22Please%20Love%20Me%20at%20My%20Worst%22%20inauthor%3A%22Michaela%20Angemeer%22"
+      ]
+    }
   },
   {
     "k": "/works/OL27028090W",
@@ -96560,11 +97159,18 @@
     "k": "/works/OL42413995W",
     "t": "Deep End",
     "a": "Ali Hazelwood",
-    "y": 2025,
+    "y": null,
     "p": 163,
     "r": 1,
     "w": null,
-    "c": 15120659
+    "c": 15120659,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Deep%20End%22%20au%3A%22Ali%20Hazelwood%22",
+        "https://books.google.com/books?q=intitle%3A%22Deep%20End%22%20inauthor%3A%22Ali%20Hazelwood%22"
+      ]
+    }
   },
   {
     "k": "/works/OL7988552W",
@@ -98806,11 +99412,18 @@
     "k": "/works/OL42776199W",
     "t": "Picking Daisies on Sundays",
     "a": "Liana Cincotti",
-    "y": 2023,
+    "y": null,
     "p": 159,
     "r": 1,
     "w": null,
-    "c": 15107508
+    "c": 15107508,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Picking%20Daisies%20on%20Sundays%22%20au%3A%22Liana%20Cincotti%22",
+        "https://books.google.com/books?q=intitle%3A%22Picking%20Daisies%20on%20Sundays%22%20inauthor%3A%22Liana%20Cincotti%22"
+      ]
+    }
   },
   {
     "k": "/works/OL26292665W",
@@ -99060,11 +99673,18 @@
     "k": "/works/OL21279423W",
     "t": "From Blood and Ash",
     "a": "Jennifer L. Armentrout",
-    "y": 2020,
+    "y": null,
     "p": 158,
     "r": 1,
     "w": null,
-    "c": 10359194
+    "c": 10359194,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22From%20Blood%20and%20Ash%22%20au%3A%22Jennifer%20L.%20Armentrout%22",
+        "https://books.google.com/books?q=intitle%3A%22From%20Blood%20and%20Ash%22%20inauthor%3A%22Jennifer%20L.%20Armentrout%22"
+      ]
+    }
   },
   {
     "k": "/works/OL21786339W",
@@ -99090,11 +99710,18 @@
     "k": "/works/OL5086155W",
     "t": "Hukum pidana",
     "a": "Moeljatno",
-    "y": 1961,
+    "y": null,
     "p": 158,
     "r": 1,
     "w": null,
-    "c": 9255772
+    "c": 9255772,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Hukum%20pidana%22%20au%3A%22Moeljatno%22",
+        "https://books.google.com/books?q=intitle%3A%22Hukum%20pidana%22%20inauthor%3A%22Moeljatno%22"
+      ]
+    }
   },
   {
     "k": "/works/OL17365450W",
@@ -99204,7 +99831,7 @@
     "k": "/works/OL20822780M",
     "t": "A pictorial and descriptive guide to London and its environs ...",
     "a": "",
-    "y": 1914,
+    "y": null,
     "p": 158,
     "r": 1,
     "w": null,
@@ -99214,11 +99841,18 @@
     "k": "/works/OL5236259W",
     "t": "No Alternative",
     "a": "Margaret Way",
-    "y": 1983,
+    "y": null,
     "p": 158,
     "r": 1,
     "w": null,
-    "c": 6907771
+    "c": 6907771,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22No%20Alternative%22%20au%3A%22Margaret%20Way%22",
+        "https://books.google.com/books?q=intitle%3A%22No%20Alternative%22%20inauthor%3A%22Margaret%20Way%22"
+      ]
+    }
   },
   {
     "k": "/works/OL860483W",
@@ -99598,11 +100232,18 @@
     "k": "/works/OL26432593W",
     "t": "Bloodmarked",
     "a": "Tracy Deonn",
-    "y": 2022,
+    "y": null,
     "p": 157,
     "r": 1,
     "w": null,
-    "c": 12446740
+    "c": 12446740,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Bloodmarked%22%20au%3A%22Tracy%20Deonn%22",
+        "https://books.google.com/books?q=intitle%3A%22Bloodmarked%22%20inauthor%3A%22Tracy%20Deonn%22"
+      ]
+    }
   },
   {
     "k": "/works/OL98267W",
@@ -100646,11 +101287,18 @@
     "k": "/works/OL5618547W",
     "t": "Psicologia social",
     "a": "Aroldo Rodrigues",
-    "y": 1972,
+    "y": null,
     "p": 155,
     "r": 1,
     "w": null,
-    "c": 11700019
+    "c": 11700019,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Psicologia%20social%22%20au%3A%22Aroldo%20Rodrigues%22",
+        "https://books.google.com/books?q=intitle%3A%22Psicologia%20social%22%20inauthor%3A%22Aroldo%20Rodrigues%22"
+      ]
+    }
   },
   {
     "k": "/works/OL2664669W",
@@ -100706,11 +101354,18 @@
     "k": "/works/OL3467485W",
     "t": "Comparative Strangers",
     "a": "Sara Craven",
-    "y": 1988,
+    "y": null,
     "p": 155,
     "r": 1,
     "w": null,
-    "c": 10570362
+    "c": 10570362,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Comparative%20Strangers%22%20au%3A%22Sara%20Craven%22",
+        "https://books.google.com/books?q=intitle%3A%22Comparative%20Strangers%22%20inauthor%3A%22Sara%20Craven%22"
+      ]
+    }
   },
   {
     "k": "/works/OL1000826W",
@@ -100746,11 +101401,18 @@
     "k": "/works/OL7118113W",
     "t": "Let's go play at the Adams'",
     "a": "Mendal W. Johnson",
-    "y": 1974,
+    "y": null,
     "p": 155,
     "r": 1,
     "w": null,
-    "c": 4509670
+    "c": 4509670,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Let%27s%20go%20play%20at%20the%20Adams%27%22%20au%3A%22Mendal%20W.%20Johnson%22",
+        "https://books.google.com/books?q=intitle%3A%22Let%27s%20go%20play%20at%20the%20Adams%27%22%20inauthor%3A%22Mendal%20W.%20Johnson%22"
+      ]
+    }
   },
   {
     "k": "/works/OL3232991W",
@@ -100966,11 +101628,18 @@
     "k": "/works/OL28083301W",
     "t": "Come Home to Yourself",
     "a": "Déjà Rae",
-    "y": 2022,
+    "y": null,
     "p": 154,
     "r": 1,
     "w": null,
-    "c": 15099348
+    "c": 15099348,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Come%20Home%20to%20Yourself%22%20au%3A%22D%C3%A9j%C3%A0%20Rae%22",
+        "https://books.google.com/books?q=intitle%3A%22Come%20Home%20to%20Yourself%22%20inauthor%3A%22D%C3%A9j%C3%A0%20Rae%22"
+      ]
+    }
   },
   {
     "k": "/works/OL19932156W",
@@ -101348,11 +102017,18 @@
     "k": "/works/OL3294436W",
     "t": "Retribution",
     "a": "Charlotte Lamb",
-    "y": 1981,
+    "y": null,
     "p": 154,
     "r": 1,
     "w": null,
-    "c": 6773421
+    "c": 6773421,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Retribution%22%20au%3A%22Charlotte%20Lamb%22",
+        "https://books.google.com/books?q=intitle%3A%22Retribution%22%20inauthor%3A%22Charlotte%20Lamb%22"
+      ]
+    }
   },
   {
     "k": "/works/OL111746W",
@@ -101642,11 +102318,18 @@
     "k": "/works/OL37577731W",
     "t": "Powerful",
     "a": "Lauren Roberts",
-    "y": 2024,
+    "y": null,
     "p": 153,
     "r": 1,
     "w": null,
-    "c": 15106932
+    "c": 15106932,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Powerful%22%20au%3A%22Lauren%20Roberts%22",
+        "https://books.google.com/books?q=intitle%3A%22Powerful%22%20inauthor%3A%22Lauren%20Roberts%22"
+      ]
+    }
   },
   {
     "k": "/works/OL8658275W",
@@ -102805,21 +103488,35 @@
     "k": "/works/OL24361285W",
     "t": "Kingdom of Fantasy #14",
     "a": "Elisabetta Dami",
-    "y": 2021,
+    "y": null,
     "p": 152,
     "r": 1,
     "w": null,
-    "c": 10888634
+    "c": 10888634,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Kingdom%20of%20Fantasy%20%2314%22%20au%3A%22Elisabetta%20Dami%22",
+        "https://books.google.com/books?q=intitle%3A%22Kingdom%20of%20Fantasy%20%2314%22%20inauthor%3A%22Elisabetta%20Dami%22"
+      ]
+    }
   },
   {
     "k": "/works/OL27846746W",
     "t": "Chip War",
     "a": "Chris Miller",
-    "y": 2022,
+    "y": null,
     "p": 152,
     "r": 1,
     "w": null,
-    "c": 12968901
+    "c": 12968901,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Chip%20War%22%20au%3A%22Chris%20Miller%22",
+        "https://books.google.com/books?q=intitle%3A%22Chip%20War%22%20inauthor%3A%22Chris%20Miller%22"
+      ]
+    }
   },
   {
     "k": "/works/OL20561781W",
@@ -102955,11 +103652,18 @@
     "k": "/works/OL22876612W",
     "t": "Fazbear Frights Graphic Novel Collection #1",
     "a": "Scott Cawthon",
-    "y": 2022,
+    "y": null,
     "p": 152,
     "r": 1,
     "w": null,
-    "c": 10502812
+    "c": 10502812,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Fazbear%20Frights%20Graphic%20Novel%20Collection%20%231%22%20au%3A%22Scott%20Cawthon%22",
+        "https://books.google.com/books?q=intitle%3A%22Fazbear%20Frights%20Graphic%20Novel%20Collection%20%231%22%20inauthor%3A%22Scott%20Cawthon%22"
+      ]
+    }
   },
   {
     "k": "/works/OL675696W",
@@ -103050,11 +103754,18 @@
     "k": "/works/OL24810015W",
     "t": "Conversations on Love",
     "a": "Natasha Lunn",
-    "y": 2021,
+    "y": null,
     "p": 151,
     "r": 1,
     "w": null,
-    "c": 11580081
+    "c": 11580081,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Conversations%20on%20Love%22%20au%3A%22Natasha%20Lunn%22",
+        "https://books.google.com/books?q=intitle%3A%22Conversations%20on%20Love%22%20inauthor%3A%22Natasha%20Lunn%22"
+      ]
+    }
   },
   {
     "k": "/works/OL26112603W",
@@ -105135,11 +105846,18 @@
     "k": "/works/OL3339807W",
     "t": "Electronic communication systems",
     "a": "Roy Blake",
-    "y": 2002,
+    "y": null,
     "p": 150,
     "r": 1,
     "w": null,
-    "c": 1453722
+    "c": 1453722,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Electronic%20communication%20systems%22%20au%3A%22Roy%20Blake%22",
+        "https://books.google.com/books?q=intitle%3A%22Electronic%20communication%20systems%22%20inauthor%3A%22Roy%20Blake%22"
+      ]
+    }
   },
   {
     "k": "/works/OL37917742W",
@@ -105583,11 +106301,18 @@
     "k": "/works/OL2687507W",
     "t": "Compact heat exchangers",
     "a": "William Morrow Kays",
-    "y": 1955,
+    "y": null,
     "p": 150,
     "r": 1,
     "w": null,
-    "c": 1928199
+    "c": 1928199,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Compact%20heat%20exchangers%22%20au%3A%22William%20Morrow%20Kays%22",
+        "https://books.google.com/books?q=intitle%3A%22Compact%20heat%20exchangers%22%20inauthor%3A%22William%20Morrow%20Kays%22"
+      ]
+    }
   },
   {
     "k": "/works/OL891953W",
