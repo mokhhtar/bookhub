@@ -1,0 +1,3799 @@
+{
+  "overrides.json": {
+    "/fandom/shadowslave": {
+      "fact:pre2000": 0.15,
+      "fact:veryold": 0.15,
+      "fact:verrecent": 0.9,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:recent": 0.9
+    },
+    "/fandom/lordofthemysteries": {
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9,
+      "fact:veryold": 0.15
+    },
+    "/site/admin-lord-of-mysteries-2-circle-of-inevitability": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL20676292W": {
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9,
+      "fact:veryold": 0.15
+    },
+    "/works/OL20883297W": {
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9,
+      "fact:veryold": 0.15
+    },
+    "/works/OL59048W": {
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15,
+      "fact:veryold": 0.15
+    },
+    "/site/admin-the-city-of-dreaming-books": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL17762217W": {
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9,
+      "fact:veryold": 0.15
+    },
+    "/site/admin-the-social-contract": {
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15,
+      "fact:veryold": 0.9
+    },
+    "/site/crime-and-punishment-fyodor-dostoevsky": {
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15,
+      "fact:veryold": 0.9
+    },
+    "/works/OL27408818W": {
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15,
+      "fact:veryold": 0.15
+    },
+    "/works/OL20892525W": {
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9,
+      "fact:veryold": 0.15
+    },
+    "/works/OL26864481W": {
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9,
+      "fact:veryold": 0.15
+    },
+    "/works/OL9082060W": {
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15,
+      "fact:veryold": 0.15
+    },
+    "/works/OL34963456W": {
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9,
+      "fact:veryold": 0.15
+    },
+    "/works/OL34375345W": {
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9,
+      "fact:veryold": 0.15
+    },
+    "/works/OL30756842W": {
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15,
+      "fact:veryold": 0.15
+    },
+    "/works/OL20886991W": {
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9,
+      "fact:veryold": 0.15
+    },
+    "/works/OL29049148W": {
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9,
+      "fact:veryold": 0.15
+    },
+    "/works/OL28941542W": {
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9,
+      "fact:veryold": 0.15
+    },
+    "/works/OL42763553W": {
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9,
+      "fact:veryold": 0.15
+    },
+    "/works/OL37983939W": {
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9,
+      "fact:veryold": 0.15
+    },
+    "/works/OL28703803W": {
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9,
+      "fact:veryold": 0.15
+    },
+    "/works/OL12926505M": {
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15,
+      "fact:veryold": 0.15
+    },
+    "/works/OL16808471M": {
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15,
+      "fact:veryold": 0.9
+    },
+    "/works/OL28769140W": {
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9,
+      "fact:veryold": 0.15
+    },
+    "/works/OL27732594W": {
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9,
+      "fact:veryold": 0.15
+    },
+    "/works/OL34735956W": {
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9,
+      "fact:veryold": 0.15
+    },
+    "/works/OL17268007M": {
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15,
+      "fact:veryold": 0.9
+    },
+    "/works/OL20153262M": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL20849874W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL19634654M": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL21679891M": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL20145719M": {
+      "fact:veryold": 0.9,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL26427588W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL24735974W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL27739278W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL1890870W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL17332529W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL28182663W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL34758325W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL25813658W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL34744532W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL19888731M": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL20650912M": {
+      "fact:veryold": 0.9,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL31212840W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL20687130M": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL7316323W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL59681W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL20126932M": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL10528180W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL8801375W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL36494600W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL10615078W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL28700933W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL19680630M": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL16305918W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL21665884W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL17356524M": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL24454849W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL17860071M": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL43902203W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL25626384W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL20914388W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL20168133M": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL22106205W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL34113485W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL20149092M": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL20883297M": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL17823242W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL26388607W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL15738951W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL20729325W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL3449615W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL20919078M": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL20937686W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL34434718W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL16456435W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL24483265W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL1027572W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL37474416W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL27962015W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL28942641W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL27774839W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL31341461W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL30146102W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL27036094W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL24228298W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL20875537W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL21094725W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL31969555W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL34408506W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL22833572W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL19542272M": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL10466468W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL25682966W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL20086597W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL6690963W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL2330253W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL19087868W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL33455436W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL20142280W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL27366295W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL24427984W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL24140150W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL17209694M": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL24666264W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL32505505W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL29299846W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL22841340W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL22949300W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL26905928W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL35037960W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL25400954W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL22059547W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL17714887M": {
+      "fact:veryold": 0.9,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL25326537W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL20914906W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL14860424M": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL24525015W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL27042629W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL24736261W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL34391930W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL24999187W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL17626070W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL20333471M": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL26417161W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL30756856W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL21043249W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL16028366M": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL25344121W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL16361030M": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL23731758W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL27690478W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no",
+      "fact:veryold": "no"
+    },
+    "/works/OL37887772W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes",
+      "fact:veryold": "no"
+    },
+    "/works/OL26200272W": {
+      "fact:old": "yes",
+      "fact:pre1970": "yes",
+      "fact:pre2000": "yes",
+      "fact:recent": "no",
+      "fact:verrecent": "no",
+      "fact:veryold": "no"
+    },
+    "/works/OL19784298W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "yes",
+      "fact:recent": "yes",
+      "fact:verrecent": "no",
+      "fact:veryold": "no"
+    },
+    "/works/OL10498373W": {
+      "fact:old": "yes",
+      "fact:pre1970": "yes",
+      "fact:pre2000": "yes",
+      "fact:recent": "no",
+      "fact:verrecent": "no",
+      "fact:veryold": "no"
+    },
+    "/works/OL10498373M": {
+      "fact:old": "yes",
+      "fact:pre1970": "no",
+      "fact:pre2000": "yes",
+      "fact:recent": "no",
+      "fact:verrecent": "no",
+      "fact:veryold": "no"
+    },
+    "/works/OL35744585W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes",
+      "fact:veryold": "no"
+    },
+    "/works/OL20919078W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no",
+      "fact:veryold": "no"
+    },
+    "/works/OL17377019M": {
+      "fact:old": "yes",
+      "fact:pre1970": "yes",
+      "fact:pre2000": "yes",
+      "fact:recent": "no",
+      "fact:verrecent": "no",
+      "fact:veryold": "yes"
+    },
+    "/works/OL24317269W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes",
+      "fact:veryold": "no"
+    },
+    "/works/OL21220364W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no",
+      "fact:veryold": "no"
+    },
+    "/works/OL24915410W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes",
+      "fact:veryold": "no"
+    },
+    "/works/OL26771023W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes",
+      "fact:veryold": "no"
+    },
+    "/works/OL21313227W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no",
+      "fact:veryold": "no"
+    },
+    "/works/OL17902473W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no",
+      "fact:veryold": "no"
+    },
+    "/works/OL26134593W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes",
+      "fact:veryold": "no"
+    },
+    "/works/OL30498784W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes",
+      "fact:veryold": "no"
+    },
+    "/works/OL20086330M": {
+      "fact:old": "yes",
+      "fact:pre1970": "no",
+      "fact:pre2000": "yes",
+      "fact:recent": "no",
+      "fact:verrecent": "no",
+      "fact:veryold": "no"
+    },
+    "/works/OL20153626M": {
+      "fact:old": "yes",
+      "fact:pre1970": "no",
+      "fact:pre2000": "yes",
+      "fact:recent": "no",
+      "fact:verrecent": "no",
+      "fact:veryold": "no"
+    },
+    "/works/OL21097163W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no",
+      "fact:veryold": "no"
+    },
+    "/works/OL21879731W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no",
+      "fact:veryold": "no"
+    },
+    "/works/OL30575636W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes",
+      "fact:veryold": "no"
+    },
+    "/works/OL26504483W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes",
+      "fact:veryold": "no"
+    },
+    "/works/OL26420717W": {
+      "fact:old": "yes",
+      "fact:pre1970": "no",
+      "fact:pre2000": "yes",
+      "fact:recent": "no",
+      "fact:verrecent": "no",
+      "fact:veryold": "no"
+    },
+    "/works/OL33969168W": {
+      "fact:old": "yes",
+      "fact:pre1970": "yes",
+      "fact:pre2000": "yes",
+      "fact:recent": "no",
+      "fact:verrecent": "no",
+      "fact:veryold": "no"
+    },
+    "/works/OL28917478W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes",
+      "fact:veryold": "no"
+    },
+    "/works/OL24573810W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no",
+      "fact:veryold": "no"
+    },
+    "/works/OL26363050W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no",
+      "fact:veryold": "no"
+    },
+    "/works/OL21429712W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no",
+      "fact:veryold": "no"
+    },
+    "/works/OL28640644W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes",
+      "fact:veryold": "no"
+    },
+    "/works/OL36895083W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes",
+      "fact:veryold": "no"
+    },
+    "/works/OL22567229W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes",
+      "fact:veryold": "no"
+    },
+    "/works/OL27853489W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes",
+      "fact:veryold": "no"
+    },
+    "/works/OL20771427W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no",
+      "fact:veryold": "no"
+    },
+    "/works/OL34026833W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes",
+      "fact:veryold": "no"
+    },
+    "/works/OL11288561W": {
+      "fact:old": "yes",
+      "fact:pre1970": "no",
+      "fact:pre2000": "yes",
+      "fact:recent": "no",
+      "fact:verrecent": "no",
+      "fact:veryold": "no"
+    },
+    "/works/OL20664011W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes",
+      "fact:veryold": "no"
+    },
+    "/works/OL26309989W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no",
+      "fact:veryold": "no"
+    },
+    "/works/OL24958684W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes",
+      "fact:veryold": "no"
+    },
+    "/works/OL24376009W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no",
+      "fact:veryold": "no"
+    },
+    "/works/OL2336233W": {
+      "fact:old": "yes",
+      "fact:pre1970": "yes",
+      "fact:pre2000": "yes",
+      "fact:recent": "no",
+      "fact:verrecent": "no",
+      "fact:veryold": "no"
+    },
+    "/works/OL15981799W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no",
+      "fact:veryold": "no"
+    },
+    "/works/OL17202765M": {
+      "fact:old": "yes",
+      "fact:pre1970": "yes",
+      "fact:pre2000": "yes",
+      "fact:recent": "no",
+      "fact:verrecent": "no",
+      "fact:veryold": "no"
+    },
+    "/works/OL32485646W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no",
+      "fact:veryold": "no"
+    },
+    "/works/OL30391663W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no",
+      "fact:veryold": "no"
+    },
+    "/works/OL20244315W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no",
+      "fact:veryold": "no"
+    },
+    "/works/OL27679682W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes",
+      "fact:veryold": "no"
+    },
+    "/works/OL5066441W": {
+      "fact:old": "yes",
+      "fact:pre1970": "no",
+      "fact:pre2000": "yes",
+      "fact:recent": "no",
+      "fact:verrecent": "no",
+      "fact:veryold": "no"
+    },
+    "/works/OL27819328W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes",
+      "fact:veryold": "no"
+    },
+    "/works/OL29103511W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no",
+      "fact:veryold": "no"
+    },
+    "/works/OL1045463W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no",
+      "fact:veryold": "no"
+    },
+    "/works/OL24337577W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no",
+      "fact:veryold": "no"
+    },
+    "/works/OL36323613W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no",
+      "fact:veryold": "no"
+    },
+    "/works/OL24197419W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no",
+      "fact:veryold": "no"
+    },
+    "/works/OL16538595W": {
+      "fact:old": "yes",
+      "fact:pre1970": "no",
+      "fact:pre2000": "yes",
+      "fact:recent": "no",
+      "fact:verrecent": "no",
+      "fact:veryold": "no"
+    },
+    "/works/OL27257329W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes",
+      "fact:veryold": "no"
+    },
+    "/works/OL946921W": {
+      "fact:old": "yes",
+      "fact:pre1970": "yes",
+      "fact:pre2000": "yes",
+      "fact:recent": "no",
+      "fact:verrecent": "no",
+      "fact:veryold": "no"
+    },
+    "/works/OL25442316W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no",
+      "fact:veryold": "no"
+    },
+    "/works/OL26515865W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes",
+      "fact:veryold": "no"
+    },
+    "/works/OL17397866W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no",
+      "fact:veryold": "no"
+    },
+    "/works/OL24422299W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no",
+      "fact:veryold": "no"
+    },
+    "/works/OL26417336W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no",
+      "fact:veryold": "no"
+    },
+    "/works/OL34769874W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes",
+      "fact:veryold": "no"
+    },
+    "/works/OL28775228W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes",
+      "fact:veryold": "no"
+    },
+    "/works/OL35675846W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes",
+      "fact:veryold": "no"
+    },
+    "/works/OL24999191W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes",
+      "fact:veryold": "no"
+    },
+    "/works/OL17359139M": {
+      "fact:old": "yes",
+      "fact:pre1970": "no",
+      "fact:pre2000": "yes",
+      "fact:recent": "no",
+      "fact:verrecent": "no",
+      "fact:veryold": "no"
+    },
+    "/works/OL31147423W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes",
+      "fact:veryold": "no"
+    },
+    "/works/OL36425581W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes",
+      "fact:veryold": "no"
+    },
+    "/works/OL28769190W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no",
+      "fact:veryold": "no"
+    },
+    "/works/OL34729965W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes",
+      "fact:veryold": "no"
+    },
+    "/works/OL34320168W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no",
+      "fact:veryold": "no"
+    },
+    "/works/OL27731614W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes",
+      "fact:veryold": "no"
+    },
+    "/works/OL20892525M": {
+      "fact:old": "yes",
+      "fact:pre1970": "no",
+      "fact:pre2000": "yes",
+      "fact:recent": "no",
+      "fact:verrecent": "no",
+      "fact:veryold": "no"
+    },
+    "/works/OL27294011W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes",
+      "fact:veryold": "no"
+    },
+    "/works/OL10226177W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no",
+      "fact:veryold": "no"
+    },
+    "/works/OL20647141W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no",
+      "fact:veryold": "no"
+    },
+    "/works/OL24534138W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes",
+      "fact:veryold": "no"
+    },
+    "/works/OL20131294W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no",
+      "fact:veryold": "no"
+    },
+    "/works/OL21162176M": {
+      "fact:old": "yes",
+      "fact:pre1970": "no",
+      "fact:pre2000": "yes",
+      "fact:recent": "no",
+      "fact:verrecent": "no",
+      "fact:veryold": "no"
+    },
+    "/works/OL35118520W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes"
+    },
+    "/works/OL37783749W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes"
+    },
+    "/works/OL17387090M": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "yes",
+      "fact:recent": "no",
+      "fact:verrecent": "no"
+    },
+    "/works/OL32256829W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes"
+    },
+    "/works/OL29178071W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no"
+    },
+    "/works/OL10243493W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no"
+    },
+    "/works/OL21413357W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no"
+    },
+    "/works/OL19728362M": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no"
+    },
+    "/works/OL27896533W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes"
+    },
+    "/works/OL20735675M": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "yes",
+      "fact:recent": "no",
+      "fact:verrecent": "no"
+    },
+    "/works/OL27709841W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes"
+    },
+    "/works/OL9130778W": {
+      "fact:old": "yes",
+      "fact:pre1970": "yes",
+      "fact:pre2000": "yes",
+      "fact:recent": "no",
+      "fact:verrecent": "no"
+    },
+    "/works/OL10225459M": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "yes",
+      "fact:recent": "no",
+      "fact:verrecent": "no"
+    },
+    "/works/OL10225459W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no"
+    },
+    "/works/OL14871246M": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "yes",
+      "fact:recent": "no",
+      "fact:verrecent": "no"
+    },
+    "/works/OL34306450W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes"
+    },
+    "/works/OL15659750W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no"
+    },
+    "/works/OL20569778W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no"
+    },
+    "/works/OL16808654M": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "yes",
+      "fact:recent": "no",
+      "fact:verrecent": "no"
+    },
+    "/works/OL34335722W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes"
+    },
+    "/works/OL34946029W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes"
+    },
+    "/works/OL13850980W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no"
+    },
+    "/works/OL34536862W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no"
+    },
+    "/works/OL34945328W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes"
+    },
+    "/works/OL24321084W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no"
+    },
+    "/works/OL29693007W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no"
+    },
+    "/works/OL15009451W": {
+      "fact:old": "yes",
+      "fact:pre1970": "yes",
+      "fact:pre2000": "yes",
+      "fact:recent": "no",
+      "fact:verrecent": "no"
+    },
+    "/works/OL19845307W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no"
+    },
+    "/works/OL16506810W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no"
+    },
+    "/works/OL27739443W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "yes",
+      "fact:recent": "no",
+      "fact:verrecent": "no"
+    },
+    "/works/OL32586922W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no"
+    },
+    "/works/OL34918213W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes"
+    },
+    "/works/OL26084033W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes"
+    },
+    "/works/OL28067455W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes"
+    },
+    "/works/OL19948076M": {
+      "fact:old": "yes",
+      "fact:pre1970": "yes",
+      "fact:pre2000": "yes",
+      "fact:recent": "no",
+      "fact:verrecent": "no"
+    },
+    "/works/OL34233540W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes"
+    },
+    "/works/OL16185123W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no"
+    },
+    "/works/OL26432405W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes"
+    },
+    "/works/OL2311414W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no"
+    },
+    "/works/OL34949981W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes"
+    },
+    "/works/OL21680947M": {
+      "fact:old": "yes",
+      "fact:pre1970": "yes",
+      "fact:pre2000": "yes",
+      "fact:recent": "no",
+      "fact:verrecent": "no"
+    },
+    "/works/OL24210967W": {
+      "fact:old": "yes",
+      "fact:pre1970": "yes",
+      "fact:pre2000": "yes",
+      "fact:recent": "no",
+      "fact:verrecent": "no"
+    },
+    "/works/OL16624952W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no"
+    },
+    "/works/OL16672514M": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "yes",
+      "fact:recent": "no",
+      "fact:verrecent": "no"
+    },
+    "/works/OL28557478W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes"
+    },
+    "/works/OL28018702W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes"
+    },
+    "/works/OL34721635W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no"
+    },
+    "/works/OL28345694W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes"
+    },
+    "/works/OL20831007M": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "yes",
+      "fact:recent": "no",
+      "fact:verrecent": "no"
+    },
+    "/works/OL26446401W": {
+      "fact:old": "yes",
+      "fact:pre1970": "yes",
+      "fact:pre2000": "yes",
+      "fact:recent": "no",
+      "fact:verrecent": "no"
+    },
+    "/works/OL16232568W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no"
+    },
+    "/works/OL36895009W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no"
+    },
+    "/works/OL20941047W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no"
+    },
+    "/works/OL23020966W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes"
+    },
+    "/works/OL2326664W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no"
+    },
+    "/works/OL31069146W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes"
+    },
+    "/works/OL36178840W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes"
+    },
+    "/works/OL24599595W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes"
+    },
+    "/works/OL25958043W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes"
+    },
+    "/works/OL20159801M": {
+      "fact:old": "no",
+      "fact:pre1970": "yes",
+      "fact:pre2000": "yes",
+      "fact:recent": "no",
+      "fact:verrecent": "no"
+    },
+    "/works/OL27050590W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes"
+    },
+    "/works/OL29749834W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no"
+    },
+    "/works/OL28850340W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes"
+    },
+    "/works/OL17887662W": {
+      "fact:old": "yes",
+      "fact:pre1970": "yes",
+      "fact:pre2000": "yes",
+      "fact:recent": "no",
+      "fact:verrecent": "no"
+    },
+    "/works/OL19711605M": {
+      "fact:old": "no",
+      "fact:pre1970": "yes",
+      "fact:pre2000": "yes",
+      "fact:recent": "no",
+      "fact:verrecent": "no"
+    },
+    "/works/OL35888957W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes"
+    },
+    "/works/OL26438338W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no"
+    },
+    "/works/OL16808806M": {
+      "fact:old": "yes",
+      "fact:pre1970": "yes",
+      "fact:pre2000": "yes",
+      "fact:recent": "no",
+      "fact:verrecent": "no"
+    },
+    "/works/OL10224934W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no"
+    },
+    "/works/OL28802560W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes"
+    },
+    "/works/OL26025116W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes"
+    },
+    "/works/OL28941549W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no"
+    },
+    "/works/OL32938369W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no"
+    },
+    "/works/OL20897590W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no"
+    },
+    "/works/OL26514267W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes"
+    },
+    "/works/OL32554492W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes"
+    },
+    "/works/OL5252599W": {
+      "fact:old": "yes",
+      "fact:pre1970": "yes",
+      "fact:pre2000": "yes",
+      "fact:recent": "no",
+      "fact:verrecent": "no"
+    },
+    "/works/OL24619733W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no"
+    },
+    "/works/OL27035809W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no"
+    },
+    "/works/OL24416552W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no"
+    },
+    "/works/OL21941114W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no"
+    },
+    "/works/OL17897191M": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "yes",
+      "fact:recent": "no",
+      "fact:verrecent": "no"
+    },
+    "/works/OL28062430W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes"
+    },
+    "/works/OL27442199W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no"
+    },
+    "/works/OL3988886W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no"
+    },
+    "/works/OL28182399W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes"
+    },
+    "/works/OL2615319W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "yes",
+      "fact:recent": "no",
+      "fact:verrecent": "no"
+    },
+    "/works/OL20005800M": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "yes",
+      "fact:recent": "no",
+      "fact:verrecent": "no"
+    },
+    "/works/OL12915265W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "yes",
+      "fact:recent": "no",
+      "fact:verrecent": "no"
+    },
+    "/works/OL5867619W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no"
+    },
+    "/works/OL9158782W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no"
+    },
+    "/works/OL30906747W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no"
+    },
+    "/works/OL34932771W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes"
+    },
+    "/works/OL27852981W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "yes"
+    },
+    "/works/OL10233687W": {
+      "fact:old": "no",
+      "fact:pre1970": "no",
+      "fact:pre2000": "no",
+      "fact:recent": "yes",
+      "fact:verrecent": "no"
+    },
+    "/works/OL12091223M": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL22976662W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL30729078W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL12027388M": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL10233687M": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL20690760M": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL28722864W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.35
+    },
+    "/works/OL27688828W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL17346249W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL2583517W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL25790438W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL30466719W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL22654652W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL10617761W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL28173088W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.35
+    },
+    "/works/OL4412247W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL29332742W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL24198547W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL29160475W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL20690760W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL15675357W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL27049881W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL24138096W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL4761451W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL21430137M": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL8691790W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL27298042W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL20648310W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL20648323W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL24345555W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL17365450M": {
+      "fact:veryold": 0.9,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL81839W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL24213358W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL16807070W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL20822780W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL25306379W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL17365450W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL275914W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL25343415W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL25798494W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL28083166W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL20756743M": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL24646747W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL13847693W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL27042112W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL17366783W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL8658275W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL23252280W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL13402941M": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL21856464W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL27938101W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL36741749W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL27035990W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL27053243W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL17321553W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL20152693M": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL26112603W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL34523780W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL20366663W": {
+      "fact:veryold": 0.9,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL15756749W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL20809280W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL19358659W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL8007160W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL31597777W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL34069615W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/works/OL11713474W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL24697778W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL19729677M": {
+      "fact:veryold": 0.9,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/site/admin-beyond-good-and-evil-annotated": {
+      "fact:veryold": 0.9,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/fandom/azarinth-healer": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/fandom/sss-class-suicide-hunter": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.9
+    },
+    "/fandom/swallowed-star": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/site/admin-all-the-president-s-men": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/site/admin-blue-highways": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/site/admin-jean-baptiste": {
+      "fact:veryold": 0.9,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/site/admin-map-that-changed-the-world": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/site/admin-scaramouche": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/site/admin-the-monk---matthew-lewis": {
+      "fact:veryold": 0.9,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/site/admin-the-particle-at-the-end-of-the-universe": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/site/admin-the-serengeti-rules": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/site/admin-this-is-me": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL10121835W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL10629879W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL11277298W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL11277315W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL11277330W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL11277341W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL11288561M": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL11327666W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL11327897W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL11327979W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL11327987W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL11328452W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL11762243W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL11789290W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL12119439W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL12583744W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL12948406M": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL13101191W": {
+      "fact:veryold": 0.9,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL137163W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL13852411W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL14856842M": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL14871979W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL14872925M": {
+      "fact:veryold": 0.9,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL14873289M": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL14908941M": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL14933020M": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL1502064W": {
+      "fact:veryold": 0.9,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL15093856M": {
+      "fact:veryold": 0.9,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL15096240M": {
+      "fact:veryold": 0.9,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL15103762M": {
+      "fact:veryold": 0.9,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL15104047M": {
+      "fact:veryold": 0.9,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL15111477M": {
+      "fact:veryold": 0.9,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL15192743M": {
+      "fact:veryold": 0.9,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL15380640M": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL15416051M": {
+      "fact:veryold": 0.9,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL15540668M": {
+      "fact:veryold": 0.9,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL15589905W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL15845364W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL15922290W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL16142094M": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL16143994W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL16263576W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL16491346W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL16565089W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL16597059M": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL16689060W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL16704610M": {
+      "fact:veryold": 0.9,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL16730132M": {
+      "fact:veryold": 0.9,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL16793507M": {
+      "fact:veryold": 0.9,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL16796766M": {
+      "fact:veryold": 0.9,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL17078706M": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL17228130M": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL17342469M": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL17358375M": {
+      "fact:veryold": 0.9,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL17366783M": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL17387090W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL1740783W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL17710018M": {
+      "fact:veryold": 0.9,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL17734885W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL17824318M": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL17834026M": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL17865866M": {
+      "fact:veryold": 0.9,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL1808042W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL18217886M": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL18395787W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL1849933W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL18822961M": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL19161135W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL19622295W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL19650409M": {
+      "fact:veryold": 0.9,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL19653033W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL19700683M": {
+      "fact:veryold": 0.9,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL1980586W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL19836917W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL19880287M": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL19907427M": {
+      "fact:veryold": 0.9,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL19914740W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL20004815M": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL20130006W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL20131297M": {
+      "fact:veryold": 0.9,
+      "fact:old": 0.9,
+      "fact:pre1970": 0.9,
+      "fact:pre2000": 0.9,
+      "fact:recent": 0.15,
+      "fact:verrecent": 0.15
+    },
+    "/works/OL20158477W": {
+      "fact:veryold": 0.15,
+      "fact:old": 0.15,
+      "fact:pre1970": 0.15,
+      "fact:pre2000": 0.15,
+      "fact:recent": 0.9,
+      "fact:verrecent": 0.15
+    }
+  },
+  "overrides_locked.json": {
+    "/fandom/shadowslave": [
+      "fact:pre2000",
+      "fact:veryold",
+      "fact:verrecent",
+      "fact:old",
+      "fact:pre1970",
+      "fact:recent"
+    ],
+    "/fandom/lordofthemysteries": [
+      "fact:old",
+      "fact:pre1970",
+      "fact:pre2000",
+      "fact:recent",
+      "fact:verrecent",
+      "fact:veryold"
+    ],
+    "/works/OL59038W": [
+      "fact:veryold",
+      "fact:verrecent",
+      "fact:recent",
+      "fact:old",
+      "fact:pre1970",
+      "fact:pre2000"
+    ],
+    "/works/OL20883297W": [
+      "fact:old",
+      "fact:pre1970",
+      "fact:pre2000",
+      "fact:recent",
+      "fact:verrecent",
+      "fact:veryold"
+    ],
+    "/works/OL257943W": [
+      "fact:old",
+      "fact:pre1970",
+      "fact:pre2000",
+      "fact:recent",
+      "fact:verrecent",
+      "fact:veryold"
+    ],
+    "/works/OL21745884W": [
+      "fact:old",
+      "fact:pre1970",
+      "fact:pre2000",
+      "fact:recent",
+      "fact:verrecent",
+      "fact:veryold"
+    ],
+    "/works/OL59048W": [
+      "fact:old",
+      "fact:pre1970",
+      "fact:pre2000",
+      "fact:recent",
+      "fact:verrecent",
+      "fact:veryold"
+    ],
+    "/site/admin-the-city-of-dreaming-books": [
+      "fact:old",
+      "fact:pre1970",
+      "fact:pre2000",
+      "fact:recent",
+      "fact:verrecent",
+      "fact:veryold"
+    ],
+    "/works/OL29226517W": [
+      "fact:old",
+      "fact:pre1970",
+      "fact:pre2000",
+      "fact:recent",
+      "fact:verrecent",
+      "fact:veryold"
+    ],
+    "/works/OL17762217W": [
+      "fact:old",
+      "fact:pre1970",
+      "fact:pre2000",
+      "fact:recent",
+      "fact:verrecent",
+      "fact:veryold"
+    ],
+    "/works/OL64365W": [
+      "fact:old",
+      "fact:pre1970",
+      "fact:pre2000",
+      "fact:recent",
+      "fact:verrecent",
+      "fact:veryold"
+    ],
+    "/site/admin-the-social-contract": [
+      "fact:old",
+      "fact:pre1970",
+      "fact:pre2000",
+      "fact:recent",
+      "fact:verrecent",
+      "fact:veryold"
+    ],
+    "/works/OL1317211W": [
+      "fact:old",
+      "fact:pre1970",
+      "fact:pre2000",
+      "fact:recent",
+      "fact:verrecent",
+      "fact:veryold"
+    ],
+    "/works/OL1089297W": [
+      "fact:old",
+      "fact:pre1970",
+      "fact:pre2000",
+      "fact:recent",
+      "fact:verrecent",
+      "fact:veryold"
+    ],
+    "/site/crime-and-punishment-fyodor-dostoevsky": [
+      "fact:old",
+      "fact:pre1970",
+      "fact:pre2000",
+      "fact:recent",
+      "fact:verrecent",
+      "fact:veryold"
+    ],
+    "/works/OL1095427W": [
+      "fact:old",
+      "fact:pre1970",
+      "fact:pre2000",
+      "fact:recent",
+      "fact:verrecent",
+      "fact:veryold"
+    ]
+  }
+}

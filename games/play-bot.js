@@ -298,8 +298,8 @@ async function askGroq(title, author, question, model, stats) {
 
 // ── the answer sheet ───────────────────────────────────────────────────────
 // ALL 48 AT ONCE, and the reason is not only speed. Asked one at a time the
-// model answers each question in ISOLATION: it says "no" to "published in the
-// last 25 years" and then meets "written before 1970" with no memory of the
+// model answers each question in ISOLATION: it says "no" to "first published
+// in 2001 or later" and then meets "first published before 1970" with no memory of the
 // first, and the two answers need not agree. Contradictory answers are exactly
 // what walks the engine away from the book, so an inconsistent player measures
 // the engine against a reader who does not exist.
@@ -326,8 +326,8 @@ is the bracketed id, each value is exactly one of:
 Two rules that matter more than completeness:
 
 1. BE CONSISTENT. These are answered together, so they must not contradict each \
-other. If a book is not from the last 25 years it cannot also be from the last \
-10; if the author is British the author is not American.
+other. Fixed publication-year comparisons must agree with one another; if the \
+author is British the author is not American.
 
 2. "unknown" IS A REAL ANSWER and is wanted. Use it whenever you are not sure \
 rather than picking a side you cannot support. A confident wrong answer is \

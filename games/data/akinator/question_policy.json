@@ -1,118 +1,465 @@
 {
- "version": 1,
- "questions": {
-  "audience:children": {"level":"general","domain":"audience","answerability_cost":0.05},
-  "audience:ya": {"level":"general","domain":"audience","answerability_cost":0.08},
-  "author:alive": {
-   "level":"general",
-   "domain":"author",
-   "answerability_cost":0.04,
-   "skip_if":{"question":"fact:veryold","answer":"yes"}
-  },
-  "author:american": {"level":"general","domain":"author","answerability_cost":0.03},
-  "author:british": {"level":"general","domain":"author","answerability_cost":0.03},
-  "author:european": {"level":"general","domain":"author","answerability_cost":0.08},
-  "author:female": {"level":"general","domain":"author","answerability_cost":0.04},
-  "author:nonwestern": {"level":"general","domain":"author","answerability_cost":0.1},
-  "author:prolific": {"level":"general","domain":"author","answerability_cost":0.15},
-  "book:film": {"level":"general","domain":"adaptation","answerability_cost":0.1},
-  "fact:namedchars": {"level":"specific","domain":"characters","answerability_cost":0.05},
-  "fact:old": {"level":"general","domain":"publication","answerability_cost":0.08},
-  "fact:pre1970": {"level":"general","domain":"publication","answerability_cost":0.08},
-  "fact:pre2000": {"level":"general","domain":"publication","answerability_cost":0.05},
-  "fact:recent": {"level":"general","domain":"publication","answerability_cost":0.04},
-  "fact:verrecent": {"level":"general","domain":"publication","answerability_cost":0.04},
-  "fact:veryold": {"level":"general","domain":"publication","answerability_cost":0.08},
-  "form:classic": {"level":"general","domain":"form","answerability_cost":0.1},
-  "form:fiction": {"level":"core","domain":"form","answerability_cost":0.01},
-  "form:nonfiction": {"level":"core","domain":"form","answerability_cost":0.02},
-  "form:series": {
-   "level":"specific",
-   "domain":"narrative",
-   "answerability_cost":0.06,
-   "applies_if":{"any":[{"question":"form:fiction","answer":"yes"},{"question":"form:nonfiction","answer":"no"}]}
-  },
-  "form:webnovel": {
-   "level":"specific",
-   "domain":"narrative",
-   "answerability_cost":0.08,
-   "applies_if":{"any":[{"question":"form:fiction","answer":"yes"},{"question":"form:nonfiction","answer":"no"}]}
-  },
-  "genre:adventure": {"level":"specific","domain":"narrative","answerability_cost":0.04},
-  "genre:drama": {
-   "level":"specific",
-   "domain":"narrative",
-   "answerability_cost":0.05,
-   "applies_if":{"any":[{"question":"form:fiction","answer":"yes"},{"question":"form:nonfiction","answer":"no"}]}
-  },
-  "genre:fantasy": {
-   "level":"specific",
-   "domain":"narrative",
-   "answerability_cost":0.03,
-   "applies_if":{"any":[{"question":"form:fiction","answer":"yes"},{"question":"form:nonfiction","answer":"no"}]}
-  },
-  "genre:history": {"level":"general","domain":"topic","answerability_cost":0.04},
-  "genre:psychology": {"level":"general","domain":"topic","answerability_cost":0.06},
-  "genre:romance": {
-   "level":"specific",
-   "domain":"narrative",
-   "answerability_cost":0.04,
-   "applies_if":{"any":[{"question":"form:fiction","answer":"yes"},{"question":"form:nonfiction","answer":"no"}]}
-  },
-  "genre:science": {"level":"general","domain":"topic","answerability_cost":0.06},
-  "genre:scifi": {
-   "level":"specific",
-   "domain":"narrative",
-   "answerability_cost":0.03,
-   "applies_if":{"any":[{"question":"form:fiction","answer":"yes"},{"question":"form:nonfiction","answer":"no"}]}
-  },
-  "place:britain": {"level":"general","domain":"place","answerability_cost":0.1},
-  "place:europe_other": {"level":"general","domain":"place","answerability_cost":0.15},
-  "place:usa": {"level":"general","domain":"place","answerability_cost":0.08},
-  "setting:school": {"level":"specific","domain":"narrative","answerability_cost":0.06},
-  "t:child": {"level":"specific","domain":"characters","answerability_cost":0.03},
-  "t:detective": {"level":"specific","domain":"narrative","answerability_cost":0.04},
-  "t:family": {"level":"specific","domain":"narrative","answerability_cost":0.08},
-  "t:funny": {"level":"general","domain":"tone","answerability_cost":0.08},
-  "t:otherworld": {
-   "level":"specific",
-   "domain":"narrative",
-   "answerability_cost":0.03,
-   "applies_if":{"any":[{"question":"form:fiction","answer":"yes"},{"question":"form:nonfiction","answer":"no"}]}
-  },
-  "t:powersystem": {
-   "level":"specific",
-   "domain":"narrative",
-   "answerability_cost":0.08,
-   "applies_if":{"any":[{"question":"form:fiction","answer":"yes"},{"question":"form:nonfiction","answer":"no"}]}
-  },
-  "t:realevents": {"level":"general","domain":"grounding","answerability_cost":0.08},
-  "t:romance": {"level":"specific","domain":"narrative","answerability_cost":0.04},
-  "t:survival": {"level":"specific","domain":"narrative","answerability_cost":0.08},
-  "t:travel": {"level":"specific","domain":"narrative","answerability_cost":0.08},
-  "t:war": {"level":"specific","domain":"narrative","answerability_cost":0.06},
-  "theme:family": {"level":"specific","domain":"narrative","answerability_cost":0.06},
-  "theme:friendship": {"level":"specific","domain":"narrative","answerability_cost":0.06},
-  "theme:magic": {
-   "level":"specific",
-   "domain":"narrative",
-   "answerability_cost":0.04,
-   "applies_if":{"any":[{"question":"form:fiction","answer":"yes"},{"question":"form:nonfiction","answer":"no"}]}
-  },
-  "setting:victorian": {
-   "level":"experimental",
-   "domain":"narrative",
-   "answerability_cost":0.15,
-   "applies_if":{"any":[{"question":"form:fiction","answer":"yes"},{"question":"form:nonfiction","answer":"no"}]}
-  },
-  "form:firstperson": {"level":"experimental","domain":"narrative","answerability_cost":0.15},
-  "form:memoir": {
-   "level":"experimental",
-   "domain":"form",
-   "answerability_cost":0.04,
-   "applies_if":{"any":[{"question":"form:nonfiction","answer":"yes"},{"question":"form:fiction","answer":"no"}]},
-   "skip_if":{"any":[{"question":"form:fiction","answer":"yes"},{"question":"form:nonfiction","answer":"no"},{"question":"genre:fantasy","answer":"yes"},{"question":"genre:scifi","answer":"yes"}]},
-   "priority_if":{"any":[{"question":"form:nonfiction","answer":"yes"},{"question":"form:fiction","answer":"no"}]}
+  "version": 1,
+  "questions": {
+    "audience:children": {
+      "level": "general",
+      "domain": "audience",
+      "answerability_cost": 0.05
+    },
+    "audience:ya": {
+      "level": "general",
+      "domain": "audience",
+      "answerability_cost": 0.08
+    },
+    "author:alive": {
+      "level": "general",
+      "domain": "author",
+      "answerability_cost": 0.04,
+      "skip_if": {
+        "any": [
+          {
+            "question": "fact:firstpub_lt_1900",
+            "answer": "yes"
+          },
+          {
+            "question": "fact:anonymous",
+            "answer": "yes"
+          }
+        ]
+      }
+    },
+    "author:american": {
+      "level": "general",
+      "domain": "author",
+      "answerability_cost": 0.03,
+      "skip_if": {
+        "question": "fact:anonymous",
+        "answer": "yes"
+      }
+    },
+    "author:british": {
+      "level": "general",
+      "domain": "author",
+      "answerability_cost": 0.03,
+      "skip_if": {
+        "question": "fact:anonymous",
+        "answer": "yes"
+      }
+    },
+    "author:european": {
+      "level": "general",
+      "domain": "author",
+      "answerability_cost": 0.08,
+      "skip_if": {
+        "question": "fact:anonymous",
+        "answer": "yes"
+      }
+    },
+    "author:female": {
+      "level": "general",
+      "domain": "author",
+      "answerability_cost": 0.04,
+      "skip_if": {
+        "question": "fact:anonymous",
+        "answer": "yes"
+      }
+    },
+    "author:nonwestern": {
+      "level": "general",
+      "domain": "author",
+      "answerability_cost": 0.1,
+      "skip_if": {
+        "question": "fact:anonymous",
+        "answer": "yes"
+      }
+    },
+    "author:prolific": {
+      "level": "general",
+      "domain": "author",
+      "answerability_cost": 0.15,
+      "skip_if": {
+        "question": "fact:anonymous",
+        "answer": "yes"
+      }
+    },
+    "book:film": {
+      "level": "general",
+      "domain": "adaptation",
+      "answerability_cost": 0.1
+    },
+    "fact:namedchars": {
+      "level": "specific",
+      "domain": "characters",
+      "answerability_cost": 0.05
+    },
+    "fact:firstpub_lt_1950": {
+      "level": "general",
+      "domain": "publication",
+      "answerability_cost": 0.08
+    },
+    "fact:firstpub_lt_1970": {
+      "level": "general",
+      "domain": "publication",
+      "answerability_cost": 0.08
+    },
+    "fact:firstpub_lt_2000": {
+      "level": "general",
+      "domain": "publication",
+      "answerability_cost": 0.05
+    },
+    "fact:firstpub_ge_2001": {
+      "level": "general",
+      "domain": "publication",
+      "answerability_cost": 0.04
+    },
+    "fact:firstpub_ge_2016": {
+      "level": "general",
+      "domain": "publication",
+      "answerability_cost": 0.04
+    },
+    "fact:firstpub_lt_1900": {
+      "level": "general",
+      "domain": "publication",
+      "answerability_cost": 0.08
+    },
+    "form:classic": {
+      "level": "general",
+      "domain": "form",
+      "answerability_cost": 0.1
+    },
+    "form:fiction": {
+      "level": "core",
+      "domain": "form",
+      "answerability_cost": 0.01
+    },
+    "form:nonfiction": {
+      "level": "core",
+      "domain": "form",
+      "answerability_cost": 0.02
+    },
+    "form:series": {
+      "level": "specific",
+      "domain": "narrative",
+      "answerability_cost": 0.06,
+      "applies_if": {
+        "any": [
+          {
+            "question": "form:fiction",
+            "answer": "yes"
+          },
+          {
+            "question": "form:nonfiction",
+            "answer": "no"
+          }
+        ]
+      }
+    },
+    "form:webnovel": {
+      "level": "specific",
+      "domain": "narrative",
+      "answerability_cost": 0.08,
+      "applies_if": {
+        "any": [
+          {
+            "question": "form:fiction",
+            "answer": "yes"
+          },
+          {
+            "question": "form:nonfiction",
+            "answer": "no"
+          }
+        ]
+      }
+    },
+    "genre:adventure": {
+      "level": "specific",
+      "domain": "narrative",
+      "answerability_cost": 0.04
+    },
+    "genre:drama": {
+      "level": "specific",
+      "domain": "narrative",
+      "answerability_cost": 0.05,
+      "applies_if": {
+        "any": [
+          {
+            "question": "form:fiction",
+            "answer": "yes"
+          },
+          {
+            "question": "form:nonfiction",
+            "answer": "no"
+          }
+        ]
+      }
+    },
+    "genre:fantasy": {
+      "level": "specific",
+      "domain": "narrative",
+      "answerability_cost": 0.03,
+      "applies_if": {
+        "any": [
+          {
+            "question": "form:fiction",
+            "answer": "yes"
+          },
+          {
+            "question": "form:nonfiction",
+            "answer": "no"
+          }
+        ]
+      }
+    },
+    "genre:history": {
+      "level": "general",
+      "domain": "topic",
+      "answerability_cost": 0.04
+    },
+    "genre:psychology": {
+      "level": "general",
+      "domain": "topic",
+      "answerability_cost": 0.06
+    },
+    "genre:romance": {
+      "level": "specific",
+      "domain": "narrative",
+      "answerability_cost": 0.04,
+      "applies_if": {
+        "any": [
+          {
+            "question": "form:fiction",
+            "answer": "yes"
+          },
+          {
+            "question": "form:nonfiction",
+            "answer": "no"
+          }
+        ]
+      }
+    },
+    "genre:science": {
+      "level": "general",
+      "domain": "topic",
+      "answerability_cost": 0.06
+    },
+    "genre:scifi": {
+      "level": "specific",
+      "domain": "narrative",
+      "answerability_cost": 0.03,
+      "applies_if": {
+        "any": [
+          {
+            "question": "form:fiction",
+            "answer": "yes"
+          },
+          {
+            "question": "form:nonfiction",
+            "answer": "no"
+          }
+        ]
+      }
+    },
+    "place:britain": {
+      "level": "general",
+      "domain": "place",
+      "answerability_cost": 0.1
+    },
+    "place:europe_other": {
+      "level": "general",
+      "domain": "place",
+      "answerability_cost": 0.15
+    },
+    "place:usa": {
+      "level": "general",
+      "domain": "place",
+      "answerability_cost": 0.08
+    },
+    "setting:school": {
+      "level": "specific",
+      "domain": "narrative",
+      "answerability_cost": 0.06
+    },
+    "t:child": {
+      "level": "specific",
+      "domain": "characters",
+      "answerability_cost": 0.03
+    },
+    "t:detective": {
+      "level": "specific",
+      "domain": "narrative",
+      "answerability_cost": 0.04
+    },
+    "t:family": {
+      "level": "specific",
+      "domain": "narrative",
+      "answerability_cost": 0.08
+    },
+    "t:funny": {
+      "level": "general",
+      "domain": "tone",
+      "answerability_cost": 0.08
+    },
+    "t:otherworld": {
+      "level": "specific",
+      "domain": "narrative",
+      "answerability_cost": 0.03,
+      "applies_if": {
+        "any": [
+          {
+            "question": "form:fiction",
+            "answer": "yes"
+          },
+          {
+            "question": "form:nonfiction",
+            "answer": "no"
+          }
+        ]
+      }
+    },
+    "t:powersystem": {
+      "level": "specific",
+      "domain": "narrative",
+      "answerability_cost": 0.08,
+      "applies_if": {
+        "any": [
+          {
+            "question": "form:fiction",
+            "answer": "yes"
+          },
+          {
+            "question": "form:nonfiction",
+            "answer": "no"
+          }
+        ]
+      }
+    },
+    "t:realevents": {
+      "level": "general",
+      "domain": "grounding",
+      "answerability_cost": 0.08
+    },
+    "t:romance": {
+      "level": "specific",
+      "domain": "narrative",
+      "answerability_cost": 0.04
+    },
+    "t:survival": {
+      "level": "specific",
+      "domain": "narrative",
+      "answerability_cost": 0.08
+    },
+    "t:travel": {
+      "level": "specific",
+      "domain": "narrative",
+      "answerability_cost": 0.08
+    },
+    "t:war": {
+      "level": "specific",
+      "domain": "narrative",
+      "answerability_cost": 0.06
+    },
+    "theme:family": {
+      "level": "specific",
+      "domain": "narrative",
+      "answerability_cost": 0.06
+    },
+    "theme:friendship": {
+      "level": "specific",
+      "domain": "narrative",
+      "answerability_cost": 0.06
+    },
+    "theme:magic": {
+      "level": "specific",
+      "domain": "narrative",
+      "answerability_cost": 0.04,
+      "applies_if": {
+        "any": [
+          {
+            "question": "form:fiction",
+            "answer": "yes"
+          },
+          {
+            "question": "form:nonfiction",
+            "answer": "no"
+          }
+        ]
+      }
+    },
+    "setting:victorian": {
+      "level": "experimental",
+      "domain": "narrative",
+      "answerability_cost": 0.15,
+      "applies_if": {
+        "any": [
+          {
+            "question": "form:fiction",
+            "answer": "yes"
+          },
+          {
+            "question": "form:nonfiction",
+            "answer": "no"
+          }
+        ]
+      }
+    },
+    "form:firstperson": {
+      "level": "experimental",
+      "domain": "narrative",
+      "answerability_cost": 0.15
+    },
+    "form:memoir": {
+      "level": "experimental",
+      "domain": "form",
+      "answerability_cost": 0.04,
+      "applies_if": {
+        "any": [
+          {
+            "question": "form:nonfiction",
+            "answer": "yes"
+          },
+          {
+            "question": "form:fiction",
+            "answer": "no"
+          }
+        ]
+      },
+      "skip_if": {
+        "any": [
+          {
+            "question": "form:fiction",
+            "answer": "yes"
+          },
+          {
+            "question": "form:nonfiction",
+            "answer": "no"
+          },
+          {
+            "question": "genre:fantasy",
+            "answer": "yes"
+          },
+          {
+            "question": "genre:scifi",
+            "answer": "yes"
+          }
+        ]
+      },
+      "priority_if": {
+        "any": [
+          {
+            "question": "form:nonfiction",
+            "answer": "yes"
+          },
+          {
+            "question": "form:fiction",
+            "answer": "no"
+          }
+        ]
+      }
+    },
+    "fact:anonymous": {
+      "level": "general",
+      "domain": "author",
+      "answerability_cost": 0.05
+    }
   }
- }
 }

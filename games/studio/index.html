@@ -621,6 +621,9 @@ $('btn-save').onclick = async () => {
   if (parsed.author && !$('author').value.trim()) { $('author').value = parsed.author; }
 
   const body = { title: $('title').value.trim(), author: $('author').value.trim(),
+                 publication: parsed.publication || null,
+                 publication_answers: parsed.publication_answers || {},
+                 authorship: parsed.authorship || { status: 'unresearched' },
                  answers: parsed.answers || parsed };
   const r = await (await fetch('/api/sheet', { method: 'POST',
     headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })).json();

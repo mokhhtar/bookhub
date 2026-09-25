@@ -478,20 +478,14 @@ permalink: /games/mind-reader/
   // Mirrors LADDERS in scripts/akinator/features.py; the golden-trace
   // parity test fails if the two drift.
   //
-  // Without this the game asked, in one real session: "published in the
-  // last 25 years?" yes, "in the last 10?" no, and then "written before
+  // Without this the game asked, in one real session: "first published in
+  // 2001 or later?" yes, "in 2016 or later?" no, and then "first published before
   // 2000?" — whose answer had been settled two turns earlier. To the matrix
   // those are three unrelated columns, and because the belief update is
   // deliberately soft the pre-2000 books kept enough mass to leave the
   // third question a positive information gain. The engine was reasoning
   // correctly from a model missing a fact.
-  var LADDERS = {
-    year: [['fact:veryold', '<', 1900], ['fact:old', '<', 1950],
-           ['fact:pre1970', '<', 1970], ['fact:pre2000', '<', 2000],
-           ['fact:recent', '>=', 2001], ['fact:verrecent', '>=', 2016]],
-    pages: [['fact:short', '<', 200], ['fact:midshort', '<', 300],
-            ['fact:long', '>', 400], ['fact:verylong', '>', 600]]
-  };
+  var LADDERS = { year: [] };
   // "Don't know" about a page count is rarely about THAT threshold — it is
   // a reader who does not think about books in pages. Two is the allowance:
   // someone who cannot say "under 300" may still know a brick on sight, so
@@ -508,6 +502,9 @@ permalink: /games/mind-reader/
     if (op === '<') {
       return isYes ? [lo, Math.min(hi, thr - 1)] : [Math.max(lo, thr), hi];
     }
+    if (op === '<=') {
+      return isYes ? [lo, Math.min(hi, thr)] : [Math.max(lo, thr + 1), hi];
+    }
     if (op === '>') {
       return isYes ? [Math.max(lo, thr + 1), hi] : [lo, Math.min(hi, thr)];
     }
@@ -517,6 +514,7 @@ permalink: /games/mind-reader/
   function ladderDetermined(op, thr, lo, hi) {
     if (lo > hi) { return true; }
     if (op === '<') { return hi < thr || lo >= thr; }
+    if (op === '<=') { return hi <= thr || lo > thr; }
     if (op === '>') { return lo > thr || hi <= thr; }
     return lo >= thr || hi < thr;
   }
@@ -655,7 +653,7 @@ permalink: /games/mind-reader/
   // copy/download button on the end screen.
   //
   // It exists because the fastest bugs to find have been the ones visible in
-  // a sequence: "last 25 years? yes / last 10? no / before 2000?" is only
+  // a sequence: "in 2001 or later? yes / in 2016 or later? no / before 2000?" is only
   // obviously wrong when you can see the three lines together. Reading them
   // off a screenshot is how the last round went.
   //
@@ -867,6 +865,9 @@ permalink: /games/mind-reader/
                })])
     .then(function (parts) {
       meta = parts[0];
+      LADDERS = { year: meta.publication_ladder || [] };
+      LADDER_OF = {};
+      LADDERS.year.forEach(function(r) { LADDER_OF[r[0]] = ["year", r[1], r[2]]; });
       questions = parts[1];
       decodeMatrix(new Uint8Array(parts[2]));
       addColdQuestions(parts[3]);
@@ -1375,6 +1376,8 @@ permalink: /games/mind-reader/
       if (row === undefined) { return; }      // book no longer shipped
       var cells = data[key] || {};
       Object.keys(cells).forEach(function (qid) {
+        if (qid.indexOf('fact:firstpub_') === 0 || qid === 'fact:anonymous') { return; }
+        if ((books[row].protected_questions || []).indexOf(qid) !== -1) { return; }
         var q = qIndex[qid];
         var p = cells[qid];
         if (q === undefined || typeof p !== 'number') { return; }

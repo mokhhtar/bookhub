@@ -1896,8 +1896,8 @@
       "originally_in_arabic": 0,
       "published_before_1900": 0,
       "published_1900_to_1950": 0,
-      "published_1951_to_2000": 0,
-      "published_after_2000": 1,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0,
       "author_male": 0,
       "author_female": 1,
       "author_american": 1,
@@ -2016,8 +2016,8 @@
       "originally_in_arabic": 0,
       "published_before_1900": 0,
       "published_1900_to_1950": 0,
-      "published_1951_to_2000": 0,
-      "published_after_2000": 1,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0,
       "author_male": 0,
       "author_female": 1,
       "author_american": 0,
@@ -2674,8 +2674,8 @@
       "originally_in_russian": 0,
       "originally_in_japanese": 0,
       "originally_in_arabic": 0,
-      "published_before_1900": 1,
-      "published_1900_to_1950": 0,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 1,
       "published_1951_to_2000": 0,
       "published_after_2000": 0,
       "author_male": 1,
@@ -3576,8 +3576,8 @@
       "originally_in_arabic": 0,
       "published_before_1900": 0,
       "published_1900_to_1950": 0,
-      "published_1951_to_2000": 0,
-      "published_after_2000": 1,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0,
       "author_male": 0,
       "author_female": 1,
       "author_american": 1,
@@ -5696,7 +5696,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -5734,9 +5738,9 @@
       "originally_in_russian": 0,
       "originally_in_japanese": 0,
       "originally_in_arabic": 0,
-      "published_before_1900": 0,
+      "published_before_1900": 1,
       "published_1900_to_1950": 0,
-      "published_1951_to_2000": 1,
+      "published_1951_to_2000": 0,
       "published_after_2000": 0,
       "author_male": 1,
       "author_female": 0,
@@ -6696,8 +6700,8 @@
       "originally_in_arabic": 0,
       "published_before_1900": 0,
       "published_1900_to_1950": 0,
-      "published_1951_to_2000": 0,
-      "published_after_2000": 1,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0,
       "author_male": 0,
       "author_female": 1,
       "author_american": 0,
@@ -6875,8 +6879,8 @@
       "originally_in_japanese": 0,
       "originally_in_arabic": 0,
       "published_before_1900": 0,
-      "published_1900_to_1950": 0,
-      "published_1951_to_2000": 1,
+      "published_1900_to_1950": 1,
+      "published_1951_to_2000": 0,
       "published_after_2000": 0,
       "author_male": 1,
       "author_female": 0,
@@ -7416,8 +7420,8 @@
       "originally_in_arabic": 0,
       "published_before_1900": 0,
       "published_1900_to_1950": 0,
-      "published_1951_to_2000": 0,
-      "published_after_2000": 1,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0,
       "author_male": 1,
       "author_female": 0,
       "author_american": 0,
@@ -8735,8 +8739,8 @@
       "originally_in_japanese": 0,
       "originally_in_arabic": 0,
       "published_before_1900": 0,
-      "published_1900_to_1950": 0,
-      "published_1951_to_2000": 1,
+      "published_1900_to_1950": 1,
+      "published_1951_to_2000": 0,
       "published_after_2000": 0,
       "author_male": 0,
       "author_female": 1,
@@ -8816,7 +8820,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -10895,8 +10903,8 @@
       "originally_in_japanese": 0,
       "originally_in_arabic": 0,
       "published_before_1900": 0,
-      "published_1900_to_1950": 0,
-      "published_1951_to_2000": 1,
+      "published_1900_to_1950": 1,
+      "published_1951_to_2000": 0,
       "published_after_2000": 0,
       "author_male": 1,
       "author_female": 0,
@@ -10954,10 +10962,10 @@
       "originally_in_russian": 0,
       "originally_in_japanese": 0,
       "originally_in_arabic": 0,
-      "published_before_1900": 1,
-      "published_1900_to_1950": 0,
-      "published_1951_to_2000": 0,
-      "published_after_2000": 0,
+      "published_before_1900": null,
+      "published_1900_to_1950": null,
+      "published_1951_to_2000": null,
+      "published_after_2000": null,
       "author_male": 1,
       "author_female": 0,
       "author_american": 0,
@@ -13296,8 +13304,8 @@
       "originally_in_arabic": 0,
       "published_before_1900": 0,
       "published_1900_to_1950": 0,
-      "published_1951_to_2000": 0,
-      "published_after_2000": 1,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0,
       "author_male": 0,
       "author_female": 1,
       "author_american": 1,
@@ -15156,8 +15164,8 @@
       "originally_in_arabic": 0,
       "published_before_1900": 0,
       "published_1900_to_1950": 0,
-      "published_1951_to_2000": 0,
-      "published_after_2000": 1,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0,
       "author_male": 1,
       "author_female": 0,
       "author_american": 1,
@@ -15334,8 +15342,8 @@
       "originally_in_russian": 0,
       "originally_in_japanese": 0,
       "originally_in_arabic": 0,
-      "published_before_1900": 0,
-      "published_1900_to_1950": 1,
+      "published_before_1900": 1,
+      "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 0,
       "author_male": 1,
@@ -16774,10 +16782,10 @@
       "originally_in_russian": 0,
       "originally_in_japanese": 0,
       "originally_in_arabic": 0,
-      "published_before_1900": 1,
-      "published_1900_to_1950": 0,
-      "published_1951_to_2000": 0,
-      "published_after_2000": 0,
+      "published_before_1900": null,
+      "published_1900_to_1950": null,
+      "published_1951_to_2000": null,
+      "published_after_2000": null,
       "author_male": 1,
       "author_female": 0,
       "author_american": 1,
@@ -17756,7 +17764,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -17794,10 +17806,10 @@
       "originally_in_russian": 0,
       "originally_in_japanese": 0,
       "originally_in_arabic": 0,
-      "published_before_1900": 1,
-      "published_1900_to_1950": 0,
-      "published_1951_to_2000": 0,
-      "published_after_2000": 0,
+      "published_before_1900": null,
+      "published_1900_to_1950": null,
+      "published_1951_to_2000": null,
+      "published_after_2000": null,
       "author_male": 1,
       "author_female": 0,
       "author_american": 0,
@@ -19895,8 +19907,8 @@
       "originally_in_japanese": 0,
       "originally_in_arabic": 0,
       "published_before_1900": 0,
-      "published_1900_to_1950": 1,
-      "published_1951_to_2000": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
       "published_after_2000": 0,
       "author_male": 1,
       "author_female": 0,
@@ -21096,8 +21108,8 @@
       "originally_in_arabic": 0,
       "published_before_1900": 0,
       "published_1900_to_1950": 0,
-      "published_1951_to_2000": 0,
-      "published_after_2000": 1,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0,
       "author_male": 0,
       "author_female": 1,
       "author_american": 1,
@@ -21695,8 +21707,8 @@
       "originally_in_japanese": 0,
       "originally_in_arabic": 0,
       "published_before_1900": 0,
-      "published_1900_to_1950": 0,
-      "published_1951_to_2000": 1,
+      "published_1900_to_1950": 1,
+      "published_1951_to_2000": 0,
       "published_after_2000": 0,
       "author_male": 0,
       "author_female": 1,
@@ -22474,9 +22486,9 @@
       "originally_in_russian": 0,
       "originally_in_japanese": 1,
       "originally_in_arabic": 0,
-      "published_before_1900": 1,
+      "published_before_1900": 0,
       "published_1900_to_1950": 0,
-      "published_1951_to_2000": 0,
+      "published_1951_to_2000": 1,
       "published_after_2000": 0,
       "author_male": 1,
       "author_female": 0,
@@ -22654,9 +22666,9 @@
       "originally_in_russian": 0,
       "originally_in_japanese": 0,
       "originally_in_arabic": 0,
-      "published_before_1900": 0,
+      "published_before_1900": 1,
       "published_1900_to_1950": 0,
-      "published_1951_to_2000": 1,
+      "published_1951_to_2000": 0,
       "published_after_2000": 0,
       "author_male": 0,
       "author_female": 1,
@@ -22954,8 +22966,8 @@
       "originally_in_russian": 0,
       "originally_in_japanese": 0,
       "originally_in_arabic": 0,
-      "published_before_1900": 1,
-      "published_1900_to_1950": 0,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 1,
       "published_1951_to_2000": 0,
       "published_after_2000": 0,
       "author_male": 1,
@@ -23436,8 +23448,8 @@
       "originally_in_arabic": 0,
       "published_before_1900": 0,
       "published_1900_to_1950": 0,
-      "published_1951_to_2000": 0,
-      "published_after_2000": 1,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0,
       "author_male": 1,
       "author_female": 0,
       "author_american": 0,
@@ -23876,7 +23888,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.9,
       "fact:series": 0.9,
-      "fact:long": 0.9
+      "fact:long": 0.9,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -24216,8 +24232,8 @@
       "originally_in_arabic": 0,
       "published_before_1900": 0,
       "published_1900_to_1950": 0,
-      "published_1951_to_2000": 0,
-      "published_after_2000": 1,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0,
       "author_male": 0,
       "author_female": 1,
       "author_american": 1,
@@ -24576,8 +24592,8 @@
       "originally_in_arabic": 1,
       "published_before_1900": 0,
       "published_1900_to_1950": 0,
-      "published_1951_to_2000": 1,
-      "published_after_2000": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1,
       "author_male": 1,
       "author_female": 0,
       "author_american": 0,
@@ -24696,8 +24712,8 @@
       "originally_in_arabic": 0,
       "published_before_1900": 0,
       "published_1900_to_1950": 0,
-      "published_1951_to_2000": 0,
-      "published_after_2000": 1,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0,
       "author_male": 1,
       "author_female": 0,
       "author_american": 1,
@@ -25196,7 +25212,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 1,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 0
     }
   },
   {
@@ -26074,8 +26094,8 @@
       "originally_in_russian": 0,
       "originally_in_japanese": 0,
       "originally_in_arabic": 0,
-      "published_before_1900": 0,
-      "published_1900_to_1950": 1,
+      "published_before_1900": 1,
+      "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 0,
       "author_male": 1,
@@ -26936,7 +26956,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.9,
       "fact:series": 0.9,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 1,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 0
     }
   },
   {
@@ -27396,8 +27420,8 @@
       "originally_in_arabic": 0,
       "published_before_1900": 0,
       "published_1900_to_1950": 0,
-      "published_1951_to_2000": 0,
-      "published_after_2000": 1,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0,
       "author_male": 1,
       "author_female": 0,
       "author_american": 1,
@@ -27935,8 +27959,8 @@
       "originally_in_japanese": 0,
       "originally_in_arabic": 0,
       "published_before_1900": 0,
-      "published_1900_to_1950": 0,
-      "published_1951_to_2000": 1,
+      "published_1900_to_1950": 1,
+      "published_1951_to_2000": 0,
       "published_after_2000": 0,
       "author_male": 1,
       "author_female": 0,
@@ -28296,8 +28320,8 @@
       "originally_in_arabic": 0,
       "published_before_1900": 0,
       "published_1900_to_1950": 0,
-      "published_1951_to_2000": 0,
-      "published_after_2000": 1,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0,
       "author_male": 0,
       "author_female": 1,
       "author_american": 1,
@@ -28474,8 +28498,8 @@
       "originally_in_russian": 0,
       "originally_in_japanese": 0,
       "originally_in_arabic": 0,
-      "published_before_1900": 1,
-      "published_1900_to_1950": 0,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 1,
       "published_1951_to_2000": 0,
       "published_after_2000": 0,
       "author_male": 1,
@@ -28776,8 +28800,8 @@
       "originally_in_arabic": 0,
       "published_before_1900": 0,
       "published_1900_to_1950": 0,
-      "published_1951_to_2000": 0,
-      "published_after_2000": 1,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0,
       "author_male": 0,
       "author_female": 1,
       "author_american": 1,
@@ -29075,8 +29099,8 @@
       "originally_in_japanese": 0,
       "originally_in_arabic": 0,
       "published_before_1900": 0,
-      "published_1900_to_1950": 0,
-      "published_1951_to_2000": 1,
+      "published_1900_to_1950": 1,
+      "published_1951_to_2000": 0,
       "published_after_2000": 0,
       "author_male": 1,
       "author_female": 0,
@@ -29135,9 +29159,9 @@
       "originally_in_japanese": 0,
       "originally_in_arabic": 0,
       "published_before_1900": 0,
-      "published_1900_to_1950": 0,
+      "published_1900_to_1950": 1,
       "published_1951_to_2000": 0,
-      "published_after_2000": 1,
+      "published_after_2000": 0,
       "author_male": 1,
       "author_female": 0,
       "author_american": 1,
@@ -29554,10 +29578,10 @@
       "originally_in_russian": 1,
       "originally_in_japanese": 0,
       "originally_in_arabic": 0,
-      "published_before_1900": 1,
+      "published_before_1900": 0,
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
-      "published_after_2000": 0,
+      "published_after_2000": 1,
       "author_male": 1,
       "author_female": 0,
       "author_american": 0,
@@ -31376,7 +31400,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -32036,7 +32064,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 1,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 0
     }
   },
   {
@@ -32975,7 +33007,7 @@
       "originally_in_japanese": 0,
       "originally_in_arabic": 0,
       "published_before_1900": 0,
-      "published_1900_to_1950": 1,
+      "published_1900_to_1950": 0,
       "published_1951_to_2000": 1,
       "published_after_2000": 0,
       "author_male": 1,
@@ -33156,8 +33188,8 @@
       "originally_in_arabic": 0,
       "published_before_1900": 0,
       "published_1900_to_1950": 0,
-      "published_1951_to_2000": 0,
-      "published_after_2000": 1,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0,
       "author_male": 1,
       "author_female": 0,
       "author_american": 1,
@@ -34116,8 +34148,8 @@
       "originally_in_arabic": 0,
       "published_before_1900": 0,
       "published_1900_to_1950": 0,
-      "published_1951_to_2000": 0,
-      "published_after_2000": 1,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0,
       "author_male": 0,
       "author_female": 1,
       "author_american": 1,
@@ -34234,8 +34266,8 @@
       "originally_in_russian": 0,
       "originally_in_japanese": 0,
       "originally_in_arabic": 0,
-      "published_before_1900": 1,
-      "published_1900_to_1950": 0,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 1,
       "published_1951_to_2000": 0,
       "published_after_2000": 0,
       "author_male": 1,
@@ -35136,8 +35168,8 @@
       "originally_in_arabic": 0,
       "published_before_1900": 0,
       "published_1900_to_1950": 0,
-      "published_1951_to_2000": 1,
-      "published_after_2000": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1,
       "author_male": 1,
       "author_female": 0,
       "author_american": 1,
@@ -35914,10 +35946,10 @@
       "originally_in_russian": 0,
       "originally_in_japanese": 0,
       "originally_in_arabic": 0,
-      "published_before_1900": 1,
+      "published_before_1900": 0,
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
-      "published_after_2000": 0,
+      "published_after_2000": 1,
       "author_male": 1,
       "author_female": 0,
       "author_american": 0,
@@ -36154,8 +36186,8 @@
       "originally_in_russian": 0,
       "originally_in_japanese": 0,
       "originally_in_arabic": 0,
-      "published_before_1900": 0,
-      "published_1900_to_1950": 1,
+      "published_before_1900": 1,
+      "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 0,
       "author_male": 1,
@@ -37296,8 +37328,8 @@
       "originally_in_arabic": 0,
       "published_before_1900": 0,
       "published_1900_to_1950": 0,
-      "published_1951_to_2000": 0,
-      "published_after_2000": 1,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0,
       "author_male": 0,
       "author_female": 1,
       "author_american": 0,
@@ -37354,8 +37386,8 @@
       "originally_in_russian": 0,
       "originally_in_japanese": 0,
       "originally_in_arabic": 0,
-      "published_before_1900": 0,
-      "published_1900_to_1950": 1,
+      "published_before_1900": 1,
+      "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 0,
       "author_male": 1,
@@ -38195,8 +38227,8 @@
       "originally_in_japanese": 0,
       "originally_in_arabic": 0,
       "published_before_1900": 0,
-      "published_1900_to_1950": 0,
-      "published_1951_to_2000": 1,
+      "published_1900_to_1950": 1,
+      "published_1951_to_2000": 0,
       "published_after_2000": 0,
       "author_male": 1,
       "author_female": 0,
@@ -39515,8 +39547,8 @@
       "originally_in_japanese": 0,
       "originally_in_arabic": 0,
       "published_before_1900": 0,
-      "published_1900_to_1950": 0,
-      "published_1951_to_2000": 1,
+      "published_1900_to_1950": 1,
+      "published_1951_to_2000": 0,
       "published_after_2000": 0,
       "author_male": 0,
       "author_female": 1,
@@ -39996,8 +40028,8 @@
       "originally_in_arabic": 0,
       "published_before_1900": 0,
       "published_1900_to_1950": 0,
-      "published_1951_to_2000": 0,
-      "published_after_2000": 1,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0,
       "author_male": 0,
       "author_female": 1,
       "author_american": 1,
@@ -41616,8 +41648,8 @@
       "originally_in_arabic": 0,
       "published_before_1900": 0,
       "published_1900_to_1950": 0,
-      "published_1951_to_2000": 0,
-      "published_after_2000": 1,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0,
       "author_male": 1,
       "author_female": 0,
       "author_american": 1,
@@ -42575,9 +42607,9 @@
       "originally_in_japanese": 0,
       "originally_in_arabic": 0,
       "published_before_1900": 0,
-      "published_1900_to_1950": 1,
+      "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
-      "published_after_2000": 0,
+      "published_after_2000": 1,
       "author_male": 1,
       "author_female": 0,
       "author_american": 0,
@@ -42875,8 +42907,8 @@
       "originally_in_japanese": 0,
       "originally_in_arabic": 0,
       "published_before_1900": 0,
-      "published_1900_to_1950": 0,
-      "published_1951_to_2000": 1,
+      "published_1900_to_1950": 1,
+      "published_1951_to_2000": 0,
       "published_after_2000": 0,
       "author_male": 0,
       "author_female": 1,
@@ -44135,9 +44167,9 @@
       "originally_in_japanese": 0,
       "originally_in_arabic": 0,
       "published_before_1900": 0,
-      "published_1900_to_1950": 1,
+      "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
-      "published_after_2000": 0,
+      "published_after_2000": 1,
       "author_male": 0,
       "author_female": 1,
       "author_american": 0,
@@ -44396,7 +44428,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -44735,8 +44771,8 @@
       "originally_in_japanese": 0,
       "originally_in_arabic": 0,
       "published_before_1900": 0,
-      "published_1900_to_1950": 0,
-      "published_1951_to_2000": 1,
+      "published_1900_to_1950": 1,
+      "published_1951_to_2000": 0,
       "published_after_2000": 0,
       "author_male": 1,
       "author_female": 0,
@@ -45096,8 +45132,8 @@
       "originally_in_arabic": 0,
       "published_before_1900": 0,
       "published_1900_to_1950": 0,
-      "published_1951_to_2000": 0,
-      "published_after_2000": 1,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0,
       "author_male": 0,
       "author_female": 1,
       "author_american": 1,
@@ -45996,8 +46032,8 @@
       "originally_in_arabic": 0,
       "published_before_1900": 0,
       "published_1900_to_1950": 0,
-      "published_1951_to_2000": 0,
-      "published_after_2000": 1,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0,
       "author_male": 1,
       "author_female": 0,
       "author_american": 1,
@@ -48926,7 +48962,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.9,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -51577,7 +51617,10 @@
     "p": 500,
     "r": 51,
     "w": null,
-    "c": 9346507
+    "c": 9346507,
+    "authorship": {
+      "status": "known"
+    }
   },
   {
     "k": "/works/OL71124W",
@@ -52046,7 +52089,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -52616,7 +52663,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.9,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 1,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 0
     }
   },
   {
@@ -53066,7 +53117,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.9,
       "fact:series": 0.9,
-      "fact:long": 0.9
+      "fact:long": 0.9,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -54526,7 +54581,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.9,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 1,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 0
     }
   },
   {
@@ -54906,7 +54965,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.9
+      "fact:long": 0.9,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -55716,7 +55779,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -55826,7 +55893,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.65
+      "fact:long": 0.65,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -56716,7 +56787,11 @@
       "fact:bestseller": 0.65,
       "fact:award": 0.15,
       "fact:series": 0.9,
-      "fact:long": 0.65
+      "fact:long": 0.65,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -56896,7 +56971,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.65,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -57516,7 +57595,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.9
+      "fact:long": 0.9,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -57706,7 +57789,11 @@
       "fact:bestseller": 0.35,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -59596,7 +59683,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.65
+      "fact:long": 0.65,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -60226,7 +60317,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -61167,7 +61262,10 @@
     "p": 310,
     "r": 23,
     "w": null,
-    "c": 7898512
+    "c": 7898512,
+    "authorship": {
+      "status": "known"
+    }
   },
   {
     "k": "/works/OL1151518W",
@@ -61516,7 +61614,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.15,
       "fact:series": 0.9,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 1,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 0
     }
   },
   {
@@ -62516,7 +62618,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 1,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 0
     }
   },
   {
@@ -62916,7 +63022,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.65,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -63396,7 +63506,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 1,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 0
     }
   },
   {
@@ -63826,7 +63940,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.9,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -64776,7 +64894,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.9,
       "fact:series": 0.15,
-      "fact:long": 0.65
+      "fact:long": 0.65,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -65526,7 +65648,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.9,
-      "fact:long": 0.65
+      "fact:long": 0.65,
+      "published_before_1900": 1,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 0
     }
   },
   {
@@ -66526,7 +66652,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -67076,7 +67206,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -67726,7 +67860,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -68456,7 +68594,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.9,
       "fact:series": 0.15,
-      "fact:long": 0.65
+      "fact:long": 0.65,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -69387,7 +69529,10 @@
     "p": 241,
     "r": 3,
     "w": null,
-    "c": 10836696
+    "c": 10836696,
+    "authorship": {
+      "status": "known"
+    }
   },
   {
     "k": "/works/OL25808023W",
@@ -70356,7 +70501,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -70766,7 +70915,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.9,
       "fact:series": 0.15,
-      "fact:long": 0.9
+      "fact:long": 0.9,
+      "published_before_1900": 1,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 0
     }
   },
   {
@@ -71266,7 +71419,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -71766,7 +71923,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.15,
       "fact:series": 0.9,
-      "fact:long": 0.15
+      "fact:long": 0.15,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -71996,7 +72157,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -72576,7 +72741,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.9,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 1,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 0
     }
   },
   {
@@ -72776,7 +72945,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.9,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 1,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 0
     }
   },
   {
@@ -73236,7 +73409,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.9,
       "fact:series": 0.9,
-      "fact:long": 0.9
+      "fact:long": 0.9,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -73366,7 +73543,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 1,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 0
     }
   },
   {
@@ -75481,7 +75662,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.9,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 1,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 0
     }
   },
   {
@@ -76957,7 +77142,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.9,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 1,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 0
     }
   },
   {
@@ -77017,7 +77206,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -78348,7 +78541,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.65,
       "fact:series": 0.15,
-      "fact:long": 0.65
+      "fact:long": 0.65,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -80966,7 +81163,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 1,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 0
     }
   },
   {
@@ -82324,7 +82525,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.9
+      "fact:long": 0.9,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -84135,7 +84340,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.9
+      "fact:long": 0.9,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -84195,7 +84404,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.9,
       "fact:series": 0.15,
-      "fact:long": 0.15
+      "fact:long": 0.15,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -84850,7 +85063,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.9,
-      "fact:long": 0.9
+      "fact:long": 0.9,
+      "published_before_1900": 1,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 0
     }
   },
   {
@@ -85110,7 +85327,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -85200,7 +85421,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -86297,7 +86522,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 1,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 0
     }
   },
   {
@@ -86770,7 +86999,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.15,
       "fact:series": 0.9,
-      "fact:long": 0.15
+      "fact:long": 0.15,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -86921,7 +87154,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.15,
       "fact:series": 0.9,
-      "fact:long": 0.15
+      "fact:long": 0.15,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -86981,7 +87218,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 1,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 0
     }
   },
   {
@@ -87061,7 +87302,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.65
+      "fact:long": 0.65,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -88660,7 +88905,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.15,
       "fact:series": 0.9,
-      "fact:long": 0.15
+      "fact:long": 0.15,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -90098,7 +90347,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -90198,7 +90451,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -90991,7 +91248,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.15,
       "fact:series": 0.9,
-      "fact:long": 0.15
+      "fact:long": 0.15,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -91171,7 +91432,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.15
+      "fact:long": 0.15,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -91341,7 +91606,11 @@
       "fact:bestseller": 0.65,
       "fact:award": 0.15,
       "fact:series": 0.9,
-      "fact:long": 0.9
+      "fact:long": 0.9,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -91401,7 +91670,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.9,
       "fact:series": 0.15,
-      "fact:long": 0.15
+      "fact:long": 0.15,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -91481,7 +91754,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.15,
       "fact:series": 0.9,
-      "fact:long": 0.15
+      "fact:long": 0.15,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -91581,7 +91858,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 1,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 0
     }
   },
   {
@@ -91651,7 +91932,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.9,
-      "fact:long": 0.9
+      "fact:long": 0.9,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -91881,7 +92166,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -91971,7 +92260,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.15,
       "fact:series": 0.9,
-      "fact:long": 0.15
+      "fact:long": 0.15,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -92121,7 +92414,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.9,
       "fact:series": 0.15,
-      "fact:long": 0.65
+      "fact:long": 0.65,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -92201,7 +92498,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -92291,7 +92592,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.15,
       "fact:series": 0.9,
-      "fact:long": 0.15
+      "fact:long": 0.15,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -92441,7 +92746,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.15,
       "fact:series": 0.9,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -92521,7 +92830,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -92591,7 +92904,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.65
+      "fact:long": 0.65,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -92661,7 +92978,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 1,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 0
     }
   },
   {
@@ -92751,7 +93072,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -92951,7 +93276,11 @@
       "fact:bestseller": 0.65,
       "fact:award": 0.65,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -93041,7 +93370,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.65,
       "fact:series": 0.9,
-      "fact:long": 0.15
+      "fact:long": 0.15,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -93101,7 +93434,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -93181,7 +93518,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.9,
       "fact:series": 0.15,
-      "fact:long": 0.65
+      "fact:long": 0.65,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -93301,7 +93642,11 @@
       "fact:bestseller": 0.65,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.9
+      "fact:long": 0.9,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -93361,7 +93706,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.65,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -93451,7 +93800,11 @@
       "fact:bestseller": 0.65,
       "fact:award": 0.15,
       "fact:series": 0.9,
-      "fact:long": 0.15
+      "fact:long": 0.15,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -93641,7 +93994,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.15,
       "fact:series": 0.9,
-      "fact:long": 0.15
+      "fact:long": 0.15,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -93761,7 +94118,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.65,
       "fact:series": 0.15,
-      "fact:long": 0.15
+      "fact:long": 0.15,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -93891,7 +94252,14 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.9
+      "fact:long": 0.9,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
+    },
+    "authorship": {
+      "status": "known"
     }
   },
   {
@@ -93951,7 +94319,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.65,
       "fact:series": 0.15,
-      "fact:long": 0.65
+      "fact:long": 0.65,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -94011,7 +94383,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -94121,7 +94497,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.15,
       "fact:series": 0.9,
-      "fact:long": 0.65
+      "fact:long": 0.65,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -94181,7 +94561,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.65,
       "fact:series": 0.15,
-      "fact:long": 0.65
+      "fact:long": 0.65,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -94271,7 +94655,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.9,
       "fact:series": 0.9,
-      "fact:long": 0.65
+      "fact:long": 0.65,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -94601,7 +94989,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -94951,7 +95343,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.9
+      "fact:long": 0.9,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -95151,7 +95547,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -95301,7 +95701,11 @@
       "fact:bestseller": 0.65,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.65
+      "fact:long": 0.65,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -95401,7 +95805,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.9,
-      "fact:long": 0.15
+      "fact:long": 0.15,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -95491,7 +95899,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.65,
       "fact:series": 0.15,
-      "fact:long": 0.65
+      "fact:long": 0.65,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -95711,7 +96123,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.9,
       "fact:series": 0.9,
-      "fact:long": 0.9
+      "fact:long": 0.9,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -95811,7 +96227,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.35,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -95921,7 +96341,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -96041,7 +96465,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.65
+      "fact:long": 0.65,
+      "published_before_1900": 1,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 0
     }
   },
   {
@@ -96311,7 +96739,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.9,
       "fact:series": 0.9,
-      "fact:long": 0.15
+      "fact:long": 0.15,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -96381,7 +96813,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.9,
-      "fact:long": 0.9
+      "fact:long": 0.9,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -96451,7 +96887,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.15,
       "fact:series": 0.9,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -96591,7 +97031,11 @@
       "fact:bestseller": 0.65,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.65
+      "fact:long": 0.65,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -96721,7 +97165,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 1,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 0
     }
   },
   {
@@ -97001,7 +97449,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.65,
       "fact:series": 0.9,
-      "fact:long": 0.65
+      "fact:long": 0.65,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -97121,7 +97573,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.9
+      "fact:long": 0.9,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -97481,7 +97937,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -97871,7 +98331,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.15,
       "fact:series": 0.9,
-      "fact:long": 0.15
+      "fact:long": 0.15,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -97981,7 +98445,11 @@
       "fact:bestseller": 0.65,
       "fact:award": 0.65,
       "fact:series": 0.15,
-      "fact:long": 0.65
+      "fact:long": 0.65,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -98051,7 +98519,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.9,
       "fact:series": 0.9,
-      "fact:long": 0.9
+      "fact:long": 0.9,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -98121,7 +98593,11 @@
       "fact:bestseller": 0.35,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -98191,7 +98667,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.9,
-      "fact:long": 0.65
+      "fact:long": 0.65,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -98291,7 +98771,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -98551,7 +99035,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -98971,7 +99459,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.65
+      "fact:long": 0.65,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -99061,7 +99553,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.9,
       "fact:series": 0.9,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -99201,7 +99697,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.9,
-      "fact:long": 0.65
+      "fact:long": 0.65,
+      "published_before_1900": 1,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 0
     }
   },
   {
@@ -99521,7 +100021,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.9
+      "fact:long": 0.9,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -99621,7 +100125,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.65
+      "fact:long": 0.65,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -99681,7 +100189,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.65,
       "fact:series": 0.15,
-      "fact:long": 0.65
+      "fact:long": 0.65,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -99741,7 +100253,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -99821,7 +100337,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.65,
       "fact:series": 0.9,
-      "fact:long": 0.15
+      "fact:long": 0.15,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -100021,7 +100541,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.65,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -100131,7 +100655,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -100191,7 +100719,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.15,
       "fact:series": 0.9,
-      "fact:long": 0.9
+      "fact:long": 0.9,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -100251,7 +100783,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.9
+      "fact:long": 0.9,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -100361,7 +100897,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -100491,7 +101031,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -100551,7 +101095,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.15,
       "fact:series": 0.9,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -100621,7 +101169,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.65,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -100951,7 +101503,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.9,
       "fact:series": 0.15,
-      "fact:long": 0.65
+      "fact:long": 0.65,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 1,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 0
     }
   },
   {
@@ -101031,7 +101587,11 @@
       "fact:bestseller": 0.65,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -101091,7 +101651,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.65
+      "fact:long": 0.65,
+      "published_before_1900": 1,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 0
     }
   },
   {
@@ -101171,7 +101735,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -101271,7 +101839,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.9,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -101331,7 +101903,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -101411,7 +101987,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.9,
       "fact:series": 0.15,
-      "fact:long": 0.65
+      "fact:long": 0.65,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 1,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 0
     }
   },
   {
@@ -101481,7 +102061,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.65
+      "fact:long": 0.65,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -101551,7 +102135,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.9,
       "fact:series": 0.15,
-      "fact:long": 0.65
+      "fact:long": 0.65,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 1,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 0
     }
   },
   {
@@ -101821,7 +102409,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.15,
       "fact:series": 0.9,
-      "fact:long": 0.9
+      "fact:long": 0.9,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -102041,7 +102633,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.9,
       "fact:series": 0.9,
-      "fact:long": 0.9
+      "fact:long": 0.9,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -102351,7 +102947,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.9,
       "fact:series": 0.9,
-      "fact:long": 0.9
+      "fact:long": 0.9,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -102541,7 +103141,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.9,
       "fact:series": 0.9,
-      "fact:long": 0.9
+      "fact:long": 0.9,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -102611,7 +103215,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.65,
       "fact:series": 0.9,
-      "fact:long": 0.9
+      "fact:long": 0.9,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -102861,7 +103469,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.65,
       "fact:series": 0.15,
-      "fact:long": 0.65
+      "fact:long": 0.65,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -102971,7 +103583,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.15,
       "fact:series": 0.9,
-      "fact:long": 0.9
+      "fact:long": 0.9,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -103041,7 +103657,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.65
+      "fact:long": 0.65,
+      "published_before_1900": 1,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 0
     }
   },
   {
@@ -103761,7 +104381,14 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.9,
       "fact:series": 0.9,
-      "fact:long": 0.9
+      "fact:long": 0.9,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
+    },
+    "authorship": {
+      "status": "known"
     }
   },
   {
@@ -103812,7 +104439,10 @@
     "p": 150,
     "r": 7,
     "w": null,
-    "c": null
+    "c": null,
+    "authorship": {
+      "status": "known"
+    }
   },
   {
     "k": "/site/mazeppa",
@@ -103943,7 +104573,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -104025,7 +104659,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.9,
       "fact:series": 0.9,
-      "fact:long": 0.65
+      "fact:long": 0.65,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 1,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 0
     }
   },
   {
@@ -104209,7 +104847,14 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.65,
       "fact:series": 0.15,
-      "fact:long": 0.65
+      "fact:long": 0.65,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
+    },
+    "authorship": {
+      "status": "known"
     }
   },
   {
@@ -104281,7 +104926,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.9,
       "fact:series": 0.15,
-      "fact:long": 0.65
+      "fact:long": 0.65,
+      "published_before_1900": 1,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 0
     }
   },
   {
@@ -104343,7 +104992,11 @@
       "fact:bestseller": 0.15,
       "fact:award": 0.15,
       "fact:series": 0.15,
-      "fact:long": 0.35
+      "fact:long": 0.35,
+      "published_before_1900": 1,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 0
     }
   },
   {
@@ -104405,7 +105058,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.9,
       "fact:series": 0.15,
-      "fact:long": 0.65
+      "fact:long": 0.65,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -104467,7 +105124,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.9,
       "fact:series": 0.15,
-      "fact:long": 0.65
+      "fact:long": 0.65,
+      "published_before_1900": 1,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 0
     }
   },
   {
@@ -104539,7 +105200,14 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.9,
       "fact:series": 0.9,
-      "fact:long": 0.65
+      "fact:long": 0.65,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
+    },
+    "authorship": {
+      "status": "known"
     }
   },
   {
@@ -104601,7 +105269,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.9,
       "fact:series": 0.15,
-      "fact:long": 0.65
+      "fact:long": 0.65,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {
@@ -104614,7 +105286,10 @@
     "w": null,
     "c": null,
     "addedAt": 1789220577,
-    "origin": "manual"
+    "origin": "manual",
+    "authorship": {
+      "status": "known"
+    }
   },
   {
     "k": "/site/to-kill-a-mocking-bird",
@@ -104685,7 +105360,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.9,
       "fact:series": 0.15,
-      "fact:long": 0.65
+      "fact:long": 0.65,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
     }
   },
   {
@@ -104747,7 +105426,11 @@
       "fact:bestseller": 0.9,
       "fact:award": 0.9,
       "fact:series": 0.15,
-      "fact:long": 0.65
+      "fact:long": 0.65,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
     }
   },
   {

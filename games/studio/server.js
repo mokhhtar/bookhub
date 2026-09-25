@@ -30,7 +30,7 @@
  */
 'use strict';
 
-const { spawn } = require('child_process');
+const { spawn, spawnSync } = require('child_process');
 const fs = require('fs');
 const http = require('http');
 const path = require('path');
@@ -169,10 +169,20 @@ RULES
    not settle the question, or the question does not apply to this book. A
    confident wrong answer is worse than "unknown" — it sends the game away
    from the book and ruins the test.
-3. Be consistent with yourself. You are answering these together, so they must
-   not contradict: a book that is not from the last 25 years is not from the
-   last 10 either, and an author who is British is not American.
-4. Answer about the WORK, not about one edition of it. Use the original
+3. Publication questions use fixed years. Research first publication once;
+   the importer derives date answers. If only a supported interval is known,
+   record earliest/latest. Never confuse composition, translation or reprint
+   with first publication. An ancient composition is not evidence of an
+   ancient printed edition. Missing search results do not prove antiquity.
+   You may supply sourced publication_answers for individually settled date
+   questions when no exact date exists. Otherwise leave them unknown.
+4. Record authorship as known, anonymous (sources explicitly say identity is
+   unknown), disputed, or unresearched. An empty author field is NOT anonymous.
+   Do not infer gender or nationality for an anonymous/disputed author.
+5. Supply source URLs for every publication/authorship claim. Leave publication
+   null when unsupported. For a series use the first part, and for a separately
+   identified volume use that volume. Do not invent a precise year from a century.
+6. Answer about the WORK, not about one edition of it. Use the original
    publication date, not a reprint's.
 
 OUTPUT
@@ -182,7 +192,10 @@ code fence around it, no commentary after it:
 
 {
   "title": "the book's title in English",
-  "author": "the author's name",
+  "author": "the author's name, or Unknown author when documented",
+  "publication": null,
+  "publication_answers": {},
+  "authorship": {"status": "unresearched", "sources": []},
   "answers": {
     "${qs[0].id}": "yes",
     "${qs[1].id}": "no",
@@ -190,12 +203,25 @@ code fence around it, no commentary after it:
   }
 }
 
+For a sourced date, publication has this shape:
+{"basis":"first_publication","year":2012,"earliest":null,"latest":null,"sources":["https://source.example/book"]}.
+Use year:null and supported earliest/latest bounds for a range. For a direct
+answer use publication_answers: {"question_id":{"value":true,"sources":["https://source.example/book"]}}.
+These are schema examples, not facts or sources to reuse.
+
 The keys inside "answers" must be the bracketed ids exactly as written above,
 and every one of the ${qs.length} must be present.`;
 }
 
 // ── the sheet ──────────────────────────────────────────────────────────────
 function saveSheet(body) {
+  const located = locate(String(body.title || ''));
+  if (!body.key && located) { body.key = located.key; }
+  const normalized = spawnSync(process.env.PYTHON || 'python',
+    [path.join(API_REPO, 'scripts', 'akinator', 'normalize_research_sheet.py')],
+    {input: JSON.stringify(body), encoding: 'utf8', timeout: 15000, windowsHide: true});
+  if (normalized.status !== 0) { throw new Error('Invalid research facts: ' + (normalized.stderr || normalized.error)); }
+  body = JSON.parse(normalized.stdout);
   const qs = questions();
   const byId = new Map(qs.map(q => [q.id, q.text]));
 
@@ -241,6 +267,10 @@ function saveSheet(body) {
   const file = path.join(SHEETS_DIR, normalize(title).replace(/ /g, '-') + '__' + stamp + '.json');
   fs.writeFileSync(file, JSON.stringify({
     title, author,
+    key: body.key || null,
+    publication: body.publication || null,
+    publication_answers: body.publication_answers || {},
+    authorship: body.authorship || {status: 'unresearched'},
     source: body.source || 'gemini web (search)',
     saved: new Date().toISOString(),
     questionCount: qs.length,
@@ -257,7 +287,8 @@ function locate(title) {
   let i = rows.findIndex(r => normalize(r.t) === want);
   if (i < 0) { i = rows.findIndex(r => normalize(String(r.t).split(/\s*[:—–]\s+/)[0]) === core); }
   if (i < 0) { return null; }
-  return { row: i, of: rows.length, p: rows[i].p, title: rows[i].t, author: rows[i].a };
+  return { key: rows[i].k, row: i, of: rows.length, p: rows[i].p,
+           title: rows[i].t, author: rows[i].a };
 }
 
 // ── running the bot ────────────────────────────────────────────────────────

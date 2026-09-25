@@ -261,13 +261,13 @@ async function main() {
   // Logical redundancy is separate from semantic applicability: a firm
   // pre-1900 answer makes author:alive redundant, while a hedge does not.
   engine.start(0);
-  engine.update(engine.questionIndex('fact:veryold'), 'yes');
+  engine.update(engine.questionIndex('fact:firstpub_lt_1900'), 'yes');
   if (!engine.dependencyBlocked('author:alive')) {
-    console.error('skip_if FAILED — firm fact:veryold=yes did not hide author:alive');
+    console.error('skip_if FAILED — firm fact:firstpub_lt_1900=yes did not hide author:alive');
     process.exit(1);
   }
   engine.start(0);
-  engine.update(engine.questionIndex('fact:veryold'), 'probably_yes');
+  engine.update(engine.questionIndex('fact:firstpub_lt_1900'), 'probably_yes');
   if (engine.dependencyBlocked('author:alive')) {
     console.error('skip_if FAILED — a probable answer hid author:alive');
     process.exit(1);
