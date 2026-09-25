@@ -9491,7 +9491,7 @@
     "k": "/works/OL16015154M",
     "t": "[Resolution on use of electricity in farm machinery.]",
     "a": "",
-    "y": 1892,
+    "y": null,
     "p": 2292,
     "r": 3,
     "w": null,
@@ -9522,10 +9522,10 @@
       "originally_in_russian": 1,
       "originally_in_japanese": 0,
       "originally_in_arabic": 0,
-      "published_before_1900": 1,
-      "published_1900_to_1950": 0,
-      "published_1951_to_2000": 0,
-      "published_after_2000": 0,
+      "published_before_1900": null,
+      "published_1900_to_1950": null,
+      "published_1951_to_2000": null,
+      "published_after_2000": null,
       "author_male": 0,
       "author_female": 0,
       "author_american": 0,
@@ -14111,7 +14111,7 @@
     "k": "/works/OL18147687M",
     "t": "New-England primer, or, The first steps to the art of reading",
     "a": "",
-    "y": 1802,
+    "y": null,
     "p": 1646,
     "r": 2,
     "w": null,
@@ -14142,10 +14142,10 @@
       "originally_in_russian": 0,
       "originally_in_japanese": 0,
       "originally_in_arabic": 0,
-      "published_before_1900": 1,
-      "published_1900_to_1950": 0,
-      "published_1951_to_2000": 0,
-      "published_after_2000": 0,
+      "published_before_1900": null,
+      "published_1900_to_1950": null,
+      "published_1951_to_2000": null,
+      "published_after_2000": null,
       "author_male": 1,
       "author_female": 0,
       "author_american": 1,
@@ -23235,7 +23235,7 @@
     "k": "/works/OL17823218M",
     "t": "Local capital improvements and development management",
     "a": "",
-    "y": 1980,
+    "y": null,
     "p": 1121,
     "r": 3,
     "w": null,
@@ -23266,10 +23266,10 @@
       "originally_in_russian": 0,
       "originally_in_japanese": 0,
       "originally_in_arabic": 0,
-      "published_before_1900": 0,
-      "published_1900_to_1950": 0,
-      "published_1951_to_2000": 1,
-      "published_after_2000": 0,
+      "published_before_1900": null,
+      "published_1900_to_1950": null,
+      "published_1951_to_2000": null,
+      "published_after_2000": null,
       "author_male": 1,
       "author_female": 0,
       "author_american": 1,
@@ -38075,7 +38075,7 @@
     "k": "/works/OL18199566M",
     "t": "The Disappearing forests.",
     "a": "",
-    "y": 1987,
+    "y": 2010,
     "p": 771,
     "r": 53,
     "w": null,
@@ -38108,8 +38108,8 @@
       "originally_in_arabic": 0,
       "published_before_1900": 0,
       "published_1900_to_1950": 0,
-      "published_1951_to_2000": 1,
-      "published_after_2000": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1,
       "author_male": 1,
       "author_female": 0,
       "author_american": 0,
@@ -38129,6 +38129,21 @@
       "target_children": 0,
       "tone_dark_or_serious": 1,
       "tone_humorous_or_satirical": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2010,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/List_of_countries_by_forest_area"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/List_of_countries_by_forest_area"
+      ]
     }
   },
   {
@@ -38615,7 +38630,7 @@
     "k": "/works/OL14954267M",
     "t": "U.S.-Soviet relations",
     "a": "",
-    "y": 1985,
+    "y": null,
     "p": 760,
     "r": 2,
     "w": null,
@@ -38646,10 +38661,10 @@
       "originally_in_russian": 0,
       "originally_in_japanese": 0,
       "originally_in_arabic": 0,
-      "published_before_1900": 0,
-      "published_1900_to_1950": 0,
-      "published_1951_to_2000": 1,
-      "published_after_2000": 0,
+      "published_before_1900": null,
+      "published_1900_to_1950": null,
+      "published_1951_to_2000": null,
+      "published_after_2000": null,
       "author_male": 1,
       "author_female": 0,
       "author_american": 1,
@@ -39875,7 +39890,7 @@
     "k": "/works/OL8996439M",
     "t": "The Essential Painting Guide",
     "a": "",
-    "y": 2001,
+    "y": null,
     "p": 739,
     "r": 53,
     "w": null,
@@ -39906,10 +39921,10 @@
       "originally_in_russian": 0,
       "originally_in_japanese": 0,
       "originally_in_arabic": 0,
-      "published_before_1900": 0,
-      "published_1900_to_1950": 0,
-      "published_1951_to_2000": 0,
-      "published_after_2000": 1,
+      "published_before_1900": null,
+      "published_1900_to_1950": null,
+      "published_1951_to_2000": null,
+      "published_after_2000": null,
       "author_male": 1,
       "author_female": 0,
       "author_american": 1,
@@ -39929,6 +39944,12 @@
       "target_children": 0,
       "tone_dark_or_serious": 0,
       "tone_humorous_or_satirical": 0
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Painting"
+      ]
     }
   },
   {
@@ -45219,7 +45240,7 @@
     "k": "/works/OL16568759M",
     "t": "Fauna (including - fauna course part A, June 22-23, 1976 and fauna course part B, Feb. 6-10, 1978).",
     "a": "",
-    "y": 1978,
+    "y": null,
     "p": 669,
     "r": 2,
     "w": null,
@@ -45250,10 +45271,10 @@
       "originally_in_russian": 0,
       "originally_in_japanese": 0,
       "originally_in_arabic": 0,
-      "published_before_1900": 0,
-      "published_1900_to_1950": 0,
-      "published_1951_to_2000": 1,
-      "published_after_2000": 0,
+      "published_before_1900": null,
+      "published_1900_to_1950": null,
+      "published_1951_to_2000": null,
+      "published_after_2000": null,
       "author_male": 0,
       "author_female": 0,
       "author_american": 1,
@@ -45273,6 +45294,12 @@
       "target_children": 0,
       "tone_dark_or_serious": 1,
       "tone_humorous_or_satirical": 0
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Fauna"
+      ]
     }
   },
   {
@@ -46899,7 +46926,7 @@
     "k": "/works/OL15396986M",
     "t": "Beautifying urban America",
     "a": "",
-    "y": 1966,
+    "y": 1965,
     "p": 656,
     "r": 2,
     "w": null,
@@ -46953,6 +46980,21 @@
       "target_children": 0,
       "tone_dark_or_serious": 1,
       "tone_humorous_or_satirical": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1965,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Highway_Beautification_Act"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Highway_Beautification_Act"
+      ]
     }
   },
   {
@@ -47259,7 +47301,7 @@
     "k": "/works/OL20417377M",
     "t": "ALA yearbook",
     "a": "",
-    "y": 1988,
+    "y": 1914,
     "p": 652,
     "r": 53,
     "w": null,
@@ -47291,8 +47333,8 @@
       "originally_in_japanese": 0,
       "originally_in_arabic": 0,
       "published_before_1900": 0,
-      "published_1900_to_1950": 0,
-      "published_1951_to_2000": 1,
+      "published_1900_to_1950": 1,
+      "published_1951_to_2000": 0,
       "published_after_2000": 0,
       "author_male": 0,
       "author_female": 0,
@@ -47313,6 +47355,21 @@
       "target_children": 0,
       "tone_dark_or_serious": 1,
       "tone_humorous_or_satirical": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1914,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Allie_Beth_Martin"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Allie_Beth_Martin"
+      ]
     }
   },
   {
@@ -49183,7 +49240,7 @@
     "k": "/works/OL17823750M",
     "t": "Chemical information resources handbook",
     "a": "",
-    "y": 1981,
+    "y": null,
     "p": 620,
     "r": 2,
     "w": null,
@@ -49613,11 +49670,17 @@
     "k": "/works/OL15374110M",
     "t": "Forest County outdoor recreation plan, Forest County, Wisconsin",
     "a": "",
-    "y": 1971,
+    "y": null,
     "p": 594,
     "r": 2,
     "w": null,
-    "c": null
+    "c": null,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Kettle_Moraine_State_Forest"
+      ]
+    }
   },
   {
     "k": "/works/OL14985961W",
@@ -50443,7 +50506,7 @@
     "k": "/works/OL3004222M",
     "t": "[Itonama language publications].",
     "a": "",
-    "y": 1900,
+    "y": null,
     "p": 554,
     "r": 1,
     "w": null,
@@ -50983,11 +51046,26 @@
     "k": "/works/OL17319838M",
     "t": "The Impact of the syncrude project on the economy of Alberta",
     "a": "",
-    "y": 1975,
+    "y": 2010,
     "p": 526,
     "r": 3,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2010,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Keystone_Pipeline"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Keystone_Pipeline"
+      ]
+    }
   },
   {
     "k": "/works/OL80763W",
@@ -52500,7 +52578,7 @@
     "k": "/works/OL20454252M",
     "t": "National Writing & editing guide",
     "a": "",
-    "y": 1994,
+    "y": null,
     "p": 474,
     "r": 11,
     "w": null,
@@ -53568,7 +53646,7 @@
     "k": "/works/OL17823242M",
     "t": "Satellite Power system (SPS) antenna pointing control",
     "a": "",
-    "y": 1980,
+    "y": null,
     "p": 445,
     "r": 2,
     "w": null,
@@ -54822,7 +54900,7 @@
     "k": "/works/OL17080845M",
     "t": "Ground-water site inventory data for selected wells on or near the Idaho National Engineering Laboratory, 1949 through 1982",
     "a": "",
-    "y": 1984,
+    "y": null,
     "p": 414,
     "r": 3,
     "w": null,
@@ -56154,7 +56232,7 @@
     "k": "/works/OL19659793M",
     "t": "Les Hôpitaux de jour et externats psycho-therapiques pour enfants.",
     "a": "",
-    "y": 1969,
+    "y": null,
     "p": 387,
     "r": 2,
     "w": null,
@@ -57666,11 +57744,17 @@
     "k": "/works/OL27281778W",
     "t": "Manajemen Sumber Daya Manusia (MSDM)",
     "a": "",
-    "y": 2021,
+    "y": null,
     "p": 357,
     "r": 1,
     "w": null,
-    "c": 12606541
+    "c": 12606541,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Social_cost_of_carbon"
+      ]
+    }
   },
   {
     "k": "/works/OL20768475W",
@@ -59310,7 +59394,7 @@
     "k": "/works/OL3004215M",
     "t": "[Nii language publications].",
     "a": "",
-    "y": 1900,
+    "y": null,
     "p": 334,
     "r": 1,
     "w": null,
@@ -60124,7 +60208,7 @@
     "k": "/works/OL21234092M",
     "t": "Deutsche Literatur von Lessing bis Heine in der bildenden Kunst der DDR",
     "a": "",
-    "y": 1977,
+    "y": null,
     "p": 323,
     "r": 1,
     "w": null,
@@ -62889,11 +62973,26 @@
     "k": "/site/anna-karenina",
     "t": "Anna Karenina",
     "a": "Leo Tolstoy",
-    "y": 2016,
+    "y": 1878,
     "p": 293,
     "r": 6,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1878,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Anna_Karenina"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Anna_Karenina"
+      ]
+    }
   },
   {
     "k": "/works/OL20073906W",
@@ -63787,7 +63886,7 @@
     "k": "/works/OL19664578M",
     "t": "Russia and the G8",
     "a": "",
-    "y": 2006,
+    "y": null,
     "p": 284,
     "r": 3,
     "w": null,
@@ -64291,7 +64390,7 @@
     "k": "/works/OL19748577M",
     "t": "I︠U︡bileĭnai︠a︡ vystavka \"A.S. Pushkin i pravoslavnai︠a︡ Rossii︠a︡\" 1799-1999",
     "a": "",
-    "y": 1999,
+    "y": null,
     "p": 280,
     "r": 4,
     "w": null,
@@ -64401,7 +64500,7 @@
     "k": "/works/OL17319629M",
     "t": "ḥa- Hinukh ha-dati ṿeha-neṭiyah le-haḥmir",
     "a": "",
-    "y": 1996,
+    "y": null,
     "p": 279,
     "r": 3,
     "w": null,
@@ -65395,7 +65494,7 @@
     "k": "/works/OL22484029M",
     "t": "Con/textual",
     "a": "",
-    "y": 2001,
+    "y": null,
     "p": 271,
     "r": 2,
     "w": null,
@@ -65779,11 +65878,17 @@
     "k": "/works/OL15302003M",
     "t": "Managers' summary",
     "a": "",
-    "y": 2000,
+    "y": null,
     "p": 268,
     "r": 5,
     "w": null,
-    "c": null
+    "c": null,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Executive_summary"
+      ]
+    }
   },
   {
     "k": "/works/OL8952297W",
@@ -84546,11 +84651,26 @@
     "k": "/works/OL22056168M",
     "t": "Geology of the Carnarvon Basin western Australia, by R.M. Hocking [and others]",
     "a": "",
-    "y": null,
+    "y": 1967,
     "p": 182,
     "r": 2,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1967,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Deception_Island"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Deception_Island"
+      ]
+    }
   },
   {
     "k": "/works/OL3909679W",
@@ -103336,11 +103456,26 @@
     "k": "/fandom/malazan",
     "t": "Malazan",
     "a": "",
-    "y": null,
+    "y": 1999,
     "p": 151,
     "r": 12,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1999,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Malazan_Book_of_the_Fallen"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Malazan_Book_of_the_Fallen"
+      ]
+    }
   },
   {
     "k": "/fandom/warriors",
@@ -104018,11 +104153,26 @@
     "k": "/fandom/pern",
     "t": "Pern",
     "a": "",
-    "y": null,
+    "y": 1967,
     "p": 150,
     "r": 12,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1967,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Dragonriders_of_Pern"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Dragonriders_of_Pern"
+      ]
+    }
   },
   {
     "k": "/fandom/evil",

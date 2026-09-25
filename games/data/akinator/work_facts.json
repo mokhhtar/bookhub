@@ -1,1 +1,366 @@
-{}
+{
+  "/works/OL15980243M": {
+    "publication": null,
+    "publication_answers": {},
+    "authorship": {
+      "status": "unresearched",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Special:Search?search=An%20Island%20home%20Box%2012."
+      ]
+    }
+  },
+  "/works/OL22056168M": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1967,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Deception_Island"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Deception_Island"
+      ]
+    }
+  },
+  "/fandom/malazan": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1999,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Malazan_Book_of_the_Fallen"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Malazan_Book_of_the_Fallen"
+      ]
+    }
+  },
+  "/fandom/pern": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1967,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Dragonriders_of_Pern"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Dragonriders_of_Pern"
+      ]
+    }
+  },
+  "/works/OL16015154M": {
+    "publication": null,
+    "publication_answers": {},
+    "authorship": {
+      "status": "unresearched",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Special:Search?search="
+      ]
+    }
+  },
+  "/works/OL18147687M": {
+    "publication": null,
+    "publication_answers": {},
+    "authorship": {
+      "status": "unresearched",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Special:Search?search=New-England%20primer%2C%20or%2C%20The%20first%20steps%20to%20the%20art%20of%20reading"
+      ]
+    }
+  },
+  "/works/OL17823218M": {
+    "publication": null,
+    "publication_answers": {},
+    "authorship": {
+      "status": "unresearched",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Special:Search?search=Local%20capital%20improvements%20and%20development%20management"
+      ]
+    }
+  },
+  "/works/OL18199566M": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2010,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/List_of_countries_by_forest_area"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/List_of_countries_by_forest_area"
+      ]
+    }
+  },
+  "/works/OL14954267M": {
+    "publication": null,
+    "publication_answers": {},
+    "authorship": {
+      "status": "unresearched",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Special:Search?search=U.S.-Soviet%20relations"
+      ]
+    }
+  },
+  "/works/OL8996439M": {
+    "publication": null,
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Painting"
+      ]
+    }
+  },
+  "/works/OL16568759M": {
+    "publication": null,
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Fauna"
+      ]
+    }
+  },
+  "/works/OL15396986M": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1965,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Highway_Beautification_Act"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Highway_Beautification_Act"
+      ]
+    }
+  },
+  "/works/OL20417377M": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1914,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Allie_Beth_Martin"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Allie_Beth_Martin"
+      ]
+    }
+  },
+  "/works/OL17823750M": {
+    "publication": null,
+    "publication_answers": {},
+    "authorship": {
+      "status": "unresearched",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Special:Search?search=Chemical%20information%20resources%20handbook"
+      ]
+    }
+  },
+  "/works/OL15374110M": {
+    "publication": null,
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Kettle_Moraine_State_Forest"
+      ]
+    }
+  },
+  "/works/OL3004222M": {
+    "publication": null,
+    "publication_answers": {},
+    "authorship": {
+      "status": "unresearched",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Special:Search?search=."
+      ]
+    }
+  },
+  "/works/OL17319838M": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2010,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Keystone_Pipeline"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Keystone_Pipeline"
+      ]
+    }
+  },
+  "/works/OL20454252M": {
+    "publication": null,
+    "publication_answers": {},
+    "authorship": {
+      "status": "unresearched",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Special:Search?search=National%20Writing%20%26%20editing%20guide"
+      ]
+    }
+  },
+  "/works/OL17823242M": {
+    "publication": null,
+    "publication_answers": {},
+    "authorship": {
+      "status": "unresearched",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Special:Search?search=Satellite%20Power%20system%20%20antenna%20pointing%20control"
+      ]
+    }
+  },
+  "/works/OL17080845M": {
+    "publication": null,
+    "publication_answers": {},
+    "authorship": {
+      "status": "unresearched",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Special:Search?search=Ground-water%20site%20inventory%20data%20for%20selected%20wells%20on%20or%20near%20the%20Idaho%20National%20Engineering%20Laboratory%2C%201949%20through%201982"
+      ]
+    }
+  },
+  "/works/OL19659793M": {
+    "publication": null,
+    "publication_answers": {},
+    "authorship": {
+      "status": "unresearched",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Special:Search?search=Les%20H%D8%A3%C2%B4pitaux%20de%20jour%20et%20externats%20psycho-therapiques%20pour%20enfants."
+      ]
+    }
+  },
+  "/works/OL27281778W": {
+    "publication": null,
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Social_cost_of_carbon"
+      ]
+    }
+  },
+  "/works/OL3004215M": {
+    "publication": null,
+    "publication_answers": {},
+    "authorship": {
+      "status": "unresearched",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Special:Search?search=."
+      ]
+    }
+  },
+  "/works/OL21234092M": {
+    "publication": null,
+    "publication_answers": {},
+    "authorship": {
+      "status": "unresearched",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Special:Search?search=Deutsche%20Literatur%20von%20Lessing%20bis%20Heine%20in%20der%20bildenden%20Kunst%20der%20DDR"
+      ]
+    }
+  },
+  "/site/anna-karenina": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1878,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Anna_Karenina"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Anna_Karenina"
+      ]
+    }
+  },
+  "/works/OL19664578M": {
+    "publication": null,
+    "publication_answers": {},
+    "authorship": {
+      "status": "unresearched",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Special:Search?search=Russia%20and%20the%20G8"
+      ]
+    }
+  },
+  "/works/OL19748577M": {
+    "publication": null,
+    "publication_answers": {},
+    "authorship": {
+      "status": "unresearched",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Special:Search?search=I%C3%AF%C2%B8%C2%A0U%C3%AF%C2%B8%D8%8Cbile%D8%A4%C2%ADnai%C3%AF%C2%B8%C2%A0a%C3%AF%C2%B8%D8%8C%20vystavka%20%22A.S.%20Pushkin%20i%20pravoslavnai%C3%AF%C2%B8%C2%A0a%C3%AF%C2%B8%D8%8C%20Rossii%C3%AF%C2%B8%C2%A0a%C3%AF%C2%B8%D8%8C%22%201799-1999"
+      ]
+    }
+  },
+  "/works/OL17319629M": {
+    "publication": null,
+    "publication_answers": {},
+    "authorship": {
+      "status": "unresearched",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Special:Search?search=%D9%84%C2%B8%C2%A5a-%20Hinukh%20ha-dati%20%D9%84%C2%B9%D8%9Feha-ne%D9%84%C2%B9%C2%ADiyah%20le-ha%D9%84%C2%B8%C2%A5mir"
+      ]
+    }
+  },
+  "/works/OL22484029M": {
+    "publication": null,
+    "publication_answers": {},
+    "authorship": {
+      "status": "unresearched",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Special:Search?search=Con/textual"
+      ]
+    }
+  },
+  "/works/OL15302003M": {
+    "publication": null,
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Executive_summary"
+      ]
+    }
+  }
+}
