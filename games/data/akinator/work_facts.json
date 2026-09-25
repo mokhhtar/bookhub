@@ -2110,5 +2110,77 @@
         "https://books.google.com/books/about/Esquire_s_the_New_Rules_for_Men.html?id=eY8BswEACAAJ"
       ]
     }
+  },
+  "/works/OL22706549W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2017,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://archive.org/details/365dayswithselfd0000mart"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://archive.org/details/365dayswithselfd0000mart"
+      ]
+    }
+  },
+  "/works/OL20822780M": {
+    "publication": null,
+    "publication_answers": {},
+    "authorship": {
+      "status": "unresearched",
+      "sources": []
+    }
+  },
+  "/works/OL35750752W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2023,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://us.macmillan.com/books/9781250326768/beyondthestory/"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://us.macmillan.com/books/9781250326768/beyondthestory/"
+      ]
+    }
+  },
+  "/works/OL20683139M": {
+    "publication": null,
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://diebuchsuche.ch/buch-isbn-9783872031044.html"
+      ]
+    }
+  },
+  "/works/OL21097163M": {
+    "publication": {
+      "basis": "first_publication",
+      "year": null,
+      "earliest": 1614,
+      "latest": 1624,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Parthenia_Inviolata"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "anonymous",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Parthenia_Inviolata"
+      ]
+    }
   }
 }

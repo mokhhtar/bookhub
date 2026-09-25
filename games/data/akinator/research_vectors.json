@@ -54054,5 +54054,53 @@
     "setting:victorian": null,
     "form:firstperson": null,
     "form:memoir": null
+  },
+  "/works/OL22706549W": {
+    "fact:firstpub_lt_1950": false,
+    "fact:firstpub_lt_1970": false,
+    "fact:firstpub_lt_2000": false,
+    "fact:firstpub_ge_2001": true,
+    "fact:firstpub_ge_2016": true,
+    "fact:firstpub_lt_1900": false,
+    "form:fiction": false,
+    "form:nonfiction": true,
+    "genre:psychology": true,
+    "fact:anonymous": false
+  },
+  "/works/OL20822780M": {
+    "form:fiction": false,
+    "form:nonfiction": true,
+    "place:britain": true,
+    "t:travel": true
+  },
+  "/works/OL35750752W": {
+    "author:nonwestern": true,
+    "fact:namedchars": true,
+    "fact:firstpub_lt_1950": false,
+    "fact:firstpub_lt_1970": false,
+    "fact:firstpub_lt_2000": false,
+    "fact:firstpub_ge_2001": true,
+    "fact:firstpub_ge_2016": true,
+    "fact:firstpub_lt_1900": false,
+    "form:fiction": false,
+    "form:nonfiction": true,
+    "t:realevents": true,
+    "fact:anonymous": false,
+    "form:memoir": false
+  },
+  "/works/OL20683139M": {
+    "place:europe_other": true,
+    "fact:anonymous": false
+  },
+  "/works/OL21097163M": {
+    "fact:namedchars": false,
+    "fact:firstpub_lt_1950": true,
+    "fact:firstpub_lt_1970": true,
+    "fact:firstpub_lt_2000": true,
+    "fact:firstpub_ge_2001": false,
+    "fact:firstpub_ge_2016": false,
+    "fact:firstpub_lt_1900": true,
+    "form:fiction": false,
+    "fact:anonymous": true
   }
 }

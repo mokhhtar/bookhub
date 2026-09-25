@@ -69904,12 +69904,36 @@
   {
     "k": "/works/OL21097163M",
     "t": "Parthenia in-violata or Mayden-musicke for the Virginall and Bass-viol",
-    "a": "",
-    "y": 1961,
+    "a": "Unknown author",
+    "y": null,
     "p": 244,
     "r": 1,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": null,
+      "earliest": 1614,
+      "latest": 1624,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Parthenia_Inviolata"
+      ]
+    },
+    "authorship": {
+      "status": "anonymous",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Parthenia_Inviolata"
+      ]
+    },
+    "protected_questions": [
+      "author:alive",
+      "author:american",
+      "author:british",
+      "author:european",
+      "author:female",
+      "author:nonwestern",
+      "author:prolific"
+    ]
   },
   {
     "k": "/works/OL5714310W",
@@ -71471,7 +71495,22 @@
     "p": 235,
     "r": 1,
     "w": null,
-    "c": 10489426
+    "c": 10489426,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2017,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://archive.org/details/365dayswithselfd0000mart"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://archive.org/details/365dayswithselfd0000mart"
+      ]
+    }
   },
   {
     "k": "/works/OL3338193W",
@@ -73063,7 +73102,22 @@
     "p": 227,
     "r": 1,
     "w": null,
-    "c": 14373768
+    "c": 14373768,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2023,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://us.macmillan.com/books/9781250326768/beyondthestory/"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://us.macmillan.com/books/9781250326768/beyondthestory/"
+      ]
+    }
   },
   {
     "k": "/works/OL1980586W",
@@ -89130,11 +89184,17 @@
     "k": "/works/OL20683139M",
     "t": "Kleine Geschichten aus Thüringen",
     "a": "",
-    "y": 1991,
+    "y": null,
     "p": 176,
     "r": 1,
     "w": null,
-    "c": null
+    "c": null,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://diebuchsuche.ch/buch-isbn-9783872031044.html"
+      ]
+    }
   },
   {
     "k": "/works/OL3285806W",
@@ -99204,7 +99264,7 @@
     "k": "/works/OL20822780M",
     "t": "A pictorial and descriptive guide to London and its environs ...",
     "a": "",
-    "y": 1914,
+    "y": null,
     "p": 158,
     "r": 1,
     "w": null,
