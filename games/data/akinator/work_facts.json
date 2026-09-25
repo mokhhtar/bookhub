@@ -2182,5 +2182,87 @@
         "https://en.wikipedia.org/wiki/Parthenia_Inviolata"
       ]
     }
+  },
+  "/works/OL6814714W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1968,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://library.mpssc.in/book/textbook-quantum-mechanics-3"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://library.mpssc.in/book/textbook-quantum-mechanics-3"
+      ]
+    }
+  },
+  "/works/OL25959739W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2021,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://books.apple.com/us/book/all-that-you-deserve/id1595160356"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://books.apple.com/us/book/all-that-you-deserve/id1595160356"
+      ]
+    }
+  },
+  "/works/OL8229933W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2000,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://billgottliebhealth.com/bookstore/"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://billgottliebhealth.com/bookstore/"
+      ]
+    }
+  },
+  "/works/OL9330611W": {
+    "publication": null,
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://oxford.co.za/shop/school/literature/fet-phase/isixhosa-fet-phase/9780190419448-buzani-kubawo-isixhosa-drama-fet-epub3/"
+      ]
+    }
+  },
+  "/works/OL9305390M": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1997,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://obnb.uk/p10101440-creative-fun-with-cardboard-boxes"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://obnb.uk/p10101440-creative-fun-with-cardboard-boxes"
+      ]
+    }
   }
 }

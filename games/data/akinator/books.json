@@ -60617,7 +60617,22 @@
     "p": 323,
     "r": 1,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2021,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://books.apple.com/us/book/all-that-you-deserve/id1595160356"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://books.apple.com/us/book/all-that-you-deserve/id1595160356"
+      ]
+    }
   },
   {
     "k": "/works/OL43271781W",
@@ -65129,7 +65144,22 @@
     "p": 278,
     "r": 1,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1997,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://obnb.uk/p10101440-creative-fun-with-cardboard-boxes"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://obnb.uk/p10101440-creative-fun-with-cardboard-boxes"
+      ]
+    }
   },
   {
     "k": "/works/OL17874268W",
@@ -69251,11 +69281,17 @@
     "k": "/works/OL9330611W",
     "t": "Buzani Kubawo",
     "a": "W.K. Tamsanqa",
-    "y": 1991,
+    "y": null,
     "p": 248,
     "r": 1,
     "w": null,
-    "c": 2330545
+    "c": 2330545,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://oxford.co.za/shop/school/literature/fet-phase/isixhosa-fet-phase/9780190419448-buzani-kubawo-isixhosa-drama-fet-epub3/"
+      ]
+    }
   },
   {
     "k": "/works/OL12388W",
@@ -76142,11 +76178,26 @@
     "k": "/works/OL6814714W",
     "t": "A Textbook of quantum mechanics",
     "a": "Piravonu Mathews Mathews",
-    "y": 1976,
+    "y": 1968,
     "p": 207,
     "r": 1,
     "w": null,
-    "c": 1075614
+    "c": 1075614,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1968,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://library.mpssc.in/book/textbook-quantum-mechanics-3"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://library.mpssc.in/book/textbook-quantum-mechanics-3"
+      ]
+    }
   },
   {
     "k": "/works/OL44927W",
@@ -90296,7 +90347,22 @@
     "p": 174,
     "r": 1,
     "w": null,
-    "c": 837053
+    "c": 837053,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2000,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://billgottliebhealth.com/bookstore/"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://billgottliebhealth.com/bookstore/"
+      ]
+    }
   },
   {
     "k": "/works/OL1933112W",

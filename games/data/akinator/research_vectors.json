@@ -54102,5 +54102,55 @@
     "fact:firstpub_lt_1900": true,
     "form:fiction": false,
     "fact:anonymous": true
+  },
+  "/works/OL6814714W": {
+    "fact:firstpub_lt_1950": false,
+    "fact:firstpub_lt_1970": true,
+    "fact:firstpub_lt_2000": true,
+    "fact:firstpub_ge_2001": false,
+    "fact:firstpub_ge_2016": false,
+    "fact:firstpub_lt_1900": false,
+    "form:fiction": false,
+    "form:nonfiction": true,
+    "genre:science": true,
+    "fact:anonymous": false
+  },
+  "/works/OL25959739W": {
+    "fact:firstpub_lt_1950": false,
+    "fact:firstpub_lt_1970": false,
+    "fact:firstpub_lt_2000": false,
+    "fact:firstpub_ge_2001": true,
+    "fact:firstpub_ge_2016": true,
+    "fact:firstpub_lt_1900": false,
+    "form:fiction": true,
+    "fact:anonymous": false
+  },
+  "/works/OL8229933W": {
+    "fact:firstpub_lt_1950": false,
+    "fact:firstpub_lt_1970": false,
+    "fact:firstpub_lt_2000": false,
+    "fact:firstpub_ge_2001": false,
+    "fact:firstpub_ge_2016": false,
+    "fact:firstpub_lt_1900": false,
+    "form:fiction": false,
+    "form:nonfiction": true,
+    "fact:anonymous": false
+  },
+  "/works/OL9330611W": {
+    "form:fiction": true,
+    "genre:drama": true,
+    "t:family": true,
+    "fact:anonymous": false
+  },
+  "/works/OL9305390M": {
+    "fact:firstpub_lt_1950": false,
+    "fact:firstpub_lt_1970": false,
+    "fact:firstpub_lt_2000": true,
+    "fact:firstpub_ge_2001": false,
+    "fact:firstpub_ge_2016": false,
+    "fact:firstpub_lt_1900": false,
+    "form:fiction": false,
+    "form:nonfiction": true,
+    "fact:anonymous": false
   }
 }
