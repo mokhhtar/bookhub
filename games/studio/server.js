@@ -157,6 +157,11 @@ ${choose}
 **Search the web before you answer.** Do not answer from memory. Check the
 book's publication date, its author's nationality and dates, its setting, and
 its subject against real sources, and let what you find decide each answer.
+Use only pages you find and open during this web search as evidence. Do not use
+the catalogue's existing fields, Open Library metadata/API records, or an
+edition's publish_date as evidence: those records are often wrong and an
+edition date does not establish when the work was first published. A search
+snippet alone is not evidence; open and read the result page.
 
 Then answer every one of these ${qs.length} questions about that book:
 
@@ -178,12 +183,18 @@ RULES
    questions when no exact date exists. Otherwise leave them unknown.
 4. Record authorship as known, anonymous (sources explicitly say identity is
    unknown), disputed, or unresearched. An empty author field is NOT anonymous.
+   A pseudonym or pen name is NOT anonymous: if sources connect it to a known
+   person, record known. Use anonymous only when a reliable source explicitly
+   says the author's identity is unknown.
    Do not infer gender or nationality for an anonymous/disputed author.
 5. Supply source URLs for every publication/authorship claim. Leave publication
    null when unsupported. For a series use the first part, and for a separately
    identified volume use that volume. Do not invent a precise year from a century.
 6. Answer about the WORK, not about one edition of it. Use the original
    publication date, not a reprint's.
+7. The answers object must contain every current question. A sheet containing
+   publication/authorship facts but no answers is incomplete and must not count
+   toward the batch.
 
 OUTPUT
 
