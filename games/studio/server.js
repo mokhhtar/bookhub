@@ -252,6 +252,18 @@ function saveSheet(body) {
   }
   for (const q of qs) { if (!(q.id in kept)) { unknownIds.push(q.id); } }
 
+  // A research sheet is a catalogue input, not a partially filled recording
+  // convenience.  Silently accepting a short sheet is how the September batch
+  // claimed 52 answers while five files actually contained only 45.  Unknown
+  // is an explicit, valid answer, so there is never a reason to omit a current
+  // question.
+  if (unknownIds.length || badValues.length) {
+    const details = [];
+    if (unknownIds.length) { details.push('missing: ' + unknownIds.join(', ')); }
+    if (badValues.length) { details.push('invalid: ' + badValues.join(', ')); }
+    throw new Error('Incomplete research sheet (' + details.join('; ') + ')');
+  }
+
   // Merge into the cache the bot reads, which is keyed by question TEXT because
   // that is what the page shows and what the bot can match on.
   let cache = {};
@@ -282,6 +294,7 @@ function saveSheet(body) {
     publication: body.publication || null,
     publication_answers: body.publication_answers || {},
     authorship: body.authorship || {status: 'unresearched'},
+    sources: Array.isArray(body.sources) ? body.sources : [],
     source: body.source || 'gemini web (search)',
     saved: new Date().toISOString(),
     questionCount: qs.length,

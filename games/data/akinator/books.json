@@ -9491,7 +9491,7 @@
     "k": "/works/OL16015154M",
     "t": "[Resolution on use of electricity in farm machinery.]",
     "a": "",
-    "y": null,
+    "y": 1892,
     "p": 2292,
     "r": 3,
     "w": null,
@@ -9522,10 +9522,10 @@
       "originally_in_russian": 1,
       "originally_in_japanese": 0,
       "originally_in_arabic": 0,
-      "published_before_1900": null,
-      "published_1900_to_1950": null,
-      "published_1951_to_2000": null,
-      "published_after_2000": null,
+      "published_before_1900": 1,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 0,
       "author_male": 0,
       "author_female": 0,
       "author_american": 0,
@@ -9545,6 +9545,15 @@
       "target_children": 0,
       "tone_dark_or_serious": 0,
       "tone_humorous_or_satirical": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1892,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Agricultural_machinery"
+      ]
     }
   },
   {
@@ -10871,7 +10880,7 @@
     "k": "/works/OL1906484W",
     "t": "The Magic of Thinking Big",
     "a": "David Joseph Schwartz",
-    "y": 1900,
+    "y": 1959,
     "p": 2058,
     "r": 19,
     "w": null,
@@ -10903,8 +10912,8 @@
       "originally_in_japanese": 0,
       "originally_in_arabic": 0,
       "published_before_1900": 0,
-      "published_1900_to_1950": 1,
-      "published_1951_to_2000": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
       "published_after_2000": 0,
       "author_male": 1,
       "author_female": 0,
@@ -10925,6 +10934,21 @@
       "target_children": 0,
       "tone_dark_or_serious": 0,
       "tone_humorous_or_satirical": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1959,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_Magic_of_Thinking_Big"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_Magic_of_Thinking_Big"
+      ]
     }
   },
   {
@@ -14165,6 +14189,23 @@
       "target_children": 1,
       "tone_dark_or_serious": 1,
       "tone_humorous_or_satirical": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": null,
+      "earliest": 1687,
+      "latest": 1690,
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_New-England_Primer",
+        "https://www.britannica.com/topic/The-New-England-Primer"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_New-England_Primer",
+        "https://en.wikipedia.org/wiki/Benjamin_Harris_(publisher)"
+      ]
     }
   },
   {
@@ -14225,6 +14266,21 @@
       "target_children": 0,
       "tone_dark_or_serious": 0,
       "tone_humorous_or_satirical": 1
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2016,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://books.google.com/books/about/Esquire_s_the_New_Rules_for_Men.html?id=eY8BswEACAAJ"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://books.google.com/books/about/Esquire_s_the_New_Rules_for_Men.html?id=eY8BswEACAAJ"
+      ]
     }
   },
   {
@@ -16751,7 +16807,7 @@
     "k": "/works/OL15980243M",
     "t": "An Island home Box 12.",
     "a": "",
-    "y": null,
+    "y": 1851,
     "p": 1462,
     "r": 53,
     "w": null,
@@ -16782,10 +16838,10 @@
       "originally_in_russian": 0,
       "originally_in_japanese": 0,
       "originally_in_arabic": 0,
-      "published_before_1900": null,
-      "published_1900_to_1950": null,
-      "published_1951_to_2000": null,
-      "published_after_2000": null,
+      "published_before_1900": 1,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 0,
       "author_male": 1,
       "author_female": 0,
       "author_american": 1,
@@ -16805,6 +16861,21 @@
       "target_children": 1,
       "tone_dark_or_serious": 1,
       "tone_humorous_or_satirical": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1851,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/An_Island_Home"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/An_Island_Home"
+      ]
     }
   },
   {
@@ -23235,7 +23306,7 @@
     "k": "/works/OL17823218M",
     "t": "Local capital improvements and development management",
     "a": "",
-    "y": null,
+    "y": 1980,
     "p": 1121,
     "r": 3,
     "w": null,
@@ -23266,10 +23337,10 @@
       "originally_in_russian": 0,
       "originally_in_japanese": 0,
       "originally_in_arabic": 0,
-      "published_before_1900": null,
-      "published_1900_to_1950": null,
-      "published_1951_to_2000": null,
-      "published_after_2000": null,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0,
       "author_male": 1,
       "author_female": 0,
       "author_american": 1,
@@ -23289,6 +23360,21 @@
       "target_children": 0,
       "tone_dark_or_serious": 1,
       "tone_humorous_or_satirical": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1980,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.govinfo.gov/content/pkg/GOVPUB-GP3-598b0669caf95204b09a7a7e34757e2a/pdf/GOVPUB-GP3-598b0669caf95204b09a7a7e34757e2a.pdf"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.govinfo.gov/content/pkg/GOVPUB-GP3-598b0669caf95204b09a7a7e34757e2a/pdf/GOVPUB-GP3-598b0669caf95204b09a7a7e34757e2a.pdf"
+      ]
     }
   },
   {
@@ -31525,6 +31611,21 @@
       "target_children": 0,
       "tone_dark_or_serious": 0,
       "tone_humorous_or_satirical": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2023,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22The%20Art%20of%20Being%20Alone%22%20au%3A%22Renuka%20Gavrani%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22The%20Art%20of%20Being%20Alone%22%20au%3A%22Renuka%20Gavrani%22"
+      ]
     }
   },
   {
@@ -37469,6 +37570,21 @@
       "target_children": 0,
       "tone_dark_or_serious": 0,
       "tone_humorous_or_satirical": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2020,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22The%20Almanack%20of%20Naval%20Ravikant%22%20au%3A%22Eric%20Jorgenson%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22The%20Almanack%20of%20Naval%20Ravikant%22%20au%3A%22Eric%20Jorgenson%22"
+      ]
     }
   },
   {
@@ -38630,7 +38746,7 @@
     "k": "/works/OL14954267M",
     "t": "U.S.-Soviet relations",
     "a": "",
-    "y": null,
+    "y": 1985,
     "p": 760,
     "r": 2,
     "w": null,
@@ -38661,10 +38777,10 @@
       "originally_in_russian": 0,
       "originally_in_japanese": 0,
       "originally_in_arabic": 0,
-      "published_before_1900": null,
-      "published_1900_to_1950": null,
-      "published_1951_to_2000": null,
-      "published_after_2000": null,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0,
       "author_male": 1,
       "author_female": 0,
       "author_american": 1,
@@ -38684,6 +38800,15 @@
       "target_children": 0,
       "tone_dark_or_serious": 1,
       "tone_humorous_or_satirical": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1985,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Soviet_Union%E2%80%93United_States_relations"
+      ]
     }
   },
   {
@@ -44270,6 +44395,21 @@
       "target_children": 0,
       "tone_dark_or_serious": 0,
       "tone_humorous_or_satirical": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2021,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22%24100M%20Offers%22%20au%3A%22Alex%20Hormozi%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22%24100M%20Offers%22%20au%3A%22Alex%20Hormozi%22"
+      ]
     }
   },
   {
@@ -45960,6 +46100,21 @@
       "target_children": 0,
       "tone_dark_or_serious": 0,
       "tone_humorous_or_satirical": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2011,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22The%20art%20of%20persuasion%22%20au%3A%22Bob%20Burg%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22The%20art%20of%20persuasion%22%20au%3A%22Bob%20Burg%22"
+      ]
     }
   },
   {
@@ -48630,6 +48785,21 @@
       "target_children": 0,
       "tone_dark_or_serious": 0,
       "tone_humorous_or_satirical": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2021,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Ikigai%22%20au%3A%22Chiemi%20Souen%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Ikigai%22%20au%3A%22Chiemi%20Souen%22"
+      ]
     }
   },
   {
@@ -49240,11 +49410,26 @@
     "k": "/works/OL17823750M",
     "t": "Chemical information resources handbook",
     "a": "",
-    "y": null,
+    "y": 1981,
     "p": 620,
     "r": 2,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1981,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000IXBA.TXT"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000IXBA.TXT"
+      ]
+    }
   },
   {
     "k": "/works/OL17823750W",
@@ -49464,7 +49649,22 @@
     "p": 607,
     "r": 9,
     "w": null,
-    "c": 363719
+    "c": 363719,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1989,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Psychology%22%20au%3A%22Wayne%20Weiten%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Psychology%22%20au%3A%22Wayne%20Weiten%22"
+      ]
+    }
   },
   {
     "k": "/works/OL29240850W",
@@ -50030,7 +50230,22 @@
     "p": 579,
     "r": 29,
     "w": null,
-    "c": 88925
+    "c": 88925,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1979,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Organizational%20Behavior%22%20au%3A%22Stephen%20P.%20Robbins%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Organizational%20Behavior%22%20au%3A%22Stephen%20P.%20Robbins%22"
+      ]
+    }
   },
   {
     "k": "/works/OL25555522W",
@@ -51095,7 +51310,22 @@
     "p": 523,
     "r": 1,
     "w": null,
-    "c": 10078644
+    "c": 10078644,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2019,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Something%20I%20Never%20Told%20You%22%20au%3A%22Shravya%20Bhinder%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Something%20I%20Never%20Told%20You%22%20au%3A%22Shravya%20Bhinder%22"
+      ]
+    }
   },
   {
     "k": "/works/OL5842018W",
@@ -51255,7 +51485,22 @@
     "p": 516,
     "r": 19,
     "w": null,
-    "c": 8072323
+    "c": 8072323,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1967,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22The%20antecedents%20of%20self-esteem%20/%20Stanley%20Coopersmith%22%20au%3A%22Stanley%20Coopersmith%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22The%20antecedents%20of%20self-esteem%20/%20Stanley%20Coopersmith%22%20au%3A%22Stanley%20Coopersmith%22"
+      ]
+    }
   },
   {
     "k": "/works/OL81605W",
@@ -53646,11 +53891,26 @@
     "k": "/works/OL17823242M",
     "t": "Satellite Power system (SPS) antenna pointing control",
     "a": "",
-    "y": null,
+    "y": 1980,
     "p": 445,
     "r": 2,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1980,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://ntrs.nasa.gov/citations/19800016022"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://ntrs.nasa.gov/citations/19800016022"
+      ]
+    }
   },
   {
     "k": "/works/OL262426W",
@@ -53880,7 +54140,22 @@
     "p": 437,
     "r": 49,
     "w": null,
-    "c": 12634210
+    "c": 12634210,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1981,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Scary_Stories_to_Tell_in_the_Dark"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Scary_Stories_to_Tell_in_the_Dark"
+      ]
+    }
   },
   {
     "k": "/works/OL3514475W",
@@ -54160,7 +54435,22 @@
     "p": 430,
     "r": 3,
     "w": null,
-    "c": 8775980
+    "c": 8775980,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2015,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22The%20Magic%20of%20the%20Lost%20Temple%22%20au%3A%22Sudha%20Murti%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22The%20Magic%20of%20the%20Lost%20Temple%22%20au%3A%22Sudha%20Murti%22"
+      ]
+    }
   },
   {
     "k": "/works/OL21370801W",
@@ -54470,7 +54760,22 @@
     "p": 422,
     "r": 17,
     "w": null,
-    "c": 4947875
+    "c": 4947875,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1983,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22The%20Art%20of%20Public%20Speaking%22%20au%3A%22Stephen%20E.%20Lucas%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22The%20Art%20of%20Public%20Speaking%22%20au%3A%22Stephen%20E.%20Lucas%22"
+      ]
+    }
   },
   {
     "k": "/works/OL1906234W",
@@ -54580,7 +54885,22 @@
     "p": 419,
     "r": 1,
     "w": null,
-    "c": 14135096
+    "c": 14135096,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2023,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22How%20to%20Win%20at%20Chess%22%20au%3A%22Levy%20Rozman%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22How%20to%20Win%20at%20Chess%22%20au%3A%22Levy%20Rozman%22"
+      ]
+    }
   },
   {
     "k": "/works/OL20168339W",
@@ -54900,11 +55220,26 @@
     "k": "/works/OL17080845M",
     "t": "Ground-water site inventory data for selected wells on or near the Idaho National Engineering Laboratory, 1949 through 1982",
     "a": "",
-    "y": null,
+    "y": 1984,
     "p": 414,
     "r": 3,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1984,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://pubs.usgs.gov/of/1985/0636/report.pdf"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://pubs.usgs.gov/of/1985/0636/report.pdf"
+      ]
+    }
   },
   {
     "k": "/works/OL17716925W",
@@ -55768,7 +56103,22 @@
     "p": 396,
     "r": 31,
     "w": "Q126175174",
-    "c": 7431270
+    "c": 7431270,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2001,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Good_to_Great"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Good_to_Great"
+      ]
+    }
   },
   {
     "k": "/works/OL17625829W",
@@ -56746,7 +57096,22 @@
     "p": 376,
     "r": 6,
     "w": null,
-    "c": 8227168
+    "c": 8227168,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1992,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Boundaries%22%20au%3A%22Henry%20Cloud%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Boundaries%22%20au%3A%22Henry%20Cloud%22"
+      ]
+    }
   },
   {
     "k": "/works/OL2564006W",
@@ -57104,7 +57469,22 @@
     "p": 370,
     "r": 3,
     "w": null,
-    "c": 642335
+    "c": 642335,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1986,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22World%20mythology%22%20au%3A%22Donna%20Rosenberg%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22World%20mythology%22%20au%3A%22Donna%20Rosenberg%22"
+      ]
+    }
   },
   {
     "k": "/works/OL1905682W",
@@ -58618,7 +58998,22 @@
     "p": 344,
     "r": 13,
     "w": null,
-    "c": 8314959
+    "c": 8314959,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1976,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Organic%20Chemistry%22%20au%3A%22T.%20W.%20Graham%20Solomons%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Organic%20Chemistry%22%20au%3A%22T.%20W.%20Graham%20Solomons%22"
+      ]
+    }
   },
   {
     "k": "/works/OL1001044W",
@@ -59018,7 +59413,22 @@
     "p": 339,
     "r": 5,
     "w": null,
-    "c": 8508154
+    "c": 8508154,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2018,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Linux%20Basics%20for%20Hackers%22%20au%3A%22OccupyTheWeb%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Linux%20Basics%20for%20Hackers%22%20au%3A%22OccupyTheWeb%22"
+      ]
+    }
   },
   {
     "k": "/works/OL81592W",
@@ -59962,7 +60372,22 @@
     "p": 327,
     "r": 11,
     "w": null,
-    "c": 513413
+    "c": 513413,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1954,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22How%20to%20live%20365%20days%20a%20year%22%20au%3A%22John%20A.%20Schindler%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22How%20to%20live%20365%20days%20a%20year%22%20au%3A%22John%20A.%20Schindler%22"
+      ]
+    }
   },
   {
     "k": "/works/OL88813W",
@@ -60208,11 +60633,26 @@
     "k": "/works/OL21234092M",
     "t": "Deutsche Literatur von Lessing bis Heine in der bildenden Kunst der DDR",
     "a": "",
-    "y": null,
+    "y": 1977,
     "p": 323,
     "r": 1,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1977,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://de.wikipedia.org/wiki/Willy_Handrick"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://de.wikipedia.org/wiki/Willy_Handrick"
+      ]
+    }
   },
   {
     "k": "/works/OL37576476W",
@@ -61066,7 +61506,22 @@
     "p": 312,
     "r": 6,
     "w": null,
-    "c": 7728025
+    "c": 7728025,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2013,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Trade%20Like%20a%20Stock%20Market%20Wizard%22%20au%3A%22Mark%20Minervini%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Trade%20Like%20a%20Stock%20Market%20Wizard%22%20au%3A%22Mark%20Minervini%22"
+      ]
+    }
   },
   {
     "k": "/works/OL20793817W",
@@ -61172,11 +61627,26 @@
     "k": "/works/OL221977W",
     "t": "Charlotte's Web",
     "a": "Jennifer Frantz",
-    "y": 2006,
+    "y": 1952,
     "p": 311,
     "r": 15,
     "w": null,
-    "c": 38950
+    "c": 38950,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1952,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Charlotte%27s_Web"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Charlotte%27s_Web"
+      ]
+    }
   },
   {
     "k": "/works/OL1751683W",
@@ -61639,7 +62109,22 @@
     "p": 304,
     "r": 2,
     "w": null,
-    "c": 732072
+    "c": 732072,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1999,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22How%20cars%20work%22%20au%3A%22Tom%20Newton%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22How%20cars%20work%22%20au%3A%22Tom%20Newton%22"
+      ]
+    }
   },
   {
     "k": "/works/OL15540668M",
@@ -62973,14 +63458,14 @@
     "k": "/site/anna-karenina",
     "t": "Anna Karenina",
     "a": "Leo Tolstoy",
-    "y": 1878,
+    "y": 1875,
     "p": 293,
     "r": 6,
     "w": null,
     "c": null,
     "publication": {
       "basis": "first_publication",
-      "year": 1878,
+      "year": 1875,
       "earliest": null,
       "latest": null,
       "sources": [
@@ -63232,11 +63717,26 @@
     "k": "/site/the-brothers-karamazov",
     "t": "The Brothers Karamazov",
     "a": "Fyodor Dostoevsky",
-    "y": 2002,
+    "y": 1879,
     "p": 291,
     "r": 8,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1879,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_Brothers_Karamazov"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_Brothers_Karamazov"
+      ]
+    }
   },
   {
     "k": "/works/OL20429311W",
@@ -63766,11 +64266,26 @@
     "k": "/works/OL3269846W",
     "t": "Cell and Molecular Biology",
     "a": "Gerald Karp",
-    "y": 1996,
+    "y": 1979,
     "p": 285,
     "r": 16,
     "w": null,
-    "c": 301859
+    "c": 301859,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1979,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Cell%20and%20Molecular%20Biology%22%20au%3A%22Gerald%20Karp%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Cell%20and%20Molecular%20Biology%22%20au%3A%22Gerald%20Karp%22"
+      ]
+    }
   },
   {
     "k": "/works/OL553866W",
@@ -65028,7 +65543,22 @@
     "p": 275,
     "r": 7,
     "w": null,
-    "c": 13245123
+    "c": 13245123,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2015,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Logo%20modernism%22%20au%3A%22Jens%20M%C3%BCller%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Logo%20modernism%22%20au%3A%22Jens%20M%C3%BCller%22"
+      ]
+    }
   },
   {
     "k": "/works/OL35744585W",
@@ -65388,7 +65918,22 @@
     "p": 272,
     "r": 2,
     "w": null,
-    "c": 9277763
+    "c": 9277763,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2015,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Talk%20to%20Me%20in%20Korean%20Level%201%22%20au%3A%22TalkToMeInKorean%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Talk%20to%20Me%20in%20Korean%20Level%201%22%20au%3A%22TalkToMeInKorean%22"
+      ]
+    }
   },
   {
     "k": "/works/OL5233135W",
@@ -65614,11 +66159,26 @@
     "k": "/works/OL16002869W",
     "t": "Strategic management",
     "a": "Gregory G. Dess",
-    "y": 1992,
+    "y": 1993,
     "p": 270,
     "r": 16,
     "w": null,
-    "c": 12464587
+    "c": 12464587,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1993,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Strategic%20management%22%20au%3A%22Gregory%20G.%20Dess%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Strategic%20management%22%20au%3A%22Gregory%20G.%20Dess%22"
+      ]
+    }
   },
   {
     "k": "/works/OL3923600W",
@@ -65668,7 +66228,22 @@
     "p": 269,
     "r": 7,
     "w": null,
-    "c": 8513526
+    "c": 8513526,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2014,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Black%20Hat%20Python%22%20au%3A%22Justin%20Seitz%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Black%20Hat%20Python%22%20au%3A%22Justin%20Seitz%22"
+      ]
+    }
   },
   {
     "k": "/works/OL14917547W",
@@ -66618,7 +67193,22 @@
     "p": 262,
     "r": 1,
     "w": null,
-    "c": 10496171
+    "c": 10496171,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2020,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Mind%20Management%2C%20Not%20Time%20Management%22%20au%3A%22David%20Kadavy%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Mind%20Management%2C%20Not%20Time%20Management%22%20au%3A%22David%20Kadavy%22"
+      ]
+    }
   },
   {
     "k": "/works/OL20086330W",
@@ -66842,7 +67432,22 @@
     "p": 261,
     "r": 4,
     "w": null,
-    "c": 4450295
+    "c": 4450295,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1953,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Principles%20of%20management%22%20au%3A%22George%20Robert%20Terry%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Principles%20of%20management%22%20au%3A%22George%20Robert%20Terry%22"
+      ]
+    }
   },
   {
     "k": "/works/OL1140109W",
@@ -67042,7 +67647,22 @@
     "p": 259,
     "r": 1,
     "w": null,
-    "c": 10881934
+    "c": 10881934,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2021,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22No%20Bad%20Parts%22%20au%3A%22Richard%20Schwartz%20Ph.D.%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22No%20Bad%20Parts%22%20au%3A%22Richard%20Schwartz%20Ph.D.%22"
+      ]
+    }
   },
   {
     "k": "/works/OL19700683W",
@@ -67132,7 +67752,22 @@
     "p": 259,
     "r": 4,
     "w": null,
-    "c": 6965150
+    "c": 6965150,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1958,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%2213%20steps%20to%20mentalism%22%20au%3A%22Tony%20Corinda%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%2213%20steps%20to%20mentalism%22%20au%3A%22Tony%20Corinda%22"
+      ]
+    }
   },
   {
     "k": "/works/OL19744024W",
@@ -67806,7 +68441,22 @@
     "p": 255,
     "r": 5,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2019,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Acid_for_the_Children"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Acid_for_the_Children"
+      ]
+    }
   },
   {
     "k": "/works/OL26504483W",
@@ -67852,11 +68502,26 @@
     "k": "/works/OL1903603W",
     "t": "Essentials of Negotiation",
     "a": "Roy J. Lewicki",
-    "y": 1997,
+    "y": 1996,
     "p": 254,
     "r": 8,
     "w": null,
-    "c": 8281637
+    "c": 8281637,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1996,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Essentials%20of%20Negotiation%22%20au%3A%22Roy%20J.%20Lewicki%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Essentials%20of%20Negotiation%22%20au%3A%22Roy%20J.%20Lewicki%22"
+      ]
+    }
   },
   {
     "k": "/works/OL2987238W",
@@ -68636,11 +69301,26 @@
     "k": "/works/OL1887971W",
     "t": "Operations management",
     "a": "Jay H. Heizer",
-    "y": 1999,
+    "y": 1988,
     "p": 248,
     "r": 17,
     "w": null,
-    "c": 4958593
+    "c": 4958593,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1988,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Operations%20management%22%20au%3A%22Jay%20H.%20Heizer%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Operations%20management%22%20au%3A%22Jay%20H.%20Heizer%22"
+      ]
+    }
   },
   {
     "k": "/works/OL11288561M",
@@ -68944,7 +69624,22 @@
     "p": 247,
     "r": 6,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2026,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.simonandschuster.net/books/Regime-Change/Maggie-Haberman/9781668067246"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.simonandschuster.net/books/Regime-Change/Maggie-Haberman/9781668067246"
+      ]
+    }
   },
   {
     "k": "/works/OL27408818W",
@@ -69440,11 +70135,26 @@
     "k": "/site/the-black-corsair",
     "t": "The Black Corsair",
     "a": "Emilio Salgari",
-    "y": 2011,
+    "y": 1898,
     "p": 243,
     "r": 7,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1898,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.emiliosalgari.it/edizioni_straniere/the_black_corsair.pdf"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.emiliosalgari.it/edizioni_straniere/the_black_corsair.pdf"
+      ]
+    }
   },
   {
     "k": "/works/OL17082485W",
@@ -69807,7 +70517,22 @@
     "p": 240,
     "r": 2,
     "w": null,
-    "c": 15098867
+    "c": 15098867,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2014,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22The%20art%20of%20self-directed%20learning%22%20au%3A%22Blake%20Boles%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22The%20art%20of%20self-directed%20learning%22%20au%3A%22Blake%20Boles%22"
+      ]
+    }
   },
   {
     "k": "/works/OL15981799W",
@@ -69853,11 +70578,26 @@
     "k": "/works/OL1880881W",
     "t": "Introduction to counseling and guidance",
     "a": "Robert L. Gibson",
-    "y": 1986,
+    "y": 1981,
     "p": 240,
     "r": 10,
     "w": null,
-    "c": 1105593
+    "c": 1105593,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1981,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Introduction%20to%20counseling%20and%20guidance%22%20au%3A%22Robert%20L.%20Gibson%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Introduction%20to%20counseling%20and%20guidance%22%20au%3A%22Robert%20L.%20Gibson%22"
+      ]
+    }
   },
   {
     "k": "/works/OL17802920W",
@@ -69953,11 +70693,26 @@
     "k": "/site/the-coral-island",
     "t": "The Coral Island",
     "a": "Robert Michael Ballantyne, Ralph Crane, George Dalziel, Edward Dalziel",
-    "y": 1858,
+    "y": 1857,
     "p": 240,
     "r": 6,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1857,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_Coral_Island"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_Coral_Island"
+      ]
+    }
   },
   {
     "k": "/works/OL32485646W",
@@ -70143,11 +70898,26 @@
     "k": "/works/OL3258476W",
     "t": "Economic development",
     "a": "Michael P. Todaro",
-    "y": 1994,
+    "y": 1977,
     "p": 239,
     "r": 29,
     "w": null,
-    "c": 154259
+    "c": 154259,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1977,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Economic%20development%22%20au%3A%22Michael%20P.%20Todaro%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Economic%20development%22%20au%3A%22Michael%20P.%20Todaro%22"
+      ]
+    }
   },
   {
     "k": "/works/OL98485W",
@@ -70253,11 +71023,26 @@
     "k": "/works/OL5616271W",
     "t": "Essentials of management",
     "a": "Harold Koontz",
-    "y": 1974,
+    "y": 1986,
     "p": 238,
     "r": 6,
     "w": null,
-    "c": 4507368
+    "c": 4507368,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1986,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Essentials%20of%20management%22%20au%3A%22Harold%20Koontz%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Essentials%20of%20management%22%20au%3A%22Harold%20Koontz%22"
+      ]
+    }
   },
   {
     "k": "/works/OL5801795W",
@@ -70353,11 +71138,26 @@
     "k": "/site/batavia-s-graveyard",
     "t": "Batavia's Graveyard",
     "a": "Mike Dash",
-    "y": 2003,
+    "y": 2002,
     "p": 238,
     "r": 5,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2002,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Batavia%27s%20Graveyard%22%20au%3A%22Mike%20Dash%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Batavia%27s%20Graveyard%22%20au%3A%22Mike%20Dash%22"
+      ]
+    }
   },
   {
     "k": "/works/OL8526580W",
@@ -70931,7 +71731,22 @@
     "p": 234,
     "r": 8,
     "w": null,
-    "c": 835671
+    "c": 835671,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2000,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22The%20wicca%20handbook%22%20au%3A%22Eileen%20Holland%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22The%20wicca%20handbook%22%20au%3A%22Eileen%20Holland%22"
+      ]
+    }
   },
   {
     "k": "/works/OL85675W",
@@ -71135,7 +71950,22 @@
     "p": 233,
     "r": 4,
     "w": null,
-    "c": 305839
+    "c": 305839,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1993,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Trading%20for%20a%20Living%22%20au%3A%22Alexander%20Elder%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Trading%20for%20a%20Living%22%20au%3A%22Alexander%20Elder%22"
+      ]
+    }
   },
   {
     "k": "/works/OL3004168W",
@@ -71275,7 +72105,22 @@
     "p": 232,
     "r": 5,
     "w": null,
-    "c": 4362260
+    "c": 4362260,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1981,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Work%20stress%20and%20social%20support%22%20au%3A%22James%20S.%20House%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Work%20stress%20and%20social%20support%22%20au%3A%22James%20S.%20House%22"
+      ]
+    }
   },
   {
     "k": "/works/OL3361621W",
@@ -71695,11 +72540,26 @@
     "k": "/works/OL9442774W",
     "t": "The Daily Book of Positive Quotations",
     "a": "Linda Picone",
-    "y": 2008,
+    "y": 2007,
     "p": 230,
     "r": 5,
     "w": null,
-    "c": 2929963
+    "c": 2929963,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2007,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22The%20Daily%20Book%20of%20Positive%20Quotations%22%20au%3A%22Linda%20Picone%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22The%20Daily%20Book%20of%20Positive%20Quotations%22%20au%3A%22Linda%20Picone%22"
+      ]
+    }
   },
   {
     "k": "/works/OL37859241W",
@@ -73525,11 +74385,26 @@
     "k": "/site/the-bounty-trilogy",
     "t": "The Bounty Trilogy",
     "a": "Charles Nordhoff, James Norman Hall",
-    "y": 2023,
+    "y": 1936,
     "p": 221,
     "r": 6,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1936,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_Bounty_Trilogy"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_Bounty_Trilogy"
+      ]
+    }
   },
   {
     "k": "/works/OL5849524W",
@@ -73559,7 +74434,22 @@
     "p": 220,
     "r": 6,
     "w": null,
-    "c": 12642275
+    "c": 12642275,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2016,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Digital%20marketing%20for%20dummies%22%20au%3A%22Ryan%20Deiss%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Digital%20marketing%20for%20dummies%22%20au%3A%22Ryan%20Deiss%22"
+      ]
+    }
   },
   {
     "k": "/works/OL27294011W",
@@ -73993,7 +74883,22 @@
     "p": 212,
     "r": 2,
     "w": null,
-    "c": 14796132
+    "c": 14796132,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2023,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22%24100M%20Leads%22%20au%3A%22Alex%20Hormozi%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22%24100M%20Leads%22%20au%3A%22Alex%20Hormozi%22"
+      ]
+    }
   },
   {
     "k": "/works/OL3007423W",
@@ -74253,7 +75158,22 @@
     "p": 211,
     "r": 6,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1814,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_Corsair"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_Corsair"
+      ]
+    }
   },
   {
     "k": "/works/OL5264255W",
@@ -74812,11 +75732,26 @@
     "k": "/works/OL8053024W",
     "t": "The think & grow rich workbook",
     "a": "Joel Fotinos",
-    "y": 2009,
+    "y": 2008,
     "p": 208,
     "r": 3,
     "w": null,
-    "c": 12732056
+    "c": 12732056,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2008,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22The%20think%20%26%20grow%20rich%20workbook%22%20au%3A%22Joel%20Fotinos%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22The%20think%20%26%20grow%20rich%20workbook%22%20au%3A%22Joel%20Fotinos%22"
+      ]
+    }
   },
   {
     "k": "/works/OL15390315W",
@@ -75468,7 +76403,22 @@
     "p": 205,
     "r": 3,
     "w": null,
-    "c": 11067110
+    "c": 11067110,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2011,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Data%20Structures%20and%20Algorithms%20Made%20Easy%22%20au%3A%22Narasimha%20Karumanchi%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Data%20Structures%20and%20Algorithms%20Made%20Easy%22%20au%3A%22Narasimha%20Karumanchi%22"
+      ]
+    }
   },
   {
     "k": "/works/OL5753059W",
@@ -75802,7 +76752,22 @@
     "p": 204,
     "r": 7,
     "w": null,
-    "c": 8744712
+    "c": 8744712,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2011,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Overcoming%20Gravity%22%20au%3A%22Steven%20Low%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Overcoming%20Gravity%22%20au%3A%22Steven%20Low%22"
+      ]
+    }
   },
   {
     "k": "/works/OL45429W",
@@ -76414,7 +77379,22 @@
     "p": 201,
     "r": 4,
     "w": null,
-    "c": 13270543
+    "c": 13270543,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2013,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Relentless%22%20au%3A%22Tim%20Grover%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Relentless%22%20au%3A%22Tim%20Grover%22"
+      ]
+    }
   },
   {
     "k": "/works/OL16626670W",
@@ -77372,11 +78352,26 @@
     "k": "/works/OL2033583W",
     "t": "How to Master the Art of Selling",
     "a": "Tom Hopkins",
-    "y": 1980,
+    "y": 1979,
     "p": 199,
     "r": 2,
     "w": null,
-    "c": 382237
+    "c": 382237,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1979,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22How%20to%20Master%20the%20Art%20of%20Selling%22%20au%3A%22Tom%20Hopkins%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22How%20to%20Master%20the%20Art%20of%20Selling%22%20au%3A%22Tom%20Hopkins%22"
+      ]
+    }
   },
   {
     "k": "/works/OL27245840W",
@@ -77486,7 +78481,22 @@
     "p": 199,
     "r": 6,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2010,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Textiles%20of%20the%20Islamic%20World%22%20au%3A%22John%20Gillow%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Textiles%20of%20the%20Islamic%20World%22%20au%3A%22John%20Gillow%22"
+      ]
+    }
   },
   {
     "k": "/works/OL1012089W",
@@ -77658,7 +78668,22 @@
     "p": 198,
     "r": 11,
     "w": null,
-    "c": 3888921
+    "c": 3888921,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1995,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Under%20the%20feet%20of%20Jesus%22%20au%3A%22Helena%20Mar%C3%ADa%20Viramontes%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Under%20the%20feet%20of%20Jesus%22%20au%3A%22Helena%20Mar%C3%ADa%20Viramontes%22"
+      ]
+    }
   },
   {
     "k": "/works/OL10225459W",
@@ -78661,7 +79686,22 @@
     "p": 196,
     "r": 2,
     "w": null,
-    "c": 208019
+    "c": 208019,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1994,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Parallel%20myths%22%20au%3A%22J.%20F.%20Bierlein%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Parallel%20myths%22%20au%3A%22J.%20F.%20Bierlein%22"
+      ]
+    }
   },
   {
     "k": "/works/OL120747W",
@@ -79121,11 +80161,26 @@
     "k": "/works/OL20794766W",
     "t": "I Will Teach You to Be Rich, Second Edition",
     "a": "Ramit Sethi",
-    "y": 2019,
+    "y": 2009,
     "p": 195,
     "r": 5,
     "w": null,
-    "c": 10089296
+    "c": 10089296,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2009,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22I%20Will%20Teach%20You%20to%20Be%20Rich%2C%20Second%20Edition%22%20au%3A%22Ramit%20Sethi%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22I%20Will%20Teach%20You%20to%20Be%20Rich%2C%20Second%20Edition%22%20au%3A%22Ramit%20Sethi%22"
+      ]
+    }
   },
   {
     "k": "/works/OL16812695W",
@@ -79436,7 +80491,22 @@
     "p": 194,
     "r": 9,
     "w": null,
-    "c": 4263149
+    "c": 4263149,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1978,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Human%20development%22%20au%3A%22Diane%20E.%20Papalia%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Human%20development%22%20au%3A%22Diane%20E.%20Papalia%22"
+      ]
+    }
   },
   {
     "k": "/works/OL21363057W",
@@ -79526,7 +80596,22 @@
     "p": 194,
     "r": 6,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1999,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Indian%20Embroidery%22%20au%3A%22Rosemary%20Crill%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Indian%20Embroidery%22%20au%3A%22Rosemary%20Crill%22"
+      ]
+    }
   },
   {
     "k": "/works/OL134875W",
@@ -80550,11 +81635,26 @@
     "k": "/site/indian-ikat-textiles",
     "t": "Indian Ikat Textiles",
     "a": "Rosemary Crill",
-    "y": 1999,
+    "y": 1998,
     "p": 192,
     "r": 6,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1998,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Indian%20Ikat%20Textiles%22%20au%3A%22Rosemary%20Crill%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Indian%20Ikat%20Textiles%22%20au%3A%22Rosemary%20Crill%22"
+      ]
+    }
   },
   {
     "k": "/works/OL34233540W",
@@ -81643,11 +82743,26 @@
     "k": "/works/OL16667558W",
     "t": "Organic chemistry",
     "a": "Jonathan Clayden",
-    "y": 2001,
+    "y": 2000,
     "p": 190,
     "r": 8,
     "w": null,
-    "c": 1134970
+    "c": 1134970,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2000,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Organic%20chemistry%22%20au%3A%22Jonathan%20Clayden%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Organic%20chemistry%22%20au%3A%22Jonathan%20Clayden%22"
+      ]
+    }
   },
   {
     "k": "/works/OL54031W",
@@ -83304,11 +84419,26 @@
     "k": "/works/OL11630665W",
     "t": "Supply chain management",
     "a": "Sunil Chopra",
-    "y": 2000,
+    "y": 2001,
     "p": 185,
     "r": 23,
     "w": null,
-    "c": 5313720
+    "c": 5313720,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2001,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Supply%20chain%20management%22%20au%3A%22Sunil%20Chopra%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Supply%20chain%20management%22%20au%3A%22Sunil%20Chopra%22"
+      ]
+    }
   },
   {
     "k": "/works/OL500177W",
@@ -84044,7 +85174,22 @@
     "p": 183,
     "r": 4,
     "w": null,
-    "c": 11244154
+    "c": 11244154,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2020,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%2212%20Months%20to%20%241%20Million%22%20au%3A%22Ryan%20Daniel%20Moran%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%2212%20Months%20to%20%241%20Million%22%20au%3A%22Ryan%20Daniel%20Moran%22"
+      ]
+    }
   },
   {
     "k": "/works/OL20892525W",
@@ -84806,11 +85951,26 @@
     "k": "/works/OL4805822W",
     "t": "Basic electrical engineering",
     "a": "A. E. Fitzgerald",
-    "y": 1945,
+    "y": 1957,
     "p": 181,
     "r": 8,
     "w": null,
-    "c": 9147065
+    "c": 9147065,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1957,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Basic%20electrical%20engineering%22%20au%3A%22A.%20E.%20Fitzgerald%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Basic%20electrical%20engineering%22%20au%3A%22A.%20E.%20Fitzgerald%22"
+      ]
+    }
   },
   {
     "k": "/works/OL27050590W",
@@ -85274,11 +86434,26 @@
     "k": "/works/OL2922059W",
     "t": "Your perfect right",
     "a": "Robert E. Alberti",
-    "y": 1974,
+    "y": 1970,
     "p": 181,
     "r": 23,
     "w": null,
-    "c": 1667848
+    "c": 1667848,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1970,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Your%20perfect%20right%22%20au%3A%22Robert%20E.%20Alberti%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Your%20perfect%20right%22%20au%3A%22Robert%20E.%20Alberti%22"
+      ]
+    }
   },
   {
     "k": "/works/OL1802485W",
@@ -85843,11 +87018,26 @@
     "k": "/site/indian-folk-arts-and-crafts",
     "t": "Indian Folk Arts and Crafts",
     "a": "Jasleen Dhamija",
-    "y": 1992,
+    "y": 1970,
     "p": 180,
     "r": 6,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1970,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Indian%20Folk%20Arts%20and%20Crafts%22%20au%3A%22Jasleen%20Dhamija%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Indian%20Folk%20Arts%20and%20Crafts%22%20au%3A%22Jasleen%20Dhamija%22"
+      ]
+    }
   },
   {
     "k": "/works/OL462072W",
@@ -86268,11 +87458,26 @@
     "k": "/works/OL1982791W",
     "t": "Human Resource Management",
     "a": "Gary Dessler",
-    "y": 1994,
+    "y": 1978,
     "p": 179,
     "r": 12,
     "w": null,
-    "c": 84029
+    "c": 84029,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1978,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Human%20Resource%20Management%22%20au%3A%22Gary%20Dessler%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Human%20Resource%20Management%22%20au%3A%22Gary%20Dessler%22"
+      ]
+    }
   },
   {
     "k": "/works/OL111357W",
@@ -86322,7 +87527,22 @@
     "p": 179,
     "r": 11,
     "w": null,
-    "c": 364281
+    "c": 364281,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1983,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Criminology%22%20au%3A%22Larry%20J.%20Siegel%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Criminology%22%20au%3A%22Larry%20J.%20Siegel%22"
+      ]
+    }
   },
   {
     "k": "/works/OL38989W",
@@ -87603,11 +88823,26 @@
     "k": "/site/the-alchemist",
     "t": "The Alchemist",
     "a": "Paulo Coello",
-    "y": 2021,
+    "y": 1988,
     "p": 177,
     "r": 6,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1988,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_Alchemist_(novel)"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_Alchemist_(novel)"
+      ]
+    }
   },
   {
     "k": "/works/OL32554492W",
@@ -87769,7 +89004,22 @@
     "p": 176,
     "r": 8,
     "w": null,
-    "c": 4339464
+    "c": 4339464,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1983,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Life-span%20development%22%20au%3A%22John%20W.%20Santrock%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Life-span%20development%22%20au%3A%22John%20W.%20Santrock%22"
+      ]
+    }
   },
   {
     "k": "/works/OL1598459W",
@@ -87849,7 +89099,22 @@
     "p": 176,
     "r": 14,
     "w": null,
-    "c": 7916587
+    "c": 7916587,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2007,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22The%20Happiness%20Trap%22%20au%3A%22Russ%20Harris%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22The%20Happiness%20Trap%22%20au%3A%22Russ%20Harris%22"
+      ]
+    }
   },
   {
     "k": "/works/OL5730814W",
@@ -88724,7 +89989,22 @@
     "p": 175,
     "r": 6,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2005,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Unknown%20Masterpieces%20of%20Indian%20Folk%20%26%20Tribal%20Art%22%20au%3A%22Subhashini%20Aryan%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Unknown%20Masterpieces%20of%20Indian%20Folk%20%26%20Tribal%20Art%22%20au%3A%22Subhashini%20Aryan%22"
+      ]
+    }
   },
   {
     "k": "/works/OL2625225W",
@@ -89689,11 +90969,26 @@
     "k": "/works/OL15474033W",
     "t": "Logo design love",
     "a": "David Airey",
-    "y": 2010,
+    "y": 2009,
     "p": 172,
     "r": 6,
     "w": null,
-    "c": 14401558
+    "c": 14401558,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2009,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Logo%20design%20love%22%20au%3A%22David%20Airey%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Logo%20design%20love%22%20au%3A%22David%20Airey%22"
+      ]
+    }
   },
   {
     "k": "/works/OL1856010W",
@@ -90227,7 +91522,22 @@
     "p": 171,
     "r": 6,
     "w": null,
-    "c": 8537250
+    "c": 8537250,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2008,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Cashvertising%22%20au%3A%22Drew%20Eric%20Whitman%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Cashvertising%22%20au%3A%22Drew%20Eric%20Whitman%22"
+      ]
+    }
   },
   {
     "k": "/works/OL30906747W",
@@ -90818,7 +92128,22 @@
     "p": 170,
     "r": 2,
     "w": null,
-    "c": 13168271
+    "c": 13168271,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2017,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22How%20to%20Build%20a%20Car%22%20au%3A%22Adrian%20Newey%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22How%20to%20Build%20a%20Car%22%20au%3A%22Adrian%20Newey%22"
+      ]
+    }
   },
   {
     "k": "/works/OL55256W",
@@ -91269,7 +92594,22 @@
     "p": 169,
     "r": 6,
     "w": null,
-    "c": 10239359
+    "c": 10239359,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2018,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Hyperfocus%22%20au%3A%22Chris%20Bailey%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Hyperfocus%22%20au%3A%22Chris%20Bailey%22"
+      ]
+    }
   },
   {
     "k": "/works/OL111428W",
@@ -91905,11 +93245,26 @@
     "k": "/works/OL273693W",
     "t": "More Scary Stories to Tell in the Dark",
     "a": "Alvin Schwartz",
-    "y": 1605,
+    "y": 1984,
     "p": 168,
     "r": 23,
     "w": null,
-    "c": 12634238
+    "c": 12634238,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1984,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/More_Scary_Stories_to_Tell_in_the_Dark"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/More_Scary_Stories_to_Tell_in_the_Dark"
+      ]
+    }
   },
   {
     "k": "/works/OL11277286W",
@@ -92783,11 +94138,26 @@
     "k": "/site/general-history-of-the-pyrates-a-general-history-of-the-robberies-and-murders",
     "t": "General History of the Pyrates : a General History of the Robberies and Murders of the Most Notorious Pyrates",
     "a": "Maisha Books, Daniel Defoe",
-    "y": 2020,
+    "y": 1724,
     "p": 167,
     "r": 6,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1724,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/A_General_History_of_the_Pyrates"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/A_General_History_of_the_Pyrates"
+      ]
+    }
   },
   {
     "k": "/works/OL8024260W",
@@ -93693,7 +95063,22 @@
     "p": 165,
     "r": 5,
     "w": null,
-    "c": 10418284
+    "c": 10418284,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2017,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22UNSCRIPTED%22%20au%3A%22M.%20J.%20DeMarco%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22UNSCRIPTED%22%20au%3A%22M.%20J.%20DeMarco%22"
+      ]
+    }
   },
   {
     "k": "/works/OL20050997W",
@@ -94548,7 +95933,22 @@
     "p": 164,
     "r": 28,
     "w": "Q106987804",
-    "c": 12672936
+    "c": 12672936,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2015,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Data%20science%20from%20scratch%22%20au%3A%22Joel%20Grus%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Data%20science%20from%20scratch%22%20au%3A%22Joel%20Grus%22"
+      ]
+    }
   },
   {
     "k": "/works/OL5683845W",
@@ -94876,11 +96276,26 @@
     "k": "/works/OL1923964W",
     "t": "See You at the Top",
     "a": "Zig Ziglar",
-    "y": 1974,
+    "y": 1975,
     "p": 164,
     "r": 6,
     "w": null,
-    "c": 680559
+    "c": 680559,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1975,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22See%20You%20at%20the%20Top%22%20au%3A%22Zig%20Ziglar%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22See%20You%20at%20the%20Top%22%20au%3A%22Zig%20Ziglar%22"
+      ]
+    }
   },
   {
     "k": "/works/OL20195114W",
@@ -94956,11 +96371,26 @@
     "k": "/works/OL15316886W",
     "t": "Human Anatomy",
     "a": "Elaine Nicpon Marieb",
-    "y": 1992,
+    "y": 1989,
     "p": 164,
     "r": 8,
     "w": null,
-    "c": 1520275
+    "c": 1520275,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1989,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Human%20Anatomy%22%20au%3A%22Elaine%20Nicpon%20Marieb%22"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/search?q=ti%3A%22Human%20Anatomy%22%20au%3A%22Elaine%20Nicpon%20Marieb%22"
+      ]
+    }
   },
   {
     "k": "/works/OL17108962W",
@@ -95380,11 +96810,26 @@
     "k": "/site/mutiny-on-the-bounty",
     "t": "Mutiny on the Bounty",
     "a": "James Norman Hall, Ellery Sedgwick, Charles Bernard Nordhoff",
-    "y": 2022,
+    "y": 1932,
     "p": 163,
     "r": 6,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1932,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Mutiny_on_the_Bounty_(novel)"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Mutiny_on_the_Bounty_(novel)"
+      ]
+    }
   },
   {
     "k": "/works/OL4273174W",
@@ -96670,7 +98115,22 @@
     "p": 160,
     "r": 11,
     "w": null,
-    "c": 3040865
+    "c": 3040865,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1930,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Psychic_Self-Defense"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Psychic_Self-Defense"
+      ]
+    }
   },
   {
     "k": "/works/OL17793650W",
@@ -100398,7 +101858,22 @@
     "p": 153,
     "r": 16,
     "w": null,
-    "c": 12634239
+    "c": 12634239,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1991,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Scary_Stories_3"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Scary_Stories_3"
+      ]
+    }
   },
   {
     "k": "/works/OL21856464W",
@@ -101554,7 +103029,22 @@
     "p": 152,
     "r": 13,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2011,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Worm_(web_serial)"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Worm_(web_serial)"
+      ]
+    }
   },
   {
     "k": "/works/OL24810015W",
@@ -102944,21 +104434,51 @@
     "k": "/fandom/reverend-insanity",
     "t": "Reverend Insanity",
     "a": "",
-    "y": null,
+    "y": 2012,
     "p": 151,
     "r": 9,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2012,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Reverend_Insanity"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Reverend_Insanity"
+      ]
+    }
   },
   {
     "k": "/fandom/overlordmaruyama",
     "t": "Overlord",
     "a": "",
-    "y": null,
+    "y": 2010,
     "p": 151,
     "r": 13,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2010,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Overlord_(novel_series)"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Overlord_(novel_series)"
+      ]
+    }
   },
   {
     "k": "/fandom/mushokutensei",
