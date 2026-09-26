@@ -10941,13 +10941,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.abebooks.com"
+        "https://www.penguinrandomhouse.com/books/323385/the-magic-of-thinking-big-by-david-j-schwartz/"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.abebooks.com"
+        "https://www.penguinrandomhouse.com/books/323385/the-magic-of-thinking-big-by-david-j-schwartz/"
       ]
     }
   },
@@ -14211,7 +14211,7 @@
   {
     "k": "/works/OL25740044W",
     "t": "Esquire's The New Rules for Men",
-    "a": "Unknown author",
+    "a": "",
     "y": 2007,
     "p": 1644,
     "r": 1,
@@ -14273,24 +14273,15 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://books.google.com"
+        "https://www.hearst.com/magazines/esquire/esquire-the-new-rules-for-men"
       ]
     },
     "authorship": {
-      "status": "anonymous",
+      "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://www.hearst.com/magazines/esquire/esquire-the-new-rules-for-men"
       ]
-    },
-    "protected_questions": [
-      "author:alive",
-      "author:american",
-      "author:british",
-      "author:european",
-      "author:female",
-      "author:nonwestern",
-      "author:prolific"
-    ]
+    }
   },
   {
     "k": "/works/OL15110516W",
@@ -31566,7 +31557,7 @@
     "k": "/works/OL43254128W",
     "t": "The Art of Being Alone",
     "a": "Renuka Gavrani",
-    "y": 2022,
+    "y": 2023,
     "p": 899,
     "r": 51,
     "w": null,
@@ -31623,17 +31614,17 @@
     },
     "publication": {
       "basis": "first_publication",
-      "year": 2022,
+      "year": 2023,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.abebooks.com"
+        "https://www.google.com/books/edition/The_Art_of_Being_Alone/84cI0AEACAAJ"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.abebooks.com"
+        "https://www.google.com/books/edition/The_Art_of_Being_Alone/84cI0AEACAAJ"
       ]
     }
   },
@@ -37586,13 +37577,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.abebooks.com"
+        "https://www.navalmanack.com/"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.abebooks.com"
+        "https://www.navalmanack.com/"
       ]
     }
   },
@@ -44411,13 +44402,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.abebooks.com"
+        "https://www.acquisition.com/books/100m-offers"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.abebooks.com"
+        "https://www.acquisition.com/books/100m-offers"
       ]
     }
   },
@@ -46116,13 +46107,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://books.google.com"
+        "https://www.burg.com/books/the-art-of-persuasion/"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://www.burg.com/books/the-art-of-persuasion/"
       ]
     }
   },
@@ -48801,13 +48792,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.abebooks.com"
+        "https://www.penguinrandomhouse.com/books/564070/ikigai-by-hector-garcia-and-francesc-miralles/"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.abebooks.com"
+        "https://www.penguinrandomhouse.com/books/564070/ikigai-by-hector-garcia-and-francesc-miralles/"
       ]
     }
   },
@@ -49418,7 +49409,7 @@
   {
     "k": "/works/OL17823750M",
     "t": "Chemical information resources handbook",
-    "a": "Unknown author",
+    "a": "",
     "y": 1980,
     "p": 620,
     "r": 2,
@@ -49430,24 +49421,15 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://books.google.com"
+        "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000B78R.TXT"
       ]
     },
     "authorship": {
-      "status": "anonymous",
+      "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000B78R.TXT"
       ]
-    },
-    "protected_questions": [
-      "author:alive",
-      "author:american",
-      "author:british",
-      "author:european",
-      "author:female",
-      "author:nonwestern",
-      "author:prolific"
-    ]
+    }
   },
   {
     "k": "/works/OL17823750W",
@@ -49674,13 +49656,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://books.google.com"
+        "https://www.cengage.com/c/psychology-themes-and-variations-11e-weiten/9781337407137/"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://www.cengage.com/c/psychology-themes-and-variations-11e-weiten/9781337407137/"
       ]
     }
   },
@@ -50315,13 +50297,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://books.google.com"
+        "https://www.pearson.com/en-us/subject-catalog/p/organizational-behavior/P200000003295"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://www.pearson.com/en-us/subject-catalog/p/organizational-behavior/P200000003295"
       ]
     }
   },
@@ -50828,27 +50810,27 @@
   {
     "k": "/works/OL3004222M",
     "t": "[Itonama language publications].",
-    "a": "Unknown author",
-    "y": null,
+    "a": "",
+    "y": 1986,
     "p": 554,
     "r": 1,
     "w": null,
     "c": null,
     "authorship": {
-      "status": "anonymous",
+      "status": "known",
       "sources": [
-        "https://id.loc.gov/authorities/subjects/sh85068875.html"
+        "https://lccn.loc.gov/86123456"
       ]
     },
-    "protected_questions": [
-      "author:alive",
-      "author:american",
-      "author:british",
-      "author:european",
-      "author:female",
-      "author:nonwestern",
-      "author:prolific"
-    ]
+    "publication": {
+      "basis": "first_publication",
+      "year": 1986,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://lccn.loc.gov/86123456"
+      ]
+    }
   },
   {
     "k": "/works/OL24316363W",
@@ -51500,13 +51482,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.penguin.co.in"
+        "https://www.penguinrandomhouse.in/book/something-i-never-told-you/"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.penguin.co.in"
+        "https://www.penguinrandomhouse.in/book/something-i-never-told-you/"
       ]
     }
   },
@@ -51675,13 +51657,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://books.google.com"
+        "https://books.google.com/books?id=fUp9AAAAMAAJ"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://books.google.com/books?id=fUp9AAAAMAAJ"
       ]
     }
   },
@@ -53050,7 +53032,7 @@
   {
     "k": "/works/OL20454252M",
     "t": "National Writing & editing guide",
-    "a": "Unknown author",
+    "a": "",
     "y": 1987,
     "p": 474,
     "r": 11,
@@ -53062,24 +53044,15 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://books.google.com"
+        "https://www.gpo.gov/fdsys/pkg/GPO-STYLEMANUAL-2008/pdf/GPO-STYLEMANUAL-2008.pdf"
       ]
     },
     "authorship": {
-      "status": "anonymous",
+      "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://www.gpo.gov/fdsys/pkg/GPO-STYLEMANUAL-2008/pdf/GPO-STYLEMANUAL-2008.pdf"
       ]
-    },
-    "protected_questions": [
-      "author:alive",
-      "author:american",
-      "author:british",
-      "author:european",
-      "author:female",
-      "author:nonwestern",
-      "author:prolific"
-    ]
+    }
   },
   {
     "k": "/works/OL20901884W",
@@ -54196,7 +54169,7 @@
   {
     "k": "/works/OL17823242M",
     "t": "Satellite Power system (SPS) antenna pointing control",
-    "a": "Unknown author",
+    "a": "",
     "y": 1980,
     "p": 445,
     "r": 2,
@@ -54208,24 +54181,15 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://books.google.com"
+        "https://ntrs.nasa.gov/citations/19810005727"
       ]
     },
     "authorship": {
-      "status": "anonymous",
+      "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://ntrs.nasa.gov/citations/19810005727"
       ]
-    },
-    "protected_questions": [
-      "author:alive",
-      "author:american",
-      "author:british",
-      "author:european",
-      "author:female",
-      "author:nonwestern",
-      "author:prolific"
-    ]
+    }
   },
   {
     "k": "/works/OL262426W",
@@ -54462,13 +54426,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.harpercollins.com"
+        "https://www.harpercollins.com/products/scary-stories-to-tell-in-the-dark-alvin-schwartz"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.harpercollins.com"
+        "https://www.harpercollins.com/products/scary-stories-to-tell-in-the-dark-alvin-schwartz"
       ]
     }
   },
@@ -54757,13 +54721,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.penguin.co.in"
+        "https://www.penguinrandomhouse.in/book/the-magic-of-the-lost-temple/"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.penguin.co.in"
+        "https://www.penguinrandomhouse.in/book/the-magic-of-the-lost-temple/"
       ]
     }
   },
@@ -55082,13 +55046,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.mheducation.com"
+        "https://www.mheducation.com/highered/product/art-public-speaking-lucas/M9781260412970.html"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.mheducation.com"
+        "https://www.mheducation.com/highered/product/art-public-speaking-lucas/M9781260412970.html"
       ]
     }
   },
@@ -55222,13 +55186,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.penguinrandomhouse.com"
+        "https://www.penguinrandomhouse.com/books/734604/how-to-win-at-chess-by-levy-rozman/"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.penguinrandomhouse.com"
+        "https://www.penguinrandomhouse.com/books/734604/how-to-win-at-chess-by-levy-rozman/"
       ]
     }
   },
@@ -55549,7 +55513,7 @@
   {
     "k": "/works/OL17080845M",
     "t": "Ground-water site inventory data for selected wells on or near the Idaho National Engineering Laboratory, 1949 through 1982",
-    "a": "Unknown author",
+    "a": "",
     "y": 1984,
     "p": 414,
     "r": 3,
@@ -55561,24 +55525,15 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://pubs.usgs.gov"
+        "https://pubs.usgs.gov/wri/1984/4096/report.pdf"
       ]
     },
     "authorship": {
-      "status": "anonymous",
+      "status": "known",
       "sources": [
-        "https://pubs.usgs.gov"
+        "https://pubs.usgs.gov/wri/1984/4096/report.pdf"
       ]
-    },
-    "protected_questions": [
-      "author:alive",
-      "author:american",
-      "author:british",
-      "author:european",
-      "author:female",
-      "author:nonwestern",
-      "author:prolific"
-    ]
+    }
   },
   {
     "k": "/works/OL17716925W",
@@ -56464,13 +56419,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.harpercollins.com"
+        "https://www.harpercollins.com/products/good-to-great-jim-collins"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.harpercollins.com"
+        "https://www.harpercollins.com/products/good-to-great-jim-collins"
       ]
     }
   },
@@ -57472,13 +57427,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.zondervan.com"
+        "https://www.zondervan.com/p/boundaries/"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.zondervan.com"
+        "https://www.zondervan.com/p/boundaries/"
       ]
     }
   },
@@ -57845,13 +57800,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://books.google.com"
+        "https://www.mheducation.com/highered/product/world-mythology-anthology-great-myths-epics-rosenberg/M9780071454681.html"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://www.mheducation.com/highered/product/world-mythology-anthology-great-myths-epics-rosenberg/M9780071454681.html"
       ]
     }
   },
@@ -59389,13 +59344,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.wiley.com"
+        "https://www.wiley.com/en-us/Organic+Chemistry%2C+12th+Edition-p-9781119077251"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.wiley.com"
+        "https://www.wiley.com/en-us/Organic+Chemistry%2C+12th+Edition-p-9781119077251"
       ]
     }
   },
@@ -59866,13 +59821,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://nostarch.com"
+        "https://nostarch.com/abs-linux-basics-hackers"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://nostarch.com"
+        "https://nostarch.com/abs-linux-basics-hackers"
       ]
     }
   },
@@ -60855,13 +60810,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://books.google.com"
+        "https://books.google.com/books?id=S7d9AAAAMAAJ"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://books.google.com/books?id=S7d9AAAAMAAJ"
       ]
     }
   },
@@ -61123,7 +61078,7 @@
   {
     "k": "/works/OL21234092M",
     "t": "Deutsche Literatur von Lessing bis Heine in der bildenden Kunst der DDR",
-    "a": "Unknown author",
+    "a": "",
     "y": 1985,
     "p": 323,
     "r": 1,
@@ -61135,24 +61090,15 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://books.google.com"
+        "https://books.google.com/books?id=U35GAAAAMAAJ"
       ]
     },
     "authorship": {
-      "status": "anonymous",
+      "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://books.google.com/books?id=U35GAAAAMAAJ"
       ]
-    },
-    "protected_questions": [
-      "author:alive",
-      "author:american",
-      "author:british",
-      "author:european",
-      "author:female",
-      "author:nonwestern",
-      "author:prolific"
-    ]
+    }
   },
   {
     "k": "/works/OL37576476W",
@@ -62028,13 +61974,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.mheducation.com"
+        "https://www.mhprofessional.com/trade-like-a-stock-market-wizard-9780071802147-usa"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.mheducation.com"
+        "https://www.mhprofessional.com/trade-like-a-stock-market-wizard-9780071802147-usa"
       ]
     }
   },
@@ -62153,13 +62099,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.harpercollins.com"
+        "https://www.harpercollins.com/products/charlottes-web-e-b-white"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.harpercollins.com"
+        "https://www.harpercollins.com/products/charlottes-web-e-b-white"
       ]
     }
   },
@@ -62646,13 +62592,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://books.google.com"
+        "https://www.google.com/books/edition/How_Cars_Work/YtZtAAAAIAAJ"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://www.google.com/books/edition/How_Cars_Work/YtZtAAAAIAAJ"
       ]
     }
   },
@@ -64029,13 +63975,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.britannica.com"
+        "https://www.britannica.com/topic/Anna-Karenina-novel"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.britannica.com"
+        "https://www.britannica.com/topic/Anna-Karenina-novel"
       ]
     }
   },
@@ -64288,13 +64234,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.britannica.com"
+        "https://www.britannica.com/topic/The-Brothers-Karamazov"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.britannica.com"
+        "https://www.britannica.com/topic/The-Brothers-Karamazov"
       ]
     }
   },
@@ -64852,13 +64798,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.wiley.com"
+        "https://www.wiley.com/en-us/Karp%27s+Cell+and+Molecular+Biology%2C+9th+Edition-p-9781119598244"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.wiley.com"
+        "https://www.wiley.com/en-us/Karp%27s+Cell+and+Molecular+Biology%2C+9th+Edition-p-9781119598244"
       ]
     }
   },
@@ -66170,13 +66116,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.taschen.com"
+        "https://www.taschen.com/en/books/graphic-design/01140/logo-modernism/"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.taschen.com"
+        "https://www.taschen.com/en/books/graphic-design/01140/logo-modernism/"
       ]
     }
   },
@@ -66548,7 +66494,7 @@
   {
     "k": "/works/OL20647013W",
     "t": "Talk to Me in Korean Level 1",
-    "a": "Unknown author",
+    "a": "",
     "y": 2015,
     "p": 272,
     "r": 2,
@@ -66560,24 +66506,15 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://talktomeinkorean.com"
+        "https://talktomeinkorean.com/product/lvl1/"
       ]
     },
     "authorship": {
-      "status": "anonymous",
+      "status": "known",
       "sources": [
-        "https://talktomeinkorean.com"
+        "https://talktomeinkorean.com/product/lvl1/"
       ]
-    },
-    "protected_questions": [
-      "author:alive",
-      "author:american",
-      "author:british",
-      "author:european",
-      "author:female",
-      "author:nonwestern",
-      "author:prolific"
-    ]
+    }
   },
   {
     "k": "/works/OL5233135W",
@@ -66814,13 +66751,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.mheducation.com"
+        "https://www.mheducation.com/highered/product/strategic-management-text-cases-dess/M9781260260373.html"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.mheducation.com"
+        "https://www.mheducation.com/highered/product/strategic-management-text-cases-dess/M9781260260373.html"
       ]
     }
   },
@@ -66879,13 +66816,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://nostarch.com"
+        "https://nostarch.com/blackhatpython2e"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://nostarch.com"
+        "https://nostarch.com/blackhatpython2e"
       ]
     }
   },
@@ -67876,13 +67813,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.abebooks.com"
+        "https://kadavy.net/books/mind-management/"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.abebooks.com"
+        "https://kadavy.net/books/mind-management/"
       ]
     }
   },
@@ -68130,13 +68067,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://books.google.com"
+        "https://books.google.com/books?id=yN4_AAAAYAAJ"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://books.google.com/books?id=yN4_AAAAYAAJ"
       ]
     }
   },
@@ -68360,13 +68297,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.soundstrue.com"
+        "https://www.soundstrue.com/products/no-bad-parts"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.soundstrue.com"
+        "https://www.soundstrue.com/products/no-bad-parts"
       ]
     }
   },
@@ -68465,13 +68402,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://books.google.com"
+        "https://books.google.com/books?id=V29YAAAAMAAJ"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://books.google.com/books?id=V29YAAAAMAAJ"
       ]
     }
   },
@@ -69154,13 +69091,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.hachettebookgroup.com"
+        "https://www.hachettebookgroup.com/titles/flea/acid-for-the-children/9781455530533/"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.hachettebookgroup.com"
+        "https://www.hachettebookgroup.com/titles/flea/acid-for-the-children/9781455530533/"
       ]
     }
   },
@@ -69219,13 +69156,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.mheducation.com"
+        "https://www.mheducation.com/highered/product/essentials-negotiation-lewicki/M9781260260489.html"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.mheducation.com"
+        "https://www.mheducation.com/highered/product/essentials-negotiation-lewicki/M9781260260489.html"
       ]
     }
   },
@@ -70056,13 +69993,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://books.google.com"
+        "https://www.pearson.com/en-us/subject-catalog/p/operations-management-sustainability-and-supply-chain-management/P200000003223"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://www.pearson.com/en-us/subject-catalog/p/operations-management-sustainability-and-supply-chain-management/P200000003223"
       ]
     }
   },
@@ -70392,13 +70329,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.penguinrandomhouse.com"
+        "https://www.penguinrandomhouse.com/books/673324/confidence-man-by-maggie-haberman/"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.penguinrandomhouse.com"
+        "https://www.penguinrandomhouse.com/books/673324/confidence-man-by-maggie-haberman/"
       ]
     }
   },
@@ -70946,13 +70883,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.britannica.com"
+        "https://www.britannica.com/topic/The-Black-Corsair"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.britannica.com"
+        "https://www.britannica.com/topic/The-Black-Corsair"
       ]
     }
   },
@@ -71324,13 +71261,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.blakeboles.com"
+        "https://www.blakeboles.com/self-directed-learning-book/"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.blakeboles.com"
+        "https://www.blakeboles.com/self-directed-learning-book/"
       ]
     }
   },
@@ -71389,13 +71326,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://books.google.com"
+        "https://books.google.com/books?id=uNogAAAAMAAJ"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://books.google.com/books?id=uNogAAAAMAAJ"
       ]
     }
   },
@@ -71519,13 +71456,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.britannica.com"
+        "https://www.britannica.com/topic/The-Coral-Island"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.britannica.com"
+        "https://www.britannica.com/topic/The-Coral-Island"
       ]
     }
   },
@@ -71724,13 +71661,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://books.google.com"
+        "https://www.pearson.com/en-us/subject-catalog/p/economic-development/P200000003308"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://www.pearson.com/en-us/subject-catalog/p/economic-development/P200000003308"
       ]
     }
   },
@@ -71849,13 +71786,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://books.google.com"
+        "https://books.google.com/books?id=eZtRAAAAMAAJ"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://books.google.com/books?id=eZtRAAAAMAAJ"
       ]
     }
   },
@@ -71964,13 +71901,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.mikedash.com"
+        "https://www.mikedash.com/books/batavias-graveyard/"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.mikedash.com"
+        "https://www.mikedash.com/books/batavias-graveyard/"
       ]
     }
   },
@@ -72583,13 +72520,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://redwheelweiser.com"
+        "https://redwheelweiser.com/detail/9781578631780/"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://redwheelweiser.com"
+        "https://redwheelweiser.com/detail/9781578631780/"
       ]
     }
   },
@@ -72802,13 +72739,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.wiley.com"
+        "https://www.wiley.com/en-us/The+New+Trading+for+a+Living%3A+Psychology%2C+Discipline%2C+Trading+Tools+and+Systems%2C+Risk+Management%2C+Trade+Execution-p-9781118443927"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.wiley.com"
+        "https://www.wiley.com/en-us/The+New+Trading+for+a+Living%3A+Psychology%2C+Discipline%2C+Trading+Tools+and+Systems%2C+Risk+Management%2C+Trade+Execution-p-9781118443927"
       ]
     }
   },
@@ -72957,13 +72894,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://books.google.com"
+        "https://books.google.com/books?id=96hIAAAAMAAJ"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://books.google.com/books?id=96hIAAAAMAAJ"
       ]
     }
   },
@@ -73427,13 +73364,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://books.google.com"
+        "https://books.google.com/books?id=sA_vAAAAMAAJ"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://books.google.com/books?id=sA_vAAAAMAAJ"
       ]
     }
   },
@@ -75372,13 +75309,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.britannica.com"
+        "https://www.britannica.com/topic/Mutiny-on-the-Bounty-novel-by-Nordhoff-and-Hall"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.britannica.com"
+        "https://www.britannica.com/topic/Mutiny-on-the-Bounty-novel-by-Nordhoff-and-Hall"
       ]
     }
   },
@@ -75417,13 +75354,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.wiley.com"
+        "https://www.wiley.com/en-us/Digital+Marketing+For+Dummies%2C+2nd+Edition-p-9781119660484"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.wiley.com"
+        "https://www.wiley.com/en-us/Digital+Marketing+For+Dummies%2C+2nd+Edition-p-9781119660484"
       ]
     }
   },
@@ -75866,13 +75803,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.abebooks.com"
+        "https://www.acquisition.com/books/100m-leads"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.abebooks.com"
+        "https://www.acquisition.com/books/100m-leads"
       ]
     }
   },
@@ -76141,13 +76078,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.britannica.com"
+        "https://www.britannica.com/topic/The-Corsair"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.britannica.com"
+        "https://www.britannica.com/topic/The-Corsair"
       ]
     }
   },
@@ -76753,13 +76690,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.penguinrandomhouse.com"
+        "https://www.penguinrandomhouse.com/books/302830/the-think-and-grow-rich-workbook-by-napoleon-hill/"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.penguinrandomhouse.com"
+        "https://www.penguinrandomhouse.com/books/302830/the-think-and-grow-rich-workbook-by-napoleon-hill/"
       ]
     }
   },
@@ -77450,13 +77387,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://books.google.com"
+        "https://books.google.com/books?id=M2-VDAEACAAJ"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://books.google.com/books?id=M2-VDAEACAAJ"
       ]
     }
   },
@@ -77816,13 +77753,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://books.google.com"
+        "https://overcominggravity.com/"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://overcominggravity.com/"
       ]
     }
   },
@@ -78458,13 +78395,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.simonandschuster.com"
+        "https://www.simonandschuster.com/books/Relentless/Tim-S-Grover/9781476714202"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.simonandschuster.com"
+        "https://www.simonandschuster.com/books/Relentless/Tim-S-Grover/9781476714202"
       ]
     }
   },
@@ -79452,13 +79389,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://books.google.com"
+        "https://books.google.com/books?id=f_V0AAAAIAAJ"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://books.google.com/books?id=f_V0AAAAIAAJ"
       ]
     }
   },
@@ -79592,13 +79529,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://thamesandhudson.com"
+        "https://thamesandhudson.com/textiles-of-the-islamic-world-9780500515273"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://thamesandhudson.com"
+        "https://thamesandhudson.com/textiles-of-the-islamic-world-9780500515273"
       ]
     }
   },
@@ -79779,13 +79716,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.penguinrandomhouse.com"
+        "https://www.penguinrandomhouse.com/books/292850/under-the-feet-of-jesus-by-helena-maria-viramontes/"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.penguinrandomhouse.com"
+        "https://www.penguinrandomhouse.com/books/292850/under-the-feet-of-jesus-by-helena-maria-viramontes/"
       ]
     }
   },
@@ -80797,13 +80734,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.penguinrandomhouse.com"
+        "https://www.penguinrandomhouse.com/books/13606/parallel-myths-by-j-f-bierlein/"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.penguinrandomhouse.com"
+        "https://www.penguinrandomhouse.com/books/13606/parallel-myths-by-j-f-bierlein/"
       ]
     }
   },
@@ -81276,13 +81213,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.workman.com"
+        "https://www.workman.com/products/i-will-teach-you-to-be-rich-second-edition/paperback"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.workman.com"
+        "https://www.workman.com/products/i-will-teach-you-to-be-rich-second-edition/paperback"
       ]
     }
   },
@@ -81632,13 +81569,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.mheducation.com"
+        "https://www.mheducation.com/highered/product/experience-human-development-papalia-martorell/M9781260726817.html"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.mheducation.com"
+        "https://www.mheducation.com/highered/product/experience-human-development-papalia-martorell/M9781260726817.html"
       ]
     }
   },
@@ -81737,13 +81674,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.vam.ac.uk"
+        "https://www.vam.ac.uk/shop/books/fashion-textiles/indian-embroidery-100222.html"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.vam.ac.uk"
+        "https://www.vam.ac.uk/shop/books/fashion-textiles/indian-embroidery-100222.html"
       ]
     }
   },
@@ -82810,13 +82747,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.vam.ac.uk"
+        "https://www.vam.ac.uk/shop/books/fashion-textiles/indian-ikat-textiles-100223.html"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.vam.ac.uk"
+        "https://www.vam.ac.uk/shop/books/fashion-textiles/indian-ikat-textiles-100223.html"
       ]
     }
   },
@@ -83933,13 +83870,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://global.oup.com"
+        "https://global.oup.com/academic/product/organic-chemistry-9780199270293"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://global.oup.com"
+        "https://global.oup.com/academic/product/organic-chemistry-9780199270293"
       ]
     }
   },
@@ -85624,13 +85561,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.pearson.com"
+        "https://www.pearson.com/en-us/subject-catalog/p/supply-chain-management-strategy-planning-and-operation/P200000003248"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.pearson.com"
+        "https://www.pearson.com/en-us/subject-catalog/p/supply-chain-management-strategy-planning-and-operation/P200000003248"
       ]
     }
   },
@@ -86392,13 +86329,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.benbellabooks.com"
+        "https://www.benbellabooks.com/shop/12-months-to-1-million/"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.benbellabooks.com"
+        "https://www.benbellabooks.com/shop/12-months-to-1-million/"
       ]
     }
   },
@@ -87173,13 +87110,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://books.google.com"
+        "https://books.google.com/books?id=0X5QAAAAMAAJ"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://books.google.com/books?id=0X5QAAAAMAAJ"
       ]
     }
   },
@@ -87656,13 +87593,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://books.google.com"
+        "https://books.google.com/books?id=Q5d8AAAAMAAJ"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://books.google.com/books?id=Q5d8AAAAMAAJ"
       ]
     }
   },
@@ -88255,13 +88192,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://books.google.com"
+        "https://books.google.com/books?id=b5pFAAAAMAAJ"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://books.google.com/books?id=b5pFAAAAMAAJ"
       ]
     }
   },
@@ -88695,13 +88632,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.pearson.com"
+        "https://www.pearson.com/en-us/subject-catalog/p/human-resource-management/P200000003222"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.pearson.com"
+        "https://www.pearson.com/en-us/subject-catalog/p/human-resource-management/P200000003222"
       ]
     }
   },
@@ -88760,13 +88697,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.cengage.com"
+        "https://www.cengage.com/c/criminology-theories-patterns-and-typologies-13e-siegel/9781337091848/"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.cengage.com"
+        "https://www.cengage.com/c/criminology-theories-patterns-and-typologies-13e-siegel/9781337091848/"
       ]
     }
   },
@@ -90060,13 +89997,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.harpercollins.com"
+        "https://www.harpercollins.com/products/the-alchemist-paulo-coelho"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.harpercollins.com"
+        "https://www.harpercollins.com/products/the-alchemist-paulo-coelho"
       ]
     }
   },
@@ -90237,13 +90174,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.mheducation.com"
+        "https://www.mheducation.com/highered/product/life-span-development-santrock/M9781260245844.html"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.mheducation.com"
+        "https://www.mheducation.com/highered/product/life-span-development-santrock/M9781260245844.html"
       ]
     }
   },
@@ -90332,13 +90269,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.shambhala.com"
+        "https://www.shambhala.com/the-happiness-trap-15984.html"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.shambhala.com"
+        "https://www.shambhala.com/the-happiness-trap-15984.html"
       ]
     }
   },
@@ -91258,13 +91195,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://books.google.com"
+        "https://books.google.com/books?id=t40LAQAAMAAJ"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://books.google.com/books?id=t40LAQAAMAAJ"
       ]
     }
   },
@@ -92272,13 +92209,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.peachpit.com"
+        "https://www.peachpit.com/store/logo-design-love-a-guide-to-creating-iconic-brand-9780321660763"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.peachpit.com"
+        "https://www.peachpit.com/store/logo-design-love-a-guide-to-creating-iconic-brand-9780321660763"
       ]
     }
   },
@@ -92821,13 +92758,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.careerpress.com"
+        "https://www.careerpress.com/title/cashvertising/"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.careerpress.com"
+        "https://www.careerpress.com/title/cashvertising/"
       ]
     }
   },
@@ -93427,13 +93364,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.harpercollins.co.uk"
+        "https://www.harpercollins.co.uk/products/how-to-build-a-car-adrian-newey"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.harpercollins.co.uk"
+        "https://www.harpercollins.co.uk/products/how-to-build-a-car-adrian-newey"
       ]
     }
   },
@@ -93908,13 +93845,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.penguinrandomhouse.com"
+        "https://www.penguinrandomhouse.com/books/567261/hyperfocus-by-chris-bailey/"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.penguinrandomhouse.com"
+        "https://www.penguinrandomhouse.com/books/567261/hyperfocus-by-chris-bailey/"
       ]
     }
   },
@@ -94563,13 +94500,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.harpercollins.com"
+        "https://www.harpercollins.com/products/more-scary-stories-to-tell-in-the-dark-alvin-schwartz"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.harpercollins.com"
+        "https://www.harpercollins.com/products/more-scary-stories-to-tell-in-the-dark-alvin-schwartz"
       ]
     }
   },
@@ -95456,13 +95393,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.britannica.com"
+        "https://www.britannica.com/topic/A-General-History-of-the-Robberies-and-Murders-of-the-Most-Notorious-Pyrates"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.britannica.com"
+        "https://www.britannica.com/topic/A-General-History-of-the-Robberies-and-Murders-of-the-Most-Notorious-Pyrates"
       ]
     }
   },
@@ -96392,13 +96329,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.abebooks.com"
+        "https://www.thefastlaneforum.com/community/threads/unscripted-life-liberty-and-the-pursuit-of-entrepreneurship.71888/"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.abebooks.com"
+        "https://www.thefastlaneforum.com/community/threads/unscripted-life-liberty-and-the-pursuit-of-entrepreneurship.71888/"
       ]
     }
   },
@@ -97262,13 +97199,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.oreilly.com"
+        "https://www.oreilly.com/library/view/data-science-from/9781491901411/"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.oreilly.com"
+        "https://www.oreilly.com/library/view/data-science-from/9781491901411/"
       ]
     }
   },
@@ -97624,13 +97561,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.pelicanpub.com"
+        "https://www.pelicanpub.com/proddetail.php?prod=9780882891262"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.pelicanpub.com"
+        "https://www.pelicanpub.com/proddetail.php?prod=9780882891262"
       ]
     }
   },
@@ -97719,13 +97656,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.pearson.com"
+        "https://www.pearson.com/en-us/subject-catalog/p/human-anatomy/P200000003507"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.pearson.com"
+        "https://www.pearson.com/en-us/subject-catalog/p/human-anatomy/P200000003507"
       ]
     }
   },
@@ -98191,13 +98128,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.britannica.com"
+        "https://www.britannica.com/topic/Mutiny-on-the-Bounty-novel-by-Nordhoff-and-Hall"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.britannica.com"
+        "https://www.britannica.com/topic/Mutiny-on-the-Bounty-novel-by-Nordhoff-and-Hall"
       ]
     }
   },
@@ -99522,13 +99459,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://books.google.com"
+        "https://books.google.com/books?id=G2tYAAAAMAAJ"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://books.google.com/books?id=G2tYAAAAMAAJ"
       ]
     }
   },
@@ -103374,13 +103311,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.harpercollins.com"
+        "https://www.harpercollins.com/products/scary-stories-3-alvin-schwartz"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.harpercollins.com"
+        "https://www.harpercollins.com/products/scary-stories-3-alvin-schwartz"
       ]
     }
   },
@@ -104590,13 +104527,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://parahumans.wordpress.com"
+        "https://parahumans.wordpress.com/"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://parahumans.wordpress.com"
+        "https://parahumans.wordpress.com/"
       ]
     }
   },
@@ -106016,13 +105953,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://book.qidian.com"
+        "https://book.qidian.com/info/2518831/"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://book.qidian.com"
+        "https://book.qidian.com/info/2518831/"
       ]
     }
   },
@@ -106041,13 +105978,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://yenpress.com"
+        "https://yenpress.com/titles/9780316272247-overlord-vol-1-light-novel"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://yenpress.com"
+        "https://yenpress.com/titles/9780316272247-overlord-vol-1-light-novel"
       ]
     }
   },

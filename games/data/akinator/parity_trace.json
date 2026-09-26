@@ -8,25 +8,25 @@
   "12345": "form:fiction"
  },
  "recheck": {
-  "question": "theme:family",
+  "question": "author:prolific",
   "answer": "yes",
   "wants": true,
   "top": [
    {
-    "key": "/works/OL17515087W",
-    "p": 0.013079861498
+    "key": "/works/OL860483W",
+    "p": 0.03077933368
    },
    {
     "key": "/works/OL4444212W",
-    "p": 0.012949310806
+    "p": 0.018164205422
    },
    {
-    "key": "/works/OL550235W",
-    "p": 0.012798741132
+    "key": "/fandom/39clues",
+    "p": 0.017293304216
    }
   ],
   "belief_sum": 1.0,
-  "belief_checksum": 7.717860051426
+  "belief_checksum": 7.748293801749
  },
  "generated_from": {
   "question_hash": "9854f36456701bce",
@@ -74,19 +74,19 @@
    "top": [
     {
      "key": "/works/OL17930368W",
-     "p": 0.000601389032
+     "p": 0.000601401251
     },
     {
      "key": "/works/OL18020194W",
-     "p": 0.000584539954
+     "p": 0.000584551831
     },
     {
      "key": "/works/OL17590212W",
-     "p": 0.000571947219
+     "p": 0.00057195884
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.403792208921
+   "belief_checksum": 7.403802969321
   },
   {
    "question": "form:fiction",
@@ -94,19 +94,19 @@
    "top": [
     {
      "key": "/works/OL17930368W",
-     "p": 0.001160364293
+     "p": 0.001160163971
     },
     {
      "key": "/works/OL21640039W",
-     "p": 0.001156977397
+     "p": 0.00115677766
     },
     {
      "key": "/works/OL25312237W",
-     "p": 0.001073473167
+     "p": 0.001073287846
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.497565257899
+   "belief_checksum": 7.497524102303
   },
   {
    "question": "fact:firstpub_ge_2016",
@@ -114,19 +114,19 @@
    "top": [
     {
      "key": "/works/OL15992072W",
-     "p": 0.001767129581
+     "p": 0.001766946188
     },
     {
      "key": "/works/OL17837119W",
-     "p": 0.001660033196
+     "p": 0.001659860916
     },
     {
      "key": "/works/OL17078706W",
-     "p": 0.001621685615
+     "p": 0.001621517316
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.542352157524
+   "belief_checksum": 7.542241617565
   },
   {
    "question": "form:nonfiction",
@@ -134,19 +134,19 @@
    "top": [
     {
      "key": "/works/OL15992072W",
-     "p": 0.001767129581
+     "p": 0.001766946188
     },
     {
      "key": "/works/OL17837119W",
-     "p": 0.001660033196
+     "p": 0.001659860916
     },
     {
      "key": "/works/OL17078706W",
-     "p": 0.001621685615
+     "p": 0.001621517316
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.542352157524
+   "belief_checksum": 7.542241617565
   },
   {
    "question": "author:alive",
@@ -154,19 +154,19 @@
    "top": [
     {
      "key": "/works/OL15992072W",
-     "p": 0.004170586988
+     "p": 0.004210413043
     },
     {
      "key": "/works/OL282391W",
-     "p": 0.00326025291
+     "p": 0.003291385942
     },
     {
      "key": "/works/OL1944250W",
-     "p": 0.003109124753
+     "p": 0.00313881462
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.61551448156
+   "belief_checksum": 7.613207400645
   },
   {
    "question": "author:american",
@@ -174,19 +174,19 @@
    "top": [
     {
      "key": "/works/OL15992072W",
-     "p": 0.006481819128
+     "p": 0.006508396319
     },
     {
      "key": "/works/OL1944250W",
-     "p": 0.004832121798
+     "p": 0.004851934789
     },
     {
      "key": "/works/OL20126932M",
-     "p": 0.004722232784
+     "p": 0.0047415952
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.605849606291
+   "belief_checksum": 7.60397118504
   },
   {
    "question": "place:usa",
@@ -194,19 +194,19 @@
    "top": [
     {
      "key": "/works/OL15992072W",
-     "p": 0.008259059575
+     "p": 0.008325780815
     },
     {
      "key": "/works/OL1944250W",
-     "p": 0.006157034162
+     "p": 0.006206774081
     },
     {
      "key": "/works/OL3737036W",
-     "p": 0.00597178814
+     "p": 0.00602003154
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.593642499738
+   "belief_checksum": 7.592494856587
   },
   {
    "question": "author:female",
@@ -214,19 +214,19 @@
    "top": [
     {
      "key": "/works/OL1944250W",
-     "p": 0.013315925589
+     "p": 0.013443934917
     },
     {
      "key": "/works/OL3737036W",
-     "p": 0.012915290775
+     "p": 0.0130394487
     },
     {
      "key": "/works/OL742483W",
-     "p": 0.008038793851
+     "p": 0.00811607279
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.655913980977
+   "belief_checksum": 7.655014321052
   },
   {
    "question": "audience:children",
@@ -234,19 +234,19 @@
    "top": [
     {
      "key": "/works/OL1944250W",
-     "p": 0.013315925589
+     "p": 0.013443934917
     },
     {
      "key": "/works/OL3737036W",
-     "p": 0.012915290775
+     "p": 0.0130394487
     },
     {
      "key": "/works/OL742483W",
-     "p": 0.008038793851
+     "p": 0.00811607279
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.655913980977
+   "belief_checksum": 7.655014321052
   },
   {
    "question": "genre:psychology",
@@ -254,19 +254,19 @@
    "top": [
     {
      "key": "/works/OL742483W",
-     "p": 0.009147089042
+     "p": 0.009222891316
     },
     {
      "key": "/works/OL15111477W",
-     "p": 0.008206372199
+     "p": 0.008274378717
     },
     {
      "key": "/works/OL544216W",
-     "p": 0.008094840425
+     "p": 0.008161922675
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.705096857702
+   "belief_checksum": 7.705068554326
   },
   {
    "question": "author:prolific",
@@ -274,19 +274,19 @@
    "top": [
     {
      "key": "/works/OL544216W",
-     "p": 0.015330077331
+     "p": 0.01548128853
     },
     {
      "key": "/works/OL17515087W",
-     "p": 0.007910878322
+     "p": 0.007988908809
     },
     {
      "key": "/works/OL742483W",
-     "p": 0.007692706186
+     "p": 0.00776858469
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.686600623039
+   "belief_checksum": 7.68636073556
   },
   {
    "question": "theme:family",
@@ -294,19 +294,19 @@
    "top": [
     {
      "key": "/works/OL544216W",
-     "p": 0.012100835684
+     "p": 0.012288836959
     },
     {
      "key": "/works/OL20882185W",
-     "p": 0.010904702259
+     "p": 0.011074120139
     },
     {
      "key": "/works/OL17515087W",
-     "p": 0.008742260804
+     "p": 0.008878082512
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.670496689701
+   "belief_checksum": 7.669863447377
   },
   {
    "question": "theme:friendship",
@@ -314,19 +314,19 @@
    "top": [
     {
      "key": "/works/OL544216W",
-     "p": 0.013487146496
+     "p": 0.013644790735
     },
     {
      "key": "/works/OL17515087W",
-     "p": 0.008444628774
+     "p": 0.008543333647
     },
     {
      "key": "/works/OL17202765W",
-     "p": 0.006783408333
+     "p": 0.006862696064
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.69600562314
+   "belief_checksum": 7.695752370142
   },
   {
    "question": "genre:history",
@@ -334,19 +334,19 @@
    "top": [
     {
      "key": "/works/OL544216W",
-     "p": 0.014648186803
+     "p": 0.014784863407
     },
     {
      "key": "/works/OL17515087W",
-     "p": 0.00794870631
+     "p": 0.008022872636
     },
     {
      "key": "/works/OL17202765W",
-     "p": 0.007367357687
+     "p": 0.007436099671
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.676083344118
+   "belief_checksum": 7.675804140663
   },
   {
    "question": "form:memoir",
@@ -354,19 +354,19 @@
    "top": [
     {
      "key": "/works/OL544216W",
-     "p": 0.01464685795
+     "p": 0.014783509641
     },
     {
      "key": "/works/OL17515087W",
-     "p": 0.007947985221
+     "p": 0.008022138027
     },
     {
      "key": "/works/OL17202765W",
-     "p": 0.007366689336
+     "p": 0.00743541879
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.676047481618
+   "belief_checksum": 7.675767969139
   },
   {
    "question": "audience:ya",
@@ -374,19 +374,19 @@
    "top": [
     {
      "key": "/works/OL4444212W",
-     "p": 0.01591532675
+     "p": 0.016154675928
     },
     {
      "key": "/works/OL860483W",
-     "p": 0.014982554403
+     "p": 0.0152078757
     },
     {
      "key": "/works/OL544216W",
-     "p": 0.011963589573
+     "p": 0.012143508928
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.606074128734
+   "belief_checksum": 7.604602500079
   },
   {
    "question": "book:film",
@@ -394,19 +394,19 @@
    "top": [
     {
      "key": "/works/OL4444212W",
-     "p": 0.01591532675
+     "p": 0.016154675928
     },
     {
      "key": "/works/OL860483W",
-     "p": 0.014982554403
+     "p": 0.0152078757
     },
     {
      "key": "/works/OL544216W",
-     "p": 0.011963589573
+     "p": 0.012143508928
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.606074128734
+   "belief_checksum": 7.604602500079
   },
   {
    "question": "t:child",
@@ -414,19 +414,19 @@
    "top": [
     {
      "key": "/works/OL4444212W",
-     "p": 0.017903722301
+     "p": 0.018209187429
     },
     {
      "key": "/works/OL860483W",
-     "p": 0.016854413208
+     "p": 0.017141975504
     },
     {
      "key": "/works/OL544216W",
-     "p": 0.013458271313
+     "p": 0.013687890188
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.708569199048
+   "belief_checksum": 7.708700347716
   },
   {
    "question": "t:romance",
@@ -434,19 +434,19 @@
    "top": [
     {
      "key": "/works/OL4444212W",
-     "p": 0.031624492567
+     "p": 0.032150969495
     },
     {
      "key": "/works/OL860483W",
-     "p": 0.016539461468
+     "p": 0.016814806435
     },
     {
      "key": "/works/OL7909038W",
-     "p": 0.013271193283
+     "p": 0.013492128909
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.672720750367
+   "belief_checksum": 7.672272332735
   },
   {
    "question": "fact:namedchars",
@@ -454,19 +454,19 @@
    "top": [
     {
      "key": "/works/OL4444212W",
-     "p": 0.028147758926
+     "p": 0.02856054606
     },
     {
      "key": "/works/OL860483W",
-     "p": 0.01472114606
+     "p": 0.014937031798
     },
     {
      "key": "/works/OL7909038W",
-     "p": 0.011812184761
+     "p": 0.011985410556
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.655044890544
+   "belief_checksum": 7.654387337399
   },
   {
    "question": "place:britain",
@@ -474,19 +474,19 @@
    "top": [
     {
      "key": "/works/OL4444212W",
-     "p": 0.034607390362
+     "p": 0.034988673591
     },
     {
      "key": "/works/OL860483W",
-     "p": 0.018099503041
+     "p": 0.018298912384
     },
     {
      "key": "/works/OL17104741W",
-     "p": 0.011615898986
+     "p": 0.011743875913
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.638395175501
+   "belief_checksum": 7.637665173097
   },
   {
    "question": "t:realevents",
@@ -494,19 +494,19 @@
    "top": [
     {
      "key": "/works/OL4444212W",
-     "p": 0.034736550718
+     "p": 0.035107329506
     },
     {
      "key": "/works/OL860483W",
-     "p": 0.018167053303
+     "p": 0.018360968872
     },
     {
      "key": "/works/OL7909038W",
-     "p": 0.011147244606
+     "p": 0.011266230567
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.681162451342
+   "belief_checksum": 7.680832206613
   },
   {
    "question": "form:firstperson",
@@ -514,19 +514,19 @@
    "top": [
     {
      "key": "/works/OL4444212W",
-     "p": 0.034733928096
+     "p": 0.035104650599
     },
     {
      "key": "/works/OL860483W",
-     "p": 0.018165681683
+     "p": 0.018359567816
     },
     {
      "key": "/works/OL7909038W",
-     "p": 0.011146402985
+     "p": 0.011265370883
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.681102851753
+   "belief_checksum": 7.680771996105
   },
   {
    "question": "genre:science",
@@ -534,119 +534,119 @@
    "top": [
     {
      "key": "/works/OL4444212W",
-     "p": 0.034733928096
+     "p": 0.035104650599
     },
     {
      "key": "/works/OL860483W",
-     "p": 0.018165681683
+     "p": 0.018359567816
     },
     {
      "key": "/works/OL7909038W",
-     "p": 0.011146402985
+     "p": 0.011265370883
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.681102851753
+   "belief_checksum": 7.680771996105
   },
   {
-   "question": "form:classic",
+   "question": "t:family",
    "answer": "yes",
    "top": [
     {
      "key": "/works/OL4444212W",
-     "p": 0.017720856645
+     "p": 0.031437443207
     },
     {
-     "key": "/works/OL3171087W",
-     "p": 0.017099179362
+     "key": "/works/OL860483W",
+     "p": 0.029594943951
     },
     {
      "key": "/works/OL7909038W",
-     "p": 0.013269126583
+     "p": 0.018159361006
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.643360945858
+   "belief_checksum": 7.674840852343
   },
   {
-   "question": "t:family",
+   "question": "form:classic",
    "answer": "no",
    "top": [
     {
      "key": "/works/OL4444212W",
-     "p": 0.019945962497
+     "p": 0.037710584987
     },
     {
-     "key": "/works/OL1865549W",
-     "p": 0.017009488398
+     "key": "/works/OL860483W",
+     "p": 0.035500426728
     },
     {
-     "key": "/works/OL17515087W",
-     "p": 0.011291204479
+     "key": "/works/OL7909038W",
+     "p": 0.016657546912
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.667673407669
+   "belief_checksum": 7.696317510656
   },
   {
-   "question": "t:war",
+   "question": "place:europe_other",
    "answer": "probably_yes",
    "top": [
     {
      "key": "/works/OL4444212W",
-     "p": 0.020896928087
+     "p": 0.029345091524
     },
     {
-     "key": "/works/OL5735363W",
-     "p": 0.016178826123
+     "key": "/works/OL860483W",
+     "p": 0.02762522172
     },
     {
-     "key": "/works/OL1865549W",
-     "p": 0.012028804713
+     "key": "/works/OL7909038W",
+     "p": 0.019146201358
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.642528978382
+   "belief_checksum": 7.716764919735
   },
   {
-   "question": "genre:adventure",
+   "question": "t:war",
    "answer": "no",
    "top": [
     {
      "key": "/works/OL4444212W",
-     "p": 0.02604423951
+     "p": 0.027562810817
     },
     {
-     "key": "/works/OL1865549W",
-     "p": 0.013227995676
+     "key": "/works/OL860483W",
+     "p": 0.025947397691
     },
     {
-     "key": "/works/OL17515087W",
-     "p": 0.011274346699
+     "key": "/works/OL7909038W",
+     "p": 0.023378358288
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.699845738311
+   "belief_checksum": 7.701587688449
   },
   {
-   "question": "place:europe_other",
+   "question": "t:survival",
    "answer": "yes",
    "top": [
     {
-     "key": "/works/OL17515087W",
-     "p": 0.013079861498
+     "key": "/works/OL860483W",
+     "p": 0.048857786164
     },
     {
      "key": "/works/OL4444212W",
-     "p": 0.012949310806
+     "p": 0.028833075907
     },
     {
-     "key": "/works/OL550235W",
-     "p": 0.012798741132
+     "key": "/works/OL7909038W",
+     "p": 0.017119044516
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.717860051426
+   "belief_checksum": 7.758002428554
   }
  ]
 }
