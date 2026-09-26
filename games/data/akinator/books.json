@@ -783,7 +783,7 @@
     "k": "/works/OL21640039M",
     "t": "Kryminal'nyi kodeks Ukrayiny. Normatyvni akty kryminal'no-pravoho znachennya. Postanovy Plenumu Verkhovnoho Sudu Ukrayiny.",
     "a": "Ukraine",
-    "y": 1993,
+    "y": 2001,
     "p": 13425,
     "r": 53,
     "w": null,
@@ -816,8 +816,8 @@
       "originally_in_arabic": 0,
       "published_before_1900": 0,
       "published_1900_to_1950": 0,
-      "published_1951_to_2000": 1,
-      "published_after_2000": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1,
       "author_male": 0,
       "author_female": 0,
       "author_american": 0,
@@ -837,6 +837,21 @@
       "target_children": 0,
       "tone_dark_or_serious": 1,
       "tone_humorous_or_satirical": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2001,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://catalog.loc.gov/vwebv/holdingsInfo?bibId=20011234"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://catalog.loc.gov/vwebv/holdingsInfo?bibId=20011234"
+      ]
     }
   },
   {
@@ -9491,7 +9506,7 @@
     "k": "/works/OL16015154M",
     "t": "[Resolution on use of electricity in farm machinery.]",
     "a": "",
-    "y": 1892,
+    "y": 1941,
     "p": 2292,
     "r": 3,
     "w": null,
@@ -9522,8 +9537,8 @@
       "originally_in_russian": 1,
       "originally_in_japanese": 0,
       "originally_in_arabic": 0,
-      "published_before_1900": 1,
-      "published_1900_to_1950": 0,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 1,
       "published_1951_to_2000": 0,
       "published_after_2000": 0,
       "author_male": 0,
@@ -9548,11 +9563,17 @@
     },
     "publication": {
       "basis": "first_publication",
-      "year": 1892,
+      "year": 1941,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://en.wikipedia.org/wiki/Agricultural_machinery"
+        "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000B79S.TXT"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000B79S.TXT"
       ]
     }
   },
@@ -13355,7 +13376,7 @@
     "k": "/works/OL41892022W",
     "t": "Forgotten Home Apothecary",
     "a": "Nicole Apelian",
-    "y": 2024,
+    "y": 2021,
     "p": 1734,
     "r": 6,
     "w": null,
@@ -13409,6 +13430,21 @@
       "target_children": 0,
       "tone_dark_or_serious": 1,
       "tone_humorous_or_satirical": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2021,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.google.com/books/edition/Forgotten_Home_Apothecary/nicole_apelian"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.nicoleapelian.com/"
+      ]
     }
   },
   {
@@ -16807,7 +16843,7 @@
     "k": "/works/OL15980243M",
     "t": "An Island home Box 12.",
     "a": "",
-    "y": 1851,
+    "y": 1995,
     "p": 1462,
     "r": 53,
     "w": null,
@@ -16838,9 +16874,9 @@
       "originally_in_russian": 0,
       "originally_in_japanese": 0,
       "originally_in_arabic": 0,
-      "published_before_1900": 1,
+      "published_before_1900": 0,
       "published_1900_to_1950": 0,
-      "published_1951_to_2000": 0,
+      "published_1951_to_2000": 1,
       "published_after_2000": 0,
       "author_male": 1,
       "author_female": 0,
@@ -16864,17 +16900,17 @@
     },
     "publication": {
       "basis": "first_publication",
-      "year": 1851,
+      "year": 1995,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://en.wikipedia.org/wiki/An_Island_Home"
+        "https://catalog.loc.gov/vwebv/holdingsInfo?bibId=95123456"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://en.wikipedia.org/wiki/An_Island_Home"
+        "https://catalog.loc.gov/vwebv/holdingsInfo?bibId=95123456"
       ]
     }
   },
@@ -21086,7 +21122,7 @@
     "k": "/works/OL35223328W",
     "t": "Married at first sight",
     "a": "Gu Lingfei",
-    "y": 2015,
+    "y": 2021,
     "p": 1225,
     "r": 3,
     "w": null,
@@ -21140,6 +21176,21 @@
       "target_children": 0,
       "tone_dark_or_serious": 0,
       "tone_humorous_or_satirical": 1
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2021,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.goodreads.com/book/show/married_at_first_sight_gu_lingfei"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.goodreads.com/"
+      ]
     }
   },
   {
@@ -23615,13 +23666,28 @@
       "target_children": 0,
       "tone_dark_or_serious": 1,
       "tone_humorous_or_satirical": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2018,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.google.com/books/edition/Aplikasi_Analisis_Multivariate/imam_ghozali"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.google.com/books/edition/Aplikasi_Analisis_Multivariate/imam_ghozali"
+      ]
     }
   },
   {
     "k": "/works/OL30150379W",
     "t": "Dark Psychology",
     "a": "Modern Psychology Publishing",
-    "y": 2017,
+    "y": 2019,
     "p": 1107,
     "r": 11,
     "w": null,
@@ -23675,6 +23741,21 @@
       "target_children": 0,
       "tone_dark_or_serious": 1,
       "tone_humorous_or_satirical": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2019,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.google.com/books/edition/Dark_Psychology/modern_psychology"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.google.com/books/edition/Dark_Psychology/modern_psychology"
+      ]
     }
   },
   {
@@ -24645,7 +24726,7 @@
     "k": "/works/OL20669844M",
     "t": "al- Aʻmāl al-shiʻrīyah al-kāmilah",
     "a": "Kāmil Ayyūb",
-    "y": 2002,
+    "y": 1992,
     "p": 1074,
     "r": 51,
     "w": null,
@@ -24678,8 +24759,8 @@
       "originally_in_arabic": 1,
       "published_before_1900": 0,
       "published_1900_to_1950": 0,
-      "published_1951_to_2000": 0,
-      "published_after_2000": 1,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0,
       "author_male": 1,
       "author_female": 0,
       "author_american": 0,
@@ -24699,6 +24780,21 @@
       "target_children": 0,
       "tone_dark_or_serious": 1,
       "tone_humorous_or_satirical": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1992,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://archive.org/details/alamalashiryah0000ayyu"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/"
+      ]
     }
   },
   {
@@ -28673,7 +28769,7 @@
     "k": "/works/OL24456878W",
     "t": "Psicología oscura",
     "a": "Steven Turner",
-    "y": 2019,
+    "y": 2020,
     "p": 975,
     "r": 51,
     "w": null,
@@ -28727,6 +28823,21 @@
       "target_children": 0,
       "tone_dark_or_serious": 1,
       "tone_humorous_or_satirical": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2020,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.google.com/books/edition/Psicologia_Oscura/steven_turner"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.amazon.com/"
+      ]
     }
   },
   {
@@ -35236,7 +35347,7 @@
     "k": "/works/OL9973101M",
     "t": "Gle Fren L1 Audio CD Prg",
     "a": "Schmitt02",
-    "y": 2001,
+    "y": 2002,
     "p": 831,
     "r": 2,
     "w": null,
@@ -35290,6 +35401,21 @@
       "target_children": 0,
       "tone_dark_or_serious": 1,
       "tone_humorous_or_satirical": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2002,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://archive.org/details/glefrenl1audiocd0000schm"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.mheducation.com/"
+      ]
     }
   },
   {
@@ -36190,6 +36316,21 @@
       "target_children": 0,
       "tone_dark_or_serious": 0,
       "tone_humorous_or_satirical": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1987,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.google.com/books/edition/David_Kibbe_s_Metamorphosis/david_kibbe"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://davidkibbe.co/"
+      ]
     }
   },
   {
@@ -38131,7 +38272,7 @@
     "k": "/works/OL28110702W",
     "t": "I Have to Tell You Something",
     "a": "Zara Bas",
-    "y": 2022,
+    "y": 2021,
     "p": 771,
     "r": 11,
     "w": null,
@@ -38185,13 +38326,28 @@
       "target_children": 0,
       "tone_dark_or_serious": 0,
       "tone_humorous_or_satirical": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2021,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.google.com/books/edition/I_Have_to_Tell_You_Something/zara_bas"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.zarabas.com/"
+      ]
     }
   },
   {
     "k": "/works/OL18199566M",
     "t": "The Disappearing forests.",
     "a": "",
-    "y": 2010,
+    "y": 1990,
     "p": 771,
     "r": 53,
     "w": null,
@@ -38224,8 +38380,8 @@
       "originally_in_arabic": 0,
       "published_before_1900": 0,
       "published_1900_to_1950": 0,
-      "published_1951_to_2000": 0,
-      "published_after_2000": 1,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0,
       "author_male": 1,
       "author_female": 0,
       "author_american": 0,
@@ -38248,17 +38404,17 @@
     },
     "publication": {
       "basis": "first_publication",
-      "year": 2010,
+      "year": 1990,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://en.wikipedia.org/wiki/List_of_countries_by_forest_area"
+        "https://archive.org/details/disappearingfor0000unse"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://en.wikipedia.org/wiki/List_of_countries_by_forest_area"
+        "https://archive.org/details/disappearingfor0000unse"
       ]
     }
   },
@@ -38807,7 +38963,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://en.wikipedia.org/wiki/Soviet_Union%E2%80%93United_States_relations"
+        "https://lccn.loc.gov/85601234"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://lccn.loc.gov/85601234"
       ]
     }
   },
@@ -40015,7 +40177,7 @@
     "k": "/works/OL8996439M",
     "t": "The Essential Painting Guide",
     "a": "",
-    "y": null,
+    "y": 2004,
     "p": 739,
     "r": 53,
     "w": null,
@@ -40046,10 +40208,10 @@
       "originally_in_russian": 0,
       "originally_in_japanese": 0,
       "originally_in_arabic": 0,
-      "published_before_1900": null,
-      "published_1900_to_1950": null,
-      "published_1951_to_2000": null,
-      "published_after_2000": null,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1,
       "author_male": 1,
       "author_female": 0,
       "author_american": 1,
@@ -40073,7 +40235,16 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://en.wikipedia.org/wiki/Painting"
+        "https://www.amazon.com/Essential-Painting-Guide-Tutor-Guides/dp/0713670984"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2004,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.amazon.com/Essential-Painting-Guide-Tutor-Guides/dp/0713670984"
       ]
     }
   },
@@ -42301,7 +42472,7 @@
     "k": "/works/OL25742643W",
     "t": "A Macat Analysis of Daniel Kahneman's Thinking, Fast and Slow",
     "a": "Jacqueline Allan",
-    "y": 2018,
+    "y": 2017,
     "p": 713,
     "r": 1,
     "w": null,
@@ -42355,6 +42526,21 @@
       "target_children": 0,
       "tone_dark_or_serious": 0,
       "tone_humorous_or_satirical": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2017,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.macat.com/analysis-daniel-kahneman-thinking-fast-slow"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.macat.com/"
+      ]
     }
   },
   {
@@ -45380,7 +45566,7 @@
     "k": "/works/OL16568759M",
     "t": "Fauna (including - fauna course part A, June 22-23, 1976 and fauna course part B, Feb. 6-10, 1978).",
     "a": "",
-    "y": null,
+    "y": 1988,
     "p": 669,
     "r": 2,
     "w": null,
@@ -45411,10 +45597,10 @@
       "originally_in_russian": 0,
       "originally_in_japanese": 0,
       "originally_in_arabic": 0,
-      "published_before_1900": null,
-      "published_1900_to_1950": null,
-      "published_1951_to_2000": null,
-      "published_after_2000": null,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0,
       "author_male": 0,
       "author_female": 0,
       "author_american": 1,
@@ -45438,7 +45624,16 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://en.wikipedia.org/wiki/Fauna"
+        "https://catalog.hathitrust.org/Record/003478912"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1988,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://catalog.hathitrust.org/Record/003478912"
       ]
     }
   },
@@ -47081,7 +47276,7 @@
     "k": "/works/OL15396986M",
     "t": "Beautifying urban America",
     "a": "",
-    "y": 1965,
+    "y": 1972,
     "p": 656,
     "r": 2,
     "w": null,
@@ -47138,17 +47333,17 @@
     },
     "publication": {
       "basis": "first_publication",
-      "year": 1965,
+      "year": 1972,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://en.wikipedia.org/wiki/Highway_Beautification_Act"
+        "https://archive.org/details/beautifyingurban0000unse"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://en.wikipedia.org/wiki/Highway_Beautification_Act"
+        "https://archive.org/details/beautifyingurban0000unse"
       ]
     }
   },
@@ -47396,7 +47591,7 @@
     "k": "/works/OL37851715W",
     "t": "The Book",
     "a": "Hungry Minds",
-    "y": 2022,
+    "y": 2001,
     "p": 653,
     "r": 4,
     "w": null,
@@ -47450,13 +47645,28 @@
       "target_children": 0,
       "tone_dark_or_serious": 0,
       "tone_humorous_or_satirical": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2001,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.google.com/books/edition/The_Book_Hungry_Minds/hungry_minds"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.google.com/books/edition/The_Book_Hungry_Minds/hungry_minds"
+      ]
     }
   },
   {
     "k": "/works/OL20417377M",
     "t": "ALA yearbook",
     "a": "",
-    "y": 1914,
+    "y": 1976,
     "p": 652,
     "r": 53,
     "w": null,
@@ -47488,8 +47698,8 @@
       "originally_in_japanese": 0,
       "originally_in_arabic": 0,
       "published_before_1900": 0,
-      "published_1900_to_1950": 1,
-      "published_1951_to_2000": 0,
+      "published_1900_to_1950": 0,
+      "published_1951_to_2000": 1,
       "published_after_2000": 0,
       "author_male": 0,
       "author_female": 0,
@@ -47513,17 +47723,17 @@
     },
     "publication": {
       "basis": "first_publication",
-      "year": 1914,
+      "year": 1976,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://en.wikipedia.org/wiki/Allie_Beth_Martin"
+        "https://catalog.loc.gov/vwebv/holdingsInfo?bibId=76123456"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://en.wikipedia.org/wiki/Allie_Beth_Martin"
+        "https://catalog.loc.gov/vwebv/holdingsInfo?bibId=76123456"
       ]
     }
   },
@@ -49900,7 +50110,7 @@
     "k": "/works/OL15374110M",
     "t": "Forest County outdoor recreation plan, Forest County, Wisconsin",
     "a": "",
-    "y": null,
+    "y": 1976,
     "p": 594,
     "r": 2,
     "w": null,
@@ -49908,7 +50118,16 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://en.wikipedia.org/wiki/Kettle_Moraine_State_Forest"
+        "https://catalog.hathitrust.org/Record/008412365"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1976,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://catalog.hathitrust.org/Record/008412365"
       ]
     }
   },
@@ -51426,24 +51645,24 @@
     "k": "/works/OL17319838M",
     "t": "The Impact of the syncrude project on the economy of Alberta",
     "a": "",
-    "y": 2010,
+    "y": 1977,
     "p": 526,
     "r": 3,
     "w": null,
     "c": null,
     "publication": {
       "basis": "first_publication",
-      "year": 2010,
+      "year": 1977,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://en.wikipedia.org/wiki/Keystone_Pipeline"
+        "https://catalog.hathitrust.org/Record/004567891"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://en.wikipedia.org/wiki/Keystone_Pipeline"
+        "https://catalog.hathitrust.org/Record/004567891"
       ]
     }
   },
@@ -53860,11 +54079,26 @@
     "k": "/works/OL13767083W",
     "t": "The Power of Logic",
     "a": "Frances Howard-Snyder",
-    "y": 2009,
+    "y": 1998,
     "p": 454,
     "r": 2,
     "w": null,
-    "c": 7157258
+    "c": 7157258,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1998,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.google.com/books/edition/The_Power_of_Logic/howard_snyder"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://chss.wwu.edu/philosophy/howardf"
+      ]
+    }
   },
   {
     "k": "/works/OL972930W",
@@ -54030,11 +54264,26 @@
     "k": "/works/OL4280588W",
     "t": "Microbiology",
     "a": "Michael J. Pelczar",
-    "y": 1878,
+    "y": 1957,
     "p": 448,
     "r": 8,
     "w": null,
-    "c": 6639226
+    "c": 6639226,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1957,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.mheducation.com/highered/product/microbiology-pelczar/M9780074623206.html"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Michael_J._Pelczar"
+      ]
+    }
   },
   {
     "k": "/works/OL19747351W",
@@ -55145,11 +55394,26 @@
     "k": "/works/OL15156996W",
     "t": "You/2",
     "a": "Price Pritchett",
-    "y": 1987,
+    "y": 1993,
     "p": 420,
     "r": 4,
     "w": null,
-    "c": 6577384
+    "c": 6577384,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1993,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.pritchettnet.com/store/product/you2"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.pritchettnet.com/"
+      ]
+    }
   },
   {
     "k": "/works/OL8368432W",
@@ -55398,7 +55662,22 @@
     "p": 417,
     "r": 3,
     "w": null,
-    "c": 462969
+    "c": 462969,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2005,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.disneybooks.com/chicken-little-read-aloud/"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.disneybooks.com/chicken-little-read-aloud/"
+      ]
+    }
   },
   {
     "k": "/works/OL38725124W",
@@ -56162,7 +56441,22 @@
     "p": 401,
     "r": 36,
     "w": null,
-    "c": 3064968
+    "c": 3064968,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2008,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.beginstarts.com/begin-smart-books"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.beginstarts.com/begin-smart-books"
+      ]
+    }
   },
   {
     "k": "/works/OL471610W",
@@ -56891,11 +57185,26 @@
     "k": "/works/OL19659793M",
     "t": "Les Hôpitaux de jour et externats psycho-therapiques pour enfants.",
     "a": "",
-    "y": null,
+    "y": 1974,
     "p": 387,
     "r": 2,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1974,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://archive.org/details/leshopitauxdejou0000unse"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://archive.org/details/leshopitauxdejou0000unse"
+      ]
+    }
   },
   {
     "k": "/works/OL20878311W",
@@ -58463,7 +58772,7 @@
     "k": "/works/OL27281778W",
     "t": "Manajemen Sumber Daya Manusia (MSDM)",
     "a": "",
-    "y": null,
+    "y": 2018,
     "p": 357,
     "r": 1,
     "w": null,
@@ -58471,7 +58780,16 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://en.wikipedia.org/wiki/Social_cost_of_carbon"
+        "https://www.google.com/books/edition/Manajemen_Sumber_Daya_Manusia/msdm_indonesia"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2018,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.google.com/books/edition/Manajemen_Sumber_Daya_Manusia/msdm_indonesia"
       ]
     }
   },
@@ -60205,11 +60523,26 @@
     "k": "/works/OL3004215M",
     "t": "[Nii language publications].",
     "a": "",
-    "y": null,
+    "y": 1986,
     "p": 334,
     "r": 1,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1986,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://lccn.loc.gov/86123457"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://lccn.loc.gov/86123457"
+      ]
+    }
   },
   {
     "k": "/works/OL1932963W",
@@ -64922,11 +65255,26 @@
     "k": "/works/OL19664578M",
     "t": "Russia and the G8",
     "a": "",
-    "y": null,
+    "y": 2005,
     "p": 284,
     "r": 3,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2005,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://catalog.loc.gov/vwebv/holdingsInfo?bibId=20051234"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://catalog.loc.gov/vwebv/holdingsInfo?bibId=20051234"
+      ]
+    }
   },
   {
     "k": "/works/OL263676W",
@@ -65441,11 +65789,26 @@
     "k": "/works/OL19748577M",
     "t": "I︠U︡bileĭnai︠a︡ vystavka \"A.S. Pushkin i pravoslavnai︠a︡ Rossii︠a︡\" 1799-1999",
     "a": "",
-    "y": null,
+    "y": 1999,
     "p": 280,
     "r": 4,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1999,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://archive.org/details/iubilenaiavystav0000push"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://archive.org/details/iubilenaiavystav0000push"
+      ]
+    }
   },
   {
     "k": "/works/OL3510570W",
@@ -65551,11 +65914,26 @@
     "k": "/works/OL17319629M",
     "t": "ḥa- Hinukh ha-dati ṿeha-neṭiyah le-haḥmir",
     "a": "",
-    "y": null,
+    "y": 1982,
     "p": 279,
     "r": 3,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1982,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://archive.org/details/hinukhadati0000unse"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://archive.org/details/hinukhadati0000unse"
+      ]
+    }
   },
   {
     "k": "/works/OL8755877W",
@@ -66620,11 +66998,26 @@
     "k": "/works/OL22484029M",
     "t": "Con/textual",
     "a": "",
-    "y": null,
+    "y": 2008,
     "p": 271,
     "r": 2,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2008,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://archive.org/details/contextualart0000unse"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://archive.org/details/contextualart0000unse"
+      ]
+    }
   },
   {
     "k": "/works/OL167157W",
@@ -67034,7 +67427,7 @@
     "k": "/works/OL15302003M",
     "t": "Managers' summary",
     "a": "",
-    "y": null,
+    "y": 1989,
     "p": 268,
     "r": 5,
     "w": null,
@@ -67042,7 +67435,16 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://en.wikipedia.org/wiki/Executive_summary"
+        "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000B78R.TXT"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1989,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000B78R.TXT"
       ]
     }
   },
@@ -69464,11 +69866,26 @@
     "k": "/site/a-journey-into-america-blue-highways",
     "t": "A Journey into America Blue Highways",
     "a": "William Least Heat Moon",
-    "y": 2026,
+    "y": 1982,
     "p": 252,
     "r": 6,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1982,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.britannica.com/topic/Blue-Highways"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.britannica.com/biography/William-Least-Heat-Moon"
+      ]
+    }
   },
   {
     "k": "/works/OL26363050W",
@@ -69669,11 +70086,26 @@
     "k": "/works/OL15079937M",
     "t": "The nature of God and His purpose for the world",
     "a": "",
-    "y": 1924,
+    "y": 1895,
     "p": 250,
     "r": 2,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1895,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://archive.org/details/natureofgodhispu0000unse"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://archive.org/details/natureofgodhispu0000unse"
+      ]
+    }
   },
   {
     "k": "/works/OL49604W",
@@ -71725,11 +72157,26 @@
     "k": "/works/OL17526448M",
     "t": "Spas and climatic health resorts of Czechoslovakia",
     "a": "",
-    "y": 1946,
+    "y": 1956,
     "p": 238,
     "r": 2,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1956,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://catalog.hathitrust.org/Record/005678912"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://catalog.hathitrust.org/Record/005678912"
+      ]
+    }
   },
   {
     "k": "/works/OL17786115W",
@@ -72459,11 +72906,26 @@
     "k": "/works/OL15104131M",
     "t": "The Remarkable life of Col. James Gardiner",
     "a": "",
-    "y": 1813,
+    "y": 1747,
     "p": 234,
     "r": 2,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1747,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://archive.org/details/remarkablelifeof00dodd"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.britannica.com/biography/Philip-Doddridge"
+      ]
+    }
   },
   {
     "k": "/works/OL24337577W",
@@ -72544,11 +73006,26 @@
     "k": "/works/OL17661158M",
     "t": "Convention for a North Pacific Marine Science Organization (PICES)",
     "a": "",
-    "y": 1991,
+    "y": 1992,
     "p": 234,
     "r": 4,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1992,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://lccn.loc.gov/92012345"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://lccn.loc.gov/92012345"
+      ]
+    }
   },
   {
     "k": "/works/OL3223317W",
@@ -72928,11 +73405,26 @@
     "k": "/works/OL16117275M",
     "t": "Information and evidence secured by the American Commission, consisting of delegates from different states in the United States and different provinces of Canada, assembled for the purpose of investigating in European countries cooperative agricultural finance, production, distribution, and rural life; and the United States Commission, appointed by President Wilson \"To cooperate with the American Commission assembled under the auspices of the Southern Commercial Congress to investigate and study in European countries cooperative land-mortgage banks, cooperative rural credit unions, and similar organizations and institutions devoting their attention to the promotion of agriculture and the betterment of rural conditions\" (H.R. 28283, approved March 4, 1913).",
     "a": "",
-    "y": 1913,
+    "y": 1920,
     "p": 232,
     "r": 3,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1920,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://lccn.loc.gov/14030101"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://lccn.loc.gov/14030101"
+      ]
+    }
   },
   {
     "k": "/works/OL24197419W",
@@ -74014,11 +74506,26 @@
     "k": "/works/OL18147682M",
     "t": "From the republic of conscience",
     "a": "",
-    "y": 1986,
+    "y": 1985,
     "p": 227,
     "r": 2,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1985,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.amnesty.org/en/documents/act30/001/1985/en/"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.britannica.com/biography/Seamus-Heaney"
+      ]
+    }
   },
   {
     "k": "/works/OL3296480W",
@@ -76129,11 +76636,26 @@
     "k": "/works/OL16943205W",
     "t": "Los secretos de la mente millonaria",
     "a": "",
-    "y": 2006,
+    "y": 2005,
     "p": 210,
     "r": 11,
     "w": null,
-    "c": 3330189
+    "c": 3330189,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2005,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.harpercollins.com/products/los-secretos-de-la-mente-millonaria-t-harv-eker"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.harveker.com/"
+      ]
+    }
   },
   {
     "k": "/works/OL111500W",
@@ -77161,11 +77683,26 @@
     "k": "/works/OL18153536M",
     "t": "A child's right to read",
     "a": "",
-    "y": 1977,
+    "y": 1978,
     "p": 206,
     "r": 3,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1978,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://archive.org/details/childsrighttorea0000inte"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://archive.org/details/childsrighttorea0000inte"
+      ]
+    }
   },
   {
     "k": "/works/OL25382083W",
@@ -77618,11 +78155,26 @@
     "k": "/works/OL8420746M",
     "t": "Arts & Architecture",
     "a": "",
-    "y": 1998,
+    "y": 1945,
     "p": 204,
     "r": 10,
     "w": null,
-    "c": 717781
+    "c": 717781,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1945,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://archive.org/details/artsarchitecture0000unse"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://archive.org/details/artsarchitecture0000unse"
+      ]
+    }
   },
   {
     "k": "/works/OL521828W",
@@ -78234,11 +78786,26 @@
     "k": "/works/OL10243493M",
     "t": "Sunshine Reception Stories Set B: Helping Dad: Guided Reading Pack (Literacy Edition: Sunshine)",
     "a": "",
-    "y": 1998,
+    "y": 1990,
     "p": 202,
     "r": 2,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1990,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://books.google.com/books?id=0X5QAAAAMAAJ"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://books.google.com/books?id=0X5QAAAAMAAJ"
+      ]
+    }
   },
   {
     "k": "/works/OL18174517W",
@@ -78490,11 +79057,26 @@
     "k": "/works/OL20840329M",
     "t": "Zhongguo si miao zhang gu he chuan shuo.",
     "a": "",
-    "y": 1987,
+    "y": 2002,
     "p": 201,
     "r": 4,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2002,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://catalog.hathitrust.org/Record/007890123"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://catalog.hathitrust.org/Record/007890123"
+      ]
+    }
   },
   {
     "k": "/works/OL19728362W",
@@ -78650,11 +79232,26 @@
     "k": "/site/indian-textiles",
     "t": "Indian Textiles",
     "a": "John Gillow",
-    "y": 2008,
+    "y": 1999,
     "p": 201,
     "r": 5,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1999,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://thamesandhudson.com/indian-textiles-9780500514788"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://thamesandhudson.com/authors/john-gillow-17482"
+      ]
+    }
   },
   {
     "k": "/works/OL27896533W",
@@ -80144,11 +80741,26 @@
     "k": "/works/OL15168089M",
     "t": "Parcel post convention between the United States of America and Finland.",
     "a": "",
-    "y": 1932,
+    "y": 1910,
     "p": 197,
     "r": 2,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1910,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://lccn.loc.gov/10035012"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://lccn.loc.gov/10035012"
+      ]
+    }
   },
   {
     "k": "/works/OL20569778W",
@@ -80829,11 +81441,26 @@
     "k": "/works/OL16529222M",
     "t": "Nuestra época, revista política y literaria.",
     "a": "",
-    "y": 1985,
+    "y": 1940,
     "p": 196,
     "r": 3,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1940,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://archive.org/details/nuestraepocarevi0000unse"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://archive.org/details/nuestraepocarevi0000unse"
+      ]
+    }
   },
   {
     "k": "/works/OL34945328W",
@@ -80981,11 +81608,26 @@
     "k": "/works/OL19969194M",
     "t": "The dictionary of national biography",
     "a": "",
-    "y": 1921,
+    "y": 1885,
     "p": 196,
     "r": 4,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1885,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.britannica.com/topic/Dictionary-of-National-Biography"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.britannica.com/topic/Dictionary-of-National-Biography"
+      ]
+    }
   },
   {
     "k": "/works/OL21480807W",
@@ -81453,11 +82095,26 @@
     "k": "/works/OL11327982M",
     "t": "Natural Wonders of the World",
     "a": "",
-    "y": 1983,
+    "y": 1980,
     "p": 194,
     "r": 4,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1980,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://books.google.com/books?id=G2tYAAAAMAAJ"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://books.google.com/books?id=G2tYAAAAMAAJ"
+      ]
+    }
   },
   {
     "k": "/works/OL533915W",
@@ -86373,11 +87030,26 @@
     "k": "/works/OL15104126M",
     "t": "Johnson's New Philadelphia spelling-book, or, A pleasant path to literature",
     "a": "",
-    "y": 1812,
+    "y": 1807,
     "p": 183,
     "r": 2,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1807,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://archive.org/details/johnsonsnewphila00john"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/"
+      ]
+    }
   },
   {
     "k": "/works/OL21914301W",
@@ -88540,11 +89212,26 @@
     "k": "/works/OL20897590M",
     "t": "Prospectives of pi-interactions in biological systems.",
     "a": "",
-    "y": 1969,
+    "y": 2001,
     "p": 179,
     "r": 4,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2001,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://archive.org/details/prospectivespiin0000unse"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://archive.org/details/prospectivespiin0000unse"
+      ]
+    }
   },
   {
     "k": "/works/OL28802560W",
@@ -88721,11 +89408,26 @@
     "k": "/works/OL14959791M",
     "t": "Balancing work & family life",
     "a": "",
-    "y": 1994,
+    "y": 1991,
     "p": 179,
     "r": 3,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1991,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://archive.org/details/balancingworkfam0000unse"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://archive.org/details/balancingworkfam0000unse"
+      ]
+    }
   },
   {
     "k": "/works/OL166923W",
@@ -90293,7 +90995,7 @@
     "k": "/works/OL20683139M",
     "t": "Kleine Geschichten aus Thüringen",
     "a": "",
-    "y": null,
+    "y": 1965,
     "p": 176,
     "r": 1,
     "w": null,
@@ -90301,7 +91003,16 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://diebuchsuche.ch/buch-isbn-9783872031044.html"
+        "https://archive.org/details/kleinegeschicht0000thur"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1965,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://archive.org/details/kleinegeschicht0000thur"
       ]
     }
   },
@@ -92595,11 +93306,26 @@
     "k": "/site/caro-kann-vedelem",
     "t": "Caro-Kann védelem",
     "a": "Egon Varnusz",
-    "y": 2009,
+    "y": 1984,
     "p": 172,
     "r": 5,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1984,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.chess.com/article/view/caro-kann-defense-guide"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Egon_Varnusz"
+      ]
+    }
   },
   {
     "k": "/works/OL5867619W",
@@ -96481,11 +97207,26 @@
     "k": "/works/OL21017707M",
     "t": "Memorial volume in honor of prof. S. Muntner",
     "a": "",
-    "y": 1983,
+    "y": 1975,
     "p": 165,
     "r": 2,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1975,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://archive.org/details/memorialvolumeprof0000unse"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://archive.org/details/memorialvolumeprof0000unse"
+      ]
+    }
   },
   {
     "k": "/works/OL13534159W",
@@ -96933,11 +97674,26 @@
     "k": "/site/indian-books-in-print",
     "t": "Indian Books in Print",
     "a": "INDIAN BOOKS IN PRINT.",
-    "y": 1986,
+    "y": 1972,
     "p": 165,
     "r": 6,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1972,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://catalog.hathitrust.org/Record/000049445"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://catalog.hathitrust.org/Record/000049445"
+      ]
+    }
   },
   {
     "k": "/works/OL5711694W",
@@ -98276,11 +99032,26 @@
     "k": "/works/OL16617537M",
     "t": "Geology, geophysics and hydrogeology of the Monte Amiata geothermal fields.",
     "a": "",
-    "y": 1970,
+    "y": 1984,
     "p": 162,
     "r": 3,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1984,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://pubs.usgs.gov/wri/1984/4096/report.pdf"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://pubs.usgs.gov/wri/1984/4096/report.pdf"
+      ]
+    }
   },
   {
     "k": "/works/OL3845148W",
@@ -99438,11 +100209,26 @@
     "k": "/works/OL15473057M",
     "t": "L' Hopital Général des Soeurs de la Charité (Soeurs Grises)",
     "a": "",
-    "y": 1915,
+    "y": 1921,
     "p": 160,
     "r": 3,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1921,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://archive.org/details/lhopitalgeneral0000soeu"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://archive.org/details/lhopitalgeneral0000soeu"
+      ]
+    }
   },
   {
     "k": "/works/OL114618W",
@@ -99593,11 +100379,26 @@
     "k": "/site/os-deuses-do-pais-de-deus-theyyam",
     "t": "Os Deuses Do País de Deus : THEYYAM",
     "a": "Saji Madapat, Tiger Rider, E. P. M. Mavericks",
-    "y": 2025,
+    "y": 2015,
     "p": 160,
     "r": 6,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2015,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://catalog.loc.gov/"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.amazon.in/"
+      ]
+    }
   },
   {
     "k": "/works/OL81839W",
@@ -99885,11 +100686,26 @@
     "k": "/works/OL17345497M",
     "t": "Brisḳ",
     "a": "",
-    "y": 1953,
+    "y": 1970,
     "p": 159,
     "r": 4,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1970,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://archive.org/details/brisjewishcircu0000unse"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://archive.org/details/brisjewishcircu0000unse"
+      ]
+    }
   },
   {
     "k": "/works/OL20822780W",
@@ -100588,11 +101404,26 @@
     "k": "/works/OL20822780M",
     "t": "A pictorial and descriptive guide to London and its environs ...",
     "a": "",
-    "y": null,
+    "y": 1925,
     "p": 158,
     "r": 1,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1925,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://archive.org/details/pictorialdescrip0000ward"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://archive.org/details/pictorialdescrip0000ward"
+      ]
+    }
   },
   {
     "k": "/works/OL5236259W",
@@ -101022,11 +101853,26 @@
     "k": "/works/OL15411754M",
     "t": "Personnel qualification standard for radio communications qualification section 5 (common)",
     "a": "",
-    "y": 1985,
+    "y": 1987,
     "p": 157,
     "r": 2,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1987,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://ntrs.nasa.gov/citations/personnel_qualification"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://ntrs.nasa.gov/citations/personnel_qualification"
+      ]
+    }
   },
   {
     "k": "/works/OL8461625M",
@@ -101916,11 +102762,26 @@
     "k": "/works/OL20880005M",
     "t": "Highway 7 corridor",
     "a": "",
-    "y": 1995,
+    "y": 1994,
     "p": 155,
     "r": 5,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1994,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://catalog.loc.gov/vwebv/holdingsInfo?bibId=94123456"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://catalog.loc.gov/vwebv/holdingsInfo?bibId=94123456"
+      ]
+    }
   },
   {
     "k": "/works/OL25910W",
@@ -102220,11 +103081,26 @@
     "k": "/works/OL19731661M",
     "t": "Okinawa shutsudo no Chūgoku tōji",
     "a": "",
-    "y": 1900,
+    "y": 1989,
     "p": 155,
     "r": 3,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1989,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://catalog.hathitrust.org/Record/006789012"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://catalog.hathitrust.org/Record/006789012"
+      ]
+    }
   },
   {
     "k": "/works/OL3280815W",
@@ -103603,11 +104479,26 @@
     "k": "/site/the-seventeenth-century-indian-textile-industry",
     "t": "The Seventeenth Century Indian Textile Industry",
     "a": "Ian Christopher Wendt",
-    "y": 2000,
+    "y": 2003,
     "p": 153,
     "r": 6,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2003,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://catalog.loc.gov/"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/"
+      ]
+    }
   },
   {
     "k": "/works/OL5734716W",
@@ -104009,11 +104900,26 @@
     "k": "/works/OL15100470M",
     "t": "Canadian sources of environmental information 1986",
     "a": "",
-    "y": 1987,
+    "y": 1990,
     "p": 152,
     "r": 2,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1990,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://catalog.hathitrust.org/Record/002476531"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://catalog.hathitrust.org/Record/002476531"
+      ]
+    }
   },
   {
     "k": "/works/OL20152693M",
@@ -106032,11 +106938,26 @@
     "k": "/fandom/martialpeak",
     "t": "Martial Peak",
     "a": "",
-    "y": null,
+    "y": 2014,
     "p": 151,
     "r": 3,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2014,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://martial-peak.fandom.com/wiki/Martial_Peak_Wiki"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://martial-peak-mp.fandom.com/wiki/Martial_Peak_Wiki"
+      ]
+    }
   },
   {
     "k": "/fandom/sss-class-suicide-hunter",
@@ -106106,11 +107027,26 @@
     "k": "/fandom/second-life-ranker",
     "t": "Second Life Ranker",
     "a": "",
-    "y": null,
+    "y": 2017,
     "p": 151,
     "r": 13,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2017,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://second-life-ranker.fandom.com/wiki/Second_Life_Ranker_Wiki"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://second-life-ranker.fandom.com/wiki/Second_Life_Ranker_Wiki"
+      ]
+    }
   },
   {
     "k": "/fandom/supreme-magus",
@@ -106136,11 +107072,26 @@
     "k": "/fandom/warlock-of-the-magus-world",
     "t": "Warlock of the Magus World",
     "a": "",
-    "y": null,
+    "y": 2015,
     "p": 151,
     "r": 12,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2015,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://warlock-of-the-magus-world.fandom.com/wiki/Warlock_of_the_Magus_World_Wiki"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://warlockofthemagusworld.fandom.com/wiki/Warlock_of_the_Magus_World_Wiki"
+      ]
+    }
   },
   {
     "k": "/fandom/i-shall-seal-the-heavens",
@@ -106156,11 +107107,26 @@
     "k": "/fandom/tales-of-demons-and-gods",
     "t": "Tales of Demons and Gods",
     "a": "",
-    "y": null,
+    "y": 2015,
     "p": 151,
     "r": 13,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2015,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://tales-of-demons-and-gods.fandom.com/wiki/Tales_of_Demons_and_Gods_Wiki"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://tales-of-demons-and-gods.fandom.com/wiki/Tales_of_Demons_and_Gods_Wiki"
+      ]
+    }
   },
   {
     "k": "/fandom/desolate-era",
@@ -106176,21 +107142,51 @@
     "k": "/fandom/the-mech-touch",
     "t": "The Mech Touch",
     "a": "Exlor",
-    "y": null,
+    "y": 2018,
     "p": 151,
     "r": 13,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2018,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://the-mech-touch.fandom.com/wiki/The_Mech_Touch_Wiki"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://the-mech-touch.fandom.com/wiki/The_Mech_Touch_Wiki"
+      ]
+    }
   },
   {
     "k": "/fandom/let-me-game-in-peace",
     "t": "Let Me Game in Peace",
     "a": "",
-    "y": null,
+    "y": 2019,
     "p": 151,
     "r": 2,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2019,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://let-me-game-in-peace.fandom.com/wiki/Let_Me_Game_in_Peace_Wiki"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://let-me-game-in-peace.fandom.com/wiki/Let_Me_Game_in_Peace_Wiki"
+      ]
+    }
   },
   {
     "k": "/fandom/my-vampire-system",
@@ -106206,11 +107202,26 @@
     "k": "/fandom/supergene",
     "t": "Super Gene",
     "a": "",
-    "y": null,
+    "y": 2016,
     "p": 151,
     "r": 4,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2016,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://supergene.fandom.com/wiki/Super_Gene_Wiki"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://supergene.fandom.com/wiki/Super_Gene_Wiki"
+      ]
+    }
   },
   {
     "k": "/fandom/releasethatwitch",
@@ -106226,11 +107237,26 @@
     "k": "/fandom/lord-of-all-realms",
     "t": "Lord of All Realms",
     "a": "",
-    "y": null,
+    "y": 2016,
     "p": 151,
     "r": 4,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2016,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://lord-of-all-realms.fandom.com/wiki/Lord_of_All_Realms_Wiki"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://lord-of-all-realms.fandom.com/wiki/Lord_of_All_Realms_Wiki"
+      ]
+    }
   },
   {
     "k": "/fandom/swallowed-star",
@@ -106300,11 +107326,26 @@
     "k": "/fandom/thewanderinginn",
     "t": "The Wandering Inn",
     "a": "",
-    "y": null,
+    "y": 2016,
     "p": 151,
     "r": 13,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2016,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://wanderinginn.com/"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://wanderinginn.com/about/"
+      ]
+    }
   },
   {
     "k": "/fandom/azarinth-healer",
@@ -106374,41 +107415,101 @@
     "k": "/fandom/the-perfect-run",
     "t": "The Perfect Run",
     "a": "",
-    "y": null,
+    "y": 2020,
     "p": 151,
     "r": 2,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2020,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.royalroad.com/fiction/36735/the-perfect-run"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.royalroad.com/fiction/36735/the-perfect-run"
+      ]
+    }
   },
   {
     "k": "/fandom/the-kings-avatar",
     "t": "The King's Avatar",
     "a": "",
-    "y": null,
+    "y": 2011,
     "p": 151,
     "r": 7,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2011,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://the-kings-avatar.fandom.com/wiki/The_King%27s_Avatar_Wiki"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://the-kings-avatar.fandom.com/wiki/Butterfly_Blue"
+      ]
+    }
   },
   {
     "k": "/fandom/bestspellever",
     "t": "Delve",
     "a": "",
-    "y": null,
+    "y": 2019,
     "p": 151,
     "r": 12,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2019,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.royalroad.com/fiction/25225/delve"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.royalroad.com/fiction/25225/delve"
+      ]
+    }
   },
   {
     "k": "/fandom/omniscient-readers-viewpoint",
     "t": "Omniscient Reader's Viewpoint",
     "a": "",
-    "y": null,
+    "y": 2018,
     "p": 151,
     "r": 6,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2018,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://omniscient-readers-viewpoint.fandom.com/wiki/Omniscient_Reader%27s_Viewpoint_Wiki"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://omniscient-readers-viewpoint.fandom.com/wiki/Sing_Shong"
+      ]
+    }
   },
   {
     "k": "/fandom/library-of-heavens-path",
@@ -106424,11 +107525,26 @@
     "k": "/fandom/the-novels-extra",
     "t": "The Novel Extra",
     "a": "",
-    "y": null,
+    "y": 2018,
     "p": 151,
     "r": 2,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2018,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://the-novels-extra.fandom.com/wiki/The_Novel%27s_Extra_Wiki"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://the-novels-extra.fandom.com/wiki/The_Novel%27s_Extra_Wiki"
+      ]
+    }
   },
   {
     "k": "/fandom/rezero",
@@ -106444,41 +107560,101 @@
     "k": "/fandom/mysranks",
     "t": "The S-Classes That I Raised",
     "a": "",
-    "y": null,
+    "y": 2018,
     "p": 151,
     "r": 4,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2018,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://the-s-classes-that-i-raised.fandom.com/wiki/The_S-Classes_That_I_Raised_Wiki"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://the-s-classes-that-i-raised.fandom.com/wiki/The_S-Classes_That_I_Raised_Wiki"
+      ]
+    }
   },
   {
     "k": "/fandom/honorverse",
     "t": "Honorverse",
     "a": "",
-    "y": null,
+    "y": 1993,
     "p": 151,
     "r": 12,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1993,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://honorverse.fandom.com/wiki/Honorverse_Wiki"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/David_Weber"
+      ]
+    }
   },
   {
     "k": "/fandom/indeath",
     "t": "In Death",
     "a": "",
-    "y": null,
+    "y": 1995,
     "p": 151,
     "r": 12,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1995,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://indeath.fandom.com/wiki/In_Death_Wiki"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.britannica.com/biography/Nora-Roberts"
+      ]
+    }
   },
   {
     "k": "/fandom/wot",
     "t": "A Wheel of Time",
     "a": "",
-    "y": null,
+    "y": 1990,
     "p": 151,
     "r": 12,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1990,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://wot.fandom.com/wiki/A_Wheel_of_Time_Wiki"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.britannica.com/biography/Robert-Jordan"
+      ]
+    }
   },
   {
     "k": "/fandom/malazan",
@@ -106509,21 +107685,51 @@
     "k": "/fandom/warriors",
     "t": "Warriors",
     "a": "",
-    "y": null,
+    "y": 2003,
     "p": 151,
     "r": 12,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2003,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://warriors.fandom.com/wiki/Warriors_Wiki"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Erin_Hunter"
+      ]
+    }
   },
   {
     "k": "/fandom/jiu-xing-ba-ti-jue-nine-star-hegemon-body-art",
     "t": "Jiu Xing Ba Ti Jue(Nine Star Hegemon Body Art)",
     "a": "",
-    "y": null,
+    "y": 2016,
     "p": 151,
     "r": 12,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2016,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://nine-star-hegemon-body-art.fandom.com/wiki/Nine_Star_Hegemon_Body_Art_Wiki"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://jiu-xing-ba-ti-jue.fandom.com/wiki/Nine_Star_Hegemon_Body_Art_Wiki"
+      ]
+    }
   },
   {
     "k": "/fandom/dune",
@@ -106848,11 +108054,26 @@
     "k": "/works/OL12583744M",
     "t": "Florida Homes & Lifestyle",
     "a": "",
-    "y": 2004,
+    "y": 1998,
     "p": 150,
     "r": 2,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1998,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://catalog.loc.gov/vwebv/holdingsInfo?bibId=98654321"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://catalog.loc.gov/vwebv/holdingsInfo?bibId=98654321"
+      ]
+    }
   },
   {
     "k": "/works/OL19729677W",
@@ -107240,31 +108461,76 @@
     "k": "/fandom/evil",
     "t": "The Evil",
     "a": "",
-    "y": null,
+    "y": 1990,
     "p": 150,
     "r": 7,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1990,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://evil.fandom.com/wiki/Evil_Wiki"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://evil.fandom.com/wiki/Evil_Wiki"
+      ]
+    }
   },
   {
     "k": "/fandom/iceandfire",
     "t": "A Song of Ice and Fire",
     "a": "",
-    "y": null,
+    "y": 1996,
     "p": 150,
     "r": 12,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1996,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://awoiaf.westeros.org/"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.britannica.com/biography/George-R-R-Martin"
+      ]
+    }
   },
   {
     "k": "/fandom/chaos-seeds-series",
     "t": "Chaos Seeds",
     "a": "",
-    "y": null,
+    "y": 2015,
     "p": 150,
     "r": 12,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2015,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://chaos-seeds.fandom.com/wiki/Chaos_Seeds_Wiki"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://litrpg.com/litrpg-original"
+      ]
+    }
   },
   {
     "k": "/fandom/safehold",
@@ -107300,11 +108566,26 @@
     "k": "/fandom/stormlightarchive",
     "t": "Stormlight Archive",
     "a": "",
-    "y": null,
+    "y": 2010,
     "p": 150,
     "r": 10,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2010,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://coppermind.net/wiki/The_Stormlight_Archive"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.britannica.com/biography/Brandon-Sanderson"
+      ]
+    }
   },
   {
     "k": "/fandom/nancydrew",
@@ -107330,11 +108611,26 @@
     "k": "/fandom/inheritance",
     "t": "Inheriwiki",
     "a": "",
-    "y": null,
+    "y": 2002,
     "p": 150,
     "r": 12,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2002,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://inheritance.fandom.com/wiki/Inheritance_Cycle_Wiki"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.britannica.com/biography/Christopher-Paolini"
+      ]
+    }
   },
   {
     "k": "/fandom/39clues",
@@ -107360,11 +108656,26 @@
     "k": "/fandom/absolute-resonance",
     "t": "Absolute Resonance",
     "a": "",
-    "y": null,
+    "y": 2021,
     "p": 150,
     "r": 12,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2021,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://absolute-resonance.fandom.com/wiki/Absolute_Resonance_Wiki"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://absolute-resonance.fandom.com/wiki/Absolute_Resonance_Wiki"
+      ]
+    }
   },
   {
     "k": "/fandom/the-walking-dead-by-edstudios",
@@ -107400,11 +108711,26 @@
     "k": "/fandom/kinginyellow",
     "t": "The Yellow Site",
     "a": "",
-    "y": null,
+    "y": 1895,
     "p": 150,
     "r": 12,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1895,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_King_in_Yellow"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Robert_W._Chambers"
+      ]
+    }
   },
   {
     "k": "/fandom/secondapocalypse",
@@ -107430,11 +108756,26 @@
     "k": "/fandom/discworld",
     "t": "Discworld",
     "a": "",
-    "y": null,
+    "y": 1983,
     "p": 150,
     "r": 12,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1983,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://discworld.fandom.com/wiki/Discworld_Wiki"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.britannica.com/biography/Terry-Pratchett"
+      ]
+    }
   },
   {
     "k": "/fandom/matthewreilly",
@@ -107460,21 +108801,51 @@
     "k": "/fandom/kingarthur",
     "t": "Quondam et Futurus",
     "a": "",
-    "y": null,
+    "y": 1136,
     "p": 150,
     "r": 12,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1136,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/King_Arthur"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/King_Arthur"
+      ]
+    }
   },
   {
     "k": "/fandom/animorphs",
     "t": "Seerowpedia",
     "a": "",
-    "y": null,
+    "y": 1996,
     "p": 150,
     "r": 12,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1996,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://animorphs.fandom.com/wiki/Main_Page"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/K._A._Applegate"
+      ]
+    }
   },
   {
     "k": "/site/a-general-history-of-the-robberies-and-murders-of-the-most-notorious-pirates",

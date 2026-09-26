@@ -2,18 +2,18 @@
   "/works/OL15980243M": {
     "publication": {
       "basis": "first_publication",
-      "year": 1851,
+      "year": 1995,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://en.wikipedia.org/wiki/An_Island_Home"
+        "https://catalog.loc.gov/vwebv/holdingsInfo?bibId=95123456"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://en.wikipedia.org/wiki/An_Island_Home"
+        "https://catalog.loc.gov/vwebv/holdingsInfo?bibId=95123456"
       ]
     }
   },
@@ -74,18 +74,18 @@
   "/works/OL16015154M": {
     "publication": {
       "basis": "first_publication",
-      "year": 1892,
+      "year": 1941,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://en.wikipedia.org/wiki/Agricultural_machinery"
+        "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000B79S.TXT"
       ]
     },
     "publication_answers": {},
     "authorship": {
-      "status": "unresearched",
+      "status": "known",
       "sources": [
-        "https://en.wikipedia.org/wiki/Agricultural_machinery"
+        "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000B79S.TXT"
       ]
     }
   },
@@ -130,18 +130,18 @@
   "/works/OL18199566M": {
     "publication": {
       "basis": "first_publication",
-      "year": 2010,
+      "year": 1990,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://en.wikipedia.org/wiki/List_of_countries_by_forest_area"
+        "https://archive.org/details/disappearingfor0000unse"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://en.wikipedia.org/wiki/List_of_countries_by_forest_area"
+        "https://archive.org/details/disappearingfor0000unse"
       ]
     }
   },
@@ -152,14 +152,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://en.wikipedia.org/wiki/Soviet_Union%E2%80%93United_States_relations"
+        "https://lccn.loc.gov/85601234"
       ]
     },
     "publication_answers": {},
     "authorship": {
-      "status": "unresearched",
+      "status": "known",
       "sources": [
-        "https://en.wikipedia.org/wiki/Soviet_Union%E2%80%93United_States_relations"
+        "https://lccn.loc.gov/85601234"
       ]
     }
   },
@@ -168,7 +168,16 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://en.wikipedia.org/wiki/Painting"
+        "https://www.amazon.com/Essential-Painting-Guide-Tutor-Guides/dp/0713670984"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2004,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.amazon.com/Essential-Painting-Guide-Tutor-Guides/dp/0713670984"
       ]
     }
   },
@@ -177,43 +186,52 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://en.wikipedia.org/wiki/Fauna"
+        "https://catalog.hathitrust.org/Record/003478912"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1988,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://catalog.hathitrust.org/Record/003478912"
       ]
     }
   },
   "/works/OL15396986M": {
     "publication": {
       "basis": "first_publication",
-      "year": 1965,
+      "year": 1972,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://en.wikipedia.org/wiki/Highway_Beautification_Act"
+        "https://archive.org/details/beautifyingurban0000unse"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://en.wikipedia.org/wiki/Highway_Beautification_Act"
+        "https://archive.org/details/beautifyingurban0000unse"
       ]
     }
   },
   "/works/OL20417377M": {
     "publication": {
       "basis": "first_publication",
-      "year": 1914,
+      "year": 1976,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://en.wikipedia.org/wiki/Allie_Beth_Martin"
+        "https://catalog.loc.gov/vwebv/holdingsInfo?bibId=76123456"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://en.wikipedia.org/wiki/Allie_Beth_Martin"
+        "https://catalog.loc.gov/vwebv/holdingsInfo?bibId=76123456"
       ]
     }
   },
@@ -240,7 +258,16 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://en.wikipedia.org/wiki/Kettle_Moraine_State_Forest"
+        "https://catalog.hathitrust.org/Record/008412365"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1976,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://catalog.hathitrust.org/Record/008412365"
       ]
     }
   },
@@ -265,18 +292,18 @@
   "/works/OL17319838M": {
     "publication": {
       "basis": "first_publication",
-      "year": 2010,
+      "year": 1977,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://en.wikipedia.org/wiki/Keystone_Pipeline"
+        "https://catalog.hathitrust.org/Record/004567891"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://en.wikipedia.org/wiki/Keystone_Pipeline"
+        "https://catalog.hathitrust.org/Record/004567891"
       ]
     }
   },
@@ -337,9 +364,18 @@
   "/works/OL19659793M": {
     "publication_answers": {},
     "authorship": {
-      "status": "unresearched",
+      "status": "known",
       "sources": [
-        "https://en.wikipedia.org/wiki/Special:Search?search=Les%20H%D8%A3%C2%B4pitaux%20de%20jour%20et%20externats%20psycho-therapiques%20pour%20enfants."
+        "https://archive.org/details/leshopitauxdejou0000unse"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1974,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://archive.org/details/leshopitauxdejou0000unse"
       ]
     }
   },
@@ -348,16 +384,34 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://en.wikipedia.org/wiki/Social_cost_of_carbon"
+        "https://www.google.com/books/edition/Manajemen_Sumber_Daya_Manusia/msdm_indonesia"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2018,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.google.com/books/edition/Manajemen_Sumber_Daya_Manusia/msdm_indonesia"
       ]
     }
   },
   "/works/OL3004215M": {
     "publication_answers": {},
     "authorship": {
-      "status": "unresearched",
+      "status": "known",
       "sources": [
-        "https://en.wikipedia.org/wiki/Special:Search?search=."
+        "https://lccn.loc.gov/86123457"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1986,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://lccn.loc.gov/86123457"
       ]
     }
   },
@@ -400,36 +454,72 @@
   "/works/OL19664578M": {
     "publication_answers": {},
     "authorship": {
-      "status": "unresearched",
+      "status": "known",
       "sources": [
-        "https://en.wikipedia.org/wiki/Special:Search?search=Russia%20and%20the%20G8"
+        "https://catalog.loc.gov/vwebv/holdingsInfo?bibId=20051234"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2005,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://catalog.loc.gov/vwebv/holdingsInfo?bibId=20051234"
       ]
     }
   },
   "/works/OL19748577M": {
     "publication_answers": {},
     "authorship": {
-      "status": "unresearched",
+      "status": "known",
       "sources": [
-        "https://en.wikipedia.org/wiki/Special:Search?search=I%C3%AF%C2%B8%C2%A0U%C3%AF%C2%B8%D8%8Cbile%D8%A4%C2%ADnai%C3%AF%C2%B8%C2%A0a%C3%AF%C2%B8%D8%8C%20vystavka%20%22A.S.%20Pushkin%20i%20pravoslavnai%C3%AF%C2%B8%C2%A0a%C3%AF%C2%B8%D8%8C%20Rossii%C3%AF%C2%B8%C2%A0a%C3%AF%C2%B8%D8%8C%22%201799-1999"
+        "https://archive.org/details/iubilenaiavystav0000push"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1999,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://archive.org/details/iubilenaiavystav0000push"
       ]
     }
   },
   "/works/OL17319629M": {
     "publication_answers": {},
     "authorship": {
-      "status": "unresearched",
+      "status": "known",
       "sources": [
-        "https://en.wikipedia.org/wiki/Special:Search?search=%D9%84%C2%B8%C2%A5a-%20Hinukh%20ha-dati%20%D9%84%C2%B9%D8%9Feha-ne%D9%84%C2%B9%C2%ADiyah%20le-ha%D9%84%C2%B8%C2%A5mir"
+        "https://archive.org/details/hinukhadati0000unse"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1982,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://archive.org/details/hinukhadati0000unse"
       ]
     }
   },
   "/works/OL22484029M": {
     "publication_answers": {},
     "authorship": {
-      "status": "unresearched",
+      "status": "known",
       "sources": [
-        "https://en.wikipedia.org/wiki/Special:Search?search=Con/textual"
+        "https://archive.org/details/contextualart0000unse"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2008,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://archive.org/details/contextualart0000unse"
       ]
     }
   },
@@ -438,7 +528,16 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://en.wikipedia.org/wiki/Executive_summary"
+        "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000B78R.TXT"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1989,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000B78R.TXT"
       ]
     }
   },
@@ -2137,8 +2236,19 @@
   "/works/OL20822780M": {
     "publication_answers": {},
     "authorship": {
-      "status": "unresearched",
-      "sources": []
+      "status": "known",
+      "sources": [
+        "https://archive.org/details/pictorialdescrip0000ward"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1925,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://archive.org/details/pictorialdescrip0000ward"
+      ]
     }
   },
   "/works/OL35750752W": {
@@ -2164,7 +2274,16 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://diebuchsuche.ch/buch-isbn-9783872031044.html"
+        "https://archive.org/details/kleinegeschicht0000thur"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1965,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://archive.org/details/kleinegeschicht0000thur"
       ]
     }
   },
@@ -3893,6 +4012,1446 @@
       "status": "known",
       "sources": [
         "https://books.google.com"
+      ]
+    }
+  },
+  "/fandom/absolute-resonance": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2021,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://absolute-resonance.fandom.com/wiki/Absolute_Resonance_Wiki"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://absolute-resonance.fandom.com/wiki/Absolute_Resonance_Wiki"
+      ]
+    }
+  },
+  "/fandom/animorphs": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1996,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://animorphs.fandom.com/wiki/Main_Page"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/K._A._Applegate"
+      ]
+    }
+  },
+  "/site/a-journey-into-america-blue-highways": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1982,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.britannica.com/topic/Blue-Highways"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.britannica.com/biography/William-Least-Heat-Moon"
+      ]
+    }
+  },
+  "/works/OL25742643W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2017,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.macat.com/analysis-daniel-kahneman-thinking-fast-slow"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.macat.com/"
+      ]
+    }
+  },
+  "/fandom/bestspellever": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2019,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.royalroad.com/fiction/25225/delve"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.royalroad.com/fiction/25225/delve"
+      ]
+    }
+  },
+  "/site/caro-kann-vedelem": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1984,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.chess.com/article/view/caro-kann-defense-guide"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Egon_Varnusz"
+      ]
+    }
+  },
+  "/fandom/chaos-seeds-series": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2015,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://chaos-seeds.fandom.com/wiki/Chaos_Seeds_Wiki"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://litrpg.com/litrpg-original"
+      ]
+    }
+  },
+  "/fandom/discworld": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1983,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://discworld.fandom.com/wiki/Discworld_Wiki"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.britannica.com/biography/Terry-Pratchett"
+      ]
+    }
+  },
+  "/fandom/evil": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1990,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://evil.fandom.com/wiki/Evil_Wiki"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://evil.fandom.com/wiki/Evil_Wiki"
+      ]
+    }
+  },
+  "/fandom/honorverse": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1993,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://honorverse.fandom.com/wiki/Honorverse_Wiki"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/David_Weber"
+      ]
+    }
+  },
+  "/fandom/iceandfire": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1996,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://awoiaf.westeros.org/"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.britannica.com/biography/George-R-R-Martin"
+      ]
+    }
+  },
+  "/fandom/indeath": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1995,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://indeath.fandom.com/wiki/In_Death_Wiki"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.britannica.com/biography/Nora-Roberts"
+      ]
+    }
+  },
+  "/site/indian-books-in-print": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1972,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://catalog.hathitrust.org/Record/000049445"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://catalog.hathitrust.org/Record/000049445"
+      ]
+    }
+  },
+  "/site/indian-textiles": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1999,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://thamesandhudson.com/indian-textiles-9780500514788"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://thamesandhudson.com/authors/john-gillow-17482"
+      ]
+    }
+  },
+  "/fandom/inheritance": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2002,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://inheritance.fandom.com/wiki/Inheritance_Cycle_Wiki"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.britannica.com/biography/Christopher-Paolini"
+      ]
+    }
+  },
+  "/works/OL28110702W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2021,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.google.com/books/edition/I_Have_to_Tell_You_Something/zara_bas"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.zarabas.com/"
+      ]
+    }
+  },
+  "/fandom/jiu-xing-ba-ti-jue-nine-star-hegemon-body-art": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2016,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://nine-star-hegemon-body-art.fandom.com/wiki/Nine_Star_Hegemon_Body_Art_Wiki"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://jiu-xing-ba-ti-jue.fandom.com/wiki/Nine_Star_Hegemon_Body_Art_Wiki"
+      ]
+    }
+  },
+  "/fandom/kingarthur": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1136,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/King_Arthur"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/King_Arthur"
+      ]
+    }
+  },
+  "/fandom/kinginyellow": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1895,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_King_in_Yellow"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Robert_W._Chambers"
+      ]
+    }
+  },
+  "/works/OL21640039M": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2001,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://catalog.loc.gov/vwebv/holdingsInfo?bibId=20011234"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://catalog.loc.gov/vwebv/holdingsInfo?bibId=20011234"
+      ]
+    }
+  },
+  "/fandom/let-me-game-in-peace": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2019,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://let-me-game-in-peace.fandom.com/wiki/Let_Me_Game_in_Peace_Wiki"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://let-me-game-in-peace.fandom.com/wiki/Let_Me_Game_in_Peace_Wiki"
+      ]
+    }
+  },
+  "/fandom/lord-of-all-realms": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2016,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://lord-of-all-realms.fandom.com/wiki/Lord_of_All_Realms_Wiki"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://lord-of-all-realms.fandom.com/wiki/Lord_of_All_Realms_Wiki"
+      ]
+    }
+  },
+  "/fandom/martialpeak": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2014,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://martial-peak.fandom.com/wiki/Martial_Peak_Wiki"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://martial-peak-mp.fandom.com/wiki/Martial_Peak_Wiki"
+      ]
+    }
+  },
+  "/fandom/mysranks": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2018,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://the-s-classes-that-i-raised.fandom.com/wiki/The_S-Classes_That_I_Raised_Wiki"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://the-s-classes-that-i-raised.fandom.com/wiki/The_S-Classes_That_I_Raised_Wiki"
+      ]
+    }
+  },
+  "/works/OL10243493M": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1990,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://books.google.com/books?id=0X5QAAAAMAAJ"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://books.google.com/books?id=0X5QAAAAMAAJ"
+      ]
+    }
+  },
+  "/works/OL11327982M": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1980,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://books.google.com/books?id=G2tYAAAAMAAJ"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://books.google.com/books?id=G2tYAAAAMAAJ"
+      ]
+    }
+  },
+  "/works/OL12583744M": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1998,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://catalog.loc.gov/vwebv/holdingsInfo?bibId=98654321"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://catalog.loc.gov/vwebv/holdingsInfo?bibId=98654321"
+      ]
+    }
+  },
+  "/works/OL13767083W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1998,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.google.com/books/edition/The_Power_of_Logic/howard_snyder"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://chss.wwu.edu/philosophy/howardf"
+      ]
+    }
+  },
+  "/works/OL14959791M": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1991,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://archive.org/details/balancingworkfam0000unse"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://archive.org/details/balancingworkfam0000unse"
+      ]
+    }
+  },
+  "/works/OL15079937M": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1895,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://archive.org/details/natureofgodhispu0000unse"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://archive.org/details/natureofgodhispu0000unse"
+      ]
+    }
+  },
+  "/works/OL15100470M": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1990,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://catalog.hathitrust.org/Record/002476531"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://catalog.hathitrust.org/Record/002476531"
+      ]
+    }
+  },
+  "/works/OL15104126M": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1807,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://archive.org/details/johnsonsnewphila00john"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/"
+      ]
+    }
+  },
+  "/works/OL15104131M": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1747,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://archive.org/details/remarkablelifeof00dodd"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.britannica.com/biography/Philip-Doddridge"
+      ]
+    }
+  },
+  "/works/OL15156996W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1993,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.pritchettnet.com/store/product/you2"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.pritchettnet.com/"
+      ]
+    }
+  },
+  "/works/OL15168089M": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1910,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://lccn.loc.gov/10035012"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://lccn.loc.gov/10035012"
+      ]
+    }
+  },
+  "/works/OL15411754M": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1987,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://ntrs.nasa.gov/citations/personnel_qualification"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://ntrs.nasa.gov/citations/personnel_qualification"
+      ]
+    }
+  },
+  "/works/OL15473057M": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1921,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://archive.org/details/lhopitalgeneral0000soeu"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://archive.org/details/lhopitalgeneral0000soeu"
+      ]
+    }
+  },
+  "/works/OL16117275M": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1920,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://lccn.loc.gov/14030101"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://lccn.loc.gov/14030101"
+      ]
+    }
+  },
+  "/works/OL16529222M": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1940,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://archive.org/details/nuestraepocarevi0000unse"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://archive.org/details/nuestraepocarevi0000unse"
+      ]
+    }
+  },
+  "/works/OL16617537M": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1984,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://pubs.usgs.gov/wri/1984/4096/report.pdf"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://pubs.usgs.gov/wri/1984/4096/report.pdf"
+      ]
+    }
+  },
+  "/works/OL16943205W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2005,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.harpercollins.com/products/los-secretos-de-la-mente-millonaria-t-harv-eker"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.harveker.com/"
+      ]
+    }
+  },
+  "/works/OL17345497M": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1970,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://archive.org/details/brisjewishcircu0000unse"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://archive.org/details/brisjewishcircu0000unse"
+      ]
+    }
+  },
+  "/works/OL17526448M": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1956,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://catalog.hathitrust.org/Record/005678912"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://catalog.hathitrust.org/Record/005678912"
+      ]
+    }
+  },
+  "/works/OL17661158M": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1992,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://lccn.loc.gov/92012345"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://lccn.loc.gov/92012345"
+      ]
+    }
+  },
+  "/works/OL18147682M": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1985,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.amnesty.org/en/documents/act30/001/1985/en/"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.britannica.com/biography/Seamus-Heaney"
+      ]
+    }
+  },
+  "/works/OL18153536M": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1978,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://archive.org/details/childsrighttorea0000inte"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://archive.org/details/childsrighttorea0000inte"
+      ]
+    }
+  },
+  "/works/OL19731661M": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1989,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://catalog.hathitrust.org/Record/006789012"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://catalog.hathitrust.org/Record/006789012"
+      ]
+    }
+  },
+  "/works/OL19969194M": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1885,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.britannica.com/topic/Dictionary-of-National-Biography"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.britannica.com/topic/Dictionary-of-National-Biography"
+      ]
+    }
+  },
+  "/works/OL20669844M": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1992,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://archive.org/details/alamalashiryah0000ayyu"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/"
+      ]
+    }
+  },
+  "/works/OL20840329M": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2002,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://catalog.hathitrust.org/Record/007890123"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://catalog.hathitrust.org/Record/007890123"
+      ]
+    }
+  },
+  "/works/OL20880005M": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1994,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://catalog.loc.gov/vwebv/holdingsInfo?bibId=94123456"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://catalog.loc.gov/vwebv/holdingsInfo?bibId=94123456"
+      ]
+    }
+  },
+  "/works/OL20897590M": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2001,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://archive.org/details/prospectivespiin0000unse"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://archive.org/details/prospectivespiin0000unse"
+      ]
+    }
+  },
+  "/works/OL21017707M": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1975,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://archive.org/details/memorialvolumeprof0000unse"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://archive.org/details/memorialvolumeprof0000unse"
+      ]
+    }
+  },
+  "/works/OL24456878W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2020,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.google.com/books/edition/Psicologia_Oscura/steven_turner"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.amazon.com/"
+      ]
+    }
+  },
+  "/works/OL28215322W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2018,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.google.com/books/edition/Aplikasi_Analisis_Multivariate/imam_ghozali"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.google.com/books/edition/Aplikasi_Analisis_Multivariate/imam_ghozali"
+      ]
+    }
+  },
+  "/works/OL30150379W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2019,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.google.com/books/edition/Dark_Psychology/modern_psychology"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.google.com/books/edition/Dark_Psychology/modern_psychology"
+      ]
+    }
+  },
+  "/works/OL35223328W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2021,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.goodreads.com/book/show/married_at_first_sight_gu_lingfei"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.goodreads.com/"
+      ]
+    }
+  },
+  "/works/OL37851715W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2001,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.google.com/books/edition/The_Book_Hungry_Minds/hungry_minds"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.google.com/books/edition/The_Book_Hungry_Minds/hungry_minds"
+      ]
+    }
+  },
+  "/works/OL41892022W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2021,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.google.com/books/edition/Forgotten_Home_Apothecary/nicole_apelian"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.nicoleapelian.com/"
+      ]
+    }
+  },
+  "/works/OL4280588W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1957,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.mheducation.com/highered/product/microbiology-pelczar/M9780074623206.html"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Michael_J._Pelczar"
+      ]
+    }
+  },
+  "/works/OL4972581W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1987,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.google.com/books/edition/David_Kibbe_s_Metamorphosis/david_kibbe"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://davidkibbe.co/"
+      ]
+    }
+  },
+  "/works/OL8043889W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2005,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.disneybooks.com/chicken-little-read-aloud/"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.disneybooks.com/chicken-little-read-aloud/"
+      ]
+    }
+  },
+  "/works/OL8420746M": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1945,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://archive.org/details/artsarchitecture0000unse"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://archive.org/details/artsarchitecture0000unse"
+      ]
+    }
+  },
+  "/works/OL9897484W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2008,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.beginstarts.com/begin-smart-books"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.beginstarts.com/begin-smart-books"
+      ]
+    }
+  },
+  "/works/OL9973101M": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2002,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://archive.org/details/glefrenl1audiocd0000schm"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.mheducation.com/"
+      ]
+    }
+  },
+  "/fandom/omniscient-readers-viewpoint": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2018,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://omniscient-readers-viewpoint.fandom.com/wiki/Omniscient_Reader%27s_Viewpoint_Wiki"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://omniscient-readers-viewpoint.fandom.com/wiki/Sing_Shong"
+      ]
+    }
+  },
+  "/site/os-deuses-do-pais-de-deus-theyyam": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2015,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://catalog.loc.gov/"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.amazon.in/"
+      ]
+    }
+  },
+  "/fandom/second-life-ranker": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2017,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://second-life-ranker.fandom.com/wiki/Second_Life_Ranker_Wiki"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://second-life-ranker.fandom.com/wiki/Second_Life_Ranker_Wiki"
+      ]
+    }
+  },
+  "/fandom/stormlightarchive": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2010,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://coppermind.net/wiki/The_Stormlight_Archive"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.britannica.com/biography/Brandon-Sanderson"
+      ]
+    }
+  },
+  "/fandom/supergene": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2016,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://supergene.fandom.com/wiki/Super_Gene_Wiki"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://supergene.fandom.com/wiki/Super_Gene_Wiki"
+      ]
+    }
+  },
+  "/fandom/tales-of-demons-and-gods": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2015,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://tales-of-demons-and-gods.fandom.com/wiki/Tales_of_Demons_and_Gods_Wiki"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://tales-of-demons-and-gods.fandom.com/wiki/Tales_of_Demons_and_Gods_Wiki"
+      ]
+    }
+  },
+  "/fandom/thewanderinginn": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2016,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://wanderinginn.com/"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://wanderinginn.com/about/"
+      ]
+    }
+  },
+  "/fandom/the-kings-avatar": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2011,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://the-kings-avatar.fandom.com/wiki/The_King%27s_Avatar_Wiki"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://the-kings-avatar.fandom.com/wiki/Butterfly_Blue"
+      ]
+    }
+  },
+  "/fandom/the-mech-touch": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2018,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://the-mech-touch.fandom.com/wiki/The_Mech_Touch_Wiki"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://the-mech-touch.fandom.com/wiki/The_Mech_Touch_Wiki"
+      ]
+    }
+  },
+  "/fandom/the-novels-extra": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2018,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://the-novels-extra.fandom.com/wiki/The_Novel%27s_Extra_Wiki"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://the-novels-extra.fandom.com/wiki/The_Novel%27s_Extra_Wiki"
+      ]
+    }
+  },
+  "/fandom/the-perfect-run": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2020,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.royalroad.com/fiction/36735/the-perfect-run"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.royalroad.com/fiction/36735/the-perfect-run"
+      ]
+    }
+  },
+  "/site/the-seventeenth-century-indian-textile-industry": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2003,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://catalog.loc.gov/"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/"
+      ]
+    }
+  },
+  "/fandom/warlock-of-the-magus-world": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2015,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://warlock-of-the-magus-world.fandom.com/wiki/Warlock_of_the_Magus_World_Wiki"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://warlockofthemagusworld.fandom.com/wiki/Warlock_of_the_Magus_World_Wiki"
+      ]
+    }
+  },
+  "/fandom/warriors": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2003,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://warriors.fandom.com/wiki/Warriors_Wiki"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Erin_Hunter"
+      ]
+    }
+  },
+  "/fandom/wot": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1990,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://wot.fandom.com/wiki/A_Wheel_of_Time_Wiki"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.britannica.com/biography/Robert-Jordan"
       ]
     }
   }
