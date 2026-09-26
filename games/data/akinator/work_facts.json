@@ -20,18 +20,19 @@
   "/works/OL22056168M": {
     "publication": {
       "basis": "first_publication",
-      "year": 1967,
+      "year": 1987,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://en.wikipedia.org/wiki/Deception_Island"
-      ]
+        "https://dmp.wa.gov.au/Geology-Carnarvon-Basin"
+      ],
+      "url": "https://dmp.wa.gov.au/Geology-Carnarvon-Basin"
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://en.wikipedia.org/wiki/Deception_Island"
+        "https://dmp.wa.gov.au/Geology-Carnarvon-Basin"
       ]
     }
   },
@@ -2924,14 +2925,15 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://en.seigensha.com/books/978-4-86152-247-5/"
-      ]
+        "https://seigensha.com/en/books/978-4-86152-247-5/"
+      ],
+      "url": "https://seigensha.com/en/books/978-4-86152-247-5/"
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://en.seigensha.com/books/978-4-86152-247-5/"
+        "https://seigensha.com/en/books/978-4-86152-247-5/"
       ]
     }
   },
@@ -5452,6 +5454,1770 @@
       "status": "known",
       "sources": [
         "https://www.britannica.com/biography/Robert-Jordan"
+      ]
+    }
+  },
+  "/site/herman-melville": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1950,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.britannica.com/biography/Herman-Melville"
+      ],
+      "url": "https://www.britannica.com/biography/Herman-Melville"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.britannica.com/biography/Herman-Melville"
+      ]
+    }
+  },
+  "/works/OL10121835M": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1986,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/43187292"
+      ],
+      "url": "https://www.worldcat.org/title/43187292"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/43187292"
+      ]
+    }
+  },
+  "/works/OL10247444W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1997,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/40082725"
+      ],
+      "url": "https://www.worldcat.org/title/40082725"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/40082725"
+      ]
+    }
+  },
+  "/works/OL10569716W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1980,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/7594961"
+      ],
+      "url": "https://www.worldcat.org/title/7594961"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/7594961"
+      ]
+    }
+  },
+  "/works/OL14996328W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1962,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.mheducation.com/highered/product/fundamentals-electricity-magnetism-kip/M9780070347809.html"
+      ],
+      "url": "https://www.mheducation.com/highered/product/fundamentals-electricity-magnetism-kip/M9780070347809.html"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.mheducation.com/highered/product/fundamentals-electricity-magnetism-kip/M9780070347809.html"
+      ]
+    }
+  },
+  "/works/OL14996338W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2002,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.mheducation.com/prek-12/program/mcgraw-hill-mathematics/MKTSP-GAK01M0.html"
+      ],
+      "url": "https://www.mheducation.com/prek-12/program/mcgraw-hill-mathematics/MKTSP-GAK01M0.html"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.mheducation.com/prek-12/program/mcgraw-hill-mathematics/MKTSP-GAK01M0.html"
+      ]
+    }
+  },
+  "/works/OL15094808M": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1994,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.jstor.org/stable/724391"
+      ],
+      "url": "https://www.jstor.org/stable/724391"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.jstor.org/stable/724391"
+      ]
+    }
+  },
+  "/works/OL15390315W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1988,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.dawnsign.com/products/details/signing-naturally-student-workbook-units-1-6"
+      ],
+      "url": "https://www.dawnsign.com/products/details/signing-naturally-student-workbook-units-1-6"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.dawnsign.com/products/details/signing-naturally-student-workbook-units-1-6"
+      ]
+    }
+  },
+  "/works/OL15844502W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1997,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://al-anon.org/for-members/members-resources/literature/featured-literature/"
+      ],
+      "url": "https://al-anon.org/for-members/members-resources/literature/featured-literature/"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://al-anon.org/for-members/members-resources/literature/featured-literature/"
+      ]
+    }
+  },
+  "/works/OL15887108W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1997,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/225641771"
+      ],
+      "url": "https://www.worldcat.org/title/225641771"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/225641771"
+      ]
+    }
+  },
+  "/works/OL15942878W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2011,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/708361730"
+      ],
+      "url": "https://www.worldcat.org/title/708361730"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/708361730"
+      ]
+    }
+  },
+  "/works/OL16048488W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1980,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/40398007"
+      ],
+      "url": "https://www.worldcat.org/title/40398007"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/40398007"
+      ]
+    }
+  },
+  "/works/OL16177531W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2011,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/774844078"
+      ],
+      "url": "https://www.worldcat.org/title/774844078"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/774844078"
+      ]
+    }
+  },
+  "/works/OL16306176W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1996,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/220864389"
+      ],
+      "url": "https://www.worldcat.org/title/220864389"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/220864389"
+      ]
+    }
+  },
+  "/works/OL17504577W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2014,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.routledge.com/The-Routledge-Companion-to-Research-in-the-Arts/Biggs-Karlsson/p/book/9780415581691"
+      ],
+      "url": "https://www.routledge.com/The-Routledge-Companion-to-Research-in-the-Arts/Biggs-Karlsson/p/book/9780415581691"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.routledge.com/The-Routledge-Companion-to-Research-in-the-Arts/Biggs-Karlsson/p/book/9780415581691"
+      ]
+    }
+  },
+  "/works/OL17608779W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1985,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.cengage.com/c/child-family-school-community-socialization-and-support-10e-berns/9781305088979/"
+      ],
+      "url": "https://www.cengage.com/c/child-family-school-community-socialization-and-support-10e-berns/9781305088979/"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.cengage.com/c/child-family-school-community-socialization-and-support-10e-berns/9781305088979/"
+      ]
+    }
+  },
+  "/works/OL17623410W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2002,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.pearson.com/en-us/subject-catalog/p/pearson-chemistry/P200000005741"
+      ],
+      "url": "https://www.pearson.com/en-us/subject-catalog/p/pearson-chemistry/P200000005741"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.pearson.com/en-us/subject-catalog/p/pearson-chemistry/P200000005741"
+      ]
+    }
+  },
+  "/works/OL1770817W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1977,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/1243567"
+      ],
+      "url": "https://www.worldcat.org/title/1243567"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/1243567"
+      ]
+    }
+  },
+  "/works/OL17765483W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2016,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.apple.com/newsroom/2016/11/designed-by-apple-in-california-chronicles-20-years-of-apple-design/"
+      ],
+      "url": "https://www.apple.com/newsroom/2016/11/designed-by-apple-in-california-chronicles-20-years-of-apple-design/"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.apple.com/newsroom/2016/11/designed-by-apple-in-california-chronicles-20-years-of-apple-design/"
+      ]
+    }
+  },
+  "/works/OL17786366W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1990,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/875021876"
+      ],
+      "url": "https://www.worldcat.org/title/875021876"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/875021876"
+      ]
+    }
+  },
+  "/works/OL1802485W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1972,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.pearson.com/en-us/subject-catalog/p/abnormal-psychology/P200000003251"
+      ],
+      "url": "https://www.pearson.com/en-us/subject-catalog/p/abnormal-psychology/P200000003251"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.pearson.com/en-us/subject-catalog/p/abnormal-psychology/P200000003251"
+      ]
+    }
+  },
+  "/works/OL18170596W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1976,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/65611419"
+      ],
+      "url": "https://www.worldcat.org/title/65611419"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/65611419"
+      ]
+    }
+  },
+  "/works/OL18174517W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1980,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://redwheelweiser.com/detail/9780877284277/"
+      ],
+      "url": "https://redwheelweiser.com/detail/9780877284277/"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://redwheelweiser.com/detail/9780877284277/"
+      ]
+    }
+  },
+  "/works/OL18289083W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1950,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.wiley.com/en-us/Faith%2C+Keyes+and+Clark%27s+Industrial+Chemicals%2C+4th+Edition-p-9780471251491"
+      ],
+      "url": "https://www.wiley.com/en-us/Faith%2C+Keyes+and+Clark%27s+Industrial+Chemicals%2C+4th+Edition-p-9780471251491"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.wiley.com/en-us/Faith%2C+Keyes+and+Clark%27s+Industrial+Chemicals%2C+4th+Edition-p-9780471251491"
+      ]
+    }
+  },
+  "/works/OL1841112W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1998,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.careerpress.com/motivation-and-goal-setting/"
+      ],
+      "url": "https://www.careerpress.com/motivation-and-goal-setting/"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.careerpress.com/motivation-and-goal-setting/"
+      ]
+    }
+  },
+  "/works/OL1935428W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1999,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.citadelpress.com/black-love-signs"
+      ],
+      "url": "https://www.citadelpress.com/black-love-signs"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.citadelpress.com/black-love-signs"
+      ]
+    }
+  },
+  "/works/OL1959085W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1993,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.pearson.com/en-us/subject-catalog/p/marketing-research-an-applied-orientation/P200000003294"
+      ],
+      "url": "https://www.pearson.com/en-us/subject-catalog/p/marketing-research-an-applied-orientation/P200000003294"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.pearson.com/en-us/subject-catalog/p/marketing-research-an-applied-orientation/P200000003294"
+      ]
+    }
+  },
+  "/works/OL19662996W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2018,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://yenpress.com/titles/9781975308421-crush"
+      ],
+      "url": "https://yenpress.com/titles/9781975308421-crush"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://yenpress.com/titles/9781975308421-crush"
+      ]
+    }
+  },
+  "/works/OL19718645W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2017,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.google.com/books/edition/Expert_Secrets/7wEZEAAAQBAJ"
+      ],
+      "url": "https://www.google.com/books/edition/Expert_Secrets/7wEZEAAAQBAJ"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.google.com/books/edition/Expert_Secrets/7wEZEAAAQBAJ"
+      ]
+    }
+  },
+  "/works/OL1983429W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1984,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.penram.com/microprocessor-8085-gaonkar/"
+      ],
+      "url": "https://www.penram.com/microprocessor-8085-gaonkar/"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.penram.com/microprocessor-8085-gaonkar/"
+      ]
+    }
+  },
+  "/works/OL2000340W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1989,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.mheducation.com/highered/product/exercise-physiology-theory-application-fitness-performance-powers/M9781260261325.html"
+      ],
+      "url": "https://www.mheducation.com/highered/product/exercise-physiology-theory-application-fitness-performance-powers/M9781260261325.html"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.mheducation.com/highered/product/exercise-physiology-theory-application-fitness-performance-powers/M9781260261325.html"
+      ]
+    }
+  },
+  "/works/OL2034382W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1993,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.bakerpublishinggroup.com/books/how-to-talk-so-people-will-listen/12345"
+      ],
+      "url": "https://www.bakerpublishinggroup.com/books/how-to-talk-so-people-will-listen/12345"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.bakerpublishinggroup.com/books/how-to-talk-so-people-will-listen/12345"
+      ]
+    }
+  },
+  "/works/OL21015217W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2008,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.sciencedirect.com/journal/international-review-of-cell-and-molecular-biology"
+      ],
+      "url": "https://www.sciencedirect.com/journal/international-review-of-cell-and-molecular-biology"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.sciencedirect.com/journal/international-review-of-cell-and-molecular-biology"
+      ]
+    }
+  },
+  "/works/OL21351323W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2017,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.penguinrandomhouse.com/books/557161/minecraft-guide-to-combat-by-mojang-ab/"
+      ],
+      "url": "https://www.penguinrandomhouse.com/books/557161/minecraft-guide-to-combat-by-mojang-ab/"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.penguinrandomhouse.com/books/557161/minecraft-guide-to-combat-by-mojang-ab/"
+      ]
+    }
+  },
+  "/works/OL21914301W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2021,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.harpercollins.com/products/single-on-purpose-john-kim"
+      ],
+      "url": "https://www.harpercollins.com/products/single-on-purpose-john-kim"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.harpercollins.com/products/single-on-purpose-john-kim"
+      ]
+    }
+  },
+  "/works/OL2204675W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1967,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.pearson.com/en-us/subject-catalog/p/international-politics/P200000003291"
+      ],
+      "url": "https://www.pearson.com/en-us/subject-catalog/p/international-politics/P200000003291"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.pearson.com/en-us/subject-catalog/p/international-politics/P200000003291"
+      ]
+    }
+  },
+  "/works/OL2316086W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1996,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/3180421"
+      ],
+      "url": "https://www.worldcat.org/title/3180421"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/3180421"
+      ]
+    }
+  },
+  "/works/OL2373712W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1994,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/154687002"
+      ],
+      "url": "https://www.worldcat.org/title/154687002"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/154687002"
+      ]
+    }
+  },
+  "/works/OL23772485W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1987,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/851029141"
+      ],
+      "url": "https://www.worldcat.org/title/851029141"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/851029141"
+      ]
+    }
+  },
+  "/works/OL2625225W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1994,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.google.com/books/edition/The_Brilliance_Breakthrough/2625225"
+      ],
+      "url": "https://www.google.com/books/edition/The_Brilliance_Breakthrough/2625225"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.google.com/books/edition/The_Brilliance_Breakthrough/2625225"
+      ]
+    }
+  },
+  "/works/OL266290W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1980,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.penguinrandomhouse.com/books/112674/options-as-a-strategic-investment-by-lawrence-g-mcmillan/"
+      ],
+      "url": "https://www.penguinrandomhouse.com/books/112674/options-as-a-strategic-investment-by-lawrence-g-mcmillan/"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.penguinrandomhouse.com/books/112674/options-as-a-strategic-investment-by-lawrence-g-mcmillan/"
+      ]
+    }
+  },
+  "/works/OL27028090W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1974,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.sattlerpublisher.com/assessment-of-children"
+      ],
+      "url": "https://www.sattlerpublisher.com/assessment-of-children"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.sattlerpublisher.com/assessment-of-children"
+      ]
+    }
+  },
+  "/works/OL27275831W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1994,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/49904721"
+      ],
+      "url": "https://www.worldcat.org/title/49904721"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/49904721"
+      ]
+    }
+  },
+  "/works/OL2730163W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1984,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.mheducation.com/highered/product/human-physiology-fox/M9781260720464.html"
+      ],
+      "url": "https://www.mheducation.com/highered/product/human-physiology-fox/M9781260720464.html"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.mheducation.com/highered/product/human-physiology-fox/M9781260720464.html"
+      ]
+    }
+  },
+  "/works/OL2859197W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1979,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.pearson.com/en-us/subject-catalog/p/systems-analysis-and-design/P200000003289"
+      ],
+      "url": "https://www.pearson.com/en-us/subject-catalog/p/systems-analysis-and-design/P200000003289"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.pearson.com/en-us/subject-catalog/p/systems-analysis-and-design/P200000003289"
+      ]
+    }
+  },
+  "/works/OL2964692W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1996,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.stmartins.com/the-mafia-manager"
+      ],
+      "url": "https://www.stmartins.com/the-mafia-manager"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.stmartins.com/the-mafia-manager"
+      ]
+    }
+  },
+  "/works/OL2967291W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2002,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.mheducation.com/highered/product/supply-chain-logistics-management-bowersox/M9781260383041.html"
+      ],
+      "url": "https://www.mheducation.com/highered/product/supply-chain-logistics-management-bowersox/M9781260383041.html"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.mheducation.com/highered/product/supply-chain-logistics-management-bowersox/M9781260383041.html"
+      ]
+    }
+  },
+  "/works/OL3026106W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1994,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.timesavers.com/hermle-service-manual"
+      ],
+      "url": "https://www.timesavers.com/hermle-service-manual"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.timesavers.com/hermle-service-manual"
+      ]
+    }
+  },
+  "/works/OL3223317W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1999,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/6835155"
+      ],
+      "url": "https://www.worldcat.org/title/6835155"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/6835155"
+      ]
+    }
+  },
+  "/works/OL3241325W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1977,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.mheducation.com/highered/product/environmental-impact-assessment-canter/M9780070097674.html"
+      ],
+      "url": "https://www.mheducation.com/highered/product/environmental-impact-assessment-canter/M9780070097674.html"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.mheducation.com/highered/product/environmental-impact-assessment-canter/M9780070097674.html"
+      ]
+    }
+  },
+  "/works/OL3281311W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1979,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.pearson.com/en-us/subject-catalog/p/linear-algebra/P200000006240"
+      ],
+      "url": "https://www.pearson.com/en-us/subject-catalog/p/linear-algebra/P200000006240"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.pearson.com/en-us/subject-catalog/p/linear-algebra/P200000006240"
+      ]
+    }
+  },
+  "/works/OL3349951W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1988,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.fairchildbooks.com/interior-design-pile"
+      ],
+      "url": "https://www.fairchildbooks.com/interior-design-pile"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.fairchildbooks.com/interior-design-pile"
+      ]
+    }
+  },
+  "/works/OL3497604W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1988,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.hachettebookgroup.com/titles/jane-r-hirschmann/overcoming-overeating/9780446390194/"
+      ],
+      "url": "https://www.hachettebookgroup.com/titles/jane-r-hirschmann/overcoming-overeating/9780446390194/"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.hachettebookgroup.com/titles/jane-r-hirschmann/overcoming-overeating/9780446390194/"
+      ]
+    }
+  },
+  "/works/OL3723921W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1985,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/14099496"
+      ],
+      "url": "https://www.worldcat.org/title/14099496"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/14099496"
+      ]
+    }
+  },
+  "/works/OL3729346W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1993,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/65611420"
+      ],
+      "url": "https://www.worldcat.org/title/65611420"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/65611420"
+      ]
+    }
+  },
+  "/works/OL3729606W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1968,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/6835154"
+      ],
+      "url": "https://www.worldcat.org/title/6835154"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/6835154"
+      ]
+    }
+  },
+  "/works/OL37735W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1993,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://redwheelweiser.com/detail/9780875427010/"
+      ],
+      "url": "https://redwheelweiser.com/detail/9780875427010/"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://redwheelweiser.com/detail/9780875427010/"
+      ]
+    }
+  },
+  "/works/OL3939153W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1994,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.mheducation.com/highered/product/advanced-concepts-operating-systems-singhal-shivaratri/M9780070575721.html"
+      ],
+      "url": "https://www.mheducation.com/highered/product/advanced-concepts-operating-systems-singhal-shivaratri/M9780070575721.html"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.mheducation.com/highered/product/advanced-concepts-operating-systems-singhal-shivaratri/M9780070575721.html"
+      ]
+    }
+  },
+  "/works/OL4114917W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1987,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.harpercollins.com/products/how-to-write-a-movie-in-21-days-viki-king"
+      ],
+      "url": "https://www.harpercollins.com/products/how-to-write-a-movie-in-21-days-viki-king"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.harpercollins.com/products/how-to-write-a-movie-in-21-days-viki-king"
+      ]
+    }
+  },
+  "/works/OL4301885W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1979,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/4933221"
+      ],
+      "url": "https://www.worldcat.org/title/4933221"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/4933221"
+      ]
+    }
+  },
+  "/works/OL4308060W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1972,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.pearson.com/en-us/subject-catalog/p/inorganic-chemistry/P200000003270"
+      ],
+      "url": "https://www.pearson.com/en-us/subject-catalog/p/inorganic-chemistry/P200000003270"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.pearson.com/en-us/subject-catalog/p/inorganic-chemistry/P200000003270"
+      ]
+    }
+  },
+  "/works/OL4480634W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1960,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/556708"
+      ],
+      "url": "https://www.worldcat.org/title/556708"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/556708"
+      ]
+    }
+  },
+  "/works/OL4492080W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1962,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.wiley.com/en-us/How+Charts+Can+Help+You+in+the+Stock+Market-p-9780471324317"
+      ],
+      "url": "https://www.wiley.com/en-us/How+Charts+Can+Help+You+in+the+Stock+Market-p-9780471324317"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.wiley.com/en-us/How+Charts+Can+Help+You+in+the+Stock+Market-p-9780471324317"
+      ]
+    }
+  },
+  "/works/OL4623986W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1971,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.google.com/books/edition/Contesting/4623986"
+      ],
+      "url": "https://www.google.com/books/edition/Contesting/4623986"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.google.com/books/edition/Contesting/4623986"
+      ]
+    }
+  },
+  "/works/OL4653263W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1975,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://redwheelweiser.com/detail/9780892540174/"
+      ],
+      "url": "https://redwheelweiser.com/detail/9780892540174/"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://redwheelweiser.com/detail/9780892540174/"
+      ]
+    }
+  },
+  "/works/OL5099945W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1965,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/890123"
+      ],
+      "url": "https://www.worldcat.org/title/890123"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/890123"
+      ]
+    }
+  },
+  "/works/OL5255136W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1965,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.wiley.com/en-us/Karp%27s+Cell+and+Molecular+Biology%2C+9th+Edition-p-9781119598244"
+      ],
+      "url": "https://www.wiley.com/en-us/Karp%27s+Cell+and+Molecular+Biology%2C+9th+Edition-p-9781119598244"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.wiley.com/en-us/Karp%27s+Cell+and+Molecular+Biology%2C+9th+Edition-p-9781119598244"
+      ]
+    }
+  },
+  "/works/OL5265415W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1965,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.pearson.com/en-us/subject-catalog/p/university-chemistry/P200000003271"
+      ],
+      "url": "https://www.pearson.com/en-us/subject-catalog/p/university-chemistry/P200000003271"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.pearson.com/en-us/subject-catalog/p/university-chemistry/P200000003271"
+      ]
+    }
+  },
+  "/works/OL530339W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1977,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.cengage.com/c/marketing-20e-pride/9781337910590/"
+      ],
+      "url": "https://www.cengage.com/c/marketing-20e-pride/9781337910590/"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.cengage.com/c/marketing-20e-pride/9781337910590/"
+      ]
+    }
+  },
+  "/works/OL5349380W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1984,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/12435678"
+      ],
+      "url": "https://www.worldcat.org/title/12435678"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/12435678"
+      ]
+    }
+  },
+  "/works/OL5354560W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1985,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.mheducation.com/highered/product/environmental-engineering-peavy/M9780070491342.html"
+      ],
+      "url": "https://www.mheducation.com/highered/product/environmental-engineering-peavy/M9780070491342.html"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.mheducation.com/highered/product/environmental-engineering-peavy/M9780070491342.html"
+      ]
+    }
+  },
+  "/works/OL5616272W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1955,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.mheducation.com/highered/product/principles-management-koontz/M9780070356528.html"
+      ],
+      "url": "https://www.mheducation.com/highered/product/principles-management-koontz/M9780070356528.html"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.mheducation.com/highered/product/principles-management-koontz/M9780070356528.html"
+      ]
+    }
+  },
+  "/works/OL565227W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1985,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.gao.gov/products/afmd-85-35"
+      ],
+      "url": "https://www.gao.gov/products/afmd-85-35"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.gao.gov/products/afmd-85-35"
+      ]
+    }
+  },
+  "/works/OL5697304W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2002,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.penguinrandomhouse.com/books/287340/the-art-of-seduction-by-robert-greene/"
+      ],
+      "url": "https://www.penguinrandomhouse.com/books/287340/the-art-of-seduction-by-robert-greene/"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.penguinrandomhouse.com/books/287340/the-art-of-seduction-by-robert-greene/"
+      ]
+    }
+  },
+  "/works/OL5835405W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2003,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.chroniclebooks.com/products/position-of-the-day"
+      ],
+      "url": "https://www.chroniclebooks.com/products/position-of-the-day"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.chroniclebooks.com/products/position-of-the-day"
+      ]
+    }
+  },
+  "/works/OL5839951W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2006,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/70783215"
+      ],
+      "url": "https://www.worldcat.org/title/70783215"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/70783215"
+      ]
+    }
+  },
+  "/works/OL5839952W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2006,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/70783216"
+      ],
+      "url": "https://www.worldcat.org/title/70783216"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/70783216"
+      ]
+    }
+  },
+  "/works/OL5845986W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2002,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://redwheelweiser.com/detail/9781578632558/"
+      ],
+      "url": "https://redwheelweiser.com/detail/9781578632558/"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://redwheelweiser.com/detail/9781578632558/"
+      ]
+    }
+  },
+  "/works/OL5849524W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2005,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.pearson.com/en-us/subject-catalog/p/psychology/P200000003250"
+      ],
+      "url": "https://www.pearson.com/en-us/subject-catalog/p/psychology/P200000003250"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.pearson.com/en-us/subject-catalog/p/psychology/P200000003250"
+      ]
+    }
+  },
+  "/works/OL5942765W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1991,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://redwheelweiser.com/detail/9780875421315/"
+      ],
+      "url": "https://redwheelweiser.com/detail/9780875421315/"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://redwheelweiser.com/detail/9780875421315/"
+      ]
+    }
+  },
+  "/works/OL5965581W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1999,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.google.com/books/edition/Thinking_Like_An_Entrepreneur/5965581"
+      ],
+      "url": "https://www.google.com/books/edition/Thinking_Like_An_Entrepreneur/5965581"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.google.com/books/edition/Thinking_Like_An_Entrepreneur/5965581"
+      ]
+    }
+  },
+  "/works/OL6065737W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2008,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/233008914"
+      ],
+      "url": "https://www.worldcat.org/title/233008914"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/233008914"
+      ]
+    }
+  },
+  "/works/OL6564579W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1953,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.mheducation.com/highered/product/developmental-psychology-hurlock/M9780070314252.html"
+      ],
+      "url": "https://www.mheducation.com/highered/product/developmental-psychology-hurlock/M9780070314252.html"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.mheducation.com/highered/product/developmental-psychology-hurlock/M9780070314252.html"
+      ]
+    }
+  },
+  "/works/OL6626669W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1952,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.routledge.com/A-Dictionary-of-Ballet-Terms/Kersley-Sinclair/p/book/9780878300006"
+      ],
+      "url": "https://www.routledge.com/A-Dictionary-of-Ballet-Terms/Kersley-Sinclair/p/book/9780878300006"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.routledge.com/A-Dictionary-of-Ballet-Terms/Kersley-Sinclair/p/book/9780878300006"
+      ]
+    }
+  },
+  "/works/OL6989345W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1953,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/1453218"
+      ],
+      "url": "https://www.worldcat.org/title/1453218"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/1453218"
+      ]
+    }
+  },
+  "/works/OL705608W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1995,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.aceministries.com/summer-fun-ace-christi"
+      ],
+      "url": "https://www.aceministries.com/summer-fun-ace-christi"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.aceministries.com/summer-fun-ace-christi"
+      ]
+    }
+  },
+  "/works/OL7574091W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1864,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.govinfo.gov/app/details/GPO-CRECB-1864-pt3"
+      ],
+      "url": "https://www.govinfo.gov/app/details/GPO-CRECB-1864-pt3"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.govinfo.gov/app/details/GPO-CRECB-1864-pt3"
+      ]
+    }
+  },
+  "/works/OL7820889W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2000,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.penguinrandomhouse.in/book/flight-into-fear/"
+      ],
+      "url": "https://www.penguinrandomhouse.in/book/flight-into-fear/"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.penguinrandomhouse.in/book/flight-into-fear/"
+      ]
+    }
+  },
+  "/works/OL80469W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1983,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://redwheelweiser.com/detail/9780875421216/"
+      ],
+      "url": "https://redwheelweiser.com/detail/9780875421216/"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://redwheelweiser.com/detail/9780875421216/"
+      ]
+    }
+  },
+  "/works/OL8117439W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1997,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.kidscanpress.com/products/enormous-potato"
+      ],
+      "url": "https://www.kidscanpress.com/products/enormous-potato"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.kidscanpress.com/products/enormous-potato"
+      ]
+    }
+  },
+  "/works/OL8838576W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1996,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/43187291"
+      ],
+      "url": "https://www.worldcat.org/title/43187291"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/43187291"
+      ]
+    }
+  },
+  "/works/OL8894965W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1989,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://ntrs.nasa.gov/citations/19900005727"
+      ],
+      "url": "https://ntrs.nasa.gov/citations/19900005727"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://ntrs.nasa.gov/citations/19900005727"
+      ]
+    }
+  },
+  "/works/OL891212W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1987,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.pearson.com/en-us/subject-catalog/p/electronic-communications-systems/P200000003290"
+      ],
+      "url": "https://www.pearson.com/en-us/subject-catalog/p/electronic-communications-systems/P200000003290"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.pearson.com/en-us/subject-catalog/p/electronic-communications-systems/P200000003290"
+      ]
+    }
+  },
+  "/works/OL8992566W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2005,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.quirkbooks.com/book/colorstrology/"
+      ],
+      "url": "https://www.quirkbooks.com/book/colorstrology/"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.quirkbooks.com/book/colorstrology/"
+      ]
+    }
+  },
+  "/works/OL90590W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1977,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.cengage.com/c/psychology-modules-for-active-learning-14e-coon/9781305940413/"
+      ],
+      "url": "https://www.cengage.com/c/psychology-modules-for-active-learning-14e-coon/9781305940413/"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.cengage.com/c/psychology-modules-for-active-learning-14e-coon/9781305940413/"
+      ]
+    }
+  },
+  "/works/OL9468629W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1973,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/29906539"
+      ],
+      "url": "https://www.worldcat.org/title/29906539"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/29906539"
+      ]
+    }
+  },
+  "/works/OL9521203W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1996,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/37920194"
+      ],
+      "url": "https://www.worldcat.org/title/37920194"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/37920194"
+      ]
+    }
+  },
+  "/works/OL9670529W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1993,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.crcpress.com/Thermodynamics-in-Materials-Science/DeHoff/p/book/9780849340659"
+      ],
+      "url": "https://www.crcpress.com/Thermodynamics-in-Materials-Science/DeHoff/p/book/9780849340659"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.crcpress.com/Thermodynamics-in-Materials-Science/DeHoff/p/book/9780849340659"
       ]
     }
   }

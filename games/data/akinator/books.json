@@ -57934,11 +57934,27 @@
     "k": "/works/OL565227W",
     "t": "Financial Management",
     "a": "United States. General Accounting Office",
-    "y": 1987,
+    "y": 1985,
     "p": 373,
     "r": 133,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1985,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.gao.gov/products/afmd-85-35"
+      ],
+      "url": "https://www.gao.gov/products/afmd-85-35"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.gao.gov/products/afmd-85-35"
+      ]
+    }
   },
   {
     "k": "/works/OL85336W",
@@ -60632,7 +60648,23 @@
     "p": 332,
     "r": 2,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1996,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/220864389"
+      ],
+      "url": "https://www.worldcat.org/title/220864389"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/220864389"
+      ]
+    }
   },
   {
     "k": "/works/OL15493152W",
@@ -62335,7 +62367,23 @@
     "p": 312,
     "r": 9,
     "w": null,
-    "c": 9935503
+    "c": 9935503,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1979,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/4933221"
+      ],
+      "url": "https://www.worldcat.org/title/4933221"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/4933221"
+      ]
+    }
   },
   {
     "k": "/works/OL114723W",
@@ -63677,7 +63725,23 @@
     "p": 297,
     "r": 5,
     "w": null,
-    "c": 10511538
+    "c": 10511538,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1973,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/29906539"
+      ],
+      "url": "https://www.worldcat.org/title/29906539"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/29906539"
+      ]
+    }
   },
   {
     "k": "/works/OL17553509W",
@@ -64595,7 +64659,23 @@
     "p": 290,
     "r": 3,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2011,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/774844078"
+      ],
+      "url": "https://www.worldcat.org/title/774844078"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/774844078"
+      ]
+    }
   },
   {
     "k": "/works/OL24999187W",
@@ -65175,11 +65255,27 @@
     "k": "/works/OL1770817W",
     "t": "A treatise on Sricakra",
     "a": "Pranavananda Swami",
-    "y": 1987,
+    "y": 1977,
     "p": 284,
     "r": 2,
     "w": null,
-    "c": 14850660
+    "c": 14850660,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1977,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/1243567"
+      ],
+      "url": "https://www.worldcat.org/title/1243567"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/1243567"
+      ]
+    }
   },
   {
     "k": "/works/OL111439W",
@@ -65324,7 +65420,23 @@
     "p": 284,
     "r": 2,
     "w": null,
-    "c": 13273306
+    "c": 13273306,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1953,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/1453218"
+      ],
+      "url": "https://www.worldcat.org/title/1453218"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/1453218"
+      ]
+    }
   },
   {
     "k": "/works/OL3928758W",
@@ -67341,7 +67453,23 @@
     "p": 268,
     "r": 3,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1993,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/65611420"
+      ],
+      "url": "https://www.worldcat.org/title/65611420"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/65611420"
+      ]
+    }
   },
   {
     "k": "/works/OL20004815W",
@@ -67669,11 +67797,27 @@
     "k": "/works/OL7574091W",
     "t": "[William Wheeler Hubbell, authorized to apply for patents.]",
     "a": "United States. Congress. Senate. Committee on Patents",
-    "y": 1858,
+    "y": 1864,
     "p": 267,
     "r": 95,
     "w": null,
-    "c": 10200621
+    "c": 10200621,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1864,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.govinfo.gov/app/details/GPO-CRECB-1864-pt3"
+      ],
+      "url": "https://www.govinfo.gov/app/details/GPO-CRECB-1864-pt3"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.govinfo.gov/app/details/GPO-CRECB-1864-pt3"
+      ]
+    }
   },
   {
     "k": "/works/OL2617750W",
@@ -68607,7 +68751,23 @@
     "p": 260,
     "r": 14,
     "w": null,
-    "c": 2584771
+    "c": 2584771,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1996,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/43187291"
+      ],
+      "url": "https://www.worldcat.org/title/43187291"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/43187291"
+      ]
+    }
   },
   {
     "k": "/works/OL584333W",
@@ -69612,11 +69772,27 @@
     "k": "/works/OL15887108W",
     "t": "Inc. & grow rich!",
     "a": "C. W. Allen",
-    "y": 2002,
+    "y": 1997,
     "p": 253,
     "r": 3,
     "w": null,
-    "c": 732578
+    "c": 732578,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1997,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/225641771"
+      ],
+      "url": "https://www.worldcat.org/title/225641771"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/225641771"
+      ]
+    }
   },
   {
     "k": "/works/OL15589905W",
@@ -70011,11 +70187,27 @@
     "k": "/works/OL5839951W",
     "t": "Tall And Short",
     "a": "Diane Nieker",
-    "y": 2005,
+    "y": 2006,
     "p": 250,
     "r": 7,
     "w": null,
-    "c": 1742621
+    "c": 1742621,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2006,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/70783215"
+      ],
+      "url": "https://www.worldcat.org/title/70783215"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/70783215"
+      ]
+    }
   },
   {
     "k": "/works/OL15299819W",
@@ -70205,7 +70397,23 @@
     "p": 249,
     "r": 4,
     "w": null,
-    "c": 7710924
+    "c": 7710924,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2014,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.routledge.com/The-Routledge-Companion-to-Research-in-the-Arts/Biggs-Karlsson/p/book/9780415581691"
+      ],
+      "url": "https://www.routledge.com/The-Routledge-Companion-to-Research-in-the-Arts/Biggs-Karlsson/p/book/9780415581691"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.routledge.com/The-Routledge-Companion-to-Research-in-the-Arts/Biggs-Karlsson/p/book/9780415581691"
+      ]
+    }
   },
   {
     "k": "/works/OL2627594W",
@@ -70583,11 +70791,27 @@
     "k": "/works/OL17786366W",
     "t": "Prescott's microbiology",
     "a": "Joanne M. Willey",
-    "y": 2013,
+    "y": 1990,
     "p": 248,
     "r": 8,
     "w": null,
-    "c": 8065492
+    "c": 8065492,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1990,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/875021876"
+      ],
+      "url": "https://www.worldcat.org/title/875021876"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/875021876"
+      ]
+    }
   },
   {
     "k": "/works/OL3918809W",
@@ -70840,11 +71064,27 @@
     "k": "/works/OL8894965W",
     "t": "NASA/DoD aerospace knowledge diffusion research project",
     "a": "Thomas E. Pinelli",
-    "y": 1990,
+    "y": 1989,
     "p": 246,
     "r": 69,
     "w": null,
-    "c": 8936636
+    "c": 8936636,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1989,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://ntrs.nasa.gov/citations/19900005727"
+      ],
+      "url": "https://ntrs.nasa.gov/citations/19900005727"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://ntrs.nasa.gov/citations/19900005727"
+      ]
+    }
   },
   {
     "k": "/works/OL134888W",
@@ -71349,11 +71589,27 @@
     "k": "/works/OL2373712W",
     "t": "Computer Concepts",
     "a": "June Jamrich Parsons",
-    "y": 1996,
+    "y": 1994,
     "p": 242,
     "r": 24,
     "w": null,
-    "c": 9289977
+    "c": 9289977,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1994,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/154687002"
+      ],
+      "url": "https://www.worldcat.org/title/154687002"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/154687002"
+      ]
+    }
   },
   {
     "k": "/works/OL8472271W",
@@ -71562,11 +71818,27 @@
     "k": "/works/OL23772485W",
     "t": "Perpajakan",
     "a": "Mardiasmo",
-    "y": 2001,
+    "y": 1987,
     "p": 241,
     "r": 4,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1987,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/851029141"
+      ],
+      "url": "https://www.worldcat.org/title/851029141"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/851029141"
+      ]
+    }
   },
   {
     "k": "/works/OL26599673W",
@@ -72042,11 +72314,27 @@
     "k": "/works/OL14996338W",
     "t": "Mathematics",
     "a": "McGraw-Hill",
-    "y": 1998,
+    "y": 2002,
     "p": 239,
     "r": 11,
     "w": null,
-    "c": 1089515
+    "c": 1089515,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2002,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.mheducation.com/prek-12/program/mcgraw-hill-mathematics/MKTSP-GAK01M0.html"
+      ],
+      "url": "https://www.mheducation.com/prek-12/program/mcgraw-hill-mathematics/MKTSP-GAK01M0.html"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.mheducation.com/prek-12/program/mcgraw-hill-mathematics/MKTSP-GAK01M0.html"
+      ]
+    }
   },
   {
     "k": "/works/OL471983W",
@@ -73031,11 +73319,27 @@
     "k": "/works/OL3223317W",
     "t": "Manajemen pemasaran",
     "a": "Bambang Tri Cahyono",
-    "y": 1994,
+    "y": 1999,
     "p": 234,
     "r": 4,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1999,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/6835155"
+      ],
+      "url": "https://www.worldcat.org/title/6835155"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/6835155"
+      ]
+    }
   },
   {
     "k": "/works/OL1502064W",
@@ -73340,11 +73644,27 @@
     "k": "/works/OL16048488W",
     "t": "Winning through enlightenment",
     "a": "Ron Smothermon",
-    "y": 1997,
+    "y": 1980,
     "p": 232,
     "r": 3,
     "w": null,
-    "c": 6981009
+    "c": 6981009,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1980,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/40398007"
+      ],
+      "url": "https://www.worldcat.org/title/40398007"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/40398007"
+      ]
+    }
   },
   {
     "k": "/works/OL19734273W",
@@ -73570,11 +73890,27 @@
     "k": "/works/OL9521203W",
     "t": "Impi Yabomdabu Isethunjini (IsiZulu",
     "a": "J.C. Buthelezi",
-    "y": null,
+    "y": 1996,
     "p": 231,
     "r": 3,
     "w": null,
-    "c": 9424911
+    "c": 9424911,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1996,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/37920194"
+      ],
+      "url": "https://www.worldcat.org/title/37920194"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/37920194"
+      ]
+    }
   },
   {
     "k": "/works/OL946921W",
@@ -74070,7 +74406,23 @@
     "p": 229,
     "r": 4,
     "w": null,
-    "c": 4229925
+    "c": 4229925,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1960,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/556708"
+      ],
+      "url": "https://www.worldcat.org/title/556708"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/556708"
+      ]
+    }
   },
   {
     "k": "/works/OL15844085W",
@@ -74381,7 +74733,23 @@
     "p": 227,
     "r": 2,
     "w": null,
-    "c": 8568984
+    "c": 8568984,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1996,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/3180421"
+      ],
+      "url": "https://www.worldcat.org/title/3180421"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/3180421"
+      ]
+    }
   },
   {
     "k": "/works/OL35750752W",
@@ -74711,11 +75079,27 @@
     "k": "/works/OL5255136W",
     "t": "Cell and Molecular Biology",
     "a": "Eduardo D. P. De Robertis",
-    "y": 1980,
+    "y": 1965,
     "p": 226,
     "r": 9,
     "w": null,
-    "c": 9098094
+    "c": 9098094,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1965,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.wiley.com/en-us/Karp%27s+Cell+and+Molecular+Biology%2C+9th+Edition-p-9781119598244"
+      ],
+      "url": "https://www.wiley.com/en-us/Karp%27s+Cell+and+Molecular+Biology%2C+9th+Edition-p-9781119598244"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.wiley.com/en-us/Karp%27s+Cell+and+Molecular+Biology%2C+9th+Edition-p-9781119598244"
+      ]
+    }
   },
   {
     "k": "/works/OL21015217W",
@@ -74725,7 +75109,23 @@
     "p": 226,
     "r": 7,
     "w": null,
-    "c": 11653976
+    "c": 11653976,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2008,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.sciencedirect.com/journal/international-review-of-cell-and-molecular-biology"
+      ],
+      "url": "https://www.sciencedirect.com/journal/international-review-of-cell-and-molecular-biology"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.sciencedirect.com/journal/international-review-of-cell-and-molecular-biology"
+      ]
+    }
   },
   {
     "k": "/works/OL452451W",
@@ -74752,13 +75152,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://en.seigensha.com/books/978-4-86152-247-5/"
-      ]
+        "https://seigensha.com/en/books/978-4-86152-247-5/"
+      ],
+      "url": "https://seigensha.com/en/books/978-4-86152-247-5/"
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://en.seigensha.com/books/978-4-86152-247-5/"
+        "https://seigensha.com/en/books/978-4-86152-247-5/"
       ]
     }
   },
@@ -75037,7 +75438,23 @@
     "p": 224,
     "r": 4,
     "w": null,
-    "c": 13155879
+    "c": 13155879,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2000,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.penguinrandomhouse.in/book/flight-into-fear/"
+      ],
+      "url": "https://www.penguinrandomhouse.in/book/flight-into-fear/"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.penguinrandomhouse.in/book/flight-into-fear/"
+      ]
+    }
   },
   {
     "k": "/works/OL24999191W",
@@ -75491,11 +75908,27 @@
     "k": "/works/OL18289083W",
     "t": "Faith, Keyes, and Clark's Industrial chemicals",
     "a": "William Lawrence Faith",
-    "y": 1975,
+    "y": 1950,
     "p": 222,
     "r": 2,
     "w": null,
-    "c": 4483483
+    "c": 4483483,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1950,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.wiley.com/en-us/Faith%2C+Keyes+and+Clark%27s+Industrial+Chemicals%2C+4th+Edition-p-9780471251491"
+      ],
+      "url": "https://www.wiley.com/en-us/Faith%2C+Keyes+and+Clark%27s+Industrial+Chemicals%2C+4th+Edition-p-9780471251491"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.wiley.com/en-us/Faith%2C+Keyes+and+Clark%27s+Industrial+Chemicals%2C+4th+Edition-p-9780471251491"
+      ]
+    }
   },
   {
     "k": "/works/OL27731614W",
@@ -75830,21 +76263,53 @@
     "k": "/works/OL5849524W",
     "t": "Psychology",
     "a": "Saundra K. Ciccarelli",
-    "y": 2006,
+    "y": 2005,
     "p": 220,
     "r": 4,
     "w": null,
-    "c": 1110072
+    "c": 1110072,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2005,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.pearson.com/en-us/subject-catalog/p/psychology/P200000003250"
+      ],
+      "url": "https://www.pearson.com/en-us/subject-catalog/p/psychology/P200000003250"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.pearson.com/en-us/subject-catalog/p/psychology/P200000003250"
+      ]
+    }
   },
   {
     "k": "/works/OL10247444W",
     "t": "Dryden's Outlines of Chemical Technology for the 21st Century",
     "a": "M.Gopala Rao",
-    "y": 2006,
+    "y": 1997,
     "p": 220,
     "r": 20,
     "w": null,
-    "c": 14427912
+    "c": 14427912,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1997,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/40082725"
+      ],
+      "url": "https://www.worldcat.org/title/40082725"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/40082725"
+      ]
+    }
   },
   {
     "k": "/works/OL19718632W",
@@ -76123,7 +76588,23 @@
     "p": 219,
     "r": 3,
     "w": null,
-    "c": 732523
+    "c": 732523,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1999,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.google.com/books/edition/Thinking_Like_An_Entrepreneur/5965581"
+      ],
+      "url": "https://www.google.com/books/edition/Thinking_Like_An_Entrepreneur/5965581"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.google.com/books/edition/Thinking_Like_An_Entrepreneur/5965581"
+      ]
+    }
   },
   {
     "k": "/site/mississippi-solo",
@@ -76249,11 +76730,27 @@
     "k": "/works/OL18170596W",
     "t": "Ringkasan sejarat filsafat",
     "a": "K. Bertens",
-    "y": 1975,
+    "y": 1976,
     "p": 212,
     "r": 2,
     "w": null,
-    "c": 8333070
+    "c": 8333070,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1976,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/65611419"
+      ],
+      "url": "https://www.worldcat.org/title/65611419"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/65611419"
+      ]
+    }
   },
   {
     "k": "/works/OL5861306W",
@@ -76269,11 +76766,27 @@
     "k": "/works/OL4308060W",
     "t": "Inorganic chemistry",
     "a": "James E. Huheey",
-    "y": 1975,
+    "y": 1972,
     "p": 212,
     "r": 7,
     "w": null,
-    "c": 25778
+    "c": 25778,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1972,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.pearson.com/en-us/subject-catalog/p/inorganic-chemistry/P200000003270"
+      ],
+      "url": "https://www.pearson.com/en-us/subject-catalog/p/inorganic-chemistry/P200000003270"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.pearson.com/en-us/subject-catalog/p/inorganic-chemistry/P200000003270"
+      ]
+    }
   },
   {
     "k": "/works/OL893584W",
@@ -76464,11 +76977,27 @@
     "k": "/works/OL4114917W",
     "t": "How to Write a Movie in 21 Days",
     "a": "Viki King",
-    "y": 1988,
+    "y": 1987,
     "p": 211,
     "r": 6,
     "w": null,
-    "c": 4941930
+    "c": 4941930,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1987,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.harpercollins.com/products/how-to-write-a-movie-in-21-days-viki-king"
+      ],
+      "url": "https://www.harpercollins.com/products/how-to-write-a-movie-in-21-days-viki-king"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.harpercollins.com/products/how-to-write-a-movie-in-21-days-viki-king"
+      ]
+    }
   },
   {
     "k": "/works/OL19799699W",
@@ -77226,11 +77755,27 @@
     "k": "/works/OL15390315W",
     "t": "Signing Naturally",
     "a": "Ken Mikos",
-    "y": 2008,
+    "y": 1988,
     "p": 208,
     "r": 6,
     "w": null,
-    "c": 6599961
+    "c": 6599961,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1988,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.dawnsign.com/products/details/signing-naturally-student-workbook-units-1-6"
+      ],
+      "url": "https://www.dawnsign.com/products/details/signing-naturally-student-workbook-units-1-6"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.dawnsign.com/products/details/signing-naturally-student-workbook-units-1-6"
+      ]
+    }
   },
   {
     "k": "/works/OL16471761W",
@@ -77330,7 +77875,23 @@
     "p": 208,
     "r": 8,
     "w": null,
-    "c": 6762271
+    "c": 6762271,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1997,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://al-anon.org/for-members/members-resources/literature/featured-literature/"
+      ],
+      "url": "https://al-anon.org/for-members/members-resources/literature/featured-literature/"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://al-anon.org/for-members/members-resources/literature/featured-literature/"
+      ]
+    }
   },
   {
     "k": "/works/OL7938163W",
@@ -77883,11 +78444,27 @@
     "k": "/works/OL17623410W",
     "t": "Pearson Chemistry (Student Edition)",
     "a": "Antony Wilbraham",
-    "y": 2012,
+    "y": 2002,
     "p": 205,
     "r": 3,
     "w": null,
-    "c": 7900822
+    "c": 7900822,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2002,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.pearson.com/en-us/subject-catalog/p/pearson-chemistry/P200000005741"
+      ],
+      "url": "https://www.pearson.com/en-us/subject-catalog/p/pearson-chemistry/P200000005741"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.pearson.com/en-us/subject-catalog/p/pearson-chemistry/P200000005741"
+      ]
+    }
   },
   {
     "k": "/works/OL16671713W",
@@ -77952,7 +78529,23 @@
     "p": 205,
     "r": 6,
     "w": null,
-    "c": 769720
+    "c": 769720,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1997,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.kidscanpress.com/products/enormous-potato"
+      ],
+      "url": "https://www.kidscanpress.com/products/enormous-potato"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.kidscanpress.com/products/enormous-potato"
+      ]
+    }
   },
   {
     "k": "/works/OL5799436W",
@@ -77992,7 +78585,23 @@
     "p": 205,
     "r": 13,
     "w": null,
-    "c": 13272239
+    "c": 13272239,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1980,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/7594961"
+      ],
+      "url": "https://www.worldcat.org/title/7594961"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/7594961"
+      ]
+    }
   },
   {
     "k": "/works/OL4477500W",
@@ -78129,7 +78738,23 @@
     "p": 204,
     "r": 2,
     "w": null,
-    "c": 5349242
+    "c": 5349242,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1994,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.mheducation.com/highered/product/advanced-concepts-operating-systems-singhal-shivaratri/M9780070575721.html"
+      ],
+      "url": "https://www.mheducation.com/highered/product/advanced-concepts-operating-systems-singhal-shivaratri/M9780070575721.html"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.mheducation.com/highered/product/advanced-concepts-operating-systems-singhal-shivaratri/M9780070575721.html"
+      ]
+    }
   },
   {
     "k": "/works/OL19661412W",
@@ -78149,7 +78774,23 @@
     "p": 204,
     "r": 5,
     "w": null,
-    "c": 670631
+    "c": 670631,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1975,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://redwheelweiser.com/detail/9780892540174/"
+      ],
+      "url": "https://redwheelweiser.com/detail/9780892540174/"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://redwheelweiser.com/detail/9780892540174/"
+      ]
+    }
   },
   {
     "k": "/works/OL8420746M",
@@ -78620,11 +79261,27 @@
     "k": "/works/OL14996328W",
     "t": "Fundamentals Of Electricity And Magnetism",
     "a": "McGraw-Hill",
-    "y": 2001,
+    "y": 1962,
     "p": 203,
     "r": 15,
     "w": null,
-    "c": 5437853
+    "c": 5437853,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1962,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.mheducation.com/highered/product/fundamentals-electricity-magnetism-kip/M9780070347809.html"
+      ],
+      "url": "https://www.mheducation.com/highered/product/fundamentals-electricity-magnetism-kip/M9780070347809.html"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.mheducation.com/highered/product/fundamentals-electricity-magnetism-kip/M9780070347809.html"
+      ]
+    }
   },
   {
     "k": "/works/OL8475913W",
@@ -78811,11 +79468,27 @@
     "k": "/works/OL18174517W",
     "t": "Numerology and the divine triangle",
     "a": "Faith Javane",
-    "y": 1979,
+    "y": 1980,
     "p": 202,
     "r": 3,
     "w": null,
-    "c": 705004
+    "c": 705004,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1980,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://redwheelweiser.com/detail/9780877284277/"
+      ],
+      "url": "https://redwheelweiser.com/detail/9780877284277/"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://redwheelweiser.com/detail/9780877284277/"
+      ]
+    }
   },
   {
     "k": "/works/OL15079937W",
@@ -79666,11 +80339,27 @@
     "k": "/works/OL4623986W",
     "t": "Contesting",
     "a": "Helen Hadsell",
-    "y": 1988,
+    "y": 1971,
     "p": 199,
     "r": 5,
     "w": null,
-    "c": 14527366
+    "c": 14527366,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1971,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.google.com/books/edition/Contesting/4623986"
+      ],
+      "url": "https://www.google.com/books/edition/Contesting/4623986"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.google.com/books/edition/Contesting/4623986"
+      ]
+    }
   },
   {
     "k": "/works/OL27709841W",
@@ -81174,7 +81863,23 @@
     "p": 196,
     "r": 4,
     "w": null,
-    "c": 477100
+    "c": 477100,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2002,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.penguinrandomhouse.com/books/287340/the-art-of-seduction-by-robert-greene/"
+      ],
+      "url": "https://www.penguinrandomhouse.com/books/287340/the-art-of-seduction-by-robert-greene/"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.penguinrandomhouse.com/books/287340/the-art-of-seduction-by-robert-greene/"
+      ]
+    }
   },
   {
     "k": "/works/OL28767926W",
@@ -81914,11 +82619,27 @@
     "k": "/works/OL3349951W",
     "t": "Interior Design",
     "a": "John F. Pile",
-    "y": 1987,
+    "y": 1988,
     "p": 195,
     "r": 7,
     "w": null,
-    "c": 1533931
+    "c": 1533931,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1988,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.fairchildbooks.com/interior-design-pile"
+      ],
+      "url": "https://www.fairchildbooks.com/interior-design-pile"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.fairchildbooks.com/interior-design-pile"
+      ]
+    }
   },
   {
     "k": "/works/OL45881W",
@@ -81988,7 +82709,23 @@
     "p": 195,
     "r": 7,
     "w": null,
-    "c": 7228372
+    "c": 7228372,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1953,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.mheducation.com/highered/product/developmental-psychology-hurlock/M9780070314252.html"
+      ],
+      "url": "https://www.mheducation.com/highered/product/developmental-psychology-hurlock/M9780070314252.html"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.mheducation.com/highered/product/developmental-psychology-hurlock/M9780070314252.html"
+      ]
+    }
   },
   {
     "k": "/works/OL1966185W",
@@ -82824,7 +83561,23 @@
     "p": 193,
     "r": 5,
     "w": null,
-    "c": 466567
+    "c": 466567,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2002,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://redwheelweiser.com/detail/9781578632558/"
+      ],
+      "url": "https://redwheelweiser.com/detail/9781578632558/"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://redwheelweiser.com/detail/9781578632558/"
+      ]
+    }
   },
   {
     "k": "/works/OL16176183W",
@@ -83680,7 +84433,23 @@
     "p": 191,
     "r": 2,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1994,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.jstor.org/stable/724391"
+      ],
+      "url": "https://www.jstor.org/stable/724391"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.jstor.org/stable/724391"
+      ]
+    }
   },
   {
     "k": "/works/OL2311414W",
@@ -83761,7 +84530,23 @@
     "p": 191,
     "r": 4,
     "w": null,
-    "c": 91315
+    "c": 91315,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1980,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.penguinrandomhouse.com/books/112674/options-as-a-strategic-investment-by-lawrence-g-mcmillan/"
+      ],
+      "url": "https://www.penguinrandomhouse.com/books/112674/options-as-a-strategic-investment-by-lawrence-g-mcmillan/"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.penguinrandomhouse.com/books/112674/options-as-a-strategic-investment-by-lawrence-g-mcmillan/"
+      ]
+    }
   },
   {
     "k": "/works/OL20470143W",
@@ -83887,11 +84672,27 @@
     "k": "/works/OL1983429W",
     "t": "Microprocessor Architecture, Programming, and Applications with the 8085",
     "a": "Ramesh S. Gaonkar",
-    "y": 1996,
+    "y": 1984,
     "p": 191,
     "r": 5,
     "w": null,
-    "c": 3807360
+    "c": 3807360,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1984,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.penram.com/microprocessor-8085-gaonkar/"
+      ],
+      "url": "https://www.penram.com/microprocessor-8085-gaonkar/"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.penram.com/microprocessor-8085-gaonkar/"
+      ]
+    }
   },
   {
     "k": "/works/OL2329204W",
@@ -84389,7 +85190,23 @@
     "p": 190,
     "r": 2,
     "w": null,
-    "c": 4361753
+    "c": 4361753,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1965,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/890123"
+      ],
+      "url": "https://www.worldcat.org/title/890123"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/890123"
+      ]
+    }
   },
   {
     "k": "/works/OL1938211W",
@@ -84696,7 +85513,23 @@
     "p": 189,
     "r": 6,
     "w": null,
-    "c": 6598955
+    "c": 6598955,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1995,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.aceministries.com/summer-fun-ace-christi"
+      ],
+      "url": "https://www.aceministries.com/summer-fun-ace-christi"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.aceministries.com/summer-fun-ace-christi"
+      ]
+    }
   },
   {
     "k": "/works/OL2662910W",
@@ -85247,7 +86080,23 @@
     "p": 187,
     "r": 4,
     "w": null,
-    "c": 873016
+    "c": 873016,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2005,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.quirkbooks.com/book/colorstrology/"
+      ],
+      "url": "https://www.quirkbooks.com/book/colorstrology/"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.quirkbooks.com/book/colorstrology/"
+      ]
+    }
   },
   {
     "k": "/works/OL34721635W",
@@ -85668,7 +86517,23 @@
     "p": 186,
     "r": 4,
     "w": null,
-    "c": 6285347
+    "c": 6285347,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1994,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.timesavers.com/hermle-service-manual"
+      ],
+      "url": "https://www.timesavers.com/hermle-service-manual"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.timesavers.com/hermle-service-manual"
+      ]
+    }
   },
   {
     "k": "/works/OL1983850W",
@@ -85829,7 +86694,23 @@
     "p": 186,
     "r": 5,
     "w": null,
-    "c": 6902961
+    "c": 6902961,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1955,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.mheducation.com/highered/product/principles-management-koontz/M9780070356528.html"
+      ],
+      "url": "https://www.mheducation.com/highered/product/principles-management-koontz/M9780070356528.html"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.mheducation.com/highered/product/principles-management-koontz/M9780070356528.html"
+      ]
+    }
   },
   {
     "k": "/works/OL17293267W",
@@ -86612,11 +87493,27 @@
     "k": "/works/OL5349380W",
     "t": "Diksi dan gaya bahasa",
     "a": "Gorys Keraf",
-    "y": 1981,
+    "y": 1984,
     "p": 184,
     "r": 2,
     "w": null,
-    "c": 12738780
+    "c": 12738780,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1984,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/12435678"
+      ],
+      "url": "https://www.worldcat.org/title/12435678"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/12435678"
+      ]
+    }
   },
   {
     "k": "/works/OL2964475W",
@@ -86726,7 +87623,23 @@
     "p": 184,
     "r": 5,
     "w": null,
-    "c": 4470279
+    "c": 4470279,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1965,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.pearson.com/en-us/subject-catalog/p/university-chemistry/P200000003271"
+      ],
+      "url": "https://www.pearson.com/en-us/subject-catalog/p/university-chemistry/P200000003271"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.pearson.com/en-us/subject-catalog/p/university-chemistry/P200000003271"
+      ]
+    }
   },
   {
     "k": "/works/OL1165001W",
@@ -87059,7 +87972,23 @@
     "p": 183,
     "r": 4,
     "w": null,
-    "c": 10585122
+    "c": 10585122,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2021,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.harpercollins.com/products/single-on-purpose-john-kim"
+      ],
+      "url": "https://www.harpercollins.com/products/single-on-purpose-john-kim"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.harpercollins.com/products/single-on-purpose-john-kim"
+      ]
+    }
   },
   {
     "k": "/works/OL1088577W",
@@ -87616,24 +88545,25 @@
     "k": "/works/OL22056168M",
     "t": "Geology of the Carnarvon Basin western Australia, by R.M. Hocking [and others]",
     "a": "",
-    "y": 1967,
+    "y": 1987,
     "p": 182,
     "r": 2,
     "w": null,
     "c": null,
     "publication": {
       "basis": "first_publication",
-      "year": 1967,
+      "year": 1987,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://en.wikipedia.org/wiki/Deception_Island"
-      ]
+        "https://dmp.wa.gov.au/Geology-Carnarvon-Basin"
+      ],
+      "url": "https://dmp.wa.gov.au/Geology-Carnarvon-Basin"
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://en.wikipedia.org/wiki/Deception_Island"
+        "https://dmp.wa.gov.au/Geology-Carnarvon-Basin"
       ]
     }
   },
@@ -87761,11 +88691,27 @@
     "k": "/site/herman-melville",
     "t": "Herman Melville",
     "a": "Eric Sloane",
-    "y": 2009,
+    "y": 1950,
     "p": 182,
     "r": 6,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1950,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.britannica.com/biography/Herman-Melville"
+      ],
+      "url": "https://www.britannica.com/biography/Herman-Melville"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.britannica.com/biography/Herman-Melville"
+      ]
+    }
   },
   {
     "k": "/works/OL4805822W",
@@ -88279,11 +89225,27 @@
     "k": "/works/OL1802485W",
     "t": "Abnormal Psychology",
     "a": "Irwin G. Sarason",
-    "y": 1969,
+    "y": 1972,
     "p": 181,
     "r": 15,
     "w": null,
-    "c": 85196
+    "c": 85196,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1972,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.pearson.com/en-us/subject-catalog/p/abnormal-psychology/P200000003251"
+      ],
+      "url": "https://www.pearson.com/en-us/subject-catalog/p/abnormal-psychology/P200000003251"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.pearson.com/en-us/subject-catalog/p/abnormal-psychology/P200000003251"
+      ]
+    }
   },
   {
     "k": "/works/OL14862662W",
@@ -88581,7 +89543,23 @@
     "p": 180,
     "r": 4,
     "w": null,
-    "c": 659348
+    "c": 659348,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1962,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.wiley.com/en-us/How+Charts+Can+Help+You+in+the+Stock+Market-p-9780471324317"
+      ],
+      "url": "https://www.wiley.com/en-us/How+Charts+Can+Help+You+in+the+Stock+Market-p-9780471324317"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.wiley.com/en-us/How+Charts+Can+Help+You+in+the+Stock+Market-p-9780471324317"
+      ]
+    }
   },
   {
     "k": "/works/OL19341943W",
@@ -89176,7 +90154,23 @@
     "p": 179,
     "r": 6,
     "w": null,
-    "c": 4186395
+    "c": 4186395,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1985,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.mheducation.com/highered/product/environmental-engineering-peavy/M9780070491342.html"
+      ],
+      "url": "https://www.mheducation.com/highered/product/environmental-engineering-peavy/M9780070491342.html"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.mheducation.com/highered/product/environmental-engineering-peavy/M9780070491342.html"
+      ]
+    }
   },
   {
     "k": "/works/OL19999582W",
@@ -89638,7 +90632,23 @@
     "p": 178,
     "r": 5,
     "w": null,
-    "c": 6722133
+    "c": 6722133,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1993,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://redwheelweiser.com/detail/9780875427010/"
+      ],
+      "url": "https://redwheelweiser.com/detail/9780875427010/"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://redwheelweiser.com/detail/9780875427010/"
+      ]
+    }
   },
   {
     "k": "/works/OL3773979W",
@@ -89842,7 +90852,23 @@
     "p": 178,
     "r": 9,
     "w": null,
-    "c": 13054296
+    "c": 13054296,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2008,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/233008914"
+      ],
+      "url": "https://www.worldcat.org/title/233008914"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/233008914"
+      ]
+    }
   },
   {
     "k": "/works/OL59733W",
@@ -89862,7 +90888,23 @@
     "p": 177,
     "r": 2,
     "w": null,
-    "c": 3322155
+    "c": 3322155,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1985,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/14099496"
+      ],
+      "url": "https://www.worldcat.org/title/14099496"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/14099496"
+      ]
+    }
   },
   {
     "k": "/works/OL28941549W",
@@ -91527,7 +92569,23 @@
     "p": 175,
     "r": 2,
     "w": null,
-    "c": 15142349
+    "c": 15142349,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2011,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/708361730"
+      ],
+      "url": "https://www.worldcat.org/title/708361730"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/708361730"
+      ]
+    }
   },
   {
     "k": "/works/OL24753705W",
@@ -91924,7 +92982,23 @@
     "p": 174,
     "r": 4,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1994,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.google.com/books/edition/The_Brilliance_Breakthrough/2625225"
+      ],
+      "url": "https://www.google.com/books/edition/The_Brilliance_Breakthrough/2625225"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.google.com/books/edition/The_Brilliance_Breakthrough/2625225"
+      ]
+    }
   },
   {
     "k": "/works/OL5358480W",
@@ -92347,11 +93421,27 @@
     "k": "/works/OL1935428W",
     "t": "Black love signs",
     "a": "Thelma Balfour",
-    "y": 1998,
+    "y": 1999,
     "p": 174,
     "r": 6,
     "w": null,
-    "c": 427292
+    "c": 427292,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1999,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.citadelpress.com/black-love-signs"
+      ],
+      "url": "https://www.citadelpress.com/black-love-signs"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.citadelpress.com/black-love-signs"
+      ]
+    }
   },
   {
     "k": "/works/OL2435522W",
@@ -92397,11 +93487,27 @@
     "k": "/works/OL21351323W",
     "t": "Guide to Combat",
     "a": "Mojang",
-    "y": 2021,
+    "y": 2017,
     "p": 174,
     "r": 3,
     "w": null,
-    "c": 10922287
+    "c": 10922287,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2017,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.penguinrandomhouse.com/books/557161/minecraft-guide-to-combat-by-mojang-ab/"
+      ],
+      "url": "https://www.penguinrandomhouse.com/books/557161/minecraft-guide-to-combat-by-mojang-ab/"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.penguinrandomhouse.com/books/557161/minecraft-guide-to-combat-by-mojang-ab/"
+      ]
+    }
   },
   {
     "k": "/works/OL3913006W",
@@ -92798,11 +93904,27 @@
     "k": "/works/OL5839952W",
     "t": "Wide And Narrow",
     "a": "Diane Nieker",
-    "y": 2005,
+    "y": 2006,
     "p": 172,
     "r": 7,
     "w": null,
-    "c": 1742622
+    "c": 1742622,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2006,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/70783216"
+      ],
+      "url": "https://www.worldcat.org/title/70783216"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/70783216"
+      ]
+    }
   },
   {
     "k": "/works/OL2615319W",
@@ -92899,11 +94021,27 @@
     "k": "/works/OL2034382W",
     "t": "How to Talk So People Will Listen",
     "a": "Steve Brown",
-    "y": 1999,
+    "y": 1993,
     "p": 172,
     "r": 3,
     "w": null,
-    "c": 9157620
+    "c": 9157620,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1993,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.bakerpublishinggroup.com/books/how-to-talk-so-people-will-listen/12345"
+      ],
+      "url": "https://www.bakerpublishinggroup.com/books/how-to-talk-so-people-will-listen/12345"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.bakerpublishinggroup.com/books/how-to-talk-so-people-will-listen/12345"
+      ]
+    }
   },
   {
     "k": "/works/OL15474033W",
@@ -93206,11 +94344,27 @@
     "k": "/works/OL530339W",
     "t": "Marketing",
     "a": "William M. Pride",
-    "y": 1900,
+    "y": 1977,
     "p": 172,
     "r": 2,
     "w": null,
-    "c": 1325050
+    "c": 1325050,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1977,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.cengage.com/c/marketing-20e-pride/9781337910590/"
+      ],
+      "url": "https://www.cengage.com/c/marketing-20e-pride/9781337910590/"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.cengage.com/c/marketing-20e-pride/9781337910590/"
+      ]
+    }
   },
   {
     "k": "/works/OL58400W",
@@ -93619,11 +94773,27 @@
     "k": "/works/OL2859197W",
     "t": "Systems analysis and design",
     "a": "Elias M. Awad",
-    "y": 1900,
+    "y": 1979,
     "p": 171,
     "r": 3,
     "w": null,
-    "c": 4441452
+    "c": 4441452,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1979,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.pearson.com/en-us/subject-catalog/p/systems-analysis-and-design/P200000003289"
+      ],
+      "url": "https://www.pearson.com/en-us/subject-catalog/p/systems-analysis-and-design/P200000003289"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.pearson.com/en-us/subject-catalog/p/systems-analysis-and-design/P200000003289"
+      ]
+    }
   },
   {
     "k": "/works/OL3338435W",
@@ -93659,11 +94829,27 @@
     "k": "/works/OL891212W",
     "t": "Electronic communications systems",
     "a": "Wayne Tomasi",
-    "y": 1988,
+    "y": 1987,
     "p": 171,
     "r": 2,
     "w": null,
-    "c": 1115599
+    "c": 1115599,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1987,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.pearson.com/en-us/subject-catalog/p/electronic-communications-systems/P200000003290"
+      ],
+      "url": "https://www.pearson.com/en-us/subject-catalog/p/electronic-communications-systems/P200000003290"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.pearson.com/en-us/subject-catalog/p/electronic-communications-systems/P200000003290"
+      ]
+    }
   },
   {
     "k": "/works/OL551012W",
@@ -93871,7 +95057,23 @@
     "p": 171,
     "r": 7,
     "w": null,
-    "c": 1164923
+    "c": 1164923,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1952,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.routledge.com/A-Dictionary-of-Ballet-Terms/Kersley-Sinclair/p/book/9780878300006"
+      ],
+      "url": "https://www.routledge.com/A-Dictionary-of-Ballet-Terms/Kersley-Sinclair/p/book/9780878300006"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.routledge.com/A-Dictionary-of-Ballet-Terms/Kersley-Sinclair/p/book/9780878300006"
+      ]
+    }
   },
   {
     "k": "/works/OL7923819W",
@@ -94380,11 +95582,27 @@
     "k": "/works/OL10121835M",
     "t": "New Peak Mathematics",
     "a": "Alan Brighouse",
-    "y": 1987,
+    "y": 1986,
     "p": 170,
     "r": 3,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1986,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/43187292"
+      ],
+      "url": "https://www.worldcat.org/title/43187292"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/43187292"
+      ]
+    }
   },
   {
     "k": "/works/OL272920W",
@@ -94789,11 +96007,27 @@
     "k": "/works/OL2000340W",
     "t": "Exercise physiology",
     "a": "Scott K. Powers",
-    "y": 1990,
+    "y": 1989,
     "p": 169,
     "r": 14,
     "w": null,
-    "c": 10672057
+    "c": 10672057,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1989,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.mheducation.com/highered/product/exercise-physiology-theory-application-fitness-performance-powers/M9781260261325.html"
+      ],
+      "url": "https://www.mheducation.com/highered/product/exercise-physiology-theory-application-fitness-performance-powers/M9781260261325.html"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.mheducation.com/highered/product/exercise-physiology-theory-application-fitness-performance-powers/M9781260261325.html"
+      ]
+    }
   },
   {
     "k": "/works/OL13933W",
@@ -94917,7 +96151,23 @@
     "p": 169,
     "r": 14,
     "w": null,
-    "c": 65609
+    "c": 65609,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1984,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.mheducation.com/highered/product/human-physiology-fox/M9781260720464.html"
+      ],
+      "url": "https://www.mheducation.com/highered/product/human-physiology-fox/M9781260720464.html"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.mheducation.com/highered/product/human-physiology-fox/M9781260720464.html"
+      ]
+    }
   },
   {
     "k": "/works/OL2887072W",
@@ -95492,7 +96742,23 @@
     "p": 168,
     "r": 13,
     "w": null,
-    "c": 1104670
+    "c": 1104670,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1993,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.pearson.com/en-us/subject-catalog/p/marketing-research-an-applied-orientation/P200000003294"
+      ],
+      "url": "https://www.pearson.com/en-us/subject-catalog/p/marketing-research-an-applied-orientation/P200000003294"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.pearson.com/en-us/subject-catalog/p/marketing-research-an-applied-orientation/P200000003294"
+      ]
+    }
   },
   {
     "k": "/works/OL3773920W",
@@ -95726,11 +96992,27 @@
     "k": "/works/OL3729606W",
     "t": "Hukum agraria Indonesia",
     "a": "Budi Harsono.",
-    "y": 1975,
+    "y": 1968,
     "p": 167,
     "r": 2,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1968,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/6835154"
+      ],
+      "url": "https://www.worldcat.org/title/6835154"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/6835154"
+      ]
+    }
   },
   {
     "k": "/works/OL41245W",
@@ -97014,11 +98296,27 @@
     "k": "/works/OL17608779W",
     "t": "child, family, school, community, socialization and support 10th ed.",
     "a": "Berns, R.M.",
-    "y": 2016,
+    "y": 1985,
     "p": 165,
     "r": 5,
     "w": null,
-    "c": 8962230
+    "c": 8962230,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1985,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.cengage.com/c/child-family-school-community-socialization-and-support-10e-berns/9781305088979/"
+      ],
+      "url": "https://www.cengage.com/c/child-family-school-community-socialization-and-support-10e-berns/9781305088979/"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.cengage.com/c/child-family-school-community-socialization-and-support-10e-berns/9781305088979/"
+      ]
+    }
   },
   {
     "k": "/works/OL16967049W",
@@ -97038,7 +98336,23 @@
     "p": 165,
     "r": 3,
     "w": null,
-    "c": 12597885
+    "c": 12597885,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1994,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.worldcat.org/title/49904721"
+      ],
+      "url": "https://www.worldcat.org/title/49904721"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.worldcat.org/title/49904721"
+      ]
+    }
   },
   {
     "k": "/works/OL22056168W",
@@ -97713,7 +99027,23 @@
     "p": 164,
     "r": 4,
     "w": null,
-    "c": 9852701
+    "c": 9852701,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2003,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.chroniclebooks.com/products/position-of-the-day"
+      ],
+      "url": "https://www.chroniclebooks.com/products/position-of-the-day"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.chroniclebooks.com/products/position-of-the-day"
+      ]
+    }
   },
   {
     "k": "/works/OL24198547W",
@@ -98523,11 +99853,27 @@
     "k": "/works/OL27028090W",
     "t": "Assessment of children",
     "a": "Jerome M. Sattler",
-    "y": 2018,
+    "y": 1974,
     "p": 163,
     "r": 16,
     "w": null,
-    "c": 12533651
+    "c": 12533651,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1974,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.sattlerpublisher.com/assessment-of-children"
+      ],
+      "url": "https://www.sattlerpublisher.com/assessment-of-children"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.sattlerpublisher.com/assessment-of-children"
+      ]
+    }
   },
   {
     "k": "/works/OL4761451W",
@@ -98641,7 +99987,23 @@
     "p": 163,
     "r": 7,
     "w": null,
-    "c": 8341095
+    "c": 8341095,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2002,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.mheducation.com/highered/product/supply-chain-logistics-management-bowersox/M9781260383041.html"
+      ],
+      "url": "https://www.mheducation.com/highered/product/supply-chain-logistics-management-bowersox/M9781260383041.html"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.mheducation.com/highered/product/supply-chain-logistics-management-bowersox/M9781260383041.html"
+      ]
+    }
   },
   {
     "k": "/works/OL17363116W",
@@ -98667,11 +100029,27 @@
     "k": "/works/OL1841112W",
     "t": "Motivation and goal-setting",
     "a": "Jim Cairo",
-    "y": 1989,
+    "y": 1998,
     "p": 163,
     "r": 29,
     "w": null,
-    "c": 799618
+    "c": 799618,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1998,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.careerpress.com/motivation-and-goal-setting/"
+      ],
+      "url": "https://www.careerpress.com/motivation-and-goal-setting/"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.careerpress.com/motivation-and-goal-setting/"
+      ]
+    }
   },
   {
     "k": "/works/OL15104028W",
@@ -98767,7 +100145,23 @@
     "p": 163,
     "r": 2,
     "w": null,
-    "c": 667095
+    "c": 667095,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1983,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://redwheelweiser.com/detail/9780875421216/"
+      ],
+      "url": "https://redwheelweiser.com/detail/9780875421216/"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://redwheelweiser.com/detail/9780875421216/"
+      ]
+    }
   },
   {
     "k": "/works/OL3241325W",
@@ -98777,7 +100171,23 @@
     "p": 163,
     "r": 2,
     "w": null,
-    "c": 53509
+    "c": 53509,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1977,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.mheducation.com/highered/product/environmental-impact-assessment-canter/M9780070097674.html"
+      ],
+      "url": "https://www.mheducation.com/highered/product/environmental-impact-assessment-canter/M9780070097674.html"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.mheducation.com/highered/product/environmental-impact-assessment-canter/M9780070097674.html"
+      ]
+    }
   },
   {
     "k": "/works/OL3497604W",
@@ -98787,7 +100197,23 @@
     "p": 163,
     "r": 19,
     "w": null,
-    "c": 5068886
+    "c": 5068886,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1988,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.hachettebookgroup.com/titles/jane-r-hirschmann/overcoming-overeating/9780446390194/"
+      ],
+      "url": "https://www.hachettebookgroup.com/titles/jane-r-hirschmann/overcoming-overeating/9780446390194/"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.hachettebookgroup.com/titles/jane-r-hirschmann/overcoming-overeating/9780446390194/"
+      ]
+    }
   },
   {
     "k": "/works/OL2563181W",
@@ -98912,7 +100338,23 @@
     "p": 162,
     "r": 7,
     "w": null,
-    "c": 8048220
+    "c": 8048220,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2016,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.apple.com/newsroom/2016/11/designed-by-apple-in-california-chronicles-20-years-of-apple-design/"
+      ],
+      "url": "https://www.apple.com/newsroom/2016/11/designed-by-apple-in-california-chronicles-20-years-of-apple-design/"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.apple.com/newsroom/2016/11/designed-by-apple-in-california-chronicles-20-years-of-apple-design/"
+      ]
+    }
   },
   {
     "k": "/works/OL17734885W",
@@ -98986,7 +100428,23 @@
     "p": 162,
     "r": 5,
     "w": null,
-    "c": 89590
+    "c": 89590,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1979,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.pearson.com/en-us/subject-catalog/p/linear-algebra/P200000006240"
+      ],
+      "url": "https://www.pearson.com/en-us/subject-catalog/p/linear-algebra/P200000006240"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.pearson.com/en-us/subject-catalog/p/linear-algebra/P200000006240"
+      ]
+    }
   },
   {
     "k": "/works/OL17319394W",
@@ -99006,7 +100464,23 @@
     "p": 162,
     "r": 7,
     "w": null,
-    "c": 12410471
+    "c": 12410471,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2017,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.google.com/books/edition/Expert_Secrets/7wEZEAAAQBAJ"
+      ],
+      "url": "https://www.google.com/books/edition/Expert_Secrets/7wEZEAAAQBAJ"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.google.com/books/edition/Expert_Secrets/7wEZEAAAQBAJ"
+      ]
+    }
   },
   {
     "k": "/works/OL34381078W",
@@ -99136,7 +100610,23 @@
     "p": 162,
     "r": 4,
     "w": null,
-    "c": 8105886
+    "c": 8105886,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1991,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://redwheelweiser.com/detail/9780875421315/"
+      ],
+      "url": "https://redwheelweiser.com/detail/9780875421315/"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://redwheelweiser.com/detail/9780875421315/"
+      ]
+    }
   },
   {
     "k": "/works/OL3295462W",
@@ -99270,7 +100760,23 @@
     "p": 162,
     "r": 6,
     "w": null,
-    "c": 85636
+    "c": 85636,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1967,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.pearson.com/en-us/subject-catalog/p/international-politics/P200000003291"
+      ],
+      "url": "https://www.pearson.com/en-us/subject-catalog/p/international-politics/P200000003291"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.pearson.com/en-us/subject-catalog/p/international-politics/P200000003291"
+      ]
+    }
   },
   {
     "k": "/works/OL275862W",
@@ -99370,11 +100876,27 @@
     "k": "/works/OL9670529W",
     "t": "Solutions Manual for Thermodynamics in Materials Science",
     "a": "Robert T. DeHoff",
-    "y": 2006,
+    "y": 1993,
     "p": 161,
     "r": 2,
     "w": null,
-    "c": null
+    "c": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1993,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.crcpress.com/Thermodynamics-in-Materials-Science/DeHoff/p/book/9780849340659"
+      ],
+      "url": "https://www.crcpress.com/Thermodynamics-in-Materials-Science/DeHoff/p/book/9780849340659"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.crcpress.com/Thermodynamics-in-Materials-Science/DeHoff/p/book/9780849340659"
+      ]
+    }
   },
   {
     "k": "/works/OL20428353W",
@@ -99582,7 +101104,23 @@
     "p": 161,
     "r": 3,
     "w": null,
-    "c": 173674
+    "c": 173674,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1996,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.stmartins.com/the-mafia-manager"
+      ],
+      "url": "https://www.stmartins.com/the-mafia-manager"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.stmartins.com/the-mafia-manager"
+      ]
+    }
   },
   {
     "k": "/works/OL29700W",
@@ -99608,11 +101146,27 @@
     "k": "/works/OL90590W",
     "t": "Psychology",
     "a": "Dennis Coon",
-    "y": 2001,
+    "y": 1977,
     "p": 161,
     "r": 6,
     "w": null,
-    "c": 12676148
+    "c": 12676148,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1977,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.cengage.com/c/psychology-modules-for-active-learning-14e-coon/9781305940413/"
+      ],
+      "url": "https://www.cengage.com/c/psychology-modules-for-active-learning-14e-coon/9781305940413/"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.cengage.com/c/psychology-modules-for-active-learning-14e-coon/9781305940413/"
+      ]
+    }
   },
   {
     "k": "/works/OL5712523W",
@@ -99826,7 +101380,23 @@
     "p": 160,
     "r": 10,
     "w": null,
-    "c": 9358772
+    "c": 9358772,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2018,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://yenpress.com/titles/9781975308421-crush"
+      ],
+      "url": "https://yenpress.com/titles/9781975308421-crush"
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://yenpress.com/titles/9781975308421-crush"
+      ]
+    }
   },
   {
     "k": "/works/OL20648323W",
