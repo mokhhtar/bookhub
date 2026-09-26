@@ -67,7 +67,7 @@ jobs:
           echo "Set \`enabled: true\` in \`_data/indexing.yml\` to start it." \
             >> "$GITHUB_STEP_SUMMARY"
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         if: steps.cfg.outputs.enabled == 'true'
         with:
           python-version: "3.12"
