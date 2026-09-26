@@ -164,7 +164,6 @@
     }
   },
   "/works/OL8996439M": {
-    "publication": null,
     "publication_answers": {},
     "authorship": {
       "status": "known",
@@ -174,7 +173,6 @@
     }
   },
   "/works/OL16568759M": {
-    "publication": null,
     "publication_answers": {},
     "authorship": {
       "status": "known",
@@ -222,23 +220,22 @@
   "/works/OL17823750M": {
     "publication": {
       "basis": "first_publication",
-      "year": 1981,
+      "year": 1980,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000IXBA.TXT"
+        "https://books.google.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
-      "status": "known",
+      "status": "anonymous",
       "sources": [
-        "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000IXBA.TXT"
+        "https://books.google.com"
       ]
     }
   },
   "/works/OL15374110M": {
-    "publication": null,
     "publication_answers": {},
     "authorship": {
       "status": "known",
@@ -248,12 +245,11 @@
     }
   },
   "/works/OL3004222M": {
-    "publication": null,
     "publication_answers": {},
     "authorship": {
-      "status": "unresearched",
+      "status": "anonymous",
       "sources": [
-        "https://en.wikipedia.org/wiki/Special:Search?search=."
+        "https://id.loc.gov/authorities/subjects/sh85068875.html"
       ]
     }
   },
@@ -276,12 +272,20 @@
     }
   },
   "/works/OL20454252M": {
-    "publication": null,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1987,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://books.google.com"
+      ]
+    },
     "publication_answers": {},
     "authorship": {
-      "status": "unresearched",
+      "status": "anonymous",
       "sources": [
-        "https://en.wikipedia.org/wiki/Special:Search?search=National%20Writing%20%26%20editing%20guide"
+        "https://books.google.com"
       ]
     }
   },
@@ -292,14 +296,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://ntrs.nasa.gov/citations/19800016022"
+        "https://books.google.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
-      "status": "known",
+      "status": "anonymous",
       "sources": [
-        "https://ntrs.nasa.gov/citations/19800016022"
+        "https://books.google.com"
       ]
     }
   },
@@ -310,19 +314,18 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://pubs.usgs.gov/of/1985/0636/report.pdf"
+        "https://pubs.usgs.gov"
       ]
     },
     "publication_answers": {},
     "authorship": {
-      "status": "known",
+      "status": "anonymous",
       "sources": [
-        "https://pubs.usgs.gov/of/1985/0636/report.pdf"
+        "https://pubs.usgs.gov"
       ]
     }
   },
   "/works/OL19659793M": {
-    "publication": null,
     "publication_answers": {},
     "authorship": {
       "status": "unresearched",
@@ -332,7 +335,6 @@
     }
   },
   "/works/OL27281778W": {
-    "publication": null,
     "publication_answers": {},
     "authorship": {
       "status": "known",
@@ -342,7 +344,6 @@
     }
   },
   "/works/OL3004215M": {
-    "publication": null,
     "publication_answers": {},
     "authorship": {
       "status": "unresearched",
@@ -354,41 +355,40 @@
   "/works/OL21234092M": {
     "publication": {
       "basis": "first_publication",
-      "year": 1977,
+      "year": 1985,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://de.wikipedia.org/wiki/Willy_Handrick"
+        "https://books.google.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
-      "status": "known",
+      "status": "anonymous",
       "sources": [
-        "https://de.wikipedia.org/wiki/Willy_Handrick"
+        "https://books.google.com"
       ]
     }
   },
   "/site/anna-karenina": {
     "publication": {
       "basis": "first_publication",
-      "year": 1875,
+      "year": 1878,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://en.wikipedia.org/wiki/Anna_Karenina"
+        "https://www.britannica.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://en.wikipedia.org/wiki/Anna_Karenina"
+        "https://www.britannica.com"
       ]
     }
   },
   "/works/OL19664578M": {
-    "publication": null,
     "publication_answers": {},
     "authorship": {
       "status": "unresearched",
@@ -398,7 +398,6 @@
     }
   },
   "/works/OL19748577M": {
-    "publication": null,
     "publication_answers": {},
     "authorship": {
       "status": "unresearched",
@@ -408,7 +407,6 @@
     }
   },
   "/works/OL17319629M": {
-    "publication": null,
     "publication_answers": {},
     "authorship": {
       "status": "unresearched",
@@ -418,7 +416,6 @@
     }
   },
   "/works/OL22484029M": {
-    "publication": null,
     "publication_answers": {},
     "authorship": {
       "status": "unresearched",
@@ -428,7 +425,6 @@
     }
   },
   "/works/OL15302003M": {
-    "publication": null,
     "publication_answers": {},
     "authorship": {
       "status": "known",
@@ -440,18 +436,18 @@
   "/site/the-coral-island": {
     "publication": {
       "basis": "first_publication",
-      "year": 1857,
+      "year": 1858,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://en.wikipedia.org/wiki/The_Coral_Island"
+        "https://www.britannica.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://en.wikipedia.org/wiki/The_Coral_Island"
+        "https://www.britannica.com"
       ]
     }
   },
@@ -462,32 +458,32 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Batavia%27s%20Graveyard%22%20au%3A%22Mike%20Dash%22"
+        "https://www.mikedash.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Batavia%27s%20Graveyard%22%20au%3A%22Mike%20Dash%22"
+        "https://www.mikedash.com"
       ]
     }
   },
   "/site/the-bounty-trilogy": {
     "publication": {
       "basis": "first_publication",
-      "year": 1936,
+      "year": 1932,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://en.wikipedia.org/wiki/The_Bounty_Trilogy"
+        "https://www.britannica.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://en.wikipedia.org/wiki/The_Bounty_Trilogy"
+        "https://www.britannica.com"
       ]
     }
   },
@@ -498,14 +494,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://en.wikipedia.org/wiki/The_Corsair"
+        "https://www.britannica.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://en.wikipedia.org/wiki/The_Corsair"
+        "https://www.britannica.com"
       ]
     }
   },
@@ -516,14 +512,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Textiles%20of%20the%20Islamic%20World%22%20au%3A%22John%20Gillow%22"
+        "https://thamesandhudson.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Textiles%20of%20the%20Islamic%20World%22%20au%3A%22John%20Gillow%22"
+        "https://thamesandhudson.com"
       ]
     }
   },
@@ -534,14 +530,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Indian%20Embroidery%22%20au%3A%22Rosemary%20Crill%22"
+        "https://www.vam.ac.uk"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Indian%20Embroidery%22%20au%3A%22Rosemary%20Crill%22"
+        "https://www.vam.ac.uk"
       ]
     }
   },
@@ -552,14 +548,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Indian%20Ikat%20Textiles%22%20au%3A%22Rosemary%20Crill%22"
+        "https://www.vam.ac.uk"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Indian%20Ikat%20Textiles%22%20au%3A%22Rosemary%20Crill%22"
+        "https://www.vam.ac.uk"
       ]
     }
   },
@@ -570,14 +566,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Indian%20Folk%20Arts%20and%20Crafts%22%20au%3A%22Jasleen%20Dhamija%22"
+        "https://books.google.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Indian%20Folk%20Arts%20and%20Crafts%22%20au%3A%22Jasleen%20Dhamija%22"
+        "https://books.google.com"
       ]
     }
   },
@@ -588,14 +584,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://en.wikipedia.org/wiki/The_Alchemist_(novel)"
+        "https://www.harpercollins.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://en.wikipedia.org/wiki/The_Alchemist_(novel)"
+        "https://www.harpercollins.com"
       ]
     }
   },
@@ -606,14 +602,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Unknown%20Masterpieces%20of%20Indian%20Folk%20%26%20Tribal%20Art%22%20au%3A%22Subhashini%20Aryan%22"
+        "https://books.google.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Unknown%20Masterpieces%20of%20Indian%20Folk%20%26%20Tribal%20Art%22%20au%3A%22Subhashini%20Aryan%22"
+        "https://books.google.com"
       ]
     }
   },
@@ -624,32 +620,32 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://en.wikipedia.org/wiki/Mutiny_on_the_Bounty_(novel)"
+        "https://www.britannica.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://en.wikipedia.org/wiki/Mutiny_on_the_Bounty_(novel)"
+        "https://www.britannica.com"
       ]
     }
   },
   "/works/OL43254128W": {
     "publication": {
       "basis": "first_publication",
-      "year": 2023,
+      "year": 2022,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22The%20Art%20of%20Being%20Alone%22%20au%3A%22Renuka%20Gavrani%22"
+        "https://www.abebooks.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22The%20Art%20of%20Being%20Alone%22%20au%3A%22Renuka%20Gavrani%22"
+        "https://www.abebooks.com"
       ]
     }
   },
@@ -660,14 +656,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22The%20Almanack%20of%20Naval%20Ravikant%22%20au%3A%22Eric%20Jorgenson%22"
+        "https://www.abebooks.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22The%20Almanack%20of%20Naval%20Ravikant%22%20au%3A%22Eric%20Jorgenson%22"
+        "https://www.abebooks.com"
       ]
     }
   },
@@ -678,32 +674,32 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22%24100M%20Offers%22%20au%3A%22Alex%20Hormozi%22"
+        "https://www.abebooks.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22%24100M%20Offers%22%20au%3A%22Alex%20Hormozi%22"
+        "https://www.abebooks.com"
       ]
     }
   },
   "/works/OL22367098W": {
     "publication": {
       "basis": "first_publication",
-      "year": 2011,
+      "year": 1998,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22The%20art%20of%20persuasion%22%20au%3A%22Bob%20Burg%22"
+        "https://books.google.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22The%20art%20of%20persuasion%22%20au%3A%22Bob%20Burg%22"
+        "https://books.google.com"
       ]
     }
   },
@@ -714,14 +710,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Ikigai%22%20au%3A%22Chiemi%20Souen%22"
+        "https://www.abebooks.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Ikigai%22%20au%3A%22Chiemi%20Souen%22"
+        "https://www.abebooks.com"
       ]
     }
   },
@@ -732,14 +728,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Psychology%22%20au%3A%22Wayne%20Weiten%22"
+        "https://books.google.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Psychology%22%20au%3A%22Wayne%20Weiten%22"
+        "https://books.google.com"
       ]
     }
   },
@@ -750,14 +746,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Organizational%20Behavior%22%20au%3A%22Stephen%20P.%20Robbins%22"
+        "https://books.google.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Organizational%20Behavior%22%20au%3A%22Stephen%20P.%20Robbins%22"
+        "https://books.google.com"
       ]
     }
   },
@@ -768,14 +764,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Something%20I%20Never%20Told%20You%22%20au%3A%22Shravya%20Bhinder%22"
+        "https://www.penguin.co.in"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Something%20I%20Never%20Told%20You%22%20au%3A%22Shravya%20Bhinder%22"
+        "https://www.penguin.co.in"
       ]
     }
   },
@@ -786,14 +782,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22The%20antecedents%20of%20self-esteem%20/%20Stanley%20Coopersmith%22%20au%3A%22Stanley%20Coopersmith%22"
+        "https://books.google.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22The%20antecedents%20of%20self-esteem%20/%20Stanley%20Coopersmith%22%20au%3A%22Stanley%20Coopersmith%22"
+        "https://books.google.com"
       ]
     }
   },
@@ -804,14 +800,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://en.wikipedia.org/wiki/Scary_Stories_to_Tell_in_the_Dark"
+        "https://www.harpercollins.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://en.wikipedia.org/wiki/Scary_Stories_to_Tell_in_the_Dark"
+        "https://www.harpercollins.com"
       ]
     }
   },
@@ -822,14 +818,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22The%20Magic%20of%20the%20Lost%20Temple%22%20au%3A%22Sudha%20Murti%22"
+        "https://www.penguin.co.in"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22The%20Magic%20of%20the%20Lost%20Temple%22%20au%3A%22Sudha%20Murti%22"
+        "https://www.penguin.co.in"
       ]
     }
   },
@@ -840,14 +836,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22The%20Art%20of%20Public%20Speaking%22%20au%3A%22Stephen%20E.%20Lucas%22"
+        "https://www.mheducation.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22The%20Art%20of%20Public%20Speaking%22%20au%3A%22Stephen%20E.%20Lucas%22"
+        "https://www.mheducation.com"
       ]
     }
   },
@@ -858,14 +854,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22How%20to%20Win%20at%20Chess%22%20au%3A%22Levy%20Rozman%22"
+        "https://www.penguinrandomhouse.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22How%20to%20Win%20at%20Chess%22%20au%3A%22Levy%20Rozman%22"
+        "https://www.penguinrandomhouse.com"
       ]
     }
   },
@@ -876,14 +872,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://en.wikipedia.org/wiki/Good_to_Great"
+        "https://www.harpercollins.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://en.wikipedia.org/wiki/Good_to_Great"
+        "https://www.harpercollins.com"
       ]
     }
   },
@@ -894,14 +890,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Boundaries%22%20au%3A%22Henry%20Cloud%22"
+        "https://www.zondervan.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Boundaries%22%20au%3A%22Henry%20Cloud%22"
+        "https://www.zondervan.com"
       ]
     }
   },
@@ -912,14 +908,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22World%20mythology%22%20au%3A%22Donna%20Rosenberg%22"
+        "https://books.google.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22World%20mythology%22%20au%3A%22Donna%20Rosenberg%22"
+        "https://books.google.com"
       ]
     }
   },
@@ -930,14 +926,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Organic%20Chemistry%22%20au%3A%22T.%20W.%20Graham%20Solomons%22"
+        "https://www.wiley.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Organic%20Chemistry%22%20au%3A%22T.%20W.%20Graham%20Solomons%22"
+        "https://www.wiley.com"
       ]
     }
   },
@@ -948,14 +944,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Linux%20Basics%20for%20Hackers%22%20au%3A%22OccupyTheWeb%22"
+        "https://nostarch.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Linux%20Basics%20for%20Hackers%22%20au%3A%22OccupyTheWeb%22"
+        "https://nostarch.com"
       ]
     }
   },
@@ -966,14 +962,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22How%20to%20live%20365%20days%20a%20year%22%20au%3A%22John%20A.%20Schindler%22"
+        "https://books.google.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22How%20to%20live%20365%20days%20a%20year%22%20au%3A%22John%20A.%20Schindler%22"
+        "https://books.google.com"
       ]
     }
   },
@@ -984,14 +980,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Trade%20Like%20a%20Stock%20Market%20Wizard%22%20au%3A%22Mark%20Minervini%22"
+        "https://www.mheducation.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Trade%20Like%20a%20Stock%20Market%20Wizard%22%20au%3A%22Mark%20Minervini%22"
+        "https://www.mheducation.com"
       ]
     }
   },
@@ -1002,14 +998,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://en.wikipedia.org/wiki/Charlotte%27s_Web"
+        "https://www.harpercollins.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://en.wikipedia.org/wiki/Charlotte%27s_Web"
+        "https://www.harpercollins.com"
       ]
     }
   },
@@ -1020,32 +1016,32 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22How%20cars%20work%22%20au%3A%22Tom%20Newton%22"
+        "https://books.google.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22How%20cars%20work%22%20au%3A%22Tom%20Newton%22"
+        "https://books.google.com"
       ]
     }
   },
   "/site/the-brothers-karamazov": {
     "publication": {
       "basis": "first_publication",
-      "year": 1879,
+      "year": 1880,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://en.wikipedia.org/wiki/The_Brothers_Karamazov"
+        "https://www.britannica.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://en.wikipedia.org/wiki/The_Brothers_Karamazov"
+        "https://www.britannica.com"
       ]
     }
   },
@@ -1056,14 +1052,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Cell%20and%20Molecular%20Biology%22%20au%3A%22Gerald%20Karp%22"
+        "https://www.wiley.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Cell%20and%20Molecular%20Biology%22%20au%3A%22Gerald%20Karp%22"
+        "https://www.wiley.com"
       ]
     }
   },
@@ -1074,14 +1070,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Logo%20modernism%22%20au%3A%22Jens%20M%C3%BCller%22"
+        "https://www.taschen.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Logo%20modernism%22%20au%3A%22Jens%20M%C3%BCller%22"
+        "https://www.taschen.com"
       ]
     }
   },
@@ -1092,32 +1088,32 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Talk%20to%20Me%20in%20Korean%20Level%201%22%20au%3A%22TalkToMeInKorean%22"
+        "https://talktomeinkorean.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
-      "status": "known",
+      "status": "anonymous",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Talk%20to%20Me%20in%20Korean%20Level%201%22%20au%3A%22TalkToMeInKorean%22"
+        "https://talktomeinkorean.com"
       ]
     }
   },
   "/works/OL16002869W": {
     "publication": {
       "basis": "first_publication",
-      "year": 1993,
+      "year": 2004,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Strategic%20management%22%20au%3A%22Gregory%20G.%20Dess%22"
+        "https://www.mheducation.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Strategic%20management%22%20au%3A%22Gregory%20G.%20Dess%22"
+        "https://www.mheducation.com"
       ]
     }
   },
@@ -1128,14 +1124,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Black%20Hat%20Python%22%20au%3A%22Justin%20Seitz%22"
+        "https://nostarch.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Black%20Hat%20Python%22%20au%3A%22Justin%20Seitz%22"
+        "https://nostarch.com"
       ]
     }
   },
@@ -1146,14 +1142,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Mind%20Management%2C%20Not%20Time%20Management%22%20au%3A%22David%20Kadavy%22"
+        "https://www.abebooks.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Mind%20Management%2C%20Not%20Time%20Management%22%20au%3A%22David%20Kadavy%22"
+        "https://www.abebooks.com"
       ]
     }
   },
@@ -1164,14 +1160,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Principles%20of%20management%22%20au%3A%22George%20Robert%20Terry%22"
+        "https://books.google.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Principles%20of%20management%22%20au%3A%22George%20Robert%20Terry%22"
+        "https://books.google.com"
       ]
     }
   },
@@ -1182,50 +1178,50 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22No%20Bad%20Parts%22%20au%3A%22Richard%20Schwartz%20Ph.D.%22"
+        "https://www.soundstrue.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22No%20Bad%20Parts%22%20au%3A%22Richard%20Schwartz%20Ph.D.%22"
+        "https://www.soundstrue.com"
       ]
     }
   },
   "/works/OL5151812W": {
     "publication": {
       "basis": "first_publication",
-      "year": 1958,
+      "year": 1961,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%2213%20steps%20to%20mentalism%22%20au%3A%22Tony%20Corinda%22"
+        "https://books.google.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%2213%20steps%20to%20mentalism%22%20au%3A%22Tony%20Corinda%22"
+        "https://books.google.com"
       ]
     }
   },
   "/works/OL1903603W": {
     "publication": {
       "basis": "first_publication",
-      "year": 1996,
+      "year": 1997,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Essentials%20of%20Negotiation%22%20au%3A%22Roy%20J.%20Lewicki%22"
+        "https://www.mheducation.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Essentials%20of%20Negotiation%22%20au%3A%22Roy%20J.%20Lewicki%22"
+        "https://www.mheducation.com"
       ]
     }
   },
@@ -1236,14 +1232,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Operations%20management%22%20au%3A%22Jay%20H.%20Heizer%22"
+        "https://books.google.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Operations%20management%22%20au%3A%22Jay%20H.%20Heizer%22"
+        "https://books.google.com"
       ]
     }
   },
@@ -1254,14 +1250,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22The%20art%20of%20self-directed%20learning%22%20au%3A%22Blake%20Boles%22"
+        "https://www.blakeboles.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22The%20art%20of%20self-directed%20learning%22%20au%3A%22Blake%20Boles%22"
+        "https://www.blakeboles.com"
       ]
     }
   },
@@ -1272,14 +1268,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Introduction%20to%20counseling%20and%20guidance%22%20au%3A%22Robert%20L.%20Gibson%22"
+        "https://books.google.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Introduction%20to%20counseling%20and%20guidance%22%20au%3A%22Robert%20L.%20Gibson%22"
+        "https://books.google.com"
       ]
     }
   },
@@ -1290,32 +1286,32 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Economic%20development%22%20au%3A%22Michael%20P.%20Todaro%22"
+        "https://books.google.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Economic%20development%22%20au%3A%22Michael%20P.%20Todaro%22"
+        "https://books.google.com"
       ]
     }
   },
   "/works/OL5616271W": {
     "publication": {
       "basis": "first_publication",
-      "year": 1986,
+      "year": 1974,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Essentials%20of%20management%22%20au%3A%22Harold%20Koontz%22"
+        "https://books.google.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Essentials%20of%20management%22%20au%3A%22Harold%20Koontz%22"
+        "https://books.google.com"
       ]
     }
   },
@@ -1326,14 +1322,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22The%20wicca%20handbook%22%20au%3A%22Eileen%20Holland%22"
+        "https://redwheelweiser.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22The%20wicca%20handbook%22%20au%3A%22Eileen%20Holland%22"
+        "https://redwheelweiser.com"
       ]
     }
   },
@@ -1344,14 +1340,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Trading%20for%20a%20Living%22%20au%3A%22Alexander%20Elder%22"
+        "https://www.wiley.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Trading%20for%20a%20Living%22%20au%3A%22Alexander%20Elder%22"
+        "https://www.wiley.com"
       ]
     }
   },
@@ -1362,14 +1358,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Work%20stress%20and%20social%20support%22%20au%3A%22James%20S.%20House%22"
+        "https://books.google.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Work%20stress%20and%20social%20support%22%20au%3A%22James%20S.%20House%22"
+        "https://books.google.com"
       ]
     }
   },
@@ -1380,32 +1376,32 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22The%20Daily%20Book%20of%20Positive%20Quotations%22%20au%3A%22Linda%20Picone%22"
+        "https://books.google.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22The%20Daily%20Book%20of%20Positive%20Quotations%22%20au%3A%22Linda%20Picone%22"
+        "https://books.google.com"
       ]
     }
   },
   "/works/OL19718632W": {
     "publication": {
       "basis": "first_publication",
-      "year": 2016,
+      "year": 2017,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Digital%20marketing%20for%20dummies%22%20au%3A%22Ryan%20Deiss%22"
+        "https://www.wiley.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Digital%20marketing%20for%20dummies%22%20au%3A%22Ryan%20Deiss%22"
+        "https://www.wiley.com"
       ]
     }
   },
@@ -1416,32 +1412,32 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22%24100M%20Leads%22%20au%3A%22Alex%20Hormozi%22"
+        "https://www.abebooks.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22%24100M%20Leads%22%20au%3A%22Alex%20Hormozi%22"
+        "https://www.abebooks.com"
       ]
     }
   },
   "/works/OL8053024W": {
     "publication": {
       "basis": "first_publication",
-      "year": 2008,
+      "year": 2009,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22The%20think%20%26%20grow%20rich%20workbook%22%20au%3A%22Joel%20Fotinos%22"
+        "https://www.penguinrandomhouse.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22The%20think%20%26%20grow%20rich%20workbook%22%20au%3A%22Joel%20Fotinos%22"
+        "https://www.penguinrandomhouse.com"
       ]
     }
   },
@@ -1452,14 +1448,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Data%20Structures%20and%20Algorithms%20Made%20Easy%22%20au%3A%22Narasimha%20Karumanchi%22"
+        "https://books.google.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Data%20Structures%20and%20Algorithms%20Made%20Easy%22%20au%3A%22Narasimha%20Karumanchi%22"
+        "https://books.google.com"
       ]
     }
   },
@@ -1470,14 +1466,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Overcoming%20Gravity%22%20au%3A%22Steven%20Low%22"
+        "https://books.google.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Overcoming%20Gravity%22%20au%3A%22Steven%20Low%22"
+        "https://books.google.com"
       ]
     }
   },
@@ -1488,32 +1484,32 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Relentless%22%20au%3A%22Tim%20Grover%22"
+        "https://www.simonandschuster.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Relentless%22%20au%3A%22Tim%20Grover%22"
+        "https://www.simonandschuster.com"
       ]
     }
   },
   "/works/OL2033583W": {
     "publication": {
       "basis": "first_publication",
-      "year": 1979,
+      "year": 1980,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22How%20to%20Master%20the%20Art%20of%20Selling%22%20au%3A%22Tom%20Hopkins%22"
+        "https://books.google.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22How%20to%20Master%20the%20Art%20of%20Selling%22%20au%3A%22Tom%20Hopkins%22"
+        "https://books.google.com"
       ]
     }
   },
@@ -1524,14 +1520,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Under%20the%20feet%20of%20Jesus%22%20au%3A%22Helena%20Mar%C3%ADa%20Viramontes%22"
+        "https://www.penguinrandomhouse.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Under%20the%20feet%20of%20Jesus%22%20au%3A%22Helena%20Mar%C3%ADa%20Viramontes%22"
+        "https://www.penguinrandomhouse.com"
       ]
     }
   },
@@ -1542,14 +1538,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Parallel%20myths%22%20au%3A%22J.%20F.%20Bierlein%22"
+        "https://www.penguinrandomhouse.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Parallel%20myths%22%20au%3A%22J.%20F.%20Bierlein%22"
+        "https://www.penguinrandomhouse.com"
       ]
     }
   },
@@ -1560,14 +1556,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22I%20Will%20Teach%20You%20to%20Be%20Rich%2C%20Second%20Edition%22%20au%3A%22Ramit%20Sethi%22"
+        "https://www.workman.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22I%20Will%20Teach%20You%20to%20Be%20Rich%2C%20Second%20Edition%22%20au%3A%22Ramit%20Sethi%22"
+        "https://www.workman.com"
       ]
     }
   },
@@ -1578,32 +1574,32 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Human%20development%22%20au%3A%22Diane%20E.%20Papalia%22"
+        "https://www.mheducation.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Human%20development%22%20au%3A%22Diane%20E.%20Papalia%22"
+        "https://www.mheducation.com"
       ]
     }
   },
   "/works/OL16667558W": {
     "publication": {
       "basis": "first_publication",
-      "year": 2000,
+      "year": 2001,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Organic%20chemistry%22%20au%3A%22Jonathan%20Clayden%22"
+        "https://global.oup.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Organic%20chemistry%22%20au%3A%22Jonathan%20Clayden%22"
+        "https://global.oup.com"
       ]
     }
   },
@@ -1614,14 +1610,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Supply%20chain%20management%22%20au%3A%22Sunil%20Chopra%22"
+        "https://www.pearson.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Supply%20chain%20management%22%20au%3A%22Sunil%20Chopra%22"
+        "https://www.pearson.com"
       ]
     }
   },
@@ -1632,32 +1628,32 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%2212%20Months%20to%20%241%20Million%22%20au%3A%22Ryan%20Daniel%20Moran%22"
+        "https://www.benbellabooks.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%2212%20Months%20to%20%241%20Million%22%20au%3A%22Ryan%20Daniel%20Moran%22"
+        "https://www.benbellabooks.com"
       ]
     }
   },
   "/works/OL4805822W": {
     "publication": {
       "basis": "first_publication",
-      "year": 1957,
+      "year": 1945,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Basic%20electrical%20engineering%22%20au%3A%22A.%20E.%20Fitzgerald%22"
+        "https://books.google.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Basic%20electrical%20engineering%22%20au%3A%22A.%20E.%20Fitzgerald%22"
+        "https://books.google.com"
       ]
     }
   },
@@ -1668,14 +1664,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Your%20perfect%20right%22%20au%3A%22Robert%20E.%20Alberti%22"
+        "https://books.google.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Your%20perfect%20right%22%20au%3A%22Robert%20E.%20Alberti%22"
+        "https://books.google.com"
       ]
     }
   },
@@ -1686,14 +1682,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Human%20Resource%20Management%22%20au%3A%22Gary%20Dessler%22"
+        "https://www.pearson.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Human%20Resource%20Management%22%20au%3A%22Gary%20Dessler%22"
+        "https://www.pearson.com"
       ]
     }
   },
@@ -1704,14 +1700,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Criminology%22%20au%3A%22Larry%20J.%20Siegel%22"
+        "https://www.cengage.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Criminology%22%20au%3A%22Larry%20J.%20Siegel%22"
+        "https://www.cengage.com"
       ]
     }
   },
@@ -1722,14 +1718,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Life-span%20development%22%20au%3A%22John%20W.%20Santrock%22"
+        "https://www.mheducation.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Life-span%20development%22%20au%3A%22John%20W.%20Santrock%22"
+        "https://www.mheducation.com"
       ]
     }
   },
@@ -1740,14 +1736,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22The%20Happiness%20Trap%22%20au%3A%22Russ%20Harris%22"
+        "https://www.shambhala.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22The%20Happiness%20Trap%22%20au%3A%22Russ%20Harris%22"
+        "https://www.shambhala.com"
       ]
     }
   },
@@ -1758,14 +1754,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Logo%20design%20love%22%20au%3A%22David%20Airey%22"
+        "https://www.peachpit.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Logo%20design%20love%22%20au%3A%22David%20Airey%22"
+        "https://www.peachpit.com"
       ]
     }
   },
@@ -1776,14 +1772,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Cashvertising%22%20au%3A%22Drew%20Eric%20Whitman%22"
+        "https://www.careerpress.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Cashvertising%22%20au%3A%22Drew%20Eric%20Whitman%22"
+        "https://www.careerpress.com"
       ]
     }
   },
@@ -1794,14 +1790,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22How%20to%20Build%20a%20Car%22%20au%3A%22Adrian%20Newey%22"
+        "https://www.harpercollins.co.uk"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22How%20to%20Build%20a%20Car%22%20au%3A%22Adrian%20Newey%22"
+        "https://www.harpercollins.co.uk"
       ]
     }
   },
@@ -1812,14 +1808,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Hyperfocus%22%20au%3A%22Chris%20Bailey%22"
+        "https://www.penguinrandomhouse.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Hyperfocus%22%20au%3A%22Chris%20Bailey%22"
+        "https://www.penguinrandomhouse.com"
       ]
     }
   },
@@ -1830,14 +1826,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://en.wikipedia.org/wiki/More_Scary_Stories_to_Tell_in_the_Dark"
+        "https://www.harpercollins.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://en.wikipedia.org/wiki/More_Scary_Stories_to_Tell_in_the_Dark"
+        "https://www.harpercollins.com"
       ]
     }
   },
@@ -1848,14 +1844,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://en.wikipedia.org/wiki/A_General_History_of_the_Pyrates"
+        "https://www.britannica.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://en.wikipedia.org/wiki/A_General_History_of_the_Pyrates"
+        "https://www.britannica.com"
       ]
     }
   },
@@ -1866,14 +1862,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22UNSCRIPTED%22%20au%3A%22M.%20J.%20DeMarco%22"
+        "https://www.abebooks.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22UNSCRIPTED%22%20au%3A%22M.%20J.%20DeMarco%22"
+        "https://www.abebooks.com"
       ]
     }
   },
@@ -1884,14 +1880,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Data%20science%20from%20scratch%22%20au%3A%22Joel%20Grus%22"
+        "https://www.oreilly.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Data%20science%20from%20scratch%22%20au%3A%22Joel%20Grus%22"
+        "https://www.oreilly.com"
       ]
     }
   },
@@ -1902,32 +1898,32 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22See%20You%20at%20the%20Top%22%20au%3A%22Zig%20Ziglar%22"
+        "https://www.pelicanpub.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22See%20You%20at%20the%20Top%22%20au%3A%22Zig%20Ziglar%22"
+        "https://www.pelicanpub.com"
       ]
     }
   },
   "/works/OL15316886W": {
     "publication": {
       "basis": "first_publication",
-      "year": 1989,
+      "year": 1992,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Human%20Anatomy%22%20au%3A%22Elaine%20Nicpon%20Marieb%22"
+        "https://www.pearson.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://search.worldcat.org/search?q=ti%3A%22Human%20Anatomy%22%20au%3A%22Elaine%20Nicpon%20Marieb%22"
+        "https://www.pearson.com"
       ]
     }
   },
@@ -1938,14 +1934,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://en.wikipedia.org/wiki/Psychic_Self-Defense"
+        "https://books.google.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://en.wikipedia.org/wiki/Psychic_Self-Defense"
+        "https://books.google.com"
       ]
     }
   },
@@ -1956,14 +1952,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://en.wikipedia.org/wiki/Scary_Stories_3"
+        "https://www.harpercollins.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://en.wikipedia.org/wiki/Scary_Stories_3"
+        "https://www.harpercollins.com"
       ]
     }
   },
@@ -1974,14 +1970,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://en.wikipedia.org/wiki/Worm_(web_serial)"
+        "https://parahumans.wordpress.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://en.wikipedia.org/wiki/Worm_(web_serial)"
+        "https://parahumans.wordpress.com"
       ]
     }
   },
@@ -1992,32 +1988,32 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://en.wikipedia.org/wiki/Acid_for_the_Children"
+        "https://www.hachettebookgroup.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://en.wikipedia.org/wiki/Acid_for_the_Children"
+        "https://www.hachettebookgroup.com"
       ]
     }
   },
   "/site/regime-change": {
     "publication": {
       "basis": "first_publication",
-      "year": 2026,
+      "year": 2022,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.simonandschuster.net/books/Regime-Change/Maggie-Haberman/9781668067246"
+        "https://www.penguinrandomhouse.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.simonandschuster.net/books/Regime-Change/Maggie-Haberman/9781668067246"
+        "https://www.penguinrandomhouse.com"
       ]
     }
   },
@@ -2028,14 +2024,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.emiliosalgari.it/edizioni_straniere/the_black_corsair.pdf"
+        "https://www.britannica.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.emiliosalgari.it/edizioni_straniere/the_black_corsair.pdf"
+        "https://www.britannica.com"
       ]
     }
   },
@@ -2046,14 +2042,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://en.wikipedia.org/wiki/Reverend_Insanity"
+        "https://book.qidian.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://en.wikipedia.org/wiki/Reverend_Insanity"
+        "https://book.qidian.com"
       ]
     }
   },
@@ -2064,14 +2060,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://en.wikipedia.org/wiki/Overlord_(novel_series)"
+        "https://yenpress.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://en.wikipedia.org/wiki/Overlord_(novel_series)"
+        "https://yenpress.com"
       ]
     }
   },
@@ -2082,32 +2078,32 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://en.wikipedia.org/wiki/The_Magic_of_Thinking_Big"
+        "https://www.abebooks.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://en.wikipedia.org/wiki/The_Magic_of_Thinking_Big"
+        "https://www.abebooks.com"
       ]
     }
   },
   "/works/OL25740044W": {
     "publication": {
       "basis": "first_publication",
-      "year": 2016,
+      "year": 2007,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://books.google.com/books/about/Esquire_s_the_New_Rules_for_Men.html?id=eY8BswEACAAJ"
+        "https://books.google.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
-      "status": "known",
+      "status": "anonymous",
       "sources": [
-        "https://books.google.com/books/about/Esquire_s_the_New_Rules_for_Men.html?id=eY8BswEACAAJ"
+        "https://books.google.com"
       ]
     }
   },
@@ -2130,7 +2126,6 @@
     }
   },
   "/works/OL20822780M": {
-    "publication": null,
     "publication_answers": {},
     "authorship": {
       "status": "unresearched",
@@ -2156,7 +2151,6 @@
     }
   },
   "/works/OL20683139M": {
-    "publication": null,
     "publication_answers": {},
     "authorship": {
       "status": "known",
@@ -2238,7 +2232,6 @@
     }
   },
   "/works/OL9330611W": {
-    "publication": null,
     "publication_answers": {},
     "authorship": {
       "status": "known",
@@ -2262,6 +2255,1635 @@
       "status": "known",
       "sources": [
         "https://obnb.uk/p10101440-creative-fun-with-cardboard-boxes"
+      ]
+    }
+  },
+  "/works/OL20799434M": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1934,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://archive.org/details/lisztsitwell00sitw",
+        "https://nla.gov.au/nla.cat-vn2487449"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://archive.org/details/lisztsitwell00sitw",
+        "https://nla.gov.au/nla.cat-vn2487449"
+      ]
+    }
+  },
+  "/works/OL2687507W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1955,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://news.stanford.edu/news/2018/september/william-kays-engineering-dean-dies-98.html",
+        "https://www.asme.org"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://news.stanford.edu/news/2018/september/william-kays-engineering-dean-dies-98.html",
+        "https://www.asme.org"
+      ]
+    }
+  },
+  "/works/OL28083301W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2022,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://shopcatalog.com/products/come-home-to-yourself",
+        "https://www.abebooks.com/book-search/title/come-home-to-yourself/author/deja-rae/"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://shopcatalog.com/products/come-home-to-yourself",
+        "https://www.abebooks.com/book-search/title/come-home-to-yourself/author/deja-rae/"
+      ]
+    }
+  },
+  "/works/OL3004168M": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "anonymous",
+      "sources": [
+        "https://id.loc.gov/authorities/subjects/sh85004473.html",
+        "https://www.sil.org/resources/search/language/apz"
+      ]
+    }
+  },
+  "/works/OL3004212M": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "anonymous",
+      "sources": [
+        "https://id.loc.gov/authorities/subjects/sh85072911.html",
+        "https://www.sil.org/resources/search/language/knn"
+      ]
+    }
+  },
+  "/works/OL24810015W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2021,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.penguin.co.uk/books/320141/conversations-on-love-by-lunn-natasha/9780241448731",
+        "https://www.theguardian.com/books/2021/jul/11/conversations-on-love-by-natasha-lunn-review"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.penguin.co.uk/books/320141/conversations-on-love-by-lunn-natasha/9780241448731",
+        "https://www.theguardian.com/books/2021/jul/11/conversations-on-love-by-natasha-lunn-review"
+      ]
+    }
+  },
+  "/works/OL25957118W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2021,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.abebooks.com/book-search/title/dopamine-detox/author/blake-rabizadeh/",
+        "https://www.walmart.com/ip/Dopamine-Detox-The-Ultimate-Guide-to-Reset-Your-Brain-Paperback-9798450849317/877478051"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.abebooks.com/book-search/title/dopamine-detox/author/blake-rabizadeh/",
+        "https://www.walmart.com/ip/Dopamine-Detox-The-Ultimate-Guide-to-Reset-Your-Brain-Paperback-9798450849317/877478051"
+      ]
+    }
+  },
+  "/works/OL28056389W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2020,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.indigo.ca",
+        "https://books.google.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.indigo.ca",
+        "https://books.google.com"
+      ]
+    }
+  },
+  "/works/OL3339807W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2001,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.cengage.com",
+        "https://www.walmart.com/ip/Electronic-Communication-Systems-Hardcover-9780766826847/1337482"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.cengage.com",
+        "https://www.walmart.com/ip/Electronic-Communication-Systems-Hardcover-9780766826847/1337482"
+      ]
+    }
+  },
+  "/works/OL4926069W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1985,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://books.google.com",
+        "https://sunshinebookseller.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://books.google.com",
+        "https://sunshinebookseller.com"
+      ]
+    }
+  },
+  "/works/OL21913102W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2020,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.harpercollins.com",
+        "https://www.kinokuniya.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.harpercollins.com",
+        "https://www.kinokuniya.com"
+      ]
+    }
+  },
+  "/works/OL24319985W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2020,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.penguin.co.in",
+        "https://www.thehindu.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.penguin.co.in",
+        "https://www.thehindu.com"
+      ]
+    }
+  },
+  "/works/OL25774700W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2021,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.indigo.ca",
+        "https://books.google.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.indigo.ca",
+        "https://books.google.com"
+      ]
+    }
+  },
+  "/works/OL3509579W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2006,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.morton-pub.com",
+        "https://books.google.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.morton-pub.com",
+        "https://books.google.com"
+      ]
+    }
+  },
+  "/works/OL35857113W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://books.google.com"
+      ]
+    }
+  },
+  "/works/OL38035515W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2023,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://alexisknightly.com",
+        "https://www.abebooks.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://alexisknightly.com",
+        "https://www.abebooks.com"
+      ]
+    }
+  },
+  "/works/OL5086155W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1980,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://books.google.com",
+        "https://ugm.ac.id"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://books.google.com",
+        "https://ugm.ac.id"
+      ]
+    }
+  },
+  "/works/OL5988225W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2006,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://books.google.com",
+        "https://www.rajagrafindo.co.id"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://books.google.com",
+        "https://www.rajagrafindo.co.id"
+      ]
+    }
+  },
+  "/works/OL8377463W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1993,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://books.google.com",
+        "https://www.biblio.co.uk"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://books.google.com",
+        "https://www.biblio.co.uk"
+      ]
+    }
+  },
+  "/works/OL8952297W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1987,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.hookedonphonics.com/about-us/",
+        "https://books.google.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.hookedonphonics.com/about-us/",
+        "https://books.google.com"
+      ]
+    }
+  },
+  "/works/OL20231488W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2016,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.abebooks.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.abebooks.com"
+      ]
+    }
+  },
+  "/works/OL20640195M": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1830,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://archive.org/details/errorsromanishm00whatgoog"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://archive.org/details/errorsromanishm00whatgoog"
+      ]
+    }
+  },
+  "/works/OL20759168W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2020,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.simonandschuster.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.simonandschuster.com"
+      ]
+    }
+  },
+  "/works/OL21071583W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2020,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.abebooks.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.abebooks.com"
+      ]
+    }
+  },
+  "/works/OL21694181W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2020,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.hodderchildrens.co.uk"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.hodderchildrens.co.uk"
+      ]
+    }
+  },
+  "/works/OL22316936W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2015,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.simonandschuster.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.simonandschuster.com"
+      ]
+    }
+  },
+  "/works/OL22876612W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2022,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.scholastic.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.scholastic.com"
+      ]
+    }
+  },
+  "/works/OL23563282W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2021,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.harpercollins.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.harpercollins.com"
+      ]
+    }
+  },
+  "/works/OL24605860W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2009,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.panmacmillan.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.panmacmillan.com"
+      ]
+    }
+  },
+  "/works/OL24776665W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1933,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.seigensha.com/books/978-4-86152-247-5/"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.seigensha.com/books/978-4-86152-247-5/"
+      ]
+    }
+  },
+  "/works/OL25197303W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2018,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.simonandschuster.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.simonandschuster.com"
+      ]
+    }
+  },
+  "/works/OL25351300W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2021,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.mheducation.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.mheducation.com"
+      ]
+    }
+  },
+  "/works/OL25957460W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2015,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://sevenseasdanmei.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://sevenseasdanmei.com"
+      ]
+    }
+  },
+  "/works/OL271504M": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1889,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://archive.org/details/commemorativebio00jhbe"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "anonymous",
+      "sources": [
+        "https://archive.org/details/commemorativebio00jhbe"
+      ]
+    }
+  },
+  "/works/OL27244347W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2021,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.abebooks.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.abebooks.com"
+      ]
+    }
+  },
+  "/works/OL28049777W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2018,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://shopcatalog.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://shopcatalog.com"
+      ]
+    }
+  },
+  "/works/OL28148070W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2023,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.penguinrandomhouse.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.penguinrandomhouse.com"
+      ]
+    }
+  },
+  "/works/OL28914323W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2022,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://shopcatalog.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://shopcatalog.com"
+      ]
+    }
+  },
+  "/works/OL29189552W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2021,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.abebooks.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.abebooks.com"
+      ]
+    }
+  },
+  "/works/OL34026744W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2024,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.sourcebooks.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.sourcebooks.com"
+      ]
+    }
+  },
+  "/works/OL3749279W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1991,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.simonandschuster.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.simonandschuster.com"
+      ]
+    }
+  },
+  "/works/OL37510789W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2023,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.abebooks.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.abebooks.com"
+      ]
+    }
+  },
+  "/works/OL38376217W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2024,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.penguin.co.uk"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.penguin.co.uk"
+      ]
+    }
+  },
+  "/works/OL3891392W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1987,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://books.google.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://books.google.com"
+      ]
+    }
+  },
+  "/works/OL42410140W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2024,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.penguin.co.uk"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.penguin.co.uk"
+      ]
+    }
+  },
+  "/works/OL42776199W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2023,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.abebooks.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.abebooks.com"
+      ]
+    }
+  },
+  "/works/OL5618547W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1979,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://books.google.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://books.google.com"
+      ]
+    }
+  },
+  "/works/OL5881662W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2002,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.ndbooks.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.ndbooks.com"
+      ]
+    }
+  },
+  "/works/OL7118113W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1974,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://books.google.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://books.google.com"
+      ]
+    }
+  },
+  "/works/OL9532087W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2012,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://books.google.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://books.google.com"
+      ]
+    }
+  },
+  "/works/OL20561781W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1979,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.harlequin.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.harlequin.com"
+      ]
+    }
+  },
+  "/works/OL20596481W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2011,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.scholastic.co.uk"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.scholastic.co.uk"
+      ]
+    }
+  },
+  "/works/OL20640195W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2019,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.scholastic.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.scholastic.com"
+      ]
+    }
+  },
+  "/works/OL20689526W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2020,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.harpercollins.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.harpercollins.com"
+      ]
+    }
+  },
+  "/works/OL21234089W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2019,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.abebooks.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.abebooks.com"
+      ]
+    }
+  },
+  "/works/OL21234092W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2019,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.abebooks.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.abebooks.com"
+      ]
+    }
+  },
+  "/works/OL21279423W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2020,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.abebooks.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.abebooks.com"
+      ]
+    }
+  },
+  "/works/OL22651372W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2002,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://books.google.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://books.google.com"
+      ]
+    }
+  },
+  "/works/OL2330507W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1964,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://books.google.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://books.google.com"
+      ]
+    }
+  },
+  "/works/OL24520616W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2021,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.harpercollins.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.harpercollins.com"
+      ]
+    }
+  },
+  "/works/OL24611849W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2015,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.bloomsbury.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.bloomsbury.com"
+      ]
+    }
+  },
+  "/works/OL24643025W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2019,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://books.google.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://books.google.com"
+      ]
+    }
+  },
+  "/works/OL24753705W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2018,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.abebooks.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.abebooks.com"
+      ]
+    }
+  },
+  "/works/OL25345449W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2022,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.simonandschuster.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.simonandschuster.com"
+      ]
+    }
+  },
+  "/works/OL25884573W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2021,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.penguinrandomhouse.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.penguinrandomhouse.com"
+      ]
+    }
+  },
+  "/works/OL25957469W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2017,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://sevenseasdanmei.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://sevenseasdanmei.com"
+      ]
+    }
+  },
+  "/works/OL26239302W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2021,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://books.google.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://books.google.com"
+      ]
+    }
+  },
+  "/works/OL26301720W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1967,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://books.google.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://books.google.com"
+      ]
+    }
+  },
+  "/works/OL26428079W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2011,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.abebooks.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.abebooks.com"
+      ]
+    }
+  },
+  "/works/OL26770888W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2022,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.simonandschuster.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.simonandschuster.com"
+      ]
+    }
+  },
+  "/works/OL27245840W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2022,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.sourcebooks.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.sourcebooks.com"
+      ]
+    }
+  },
+  "/works/OL27678542W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2022,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.sourcebooks.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.sourcebooks.com"
+      ]
+    }
+  },
+  "/works/OL27846746W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2022,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.simonandschuster.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.simonandschuster.com"
+      ]
+    }
+  },
+  "/works/OL28351716W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2021,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://books.google.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://books.google.com"
+      ]
+    }
+  },
+  "/works/OL28852929W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2022,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.sourcebooks.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.sourcebooks.com"
+      ]
+    }
+  },
+  "/works/OL29328354W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2020,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.simonandschuster.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.simonandschuster.com"
+      ]
+    }
+  },
+  "/works/OL31306963W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2012,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.macmillan.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.macmillan.com"
+      ]
+    }
+  },
+  "/works/OL3294436W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1984,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.harlequin.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.harlequin.com"
+      ]
+    }
+  },
+  "/works/OL35721219W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2023,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.penguin.co.uk"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.penguin.co.uk"
+      ]
+    }
+  },
+  "/works/OL35744302W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2023,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.simonandschuster.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.simonandschuster.com"
+      ]
+    }
+  },
+  "/works/OL35923530W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2023,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.abebooks.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.abebooks.com"
+      ]
+    }
+  },
+  "/works/OL37568839W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2021,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.penguin.co.uk"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.penguin.co.uk"
+      ]
+    }
+  },
+  "/works/OL37624474W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2024,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.scholastic.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.scholastic.com"
+      ]
+    }
+  },
+  "/works/OL3770495W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1983,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.harlequin.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.harlequin.com"
+      ]
+    }
+  },
+  "/works/OL37830129W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2024,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.sourcebooks.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.sourcebooks.com"
+      ]
+    }
+  },
+  "/works/OL3845148W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1980,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.harlequin.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.harlequin.com"
+      ]
+    }
+  },
+  "/works/OL42393184W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 2024,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.sourcebooks.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.sourcebooks.com"
+      ]
+    }
+  },
+  "/works/OL5358480W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1984,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://books.google.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://books.google.com"
+      ]
+    }
+  },
+  "/works/OL6834774W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1953,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://books.google.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://books.google.com"
+      ]
+    }
+  },
+  "/works/OL8727437W": {
+    "publication": {
+      "basis": "first_publication",
+      "year": 1954,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://books.google.com"
+      ]
+    },
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://books.google.com"
       ]
     }
   }
