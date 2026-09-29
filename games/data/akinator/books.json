@@ -5292,6 +5292,23 @@
       "target_children": 0,
       "tone_dark_or_serious": 1,
       "tone_humorous_or_satirical": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2024,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.penguin.co.in/book_author/shrijeet-shandilya/",
+        "https://www.amazon.co.uk/Can-We-Be-Strangers-Again/dp/B0DQQ87DGG"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.penguin.co.in/book_author/shrijeet-shandilya/",
+        "https://www.amazon.co.uk/Can-We-Be-Strangers-Again/dp/B0DQQ87DGG"
+      ]
     }
   },
   {
@@ -27143,6 +27160,12 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 0
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "http://archive.org/details/aliceinwonderla00carrgoog"
+      ]
     }
   },
   {
@@ -31544,7 +31567,7 @@
     "k": "/works/OL17824318M",
     "t": "An Annotated bibliography of CERC coastal ecology research",
     "a": "US Army Corps of Engineers CERC",
-    "y": 1980,
+    "y": 1978,
     "p": 905,
     "r": 1,
     "w": null,
@@ -31602,6 +31625,23 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 1,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1978,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://catalog.hathitrust.org/Record/100961279",
+        "https://www.govinfo.gov/app/details/CZIC-tc203-u581mr-no-78-2"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://catalog.hathitrust.org/Record/100961279",
+        "https://www.govinfo.gov/app/details/CZIC-tc203-u581mr-no-78-2"
+      ]
     }
   },
   {
@@ -32281,6 +32321,21 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1553,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://catalog.hathitrust.org/Record/010429622"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://catalog.hathitrust.org/Record/010429622"
+      ]
     }
   },
   {
@@ -36136,6 +36191,21 @@
       "target_children": 0,
       "tone_dark_or_serious": 1,
       "tone_humorous_or_satirical": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2018,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.chloewalshauthor.com/"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.chloewalshauthor.com/"
+      ]
     }
   },
   {
@@ -52846,6 +52916,21 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 1,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1994,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://juc.gov.jo/bib/1545403"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://juc.gov.jo/bib/1545403"
+      ]
     }
   },
   {
@@ -53482,13 +53567,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://archive.org/details/commemorativebio00jhbe"
+        "https://archive.org/details/commemorativebio00jh"
       ]
     },
     "authorship": {
       "status": "anonymous",
       "sources": [
-        "https://archive.org/details/commemorativebio00jhbe"
+        "https://archive.org/details/commemorativebio00jh"
       ]
     },
     "protected_questions": [
@@ -55360,13 +55445,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.simonandschuster.com"
+        "https://www.reneecarlino.com/about"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.simonandschuster.com"
+        "https://www.reneecarlino.com/about"
       ]
     }
   },
@@ -57868,6 +57953,23 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 1,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1982,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://ravish8.wordpress.com/2014/07/08/sad-demise-of-shri-mohanlal-agrawal/",
+        "https://www.bookpratha.com/gujarati-book/aghor-nagara-vage-vol--1--"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://ravish8.wordpress.com/2014/07/08/sad-demise-of-shri-mohanlal-agrawal/",
+        "https://www.bookpratha.com/gujarati-book/aghor-nagara-vage-vol--1--"
+      ]
     }
   },
   {
@@ -60963,6 +61065,23 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 1,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1986,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Raymond_Buckland",
+        "https://archive.org/details/bucklandscomplet0000buck"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Raymond_Buckland",
+        "https://archive.org/details/bucklandscomplet0000buck"
+      ]
     }
   },
   {
@@ -61426,7 +61545,7 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.apple.com/us/book/all-that-you-deserve/id1595160356"
+        "https://goodreads.com"
       ]
     }
   },
@@ -62143,11 +62262,26 @@
     "k": "/works/OL34357614W",
     "t": "Big Nate",
     "a": "Lincoln Pierce",
-    "y": 2012,
+    "y": 2010,
     "p": 315,
     "r": 1,
     "w": null,
-    "c": 13840903
+    "c": 13840903,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2010,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Big_Nate:_In_a_Class_by_Himself"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Big_Nate:_In_a_Class_by_Himself"
+      ]
+    }
   },
   {
     "k": "/works/OL4658246W",
@@ -65540,6 +65674,23 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 1
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2006,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://worldcat.org",
+        "https://ijssrr.com/journal/article/download/1679/1364"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://worldcat.org",
+        "https://ijssrr.com/journal/article/download/1679/1364"
+      ]
     }
   },
   {
@@ -66151,24 +66302,26 @@
     "k": "/works/OL9305390M",
     "t": "Cardboard Boxes (Creative Fun with)",
     "a": "Nikki Connor",
-    "y": 1997,
+    "y": 1996,
     "p": 278,
     "r": 1,
     "w": null,
     "c": null,
     "publication": {
       "basis": "first_publication",
-      "year": 1997,
+      "year": 1996,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://obnb.uk/p10101440-creative-fun-with-cardboard-boxes"
+        "https://www.abebooks.co.uk/9780749626662/Cardboard-Boxes-4-Creative-Fun-0749626666/plp",
+        "https://amazon.sg"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://obnb.uk/p10101440-creative-fun-with-cardboard-boxes"
+        "https://www.abebooks.co.uk/9780749626662/Cardboard-Boxes-4-Creative-Fun-0749626666/plp",
+        "https://amazon.sg"
       ]
     }
   },
@@ -66511,7 +66664,7 @@
     "k": "/works/OL20004815M",
     "t": "Apocalypse now",
     "a": "Francis Ford Coppola, John Milius",
-    "y": 1979,
+    "y": 2001,
     "p": 275,
     "r": 1,
     "w": null,
@@ -66567,8 +66720,23 @@
       "fact:long": 0.65,
       "published_before_1900": 0,
       "published_1900_to_1950": 0,
-      "published_1951_to_2000": 1,
-      "published_after_2000": 0
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2001,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Apocalypse_Now"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Apocalypse_Now"
+      ]
     }
   },
   {
@@ -69798,7 +69966,7 @@
     "k": "/works/OL15589905W",
     "t": "Bioethics and Moral Decisions",
     "a": "Florentino T. Timbreza",
-    "y": 1997,
+    "y": 1993,
     "p": 253,
     "r": 1,
     "w": null,
@@ -69856,6 +70024,21 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 1,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1993,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://launion.gov.ph"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://launion.gov.ph"
+      ]
     }
   },
   {
@@ -70566,7 +70749,7 @@
     "k": "/works/OL9330611W",
     "t": "Buzani Kubawo",
     "a": "W.K. Tamsanqa",
-    "y": null,
+    "y": 1958,
     "p": 248,
     "r": 1,
     "w": null,
@@ -70574,7 +70757,16 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://oxford.co.za/shop/school/literature/fet-phase/isixhosa-fet-phase/9780190419448-buzani-kubawo-isixhosa-drama-fet-epub3/"
+        "https://esat.sun.ac.za/index.php/W.K._Tamsanqa"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1958,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://esat.sun.ac.za/index.php/W.K._Tamsanqa"
       ]
     }
   },
@@ -71858,7 +72050,24 @@
     "p": 241,
     "r": 1,
     "w": null,
-    "c": 7248501
+    "c": 7248501,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1982,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/List_of_works_by_Penny_Jordan",
+        "https://www.goodreads.com/book/show/1801160.Bought_with_His_Name"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/List_of_works_by_Penny_Jordan",
+        "https://www.goodreads.com/book/show/1801160.Bought_with_His_Name"
+      ]
+    }
   },
   {
     "k": "/works/OL16249343W",
@@ -72125,13 +72334,16 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.ndbooks.com"
+        "https://id.wikipedia.org/wiki/Cantik_Itu_Luka",
+        "https://jakartaglobe.id/lifestyle/eka-kurniawan-talks-cantik-itu-luka-favorite-books-indonesia",
+        "https://www.google.com/goto?url=CAESZQHrOzAVTsenRcsEu-ak1CHCaQU0_6Wb8HQdDTb4N8qdO7rszZq6XYLs_sT91L-ZXUtBgqE__t8-9YP7r8PI_XRf8wvpfEWpeDACuUmfJhsdcbi3s7JlDBtz2hX5vkjnY927oB15"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.ndbooks.com"
+        "https://id.wikipedia.org/wiki/Cantik_Itu_Luka",
+        "https://jakartaglobe.id/lifestyle/eka-kurniawan-talks-cantik-itu-luka-favorite-books-indonesia"
       ]
     }
   },
@@ -74766,13 +74978,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://us.macmillan.com/books/9781250326768/beyondthestory/"
+        "https://en.wikipedia.org/wiki/Beyond_the_Story"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://us.macmillan.com/books/9781250326768/beyondthestory/"
+        "https://en.wikipedia.org/wiki/Beyond_the_Story"
       ]
     }
   },
@@ -75752,6 +75964,21 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1815,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.abebooks.com/Biorens-Pennsylvania-Pocket-Remembrancer-Year-1816/31567464084/bd"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.abebooks.com/Biorens-Pennsylvania-Pocket-Remembrancer-Year-1816/31567464084/bd"
+      ]
     }
   },
   {
@@ -81323,7 +81550,22 @@
     "p": 198,
     "r": 1,
     "w": null,
-    "c": 7304574
+    "c": 7304574,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1980,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Sally_Wentworth"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Sally_Wentworth"
+      ]
+    }
   },
   {
     "k": "/works/OL15659750W",
@@ -82938,13 +83180,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.penguin.co.uk"
+        "https://google.com"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.penguin.co.uk"
+        "https://google.com"
       ]
     }
   },
@@ -86449,13 +86691,16 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.abebooks.com"
-      ]
-    },
-    "authorship": {
-      "status": "known",
-      "sources": [
-        "https://www.abebooks.com"
+        "https://www.google.com/goto?url=CAESVAHrOzAVmYMZR738xPDqo4sSp7W5QpalN6gow6PdDyjypmtAizfOI88XJlifoYz6G9_CSu29KJGf-bkSmKXLR9pyY63uPpDprtouQO4pKO-3w0JUmQ",
+        "https://www.google.com/goto?url=CAESYwHrOzAVFAEKEtTc5nIJdCUBpsQLIBTfoO2TrY___7FA4aCOEb4q_dgEhdwN6qfIhV1ugET9VCG6aRp74eRhplumtx0sTIJY5_g68J4lNmOZTT4SyN2FmrlSfawzRY2z9VY6kQ",
+        "https://www.google.com/goto?url=CAESbAHrOzAV1PPs2jIePYRyo8Wnos7hmMBgckPmgmZqf7GQ1EF9dy_h3xrJ8xbFRTIC_3Ygm8MS0cV0Jx0K9uv1tjFbYG-IOWYRN_39izTE6EV8kjUV4tusDFq8h_ylKhDs8GD54vwAz82A70efjQ",
+        "https://www.google.com/goto?url=CAESkgEB6zswFYplS4JgMLKiTAfUX1ZgaIqAqs1df5ANAhlvHbE3tTlQgFNOR5xXqb-qyto3XLr-rZMg60pAc_kqAo3Tyckxn_x-Ut5hy69xUAqIjwa4iCdc5cOhP-yz0DATlA72o2nzfcaUaRmvhuDu_DZfjIjEQMEYImbp96XLBA5OjUyvWbWIfxmyKPSvkqh1E0sPDw",
+        "https://www.google.com/goto?url=CAESegHrOzAV3NhT0ldh2BwGLbQY61I771ntmOg-j-z45g4xMEC9tZ2TTbhn1-OV3RuWtDZnUIYBU881n99uvaXWzXqEv_-cL5WT0kWmhYAtsBBfUFtKv5DW5TkHg7mCL3hN6Xdr5jpiblOGJvrZts-TEtRktMSXWJtuqa8b",
+        "https://www.google.com/goto?url=CAESggEB6zswFccunslxjRrjy531gFwGqtL_b8A-SFnIVB1BDywGdz5HkcWNG6LSfee53yE667KfuAfOeSK5dDBz-eg9P74L4ljZlh351e1ybGjcNQYJh3fzzjj2Yj2410f7ThNSLu1mBQF-aYXtVmlWqcUhbJ30iuVzsYt791Oe6lL5HvZ2",
+        "https://www.google.com/goto?url=CAESZQHrOzAVT8kFs1VXYbRm2mElTV6q0bxymKRVY42-my2bbKj6vcMSCRKVqcrToN4zeojKg7FZsFIPv0KF3RmFiJqY4yD_76WENkK257wn0SbmwWJgRTvMIvp6iLH8_e3sHx5vTx-e",
+        "https://www.google.com/goto?url=CAESkAEB6zswFY4kzWpqBNq8jDLNTRJ3RWdhhr66HxE50Ng01tFHF2d-luyvV7DAi-NRBxQmDVHD3vnS-sIlkR-bHkFc2Xa_Sy5BcTVil_6AL36czOqyihKJLkzJA-GLuGKBtWcqlAbG1TOKJ0IcgPcHD3xH_4L9AfuilGXkIireRrP2Er7HlelgD3O2kFCD4KOhUe4",
+        "https://www.google.com/goto?url=CAESWAHrOzAVXfceQbw5lL3UQ-bUpTqaKzoscsSH1o7L7ldtKiK7B8a8NGSX389LB_uMQXduTeUirOdrp7yfIwkNhJTyWU-ijOU409gMnQWqSsddRb-9u-3fH7Y",
+        "https://books.google.com/books/about/BETWEEN_COMMITMENT_AND_BETRAYAL.html?id=5_ftEAAAQBAJ"
       ]
     }
   },
@@ -89056,7 +89301,7 @@
     "k": "/works/OL20131297M",
     "t": "Chronica monasterii S. Albani.",
     "a": "Thomas Walsingham",
-    "y": 1863,
+    "y": 1574,
     "p": 181,
     "r": 1,
     "w": null,
@@ -89114,6 +89359,21 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1574,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Thomas_Walsingham"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Thomas_Walsingham"
+      ]
     }
   },
   {
@@ -92731,7 +92991,14 @@
     "p": 175,
     "r": 1,
     "w": null,
-    "c": 10724638
+    "c": 10724638,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://meganwagnerlloyd.com/about/",
+        "https://www.commonsensemedia.org/book-reviews/allergic"
+      ]
+    }
   },
   {
     "k": "/works/OL17897191W",
@@ -93242,13 +93509,15 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://billgottliebhealth.com/bookstore/"
+        "https://www.penguinrandomhouse.com/authors/69938/bill-gottlieb/",
+        "https://books.google.com/books/about/Alternative_Cures.html?id=HR9XwktsBRkC"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://billgottliebhealth.com/bookstore/"
+        "https://www.penguinrandomhouse.com/authors/69938/bill-gottlieb/",
+        "https://books.google.com/books/about/Alternative_Cures.html?id=HR9XwktsBRkC"
       ]
     }
   },
@@ -95901,6 +96170,21 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 1,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1987,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.lynnegraham.com/book/bittersweet-passion/"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.lynnegraham.com/book/bittersweet-passion/"
+      ]
     }
   },
   {
@@ -96882,6 +97166,13 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 1,
       "published_after_2000": 0
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://id.celebri.com/books/bill-boyle-living-here-20900133",
+        "https://grafiati.com"
+      ]
     }
   },
   {
@@ -97493,6 +97784,23 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 1
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2015,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Lindsay_Gibson",
+        "https://www.lindsaycgibson.com/about.html"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Lindsay_Gibson",
+        "https://www.lindsaycgibson.com/about.html"
+      ]
     }
   },
   {
@@ -98023,6 +98331,21 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 1,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1993,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/K._P._D._Maphalla"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/K._P._D._Maphalla"
+      ]
     }
   },
   {
@@ -98515,6 +98838,12 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 1
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://es.wikipedia.org/wiki/Marian_Rojas_Estap%C3%A9"
+      ]
     }
   },
   {
@@ -99552,13 +99881,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.simonandschuster.com"
+        "https://en.wikipedia.org/wiki/Awaken_the_Giant_Within"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.simonandschuster.com"
+        "https://en.wikipedia.org/wiki/Awaken_the_Giant_Within"
       ]
     }
   },
@@ -100990,6 +101319,24 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 1
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2009,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.google.com/goto?url=CAESUgHrOzAVlgvBq4-seRP9j6pTLjqmhpu7hhpdKbfAqz5_1uzne8EW2aKK_7Kcw1FlvS0mwkJOJmLwDHv7VgT_OBnnPivuP2v8r0njiiPS-yAebBs",
+        "https://www.google.com/goto?url=CAESigEB6zswFTS-1ZZen20uCnUl_Sz6GRV-kY-cvGTDE4-InIPi-KHxQf_OtGw3VYcNTsoQS6iZ2ZQ2QifUzgJKxAVUy0KXml0MUAYtrU_mWy_bVB1Ar8IJEDVNH0NWo0GSCUGGhATSyi48qjLcxvGOfwUx3Tj9lhWIyoY2ji6ECgNj-tyVkN-O_gvI_cs",
+        "https://www.google.com/goto?url=CAESZwHrOzAVwmrAKelGPMSNAQn3sP-po0ah5vIYSCztFLVE5qIEkFI5rToiEzQ8J6JlowzyDIV0UXpK_Y65kZYoQGg0dWQ3oQeXADLF0i7_YpQLtg7T3fwFQ93qu-F8G9pyKAyH-Q4-Bl4",
+        "https://www.google.com/goto?url=CAESggEB6zswFfrlDF_9qeCky08K1-zzUe_33V_b79UgSEHCqSYbfcBV_bPcRf2xwyW1LvvfjsacugQtxMM_OutgQDg1-Hn1_Xqnu9RfknQ-XLBjJkZvdfveVNbxcqHlJrvMHqwq4fAT8eW_2ao7lUHiacX2Ac82o4LrkRPO8lNf7d0AnZyw",
+        "https://www.google.com/goto?url=CAESbwHrOzAVKtm9jG4pKTLT_BAQw2qF4prHkJMj6eTxo96W7u31U_HzhfJs7I7DeG9HcGVqf2C3fhWO5udhUp6Px6cIqC6FzkxWl4r4_icjdtws5LNG3QmGQ6nQApUrisZ1cubGK1H-FOab7J9SGdScXg",
+        "https://www.google.com/goto?url=CAESZwHrOzAVrS0IMTsD2rHNRFV-3OxyZLFs4p9VJOfX08nFiqqfPiGxhZBFkC1TAbNpmUhUeWWDs2Cgr9SBhcnMEZ4bIuLbXE88tOxE9t02sCucfuZrp-PakvGO0irlL6LRjzgS8xqP3rI",
+        "https://www.google.com/goto?url=CAESiwEB6zswFW7-qtW3cJcf72cK3wlyhiS3N53sq7gVc4s6wlmTb-ZeLUwdEzJRgtMYeyRHS5DdDrk1El-D9pvKvB3-JM-QuYoEsqNZYCrNbz2-II_cPQbefrqh7Xz7bPugdXUR1lsKXiZBZs6SwlbydDC66XYYK6P_iQWuFaGzr2nSdT-pbk4EJ2RAFhqB",
+        "https://www.google.com/goto?url=CAESUgHrOzAVcu9Tqiqw2BhIuInAXpHibQ8U4IMbv8B5nwxO4-50H-eIRZFcGUtU5yw94R-BC3MBstw1D6omMk7TOUVeyAIhe55zVgLpekL1g8hkC2s",
+        "https://www.google.com/goto?url=CAESiwEB6zswFYryFcBJVZ7m7_y9HQ9hfktIEfZssopVONThDar-ojUq_sBSP3cfSwLV7rNjHigCHeCX0fzQVrqeZDjH-EL-F8c8pWWh26HwkFneWU67yhtQOBXvtu5vNjlgmrVjdKejKi3kdZqe_XQDWFSRjRsicq_8ZKgqCCQW-Sct_pXgKW96XWg64LN5",
+        "https://www.google.com/goto?url=CAESigEB6zswFWZr9KAv01jhF1ZLdF3HJgIKuavlNLmUI4wWYpOdOHpizNESa8AqgR135nVf_8mLTb2HPIy8CnS1y-et3lz8VlcClq7o7N9suZzKqHqiOgU3R2lp1NPoIuTduE8XOh-g8I-iabfTS5iBEfe7oSquE84giu1FLnJ7TB5Cuiksxgj-l2qlKJU"
+      ]
     }
   },
   {
@@ -102281,7 +102628,7 @@
     "k": "/works/OL20822780W",
     "t": "Breaking The Code of SSB Psychological Tests - SSB Interview",
     "a": "SSBCrack",
-    "y": 2016,
+    "y": 2017,
     "p": 159,
     "r": 1,
     "w": null,
@@ -102339,6 +102686,21 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 1
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2017,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.ssbcrack.com/2017/11/breaking-code-ssb-psychological-tests.html"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.ssbcrack.com/2017/11/breaking-code-ssb-psychological-tests.html"
+      ]
     }
   },
   {
@@ -103387,7 +103749,13 @@
     "p": 157,
     "r": 1,
     "w": null,
-    "c": 12446740
+    "c": 12446740,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Bloodmarked"
+      ]
+    }
   },
   {
     "k": "/works/OL98267W",
@@ -103978,6 +104346,12 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 1
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.jiosaavn.com/shows/il-podcast-di-attrazione-x/1/H1HGtGgYBQY_"
+      ]
     }
   },
   {
@@ -104540,7 +104914,25 @@
     "p": 155,
     "r": 1,
     "w": null,
-    "c": 10570362
+    "c": 10570362,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1988,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.google.com/goto?url=CAEScAHrOzAV6ckuh0GAs2HkYPD_9lzBrlHpKAY2ylIEnHnFImj_DXGrUKdXMAFOaFafycJuW8MLQTlQHMGdJuCZPeywYrfsx32SLZF0yL1hVRGWPHs131LQZXrAAi_mcWDHa4LofDUEUfOe1uL6tvbP9Lo",
+        "https://www.google.com/goto?url=CAESdwHrOzAVmN2J-e9FogG4KBd4_WhtLyekfqZvYq_ue4LKXBpG6EZP_MZnfInU3t2fjorNIS0UqOGBsWraobUJoFaJ6K8NsSiwLJ-t_S0MHy0LX3o7ImOaQ8YGBkjqJ7QruXF-Y4p6NFNwpeyDajFoDiDnxICNqLdk",
+        "https://www.google.com/goto?url=CAEScAHrOzAVp4UlltXN8hD5PYeRZPL8ZqNQUUG-Afh0rfSFphIrq4va0dFFY9vHojo1axPUR1BEa3ANLyiRml5_iObw21oG2i38G-uPJqA_SZJsyn6dtKSXJmYH5CFd08vNkCSZuGG8zoEjr6leRLtQbdk",
+        "https://www.google.com/goto?url=CAESeQHrOzAVLg0oWILCamXu8vkoaj8El5GwSkPYXbmMB0RsK4B0_WgX9IOyl9RW5Wi27AGH3SDNqrj1ySCCvjntTwRNYc5md1YDTdA5JZJ4WnTWKOXBMMNHwjm7d1A-uuygHPT4iFuydh8RL3pvnEwHZ-QYzCTNOwHKIrY",
+        "https://www.google.com/goto?url=CAESdwHrOzAVqmv8tzsOw6B2JMJ3hdBcRk5UyXs5PN0dyIqqztGHEfqOCmDbRJcNUTC0NAtdeCCitaiL93cMxyxkZDBuYiLfIiOEij6aoq5pmXekF-PP3f_kVB3EMqKMIi5yfG2D9MpPRM9uklQHfd98bEJz9ZxhLgOM",
+        "https://www.google.com/goto?url=CAESfAHrOzAVdq-uxodRg1Kmw__z6BLBZzGXEjsB2BsXpu_injSyxQkPdF-0fyfUAPmZfRWRlBX0n5j-k7KgTD2CEa03Cc63lMRBkiqAETUGVEzFow92-2V0xL922ChjxkRJKVzOQUz-M3ejUgePgskJXrkDt-6Atp2C_dx3nGg",
+        "https://www.google.com/goto?url=CAESbAHrOzAVyXy6VjeqNZcsadAWDLgJ9m3W0AwQKtRpLXJmd3lwRbdxya7aF3AUBiqV6HVkYub1uq6coxoW-MtXktm5FpcJ1ozCyu8mB1fw0FduUp9oXOWzqTbKG8HhoftW4j-EgyOGPPtkBMtZGw",
+        "https://www.google.com/goto?url=CAESaAHrOzAVE7zAV3O4U5CAYnzPWK3dAct7xpTK5jdM6oybiBEULmV9HDe6jQ5jrVBDCQ_wnrcpRQ71q-dC2VFjqBbUhH-ZWST26Rr--HgiKL2p-xnCA5RB-45Q4PQnhlU_HM9p1UhjJOQv",
+        "https://www.google.com/goto?url=CAESoQEB6zswFes7gXEDiXvEq9Xl85kriZ5yKvbLLe39-B_MDz93CWmhPlSW2m99ovQJt-b4sGBrC0WiA47hOKENtxUW-AzclOI7PLekGxZCuWcr34SHby59M_Pbt2MMKbe_K5dA9QWoBL_dYytmeADlNaNmiEPdJjD0hrHdiOAs-9tfnydWvCnvZaqvOWbNX9KGCej-r-MOD78TlVr08eqkljFeQQ",
+        "https://www.google.com/goto?url=CAESeQHrOzAV0QYHvNPV4deeibDqazGd5i7aJu5KohXVQCzs2KWF5HWDaxeXT8S32FjanPC7CR_zdi2UOeqR0Ql8E4tBbRIzB8TUvNEVt5jGT_m9VxPtlTCJkIMpY0xLx17plrhRwswllEgULNpp8p7tJb4DEMgAhGx0lAA"
+      ]
+    }
   },
   {
     "k": "/works/OL1000826W",
@@ -104838,14 +105230,14 @@
       "latest": null,
       "sources": [
         "https://shopcatalog.com/products/come-home-to-yourself",
-        "https://www.abebooks.com/book-search/title/come-home-to-yourself/author/deja-rae/"
+        "https://books.google.com/books/about/Come_Home_to_Yourself.html?id=gBQuzwEACAAJ"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
         "https://shopcatalog.com/products/come-home-to-yourself",
-        "https://www.abebooks.com/book-search/title/come-home-to-yourself/author/deja-rae/"
+        "https://books.google.com/books/about/Come_Home_to_Yourself.html?id=gBQuzwEACAAJ"
       ]
     }
   },
@@ -105015,6 +105407,21 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 1
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2018,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Muneyuki_Kaneshiro"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Muneyuki_Kaneshiro"
+      ]
     }
   },
   {
@@ -106033,6 +106440,23 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 1
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2022,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://books.google.com/books/about/Best_Loser_Wins.html?id=f4psEAAAQBAJ",
+        "https://tradersunion.com/persons/tom-hougaard/"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://books.google.com/books/about/Best_Loser_Wins.html?id=f4psEAAAQBAJ",
+        "https://tradersunion.com/persons/tom-hougaard/"
+      ]
     }
   },
   {
@@ -106754,7 +107178,8 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.simonandschuster.com"
+        "https://en.wikipedia.org/wiki/Chip_War",
+        "https://fletcher.tufts.edu/academics/faculty/christopher-miller"
       ]
     }
   },
@@ -107186,6 +107611,13 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 1
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.goodreads.com/book/show/60564792-better-than-best-friends",
+        "https://www.instagram.com/p/B8gXMpLAtuS/"
+      ]
     }
   },
   {
@@ -107660,6 +108092,24 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 1,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1989,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.google.com/goto?url=CAESZAHrOzAVJxIOVdsRqkfwhGRwiyOEQmsd7VkAQo5vWJvZqjnfsg_znOuaeVMHL2ARWcHvBhh0p-sWXaZApjCFvfz50rLq-xOcDuGf3Fq6utBUxTTKyGQQ93bW2P6ovIV8sGXA6Iw",
+        "https://www.google.com/goto?url=CAESgAEB6zswFeDb1UD5iFmPqb5rhdhatwTmPhEbOxJWBgY73vVZTkseraqzOHFm4lMywfq0yhkb--KChGfssvd3DF3rTCs058-h17M0LQ5Qc7Hly0EsCgJqXyAXfjbEIYYwDTrQwq0KzjdxukiE-hXQpa2ff03KdWEr12Xhqn9ybOXiWg",
+        "https://www.google.com/goto?url=CAESfwHrOzAVF9R5hPndKDYuNwDvV8_ROP7va6YlZ_OGrtAr4FaCTj7MZSD8hdzJAa2XjtRF9yxZ1E5zLxgdVBjCgdBsEKSN3PDaaC1IMm21wLoz0IWyxWNlzyRBYQXHtKs2B5S8U4WxMfzwtXWmKMLSZ44zzlfE6U1oUSEIlXRmQcY",
+        "https://www.google.com/goto?url=CAESfwHrOzAVThdej7sOw4DDTu6lmznrQAM8Q0HUTS_Y-F1mnRJX-9l6NUQi96423TuqElHbiMqp23F2ny4Lx52_NGsU6DTfxqkNl6FHKAVPCrSD21rnGQdbCVFEdJ0nboGHmaj8gs3j8W_yizs_SabtwFkJc1DrxE83qtuITQV68wg",
+        "https://www.google.com/goto?url=CAEShgEB6zswFYk9UWUkrpzwDNufRQsFAL1ooI3Rg8rdMDncvgodKnY2otKAQpcBJS6dO4VNDpE4T5OHYc9WDw9T3xErqh-IhhRnIi8RjHLIOMzEeMsnRGvVPBMxYABN8ct5g1nsPQC701tZ3q8b_los0UH6aGAGq3-7nz1bjlHBRHqpBuuYDU14ag",
+        "https://www.google.com/goto?url=CAESZwHrOzAVi8DTiEJvkFsy9Ygs2GR-c3P115pTh1WPJ1rozzxxH1VHz9vq4LnPzpufIYum6weFmJ7jYlVYQxFL0jL1m7Al7e7jwVP_0BziVEfaWzbYiFxiNdnj5GsvsDZOoBfRD8SwZh0",
+        "https://www.google.com/goto?url=CAESfwHrOzAVEhlXzqdY7VY41Gtcxl3gbKJT54HYzVDgjZsjFyORA-qmUGFY3uV8bmE3_kto1nHzFsPVgG8VVuET5x3Q-GW7_6E9XjDY2QOzdBpCJmusUUytK4E-yR5Q750jUTYjliIE5aeZ2NxzNzwbE-wfYSZegKibw2CJljtvGQU",
+        "https://www.google.com/goto?url=CAEShQEB6zswFTbufuhH_PYa9pjJzo4xgIrK9y-I6e8UkhMwqMJ_xWA7UmZHDaJUyqWt4bmhpz_KNrrGu45AMtZDVSBsoQlI4D8GwDS43ETjFKu2bKJD84MxRq-drrPjJfLTf7r37iKkglt_1mycSugHqWCwszvMcfTM1-vqWYkpzIsAiorZh0K3",
+        "https://www.google.com/goto?url=CAESfwHrOzAVgczLiP8JuGaI2yg1snjErW2RhCGDlMnvi1FIl8G0tKHuU-cZaQIUg4kCfBFH5kmwPZ9jONzRK3tRlVfMo4hPgOZOTN8NGciO2PhsOzuo_dpH_x90d-Sy1NlKCDq9L2DY540py_nvjaix805lUy8t_8AD2Pot3Yvg4lQ",
+        "https://www.google.com/goto?url=CAEShQEB6zswFXMZJUGfx8GWfs-0TAVO_T6fw5XERUOzDYbnzpx5YWpjUkxuAUeDaMWBTOa-SFByA5atwQU1WOMOIR9KYY_U_HspE3FWmZaQr2b3pbIpx9QenP7gj43Iu7x-HQ1-vLZMfkMQPK-kUi9BP3O8W0aCpuQuLsTnkPc3AmCGi7WdnVkP"
+      ]
     }
   },
   {
@@ -108979,6 +109429,12 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 1
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://azarinth-healer.fandom.com/wiki/Rhaegar"
+      ]
     }
   },
   {
@@ -109910,15 +110366,16 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://news.stanford.edu/news/2018/september/william-kays-engineering-dean-dies-98.html",
-        "https://www.asme.org"
-      ]
-    },
-    "authorship": {
-      "status": "known",
-      "sources": [
-        "https://news.stanford.edu/news/2018/september/william-kays-engineering-dean-dies-98.html",
-        "https://www.asme.org"
+        "https://books.google.com/books/about/Compact_Heat_Exchangers.html?id=A08qAQAAMAAJ",
+        "https://www.google.com/goto?url=CAESbAHrOzAVr0HqUgTtPR5-NCI4erIte-AKK6k4FCJQ7XxJZ8J66mtXqFlNt1OwQSRF-6-npqbU-V2V9UGGUdNEpp1oLPci5U0VS5UYPdQBBwCTH3sZWQ97EQppM4_Q68Z5fLA70AiSwz-JBUsulA",
+        "https://books.google.com/books/about/Compact_Heat_Exchangers.html?hl=de&id=A08qAQAAMAAJ",
+        "https://www.google.com/goto?url=CAESjAEB6zswFVl6R2WLrMAuRBPWx1wDilFfgrFSAH4E-WVC1wre0Hj6BGCQqm1uU4DcvtFWKyvJi5LUAk_SdPc0lpVj3ICpL7KKvQjSZ1YyA3OdPqesyAOTTkt-QmcxE1gXLkx0fGWBNdYtHLtBMhfyg3RYgz6L0LcyNaDShP_VvKtuAQ_ciuwDrHn7r4Hadg",
+        "https://www.google.com/goto?url=CAESoAEB6zswFRKhIQ7dwB3ToLdWJJ3m0c10w40xV_uHAqtak_aOuE00o88eescgaOXRBytXlfrWqZ280ck_dD75saQHrYRb4RsfmUaKnexWBtJgR8HYJvZHKmz17mXtd632PB-YjTM83qliGz_V5wdxTQimyp-gbKa5iU2tIGNQiWEkrrZ3yB6pxexGi26-S_csFhsX3g5_adx4uH36N5g3nkSV",
+        "https://www.google.com/goto?url=CAESgwEB6zswFQyyoCrFi780M-cFkOQ49VDIs9WIrtSC7IAdo2vYM9TB5c7Q_hTsKFOHSTpeMVKIBgH-XWVJ1ayc9y0vcYiqD4b2TzfDMJbxhtQ4DOwidwUZxwdRYvIa-qyVrSrYdH5a2vJzEFBg18mJKfrupWTKY5rYqMenOzvH4v34rjr5xQ",
+        "https://www.google.com/goto?url=CAESgwEB6zswFQ2tR7pQCQcO2QDUMgYt010CF-503Rs9QGp-EfuLHgzEVhklNdrF9RYzsv-wtqEEgSCOCsQ75rn2RJdZKCDa7vbhVUA48beu8wg6U1L5JWAsE2T2bxZvJRvZz__g4Ng8Gvmeiv3IErNnNzBpHD0p9THc3wFnviIoOf7ecGABig",
+        "https://www.google.com/goto?url=CAESiAEB6zswFerCVrAWQfB6tkaenjJmOaYSOELFaz-o1sq7Ks5Z6PBFsX8MilZg-PFRNg6g3edT7R71Z7DUdwr_Ju1RdvO1Q3EqkgNgt8Bsoueq_hGNeWLU3857V6n6hhsxIeyFTlE32CLXQUyFCOwTQA6rIMm5yNNxCHLq_5KKaO01qMYX_PtqG-2D",
+        "https://www.google.com/goto?url=CAESgAEB6zswFbxjfcq6SXWwWWH9sB2cr7BD8l0eoJ68k18iudHxcpVy71SHhAJ26-jdXlpArWM6p9IlhQdDgtKrIV461GY7wtczqowcOHfT7UCxHU0xyk7UBakvHuHlzKg5JzJq0VBGYgkuh7CVE1AnT4FI4TyLo5tv50r9YTWahxVXcw",
+        "https://www.google.com/goto?url=CAESiAEB6zswFYkFnBW8QDIdGpv6oH1qNAIkutmKpmNOYgdtJf9FuKlf0W5063UIDj-uCV9_gXMCLy4-VRnv5PXjQP1UV0OQF2zzJtgSqMFxeWJhhQS3G-P8jD-2yaUoaYPCSIeEHbeQT3Ja4_fDgUSldFeY99lNq5SaFWmntatflRMF-OlNAXjOi_mw"
       ]
     }
   },
@@ -111084,6 +111541,21 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1886,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Beyond_Good_and_Evil"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Beyond_Good_and_Evil"
+      ]
     }
   },
   {
@@ -111216,6 +111688,12 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 1,
       "published_after_2000": 0
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/All_the_President%27s_Men"
+      ]
     }
   },
   {
@@ -111518,6 +111996,13 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 1,
       "published_after_2000": 0
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/William_Least_Heat-Moon",
+        "https://en.wikipedia.org/wiki/Blue_Highways"
+      ]
     }
   },
   {
