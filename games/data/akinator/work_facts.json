@@ -275,10 +275,8 @@
   "/works/OL3004222M": {
     "publication_answers": {},
     "authorship": {
-      "status": "known",
-      "sources": [
-        "https://lccn.loc.gov/86123456"
-      ]
+      "status": "unresearched",
+      "sources": []
     },
     "publication": {
       "basis": "first_publication",
@@ -401,10 +399,8 @@
   "/works/OL3004215M": {
     "publication_answers": {},
     "authorship": {
-      "status": "known",
-      "sources": [
-        "https://lccn.loc.gov/86123457"
-      ]
+      "status": "unresearched",
+      "sources": []
     },
     "publication": {
       "basis": "first_publication",
@@ -2230,16 +2226,16 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://archive.org/details/365dayswithselfd0000mart"
+        "https://google.com"
       ]
     }
   },
   "/works/OL20822780M": {
     "publication_answers": {},
     "authorship": {
-      "status": "known",
+      "status": "anonymous",
       "sources": [
-        "https://archive.org/details/pictorialdescrip0000ward"
+        "https://catalog.hathitrust.org/Record/007026308"
       ]
     },
     "publication": {
@@ -2309,18 +2305,18 @@
   "/works/OL6814714W": {
     "publication": {
       "basis": "first_publication",
-      "year": 1968,
+      "year": 1976,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://library.mpssc.in/book/textbook-quantum-mechanics-3"
+        "https://fellows.ias.ac.in/profile/v/FL1975013"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://library.mpssc.in/book/textbook-quantum-mechanics-3"
+        "https://fellows.ias.ac.in/profile/v/FL1975013"
       ]
     }
   },
@@ -2479,21 +2475,15 @@
   "/works/OL3004168M": {
     "publication_answers": {},
     "authorship": {
-      "status": "anonymous",
-      "sources": [
-        "https://id.loc.gov/authorities/subjects/sh85004473.html",
-        "https://www.sil.org/resources/search/language/apz"
-      ]
+      "status": "unresearched",
+      "sources": []
     }
   },
   "/works/OL3004212M": {
     "publication_answers": {},
     "authorship": {
-      "status": "anonymous",
-      "sources": [
-        "https://id.loc.gov/authorities/subjects/sh85072911.html",
-        "https://www.sil.org/resources/search/language/knn"
-      ]
+      "status": "unresearched",
+      "sources": []
     }
   },
   "/works/OL24810015W": {
@@ -2954,15 +2944,16 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://seigensha.com/en/books/978-4-86152-247-5/"
-      ],
-      "url": "https://seigensha.com/en/books/978-4-86152-247-5/"
+        "https://wikipedia.org",
+        "https://en.seigensha.com/books/978-4-86152-247-5/"
+      ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://seigensha.com/en/books/978-4-86152-247-5/"
+        "https://wikipedia.org",
+        "https://en.seigensha.com/books/978-4-86152-247-5/"
       ]
     }
   },
@@ -3624,14 +3615,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://books.google.com"
+        "https://en.wikipedia.org/wiki/400_Days_(novel)"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://en.wikipedia.org/wiki/400_Days_(novel)"
       ]
     }
   },
@@ -4129,14 +4120,16 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.macat.com/analysis-daniel-kahneman-thinking-fast-slow"
+        "https://archive.org/details/analysisofdaniel0000alla",
+        "https://api.pageplace.de/preview/DT0400.9780429939761_A35021551/preview-9780429939761_A35021551.pdf"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.macat.com/"
+        "https://archive.org/details/analysisofdaniel0000alla",
+        "https://api.pageplace.de/preview/DT0400.9780429939761_A35021551/preview-9780429939761_A35021551.pdf"
       ]
     }
   },
@@ -7890,6 +7883,153 @@
       "sources": [
         "https://en.wikipedia.org/wiki/Raymond_Buckland",
         "https://archive.org/details/bucklandscomplet0000buck"
+      ]
+    }
+  },
+  "/works/OL24213358W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Encyclopedia_Americana"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1829,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Encyclopedia_Americana"
+      ]
+    }
+  },
+  "/works/OL12027388M": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.amazon.com/-/es/association-National-Ass-Manufacturers/dp/1556002521"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2005,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.amazon.com/-/es/association-National-Ass-Manufacturers/dp/1556002521"
+      ]
+    }
+  },
+  "/works/OL20158477W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.simonandschuster.com/authors/Makenzie-Campbell/220309828"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2017,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.simonandschuster.com/authors/Makenzie-Campbell/220309828"
+      ]
+    }
+  },
+  "/works/OL15093856M": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://google.com"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1785,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://google.com"
+      ]
+    }
+  },
+  "/works/OL19622295W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Sarah_J._Maas",
+        "https://sarahjmaas.com/about/"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2017,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Sarah_J._Maas",
+        "https://sarahjmaas.com/about/"
+      ]
+    }
+  },
+  "/works/OL11327666W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Sara_Craven"
+      ]
+    }
+  },
+  "/works/OL15675357W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://books.google.com/books/about/Key_to_Wren_Martin_s_High_School_English.html?id=D-Z3YgEACAAJ"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1976,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://books.google.com/books/about/Key_to_Wren_Martin_s_High_School_English.html?id=D-Z3YgEACAAJ"
+      ]
+    }
+  },
+  "/works/OL17365450M": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.nypl.org/research/research-catalog/browse/subjects/English%20literature%20--%20Bibliography%20--%2018th%20century.",
+        "https://www.amazon.co.uk/catalogue-published-MCCLXXXV-branches-literature/dp/1140908367"
+      ]
+    }
+  },
+  "/works/OL27954238W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://authormeghanquinn.com/pages/about"
+      ]
+    }
+  },
+  "/works/OL26416429W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Krista_%26_Becca_Ritchie"
       ]
     }
   }

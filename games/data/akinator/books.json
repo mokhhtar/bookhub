@@ -42603,13 +42603,15 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.macat.com/analysis-daniel-kahneman-thinking-fast-slow"
+        "https://archive.org/details/analysisofdaniel0000alla",
+        "https://api.pageplace.de/preview/DT0400.9780429939761_A35021551/preview-9780429939761_A35021551.pdf"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.macat.com/"
+        "https://archive.org/details/analysisofdaniel0000alla",
+        "https://api.pageplace.de/preview/DT0400.9780429939761_A35021551/preview-9780429939761_A35021551.pdf"
       ]
     }
   },
@@ -51105,12 +51107,6 @@
     "r": 1,
     "w": null,
     "c": null,
-    "authorship": {
-      "status": "known",
-      "sources": [
-        "https://lccn.loc.gov/86123456"
-      ]
-    },
     "publication": {
       "basis": "first_publication",
       "year": 1986,
@@ -53970,7 +53966,7 @@
     "k": "/works/OL19622295W",
     "t": "A Court of Thorns and Roses Box Set",
     "a": "Sarah J. Maas",
-    "y": 2015,
+    "y": 2017,
     "p": 458,
     "r": 1,
     "w": null,
@@ -54028,6 +54024,23 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 1
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2017,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Sarah_J._Maas",
+        "https://sarahjmaas.com/about/"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Sarah_J._Maas",
+        "https://sarahjmaas.com/about/"
+      ]
     }
   },
   {
@@ -60654,12 +60667,6 @@
       "sources": [
         "https://lccn.loc.gov/86123457"
       ]
-    },
-    "authorship": {
-      "status": "known",
-      "sources": [
-        "https://lccn.loc.gov/86123457"
-      ]
     }
   },
   {
@@ -64117,13 +64124,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://books.google.com"
+        "https://en.wikipedia.org/wiki/400_Days_(novel)"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://en.wikipedia.org/wiki/400_Days_(novel)"
       ]
     }
   },
@@ -65781,7 +65788,13 @@
     "p": 282,
     "r": 1,
     "w": null,
-    "c": 12371242
+    "c": 12371242,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Krista_%26_Becca_Ritchie"
+      ]
+    }
   },
   {
     "k": "/works/OL17762235W",
@@ -73125,6 +73138,21 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 1
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2017,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.simonandschuster.com/authors/Makenzie-Campbell/220309828"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.simonandschuster.com/authors/Makenzie-Campbell/220309828"
+      ]
     }
   },
   {
@@ -73198,7 +73226,7 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://archive.org/details/365dayswithselfd0000mart"
+        "https://google.com"
       ]
     }
   },
@@ -74241,28 +74269,12 @@
   {
     "k": "/works/OL3004168M",
     "t": "[Ampale language publications].",
-    "a": "Unknown author",
+    "a": "",
     "y": null,
     "p": 231,
     "r": 1,
     "w": null,
-    "c": null,
-    "authorship": {
-      "status": "anonymous",
-      "sources": [
-        "https://id.loc.gov/authorities/subjects/sh85004473.html",
-        "https://www.sil.org/resources/search/language/apz"
-      ]
-    },
-    "protected_questions": [
-      "author:alive",
-      "author:american",
-      "author:british",
-      "author:european",
-      "author:female",
-      "author:nonwestern",
-      "author:prolific"
-    ]
+    "c": null
   },
   {
     "k": "/works/OL2727030W",
@@ -75364,14 +75376,15 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://seigensha.com/en/books/978-4-86152-247-5/"
-      ],
-      "url": "https://seigensha.com/en/books/978-4-86152-247-5/"
+        "https://wikipedia.org",
+        "https://en.seigensha.com/books/978-4-86152-247-5/"
+      ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://seigensha.com/en/books/978-4-86152-247-5/"
+        "https://wikipedia.org",
+        "https://en.seigensha.com/books/978-4-86152-247-5/"
       ]
     }
   },
@@ -78345,24 +78358,24 @@
     "k": "/works/OL6814714W",
     "t": "A Textbook of quantum mechanics",
     "a": "Piravonu Mathews Mathews",
-    "y": 1968,
+    "y": 1976,
     "p": 207,
     "r": 1,
     "w": null,
     "c": 1075614,
     "publication": {
       "basis": "first_publication",
-      "year": 1968,
+      "year": 1976,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://library.mpssc.in/book/textbook-quantum-mechanics-3"
+        "https://fellows.ias.ac.in/profile/v/FL1975013"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://library.mpssc.in/book/textbook-quantum-mechanics-3"
+        "https://fellows.ias.ac.in/profile/v/FL1975013"
       ]
     }
   },
@@ -91672,7 +91685,7 @@
     "k": "/works/OL15093856M",
     "t": "A Collection of family prayers ... with various occasional forms",
     "a": "Christian Liturgy",
-    "y": 1815,
+    "y": 1785,
     "p": 177,
     "r": 1,
     "w": null,
@@ -91730,6 +91743,21 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1785,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://google.com"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://google.com"
+      ]
     }
   },
   {
@@ -95690,7 +95718,13 @@
     "p": 170,
     "r": 1,
     "w": null,
-    "c": 13240821
+    "c": 13240821,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://authormeghanquinn.com/pages/about"
+      ]
+    }
   },
   {
     "k": "/works/OL3467489W",
@@ -96916,6 +96950,21 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 1
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2005,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.amazon.com/-/es/association-National-Ass-Manufacturers/dp/1556002521"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.amazon.com/-/es/association-National-Ass-Manufacturers/dp/1556002521"
+      ]
     }
   },
   {
@@ -97267,6 +97316,12 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 1,
       "published_after_2000": 0
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Sara_Craven"
+      ]
     }
   },
   {
@@ -99638,7 +99693,7 @@
     "k": "/works/OL15675357W",
     "t": "A Key to Wren & Martin's High School Grammar and Composition",
     "a": "P. C. Wren & H. Martin",
-    "y": 1999,
+    "y": 1976,
     "p": 164,
     "r": 1,
     "w": null,
@@ -99696,6 +99751,21 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 1,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1976,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://books.google.com/books/about/Key_to_Wren_Martin_s_High_School_English.html?id=D-Z3YgEACAAJ"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://books.google.com/books/about/Key_to_Wren_Martin_s_High_School_English.html?id=D-Z3YgEACAAJ"
+      ]
     }
   },
   {
@@ -100403,28 +100473,12 @@
   {
     "k": "/works/OL3004212M",
     "t": "[Konkani language publications].",
-    "a": "Unknown author",
+    "a": "",
     "y": null,
     "p": 163,
     "r": 1,
     "w": null,
-    "c": null,
-    "authorship": {
-      "status": "anonymous",
-      "sources": [
-        "https://id.loc.gov/authorities/subjects/sh85072911.html",
-        "https://www.sil.org/resources/search/language/knn"
-      ]
-    },
-    "protected_questions": [
-      "author:alive",
-      "author:american",
-      "author:british",
-      "author:european",
-      "author:female",
-      "author:nonwestern",
-      "author:prolific"
-    ]
+    "c": null
   },
   {
     "k": "/works/OL7944812W",
@@ -102060,6 +102114,13 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 0
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.nypl.org/research/research-catalog/browse/subjects/English%20literature%20--%20Bibliography%20--%2018th%20century.",
+        "https://www.amazon.co.uk/catalogue-published-MCCLXXXV-branches-literature/dp/1140908367"
+      ]
     }
   },
   {
@@ -102395,7 +102456,7 @@
     "k": "/works/OL24213358W",
     "t": "1958 edition encyclopedia americana Volume 2-Antarctic",
     "a": "Encyclopedia Americana Editors",
-    "y": 1958,
+    "y": 1829,
     "p": 159,
     "r": 1,
     "w": null,
@@ -102449,10 +102510,25 @@
       "fact:award": 0.15,
       "fact:series": 0.9,
       "fact:long": 0.9,
-      "published_before_1900": 0,
+      "published_before_1900": 1,
       "published_1900_to_1950": 0,
-      "published_1951_to_2000": 1,
+      "published_1951_to_2000": 0,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1829,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Encyclopedia_Americana"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Encyclopedia_Americana"
+      ]
     }
   },
   {
@@ -103335,7 +103411,7 @@
   {
     "k": "/works/OL20822780M",
     "t": "A pictorial and descriptive guide to London and its environs ...",
-    "a": "",
+    "a": "Unknown author",
     "y": 1925,
     "p": 158,
     "r": 1,
@@ -103351,11 +103427,20 @@
       ]
     },
     "authorship": {
-      "status": "known",
+      "status": "anonymous",
       "sources": [
-        "https://archive.org/details/pictorialdescrip0000ward"
+        "https://catalog.hathitrust.org/Record/007026308"
       ]
-    }
+    },
+    "protected_questions": [
+      "author:alive",
+      "author:american",
+      "author:british",
+      "author:european",
+      "author:female",
+      "author:nonwestern",
+      "author:prolific"
+    ]
   },
   {
     "k": "/works/OL5236259W",
