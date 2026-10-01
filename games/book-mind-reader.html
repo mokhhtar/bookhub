@@ -416,18 +416,21 @@ permalink: /games/mind-reader/
         game, that separate button says what will be submitted before sending.
       </p>
 
+      {% unless jekyll.environment == "production" %}
       <p class="mr-anytime">
         Know a book it does not have?
         <button class="mr-linkbtn" id="mr-suggest-anytime">Tell it about a book</button>
         — you do not have to play a game first.
       </p>
       <div id="mr-anytime-box"></div>
+      {% endunless %}
     </div>
 
   </div>
 </div>
 
 <script src="{{ '/games/book-mind-reader-api.js' | relative_url }}"></script>
+{% unless jekyll.environment == "production" %}
 <script>
 (function () {
   'use strict';
@@ -2944,3 +2947,4 @@ permalink: /games/mind-reader/
   })();
 })();
 </script>
+{% endunless %}

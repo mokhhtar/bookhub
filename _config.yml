@@ -68,6 +68,10 @@ exclude:
   - games/slop-bot.js
   - games/record-kit.js
   - games/video-tools.js
+  # The mind-reader corpus and packed inference artifacts are private runtime
+  # inputs. Worker/R2 now serves only individual questions and guesses, so the
+  # static site must never copy this directory into the public Pages artifact.
+  - games/data/akinator
   - firebase/DATA_MODEL.md
   # firestore.rules is a Firebase deploy artefact, enforced server-side; the
   # site only mentions it in comments and never fetches it. No reason to
