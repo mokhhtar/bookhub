@@ -408,14 +408,12 @@ permalink: /games/mind-reader/
       </div>
 
       <p class="mr-note">
-        The whole game runs in this page, from a table of books built from
-        Open Library and Wikidata. It knows about 5,000 of the most-read
-        books, so it will not know every book, and when it does not it says
-        so rather than guessing. <strong>Playing sends nothing.</strong> When
-        it fails, there are buttons that let you tell it what it got wrong —
-        which book you meant, or that a year or a title is wrong. Each one
-        says exactly what it sends before you tap it, and nothing goes
-        anywhere unless you do. No account, and nothing about you.
+        The game knows about 5,000 widely read books from Open Library and
+        Wikidata. Your answers are sent to the game service one at a time so
+        it can choose the next question; the book database and rankings stay
+        on the server. The temporary game state is encrypted and expires after
+        30 minutes. No account is required. If you later choose to teach the
+        game, that separate button says what will be submitted before sending.
       </p>
 
       <p class="mr-anytime">
@@ -429,9 +427,15 @@ permalink: /games/mind-reader/
   </div>
 </div>
 
+<script src="{{ '/games/book-mind-reader-api.js' | relative_url }}"></script>
 <script>
 (function () {
   'use strict';
+
+  if (!window.__MR_TEST__ && window.bookMindReaderPrivateApi) {
+    window.bookMindReaderPrivateApi.initialize();
+    return;
+  }
 
   var BASE = '{{ "/games/data/akinator/" | relative_url }}';
 
