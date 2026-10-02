@@ -135,8 +135,14 @@
           body: JSON.stringify({ game: game, day: day, player: player, guesses: score, token: token }),
         });
       })
-      .then(function (res) { return res.ok; })
-      .catch(function () { return false; });
+      .then(function (res) { return res.ok ? res.json() : null; })
+      .then(function (data) {
+        var stats = data && data.stats;
+        if (!stats || stats.enough !== true || !Array.isArray(stats.dist)) return null;
+        if (typeof stats.solvers !== "number" || typeof stats.players !== "number") return null;
+        return stats;
+      })
+      .catch(function () { return null; });
   }
 
   /**

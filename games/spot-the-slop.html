@@ -460,8 +460,7 @@ sitemap: false
     // 1-6, so a player who got none right is recorded rather than rejected.
     if (countIt !== false && window.bhGameStats) {
       const right = state.picks.filter((p) => p.correct).length;
-      bhGameStats.report("spot-the-slop", state.date, right);
-      bhGameStats.stats("spot-the-slop", state.date).then(renderGlobalDist);
+      bhGameStats.report("spot-the-slop", state.date, right).then(renderGlobalDist);
     }
   }
 

@@ -747,8 +747,7 @@ permalink: /games/guess-the-book/
       // "57 solved" quietly omits everyone who tried and failed, and tells a
       // player who lost, by silence, that their day did not count.
       const score = state.status === "won" ? guessesUsed() : bhGameStats.LOSS;
-      bhGameStats.report("guess-the-book", state.date, score);
-      bhGameStats.stats("guess-the-book", state.date).then(renderGlobalDist);
+      bhGameStats.report("guess-the-book", state.date, score).then(renderGlobalDist);
     }
   }
 
