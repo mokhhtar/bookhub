@@ -8,32 +8,32 @@
   "12345": "form:fiction"
  },
  "recheck": {
-  "question": "genre:science",
+  "question": "author:alive",
   "answer": "yes",
   "wants": true,
   "top": [
    {
-    "key": "/works/OL134891W",
-    "p": 0.018438095447
+    "key": "/works/OL17074268W",
+    "p": 0.069510827578
    },
    {
-    "key": "/works/OL20882185W",
-    "p": 0.011311100754
+    "key": "/works/OL9741465W",
+    "p": 0.022179209176
    },
    {
-    "key": "/works/OL17515087W",
-    "p": 0.010863271276
+    "key": "/site/admin-the-serengeti-rules",
+    "p": 0.021692805012
    }
   ],
   "belief_sum": 1.0,
-  "belief_checksum": 7.686422442311
+  "belief_checksum": 7.533781346369
  },
  "generated_from": {
   "question_hash": "9854f36456701bce",
   "books": 5051,
   "questions": 49,
-  "overrides_digest": "b697ee91e584149e",
-  "overrides_cells": 60106,
+  "overrides_digest": "4f03f7e29d65b034",
+  "overrides_cells": 60094,
   "policy_digest": "7112ab9544781c54"
  },
  "answer_script": [
@@ -74,19 +74,19 @@
    "top": [
     {
      "key": "/works/OL17930368W",
-     "p": 0.00060160901
+     "p": 0.000602168574
     },
     {
      "key": "/works/OL18020194W",
-     "p": 0.000584753769
+     "p": 0.000585297656
     },
     {
      "key": "/works/OL17590212W",
-     "p": 0.000572156427
+     "p": 0.000572688597
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.403185876213
+   "belief_checksum": 7.40240335543
   },
   {
    "question": "form:fiction",
@@ -94,79 +94,79 @@
    "top": [
     {
      "key": "/works/OL17930368W",
-     "p": 0.001167969164
+     "p": 0.001176312739
     },
     {
      "key": "/works/OL21640039W",
-     "p": 0.001164560071
+     "p": 0.001172879293
     },
     {
      "key": "/works/OL21640039M",
-     "p": 0.001155385424
+     "p": 0.001163639104
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.491511344063
-  },
-  {
-   "question": "fact:firstpub_ge_2016",
-   "answer": "no",
-   "top": [
-    {
-     "key": "/works/OL21640039M",
-     "p": 0.001925093688
-    },
-    {
-     "key": "/works/OL15992072W",
-     "p": 0.001774475332
-    },
-    {
-     "key": "/works/OL17837119W",
-     "p": 0.001666933758
-    }
-   ],
-   "belief_sum": 1.0,
-   "belief_checksum": 7.534128597158
+   "belief_checksum": 7.491672967409
   },
   {
    "question": "form:nonfiction",
-   "answer": "unknown",
-   "top": [
-    {
-     "key": "/works/OL21640039M",
-     "p": 0.001925093688
-    },
-    {
-     "key": "/works/OL15992072W",
-     "p": 0.001774475332
-    },
-    {
-     "key": "/works/OL17837119W",
-     "p": 0.001666933758
-    }
-   ],
-   "belief_sum": 1.0,
-   "belief_checksum": 7.534128597158
-  },
-  {
-   "question": "author:alive",
    "answer": "no",
    "top": [
     {
+     "key": "/works/OL21640039W",
+     "p": 0.001864630146
+    },
+    {
      "key": "/works/OL15992072W",
-     "p": 0.004302406653
+     "p": 0.001705201814
     },
     {
-     "key": "/works/OL282391W",
-     "p": 0.003363299664
-    },
-    {
-     "key": "/works/OL1944250W",
-     "p": 0.003207394801
+     "key": "/works/OL17713267W",
+     "p": 0.001651510919
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.614445874294
+   "belief_checksum": 7.463214142525
+  },
+  {
+   "question": "fact:firstpub_ge_2016",
+   "answer": "unknown",
+   "top": [
+    {
+     "key": "/works/OL21640039W",
+     "p": 0.001864630146
+    },
+    {
+     "key": "/works/OL15992072W",
+     "p": 0.001705201814
+    },
+    {
+     "key": "/works/OL17713267W",
+     "p": 0.001651510919
+    }
+   ],
+   "belief_sum": 1.0,
+   "belief_checksum": 7.463214142525
+  },
+  {
+   "question": "author:female",
+   "answer": "no",
+   "top": [
+    {
+     "key": "/works/OL21640039W",
+     "p": 0.003000175303
+    },
+    {
+     "key": "/works/OL15992072W",
+     "p": 0.002743656366
+    },
+    {
+     "key": "/works/OL17713267W",
+     "p": 0.002657268137
+    }
+   ],
+   "belief_sum": 1.0,
+   "belief_checksum": 7.423198961546
   },
   {
    "question": "author:american",
@@ -174,479 +174,479 @@
    "top": [
     {
      "key": "/works/OL15992072W",
-     "p": 0.006496342336
+     "p": 0.004195811827
     },
     {
-     "key": "/works/OL1944250W",
-     "p": 0.004842948683
+     "key": "/works/OL17713267W",
+     "p": 0.004063700256
     },
     {
-     "key": "/works/OL20126932M",
-     "p": 0.004732813451
+     "key": "/works/OL17078706W",
+     "p": 0.003850474665
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.617266395231
+   "belief_checksum": 7.396065607071
   },
   {
-   "question": "place:usa",
+   "question": "author:alive",
    "answer": "probably_no",
    "top": [
     {
      "key": "/works/OL15992072W",
-     "p": 0.008389176654
+     "p": 0.007710290821
     },
     {
-     "key": "/works/OL1944250W",
-     "p": 0.006254034952
+     "key": "/works/OL20153626W",
+     "p": 0.005248185695
     },
     {
-     "key": "/works/OL3737036W",
-     "p": 0.006065870478
+     "key": "/works/OL16176999W",
+     "p": 0.003849229575
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.605706502367
+   "belief_checksum": 7.454998815948
   },
   {
-   "question": "author:female",
+   "question": "author:prolific",
    "answer": "yes",
    "top": [
     {
-     "key": "/works/OL1944250W",
-     "p": 0.013661934493
+     "key": "/works/OL16176999W",
+     "p": 0.00985931928
     },
     {
-     "key": "/works/OL3737036W",
-     "p": 0.013250889347
+     "key": "/works/OL24617382W",
+     "p": 0.005171334416
     },
     {
-     "key": "/works/OL742483W",
-     "p": 0.008247678636
+     "key": "/site/the-adventures-of-huckleberry-finn",
+     "p": 0.005026552448
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.672062940486
+   "belief_checksum": 7.410923802466
   },
   {
    "question": "audience:children",
    "answer": "unknown",
    "top": [
     {
-     "key": "/works/OL1944250W",
-     "p": 0.013661934493
+     "key": "/works/OL16176999W",
+     "p": 0.00985931928
     },
     {
-     "key": "/works/OL3737036W",
-     "p": 0.013250889347
+     "key": "/works/OL24617382W",
+     "p": 0.005171334416
     },
     {
-     "key": "/works/OL742483W",
-     "p": 0.008247678636
+     "key": "/site/the-adventures-of-huckleberry-finn",
+     "p": 0.005026552448
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.672062940486
+   "belief_checksum": 7.410923802466
   },
   {
-   "question": "genre:psychology",
+   "question": "place:usa",
    "answer": "no",
    "top": [
     {
-     "key": "/works/OL742483W",
-     "p": 0.009500756346
+     "key": "/works/OL16176999W",
+     "p": 0.011577042546
     },
     {
-     "key": "/works/OL15111477W",
-     "p": 0.00852366719
+     "key": "/works/OL24617382W",
+     "p": 0.006881941619
     },
     {
-     "key": "/works/OL544216W",
-     "p": 0.008407823099
+     "key": "/site/the-adventures-of-huckleberry-finn",
+     "p": 0.005115322391
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.722257940612
+   "belief_checksum": 7.396093258939
   },
   {
-   "question": "author:prolific",
+   "question": "genre:psychology",
    "answer": "probably_yes",
    "top": [
     {
-     "key": "/works/OL544216W",
-     "p": 0.015935598336
+     "key": "/works/OL16176999W",
+     "p": 0.022429892622
     },
     {
-     "key": "/works/OL17515087W",
-     "p": 0.008223349217
+     "key": "/works/OL527464W",
+     "p": 0.009460904419
     },
     {
-     "key": "/works/OL742483W",
-     "p": 0.007996559525
+     "key": "/works/OL1063267W",
+     "p": 0.009232229093
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.700784973763
+   "belief_checksum": 7.268337789513
+  },
+  {
+   "question": "theme:magic",
+   "answer": "yes",
+   "top": [
+    {
+     "key": "/works/OL16176999W",
+     "p": 0.017794612234
+    },
+    {
+     "key": "/works/OL20029303W",
+     "p": 0.007750598641
+    },
+    {
+     "key": "/works/OL20033244W",
+     "p": 0.006986252671
+    }
+   ],
+   "belief_sum": 1.0,
+   "belief_checksum": 7.400681547472
+  },
+  {
+   "question": "genre:fantasy",
+   "answer": "no",
+   "top": [
+    {
+     "key": "/works/OL16176999W",
+     "p": 0.020649259907
+    },
+    {
+     "key": "/works/OL20029303W",
+     "p": 0.008993965346
+    },
+    {
+     "key": "/works/OL20033244W",
+     "p": 0.00810700145
+    }
+   ],
+   "belief_sum": 1.0,
+   "belief_checksum": 7.376579331277
+  },
+  {
+   "question": "theme:family",
+   "answer": "no",
+   "top": [
+    {
+     "key": "/works/OL16176999W",
+     "p": 0.023269862889
+    },
+    {
+     "key": "/works/OL20033244W",
+     "p": 0.009135863126
+    },
+    {
+     "key": "/works/OL24777278W",
+     "p": 0.008437647879
+    }
+   ],
+   "belief_sum": 1.0,
+   "belief_checksum": 7.357448725371
+  },
+  {
+   "question": "setting:victorian",
+   "answer": "probably_no",
+   "top": [
+    {
+     "key": "/works/OL16176999W",
+     "p": 0.023238483107
+    },
+    {
+     "key": "/works/OL20033244W",
+     "p": 0.009123543269
+    },
+    {
+     "key": "/works/OL24777278W",
+     "p": 0.008426269575
+    }
+   ],
+   "belief_sum": 1.0,
+   "belief_checksum": 7.358002248353
   },
   {
    "question": "genre:science",
    "answer": "yes",
    "top": [
     {
-     "key": "/works/OL15111477W",
-     "p": 0.016475274609
+     "key": "/works/OL16176999W",
+     "p": 0.018237498292
     },
     {
-     "key": "/works/OL544216W",
-     "p": 0.012590249263
+     "key": "/works/OL17387090W",
+     "p": 0.007527893035
     },
     {
-     "key": "/works/OL17515087W",
-     "p": 0.009095838132
+     "key": "/works/OL20033244W",
+     "p": 0.007160131925
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.746597252625
-  },
-  {
-   "question": "setting:school",
-   "answer": "no",
-   "top": [
-    {
-     "key": "/works/OL15111477W",
-     "p": 0.020838501029
-    },
-    {
-     "key": "/works/OL544216W",
-     "p": 0.014051105018
-    },
-    {
-     "key": "/works/OL17515087W",
-     "p": 0.008797736851
-    }
-   ],
-   "belief_sum": 1.0,
-   "belief_checksum": 7.725354031436
+   "belief_checksum": 7.473159612169
   },
   {
    "question": "t:realevents",
-   "answer": "no",
-   "top": [
-    {
-     "key": "/works/OL15111477W",
-     "p": 0.022443104941
-    },
-    {
-     "key": "/works/OL544216W",
-     "p": 0.015133066626
-    },
-    {
-     "key": "/works/OL10460638W",
-     "p": 0.011342399749
-    }
-   ],
-   "belief_sum": 1.0,
-   "belief_checksum": 7.701831450396
-  },
-  {
-   "question": "form:memoir",
-   "answer": "probably_no",
-   "top": [
-    {
-     "key": "/works/OL15111477W",
-     "p": 0.022441354412
-    },
-    {
-     "key": "/works/OL544216W",
-     "p": 0.015131886269
-    },
-    {
-     "key": "/works/OL10460638W",
-     "p": 0.011341515059
-    }
-   ],
-   "belief_sum": 1.0,
-   "belief_checksum": 7.701817493222
-  },
-  {
-   "question": "theme:family",
-   "answer": "yes",
-   "top": [
-    {
-     "key": "/works/OL20882185W",
-     "p": 0.012356900857
-    },
-    {
-     "key": "/works/OL544216W",
-     "p": 0.011861873268
-    },
-    {
-     "key": "/works/OL15111477W",
-     "p": 0.01055505562
-    }
-   ],
-   "belief_sum": 1.0,
-   "belief_checksum": 7.702524913749
-  },
-  {
-   "question": "theme:friendship",
    "answer": "unknown",
    "top": [
     {
-     "key": "/works/OL20882185W",
-     "p": 0.012356900857
+     "key": "/works/OL16176999W",
+     "p": 0.018237498292
     },
     {
-     "key": "/works/OL544216W",
-     "p": 0.011861873268
+     "key": "/works/OL17387090W",
+     "p": 0.007527893035
     },
     {
-     "key": "/works/OL15111477W",
-     "p": 0.01055505562
+     "key": "/works/OL20033244W",
+     "p": 0.007160131925
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.702524913749
+   "belief_checksum": 7.473159612169
   },
   {
-   "question": "t:romance",
+   "question": "form:classic",
    "answer": "no",
    "top": [
     {
-     "key": "/works/OL544216W",
-     "p": 0.017837786119
+     "key": "/works/OL16176999W",
+     "p": 0.020276458032
     },
     {
-     "key": "/works/OL20882185W",
-     "p": 0.01238813632
+     "key": "/works/OL20033244W",
+     "p": 0.007960637592
     },
     {
-     "key": "/works/OL15111477W",
-     "p": 0.010581736423
+     "key": "/works/OL1892616W",
+     "p": 0.007675755971
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.745736087035
+   "belief_checksum": 7.422499179931
   },
   {
-   "question": "t:child",
+   "question": "genre:history",
    "answer": "yes",
    "top": [
     {
-     "key": "/works/OL20882185W",
-     "p": 0.022221130829
+     "key": "/works/OL16176999W",
+     "p": 0.016001314156
     },
     {
-     "key": "/works/OL544216W",
-     "p": 0.017775778411
+     "key": "/works/OL151515W",
+     "p": 0.010691068932
     },
     {
-     "key": "/works/OL15111477W",
-     "p": 0.010544952194
+     "key": "/works/OL151632W",
+     "p": 0.010411626233
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.735803886553
+   "belief_checksum": 7.47647297051
   },
   {
-   "question": "t:war",
+   "question": "fact:namedchars",
    "answer": "probably_yes",
    "top": [
     {
-     "key": "/works/OL20882185W",
-     "p": 0.013171614813
+     "key": "/works/OL151515W",
+     "p": 0.014730308123
     },
     {
-     "key": "/works/OL544216W",
-     "p": 0.01304994748
+     "key": "/works/OL16176999W",
+     "p": 0.014504500106
     },
     {
-     "key": "/works/OL15111477W",
-     "p": 0.0114688792
+     "key": "/works/OL151632W",
+     "p": 0.014345287965
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.733627102748
+   "belief_checksum": 7.465490284588
   },
   {
-   "question": "genre:adventure",
+   "question": "place:europe_other",
    "answer": "no",
    "top": [
     {
-     "key": "/works/OL20882185W",
-     "p": 0.016285612025
+     "key": "/works/OL151632W",
+     "p": 0.018699428777
     },
     {
-     "key": "/works/OL544216W",
-     "p": 0.014236923913
+     "key": "/works/OL16176999W",
+     "p": 0.016682616742
     },
     {
-     "key": "/works/OL15111477W",
-     "p": 0.014180320307
+     "key": "/works/OL17074268W",
+     "p": 0.012549550116
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.735261338996
+   "belief_checksum": 7.45160332865
   },
   {
-   "question": "book:film",
+   "question": "form:series",
    "answer": "yes",
    "top": [
     {
-     "key": "/works/OL20882185W",
-     "p": 0.017513131449
+     "key": "/works/OL17074268W",
+     "p": 0.013934449366
     },
     {
-     "key": "/works/OL544216W",
-     "p": 0.015310024549
+     "key": "/site/the-adventures-of-huckleberry-finn",
+     "p": 0.010199750968
     },
     {
-     "key": "/works/OL15111477W",
-     "p": 0.015249154477
+     "key": "/works/OL16176999W",
+     "p": 0.009261809234
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.724229027825
+   "belief_checksum": 7.534402479227
   },
   {
    "question": "form:firstperson",
    "answer": "probably_no",
    "top": [
     {
-     "key": "/works/OL20882185W",
-     "p": 0.017512057304
+     "key": "/works/OL17074268W",
+     "p": 0.013932165666
     },
     {
-     "key": "/works/OL544216W",
-     "p": 0.015309085529
+     "key": "/site/the-adventures-of-huckleberry-finn",
+     "p": 0.010198079344
     },
     {
-     "key": "/works/OL15111477W",
-     "p": 0.015248219191
+     "key": "/works/OL16176999W",
+     "p": 0.009260291327
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.724189692205
+   "belief_checksum": 7.534642310483
   },
   {
-   "question": "form:classic",
+   "question": "t:otherworld",
    "answer": "unknown",
    "top": [
     {
-     "key": "/works/OL20882185W",
-     "p": 0.017512057304
+     "key": "/works/OL17074268W",
+     "p": 0.013932165666
     },
     {
-     "key": "/works/OL544216W",
-     "p": 0.015309085529
+     "key": "/site/the-adventures-of-huckleberry-finn",
+     "p": 0.010198079344
     },
     {
-     "key": "/works/OL15111477W",
-     "p": 0.015248219191
+     "key": "/works/OL16176999W",
+     "p": 0.009260291327
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.724189692205
-  },
-  {
-   "question": "audience:ya",
-   "answer": "yes",
-   "top": [
-    {
-     "key": "/works/OL134891W",
-     "p": 0.013137302998
-    },
-    {
-     "key": "/works/OL17515087W",
-     "p": 0.012334725204
-    },
-    {
-     "key": "/works/OL544216W",
-     "p": 0.011742372627
-    }
-   ],
-   "belief_sum": 1.0,
-   "belief_checksum": 7.679273847569
+   "belief_checksum": 7.534642310483
   },
   {
    "question": "t:survival",
-   "answer": "no",
-   "top": [
-    {
-     "key": "/works/OL134891W",
-     "p": 0.012679951973
-    },
-    {
-     "key": "/works/OL17515087W",
-     "p": 0.011905314448
-    },
-    {
-     "key": "/works/OL544216W",
-     "p": 0.011333583535
-    }
-   ],
-   "belief_sum": 1.0,
-   "belief_checksum": 7.718655075358
-  },
-  {
-   "question": "place:britain",
-   "answer": "probably_yes",
-   "top": [
-    {
-     "key": "/works/OL17515087W",
-     "p": 0.011942407607
-    },
-    {
-     "key": "/works/OL16597059M",
-     "p": 0.011836159661
-    },
-    {
-     "key": "/works/OL544216W",
-     "p": 0.009532924683
-    }
-   ],
-   "belief_sum": 1.0,
-   "belief_checksum": 7.751712992371
-  },
-  {
-   "question": "genre:history",
-   "answer": "no",
-   "top": [
-    {
-     "key": "/works/OL17515087W",
-     "p": 0.012318777478
-    },
-    {
-     "key": "/works/OL134891W",
-     "p": 0.011615837806
-    },
-    {
-     "key": "/works/OL544216W",
-     "p": 0.011346183129
-    }
-   ],
-   "belief_sum": 1.0,
-   "belief_checksum": 7.726399931368
-  },
-  {
-   "question": "fact:namedchars",
    "answer": "yes",
    "top": [
     {
-     "key": "/works/OL134891W",
-     "p": 0.018438095447
+     "key": "/works/OL17074268W",
+     "p": 0.014837645054
     },
     {
-     "key": "/works/OL20882185W",
-     "p": 0.011311100754
+     "key": "/works/OL17860071W",
+     "p": 0.014222826109
     },
     {
-     "key": "/works/OL17515087W",
-     "p": 0.010863271276
+     "key": "/site/the-adventures-of-huckleberry-finn",
+     "p": 0.010860872973
     }
    ],
    "belief_sum": 1.0,
-   "belief_checksum": 7.686422442311
+   "belief_checksum": 7.533272805557
+  },
+  {
+   "question": "genre:adventure",
+   "answer": "no",
+   "top": [
+    {
+     "key": "/works/OL17074268W",
+     "p": 0.01864797223
+    },
+    {
+     "key": "/works/OL1968368W",
+     "p": 0.011193785669
+    },
+    {
+     "key": "/works/OL16176999W",
+     "p": 0.010936540642
+    }
+   ],
+   "belief_sum": 1.0,
+   "belief_checksum": 7.505791533852
+  },
+  {
+   "question": "setting:school",
+   "answer": "probably_yes",
+   "top": [
+    {
+     "key": "/works/OL17074268W",
+     "p": 0.037192497876
+    },
+    {
+     "key": "/site/the-adventures-of-huckleberry-finn",
+     "p": 0.011025589699
+    },
+    {
+     "key": "/works/OL16176999W",
+     "p": 0.009686433231
+    }
+   ],
+   "belief_sum": 1.0,
+   "belief_checksum": 7.562044215685
+  },
+  {
+   "question": "t:war",
+   "answer": "no",
+   "top": [
+    {
+     "key": "/works/OL17074268W",
+     "p": 0.03541076339
+    },
+    {
+     "key": "/site/admin-the-serengeti-rules",
+     "p": 0.012278803051
+    },
+    {
+     "key": "/site/the-adventures-of-huckleberry-finn",
+     "p": 0.010497400561
+    }
+   ],
+   "belief_sum": 1.0,
+   "belief_checksum": 7.570836794917
+  },
+  {
+   "question": "t:child",
+   "answer": "yes",
+   "top": [
+    {
+     "key": "/works/OL17074268W",
+     "p": 0.0359778651
+    },
+    {
+     "key": "/works/OL9741465W",
+     "p": 0.011479658976
+    },
+    {
+     "key": "/site/admin-the-serengeti-rules",
+     "p": 0.011227902754
+    }
+   ],
+   "belief_sum": 1.0,
+   "belief_checksum": 7.628266038425
   }
  ]
 }

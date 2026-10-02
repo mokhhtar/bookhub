@@ -3972,6 +3972,21 @@
       "target_children": 0,
       "tone_dark_or_serious": 0,
       "tone_humorous_or_satirical": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2025,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://telanganatoday.com/young-forest-staffer-from-telanganas-mancherial-publishes-two-books-wins-laurels"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://telanganatoday.com/young-forest-staffer-from-telanganas-mancherial-publishes-two-books-wins-laurels"
+      ]
     }
   },
   {
@@ -5733,6 +5748,21 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 1,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1984,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://acsess.onlinelibrary.wiley.com/doi/full/10.2136/vzj2005.0055"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://acsess.onlinelibrary.wiley.com/doi/full/10.2136/vzj2005.0055"
+      ]
     }
   },
   {
@@ -6813,6 +6843,23 @@
       "target_children": 0,
       "tone_dark_or_serious": 1,
       "tone_humorous_or_satirical": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2022,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Colleen_Hoover",
+        "https://en.wikipedia.org/wiki/Reminders_of_Him"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Colleen_Hoover",
+        "https://en.wikipedia.org/wiki/Reminders_of_Him"
+      ]
     }
   },
   {
@@ -8857,6 +8904,21 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 1,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1984,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.govinfo.gov/content/pkg/GOVPUB-GP3-d35bfdd5bd5156673ce59c772833c29c/pdf/GOVPUB-GP3-d35bfdd5bd5156673ce59c772833c29c.pdf"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.govinfo.gov/content/pkg/GOVPUB-GP3-d35bfdd5bd5156673ce59c772833c29c/pdf/GOVPUB-GP3-d35bfdd5bd5156673ce59c772833c29c.pdf"
+      ]
     }
   },
   {
@@ -10012,6 +10074,23 @@
       "target_children": 0,
       "tone_dark_or_serious": 0,
       "tone_humorous_or_satirical": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2025,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.penguin.co.in/book_author/rithvik-singh/",
+        "https://amazon.com"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.penguin.co.in/book_author/rithvik-singh/",
+        "https://amazon.com"
+      ]
     }
   },
   {
@@ -14264,8 +14343,8 @@
   {
     "k": "/works/OL25740044W",
     "t": "Esquire's The New Rules for Men",
-    "a": "",
-    "y": 2007,
+    "a": "Unknown author",
+    "y": 2016,
     "p": 1644,
     "r": 1,
     "w": null,
@@ -14322,19 +14401,30 @@
     },
     "publication": {
       "basis": "first_publication",
-      "year": 2007,
+      "year": 2016,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.hearst.com/magazines/esquire/esquire-the-new-rules-for-men"
+        "https://archive.org/details/esquiresnewrules0000unse",
+        "https://books.google.com/books/about/Esquire_s_the_New_Rules_for_Men.html?id=eY8BswEACAAJ"
       ]
     },
     "authorship": {
-      "status": "known",
+      "status": "anonymous",
       "sources": [
-        "https://www.hearst.com/magazines/esquire/esquire-the-new-rules-for-men"
+        "https://archive.org/details/esquiresnewrules0000unse",
+        "https://books.google.com/books/about/Esquire_s_the_New_Rules_for_Men.html?id=eY8BswEACAAJ"
       ]
-    }
+    },
+    "protected_questions": [
+      "author:alive",
+      "author:american",
+      "author:british",
+      "author:european",
+      "author:female",
+      "author:nonwestern",
+      "author:prolific"
+    ]
   },
   {
     "k": "/works/OL15110516W",
@@ -17893,6 +17983,23 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 1,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1977,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://catalog.freelibrary.org/Author/Home?author=Center+for+Disease+Control.&type=Author&page=2",
+        "https://stacks.cdc.gov/view/cdc/12355/cdc_12355_DS1.pdf"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://catalog.freelibrary.org/Author/Home?author=Center+for+Disease+Control.&type=Author&page=2",
+        "https://stacks.cdc.gov/view/cdc/12355/cdc_12355_DS1.pdf"
+      ]
     }
   },
   {
@@ -24019,7 +24126,7 @@
     "k": "/works/OL19836917W",
     "t": "Concepts of physics",
     "a": "Harish Chandra Verma",
-    "y": 1993,
+    "y": 1992,
     "p": 1093,
     "r": 1,
     "w": null,
@@ -24077,6 +24184,23 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 1,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1992,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/H._C._Verma",
+        "https://timesofindia.indiatimes.com/education/news/before-concepts-of-physics-became-every-jee-students-bible-iit-kanpur-professor-h-c-verma-solved-a-bigger-problem/articleshow/132674285.cms"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/H._C._Verma",
+        "https://timesofindia.indiatimes.com/education/news/before-concepts-of-physics-became-every-jee-students-bible-iit-kanpur-professor-h-c-verma-solved-a-bigger-problem/articleshow/132674285.cms"
+      ]
     }
   },
   {
@@ -25357,7 +25481,7 @@
   {
     "k": "/works/OL16793507M",
     "t": "Food and physick for every housholder & his family during the time of the plague",
-    "a": "London College of Physicians",
+    "a": "Unknown author",
     "y": 1665,
     "p": 1058,
     "r": 1,
@@ -25416,7 +25540,33 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 0
-    }
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1665,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://varieng.helsinki.fi/series/volumes/14/ratia/",
+        "https://pure.royalholloway.ac.uk/files/29613770/2018ThorpeLEPhD.pdf"
+      ]
+    },
+    "authorship": {
+      "status": "anonymous",
+      "sources": [
+        "https://varieng.helsinki.fi/series/volumes/14/ratia/",
+        "https://pure.royalholloway.ac.uk/files/29613770/2018ThorpeLEPhD.pdf"
+      ]
+    },
+    "protected_questions": [
+      "author:alive",
+      "author:american",
+      "author:british",
+      "author:european",
+      "author:female",
+      "author:nonwestern",
+      "author:prolific"
+    ]
   },
   {
     "k": "/works/OL16793507W",
@@ -29107,7 +29257,7 @@
     "k": "/works/OL26085514W",
     "t": "When You're Ready, This Is How You Heal",
     "a": "Brianna Wiest",
-    "y": 2022,
+    "y": 2021,
     "p": 971,
     "r": 1,
     "w": null,
@@ -29161,6 +29311,21 @@
       "target_children": 0,
       "tone_dark_or_serious": 0,
       "tone_humorous_or_satirical": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2021,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.famousbirthdays.com/people/brianna-wiest.html"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.famousbirthdays.com/people/brianna-wiest.html"
+      ]
     }
   },
   {
@@ -29827,7 +29992,7 @@
     "k": "/works/OL20875338W",
     "t": "Culpa Tuya",
     "a": "Mercedes Ron",
-    "y": 2016,
+    "y": 2017,
     "p": 951,
     "r": 1,
     "w": null,
@@ -29881,6 +30046,23 @@
       "target_children": 0,
       "tone_dark_or_serious": 0,
       "tone_humorous_or_satirical": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2017,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Mercedes_Ron",
+        "https://culpable.fandom.com/wiki/Your_Fault"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Mercedes_Ron",
+        "https://culpable.fandom.com/wiki/Your_Fault"
+      ]
     }
   },
   {
@@ -35897,7 +36079,7 @@
     "k": "/works/OL26510971W",
     "t": "I Want to Die but I Want to Eat Tteokbokki",
     "a": "Baek Se-Hee [백세희]",
-    "y": 2022,
+    "y": 2018,
     "p": 812,
     "r": 1,
     "w": null,
@@ -35951,6 +36133,21 @@
       "target_children": 0,
       "tone_dark_or_serious": 1,
       "tone_humorous_or_satirical": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2018,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/I_Want_to_Die_but_I_Want_to_Eat_Tteokbokki"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/I_Want_to_Die_but_I_Want_to_Eat_Tteokbokki"
+      ]
     }
   },
   {
@@ -37301,6 +37498,21 @@
       "target_children": 0,
       "tone_dark_or_serious": 1,
       "tone_humorous_or_satirical": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1971,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://imslp.org/wiki/Cello_Concerto%2C_F.107_(Bliss%2C_Arthur)"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://imslp.org/wiki/Cello_Concerto%2C_F.107_(Bliss%2C_Arthur)"
+      ]
     }
   },
   {
@@ -44852,6 +45064,21 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 1,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1978,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.govinfo.gov/app/details/GOVPUB-D101-PURL-gpo60009"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.govinfo.gov/app/details/GOVPUB-D101-PURL-gpo60009"
+      ]
     }
   },
   {
@@ -49402,7 +49629,24 @@
     "p": 639,
     "r": 1,
     "w": null,
-    "c": 13153179
+    "c": 13153179,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2022,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Ryan_Holiday",
+        "https://www.amazon.com/Discipline-Destiny-Power-Self-Control-Virtues/dp/0593191692"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Ryan_Holiday",
+        "https://www.amazon.com/Discipline-Destiny-Power-Self-Control-Virtues/dp/0593191692"
+      ]
+    }
   },
   {
     "k": "/works/OL17357353W",
@@ -49476,6 +49720,21 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 1,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2000,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://scribd.com"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://scribd.com"
+      ]
     }
   },
   {
@@ -50023,13 +50282,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://shopcatalog.com"
+        "https://thoughtcatalog.com/bianca-sparacino/"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://shopcatalog.com"
+        "https://thoughtcatalog.com/bianca-sparacino/"
       ]
     }
   },
@@ -50088,13 +50347,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.scholastic.com"
+        "https://freddy-fazbears-pizza.fandom.com/wiki/Five_Nights_at_Freddy%27s:_Fazbear_Frights_1:_Into_the_Pit"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.scholastic.com"
+        "https://freddy-fazbears-pizza.fandom.com/wiki/Five_Nights_at_Freddy%27s:_Fazbear_Frights_1:_Into_the_Pit"
       ]
     }
   },
@@ -50320,12 +50579,6 @@
       "sources": [
         "https://archive.org/details/errorsromanishm00whatgoog"
       ]
-    },
-    "authorship": {
-      "status": "known",
-      "sources": [
-        "https://archive.org/details/errorsromanishm00whatgoog"
-      ]
     }
   },
   {
@@ -50476,7 +50729,22 @@
     "p": 582,
     "r": 1,
     "w": null,
-    "c": 9084881
+    "c": 9084881,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2011,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.theguardian.com/books/2024/nov/19/shuntaro-tanikawa-japanese-poet-death-age-92"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.theguardian.com/books/2024/nov/19/shuntaro-tanikawa-japanese-poet-death-age-92"
+      ]
+    }
   },
   {
     "k": "/works/OL74504W",
@@ -50513,13 +50781,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.sourcebooks.com"
+        "https://fiveotterliterary.com/laura-nowlin/"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.sourcebooks.com"
+        "https://fiveotterliterary.com/laura-nowlin/"
       ]
     }
   },
@@ -50683,13 +50951,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://sevenseasdanmei.com"
+        "https://en.wikipedia.org/wiki/Mo_Xiang_Tong_Xiu"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://sevenseasdanmei.com"
+        "https://en.wikipedia.org/wiki/Mo_Xiang_Tong_Xiu"
       ]
     }
   },
@@ -50738,13 +51006,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.bloomsbury.com"
+        "https://wikipedia.org"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.bloomsbury.com"
+        "https://wikipedia.org"
       ]
     }
   },
@@ -51232,13 +51500,15 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.penguin.co.uk"
+        "https://en.wikipedia.org/wiki/Steven_Bartlett_(businessman)",
+        "https://www.amazon.com/Diary-CEO-Laws-Business-Life/dp/0593715837"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.penguin.co.uk"
+        "https://en.wikipedia.org/wiki/Steven_Bartlett_(businessman)",
+        "https://www.amazon.com/Diary-CEO-Laws-Business-Life/dp/0593715837"
       ]
     }
   },
@@ -51296,24 +51566,24 @@
     "k": "/works/OL29189552W",
     "t": "Silent Vows",
     "a": "Jill Ramsower",
-    "y": 2021,
+    "y": 2022,
     "p": 543,
     "r": 1,
     "w": null,
     "c": 13011571,
     "publication": {
       "basis": "first_publication",
-      "year": 2021,
+      "year": 2022,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.abebooks.com"
+        "https://www.goodreads.com/series/348379-the-byrne-brothers"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.abebooks.com"
+        "https://www.goodreads.com/series/348379-the-byrne-brothers"
       ]
     }
   },
@@ -51398,7 +51668,8 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.simonandschuster.com"
+        "https://dazzlingwritingz.wordpress.com/2022/12/20/book-review-the-american-roommate-experiment/",
+        "https://www.storytel.com/in/authors/elena-armas-520417"
       ]
     }
   },
@@ -51427,13 +51698,15 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.sourcebooks.com"
+        "https://laurenasher.com/about-me-2/",
+        "https://www.famousbirthdays.com/people/lauren-asher.html"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.sourcebooks.com"
+        "https://laurenasher.com/about-me-2/",
+        "https://www.famousbirthdays.com/people/lauren-asher.html"
       ]
     }
   },
@@ -51767,13 +52040,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.penguinrandomhouse.in/book/something-i-never-told-you/"
+        "https://penguin.co.in"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.penguinrandomhouse.in/book/something-i-never-told-you/"
+        "https://penguin.co.in"
       ]
     }
   },
@@ -51805,7 +52078,14 @@
     "p": 522,
     "r": 1,
     "w": null,
-    "c": 10961423
+    "c": 10961423,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Patrick_Bet-David",
+        "https://www.amazon.com/Your-Next-Five-Moves-Business/dp/1982154802"
+      ]
+    }
   },
   {
     "k": "/works/OL16981184W",
@@ -52000,7 +52280,13 @@
     "p": 514,
     "r": 1,
     "w": null,
-    "c": 14105538
+    "c": 14105538,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Jennifer_L._Armentrout"
+      ]
+    }
   },
   {
     "k": "/works/OL5098994W",
@@ -52077,13 +52363,15 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.simonandschuster.com"
+        "https://en.wikipedia.org/wiki/Colleen_Hoover",
+        "https://www.britannica.com/biography/Colleen-Hoover"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.simonandschuster.com"
+        "https://en.wikipedia.org/wiki/Colleen_Hoover",
+        "https://www.britannica.com/biography/Colleen-Hoover"
       ]
     }
   },
@@ -52611,7 +52899,8 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.simonandschuster.com"
+        "https://christinalaurenbooks.com",
+        "https://en.wikipedia.org/wiki/Christina_Lauren"
       ]
     }
   },
@@ -52846,7 +53135,8 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.scholastic.com"
+        "https://en.wikipedia.org/wiki/Ann_Liang",
+        "https://www.annliang.com/about"
       ]
     }
   },
@@ -53516,6 +53806,12 @@
       "published_1900_to_1950": 1,
       "published_1951_to_2000": 0,
       "published_after_2000": 0
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_Richest_Man_in_Babylon"
+      ]
     }
   },
   {
@@ -53749,12 +54045,6 @@
       "sources": [
         "https://www.harpercollins.com"
       ]
-    },
-    "authorship": {
-      "status": "known",
-      "sources": [
-        "https://www.harpercollins.com"
-      ]
     }
   },
   {
@@ -53911,24 +54201,24 @@
     "k": "/works/OL42393184W",
     "t": "King of Envy",
     "a": "Ana Huang",
-    "y": 2024,
+    "y": 2025,
     "p": 459,
     "r": 1,
     "w": null,
     "c": 15129532,
     "publication": {
       "basis": "first_publication",
-      "year": 2024,
+      "year": 2025,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.sourcebooks.com"
+        "https://www.goodreads.com/work/editions/167242258-king-of-envy"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.sourcebooks.com"
+        "https://www.goodreads.com/work/editions/167242258-king-of-envy"
       ]
     }
   },
@@ -55548,13 +55838,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.penguinrandomhouse.com/books/734604/how-to-win-at-chess-by-levy-rozman/"
+        "https://en.wikipedia.org/wiki/Levy_Rozman"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.penguinrandomhouse.com/books/734604/how-to-win-at-chess-by-levy-rozman/"
+        "https://en.wikipedia.org/wiki/Levy_Rozman"
       ]
     }
   },
@@ -55640,6 +55930,21 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1813,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://archive.org/details/poorrobinsalmana1794good"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://archive.org/details/poorrobinsalmana1794good"
+      ]
     }
   },
   {
@@ -56087,7 +56392,7 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.abebooks.com"
+        "https://goodreads.com"
       ]
     }
   },
@@ -56750,11 +57055,26 @@
     "k": "/works/OL62908W",
     "t": "The Blue Umbrella",
     "a": "Ruskin Bond",
-    "y": 1974,
+    "y": 1980,
     "p": 397,
     "r": 1,
     "w": null,
-    "c": 10389985
+    "c": 10389985,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1980,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_Blue_Umbrella"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_Blue_Umbrella"
+      ]
+    }
   },
   {
     "k": "/works/OL30293W",
@@ -56913,6 +57233,12 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 1,
       "published_after_2000": 0
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.ninds.nih.gov/publications/neurofibromatosis"
+      ]
     }
   },
   {
@@ -56969,7 +57295,7 @@
     "k": "/works/OL14872925M",
     "t": "Mélusine.",
     "a": "Jean d'Arras",
-    "y": 1984,
+    "y": 1393,
     "p": 393,
     "r": 1,
     "w": null,
@@ -57023,10 +57349,27 @@
       "fact:award": 0.15,
       "fact:series": 0.15,
       "fact:long": 0.65,
-      "published_before_1900": 0,
+      "published_before_1900": 1,
       "published_1900_to_1950": 0,
-      "published_1951_to_2000": 1,
+      "published_1951_to_2000": 0,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1393,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://fr.wikipedia.org/wiki/Roman_de_M%C3%A9lusine",
+        "https://en.wikipedia.org/wiki/Jean_d%27Arras"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://fr.wikipedia.org/wiki/Roman_de_M%C3%A9lusine",
+        "https://en.wikipedia.org/wiki/Jean_d%27Arras"
+      ]
     }
   },
   {
@@ -57779,13 +58122,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://books.google.com"
+        "https://search.library.wisc.edu/catalog/999743670502121"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://search.library.wisc.edu/catalog/999743670502121"
       ]
     }
   },
@@ -58183,6 +58526,23 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 1
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2008,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://books.google.com/books/about/Memahami_Film_Edisi_1.html?hl=id&id=BSOqEAAAQBAJ",
+        "https://www.imdb.com/name/nm10734698/"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://books.google.com/books/about/Memahami_Film_Edisi_1.html?hl=id&id=BSOqEAAAQBAJ",
+        "https://www.imdb.com/name/nm10734698/"
+      ]
     }
   },
   {
@@ -58223,7 +58583,13 @@
     "p": 371,
     "r": 1,
     "w": null,
-    "c": 12989260
+    "c": 12989260,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Tracy_Wolff"
+      ]
+    }
   },
   {
     "k": "/works/OL1981909W",
@@ -58301,7 +58667,8 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.harpercollins.com"
+        "https://en.wikipedia.org/wiki/Bella_Mackie",
+        "https://www.amazon.co.uk/Kill-Your-Family-Bella-Mackie/dp/0008365911"
       ]
     }
   },
@@ -58779,7 +59146,7 @@
     "k": "/works/OL17358375M",
     "t": "P'ing-yang hsien chih",
     "a": "Pingyang Gazetteers Committee",
-    "y": 1970,
+    "y": 1993,
     "p": 359,
     "r": 1,
     "w": null,
@@ -58837,6 +59204,23 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 1,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1993,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.amazon.com/-/es/Pingyang-Xian-Bian-Zuan-Yuan/dp/7543201097",
+        "https://www.yes24.com/product/goods/188775698"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.amazon.com/-/es/Pingyang-Xian-Bian-Zuan-Yuan/dp/7543201097",
+        "https://www.yes24.com/product/goods/188775698"
+      ]
     }
   },
   {
@@ -58908,12 +59292,6 @@
     "r": 1,
     "w": null,
     "c": 12606541,
-    "authorship": {
-      "status": "known",
-      "sources": [
-        "https://www.google.com/books/edition/Manajemen_Sumber_Daya_Manusia/msdm_indonesia"
-      ]
-    },
     "publication": {
       "basis": "first_publication",
       "year": 2018,
@@ -58988,7 +59366,7 @@
     "k": "/works/OL10629879W",
     "t": "Kasturi kundal base",
     "a": "Dr. Naresh",
-    "y": 2009,
+    "y": 1991,
     "p": 356,
     "r": 1,
     "w": null,
@@ -59044,8 +59422,23 @@
       "fact:long": 0.35,
       "published_before_1900": 0,
       "published_1900_to_1950": 0,
-      "published_1951_to_2000": 0,
-      "published_after_2000": 1
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1991,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://drnaresh.com/wp-content/uploads/2024/09/Dr.Naresh-Full-Profile.pdf"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://drnaresh.com/wp-content/uploads/2024/09/Dr.Naresh-Full-Profile.pdf"
+      ]
     }
   },
   {
@@ -59828,15 +60221,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://alexisknightly.com",
-        "https://www.abebooks.com"
+        "https://goodreads.com"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://alexisknightly.com",
-        "https://www.abebooks.com"
+        "https://goodreads.com"
       ]
     }
   },
@@ -60001,7 +60392,8 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://mostlyeconomics.wordpress.com/2017/06/14/profile-of-prof-r-d-sharma-a-math-genuis-who-helped-many-a-students/",
+        "https://timesofindia.indiatimes.com/education/news/mathematics-is-for-everyone-says-rd-sharma/articleshow/72938997.cms"
       ]
     }
   },
@@ -60079,12 +60471,6 @@
       "year": 2012,
       "earliest": null,
       "latest": null,
-      "sources": [
-        "https://www.macmillan.com"
-      ]
-    },
-    "authorship": {
-      "status": "known",
       "sources": [
         "https://www.macmillan.com"
       ]
@@ -60251,7 +60637,7 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.abebooks.com"
+        "https://rina-kent-verse.fandom.com/wiki/Rina_Kent"
       ]
     }
   },
@@ -60378,7 +60764,13 @@
     "p": 337,
     "r": 1,
     "w": null,
-    "c": 13233403
+    "c": 13233403,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Happy_Place_(novel)"
+      ]
+    }
   },
   {
     "k": "/works/OL3348658W",
@@ -60544,11 +60936,28 @@
     "k": "/works/OL20644916W",
     "t": "Jujutsu Kaisen, Vol. 1",
     "a": "Gege Akutami",
-    "y": 2019,
+    "y": 2018,
     "p": 335,
     "r": 1,
     "w": null,
-    "c": 9270022
+    "c": 9270022,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2018,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Gege_Akutami",
+        "https://en.wikipedia.org/wiki/Jujutsu_Kaisen"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Gege_Akutami",
+        "https://en.wikipedia.org/wiki/Jujutsu_Kaisen"
+      ]
+    }
   },
   {
     "k": "/works/OL42481402W",
@@ -60840,13 +61249,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.sourcebooks.com"
+        "https://en.wikipedia.org/wiki/The_Striker_(Huang_novel)"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.sourcebooks.com"
+        "https://en.wikipedia.org/wiki/The_Striker_(Huang_novel)"
       ]
     }
   },
@@ -61162,7 +61571,7 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.abebooks.com"
+        "https://rina-kent-verse.fandom.com/wiki/Rina_Kent"
       ]
     }
   },
@@ -61583,12 +61992,6 @@
       "sources": [
         "https://books.google.com/books?id=U35GAAAAMAAJ"
       ]
-    },
-    "authorship": {
-      "status": "known",
-      "sources": [
-        "https://books.google.com/books?id=U35GAAAAMAAJ"
-      ]
     }
   },
   {
@@ -61725,7 +62128,7 @@
     "k": "/works/OL14933020M",
     "t": "Hamah bā-savād mī shavaym",
     "a": "Iran Literacy Campaign",
-    "y": 1960,
+    "y": 1956,
     "p": 321,
     "r": 1,
     "w": null,
@@ -61783,6 +62186,21 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 1,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1956,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://t.me/s/Shintaishi/5780"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://t.me/s/Shintaishi/5780"
+      ]
     }
   },
   {
@@ -62397,12 +62815,6 @@
       "sources": [
         "https://www.sourcebooks.com"
       ]
-    },
-    "authorship": {
-      "status": "known",
-      "sources": [
-        "https://www.sourcebooks.com"
-      ]
     }
   },
   {
@@ -62742,7 +63154,7 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://books.google.com/books/about/The_Family_Comes_on.html?id=CJu7tgAACAAJ"
       ]
     }
   },
@@ -63128,7 +63540,7 @@
     "k": "/works/OL15540668M",
     "t": "The New-England primre [sic] improved.",
     "a": "New-England Colonial Educators",
-    "y": 1750,
+    "y": 1687,
     "p": 304,
     "r": 1,
     "w": null,
@@ -63186,6 +63598,22 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1687,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_New_England_Primer",
+        "https://www.google.com/goto?url=CAESbAHrOzAVlfHWzK8i8fZzqvRkZ45tS2E-TMXMkuap5ijcJl14kjc6dJpRxZviVNN64WW3UWE2BWv81PBAbO5eOkR7Y1sGS-XS8ngrLDVeWIKq6ITJngvdf_SpwPBm-QYqiWP_4BTkTTYb2nkLPQ"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_New_England_Primer"
+      ]
     }
   },
   {
@@ -64005,7 +64433,7 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.simonandschuster.com"
+        "https://profiles.stanford.edu/matthew-abrahams"
       ]
     }
   },
@@ -64177,8 +64605,8 @@
   {
     "k": "/works/OL16796766M",
     "t": "The Great messenger of mortality, or, A Dialogue betwixt death and a lady",
-    "a": "Traditional Broadside Ballad",
-    "y": 1600,
+    "a": "Unknown author",
+    "y": 1683,
     "p": 295,
     "r": 1,
     "w": null,
@@ -64236,7 +64664,33 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 0
-    }
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1683,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://ebba.english.ucsb.edu/ballad/35505/citation",
+        "https://mainlynorfolk.info/shirley.collins/songs/deathandthelady.html"
+      ]
+    },
+    "authorship": {
+      "status": "anonymous",
+      "sources": [
+        "https://ebba.english.ucsb.edu/ballad/35505/citation",
+        "https://mainlynorfolk.info/shirley.collins/songs/deathandthelady.html"
+      ]
+    },
+    "protected_questions": [
+      "author:alive",
+      "author:american",
+      "author:british",
+      "author:european",
+      "author:female",
+      "author:nonwestern",
+      "author:prolific"
+    ]
   },
   {
     "k": "/works/OL13754370W",
@@ -64655,6 +65109,21 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 1
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2012,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://megjay.com/about/"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://megjay.com/about/"
+      ]
     }
   },
   {
@@ -65170,6 +65639,21 @@
       "published_1900_to_1950": 1,
       "published_1951_to_2000": 0,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1947,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://books.google.com/books/about/Thirty_Years_of_the_Soviet_State.html?id=ONE40gEACAAJ"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://books.google.com/books/about/Thirty_Years_of_the_Soviet_State.html?id=ONE40gEACAAJ"
+      ]
     }
   },
   {
@@ -65307,13 +65791,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://books.google.com"
+        "https://en.wikipedia.org/wiki/Witchcraft_Today"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://en.wikipedia.org/wiki/Witchcraft_Today"
       ]
     }
   },
@@ -65867,7 +66351,8 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.harpercollins.com"
+        "https://en.wikipedia.org/wiki/Tahereh_Mafi",
+        "https://shatterme.fandom.com/wiki/Imagine_Me"
       ]
     }
   },
@@ -66586,7 +67071,13 @@
     "p": 276,
     "r": 1,
     "w": null,
-    "c": 12580884
+    "c": 12580884,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://rina-kent-verse.fandom.com/wiki/Rina_Kent"
+      ]
+    }
   },
   {
     "k": "/works/OL97725W",
@@ -66669,7 +67160,7 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://en.wikipedia.org/wiki/I_Have_No_Mouth,_and_I_Must_Scream"
       ]
     }
   },
@@ -66872,13 +67363,15 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.abebooks.com"
+        "https://www.mjdemarco.com/mj-demarco-author-entrepreneur-biography/",
+        "https://www.booknotification.com/authors/m-j-demarco/"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.abebooks.com"
+        "https://www.mjdemarco.com/mj-demarco-author-entrepreneur-biography/",
+        "https://www.booknotification.com/authors/m-j-demarco/"
       ]
     }
   },
@@ -67594,6 +68087,12 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 0
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.loebclassics.com/abstract/LCL024/2003/pb_LCL024.15.xml"
+      ]
     }
   },
   {
@@ -67772,15 +68271,15 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.hookedonphonics.com/about-us/",
-        "https://books.google.com"
+        "https://en.wikipedia.org/wiki/Hooked_on_Phonics",
+        "https://tedium.co/2021/05/05/hooked-on-phonics-history/"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.hookedonphonics.com/about-us/",
-        "https://books.google.com"
+        "https://en.wikipedia.org/wiki/Hooked_on_Phonics",
+        "https://tedium.co/2021/05/05/hooked-on-phonics-history/"
       ]
     }
   },
@@ -68205,13 +68704,15 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://books.google.com"
+        "https://en.wikipedia.org/wiki/Donald_Cressey",
+        "https://books.google.com/books/about/Other_People_s_Money.html?id=FgAFAAAAMAAJ"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://en.wikipedia.org/wiki/Donald_Cressey",
+        "https://books.google.com/books/about/Other_People_s_Money.html?id=FgAFAAAAMAAJ"
       ]
     }
   },
@@ -68540,13 +69041,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://kadavy.net/books/mind-management/"
+        "https://kadavy.net/about/"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://kadavy.net/books/mind-management/"
+        "https://kadavy.net/about/"
       ]
     }
   },
@@ -68748,24 +69249,24 @@
     "k": "/works/OL28914323W",
     "t": "You Will Feel Whole Again",
     "a": "Parm Kaur",
-    "y": 2022,
+    "y": 2023,
     "p": 261,
     "r": 1,
     "w": null,
     "c": 13254397,
     "publication": {
       "basis": "first_publication",
-      "year": 2022,
+      "year": 2023,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://shopcatalog.com"
+        "https://www.amazon.com/You-Will-Feel-Whole-Again/dp/194975961X"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://shopcatalog.com"
+        "https://www.amazon.com/You-Will-Feel-Whole-Again/dp/194975961X"
       ]
     }
   },
@@ -68995,13 +69496,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://sevenseasdanmei.com"
+        "https://en.wikipedia.org/wiki/Mo_Xiang_Tong_Xiu"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://sevenseasdanmei.com"
+        "https://en.wikipedia.org/wiki/Mo_Xiang_Tong_Xiu"
       ]
     }
   },
@@ -69040,13 +69541,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.soundstrue.com/products/no-bad-parts"
+        "https://en.wikipedia.org/wiki/Richard_C._Schwartz"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.soundstrue.com/products/no-bad-parts"
+        "https://en.wikipedia.org/wiki/Richard_C._Schwartz"
       ]
     }
   },
@@ -69233,7 +69734,24 @@
     "p": 258,
     "r": 1,
     "w": null,
-    "c": 10827652
+    "c": 10827652,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2021,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Logan_Ury",
+        "https://www.simonandschuster.com/authors/Logan-Ury/156464550"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Logan_Ury",
+        "https://www.simonandschuster.com/authors/Logan-Ury/156464550"
+      ]
+    }
   },
   {
     "k": "/works/OL52982W",
@@ -69337,6 +69855,21 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 1,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1992,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://parishmouse.co.uk/england/yorkshire/east-riding/rise-yorkshire-family-history-guide/"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://parishmouse.co.uk/england/yorkshire/east-riding/rise-yorkshire-family-history-guide/"
+      ]
     }
   },
   {
@@ -69687,7 +70220,22 @@
     "p": 255,
     "r": 1,
     "w": null,
-    "c": 12920901
+    "c": 12920901,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2015,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.simonandschuster.ca/books/Colleen-Hoover-A-3-Ebook-Collection/Colleen-Hoover/9781501118678"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.simonandschuster.ca/books/Colleen-Hoover-A-3-Ebook-Collection/Colleen-Hoover/9781501118678"
+      ]
+    }
   },
   {
     "k": "/works/OL2924610W",
@@ -69767,7 +70315,14 @@
     "p": 255,
     "r": 1,
     "w": null,
-    "c": 13126378
+    "c": 13126378,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Dav_Pilkey",
+        "https://en.wikipedia.org/wiki/Dog_Man_(book_series)"
+      ]
+    }
   },
   {
     "k": "/works/OL20795862W",
@@ -70429,24 +70984,24 @@
     "k": "/works/OL42410140W",
     "t": "What's Your Dream?",
     "a": "Simon Squibb",
-    "y": 2024,
+    "y": 2025,
     "p": 250,
     "r": 1,
     "w": null,
     "c": 14840729,
     "publication": {
       "basis": "first_publication",
-      "year": 2024,
+      "year": 2025,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.penguin.co.uk"
+        "https://www.penguin.co.uk/books/462309/whats-your-dream-by-squibb-simon/9781804950807"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.penguin.co.uk"
+        "https://www.penguin.co.uk/books/462309/whats-your-dream-by-squibb-simon/9781804950807"
       ]
     }
   },
@@ -70635,13 +71190,6 @@
       "year": 1934,
       "earliest": null,
       "latest": null,
-      "sources": [
-        "https://archive.org/details/lisztsitwell00sitw",
-        "https://nla.gov.au/nla.cat-vn2487449"
-      ]
-    },
-    "authorship": {
-      "status": "known",
       "sources": [
         "https://archive.org/details/lisztsitwell00sitw",
         "https://nla.gov.au/nla.cat-vn2487449"
@@ -70910,6 +71458,21 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 1,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1987,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/John_Briley"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/John_Briley"
+      ]
     }
   },
   {
@@ -71103,15 +71666,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://books.google.com",
-        "https://sunshinebookseller.com"
+        "https://en.wikipedia.org/wiki/Gracy_Ukala"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com",
-        "https://sunshinebookseller.com"
+        "https://en.wikipedia.org/wiki/Gracy_Ukala"
       ]
     }
   },
@@ -71241,7 +71802,7 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://en.wikipedia.org/wiki/Nearly_All_the_Men_in_Lagos_are_Mad"
       ]
     }
   },
@@ -71495,16 +72056,16 @@
     "k": "/works/OL21097163M",
     "t": "Parthenia in-violata or Mayden-musicke for the Virginall and Bass-viol",
     "a": "Unknown author",
-    "y": null,
+    "y": 1624,
     "p": 244,
     "r": 1,
     "w": null,
     "c": null,
     "publication": {
       "basis": "first_publication",
-      "year": null,
-      "earliest": 1614,
-      "latest": 1624,
+      "year": 1624,
+      "earliest": null,
+      "latest": null,
       "sources": [
         "https://en.wikipedia.org/wiki/Parthenia_Inviolata"
       ]
@@ -72979,7 +73540,14 @@
     "p": 237,
     "r": 1,
     "w": null,
-    "c": 13268161
+    "c": 13268161,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Rebecca_Ross",
+        "https://www.rebeccarossauthor.com/about"
+      ]
+    }
   },
   {
     "k": "/works/OL46913W",
@@ -73026,13 +73594,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.panmacmillan.com"
+        "https://en.wikipedia.org/wiki/Heaven_(Kawakami_novel)"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.panmacmillan.com"
+        "https://en.wikipedia.org/wiki/Heaven_(Kawakami_novel)"
       ]
     }
   },
@@ -73183,7 +73751,22 @@
     "p": 235,
     "r": 1,
     "w": null,
-    "c": 13239247
+    "c": 13239247,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2022,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.goodreads.com/book/show/60416566-praise"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.goodreads.com/book/show/60416566-praise"
+      ]
+    }
   },
   {
     "k": "/works/OL167179W",
@@ -73643,6 +74226,13 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 0
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_Principles_of_Psychology",
+        "https://www.hup.harvard.edu/books/9780674705593"
+      ]
     }
   },
   {
@@ -74166,7 +74756,7 @@
     "k": "/works/OL18217886M",
     "t": "Kleine Suite, für Flöte, Oboe und Klavier.",
     "a": "Boris Mersson",
-    "y": 1966,
+    "y": 1996,
     "p": 231,
     "r": 1,
     "w": null,
@@ -74224,6 +74814,23 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 1,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1996,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://wikipedia.org",
+        "https://www.prestomusic.com/sheet-music/products/8357875--mersson-boris-kleine-suite-op-10"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://wikipedia.org",
+        "https://www.prestomusic.com/sheet-music/products/8357875--mersson-boris-kleine-suite-op-10"
+      ]
     }
   },
   {
@@ -74387,7 +74994,7 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.simonandschuster.com"
+        "https://www.simonandschuster.com/books/She-Gets-the-Girl/Rachael-Lippincott/She-Gets-the-Girl/9781534493803"
       ]
     }
   },
@@ -74538,7 +75145,7 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://www.mesawestrotary.org/stories/highlights-of-september-5-meeting-1"
       ]
     }
   },
@@ -74780,6 +75387,21 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 1,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1979,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://sweetsavageflame.com/authors-2/multi-genre-romance-authors/charlotte-lamb-aka-shelia-holland/"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://sweetsavageflame.com/authors-2/multi-genre-romance-authors/charlotte-lamb-aka-shelia-holland/"
+      ]
     }
   },
   {
@@ -74857,15 +75479,15 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.abebooks.com/book-search/title/dopamine-detox/author/blake-rabizadeh/",
-        "https://www.walmart.com/ip/Dopamine-Detox-The-Ultimate-Guide-to-Reset-Your-Brain-Paperback-9798450849317/877478051"
+        "https://www.amazon.ca/Dopamine-Detox-Ultimate-Guide-Reset-ebook/dp/B09C23LYST",
+        "https://www.linkedin.com/in/blake-rabizadeh-367765227/es?trk=people-guest_people_search-card"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.abebooks.com/book-search/title/dopamine-detox/author/blake-rabizadeh/",
-        "https://www.walmart.com/ip/Dopamine-Detox-The-Ultimate-Guide-to-Reset-Your-Brain-Paperback-9798450849317/877478051"
+        "https://www.amazon.ca/Dopamine-Detox-Ultimate-Guide-Reset-ebook/dp/B09C23LYST",
+        "https://www.linkedin.com/in/blake-rabizadeh-367765227/es?trk=people-guest_people_search-card"
       ]
     }
   },
@@ -75062,6 +75684,12 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 1,
       "published_after_2000": 0
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Larry_R._Williams"
+      ]
     }
   },
   {
@@ -75227,7 +75855,22 @@
     "p": 226,
     "r": 1,
     "w": null,
-    "c": 10474893
+    "c": 10474893,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2020,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Jennifer_L._Armentrout"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Jennifer_L._Armentrout"
+      ]
+    }
   },
   {
     "k": "/works/OL28775228W",
@@ -75419,7 +76062,7 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.penguinrandomhouse.com"
+        "https://www.rhcbooks.com/books/624112/its-all-love-by-jenna-ortega"
       ]
     }
   },
@@ -75448,15 +76091,15 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.indigo.ca",
-        "https://books.google.com"
+        "https://booksrun.com/9781949759259-everything-youll-ever-need-you-can-find-within-yourself",
+        "https://www.goodreads.com/pt/book/show/55670327-everything-you-ll-ever-need"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.indigo.ca",
-        "https://books.google.com"
+        "https://booksrun.com/9781949759259-everything-youll-ever-need-you-can-find-within-yourself",
+        "https://www.goodreads.com/pt/book/show/55670327-everything-you-ll-ever-need"
       ]
     }
   },
@@ -75464,24 +76107,26 @@
     "k": "/works/OL3891392W",
     "t": "Psikologi remaja",
     "a": "Muhamad Mansur Abdullah",
-    "y": 1987,
+    "y": 1988,
     "p": 225,
     "r": 1,
     "w": null,
     "c": 4053880,
     "publication": {
       "basis": "first_publication",
-      "year": 1987,
+      "year": 1988,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://books.google.com"
+        "https://catalog.hathitrust.org/Record/006724222",
+        "https://www.goodreads.com/book/show/2151330.Psikologi_remaja"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://catalog.hathitrust.org/Record/006724222",
+        "https://www.goodreads.com/book/show/2151330.Psikologi_remaja"
       ]
     }
   },
@@ -75773,6 +76418,23 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1815,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/title/The-Farmer's-calendar-or-The-New-York-Vermont-and-Connecticut-almanac-for-the-year-of-our-Lord-1816-.../oclc/15456747",
+        "https://dokumen.pub/star-territory-printing-the-universe-in-nineteenth-century-america-0812252926-9780812252927.html"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/title/The-Farmer's-calendar-or-The-New-York-Vermont-and-Connecticut-almanac-for-the-year-of-our-Lord-1816-.../oclc/15456747",
+        "https://dokumen.pub/star-territory-printing-the-universe-in-nineteenth-century-america-0812252926-9780812252927.html"
+      ]
     }
   },
   {
@@ -76472,6 +77134,12 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 1
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Sarah_J._Maas"
+      ]
     }
   },
   {
@@ -76668,6 +77336,23 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1888,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_Fairy_Doll_(ballet)",
+        "https://imslp.org/wiki/Die_Puppenfee_(Bayer,_Josef)"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_Fairy_Doll_(ballet)",
+        "https://imslp.org/wiki/Die_Puppenfee_(Bayer,_Josef)"
+      ]
     }
   },
   {
@@ -77389,15 +78074,15 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://books.google.com",
-        "https://www.rajagrafindo.co.id"
+        "https://opac.perpusnas.go.id/DetailOpac.aspx?id=1135600",
+        "https://www.academia.edu/28722254/Hukum_administrasi_negara_Ridwan_HR"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com",
-        "https://www.rajagrafindo.co.id"
+        "https://opac.perpusnas.go.id/DetailOpac.aspx?id=1135600",
+        "https://www.academia.edu/28722254/Hukum_administrasi_negara_Ridwan_HR"
       ]
     }
   },
@@ -77794,15 +78479,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.penguin.co.in",
-        "https://www.thehindu.com"
+        "https://www.penguin.co.in/book/lallan-sweets/"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.penguin.co.in",
-        "https://www.thehindu.com"
+        "https://www.penguin.co.in/book/lallan-sweets/"
       ]
     }
   },
@@ -78540,13 +79223,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.hodderchildrens.co.uk"
+        "https://aliceoseman.com/graphic-novel/heartstopper-colouring-book/"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.hodderchildrens.co.uk"
+        "https://aliceoseman.com/graphic-novel/heartstopper-colouring-book/"
       ]
     }
   },
@@ -78895,8 +79578,7 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.morton-pub.com",
-        "https://books.google.com"
+        "https://ferris.edu"
       ]
     }
   },
@@ -79090,7 +79772,7 @@
   {
     "k": "/works/OL15104047M",
     "t": "The Baltimore almanack, or, Time piece for the year of our Lord 1818 ...",
-    "a": "Baltimore Publishers",
+    "a": "Unknown author",
     "y": 1817,
     "p": 204,
     "r": 1,
@@ -79149,7 +79831,31 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 0
-    }
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1817,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.library.osu.edu/discovery/fulldisplay?vid=01OHIOLINK_OSU%3AOSU&docid=alma991036421129708507&context=L"
+      ]
+    },
+    "authorship": {
+      "status": "anonymous",
+      "sources": [
+        "https://search.library.osu.edu/discovery/fulldisplay?vid=01OHIOLINK_OSU%3AOSU&docid=alma991036421129708507&context=L"
+      ]
+    },
+    "protected_questions": [
+      "author:alive",
+      "author:american",
+      "author:british",
+      "author:european",
+      "author:female",
+      "author:nonwestern",
+      "author:prolific"
+    ]
   },
   {
     "k": "/works/OL15000756W",
@@ -79568,13 +80274,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.abebooks.com"
+        "https://catharinamaura.com/about-catharina-maura/"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.abebooks.com"
+        "https://catharinamaura.com/about-catharina-maura/"
       ]
     }
   },
@@ -80069,7 +80775,22 @@
     "p": 201,
     "r": 1,
     "w": null,
-    "c": 6628857
+    "c": 6628857,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1987,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Patricia_Wilson"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Patricia_Wilson"
+      ]
+    }
   },
   {
     "k": "/works/OL274509W",
@@ -80265,7 +80986,14 @@
     "p": 200,
     "r": 1,
     "w": null,
-    "c": 10115579
+    "c": 10115579,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://tricialevenseller.com/about/",
+        "https://overflowingshelf.com/2021/07/18/review-the-shadows-between-us-by-tricia-levenseller/"
+      ]
+    }
   },
   {
     "k": "/works/OL21913102W",
@@ -80289,8 +81017,7 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.harpercollins.com",
-        "https://www.kinokuniya.com"
+        "https://www.harpercollins.com/blogs/authors/alessandra-olanow"
       ]
     }
   },
@@ -80939,12 +81666,6 @@
       "year": 2022,
       "earliest": null,
       "latest": null,
-      "sources": [
-        "https://www.sourcebooks.com"
-      ]
-    },
-    "authorship": {
-      "status": "known",
       "sources": [
         "https://www.sourcebooks.com"
       ]
@@ -82289,6 +83010,13 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 1
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.amazon.com/-/es/El-Poder-del-Metabolismo-Spanish/dp/0978843703",
+        "https://www.goodreads.com/work/editions/5114776"
+      ]
     }
   },
   {
@@ -82839,24 +83567,24 @@
     "k": "/works/OL22651372W",
     "t": "The black heel",
     "a": "Peggy Oppong",
-    "y": 2002,
+    "y": 2012,
     "p": 195,
     "r": 1,
     "w": null,
     "c": 15122831,
     "publication": {
       "basis": "first_publication",
-      "year": 2002,
+      "year": 2012,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://books.google.com"
+        "https://en.wikipedia.org/wiki/Margaret_Sarfo"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://en.wikipedia.org/wiki/Margaret_Sarfo"
       ]
     }
   },
@@ -83347,24 +84075,24 @@
     "k": "/works/OL37568839W",
     "t": "Tearsmith",
     "a": "Erin Doom",
-    "y": 2021,
+    "y": 2020,
     "p": 193,
     "r": 1,
     "w": null,
     "c": 14614806,
     "publication": {
       "basis": "first_publication",
-      "year": 2021,
+      "year": 2020,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.penguin.co.uk"
+        "https://www.ilfattoquotidiano.it/2023/05/15/erin-doom-da-wattpad a-700mila-copie-cose-il-social-di-lettura-su-cui-e-nata-lautrice-bestseller/7162096/"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.penguin.co.uk"
+        "https://www.ilfattoquotidiano.it/2023/05/15/erin-doom-da-wattpad a-700mila-copie-cose-il-social-di-lettura-su-cui-e-nata-lautrice-bestseller/7162096/"
       ]
     }
   },
@@ -83389,7 +84117,7 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.penguinrandomhouse.com"
+        "https://en.wikipedia.org/wiki/Peter_Attia"
       ]
     }
   },
@@ -84073,7 +84801,13 @@
     "p": 192,
     "r": 1,
     "w": null,
-    "c": 10101535
+    "c": 10101535,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Gregg_Olsen"
+      ]
+    }
   },
   {
     "k": "/works/OL28067455W",
@@ -84508,13 +85242,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.scholastic.co.uk"
+        "https://en.wikipedia.org/wiki/Liz_Pichon"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.scholastic.co.uk"
+        "https://en.wikipedia.org/wiki/Liz_Pichon"
       ]
     }
   },
@@ -85144,7 +85878,7 @@
     "k": "/works/OL15416051M",
     "t": "Flora flowers fruicts beastes birds and flies exactly drawne",
     "a": "John Overton / Wenceslaus Hollar",
-    "y": 1665,
+    "y": 1620,
     "p": 190,
     "r": 1,
     "w": null,
@@ -85202,6 +85936,21 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1620,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.britishmuseum.org/collection/object/P_Gg-6-6-1"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.britishmuseum.org/collection/object/P_Gg-6-6-1"
+      ]
     }
   },
   {
@@ -87604,15 +88353,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://books.google.com",
-        "https://www.biblio.co.uk"
+        "https://bookmate.com/authors/W5oI4cfu"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com",
-        "https://www.biblio.co.uk"
+        "https://bookmate.com/authors/W5oI4cfu"
       ]
     }
   },
@@ -88544,7 +89291,7 @@
     "k": "/works/OL16143994W",
     "t": "Pengantar ilmu hukum Indonesia",
     "a": "C. S. T. Kansil",
-    "y": 1989,
+    "y": 2011,
     "p": 182,
     "r": 1,
     "w": null,
@@ -88600,8 +89347,23 @@
       "fact:long": 0.9,
       "published_before_1900": 0,
       "published_1900_to_1950": 0,
-      "published_1951_to_2000": 1,
-      "published_after_2000": 0
+      "published_1951_to_2000": 0,
+      "published_after_2000": 1
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2011,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://news.okezone.com/read/2014/08/29/373/1031782/guru-besar-untar-prof-drs-c-s-t-kansil-tutup-usia"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://news.okezone.com/read/2014/08/29/373/1031782/guru-besar-untar-prof-drs-c-s-t-kansil-tutup-usia"
+      ]
     }
   },
   {
@@ -88666,6 +89428,23 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 1
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2011,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Eros_Atalia",
+        "https://writerformisfits.blogspot.com/2013/11/book-review-wag-lang-di-makaraos-by.html"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Eros_Atalia",
+        "https://writerformisfits.blogspot.com/2013/11/book-review-wag-lang-di-makaraos-by.html"
+      ]
     }
   },
   {
@@ -89624,7 +90403,7 @@
     "k": "/works/OL15845364W",
     "t": "The students' companion",
     "a": "Wilfred D. Best",
-    "y": 1963,
+    "y": 1958,
     "p": 180,
     "r": 1,
     "w": null,
@@ -89682,6 +90461,21 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 1,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1958,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.facebook.com/sdms1952/posts/we-continue-chapter-one-of-a-vignette-of-my-story-written-by-the-late-shri-satna/580482430852622/"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.facebook.com/sdms1952/posts/we-continue-chapter-one-of-a-vignette-of-my-story-written-by-the-late-shri-satna/580482430852622/"
+      ]
     }
   },
   {
@@ -89718,7 +90512,7 @@
     "k": "/works/OL12948406M",
     "t": "Measurement and Indicators of Integration",
     "a": "Council of Europe",
-    "y": 1998,
+    "y": 1997,
     "p": 180,
     "r": 1,
     "w": null,
@@ -89776,6 +90570,21 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 1,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1997,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://play.google.com/store/books/details/Council_of_Europe_Measurement_and_Indicators_of_In?id=aX5hJNZXb9oC"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://play.google.com/store/books/details/Council_of_Europe_Measurement_and_Indicators_of_In?id=aX5hJNZXb9oC"
+      ]
     }
   },
   {
@@ -90029,12 +90838,6 @@
       "year": 2020,
       "earliest": null,
       "latest": null,
-      "sources": [
-        "https://www.simonandschuster.com"
-      ]
-    },
-    "authorship": {
-      "status": "known",
       "sources": [
         "https://www.simonandschuster.com"
       ]
@@ -90957,7 +91760,7 @@
     "k": "/works/OL15111477M",
     "t": "The Georgian Bay canal",
     "a": "Canadian Canal Commission",
-    "y": 1858,
+    "y": 1916,
     "p": 178,
     "r": 1,
     "w": null,
@@ -91011,10 +91814,25 @@
       "fact:award": 0.15,
       "fact:series": 0.15,
       "fact:long": 0.35,
-      "published_before_1900": 1,
-      "published_1900_to_1950": 0,
+      "published_before_1900": 0,
+      "published_1900_to_1950": 1,
       "published_1951_to_2000": 0,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1916,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://publications.gc.ca/site/eng/9.828445/publication.html"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://publications.gc.ca/site/eng/9.828445/publication.html"
+      ]
     }
   },
   {
@@ -91258,7 +92076,22 @@
     "p": 177,
     "r": 1,
     "w": null,
-    "c": 10538876
+    "c": 10538876,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2018,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://goodreads.com"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://goodreads.com"
+      ]
+    }
   },
   {
     "k": "/works/OL14873921W",
@@ -91524,6 +92357,23 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 1,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1988,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://goodreads.com",
+        "https://www.amazon.com/Without-Trust-Penny-Jordan-ebook/dp/B07TRNJ5BW"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://goodreads.com",
+        "https://www.amazon.com/Without-Trust-Penny-Jordan-ebook/dp/B07TRNJ5BW"
+      ]
     }
   },
   {
@@ -91679,6 +92529,23 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 1,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1989,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.amazon.co.uk/Runaway-Wife-Charlotte-Lamb/dp/0263122220",
+        "https://www.addall.com/books-in-order/charlotte-lamb/"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.amazon.co.uk/Runaway-Wife-Charlotte-Lamb/dp/0263122220",
+        "https://www.addall.com/books-in-order/charlotte-lamb/"
+      ]
     }
   },
   {
@@ -91842,6 +92709,23 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 1
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2002,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://scholar.google.com/citations?user=NMgSrDEAAAAJ&hl=en",
+        "https://repository.unikom.ac.id/16882/"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://scholar.google.com/citations?user=NMgSrDEAAAAJ&hl=en",
+        "https://repository.unikom.ac.id/16882/"
+      ]
     }
   },
   {
@@ -91858,11 +92742,26 @@
     "k": "/works/OL3759116W",
     "t": "Lover's Touch",
     "a": "Penny Jordan",
-    "y": 1989,
+    "y": 1988,
     "p": 177,
     "r": 1,
     "w": null,
-    "c": 12394501
+    "c": 12394501,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1988,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Penny_Jordan"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Penny_Jordan"
+      ]
+    }
   },
   {
     "k": "/works/OL8966593W",
@@ -92324,27 +93223,36 @@
   {
     "k": "/works/OL20683139M",
     "t": "Kleine Geschichten aus Thüringen",
-    "a": "",
-    "y": 1965,
+    "a": "Unknown author",
+    "y": 1991,
     "p": 176,
     "r": 1,
     "w": null,
     "c": null,
     "authorship": {
-      "status": "known",
+      "status": "anonymous",
       "sources": [
-        "https://archive.org/details/kleinegeschicht0000thur"
+        "https://www.zvab.com/buch-suchen/isbn/9783872031044/n/100121502"
       ]
     },
     "publication": {
       "basis": "first_publication",
-      "year": 1965,
+      "year": 1991,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://archive.org/details/kleinegeschicht0000thur"
+        "https://www.zvab.com/buch-suchen/isbn/9783872031044/n/100121502"
       ]
-    }
+    },
+    "protected_questions": [
+      "author:alive",
+      "author:american",
+      "author:british",
+      "author:european",
+      "author:female",
+      "author:nonwestern",
+      "author:prolific"
+    ]
   },
   {
     "k": "/works/OL3285806W",
@@ -92524,7 +93432,22 @@
     "p": 176,
     "r": 1,
     "w": null,
-    "c": 7282546
+    "c": 7282546,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1990,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Patricia_Wilson"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Patricia_Wilson"
+      ]
+    }
   },
   {
     "k": "/works/OL553754W",
@@ -92890,13 +93813,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.abebooks.com"
+        "https://www.goodreads.com/book/show/32738755-sinner"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.abebooks.com"
+        "https://www.goodreads.com/book/show/32738755-sinner"
       ]
     }
   },
@@ -93059,7 +93982,7 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.abebooks.com"
+        "https://www.amazon.com/Spell-Book-New-Witches-Essential/dp/1646110641"
       ]
     }
   },
@@ -93101,7 +94024,22 @@
     "p": 175,
     "r": 1,
     "w": null,
-    "c": 15220040
+    "c": 15220040,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2025,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://anahuang.com/books/the-defender/"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://anahuang.com/books/the-defender/"
+      ]
+    }
   },
   {
     "k": "/works/OL17897191M",
@@ -93310,13 +94248,15 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://books.google.com"
+        "https://www.amazon.com/Unleashing-Wild-Physique-Vince-Gironda/dp/0806978880",
+        "https://en.wikipedia.org/wiki/Vince_Gironda"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://www.amazon.com/Unleashing-Wild-Physique-Vince-Gironda/dp/0806978880",
+        "https://en.wikipedia.org/wiki/Vince_Gironda"
       ]
     }
   },
@@ -93621,6 +94561,21 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 1,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1981,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Penny_Jordan"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Penny_Jordan"
+      ]
     }
   },
   {
@@ -94025,7 +94980,13 @@
     "p": 173,
     "r": 1,
     "w": null,
-    "c": 12802833
+    "c": 12802833,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_House_Across_the_Lake_(novel)"
+      ]
+    }
   },
   {
     "k": "/works/OL3743769W",
@@ -94625,7 +95586,24 @@
     "p": 172,
     "r": 1,
     "w": null,
-    "c": 10165652
+    "c": 10165652,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2019,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Rebecca_Yarros",
+        "https://www.goodreads.com/book/show/40045986-the-last-letter"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Rebecca_Yarros",
+        "https://www.goodreads.com/book/show/40045986-the-last-letter"
+      ]
+    }
   },
   {
     "k": "/works/OL10460638W",
@@ -95324,6 +96302,25 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 1,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1973,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.abebooks.com/9780970832122/Pipe-Fitters-Blue-Book-Graves-0970832125/plp",
+        "https://www.goodreads.com/book/show/28590878",
+        "https://www.legacy.com/us/obituaries/houstonchronicle/name/ann-fisk-obituary?id=25791562"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.abebooks.com/9780970832122/Pipe-Fitters-Blue-Book-Graves-0970832125/plp",
+        "https://www.goodreads.com/book/show/28590878",
+        "https://www.legacy.com/us/obituaries/houstonchronicle/name/ann-fisk-obituary?id=25791562"
+      ]
     }
   },
   {
@@ -95781,13 +96778,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.harlequin.com"
+        "https://en.wikipedia.org/wiki/Sally_Wentworth"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.harlequin.com"
+        "https://en.wikipedia.org/wiki/Sally_Wentworth"
       ]
     }
   },
@@ -95809,7 +96806,24 @@
     "p": 170,
     "r": 1,
     "w": null,
-    "c": 6888427
+    "c": 6888427,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1988,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://openlibrary.org/authors/OL2763201A/Patricia_Wilson",
+        "https://goodreads.com"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://openlibrary.org/authors/OL2763201A/Patricia_Wilson",
+        "https://goodreads.com"
+      ]
+    }
   },
   {
     "k": "/works/OL4181997W",
@@ -96360,8 +97374,8 @@
   {
     "k": "/works/OL12091223M",
     "t": "Mother Goose If Wishes Were Horses/Cassette",
-    "a": "Mother Goose / Traditional",
-    "y": 1988,
+    "a": "Unknown author",
+    "y": 1628,
     "p": 169,
     "r": 1,
     "w": null,
@@ -96415,11 +97429,35 @@
       "fact:award": 0.15,
       "fact:series": 0.15,
       "fact:long": 0.15,
-      "published_before_1900": 0,
+      "published_before_1900": 1,
       "published_1900_to_1950": 0,
-      "published_1951_to_2000": 1,
+      "published_1951_to_2000": 0,
       "published_after_2000": 0
-    }
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1628,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/If_wishes_were_horses,_beggars_would_ride"
+      ]
+    },
+    "authorship": {
+      "status": "anonymous",
+      "sources": [
+        "https://en.wikipedia.org/wiki/If_wishes_were_horses,_beggars_would_ride"
+      ]
+    },
+    "protected_questions": [
+      "author:alive",
+      "author:american",
+      "author:british",
+      "author:european",
+      "author:female",
+      "author:nonwestern",
+      "author:prolific"
+    ]
   },
   {
     "k": "/works/OL17330816W",
@@ -96545,7 +97583,23 @@
     "p": 168,
     "r": 1,
     "w": null,
-    "c": 11980866
+    "c": 11980866,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2022,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Axie_Oh",
+        "https://www.google.com/goto?url=CAESXQHrOzAVAEcUIqoJLa5xxwfr47nrf4NhcLzYRrcKdmNf6plcUQGaWnf4ORhdh4G0Pv-HZT6XuPx411hocYXQshhu3WKI-YxvNllAmrzyHAbC0MucEdbgNK2FZeTtkg"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Axie_Oh"
+      ]
+    }
   },
   {
     "k": "/works/OL22976662W",
@@ -96609,6 +97663,12 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 1
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://timesofindia.indiatimes.com/education/news/mathematics-is-for-everyone-says-rd-sharma/articleshow/72938997.cms"
+      ]
     }
   },
   {
@@ -96673,6 +97733,12 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 1
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_Silent_Patient"
+      ]
     }
   },
   {
@@ -96757,6 +97823,23 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 1,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1987,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Charlotte_Lamb",
+        "https://goodreads.com"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Charlotte_Lamb",
+        "https://goodreads.com"
+      ]
     }
   },
   {
@@ -96818,7 +97901,7 @@
     "k": "/works/OL16704610M",
     "t": "The Military discipline",
     "a": "William Barriffe",
-    "y": 1642,
+    "y": 1635,
     "p": 168,
     "r": 1,
     "w": null,
@@ -96876,6 +97959,21 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1635,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.oxforddnb.com/view/article/40628"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.oxforddnb.com/view/article/40628"
+      ]
     }
   },
   {
@@ -97151,7 +98249,24 @@
     "p": 167,
     "r": 1,
     "w": null,
-    "c": 10677491
+    "c": 10677491,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2021,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://marykubica.com/about/",
+        "https://www.goodreads.com/book/show/54737068-local-woman-missing"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://marykubica.com/about/",
+        "https://www.goodreads.com/book/show/54737068-local-woman-missing"
+      ]
+    }
   },
   {
     "k": "/works/OL10233687M",
@@ -97492,6 +98607,21 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 1
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2012,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://books.google.com/books/about/Kidagaa_kimemwozea.html?id=U9X8nQEACAAJ"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://books.google.com/books/about/Kidagaa_kimemwozea.html?id=U9X8nQEACAAJ"
+      ]
     }
   },
   {
@@ -97576,6 +98706,21 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 1,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1980,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/David_Childs_(academic)"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/David_Childs_(academic)"
+      ]
     }
   },
   {
@@ -97670,6 +98815,23 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 1,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1985,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Penny_Jordan",
+        "https://www.theguardian.com/books/2012/jan/15/penny-jordan"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Penny_Jordan",
+        "https://www.theguardian.com/books/2012/jan/15/penny-jordan"
+      ]
     }
   },
   {
@@ -97882,7 +99044,7 @@
     "k": "/works/OL27688828W",
     "t": "I Decided to Live as Me - English Translation",
     "a": "Kim Soo-Hyun",
-    "y": 2020,
+    "y": 2016,
     "p": 166,
     "r": 1,
     "w": null,
@@ -97940,6 +99102,25 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 1
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2016,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://product.kyobobook.co.kr/detail/S000001897363",
+        "https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=287779710",
+        "https://www.google.com/goto?url=CAESbAHrOzAVgfZ313NiEiJg7Vprr96RJWJW45NxRK_1gLUQLyP3scWFEyAZbDhXAg9lHlqYhPRilOPifjNL43LLZx-z1wWfZT7KTuvCBAiNv5cBIfwRH3F2rORklPaO6bT1QEnTvA-pPT4fr2Cr8Q",
+        "https://www.google.com/goto?url=CAESdAHrOzAVXAXANV_3dp99_WPRde7IdE0X5u_1PhGjJfydBpZxyLDTY_9Abdc13dmYoqLwTODVYXCsLkY_eed8CBPmNLcvXrCoLUiQ7OY8NGG81aO7MTuHvIj5S1CP7X3RxSY8AJ0ko7BmXCgh6e42pi53Bpy0"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://product.kyobobook.co.kr/detail/S000001897363",
+        "https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=287779710"
+      ]
     }
   },
   {
@@ -97956,7 +99137,7 @@
     "k": "/works/OL17346249W",
     "t": "The physics of waves and oscillations",
     "a": "N. K. Bajaj",
-    "y": 1988,
+    "y": 1984,
     "p": 166,
     "r": 1,
     "w": null,
@@ -98014,6 +99195,23 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 1,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1984,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://lib.udsm.ac.tz/bib/38841",
+        "https://opac.gu.ac.ug/cgi-bin/koha/opac-MARCdetail.pl?biblionumber=10923"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://lib.udsm.ac.tz/bib/38841",
+        "https://opac.gu.ac.ug/cgi-bin/koha/opac-MARCdetail.pl?biblionumber=10923"
+      ]
     }
   },
   {
@@ -98030,7 +99228,7 @@
     "k": "/works/OL16730132M",
     "t": "Confessio fidei conventu theologorum authoritate Parliamenti Anglicani indicto elaborata",
     "a": "Westminster Assembly of Divines",
-    "y": 1694,
+    "y": 1656,
     "p": 166,
     "r": 1,
     "w": null,
@@ -98088,6 +99286,23 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1656,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://folger.edu",
+        "https://www.ccel.org/ccel/schaff/creeds1.ix.viii.iii.html"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://folger.edu",
+        "https://www.ccel.org/ccel/schaff/creeds1.ix.viii.iii.html"
+      ]
     }
   },
   {
@@ -98124,7 +99339,7 @@
     "k": "/works/OL17366783M",
     "t": "Vsled za leninskoǐ strokoǐ",
     "a": "Soviet State Publishers",
-    "y": 1970,
+    "y": 1967,
     "p": 166,
     "r": 1,
     "w": null,
@@ -98182,6 +99397,21 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 1,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1967,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://belaa-kniga.blagorussia.ru/%D0%B8%D0%BC%D0%B5%D0%BD%D0%B0-%D0%B2%D0%BE%D1%80%D0%BE%D0%BD%D0%B5%D0%B6%D0%B0-%D0%B6%D1%83%D1%80%D0%BD%D0%B0%D0%BB%D0%B8%D1%81%D1%82%D0%B8%D0%BA%D0%B0/%D0%B3%D0%B0%D0%BC%D0%BE%D0%B2-%D0%BD%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B9-%D1%81%D0%B5%D1%80%D0%B3%D0%B5%D0%B5%D0%B2%D0%B8%D1%87"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://belaa-kniga.blagorussia.ru/%D0%B8%D0%BC%D0%B5%D0%BD%D0%B0-%D0%B2%D0%BE%D1%80%D0%BE%D0%BD%D0%B5%D0%B6%D0%B0-%D0%B6%D1%83%D1%80%D0%BD%D0%B0%D0%BB%D0%B8%D1%81%D1%82%D0%B8%D0%BA%D0%B0/%D0%B3%D0%B0%D0%BC%D0%BE%D0%B2-%D0%BD%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B9-%D1%81%D0%B5%D1%80%D0%B3%D0%B5%D0%B5%D0%B2%D0%B8%D1%87"
+      ]
     }
   },
   {
@@ -98427,24 +99657,26 @@
     "k": "/works/OL25351300W",
     "t": "Understanding Business 13th Edition",
     "a": "William G. Nickels",
-    "y": 2021,
+    "y": 1987,
     "p": 165,
     "r": 1,
     "w": null,
     "c": 12016511,
     "publication": {
       "basis": "first_publication",
-      "year": 2021,
+      "year": 1987,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.mheducation.com"
+        "https://www.rhsmith.umd.edu/directory/william-g-nickels",
+        "https://books.google.com/books/about/Understanding_Business.html?id=81E-PgAACAAJ"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.mheducation.com"
+        "https://www.rhsmith.umd.edu/directory/william-g-nickels",
+        "https://books.google.com/books/about/Understanding_Business.html?id=81E-PgAACAAJ"
       ]
     }
   },
@@ -98510,6 +99742,23 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 1
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2012,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Sudha_Murty",
+        "https://www.penguin.co.in/book/grandmas-bag-of-stories/"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Sudha_Murty",
+        "https://www.penguin.co.in/book/grandmas-bag-of-stories/"
+      ]
     }
   },
   {
@@ -98658,6 +99907,23 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 1
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2012,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Leila_Chudori",
+        "https://literaturfestival.com/en/authors/leila-s-chudori/"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Leila_Chudori",
+        "https://literaturfestival.com/en/authors/leila-s-chudori/"
+      ]
     }
   },
   {
@@ -99008,6 +100274,21 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 1,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1981,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Helen_Ovbiagele"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Helen_Ovbiagele"
+      ]
     }
   },
   {
@@ -99433,7 +100714,7 @@
     "k": "/works/OL24198547W",
     "t": "Core Java",
     "a": "R. Nageswara Rao",
-    "y": 2016,
+    "y": 2008,
     "p": 164,
     "r": 1,
     "w": null,
@@ -99494,13 +100775,23 @@
     },
     "authorship": {
       "status": "known"
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2008,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://books.google.com/books?id=gwxBt1wHsasC&printsec=frontcover",
+        "https://www.amazon.com/stores/author/B009ZOLQIW"
+      ]
     }
   },
   {
     "k": "/works/OL29160475W",
     "t": "Influencia",
     "a": "Robert Cialdini",
-    "y": 2022,
+    "y": 1984,
     "p": 164,
     "r": 1,
     "w": null,
@@ -99556,8 +100847,23 @@
       "fact:long": 0.65,
       "published_before_1900": 0,
       "published_1900_to_1950": 0,
-      "published_1951_to_2000": 0,
-      "published_after_2000": 1
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1984,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Robert_Cialdini"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Robert_Cialdini"
+      ]
     }
   },
   {
@@ -99622,6 +100928,21 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 1
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2017,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://esbam.edu.br/wp-content/uploads/2020/03/Seja-Foda-Caio-Carneiro.pdf"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://esbam.edu.br/wp-content/uploads/2020/03/Seja-Foda-Caio-Carneiro.pdf"
+      ]
     }
   },
   {
@@ -99830,6 +101151,13 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 1
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Meryl_Wilsner",
+        "https://www.merylwilsner.com/mistakes-were-made"
+      ]
     }
   },
   {
@@ -99924,6 +101252,21 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 1,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2000,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_Duke_and_I"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_Duke_and_I"
+      ]
     }
   },
   {
@@ -100236,15 +101579,15 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.indigo.ca",
-        "https://books.google.com"
+        "https://books.google.com/books/about/Please_Love_Me_at_My_Worst.html?id=RlkzzgEACAAJ",
+        "https://michaelapoetry.com/"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.indigo.ca",
-        "https://books.google.com"
+        "https://books.google.com/books/about/Please_Love_Me_at_My_Worst.html?id=RlkzzgEACAAJ",
+        "https://michaelapoetry.com/"
       ]
     }
   },
@@ -100278,7 +101621,7 @@
     "k": "/works/OL4761451W",
     "t": "Metodologi Penelitian Kesehatan PENGETAHUAN",
     "a": "Soekidjo Notoatmodjo",
-    "y": 2003,
+    "y": 1993,
     "p": 163,
     "r": 1,
     "w": null,
@@ -100334,8 +101677,23 @@
       "fact:long": 0.35,
       "published_before_1900": 0,
       "published_1900_to_1950": 0,
-      "published_1951_to_2000": 0,
-      "published_after_2000": 1
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1993,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://kemkes.go.id"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://kemkes.go.id"
+      ]
     }
   },
   {
@@ -100356,7 +101714,14 @@
     "p": 163,
     "r": 1,
     "w": null,
-    "c": 15120659
+    "c": 15120659,
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://alihazelwood.com/deep-end/",
+        "https://goodreads.com"
+      ]
+    }
   },
   {
     "k": "/works/OL7988552W",
@@ -100711,7 +102076,24 @@
     "p": 162,
     "r": 1,
     "w": null,
-    "c": 12630766
+    "c": 12630766,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2006,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.lucymonroe.com/book/the-princes-virgin-wife/",
+        "https://bookseriesinorder.com"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.lucymonroe.com/book/the-princes-virgin-wife/",
+        "https://bookseriesinorder.com"
+      ]
+    }
   },
   {
     "k": "/works/OL17765483W",
@@ -100743,7 +102125,7 @@
     "k": "/works/OL17734885W",
     "t": "Let us C",
     "a": "Yashavant P. Kanetkar",
-    "y": 1999,
+    "y": 1991,
     "p": 162,
     "r": 1,
     "w": null,
@@ -100801,6 +102183,21 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 1,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1991,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://opac.ssn.edu.in/bib/59325"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://opac.ssn.edu.in/bib/59325"
+      ]
     }
   },
   {
@@ -100925,13 +102322,15 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.harlequin.com"
+        "https://en.wikipedia.org/wiki/Jessica_Steele",
+        "https://www.encyclopedia.com/arts/educational-magazines/steele-marcia-glennys-howell-1933"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.harlequin.com"
+        "https://en.wikipedia.org/wiki/Jessica_Steele",
+        "https://www.encyclopedia.com/arts/educational-magazines/steele-marcia-glennys-howell-1933"
       ]
     }
   },
@@ -101253,6 +102652,21 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 1,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1999,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://link.springer.com/rwe/10.1007/978-1-4419-1698-3_798"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://link.springer.com/rwe/10.1007/978-1-4419-1698-3_798"
+      ]
     }
   },
   {
@@ -101285,11 +102699,26 @@
     "k": "/works/OL20428353W",
     "t": "Schoolgirl",
     "a": "太宰 治",
-    "y": 2011,
+    "y": 1939,
     "p": 161,
     "r": 1,
     "w": null,
-    "c": 9094945
+    "c": 9094945,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1939,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://wikipedia.org"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://wikipedia.org"
+      ]
+    }
   },
   {
     "k": "/works/OL17685821W",
@@ -101485,6 +102914,13 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 1
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://goodreads.com/book/show/35702241.The_Shadows_Between_Us",
+        "https://pushkinpress.com/our-authors/tricia-levenseller/"
+      ]
     }
   },
   {
@@ -101741,6 +103177,12 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 1,
       "published_after_2000": 0
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Gene_Wolfe"
+      ]
     }
   },
   {
@@ -101914,7 +103356,7 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.abebooks.com"
+        "https://www.amazon.com/stores/author/B0971C43L4"
       ]
     }
   },
@@ -101990,6 +103432,21 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 1
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2017,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://es.wikipedia.org/wiki/Nacarid_Portal"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://es.wikipedia.org/wiki/Nacarid_Portal"
+      ]
     }
   },
   {
@@ -102440,6 +103897,13 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 1,
       "published_after_2000": 0
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Mary_Pope_Osborne",
+        "https://en.wikipedia.org/wiki/Magic_Tree_House"
+      ]
     }
   },
   {
@@ -102603,6 +104067,12 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 1,
       "published_after_2000": 0
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://wikipedia.org"
+      ]
     }
   },
   {
@@ -102911,6 +104381,21 @@
       "published_1900_to_1950": 1,
       "published_1951_to_2000": 0,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1947,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Barbara_Cartland_bibliography"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Barbara_Cartland_bibliography"
+      ]
     }
   },
   {
@@ -102978,13 +104463,15 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.abebooks.com"
+        "https://withliana.com/about/",
+        "https://www.goodreads.com/en/book/show/169690624-picking-daisies-on-sundays"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.abebooks.com"
+        "https://withliana.com/about/",
+        "https://www.goodreads.com/en/book/show/169690624-picking-daisies-on-sundays"
       ]
     }
   },
@@ -103253,7 +104740,8 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.abebooks.com"
+        "https://en.wikipedia.org/wiki/Jennifer_L._Armentrout",
+        "https://google.com"
       ]
     }
   },
@@ -103295,20 +104783,13 @@
         "https://books.google.com",
         "https://ugm.ac.id"
       ]
-    },
-    "authorship": {
-      "status": "known",
-      "sources": [
-        "https://books.google.com",
-        "https://ugm.ac.id"
-      ]
     }
   },
   {
     "k": "/works/OL17365450W",
     "t": "Power System Protection and Switchgear",
     "a": "Badri Ram & D. N. Vishwakarma",
-    "y": 2011,
+    "y": 1994,
     "p": 158,
     "r": 1,
     "w": null,
@@ -103364,8 +104845,23 @@
       "fact:long": 0.9,
       "published_before_1900": 0,
       "published_1900_to_1950": 0,
-      "published_1951_to_2000": 0,
-      "published_after_2000": 1
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1994,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.amazon.in/POWER-SYSTEM-PROTECTION-SWITCHGEAR-Badri/dp/0074623508"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.amazon.in/POWER-SYSTEM-PROTECTION-SWITCHGEAR-Badri/dp/0074623508"
+      ]
     }
   },
   {
@@ -103450,7 +104946,24 @@
     "p": 158,
     "r": 1,
     "w": null,
-    "c": 6907771
+    "c": 6907771,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1983,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://blog.harlequin.com/2022/09/remembering-margaret-way/",
+        "https://catalogue.nla.gov.au/catalog/3117762"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://blog.harlequin.com/2022/09/remembering-margaret-way/",
+        "https://catalogue.nla.gov.au/catalog/3117762"
+      ]
+    }
   },
   {
     "k": "/works/OL860483W",
@@ -103754,6 +105267,21 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 1
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2005,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/T._Harv_Eker"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/T._Harv_Eker"
+      ]
     }
   },
   {
@@ -104357,6 +105885,12 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 1
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.suelynntan.com/"
+      ]
     }
   },
   {
@@ -104511,6 +106045,12 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 1,
       "published_after_2000": 0
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://iccmu.es/divulgacion-y-publicaciones/"
+      ]
     }
   },
   {
@@ -104615,6 +106155,21 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 1
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2015,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.amazon.in/Osho-Asambhav-Kranti-Anil-Nakrani/dp/1522911286"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.amazon.in/Osho-Asambhav-Kranti-Anil-Nakrani/dp/1522911286"
+      ]
     }
   },
   {
@@ -104920,24 +106475,26 @@
     "k": "/works/OL5618547W",
     "t": "Psicologia social",
     "a": "Aroldo Rodrigues",
-    "y": 1979,
+    "y": 1972,
     "p": 155,
     "r": 1,
     "w": null,
     "c": 11700019,
     "publication": {
       "basis": "first_publication",
-      "year": 1979,
+      "year": 1972,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://books.google.com"
+        "https://www.vozes.com.br/autor/25289/aroldo-rodrigues",
+        "https://pt.wikipedia.org/wiki/Aroldo_Rodrigues"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://www.vozes.com.br/autor/25289/aroldo-rodrigues",
+        "https://pt.wikipedia.org/wiki/Aroldo_Rodrigues"
       ]
     }
   },
@@ -105064,13 +106621,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://books.google.com"
+        "https://en.wikipedia.org/wiki/Let%27s_Go_Play_at_the_Adams%27"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://en.wikipedia.org/wiki/Let%27s_Go_Play_at_the_Adams%27"
       ]
     }
   },
@@ -105398,6 +106955,12 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 1
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://opac.dpr.go.id/index.php?p=show_detail&id=29824&keywords="
+      ]
     }
   },
   {
@@ -105592,7 +107155,7 @@
   {
     "k": "/works/OL19907427M",
     "t": "Les reports de les cases conteinus in les ans primer",
-    "a": "English Law Reports",
+    "a": "Unknown author",
     "y": 1601,
     "p": 154,
     "r": 1,
@@ -105651,7 +107214,31 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 0
-    }
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1601,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://wikipedia.org"
+      ]
+    },
+    "authorship": {
+      "status": "anonymous",
+      "sources": [
+        "https://wikipedia.org"
+      ]
+    },
+    "protected_questions": [
+      "author:alive",
+      "author:american",
+      "author:british",
+      "author:european",
+      "author:female",
+      "author:nonwestern",
+      "author:prolific"
+    ]
   },
   {
     "k": "/works/OL8115847W",
@@ -105727,12 +107314,6 @@
       "year": 1984,
       "earliest": null,
       "latest": null,
-      "sources": [
-        "https://www.harlequin.com"
-      ]
-    },
-    "authorship": {
-      "status": "known",
       "sources": [
         "https://www.harlequin.com"
       ]
@@ -105932,7 +107513,7 @@
     "k": "/works/OL17366783W",
     "t": "Pengantar Psikologi",
     "a": "Mahmood Nazar Mohamed",
-    "y": 2014,
+    "y": 1990,
     "p": 153,
     "r": 1,
     "w": null,
@@ -105988,8 +107569,23 @@
       "fact:long": 0.9,
       "published_before_1900": 0,
       "published_1900_to_1950": 0,
-      "published_1951_to_2000": 0,
-      "published_after_2000": 1
+      "published_1951_to_2000": 1,
+      "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1990,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://books.google.com.my/books/about/Pengantar_psikologi.html?id=x8XtZwEACAAJ"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://books.google.com.my/books/about/Pengantar_psikologi.html?id=x8XtZwEACAAJ"
+      ]
     }
   },
   {
@@ -106030,7 +107626,24 @@
     "p": 153,
     "r": 1,
     "w": null,
-    "c": 15106932
+    "c": 15106932,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2024,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.goodreads.com/book/show/210818955-powerful",
+        "https://www.simonandschuster.com/authors/Lauren-Roberts/211716469"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.goodreads.com/book/show/210818955-powerful",
+        "https://www.simonandschuster.com/authors/Lauren-Roberts/211716469"
+      ]
+    }
   },
   {
     "k": "/works/OL8658275W",
@@ -106094,6 +107707,23 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 1,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1997,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://archive.org/details/pathstorecoverya00alan",
+        "https://www.hazelden.org/store/item/1200?Paths-to-Recovery-Hardcover"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://archive.org/details/pathstorecoverya00alan",
+        "https://www.hazelden.org/store/item/1200?Paths-to-Recovery-Hardcover"
+      ]
     }
   },
   {
@@ -106158,6 +107788,23 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 1
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2014,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Tere_Liye_(writer)",
+        "https://id.wikipedia.org/wiki/Tere_Liye"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Tere_Liye_(writer)",
+        "https://id.wikipedia.org/wiki/Tere_Liye"
+      ]
     }
   },
   {
@@ -106321,6 +107968,13 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 1
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Tahereh_Mafi",
+        "https://shatterme.fandom.com/wiki/Shadow_Me"
+      ]
     }
   },
   {
@@ -106671,6 +108325,13 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 1
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.penguinlibros.com/es/917815-madame-g-rouge",
+        "https://www.amazon.com/Nadie-tiene-que-saberlo-excepto/dp/8402429017"
+      ]
     }
   },
   {
@@ -106735,13 +108396,30 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 1
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2020,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.amazon.com/Reasoning-Chapterwise-1999-Till-Objective-Questions/dp/9390285291",
+        "https://www.betterworldbooks.com/product/detail/ssc-chapterwise-reasoning-e-2020-9789390285297"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.amazon.com/Reasoning-Chapterwise-1999-Till-Objective-Questions/dp/9390285291",
+        "https://www.betterworldbooks.com/product/detail/ssc-chapterwise-reasoning-e-2020-9789390285297"
+      ]
     }
   },
   {
     "k": "/works/OL27053243W",
     "t": "Western political thought",
     "a": "O. P. Gauba",
-    "y": 2019,
+    "y": 2011,
     "p": 152,
     "r": 1,
     "w": null,
@@ -106799,6 +108477,23 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 1
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2011,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.exoticindiaart.com/book/details/political-ideas-and-ideologies-understanding-political-theory-major-concepts-and-debates-nau458/",
+        "https://www.amazon.sg/Western-Political-Thought-P-Gauba/dp/0230323839"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.exoticindiaart.com/book/details/political-ideas-and-ideologies-understanding-political-theory-major-concepts-and-debates-nau458/",
+        "https://www.amazon.sg/Western-Political-Thought-P-Gauba/dp/0230323839"
+      ]
     }
   },
   {
@@ -107126,6 +108821,21 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 1
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2014,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.abebooks.com/first-edition/Modern-Guide-Witchcraft-Complete-Witches-Covens/22573422542/bd"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.abebooks.com/first-edition/Modern-Guide-Witchcraft-Complete-Witches-Covens/22573422542/bd"
+      ]
     }
   },
   {
@@ -107200,6 +108910,23 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 1,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1971,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Gerard_Nierenberg",
+        "https://www.nytimes.com/2012/09/25/business/gerard-i-nierenberg-negotiation-expert-dies-at-89.html"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Gerard_Nierenberg",
+        "https://www.nytimes.com/2012/09/25/business/gerard-i-nierenberg-negotiation-expert-dies-at-89.html"
+      ]
     }
   },
   {
@@ -107236,11 +108963,26 @@
     "k": "/works/OL24361285W",
     "t": "Kingdom of Fantasy #14",
     "a": "Elisabetta Dami",
-    "y": 2021,
+    "y": 2020,
     "p": 152,
     "r": 1,
     "w": null,
-    "c": 10888634
+    "c": 10888634,
+    "publication": {
+      "basis": "first_publication",
+      "year": 2020,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Geronimo_Stilton"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Geronimo_Stilton"
+      ]
+    }
   },
   {
     "k": "/works/OL27846746W",
@@ -107283,13 +109025,15 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.harlequin.com"
+        "https://en.wikipedia.org/wiki/Yvonne_Whittal",
+        "https://www.fantasticfiction.com/w/yvonne-whittal/summer-of-weeping-rain.htm"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.harlequin.com"
+        "https://en.wikipedia.org/wiki/Yvonne_Whittal",
+        "https://www.fantasticfiction.com/w/yvonne-whittal/summer-of-weeping-rain.htm"
       ]
     }
   },
@@ -107428,13 +109172,15 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.scholastic.com"
+        "https://en.wikipedia.org/wiki/Scott_Cawthon",
+        "https://fnaf-the-novel.fandom.com/wiki/Fazbear_Frights:_Graphic_Novel_Collection"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.scholastic.com"
+        "https://en.wikipedia.org/wiki/Scott_Cawthon",
+        "https://fnaf-the-novel.fandom.com/wiki/Fazbear_Frights:_Graphic_Novel_Collection"
       ]
     }
   },
@@ -107538,15 +109284,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.penguin.co.uk/books/320141/conversations-on-love-by-lunn-natasha/9780241448731",
-        "https://www.theguardian.com/books/2021/jul/11/conversations-on-love-by-natasha-lunn-review"
+        "https://www.conversationsonlove.co.uk/about-natasha-lunn"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.penguin.co.uk/books/320141/conversations-on-love-by-lunn-natasha/9780241448731",
-        "https://www.theguardian.com/books/2021/jul/11/conversations-on-love-by-natasha-lunn-review"
+        "https://www.conversationsonlove.co.uk/about-natasha-lunn"
       ]
     }
   },
@@ -107612,6 +109356,21 @@
       "published_1900_to_1950": 1,
       "published_1951_to_2000": 0,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1936,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Godaan"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Godaan"
+      ]
     }
   },
   {
@@ -107767,6 +109526,23 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1555,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Nostradamus",
+        "https://www.britannica.com/story/nostradamus-and-his-prophecies"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Nostradamus",
+        "https://www.britannica.com/story/nostradamus-and-his-prophecies"
+      ]
     }
   },
   {
@@ -107851,6 +109627,21 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 1,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1988,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://openlibrary.org/books/OL24668071M/Solutions_manual_op-amps_and_linear_integrated_circuits"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://openlibrary.org/books/OL24668071M/Solutions_manual_op-amps_and_linear_integrated_circuits"
+      ]
     }
   },
   {
@@ -107955,6 +109746,21 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 1
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2018,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_Mamba_Mentality:_How_I_Play"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_Mamba_Mentality:_How_I_Play"
+      ]
     }
   },
   {
@@ -108019,6 +109825,21 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 1
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2013,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://shop.advaitaashrama.org/products/fear-not-be-strong-vivekanandas-message-of-strength-and-fearlessness/1237499000010268213"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://shop.advaitaashrama.org/products/fear-not-be-strong-vivekanandas-message-of-strength-and-fearlessness/1237499000010268213"
+      ]
     }
   },
   {
@@ -108103,6 +109924,23 @@
       "published_1900_to_1950": 1,
       "published_1951_to_2000": 0,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1931,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Gaban_(novel)",
+        "https://en.wikipedia.org/wiki/Premchand"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Gaban_(novel)",
+        "https://en.wikipedia.org/wiki/Premchand"
+      ]
     }
   },
   {
@@ -108269,6 +110107,21 @@
       "published_1900_to_1950": 1,
       "published_1951_to_2000": 0,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1948,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_Book_of_Mirdad"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_Book_of_Mirdad"
+      ]
     }
   },
   {
@@ -108543,6 +110396,12 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 1
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Oswaal_Books"
+      ]
     }
   },
   {
@@ -108767,6 +110626,23 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 1
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2018,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Omniscient_Reader%27s_Viewpoint",
+        "https://omniscient-readers-viewpoint.fandom.com/wiki/Sing_Shong"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Omniscient_Reader%27s_Viewpoint",
+        "https://omniscient-readers-viewpoint.fandom.com/wiki/Sing_Shong"
+      ]
     }
   },
   {
@@ -109126,6 +111002,21 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 1
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2018,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://sss-class-revival-hunter.fandom.com/wiki/Novel"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://sss-class-revival-hunter.fandom.com/wiki/Novel"
+      ]
     }
   },
   {
@@ -109425,6 +111316,23 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 1
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2010,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Swallowed_Star",
+        "https://baike.baidu.com/en/item/Zhu%20Hongzhi/12857"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Swallowed_Star",
+        "https://baike.baidu.com/en/item/Zhu%20Hongzhi/12857"
+      ]
     }
   },
   {
@@ -109954,6 +111862,21 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 1
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2009,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.gramedia.com/best-seller/review-novel-rembulan-tenggelam-di-wajahmu/"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.gramedia.com/best-seller/review-novel-rembulan-tenggelam-di-wajahmu/"
+      ]
     }
   },
   {
@@ -109971,15 +111894,13 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.cengage.com",
-        "https://www.walmart.com/ip/Electronic-Communication-Systems-Hardcover-9780766826847/1337482"
+        "https://www.amazon.com/Electronic-Communication-Systems-Roy-Blake/dp/0766826848"
       ]
     },
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.cengage.com",
-        "https://www.walmart.com/ip/Electronic-Communication-Systems-Hardcover-9780766826847/1337482"
+        "https://www.amazon.com/Electronic-Communication-Systems-Roy-Blake/dp/0766826848"
       ]
     }
   },
@@ -110027,7 +111948,7 @@
     "k": "/works/OL24697778W",
     "t": "Indian Polity for Civil Services Examinations",
     "a": "Shiva / M. Laxmikanth",
-    "y": 2012,
+    "y": 2009,
     "p": 150,
     "r": 1,
     "w": null,
@@ -110085,6 +112006,23 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 1
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2009,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.goodreads.com/book/show/20656089-indian-polity",
+        "https://sobrief.com/authors/m-laxmikanth"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.goodreads.com/book/show/20656089-indian-polity",
+        "https://sobrief.com/authors/m-laxmikanth"
+      ]
     }
   },
   {
@@ -110100,8 +112038,8 @@
   {
     "k": "/works/OL19729677M",
     "t": "Modern London",
-    "a": "Historical Publishing Co.",
-    "y": 1890,
+    "a": "Unknown author",
+    "y": 1887,
     "p": 150,
     "r": 1,
     "w": null,
@@ -110159,7 +112097,33 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 0
-    }
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1887,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "http://www.athena-press.co.jp/E25vl1-3.html",
+        "https://www.flickr.com/photos/britishlibrary/11098246495/"
+      ]
+    },
+    "authorship": {
+      "status": "anonymous",
+      "sources": [
+        "http://www.athena-press.co.jp/E25vl1-3.html",
+        "https://www.flickr.com/photos/britishlibrary/11098246495/"
+      ]
+    },
+    "protected_questions": [
+      "author:alive",
+      "author:american",
+      "author:british",
+      "author:european",
+      "author:female",
+      "author:nonwestern",
+      "author:prolific"
+    ]
   },
   {
     "k": "/works/OL12583744M",
@@ -110330,11 +112294,28 @@
     "k": "/works/OL5236199W",
     "t": "Temple of Fire",
     "a": "Margaret Way",
-    "y": 1981,
+    "y": 1980,
     "p": 150,
     "r": 1,
     "w": null,
-    "c": 9477504
+    "c": 9477504,
+    "publication": {
+      "basis": "first_publication",
+      "year": 1980,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Margaret_Way",
+        "https://blog.harlequin.com/2022/09/remembering-margaret-way/"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Margaret_Way",
+        "https://blog.harlequin.com/2022/09/remembering-margaret-way/"
+      ]
+    }
   },
   {
     "k": "/works/OL265984W",
@@ -111084,6 +113065,16 @@
     },
     "authorship": {
       "status": "known"
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2023,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Lord_of_Mysteries",
+        "https://baike.baidu.com/en/item/Cuttlefish%20That%20Loves%20Diving/13220"
+      ]
     }
   },
   {
@@ -111273,6 +113264,21 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 1
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2018,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.harpercollins.com/products/this-is-me-chrissy-metz"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.harpercollins.com/products/this-is-me-chrissy-metz"
+      ]
     }
   },
   {
@@ -111550,6 +113556,15 @@
     },
     "authorship": {
       "status": "known"
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2001,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_Map_that_Changed_the_World"
+      ]
     }
   },
   {
@@ -111707,6 +113722,21 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1825,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.abebooks.com/Jean-Baptiste-Adams-Levi-Dundurn/30866088216/bd"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.abebooks.com/Jean-Baptiste-Adams-Levi-Dundurn/30866088216/bd"
+      ]
     }
   },
   {
@@ -111845,6 +113875,21 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 0
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1796,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_Monk"
+      ]
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_Monk"
+      ]
     }
   },
   {
@@ -111990,6 +114035,12 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 1
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_Particle_at_the_End_of_the_Universe"
+      ]
     }
   },
   {
@@ -112154,6 +114205,13 @@
       "published_1900_to_1950": 0,
       "published_1951_to_2000": 0,
       "published_after_2000": 1
+    },
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://press.princeton.edu/books/paperback/9780691264295/the-serengeti-rules",
+        "https://en.wikipedia.org/wiki/Sean_B._Carroll"
+      ]
     }
   },
   {

@@ -381,10 +381,8 @@
   "/works/OL27281778W": {
     "publication_answers": {},
     "authorship": {
-      "status": "known",
-      "sources": [
-        "https://www.google.com/books/edition/Manajemen_Sumber_Daya_Manusia/msdm_indonesia"
-      ]
+      "status": "unresearched",
+      "sources": []
     },
     "publication": {
       "basis": "first_publication",
@@ -424,10 +422,8 @@
     },
     "publication_answers": {},
     "authorship": {
-      "status": "known",
-      "sources": [
-        "https://books.google.com/books?id=U35GAAAAMAAJ"
-      ]
+      "status": "unresearched",
+      "sources": []
     }
   },
   "/site/anna-karenina": {
@@ -869,14 +865,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.penguinrandomhouse.in/book/something-i-never-told-you/"
+        "https://penguin.co.in"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.penguinrandomhouse.in/book/something-i-never-told-you/"
+        "https://penguin.co.in"
       ]
     }
   },
@@ -959,14 +955,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.penguinrandomhouse.com/books/734604/how-to-win-at-chess-by-levy-rozman/"
+        "https://en.wikipedia.org/wiki/Levy_Rozman"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.penguinrandomhouse.com/books/734604/how-to-win-at-chess-by-levy-rozman/"
+        "https://en.wikipedia.org/wiki/Levy_Rozman"
       ]
     }
   },
@@ -1247,14 +1243,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://kadavy.net/books/mind-management/"
+        "https://kadavy.net/about/"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://kadavy.net/books/mind-management/"
+        "https://kadavy.net/about/"
       ]
     }
   },
@@ -1283,14 +1279,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.soundstrue.com/products/no-bad-parts"
+        "https://en.wikipedia.org/wiki/Richard_C._Schwartz"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.soundstrue.com/products/no-bad-parts"
+        "https://en.wikipedia.org/wiki/Richard_C._Schwartz"
       ]
     }
   },
@@ -2197,18 +2193,20 @@
   "/works/OL25740044W": {
     "publication": {
       "basis": "first_publication",
-      "year": 2007,
+      "year": 2016,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.hearst.com/magazines/esquire/esquire-the-new-rules-for-men"
+        "https://archive.org/details/esquiresnewrules0000unse",
+        "https://books.google.com/books/about/Esquire_s_the_New_Rules_for_Men.html?id=eY8BswEACAAJ"
       ]
     },
     "publication_answers": {},
     "authorship": {
-      "status": "known",
+      "status": "anonymous",
       "sources": [
-        "https://www.hearst.com/magazines/esquire/esquire-the-new-rules-for-men"
+        "https://archive.org/details/esquiresnewrules0000unse",
+        "https://books.google.com/books/about/Esquire_s_the_New_Rules_for_Men.html?id=eY8BswEACAAJ"
       ]
     }
   },
@@ -2269,27 +2267,27 @@
   "/works/OL20683139M": {
     "publication_answers": {},
     "authorship": {
-      "status": "known",
+      "status": "anonymous",
       "sources": [
-        "https://archive.org/details/kleinegeschicht0000thur"
+        "https://www.zvab.com/buch-suchen/isbn/9783872031044/n/100121502"
       ]
     },
     "publication": {
       "basis": "first_publication",
-      "year": 1965,
+      "year": 1991,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://archive.org/details/kleinegeschicht0000thur"
+        "https://www.zvab.com/buch-suchen/isbn/9783872031044/n/100121502"
       ]
     }
   },
   "/works/OL21097163M": {
     "publication": {
       "basis": "first_publication",
-      "year": null,
-      "earliest": 1614,
-      "latest": 1624,
+      "year": 1624,
+      "earliest": null,
+      "latest": null,
       "sources": [
         "https://en.wikipedia.org/wiki/Parthenia_Inviolata"
       ]
@@ -2409,11 +2407,8 @@
     },
     "publication_answers": {},
     "authorship": {
-      "status": "known",
-      "sources": [
-        "https://archive.org/details/lisztsitwell00sitw",
-        "https://nla.gov.au/nla.cat-vn2487449"
-      ]
+      "status": "unresearched",
+      "sources": []
     }
   },
   "/works/OL2687507W": {
@@ -2493,16 +2488,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.penguin.co.uk/books/320141/conversations-on-love-by-lunn-natasha/9780241448731",
-        "https://www.theguardian.com/books/2021/jul/11/conversations-on-love-by-natasha-lunn-review"
+        "https://www.conversationsonlove.co.uk/about-natasha-lunn"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.penguin.co.uk/books/320141/conversations-on-love-by-lunn-natasha/9780241448731",
-        "https://www.theguardian.com/books/2021/jul/11/conversations-on-love-by-natasha-lunn-review"
+        "https://www.conversationsonlove.co.uk/about-natasha-lunn"
       ]
     }
   },
@@ -2513,16 +2506,16 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.abebooks.com/book-search/title/dopamine-detox/author/blake-rabizadeh/",
-        "https://www.walmart.com/ip/Dopamine-Detox-The-Ultimate-Guide-to-Reset-Your-Brain-Paperback-9798450849317/877478051"
+        "https://www.amazon.ca/Dopamine-Detox-Ultimate-Guide-Reset-ebook/dp/B09C23LYST",
+        "https://www.linkedin.com/in/blake-rabizadeh-367765227/es?trk=people-guest_people_search-card"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.abebooks.com/book-search/title/dopamine-detox/author/blake-rabizadeh/",
-        "https://www.walmart.com/ip/Dopamine-Detox-The-Ultimate-Guide-to-Reset-Your-Brain-Paperback-9798450849317/877478051"
+        "https://www.amazon.ca/Dopamine-Detox-Ultimate-Guide-Reset-ebook/dp/B09C23LYST",
+        "https://www.linkedin.com/in/blake-rabizadeh-367765227/es?trk=people-guest_people_search-card"
       ]
     }
   },
@@ -2533,16 +2526,16 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.indigo.ca",
-        "https://books.google.com"
+        "https://booksrun.com/9781949759259-everything-youll-ever-need-you-can-find-within-yourself",
+        "https://www.goodreads.com/pt/book/show/55670327-everything-you-ll-ever-need"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.indigo.ca",
-        "https://books.google.com"
+        "https://booksrun.com/9781949759259-everything-youll-ever-need-you-can-find-within-yourself",
+        "https://www.goodreads.com/pt/book/show/55670327-everything-you-ll-ever-need"
       ]
     }
   },
@@ -2553,16 +2546,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.cengage.com",
-        "https://www.walmart.com/ip/Electronic-Communication-Systems-Hardcover-9780766826847/1337482"
+        "https://www.amazon.com/Electronic-Communication-Systems-Roy-Blake/dp/0766826848"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.cengage.com",
-        "https://www.walmart.com/ip/Electronic-Communication-Systems-Hardcover-9780766826847/1337482"
+        "https://www.amazon.com/Electronic-Communication-Systems-Roy-Blake/dp/0766826848"
       ]
     }
   },
@@ -2573,16 +2564,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://books.google.com",
-        "https://sunshinebookseller.com"
+        "https://en.wikipedia.org/wiki/Gracy_Ukala"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com",
-        "https://sunshinebookseller.com"
+        "https://en.wikipedia.org/wiki/Gracy_Ukala"
       ]
     }
   },
@@ -2601,8 +2590,7 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.harpercollins.com",
-        "https://www.kinokuniya.com"
+        "https://www.harpercollins.com/blogs/authors/alessandra-olanow"
       ]
     }
   },
@@ -2613,16 +2601,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.penguin.co.in",
-        "https://www.thehindu.com"
+        "https://www.penguin.co.in/book/lallan-sweets/"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.penguin.co.in",
-        "https://www.thehindu.com"
+        "https://www.penguin.co.in/book/lallan-sweets/"
       ]
     }
   },
@@ -2633,16 +2619,16 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.indigo.ca",
-        "https://books.google.com"
+        "https://books.google.com/books/about/Please_Love_Me_at_My_Worst.html?id=RlkzzgEACAAJ",
+        "https://michaelapoetry.com/"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.indigo.ca",
-        "https://books.google.com"
+        "https://books.google.com/books/about/Please_Love_Me_at_My_Worst.html?id=RlkzzgEACAAJ",
+        "https://michaelapoetry.com/"
       ]
     }
   },
@@ -2661,8 +2647,7 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.morton-pub.com",
-        "https://books.google.com"
+        "https://ferris.edu"
       ]
     }
   },
@@ -2671,7 +2656,7 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://www.mesawestrotary.org/stories/highlights-of-september-5-meeting-1"
       ]
     }
   },
@@ -2682,16 +2667,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://alexisknightly.com",
-        "https://www.abebooks.com"
+        "https://goodreads.com"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://alexisknightly.com",
-        "https://www.abebooks.com"
+        "https://goodreads.com"
       ]
     }
   },
@@ -2708,11 +2691,8 @@
     },
     "publication_answers": {},
     "authorship": {
-      "status": "known",
-      "sources": [
-        "https://books.google.com",
-        "https://ugm.ac.id"
-      ]
+      "status": "unresearched",
+      "sources": []
     }
   },
   "/works/OL5988225W": {
@@ -2722,16 +2702,16 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://books.google.com",
-        "https://www.rajagrafindo.co.id"
+        "https://opac.perpusnas.go.id/DetailOpac.aspx?id=1135600",
+        "https://www.academia.edu/28722254/Hukum_administrasi_negara_Ridwan_HR"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com",
-        "https://www.rajagrafindo.co.id"
+        "https://opac.perpusnas.go.id/DetailOpac.aspx?id=1135600",
+        "https://www.academia.edu/28722254/Hukum_administrasi_negara_Ridwan_HR"
       ]
     }
   },
@@ -2742,16 +2722,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://books.google.com",
-        "https://www.biblio.co.uk"
+        "https://bookmate.com/authors/W5oI4cfu"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com",
-        "https://www.biblio.co.uk"
+        "https://bookmate.com/authors/W5oI4cfu"
       ]
     }
   },
@@ -2762,16 +2740,16 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.hookedonphonics.com/about-us/",
-        "https://books.google.com"
+        "https://en.wikipedia.org/wiki/Hooked_on_Phonics",
+        "https://tedium.co/2021/05/05/hooked-on-phonics-history/"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.hookedonphonics.com/about-us/",
-        "https://books.google.com"
+        "https://en.wikipedia.org/wiki/Hooked_on_Phonics",
+        "https://tedium.co/2021/05/05/hooked-on-phonics-history/"
       ]
     }
   },
@@ -2789,7 +2767,7 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.abebooks.com"
+        "https://www.amazon.com/stores/author/B0971C43L4"
       ]
     }
   },
@@ -2805,10 +2783,8 @@
     },
     "publication_answers": {},
     "authorship": {
-      "status": "known",
-      "sources": [
-        "https://archive.org/details/errorsromanishm00whatgoog"
-      ]
+      "status": "unresearched",
+      "sources": []
     }
   },
   "/works/OL20759168W": {
@@ -2823,10 +2799,8 @@
     },
     "publication_answers": {},
     "authorship": {
-      "status": "known",
-      "sources": [
-        "https://www.simonandschuster.com"
-      ]
+      "status": "unresearched",
+      "sources": []
     }
   },
   "/works/OL21071583W": {
@@ -2843,7 +2817,7 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.abebooks.com"
+        "https://www.amazon.com/Spell-Book-New-Witches-Essential/dp/1646110641"
       ]
     }
   },
@@ -2854,14 +2828,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.hodderchildrens.co.uk"
+        "https://aliceoseman.com/graphic-novel/heartstopper-colouring-book/"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.hodderchildrens.co.uk"
+        "https://aliceoseman.com/graphic-novel/heartstopper-colouring-book/"
       ]
     }
   },
@@ -2890,14 +2864,16 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.scholastic.com"
+        "https://en.wikipedia.org/wiki/Scott_Cawthon",
+        "https://fnaf-the-novel.fandom.com/wiki/Fazbear_Frights:_Graphic_Novel_Collection"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.scholastic.com"
+        "https://en.wikipedia.org/wiki/Scott_Cawthon",
+        "https://fnaf-the-novel.fandom.com/wiki/Fazbear_Frights:_Graphic_Novel_Collection"
       ]
     }
   },
@@ -2913,10 +2889,8 @@
     },
     "publication_answers": {},
     "authorship": {
-      "status": "known",
-      "sources": [
-        "https://www.harpercollins.com"
-      ]
+      "status": "unresearched",
+      "sources": []
     }
   },
   "/works/OL24605860W": {
@@ -2926,14 +2900,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.panmacmillan.com"
+        "https://en.wikipedia.org/wiki/Heaven_(Kawakami_novel)"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.panmacmillan.com"
+        "https://en.wikipedia.org/wiki/Heaven_(Kawakami_novel)"
       ]
     }
   },
@@ -2971,25 +2945,28 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.simonandschuster.com"
+        "https://christinalaurenbooks.com",
+        "https://en.wikipedia.org/wiki/Christina_Lauren"
       ]
     }
   },
   "/works/OL25351300W": {
     "publication": {
       "basis": "first_publication",
-      "year": 2021,
+      "year": 1987,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.mheducation.com"
+        "https://www.rhsmith.umd.edu/directory/william-g-nickels",
+        "https://books.google.com/books/about/Understanding_Business.html?id=81E-PgAACAAJ"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.mheducation.com"
+        "https://www.rhsmith.umd.edu/directory/william-g-nickels",
+        "https://books.google.com/books/about/Understanding_Business.html?id=81E-PgAACAAJ"
       ]
     }
   },
@@ -3000,14 +2977,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://sevenseasdanmei.com"
+        "https://en.wikipedia.org/wiki/Mo_Xiang_Tong_Xiu"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://sevenseasdanmei.com"
+        "https://en.wikipedia.org/wiki/Mo_Xiang_Tong_Xiu"
       ]
     }
   },
@@ -3036,14 +3013,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.abebooks.com"
+        "https://catharinamaura.com/about-catharina-maura/"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.abebooks.com"
+        "https://catharinamaura.com/about-catharina-maura/"
       ]
     }
   },
@@ -3054,14 +3031,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://shopcatalog.com"
+        "https://thoughtcatalog.com/bianca-sparacino/"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://shopcatalog.com"
+        "https://thoughtcatalog.com/bianca-sparacino/"
       ]
     }
   },
@@ -3079,43 +3056,43 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.penguinrandomhouse.com"
+        "https://en.wikipedia.org/wiki/Peter_Attia"
       ]
     }
   },
   "/works/OL28914323W": {
     "publication": {
       "basis": "first_publication",
-      "year": 2022,
+      "year": 2023,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://shopcatalog.com"
+        "https://www.amazon.com/You-Will-Feel-Whole-Again/dp/194975961X"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://shopcatalog.com"
+        "https://www.amazon.com/You-Will-Feel-Whole-Again/dp/194975961X"
       ]
     }
   },
   "/works/OL29189552W": {
     "publication": {
       "basis": "first_publication",
-      "year": 2021,
+      "year": 2022,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.abebooks.com"
+        "https://www.goodreads.com/series/348379-the-byrne-brothers"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.abebooks.com"
+        "https://www.goodreads.com/series/348379-the-byrne-brothers"
       ]
     }
   },
@@ -3126,14 +3103,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.sourcebooks.com"
+        "https://fiveotterliterary.com/laura-nowlin/"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.sourcebooks.com"
+        "https://fiveotterliterary.com/laura-nowlin/"
       ]
     }
   },
@@ -3169,7 +3146,7 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.abebooks.com"
+        "https://goodreads.com"
       ]
     }
   },
@@ -3194,36 +3171,38 @@
   "/works/OL3891392W": {
     "publication": {
       "basis": "first_publication",
-      "year": 1987,
+      "year": 1988,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://books.google.com"
+        "https://catalog.hathitrust.org/Record/006724222",
+        "https://www.goodreads.com/book/show/2151330.Psikologi_remaja"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://catalog.hathitrust.org/Record/006724222",
+        "https://www.goodreads.com/book/show/2151330.Psikologi_remaja"
       ]
     }
   },
   "/works/OL42410140W": {
     "publication": {
       "basis": "first_publication",
-      "year": 2024,
+      "year": 2025,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.penguin.co.uk"
+        "https://www.penguin.co.uk/books/462309/whats-your-dream-by-squibb-simon/9781804950807"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.penguin.co.uk"
+        "https://www.penguin.co.uk/books/462309/whats-your-dream-by-squibb-simon/9781804950807"
       ]
     }
   },
@@ -3234,32 +3213,36 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.abebooks.com"
+        "https://withliana.com/about/",
+        "https://www.goodreads.com/en/book/show/169690624-picking-daisies-on-sundays"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.abebooks.com"
+        "https://withliana.com/about/",
+        "https://www.goodreads.com/en/book/show/169690624-picking-daisies-on-sundays"
       ]
     }
   },
   "/works/OL5618547W": {
     "publication": {
       "basis": "first_publication",
-      "year": 1979,
+      "year": 1972,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://books.google.com"
+        "https://www.vozes.com.br/autor/25289/aroldo-rodrigues",
+        "https://pt.wikipedia.org/wiki/Aroldo_Rodrigues"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://www.vozes.com.br/autor/25289/aroldo-rodrigues",
+        "https://pt.wikipedia.org/wiki/Aroldo_Rodrigues"
       ]
     }
   },
@@ -3291,14 +3274,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://books.google.com"
+        "https://en.wikipedia.org/wiki/Let%27s_Go_Play_at_the_Adams%27"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://en.wikipedia.org/wiki/Let%27s_Go_Play_at_the_Adams%27"
       ]
     }
   },
@@ -3316,7 +3299,7 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://books.google.com/books/about/The_Family_Comes_on.html?id=CJu7tgAACAAJ"
       ]
     }
   },
@@ -3327,14 +3310,16 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.harlequin.com"
+        "https://en.wikipedia.org/wiki/Yvonne_Whittal",
+        "https://www.fantasticfiction.com/w/yvonne-whittal/summer-of-weeping-rain.htm"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.harlequin.com"
+        "https://en.wikipedia.org/wiki/Yvonne_Whittal",
+        "https://www.fantasticfiction.com/w/yvonne-whittal/summer-of-weeping-rain.htm"
       ]
     }
   },
@@ -3345,14 +3330,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.scholastic.co.uk"
+        "https://en.wikipedia.org/wiki/Liz_Pichon"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.scholastic.co.uk"
+        "https://en.wikipedia.org/wiki/Liz_Pichon"
       ]
     }
   },
@@ -3363,14 +3348,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.scholastic.com"
+        "https://freddy-fazbears-pizza.fandom.com/wiki/Five_Nights_at_Freddy%27s:_Fazbear_Frights_1:_Into_the_Pit"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.scholastic.com"
+        "https://freddy-fazbears-pizza.fandom.com/wiki/Five_Nights_at_Freddy%27s:_Fazbear_Frights_1:_Into_the_Pit"
       ]
     }
   },
@@ -3388,7 +3373,8 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.harpercollins.com"
+        "https://en.wikipedia.org/wiki/Tahereh_Mafi",
+        "https://shatterme.fandom.com/wiki/Imagine_Me"
       ]
     }
   },
@@ -3406,7 +3392,7 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.abebooks.com"
+        "https://rina-kent-verse.fandom.com/wiki/Rina_Kent"
       ]
     }
   },
@@ -3424,7 +3410,7 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.abebooks.com"
+        "https://rina-kent-verse.fandom.com/wiki/Rina_Kent"
       ]
     }
   },
@@ -3442,25 +3428,26 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.abebooks.com"
+        "https://en.wikipedia.org/wiki/Jennifer_L._Armentrout",
+        "https://google.com"
       ]
     }
   },
   "/works/OL22651372W": {
     "publication": {
       "basis": "first_publication",
-      "year": 2002,
+      "year": 2012,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://books.google.com"
+        "https://en.wikipedia.org/wiki/Margaret_Sarfo"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://en.wikipedia.org/wiki/Margaret_Sarfo"
       ]
     }
   },
@@ -3471,14 +3458,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://books.google.com"
+        "https://search.library.wisc.edu/catalog/999743670502121"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://search.library.wisc.edu/catalog/999743670502121"
       ]
     }
   },
@@ -3496,7 +3483,8 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.harpercollins.com"
+        "https://en.wikipedia.org/wiki/Bella_Mackie",
+        "https://www.amazon.co.uk/Kill-Your-Family-Bella-Mackie/dp/0008365911"
       ]
     }
   },
@@ -3507,14 +3495,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.bloomsbury.com"
+        "https://wikipedia.org"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.bloomsbury.com"
+        "https://wikipedia.org"
       ]
     }
   },
@@ -3532,7 +3520,8 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://mostlyeconomics.wordpress.com/2017/06/14/profile-of-prof-r-d-sharma-a-math-genuis-who-helped-many-a-students/",
+        "https://timesofindia.indiatimes.com/education/news/mathematics-is-for-everyone-says-rd-sharma/articleshow/72938997.cms"
       ]
     }
   },
@@ -3543,14 +3532,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.abebooks.com"
+        "https://www.goodreads.com/book/show/32738755-sinner"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.abebooks.com"
+        "https://www.goodreads.com/book/show/32738755-sinner"
       ]
     }
   },
@@ -3568,7 +3557,7 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.simonandschuster.com"
+        "https://www.simonandschuster.com/books/She-Gets-the-Girl/Rachael-Lippincott/She-Gets-the-Girl/9781534493803"
       ]
     }
   },
@@ -3586,7 +3575,7 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.penguinrandomhouse.com"
+        "https://www.rhcbooks.com/books/624112/its-all-love-by-jenna-ortega"
       ]
     }
   },
@@ -3597,14 +3586,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://sevenseasdanmei.com"
+        "https://en.wikipedia.org/wiki/Mo_Xiang_Tong_Xiu"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://sevenseasdanmei.com"
+        "https://en.wikipedia.org/wiki/Mo_Xiang_Tong_Xiu"
       ]
     }
   },
@@ -3640,7 +3629,7 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://en.wikipedia.org/wiki/I_Have_No_Mouth,_and_I_Must_Scream"
       ]
     }
   },
@@ -3651,14 +3640,16 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.abebooks.com"
+        "https://www.mjdemarco.com/mj-demarco-author-entrepreneur-biography/",
+        "https://www.booknotification.com/authors/m-j-demarco/"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.abebooks.com"
+        "https://www.mjdemarco.com/mj-demarco-author-entrepreneur-biography/",
+        "https://www.booknotification.com/authors/m-j-demarco/"
       ]
     }
   },
@@ -3676,7 +3667,8 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.simonandschuster.com"
+        "https://dazzlingwritingz.wordpress.com/2022/12/20/book-review-the-american-roommate-experiment/",
+        "https://www.storytel.com/in/authors/elena-armas-520417"
       ]
     }
   },
@@ -3692,10 +3684,8 @@
     },
     "publication_answers": {},
     "authorship": {
-      "status": "known",
-      "sources": [
-        "https://www.sourcebooks.com"
-      ]
+      "status": "unresearched",
+      "sources": []
     }
   },
   "/works/OL27678542W": {
@@ -3705,14 +3695,16 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.sourcebooks.com"
+        "https://laurenasher.com/about-me-2/",
+        "https://www.famousbirthdays.com/people/lauren-asher.html"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.sourcebooks.com"
+        "https://laurenasher.com/about-me-2/",
+        "https://www.famousbirthdays.com/people/lauren-asher.html"
       ]
     }
   },
@@ -3749,7 +3741,7 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://en.wikipedia.org/wiki/Nearly_All_the_Men_in_Lagos_are_Mad"
       ]
     }
   },
@@ -3765,10 +3757,8 @@
     },
     "publication_answers": {},
     "authorship": {
-      "status": "known",
-      "sources": [
-        "https://www.sourcebooks.com"
-      ]
+      "status": "unresearched",
+      "sources": []
     }
   },
   "/works/OL29328354W": {
@@ -3778,14 +3768,16 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.simonandschuster.com"
+        "https://en.wikipedia.org/wiki/Colleen_Hoover",
+        "https://www.britannica.com/biography/Colleen-Hoover"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.simonandschuster.com"
+        "https://en.wikipedia.org/wiki/Colleen_Hoover",
+        "https://www.britannica.com/biography/Colleen-Hoover"
       ]
     }
   },
@@ -3801,10 +3793,8 @@
     },
     "publication_answers": {},
     "authorship": {
-      "status": "known",
-      "sources": [
-        "https://www.macmillan.com"
-      ]
+      "status": "unresearched",
+      "sources": []
     }
   },
   "/works/OL3294436W": {
@@ -3819,10 +3809,8 @@
     },
     "publication_answers": {},
     "authorship": {
-      "status": "known",
-      "sources": [
-        "https://www.harlequin.com"
-      ]
+      "status": "unresearched",
+      "sources": []
     }
   },
   "/works/OL35721219W": {
@@ -3832,14 +3820,16 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.penguin.co.uk"
+        "https://en.wikipedia.org/wiki/Steven_Bartlett_(businessman)",
+        "https://www.amazon.com/Diary-CEO-Laws-Business-Life/dp/0593715837"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.penguin.co.uk"
+        "https://en.wikipedia.org/wiki/Steven_Bartlett_(businessman)",
+        "https://www.amazon.com/Diary-CEO-Laws-Business-Life/dp/0593715837"
       ]
     }
   },
@@ -3857,7 +3847,7 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.simonandschuster.com"
+        "https://profiles.stanford.edu/matthew-abrahams"
       ]
     }
   },
@@ -3900,18 +3890,18 @@
   "/works/OL37568839W": {
     "publication": {
       "basis": "first_publication",
-      "year": 2021,
+      "year": 2020,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.penguin.co.uk"
+        "https://www.ilfattoquotidiano.it/2023/05/15/erin-doom-da-wattpad a-700mila-copie-cose-il-social-di-lettura-su-cui-e-nata-lautrice-bestseller/7162096/"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.penguin.co.uk"
+        "https://www.ilfattoquotidiano.it/2023/05/15/erin-doom-da-wattpad a-700mila-copie-cose-il-social-di-lettura-su-cui-e-nata-lautrice-bestseller/7162096/"
       ]
     }
   },
@@ -3929,7 +3919,8 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.scholastic.com"
+        "https://en.wikipedia.org/wiki/Ann_Liang",
+        "https://www.annliang.com/about"
       ]
     }
   },
@@ -3940,14 +3931,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.harlequin.com"
+        "https://en.wikipedia.org/wiki/Sally_Wentworth"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.harlequin.com"
+        "https://en.wikipedia.org/wiki/Sally_Wentworth"
       ]
     }
   },
@@ -3958,14 +3949,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.sourcebooks.com"
+        "https://en.wikipedia.org/wiki/The_Striker_(Huang_novel)"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.sourcebooks.com"
+        "https://en.wikipedia.org/wiki/The_Striker_(Huang_novel)"
       ]
     }
   },
@@ -3976,32 +3967,34 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.harlequin.com"
+        "https://en.wikipedia.org/wiki/Jessica_Steele",
+        "https://www.encyclopedia.com/arts/educational-magazines/steele-marcia-glennys-howell-1933"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.harlequin.com"
+        "https://en.wikipedia.org/wiki/Jessica_Steele",
+        "https://www.encyclopedia.com/arts/educational-magazines/steele-marcia-glennys-howell-1933"
       ]
     }
   },
   "/works/OL42393184W": {
     "publication": {
       "basis": "first_publication",
-      "year": 2024,
+      "year": 2025,
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://www.sourcebooks.com"
+        "https://www.goodreads.com/work/editions/167242258-king-of-envy"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://www.sourcebooks.com"
+        "https://www.goodreads.com/work/editions/167242258-king-of-envy"
       ]
     }
   },
@@ -4012,14 +4005,16 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://books.google.com"
+        "https://www.amazon.com/Unleashing-Wild-Physique-Vince-Gironda/dp/0806978880",
+        "https://en.wikipedia.org/wiki/Vince_Gironda"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://www.amazon.com/Unleashing-Wild-Physique-Vince-Gironda/dp/0806978880",
+        "https://en.wikipedia.org/wiki/Vince_Gironda"
       ]
     }
   },
@@ -4030,14 +4025,16 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://books.google.com"
+        "https://en.wikipedia.org/wiki/Donald_Cressey",
+        "https://books.google.com/books/about/Other_People_s_Money.html?id=FgAFAAAAMAAJ"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://en.wikipedia.org/wiki/Donald_Cressey",
+        "https://books.google.com/books/about/Other_People_s_Money.html?id=FgAFAAAAMAAJ"
       ]
     }
   },
@@ -4048,14 +4045,14 @@
       "earliest": null,
       "latest": null,
       "sources": [
-        "https://books.google.com"
+        "https://en.wikipedia.org/wiki/Witchcraft_Today"
       ]
     },
     "publication_answers": {},
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.com"
+        "https://en.wikipedia.org/wiki/Witchcraft_Today"
       ]
     }
   },
@@ -8030,6 +8027,2677 @@
       "status": "known",
       "sources": [
         "https://en.wikipedia.org/wiki/Krista_%26_Becca_Ritchie"
+      ]
+    }
+  },
+  "/works/OL19836917W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/H._C._Verma",
+        "https://timesofindia.indiatimes.com/education/news/before-concepts-of-physics-became-every-jee-students-bible-iit-kanpur-professor-h-c-verma-solved-a-bigger-problem/articleshow/132674285.cms"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1992,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/H._C._Verma",
+        "https://timesofindia.indiatimes.com/education/news/before-concepts-of-physics-became-every-jee-students-bible-iit-kanpur-professor-h-c-verma-solved-a-bigger-problem/articleshow/132674285.cms"
+      ]
+    }
+  },
+  "/works/OL20736929M": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://imslp.org/wiki/Cello_Concerto%2C_F.107_(Bliss%2C_Arthur)"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1971,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://imslp.org/wiki/Cello_Concerto%2C_F.107_(Bliss%2C_Arthur)"
+      ]
+    }
+  },
+  "/works/OL16730132M": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://folger.edu",
+        "https://www.ccel.org/ccel/schaff/creeds1.ix.viii.iii.html"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1656,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://folger.edu",
+        "https://www.ccel.org/ccel/schaff/creeds1.ix.viii.iii.html"
+      ]
+    }
+  },
+  "/works/OL24198547W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://books.google.com/books?id=gwxBt1wHsasC&printsec=frontcover",
+        "https://www.amazon.com/stores/author/B009ZOLQIW"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2008,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://books.google.com/books?id=gwxBt1wHsasC&printsec=frontcover",
+        "https://www.amazon.com/stores/author/B009ZOLQIW"
+      ]
+    }
+  },
+  "/works/OL22150464W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Tracy_Wolff"
+      ]
+    }
+  },
+  "/works/OL11288561M": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/John_Briley"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1987,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/John_Briley"
+      ]
+    }
+  },
+  "/works/OL20875338W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Mercedes_Ron",
+        "https://culpable.fandom.com/wiki/Your_Fault"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2017,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Mercedes_Ron",
+        "https://culpable.fandom.com/wiki/Your_Fault"
+      ]
+    }
+  },
+  "/works/OL11762243W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "unresearched",
+      "sources": []
+    }
+  },
+  "/works/OL25798494W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.suelynntan.com/"
+      ]
+    }
+  },
+  "/works/OL42413995W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://alihazelwood.com/deep-end/",
+        "https://goodreads.com"
+      ]
+    }
+  },
+  "/works/OL27023502W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Ryan_Holiday",
+        "https://www.amazon.com/Discipline-Destiny-Power-Self-Control-Virtues/dp/0593191692"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2022,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Ryan_Holiday",
+        "https://www.amazon.com/Discipline-Destiny-Power-Self-Control-Virtues/dp/0593191692"
+      ]
+    }
+  },
+  "/works/OL27893158W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Rebecca_Ross",
+        "https://www.rebeccarossauthor.com/about"
+      ]
+    }
+  },
+  "/works/OL28801103W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Dav_Pilkey",
+        "https://en.wikipedia.org/wiki/Dog_Man_(book_series)"
+      ]
+    }
+  },
+  "/works/OL1740783W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_Richest_Man_in_Babylon"
+      ]
+    }
+  },
+  "/works/OL17387090W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.amazon.com/-/es/El-Poder-del-Metabolismo-Spanish/dp/0978843703",
+        "https://www.goodreads.com/work/editions/5114776"
+      ]
+    }
+  },
+  "/works/OL21430137M": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "unresearched",
+      "sources": []
+    }
+  },
+  "/works/OL4412247W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Helen_Ovbiagele"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1981,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Helen_Ovbiagele"
+      ]
+    }
+  },
+  "/works/OL11327987W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Penny_Jordan"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1981,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Penny_Jordan"
+      ]
+    }
+  },
+  "/works/OL19358659W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://shop.advaitaashrama.org/products/fear-not-be-strong-vivekanandas-message-of-strength-and-fearlessness/1237499000010268213"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2013,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://shop.advaitaashrama.org/products/fear-not-be-strong-vivekanandas-message-of-strength-and-fearlessness/1237499000010268213"
+      ]
+    }
+  },
+  "/works/OL20238397W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "unresearched",
+      "sources": []
+    }
+  },
+  "/works/OL11327897W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Penny_Jordan",
+        "https://www.theguardian.com/books/2012/jan/15/penny-jordan"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1985,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Penny_Jordan",
+        "https://www.theguardian.com/books/2012/jan/15/penny-jordan"
+      ]
+    }
+  },
+  "/works/OL15416051M": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.britishmuseum.org/collection/object/P_Gg-6-6-1"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1620,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.britishmuseum.org/collection/object/P_Gg-6-6-1"
+      ]
+    }
+  },
+  "/works/OL16793507M": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "anonymous",
+      "sources": [
+        "https://varieng.helsinki.fi/series/volumes/14/ratia/",
+        "https://pure.royalholloway.ac.uk/files/29613770/2018ThorpeLEPhD.pdf"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1665,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://varieng.helsinki.fi/series/volumes/14/ratia/",
+        "https://pure.royalholloway.ac.uk/files/29613770/2018ThorpeLEPhD.pdf"
+      ]
+    }
+  },
+  "/works/OL27838518W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Jennifer_L._Armentrout"
+      ]
+    }
+  },
+  "/works/OL22535730W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Jennifer_L._Armentrout"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2020,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Jennifer_L._Armentrout"
+      ]
+    }
+  },
+  "/works/OL24141388W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://goodreads.com"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2018,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://goodreads.com"
+      ]
+    }
+  },
+  "/works/OL14873289M": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "unresearched",
+      "sources": []
+    }
+  },
+  "/works/OL8007160W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Gaban_(novel)",
+        "https://en.wikipedia.org/wiki/Premchand"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1931,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Gaban_(novel)",
+        "https://en.wikipedia.org/wiki/Premchand"
+      ]
+    }
+  },
+  "/works/OL26112603W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Godaan"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1936,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Godaan"
+      ]
+    }
+  },
+  "/works/OL25790438W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Sudha_Murty",
+        "https://www.penguin.co.in/book/grandmas-bag-of-stories/"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2012,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Sudha_Murty",
+        "https://www.penguin.co.in/book/grandmas-bag-of-stories/"
+      ]
+    }
+  },
+  "/works/OL14933020M": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://t.me/s/Shintaishi/5780"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1956,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://t.me/s/Shintaishi/5780"
+      ]
+    }
+  },
+  "/works/OL28607665W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Happy_Place_(novel)"
+      ]
+    }
+  },
+  "/works/OL14908941M": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://catalog.freelibrary.org/Author/Home?author=Center+for+Disease+Control.&type=Author&page=2",
+        "https://stacks.cdc.gov/view/cdc/12355/cdc_12355_DS1.pdf"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1977,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://catalog.freelibrary.org/Author/Home?author=Center+for+Disease+Control.&type=Author&page=2",
+        "https://stacks.cdc.gov/view/cdc/12355/cdc_12355_DS1.pdf"
+      ]
+    }
+  },
+  "/works/OL15380640M": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "unresearched",
+      "sources": []
+    }
+  },
+  "/works/OL18822961M": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "unresearched",
+      "sources": []
+    }
+  },
+  "/works/OL25809537W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_House_Across_the_Lake_(novel)"
+      ]
+    }
+  },
+  "/works/OL1980586W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Larry_R._Williams"
+      ]
+    }
+  },
+  "/works/OL21950557W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Logan_Ury",
+        "https://www.simonandschuster.com/authors/Logan-Ury/156464550"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2021,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Logan_Ury",
+        "https://www.simonandschuster.com/authors/Logan-Ury/156464550"
+      ]
+    }
+  },
+  "/works/OL18395787W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Gerard_Nierenberg",
+        "https://www.nytimes.com/2012/09/25/business/gerard-i-nierenberg-negotiation-expert-dies-at-89.html"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1971,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Gerard_Nierenberg",
+        "https://www.nytimes.com/2012/09/25/business/gerard-i-nierenberg-negotiation-expert-dies-at-89.html"
+      ]
+    }
+  },
+  "/works/OL11789290W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "unresearched",
+      "sources": []
+    }
+  },
+  "/works/OL27688828W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://product.kyobobook.co.kr/detail/S000001897363",
+        "https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=287779710"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2016,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://product.kyobobook.co.kr/detail/S000001897363",
+        "https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=287779710",
+        "https://www.google.com/goto?url=CAESbAHrOzAVgfZ313NiEiJg7Vprr96RJWJW45NxRK_1gLUQLyP3scWFEyAZbDhXAg9lHlqYhPRilOPifjNL43LLZx-z1wWfZT7KTuvCBAiNv5cBIfwRH3F2rORklPaO6bT1QEnTvA-pPT4fr2Cr8Q",
+        "https://www.google.com/goto?url=CAESdAHrOzAVXAXANV_3dp99_WPRde7IdE0X5u_1PhGjJfydBpZxyLDTY_9Abdc13dmYoqLwTODVYXCsLkY_eed8CBPmNLcvXrCoLUiQ7OY8NGG81aO7MTuHvIj5S1CP7X3RxSY8AJ0ko7BmXCgh6e42pi53Bpy0"
+      ]
+    }
+  },
+  "/works/OL26510971W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/I_Want_to_Die_but_I_Want_to_Eat_Tteokbokki"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2018,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/I_Want_to_Die_but_I_Want_to_Eat_Tteokbokki"
+      ]
+    }
+  },
+  "/works/OL20655813W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Gregg_Olsen"
+      ]
+    }
+  },
+  "/works/OL8315359W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Patricia_Wilson"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1987,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Patricia_Wilson"
+      ]
+    }
+  },
+  "/works/OL20675485W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "unresearched",
+      "sources": []
+    }
+  },
+  "/works/OL24697778W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.goodreads.com/book/show/20656089-indian-polity",
+        "https://sobrief.com/authors/m-laxmikanth"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2009,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.goodreads.com/book/show/20656089-indian-polity",
+        "https://sobrief.com/authors/m-laxmikanth"
+      ]
+    }
+  },
+  "/works/OL29160475W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Robert_Cialdini"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1984,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Robert_Cialdini"
+      ]
+    }
+  },
+  "/site/admin-jean-baptiste": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.abebooks.com/Jean-Baptiste-Adams-Levi-Dundurn/30866088216/bd"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1825,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.abebooks.com/Jean-Baptiste-Adams-Levi-Dundurn/30866088216/bd"
+      ]
+    }
+  },
+  "/works/OL20644916W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Gege_Akutami",
+        "https://en.wikipedia.org/wiki/Jujutsu_Kaisen"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2018,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Gege_Akutami",
+        "https://en.wikipedia.org/wiki/Jujutsu_Kaisen"
+      ]
+    }
+  },
+  "/works/OL10629879W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://drnaresh.com/wp-content/uploads/2024/09/Dr.Naresh-Full-Profile.pdf"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1991,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://drnaresh.com/wp-content/uploads/2024/09/Dr.Naresh-Full-Profile.pdf"
+      ]
+    }
+  },
+  "/works/OL16689060W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://books.google.com/books/about/Kidagaa_kimemwozea.html?id=U9X8nQEACAAJ"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2012,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://books.google.com/books/about/Kidagaa_kimemwozea.html?id=U9X8nQEACAAJ"
+      ]
+    }
+  },
+  "/works/OL24361285W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Geronimo_Stilton"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2020,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Geronimo_Stilton"
+      ]
+    }
+  },
+  "/works/OL12583744W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_Book_of_Mirdad"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1948,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_Book_of_Mirdad"
+      ]
+    }
+  },
+  "/works/OL18217886M": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://wikipedia.org",
+        "https://www.prestomusic.com/sheet-music/products/8357875--mersson-boris-kleine-suite-op-10"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1996,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://wikipedia.org",
+        "https://www.prestomusic.com/sheet-music/products/8357875--mersson-boris-kleine-suite-op-10"
+      ]
+    }
+  },
+  "/works/OL25306379W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "unresearched",
+      "sources": []
+    }
+  },
+  "/works/OL17865866M": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_Fairy_Doll_(ballet)",
+        "https://imslp.org/wiki/Die_Puppenfee_(Bayer,_Josef)"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1888,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_Fairy_Doll_(ballet)",
+        "https://imslp.org/wiki/Die_Puppenfee_(Bayer,_Josef)"
+      ]
+    }
+  },
+  "/works/OL19907427M": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "anonymous",
+      "sources": [
+        "https://wikipedia.org"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1601,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://wikipedia.org"
+      ]
+    }
+  },
+  "/works/OL17734885W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://opac.ssn.edu.in/bib/59325"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1991,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://opac.ssn.edu.in/bib/59325"
+      ]
+    }
+  },
+  "/works/OL24161844W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://marykubica.com/about/",
+        "https://www.goodreads.com/book/show/54737068-local-woman-missing"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2021,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://marykubica.com/about/",
+        "https://www.goodreads.com/book/show/54737068-local-woman-missing"
+      ]
+    }
+  },
+  "/site/admin-lord-of-mysteries-2-circle-of-inevitability": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Lord_of_Mysteries",
+        "https://baike.baidu.com/en/item/Cuttlefish%20That%20Loves%20Diving/13220"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2023,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Lord_of_Mysteries",
+        "https://baike.baidu.com/en/item/Cuttlefish%20That%20Loves%20Diving/13220"
+      ]
+    }
+  },
+  "/works/OL11277298W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Charlotte_Lamb",
+        "https://goodreads.com"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1987,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Charlotte_Lamb",
+        "https://goodreads.com"
+      ]
+    }
+  },
+  "/works/OL3759116W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Penny_Jordan"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1988,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Penny_Jordan"
+      ]
+    }
+  },
+  "/works/OL81839W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Mary_Pope_Osborne",
+        "https://en.wikipedia.org/wiki/Magic_Tree_House"
+      ]
+    }
+  },
+  "/site/admin-map-that-changed-the-world": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_Map_that_Changed_the_World"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2001,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_Map_that_Changed_the_World"
+      ]
+    }
+  },
+  "/works/OL22976662W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://timesofindia.indiatimes.com/education/news/mathematics-is-for-everyone-says-rd-sharma/articleshow/72938997.cms"
+      ]
+    }
+  },
+  "/works/OL12948406M": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://play.google.com/store/books/details/Council_of_Europe_Measurement_and_Indicators_of_In?id=aX5hJNZXb9oC"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1997,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://play.google.com/store/books/details/Council_of_Europe_Measurement_and_Indicators_of_In?id=aX5hJNZXb9oC"
+      ]
+    }
+  },
+  "/works/OL15922290W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://books.google.com/books/about/Memahami_Film_Edisi_1.html?hl=id&id=BSOqEAAAQBAJ",
+        "https://www.imdb.com/name/nm10734698/"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2008,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://books.google.com/books/about/Memahami_Film_Edisi_1.html?hl=id&id=BSOqEAAAQBAJ",
+        "https://www.imdb.com/name/nm10734698/"
+      ]
+    }
+  },
+  "/works/OL4761451W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://kemkes.go.id"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1993,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://kemkes.go.id"
+      ]
+    }
+  },
+  "/works/OL24345555W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://es.wikipedia.org/wiki/Nacarid_Portal"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2017,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://es.wikipedia.org/wiki/Nacarid_Portal"
+      ]
+    }
+  },
+  "/works/OL27049881W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Meryl_Wilsner",
+        "https://www.merylwilsner.com/mistakes-were-made"
+      ]
+    }
+  },
+  "/works/OL19729677M": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "anonymous",
+      "sources": [
+        "http://www.athena-press.co.jp/E25vl1-3.html",
+        "https://www.flickr.com/photos/britishlibrary/11098246495/"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1887,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "http://www.athena-press.co.jp/E25vl1-3.html",
+        "https://www.flickr.com/photos/britishlibrary/11098246495/"
+      ]
+    }
+  },
+  "/works/OL8691790W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://link.springer.com/rwe/10.1007/978-1-4419-1698-3_798"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1999,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://link.springer.com/rwe/10.1007/978-1-4419-1698-3_798"
+      ]
+    }
+  },
+  "/works/OL12091223M": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "anonymous",
+      "sources": [
+        "https://en.wikipedia.org/wiki/If_wishes_were_horses,_beggars_would_ride"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1628,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/If_wishes_were_horses,_beggars_would_ride"
+      ]
+    }
+  },
+  "/works/OL20756743M": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://iccmu.es/divulgacion-y-publicaciones/"
+      ]
+    }
+  },
+  "/works/OL14872925M": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://fr.wikipedia.org/wiki/Roman_de_M%C3%A9lusine",
+        "https://en.wikipedia.org/wiki/Jean_d%27Arras"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1393,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://fr.wikipedia.org/wiki/Roman_de_M%C3%A9lusine",
+        "https://en.wikipedia.org/wiki/Jean_d%27Arras"
+      ]
+    }
+  },
+  "/works/OL36741749W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.penguinlibros.com/es/917815-madame-g-rouge",
+        "https://www.amazon.com/Nadie-tiene-que-saberlo-excepto/dp/8402429017"
+      ]
+    }
+  },
+  "/works/OL17834026M": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.ninds.nih.gov/publications/neurofibromatosis"
+      ]
+    }
+  },
+  "/works/OL5236259W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://blog.harlequin.com/2022/09/remembering-margaret-way/",
+        "https://catalogue.nla.gov.au/catalog/3117762"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1983,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://blog.harlequin.com/2022/09/remembering-margaret-way/",
+        "https://catalogue.nla.gov.au/catalog/3117762"
+      ]
+    }
+  },
+  "/works/OL24138096W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_Duke_and_I"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2000,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_Duke_and_I"
+      ]
+    }
+  },
+  "/works/OL34069615W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Omniscient_Reader%27s_Viewpoint",
+        "https://omniscient-readers-viewpoint.fandom.com/wiki/Sing_Shong"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2018,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Omniscient_Reader%27s_Viewpoint",
+        "https://omniscient-readers-viewpoint.fandom.com/wiki/Sing_Shong"
+      ]
+    }
+  },
+  "/works/OL24646747W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.amazon.in/Osho-Asambhav-Kranti-Anil-Nakrani/dp/1522911286"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2015,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.amazon.in/Osho-Asambhav-Kranti-Anil-Nakrani/dp/1522911286"
+      ]
+    }
+  },
+  "/works/OL31597777W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Oswaal_Books"
+      ]
+    }
+  },
+  "/works/OL17358375M": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.amazon.com/-/es/Pingyang-Xian-Bian-Zuan-Yuan/dp/7543201097",
+        "https://www.yes24.com/product/goods/188775698"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1993,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.amazon.com/-/es/Pingyang-Xian-Bian-Zuan-Yuan/dp/7543201097",
+        "https://www.yes24.com/product/goods/188775698"
+      ]
+    }
+  },
+  "/works/OL16807070W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://wikipedia.org"
+      ]
+    }
+  },
+  "/works/OL30729078W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_Silent_Patient"
+      ]
+    }
+  },
+  "/works/OL19161135W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://scholar.google.com/citations?user=NMgSrDEAAAAJ&hl=en",
+        "https://repository.unikom.ac.id/16882/"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2002,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://scholar.google.com/citations?user=NMgSrDEAAAAJ&hl=en",
+        "https://repository.unikom.ac.id/16882/"
+      ]
+    }
+  },
+  "/works/OL8658275W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://archive.org/details/pathstorecoverya00alan",
+        "https://www.hazelden.org/store/item/1200?Paths-to-Recovery-Hardcover"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1997,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://archive.org/details/pathstorecoverya00alan",
+        "https://www.hazelden.org/store/item/1200?Paths-to-Recovery-Hardcover"
+      ]
+    }
+  },
+  "/works/OL19700683M": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.loebclassics.com/abstract/LCL024/2003/pb_LCL024.15.xml"
+      ]
+    }
+  },
+  "/works/OL16143994W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://news.okezone.com/read/2014/08/29/373/1031782/guru-besar-untar-prof-drs-c-s-t-kansil-tutup-usia"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2011,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://news.okezone.com/read/2014/08/29/373/1031782/guru-besar-untar-prof-drs-c-s-t-kansil-tutup-usia"
+      ]
+    }
+  },
+  "/works/OL17366783W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://books.google.com.my/books/about/Pengantar_psikologi.html?id=x8XtZwEACAAJ"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1990,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://books.google.com.my/books/about/Pengantar_psikologi.html?id=x8XtZwEACAAJ"
+      ]
+    }
+  },
+  "/works/OL17710018M": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://archive.org/details/poorrobinsalmana1794good"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1813,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://archive.org/details/poorrobinsalmana1794good"
+      ]
+    }
+  },
+  "/works/OL30466719W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "unresearched",
+      "sources": []
+    }
+  },
+  "/works/OL17365450W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.amazon.in/POWER-SYSTEM-PROTECTION-SWITCHGEAR-Badri/dp/0074623508"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1994,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.amazon.in/POWER-SYSTEM-PROTECTION-SWITCHGEAR-Badri/dp/0074623508"
+      ]
+    }
+  },
+  "/works/OL37577731W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.goodreads.com/book/show/210818955-powerful",
+        "https://www.simonandschuster.com/authors/Lauren-Roberts/211716469"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2024,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.goodreads.com/book/show/210818955-powerful",
+        "https://www.simonandschuster.com/authors/Lauren-Roberts/211716469"
+      ]
+    }
+  },
+  "/works/OL27640264W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.goodreads.com/book/show/60416566-praise"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2022,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.goodreads.com/book/show/60416566-praise"
+      ]
+    }
+  },
+  "/works/OL17321553W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "unresearched",
+      "sources": []
+    }
+  },
+  "/works/OL22654652W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Leila_Chudori",
+        "https://literaturfestival.com/en/authors/leila-s-chudori/"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2012,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Leila_Chudori",
+        "https://literaturfestival.com/en/authors/leila-s-chudori/"
+      ]
+    }
+  },
+  "/works/OL11713474W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.gramedia.com/best-seller/review-novel-rembulan-tenggelam-di-wajahmu/"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2009,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.gramedia.com/best-seller/review-novel-rembulan-tenggelam-di-wajahmu/"
+      ]
+    }
+  },
+  "/works/OL26758111W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Colleen_Hoover",
+        "https://en.wikipedia.org/wiki/Reminders_of_Him"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2022,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Colleen_Hoover",
+        "https://en.wikipedia.org/wiki/Reminders_of_Him"
+      ]
+    }
+  },
+  "/works/OL23252280W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Tere_Liye_(writer)",
+        "https://id.wikipedia.org/wiki/Tere_Liye"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2014,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Tere_Liye_(writer)",
+        "https://id.wikipedia.org/wiki/Tere_Liye"
+      ]
+    }
+  },
+  "/works/OL19880287M": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://parishmouse.co.uk/england/yorkshire/east-riding/rise-yorkshire-family-history-guide/"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1992,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://parishmouse.co.uk/england/yorkshire/east-riding/rise-yorkshire-family-history-guide/"
+      ]
+    }
+  },
+  "/works/OL11277330W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.amazon.co.uk/Runaway-Wife-Charlotte-Lamb/dp/0263122220",
+        "https://www.addall.com/books-in-order/charlotte-lamb/"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1989,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.amazon.co.uk/Runaway-Wife-Charlotte-Lamb/dp/0263122220",
+        "https://www.addall.com/books-in-order/charlotte-lamb/"
+      ]
+    }
+  },
+  "/site/admin-scaramouche": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "unresearched",
+      "sources": []
+    }
+  },
+  "/works/OL20428353W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://wikipedia.org"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1939,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://wikipedia.org"
+      ]
+    }
+  },
+  "/works/OL275914W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/T._Harv_Eker"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2005,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/T._Harv_Eker"
+      ]
+    }
+  },
+  "/works/OL20690760W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://esbam.edu.br/wp-content/uploads/2020/03/Seja-Foda-Caio-Carneiro.pdf"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2017,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://esbam.edu.br/wp-content/uploads/2020/03/Seja-Foda-Caio-Carneiro.pdf"
+      ]
+    }
+  },
+  "/works/OL11277341W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://sweetsavageflame.com/authors-2/multi-genre-romance-authors/charlotte-lamb-aka-shelia-holland/"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1979,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://sweetsavageflame.com/authors-2/multi-genre-romance-authors/charlotte-lamb-aka-shelia-holland/"
+      ]
+    }
+  },
+  "/works/OL21856464W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Tahereh_Mafi",
+        "https://shatterme.fandom.com/wiki/Shadow_Me"
+      ]
+    }
+  },
+  "/works/OL10617761W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "unresearched",
+      "sources": []
+    }
+  },
+  "/works/OL13847693W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://opac.dpr.go.id/index.php?p=show_detail&id=29824&keywords="
+      ]
+    }
+  },
+  "/works/OL16491346W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://scribd.com"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2000,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://scribd.com"
+      ]
+    }
+  },
+  "/works/OL15756749W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://openlibrary.org/books/OL24668071M/Solutions_manual_op-amps_and_linear_integrated_circuits"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1988,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://openlibrary.org/books/OL24668071M/Solutions_manual_op-amps_and_linear_integrated_circuits"
+      ]
+    }
+  },
+  "/works/OL19653033W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "unresearched",
+      "sources": []
+    }
+  },
+  "/works/OL27035990W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.amazon.com/Reasoning-Chapterwise-1999-Till-Objective-Questions/dp/9390285291",
+        "https://www.betterworldbooks.com/product/detail/ssc-chapterwise-reasoning-e-2020-9789390285297"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2020,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.amazon.com/Reasoning-Chapterwise-1999-Till-Objective-Questions/dp/9390285291",
+        "https://www.betterworldbooks.com/product/detail/ssc-chapterwise-reasoning-e-2020-9789390285297"
+      ]
+    }
+  },
+  "/fandom/sss-class-suicide-hunter": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://sss-class-revival-hunter.fandom.com/wiki/Novel"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2018,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://sss-class-revival-hunter.fandom.com/wiki/Novel"
+      ]
+    }
+  },
+  "/works/OL8315354W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Patricia_Wilson"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1990,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Patricia_Wilson"
+      ]
+    }
+  },
+  "/works/OL16142094M": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://acsess.onlinelibrary.wiley.com/doi/full/10.2136/vzj2005.0055"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1984,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://acsess.onlinelibrary.wiley.com/doi/full/10.2136/vzj2005.0055"
+      ]
+    }
+  },
+  "/fandom/swallowed-star": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Swallowed_Star",
+        "https://baike.baidu.com/en/item/Zhu%20Hongzhi/12857"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2010,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Swallowed_Star",
+        "https://baike.baidu.com/en/item/Zhu%20Hongzhi/12857"
+      ]
+    }
+  },
+  "/works/OL17228130M": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "unresearched",
+      "sources": []
+    }
+  },
+  "/works/OL5236199W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Margaret_Way",
+        "https://blog.harlequin.com/2022/09/remembering-margaret-way/"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1980,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Margaret_Way",
+        "https://blog.harlequin.com/2022/09/remembering-margaret-way/"
+      ]
+    }
+  },
+  "/works/OL6794523W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://openlibrary.org/authors/OL2763201A/Patricia_Wilson",
+        "https://goodreads.com"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1988,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://openlibrary.org/authors/OL2763201A/Patricia_Wilson",
+        "https://goodreads.com"
+      ]
+    }
+  },
+  "/works/OL42577236W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.penguin.co.in/book_author/rithvik-singh/",
+        "https://amazon.com"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2025,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.penguin.co.in/book_author/rithvik-singh/",
+        "https://amazon.com"
+      ]
+    }
+  },
+  "/works/OL14856842M": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.govinfo.gov/app/details/GOVPUB-D101-PURL-gpo60009"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1978,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.govinfo.gov/app/details/GOVPUB-D101-PURL-gpo60009"
+      ]
+    }
+  },
+  "/works/OL20417377W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.theguardian.com/books/2024/nov/19/shuntaro-tanikawa-japanese-poet-death-age-92"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2011,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.theguardian.com/books/2024/nov/19/shuntaro-tanikawa-japanese-poet-death-age-92"
+      ]
+    }
+  },
+  "/works/OL19914740W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Sarah_J._Maas"
+      ]
+    }
+  },
+  "/works/OL15104047M": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "anonymous",
+      "sources": [
+        "https://search.library.osu.edu/discovery/fulldisplay?vid=01OHIOLINK_OSU%3AOSU&docid=alma991036421129708507&context=L"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1817,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.library.osu.edu/discovery/fulldisplay?vid=01OHIOLINK_OSU%3AOSU&docid=alma991036421129708507&context=L"
+      ]
+    }
+  },
+  "/works/OL62908W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_Blue_Umbrella"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1980,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_Blue_Umbrella"
+      ]
+    }
+  },
+  "/works/OL20908682W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "unresearched",
+      "sources": []
+    }
+  },
+  "/works/OL20152693M": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "unresearched",
+      "sources": []
+    }
+  },
+  "/works/OL20690760M": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/David_Childs_(academic)"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1980,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/David_Childs_(academic)"
+      ]
+    }
+  },
+  "/site/admin-the-city-of-dreaming-books": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Walter_Moers",
+        "https://www.goodreads.com/work/editions/1704675-die-stadt-der-tr-umenden-b-cher"
+      ]
+    }
+  },
+  "/works/OL20366663W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Nostradamus",
+        "https://www.britannica.com/story/nostradamus-and-his-prophecies"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1555,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Nostradamus",
+        "https://www.britannica.com/story/nostradamus-and-his-prophecies"
+      ]
+    }
+  },
+  "/works/OL42540562W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://anahuang.com/books/the-defender/"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2025,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://anahuang.com/books/the-defender/"
+      ]
+    }
+  },
+  "/works/OL16263576W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://megjay.com/about/"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2012,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://megjay.com/about/"
+      ]
+    }
+  },
+  "/works/OL137163W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Barbara_Cartland_bibliography"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1947,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Barbara_Cartland_bibliography"
+      ]
+    }
+  },
+  "/works/OL15096240M": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://search.worldcat.org/title/The-Farmer's-calendar-or-The-New-York-Vermont-and-Connecticut-almanac-for-the-year-of-our-Lord-1816-.../oclc/15456747",
+        "https://dokumen.pub/star-territory-printing-the-universe-in-nineteenth-century-america-0812252926-9780812252927.html"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1815,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://search.worldcat.org/title/The-Farmer's-calendar-or-The-New-York-Vermont-and-Connecticut-almanac-for-the-year-of-our-Lord-1816-.../oclc/15456747",
+        "https://dokumen.pub/star-territory-printing-the-universe-in-nineteenth-century-america-0812252926-9780812252927.html"
+      ]
+    }
+  },
+  "/works/OL15111477M": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://publications.gc.ca/site/eng/9.828445/publication.html"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1916,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://publications.gc.ca/site/eng/9.828445/publication.html"
+      ]
+    }
+  },
+  "/works/OL25219259W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Axie_Oh"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2022,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Axie_Oh",
+        "https://www.google.com/goto?url=CAESXQHrOzAVAEcUIqoJLa5xxwfr47nrf4NhcLzYRrcKdmNf6plcUQGaWnf4ORhdh4G0Pv-HZT6XuPx411hocYXQshhu3WKI-YxvNllAmrzyHAbC0MucEdbgNK2FZeTtkg"
+      ]
+    }
+  },
+  "/works/OL16796766M": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "anonymous",
+      "sources": [
+        "https://ebba.english.ucsb.edu/ballad/35505/citation",
+        "https://mainlynorfolk.info/shirley.collins/songs/deathandthelady.html"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1683,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://ebba.english.ucsb.edu/ballad/35505/citation",
+        "https://mainlynorfolk.info/shirley.collins/songs/deathandthelady.html"
+      ]
+    }
+  },
+  "/works/OL19650409M": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "unresearched",
+      "sources": []
+    }
+  },
+  "/works/OL20853227W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Rebecca_Yarros",
+        "https://www.goodreads.com/book/show/40045986-the-last-letter"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2019,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Rebecca_Yarros",
+        "https://www.goodreads.com/book/show/40045986-the-last-letter"
+      ]
+    }
+  },
+  "/works/OL20809280W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_Mamba_Mentality:_How_I_Play"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2018,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_Mamba_Mentality:_How_I_Play"
+      ]
+    }
+  },
+  "/works/OL16704610M": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.oxforddnb.com/view/article/40628"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1635,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.oxforddnb.com/view/article/40628"
+      ]
+    }
+  },
+  "/works/OL20130006W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.abebooks.com/first-edition/Modern-Guide-Witchcraft-Complete-Witches-Covens/22573422542/bd"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2014,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.abebooks.com/first-edition/Modern-Guide-Witchcraft-Complete-Witches-Covens/22573422542/bd"
+      ]
+    }
+  },
+  "/site/admin-the-monk---matthew-lewis": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_Monk"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1796,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_Monk"
+      ]
+    }
+  },
+  "/works/OL15540668M": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_New_England_Primer"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1687,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_New_England_Primer",
+        "https://www.google.com/goto?url=CAESbAHrOzAVlfHWzK8i8fZzqvRkZ45tS2E-TMXMkuap5ijcJl14kjc6dJpRxZviVNN64WW3UWE2BWv81PBAbO5eOkR7Y1sGS-XS8ngrLDVeWIKq6ITJngvdf_SpwPBm-QYqiWP_4BTkTTYb2nkLPQ"
+      ]
+    }
+  },
+  "/site/admin-the-particle-at-the-end-of-the-universe": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_Particle_at_the_End_of_the_Universe"
+      ]
+    }
+  },
+  "/works/OL17346249W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://lib.udsm.ac.tz/bib/38841",
+        "https://opac.gu.ac.ug/cgi-bin/koha/opac-MARCdetail.pl?biblionumber=10923"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1984,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://lib.udsm.ac.tz/bib/38841",
+        "https://opac.gu.ac.ug/cgi-bin/koha/opac-MARCdetail.pl?biblionumber=10923"
+      ]
+    }
+  },
+  "/works/OL10121835W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.abebooks.com/9780970832122/Pipe-Fitters-Blue-Book-Graves-0970832125/plp",
+        "https://www.goodreads.com/book/show/28590878",
+        "https://www.legacy.com/us/obituaries/houstonchronicle/name/ann-fisk-obituary?id=25791562"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1973,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.abebooks.com/9780970832122/Pipe-Fitters-Blue-Book-Graves-0970832125/plp",
+        "https://www.goodreads.com/book/show/28590878",
+        "https://www.legacy.com/us/obituaries/houstonchronicle/name/ann-fisk-obituary?id=25791562"
+      ]
+    }
+  },
+  "/works/OL4273174W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.lucymonroe.com/book/the-princes-virgin-wife/",
+        "https://bookseriesinorder.com"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2006,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.lucymonroe.com/book/the-princes-virgin-wife/",
+        "https://bookseriesinorder.com"
+      ]
+    }
+  },
+  "/works/OL1502064W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_Principles_of_Psychology",
+        "https://www.hup.harvard.edu/books/9780674705593"
+      ]
+    }
+  },
+  "/site/admin-the-serengeti-rules": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://press.princeton.edu/books/paperback/9780691264295/the-serengeti-rules",
+        "https://en.wikipedia.org/wiki/Sean_B._Carroll"
+      ]
+    }
+  },
+  "/works/OL29332742W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "unresearched",
+      "sources": []
+    }
+  },
+  "/works/OL14871979W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Gene_Wolfe"
+      ]
+    }
+  },
+  "/works/OL20814542W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://tricialevenseller.com/about/",
+        "https://overflowingshelf.com/2021/07/18/review-the-shadows-between-us-by-tricia-levenseller/"
+      ]
+    }
+  },
+  "/works/OL20648310W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://goodreads.com/book/show/35702241.The_Shadows_Between_Us",
+        "https://pushkinpress.com/our-authors/tricia-levenseller/"
+      ]
+    }
+  },
+  "/works/OL15845364W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.facebook.com/sdms1952/posts/we-continue-chapter-one-of-a-vignette-of-my-story-written-by-the-late-shri-satna/580482430852622/"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1958,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.facebook.com/sdms1952/posts/we-continue-chapter-one-of-a-vignette-of-my-story-written-by-the-late-shri-satna/580482430852622/"
+      ]
+    }
+  },
+  "/works/OL20648323W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "unresearched",
+      "sources": []
+    }
+  },
+  "/works/OL16597059M": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://books.google.com/books/about/Thirty_Years_of_the_Soviet_State.html?id=ONE40gEACAAJ"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1947,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://books.google.com/books/about/Thirty_Years_of_the_Soviet_State.html?id=ONE40gEACAAJ"
+      ]
+    }
+  },
+  "/site/admin-this-is-me": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.harpercollins.com/products/this-is-me-chrissy-metz"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2018,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.harpercollins.com/products/this-is-me-chrissy-metz"
+      ]
+    }
+  },
+  "/works/OL11277315W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "unresearched",
+      "sources": []
+    }
+  },
+  "/works/OL17078706M": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.govinfo.gov/content/pkg/GOVPUB-GP3-d35bfdd5bd5156673ce59c772833c29c/pdf/GOVPUB-GP3-d35bfdd5bd5156673ce59c772833c29c.pdf"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1984,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.govinfo.gov/content/pkg/GOVPUB-GP3-d35bfdd5bd5156673ce59c772833c29c/pdf/GOVPUB-GP3-d35bfdd5bd5156673ce59c772833c29c.pdf"
+      ]
+    }
+  },
+  "/works/OL25381140W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.simonandschuster.ca/books/Colleen-Hoover-A-3-Ebook-Collection/Colleen-Hoover/9781501118678"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2015,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.simonandschuster.ca/books/Colleen-Hoover-A-3-Ebook-Collection/Colleen-Hoover/9781501118678"
+      ]
+    }
+  },
+  "/works/OL26119633W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://rina-kent-verse.fandom.com/wiki/Rina_Kent"
+      ]
+    }
+  },
+  "/works/OL17366783M": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://belaa-kniga.blagorussia.ru/%D0%B8%D0%BC%D0%B5%D0%BD%D0%B0-%D0%B2%D0%BE%D1%80%D0%BE%D0%BD%D0%B5%D0%B6%D0%B0-%D0%B6%D1%83%D1%80%D0%BD%D0%B0%D0%BB%D0%B8%D1%81%D1%82%D0%B8%D0%BA%D0%B0/%D0%B3%D0%B0%D0%BC%D0%BE%D0%B2-%D0%BD%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B9-%D1%81%D0%B5%D1%80%D0%B3%D0%B5%D0%B5%D0%B2%D0%B8%D1%87"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1967,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://belaa-kniga.blagorussia.ru/%D0%B8%D0%BC%D0%B5%D0%BD%D0%B0-%D0%B2%D0%BE%D1%80%D0%BE%D0%BD%D0%B5%D0%B6%D0%B0-%D0%B6%D1%83%D1%80%D0%BD%D0%B0%D0%BB%D0%B8%D1%81%D1%82%D0%B8%D0%BA%D0%B0/%D0%B3%D0%B0%D0%BC%D0%BE%D0%B2-%D0%BD%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B9-%D1%81%D0%B5%D1%80%D0%B3%D0%B5%D0%B5%D0%B2%D0%B8%D1%87"
+      ]
+    }
+  },
+  "/works/OL16565089W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Eros_Atalia",
+        "https://writerformisfits.blogspot.com/2013/11/book-review-wag-lang-di-makaraos-by.html"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2011,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Eros_Atalia",
+        "https://writerformisfits.blogspot.com/2013/11/book-review-wag-lang-di-makaraos-by.html"
+      ]
+    }
+  },
+  "/works/OL43113687W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://telanganatoday.com/young-forest-staffer-from-telanganas-mancherial-publishes-two-books-wins-laurels"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2025,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://telanganatoday.com/young-forest-staffer-from-telanganas-mancherial-publishes-two-books-wins-laurels"
+      ]
+    }
+  },
+  "/works/OL27053243W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.exoticindiaart.com/book/details/political-ideas-and-ideologies-understanding-political-theory-major-concepts-and-debates-nau458/",
+        "https://www.amazon.sg/Western-Political-Thought-P-Gauba/dp/0230323839"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2011,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.exoticindiaart.com/book/details/political-ideas-and-ideologies-understanding-political-theory-major-concepts-and-debates-nau458/",
+        "https://www.amazon.sg/Western-Political-Thought-P-Gauba/dp/0230323839"
+      ]
+    }
+  },
+  "/works/OL26085514W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://www.famousbirthdays.com/people/brianna-wiest.html"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 2021,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://www.famousbirthdays.com/people/brianna-wiest.html"
+      ]
+    }
+  },
+  "/works/OL25343415W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "unresearched",
+      "sources": []
+    }
+  },
+  "/works/OL13402941M": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "unresearched",
+      "sources": []
+    }
+  },
+  "/works/OL11327979W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://goodreads.com",
+        "https://www.amazon.com/Without-Trust-Penny-Jordan-ebook/dp/B07TRNJ5BW"
+      ]
+    },
+    "publication": {
+      "basis": "first_publication",
+      "year": 1988,
+      "earliest": null,
+      "latest": null,
+      "sources": [
+        "https://goodreads.com",
+        "https://www.amazon.com/Without-Trust-Penny-Jordan-ebook/dp/B07TRNJ5BW"
+      ]
+    }
+  },
+  "/works/OL21679891W": {
+    "publication_answers": {},
+    "authorship": {
+      "status": "known",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Patrick_Bet-David",
+        "https://www.amazon.com/Your-Next-Five-Moves-Business/dp/1982154802"
       ]
     }
   }
