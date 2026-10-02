@@ -489,7 +489,8 @@ function readingTime(text) {
 }
 
 // ── one game ───────────────────────────────────────────────────────────────
-async function play(page, player, base, pressMs, adjudicator, human, maxTurns = 60) {
+async function play(page, player, base, gamePath, pressMs, adjudicator, human,
+                    maxTurns = 60, navigationTimeout = 30000) {
   const turns = [];
   const guesses = [];
 
@@ -503,8 +504,10 @@ async function play(page, player, base, pressMs, adjudicator, human, maxTurns = 
   for (let attempt = 1; ; attempt++) {
     try {
       const [booksResponse] = await Promise.all([
-        page.waitForResponse(r => r.url().endsWith('books.json'), { timeout: 30000 }),
-        page.goto(base + GAME_PATH, { waitUntil: 'domcontentloaded' })
+        page.waitForResponse(r => r.url().endsWith('books.json'), { timeout: navigationTimeout }),
+        page.goto(base + gamePath, {
+          waitUntil: 'domcontentloaded', timeout: navigationTimeout
+        })
       ]);
       // HEADERS ARRIVING IS NOT THE BODY ARRIVING. waitForResponse resolves
       // on the 'response' event, which fires once headers are in — for a
@@ -1004,6 +1007,10 @@ async function main() {
   const { base: localBase, server } = await kit.serve(
     BUILT_SITE, args.freshData ? { proxy: FRESH_DATA_PROXY } : {});
   const base = args.live || localBase;
+  // Production has no client-side engine by design. The local recording build
+  // keeps that engine solely for deterministic videos, and this explicit flag
+  // prevents the private API client from winning the startup race first.
+  const gamePath = args.live ? GAME_PATH : GAME_PATH + '?legacy=1';
   if (args.freshData) {
     console.log('  --fresh-data: games/data/akinator/* served live from '
       + FRESH_DATA_REPO + '@' + FRESH_DATA_BRANCH + ', not this checkout');
@@ -1077,7 +1084,12 @@ async function main() {
         const adjudicator = args.offline
           ? null
           : (offered => adjudicate(offered, title, author, args.model, player));
-        take = await play(page, player, base, pressMs, adjudicator, args.record || args.video);
+        // GitHub Raw sometimes needs more than 30 seconds for the 2.7 MB
+        // catalogue. A longer first wait prevents three overlapping upstream
+        // downloads; ordinary local and live starts keep the fast 30s bound.
+        const navigationTimeout = args.freshData ? 90000 : 30000;
+        take = await play(page, player, base, gamePath, pressMs, adjudicator,
+                          args.record || args.video, 60, navigationTimeout);
       } finally {
         const files = await kit.finishVideo(page, context, args);
         if (take && files.webm) { take.video = files.webm; }

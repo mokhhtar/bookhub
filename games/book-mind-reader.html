@@ -430,13 +430,18 @@ permalink: /games/mind-reader/
 </div>
 
 <script src="{{ '/games/book-mind-reader-api.js' | relative_url }}"></script>
+{% if jekyll.environment == "production" %}
 <script>if (!window.__MR_TEST__ && window.bookMindReaderPrivateApi) { window.bookMindReaderPrivateApi.initialize(); }</script>
+{% else %}
+<script>if (!window.__MR_TEST__ && !/[?&]legacy=1(?:&|$)/.test(window.location.search) && window.bookMindReaderPrivateApi) { window.bookMindReaderPrivateApi.initialize(); }</script>
+{% endif %}
 {% unless jekyll.environment == "production" %}
 <script>
 (function () {
   'use strict';
 
-  if (!window.__MR_TEST__ && window.bookMindReaderPrivateApi) {
+  var forceLegacy = /[?&]legacy=1(?:&|$)/.test(window.location.search);
+  if (!window.__MR_TEST__ && !forceLegacy && window.bookMindReaderPrivateApi) {
     return;
   }
 
