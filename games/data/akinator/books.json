@@ -74737,7 +74737,7 @@
   {
     "k": "/works/OL15104131M",
     "t": "The Remarkable life of Col. James Gardiner",
-    "a": "Unknown author",
+    "a": "",
     "y": 1818,
     "p": 234,
     "r": 2,
@@ -74753,20 +74753,11 @@
       ]
     },
     "authorship": {
-      "status": "anonymous",
+      "status": "known",
       "sources": [
-        "http://archive.org/stream/americanbibliogr006658mbp/americanbibliogr006658mbp_djvu.txt"
+        "https://www.gutenberg.org/ebooks/11253"
       ]
-    },
-    "protected_questions": [
-      "author:alive",
-      "author:american",
-      "author:british",
-      "author:european",
-      "author:female",
-      "author:nonwestern",
-      "author:prolific"
-    ]
+    }
   },
   {
     "k": "/works/OL24337577W",
@@ -75978,8 +75969,7 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.co.bw/books?id=lyppNgAACAAJ",
-        "https://www.amazon.com.be/-/en/Karen-Wallace/dp/0789473550"
+        "https://www.dk.com/us1/education/readinglevels/dk_education_readinglevels_guided_reading.pdf"
       ]
     }
   },
@@ -83299,13 +83289,6 @@
       "year": 1922,
       "earliest": null,
       "latest": null,
-      "sources": [
-        "https://www.loc.gov/collections/united-states-statutes-at-large/articles-and-essays/vol39-43/",
-        "https://wikisource.org"
-      ]
-    },
-    "authorship": {
-      "status": "known",
       "sources": [
         "https://www.loc.gov/collections/united-states-statutes-at-large/articles-and-essays/vol39-43/",
         "https://wikisource.org"
@@ -101405,12 +101388,6 @@
       "sources": [
         "https://catalog.hathitrust.org/Record/006203566.marc"
       ]
-    },
-    "authorship": {
-      "status": "known",
-      "sources": [
-        "https://catalog.hathitrust.org/Record/006203566.marc"
-      ]
     }
   },
   {
@@ -111922,7 +111899,6 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://en.wikipedia.org/wiki/Coco_Mellors",
         "https://www.cocomellors.com/its-me"
       ]
     }

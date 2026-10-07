@@ -55877,7 +55877,7 @@
     "theme:family": false,
     "theme:friendship": false,
     "theme:magic": false,
-    "fact:anonymous": true,
+    "fact:anonymous": false,
     "fact:firstpub_lt_1900": true,
     "fact:firstpub_lt_1950": true,
     "fact:firstpub_lt_1970": true,
@@ -55913,11 +55913,6 @@
     "author:prolific": true
   },
   "/works/OL15168089M": {
-    "author:alive": false,
-    "author:american": true,
-    "author:british": false,
-    "author:european": true,
-    "author:nonwestern": false,
     "audience:children": false,
     "audience:ya": false,
     "book:film": false,
@@ -55953,7 +55948,6 @@
     "theme:family": false,
     "theme:friendship": false,
     "theme:magic": false,
-    "fact:anonymous": false,
     "fact:firstpub_lt_1900": false,
     "fact:firstpub_lt_1950": true,
     "fact:firstpub_lt_1970": true,
@@ -56428,13 +56422,6 @@
     "t:powersystem": false
   },
   "/works/OL21017707M": {
-    "author:alive": false,
-    "author:american": false,
-    "author:british": false,
-    "author:european": true,
-    "author:female": false,
-    "author:nonwestern": true,
-    "author:prolific": true,
     "audience:children": false,
     "audience:ya": false,
     "book:film": false,
@@ -56471,7 +56458,6 @@
     "theme:family": false,
     "theme:friendship": false,
     "theme:magic": false,
-    "fact:anonymous": false,
     "fact:firstpub_lt_1900": false,
     "fact:firstpub_lt_1950": false,
     "fact:firstpub_lt_1970": false,
@@ -62614,13 +62600,9 @@
     "fact:firstpub_ge_2016": true
   },
   "/works/OL25345096W": {
-    "author:alive": true,
-    "author:american": true,
     "author:british": true,
     "author:european": false,
-    "author:female": true,
     "author:nonwestern": false,
-    "author:prolific": false,
     "audience:children": false,
     "audience:ya": false,
     "book:film": false,
@@ -62824,11 +62806,6 @@
     "fact:firstpub_ge_2016": false
   },
   "/works/OL7958304W": {
-    "author:alive": true,
-    "author:american": false,
-    "author:female": true,
-    "author:nonwestern": false,
-    "author:prolific": true,
     "audience:children": true,
     "audience:ya": false,
     "book:film": false,
@@ -63146,9 +63123,6 @@
   },
   "/works/OL7960215W": {
     "author:alive": true,
-    "author:american": false,
-    "author:british": true,
-    "author:european": false,
     "author:female": true,
     "author:nonwestern": true,
     "author:prolific": true,

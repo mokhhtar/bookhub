@@ -4649,9 +4649,9 @@
     },
     "publication_answers": {},
     "authorship": {
-      "status": "anonymous",
+      "status": "known",
       "sources": [
-        "http://archive.org/stream/americanbibliogr006658mbp/americanbibliogr006658mbp_djvu.txt"
+        "https://www.gutenberg.org/ebooks/11253"
       ]
     }
   },
@@ -4686,11 +4686,8 @@
     },
     "publication_answers": {},
     "authorship": {
-      "status": "known",
-      "sources": [
-        "https://www.loc.gov/collections/united-states-statutes-at-large/articles-and-essays/vol39-43/",
-        "https://wikisource.org"
-      ]
+      "status": "unresearched",
+      "sources": []
     }
   },
   "/works/OL15411754M": {
@@ -5013,10 +5010,8 @@
     },
     "publication_answers": {},
     "authorship": {
-      "status": "known",
-      "sources": [
-        "https://catalog.hathitrust.org/Record/006203566.marc"
-      ]
+      "status": "unresearched",
+      "sources": []
     }
   },
   "/works/OL24456878W": {
@@ -11059,7 +11054,6 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://en.wikipedia.org/wiki/Coco_Mellors",
         "https://www.cocomellors.com/its-me"
       ]
     },
@@ -11175,8 +11169,7 @@
     "authorship": {
       "status": "known",
       "sources": [
-        "https://books.google.co.bw/books?id=lyppNgAACAAJ",
-        "https://www.amazon.com.be/-/en/Karen-Wallace/dp/0789473550"
+        "https://www.dk.com/us1/education/readinglevels/dk_education_readinglevels_guided_reading.pdf"
       ]
     },
     "publication": {
